@@ -2,6 +2,7 @@ CMS
 ===
 
 [![Build Status](https://magnum.travis-ci.com/obduk/cms.png?token=sXscVE5WUsHy2jkmtzCZ)](http://magnum.travis-ci.com/obduk/cms)
+[![Dependency Status](https://gemnasium.com/obduk/cms.png)](https://gemnasium.com/obduk/cms)
 
 A Content Management System (CMS) written with Ruby on Rails and CouchDB.
 Although it is a working project, it was not created with the intention of being
