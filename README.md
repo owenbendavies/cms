@@ -1,7 +1,7 @@
 CMS
 ===
 
-[![Build Status](https://magnum.travis-ci.com/obduk/cms.png?token=sXscVE5WUsHy2jkmtzCZ)](http://magnum.travis-ci.com/obduk/cms)
+[![Build Status](https://travis-ci.org/obduk/cms.png?branch=master)](https://travis-ci.org/obduk/cms)
 [![Dependency Status](https://gemnasium.com/obduk/cms.png)](https://gemnasium.com/obduk/cms)
 [![Code Climate](https://codeclimate.com/github/obduk/cms.png)](https://codeclimate.com/github/obduk/cms)
 
