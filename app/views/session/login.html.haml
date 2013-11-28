@@ -1,0 +1,10 @@
+- content_for :title, t('.title')
+- content_for :body_id, 'page_url_login'
+
+= simple_form_for Account.new, url: login_path do |form|
+  = form.input :email, autofocus: true
+  = form.input :password
+
+  .form-actions
+    = form.button :submit, value: t('actions.login')
+

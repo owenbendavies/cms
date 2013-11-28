@@ -1,0 +1,9 @@
+en:
+  messages:
+    index:
+      title: "Messages"
+      icon: "envelope"
+
+    show:
+      title: "Message"
+      icon: "envelope"

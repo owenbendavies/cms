@@ -1,0 +1,28 @@
+block_formats: 'Main Header=h2;Sub Header=h3;Paragraph=p;Code=pre'
+body_id: main_article
+browser_spellcheck: true
+menubar: false
+plugins:
+  - autolink
+  - link
+  - code
+  - table
+  - paste
+statusbar : false
+toolbar:
+  - formatselect
+  - bold
+  - italic
+  - strikethrough
+  - subscript
+  - superscript
+  - '|'
+  - bullist
+  - numlist
+  - '|'
+  - link
+  - '|'
+  - table
+  - '|'
+  - code
+visual_table_class: 'table table-bordered'

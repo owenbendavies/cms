@@ -1,0 +1,10 @@
+en:
+  activemodel:
+    models:
+      account: "Account"
+
+    attributes:
+      account:
+        password: "Password"
+        password_confirmation: "Confirm password"
+        email: "Email"

@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+cd `dirname $0`/..
+
+bin/bundle
+
+if [ ! -f config/application.yml ]
+then
+  cp config/application.yml.example config/application.yml
+fi
+
+if grep -q '^SECRET_KEY:$' config/application.yml
+then
+  secret=`bin/rake secret`
+  sed -i "s/^SECRET_KEY:$/SECRET_KEY: '$secret'/" config/application.yml
+fi
+

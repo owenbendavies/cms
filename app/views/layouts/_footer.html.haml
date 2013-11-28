@@ -1,0 +1,17 @@
+%footer#page_footer.dontprint
+  %ul.unstyled
+    - if @page and @page.persisted?
+      %li#last_update= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
+
+    %li#copyright= footer_copyright
+
+    %li
+      %ul#footer_links.unstyled
+        %li= link_to t('sitemap.show.title'), sitemap_path
+
+        - if @account
+          %li= link_to t('actions.logout'), logout_path
+        - else
+          %li= link_to t('actions.login'), login_path
+
+

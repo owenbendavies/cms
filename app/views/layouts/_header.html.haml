@@ -1,0 +1,10 @@
+%header#page_header.dontprint
+  %h1#site_name
+    = link_to page_path('home') do
+      - if @site.header_image_filename
+        = image_tag(@site.header_image.span12.url, alt: @site.name)
+      - else
+        = @site.name
+
+  - unless @site.sub_title.blank?
+    %h2#site_sub_title= @site.sub_title

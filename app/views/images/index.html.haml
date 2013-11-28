@@ -1,0 +1,9 @@
+- content_for :title, t('.title')
+- content_for :page_icon, t('.icon')
+
+%ul.thumbnails
+  - @images.each do |image|
+    %li.span3
+      .thumbnail
+        = image_tag(image.file.span3.url, alt: image.name)
+        %h5= image.name

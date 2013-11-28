@@ -1,0 +1,11 @@
+= simple_form_for (@message || Message.new), url: contact_form_page_path do |form|
+  = form.input :name
+  = form.input :email_address
+  = form.input :phone_number
+  = form.input :message, as: :text, input_html: {rows: 4, class: 'input-full autogrow'}
+
+  .hidden
+    = form.input :do_not_fill_in
+
+  .form-actions
+    = form.button :submit, t('actions.send_message')

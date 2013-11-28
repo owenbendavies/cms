@@ -1,0 +1,12 @@
+- content_for :title, t('.title')
+- content_for :page_icon, t('.icon')
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= Account.human_attribute_name(:email)
+
+  %tbody
+    - @account_emails .each do |email|
+      %tr
+        %td= email
