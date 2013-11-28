@@ -1,0 +1,7 @@
+en:
+  activemodel:
+    errors:
+      messages:
+        no_html: "HTML not allowed"
+        ip: "Invalid IP address"
+        email: "is not a valid email address"

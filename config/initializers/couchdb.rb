@@ -1,0 +1,1 @@
+CouchPotato.couchrest_database.create!

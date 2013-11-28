@@ -1,0 +1,18 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title= page_title(content_for(:title))
+    /[if lt IE 9]
+      %script{src: '//html5shiv.googlecode.com/svn/trunk/html5.js'}
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag @site.stylesheet.url, media: 'all' if @site.stylesheet.url
+    = javascript_include_tag 'application'
+    = content_for(:javascript)
+    = analytics_init(tracker: @site.google_analytics, domain: @site.host) if @site.google_analytics
+    = csrf_meta_tag
+
+  %body{id: (content_for(:body_id) if content_for?(:body_id))}
+    = render 'layouts/topbar' if @account
+    = render "layouts/pages/#{@site.layout}"

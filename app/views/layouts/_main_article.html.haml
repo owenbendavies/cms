@@ -1,0 +1,10 @@
+%article#main_article
+  #content
+    - if content_for?(:title)
+      %header
+        %h1
+          = glyph(content_for(:page_icon)) if content_for(:page_icon)
+          = content_for(:title)
+
+    = bootstrap_flash
+    = yield

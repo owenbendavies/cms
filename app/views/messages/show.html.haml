@@ -1,0 +1,22 @@
+- content_for :title, t('.title')
+- content_for :page_icon, t('.icon')
+
+%dl.dl-horizontal
+  %dt= Message.human_attribute_name(:created_at)
+  %dd= l(@message.created_at)
+
+  %dt= Message.human_attribute_name(:name)
+  %dd= @message.name
+
+  %dt= Message.human_attribute_name(:email_address)
+  %dd= @message.email_address
+
+  - unless @message.phone_number.blank?
+    %dt= Message.human_attribute_name(:phone_number)
+    %dd= @message.phone_number
+
+  %dt= Message.human_attribute_name(:message)
+  %dd
+    - @message.message.split("\n").each do |line|
+      = line
+      %br

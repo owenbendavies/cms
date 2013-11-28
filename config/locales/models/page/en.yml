@@ -1,0 +1,10 @@
+en:
+  activemodel:
+    models:
+      page: "Page"
+
+    attributes:
+      page:
+        name: "Name"
+        private: "Private"
+

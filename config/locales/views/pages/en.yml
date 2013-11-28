@@ -1,0 +1,22 @@
+en:
+  pages:
+    new:
+      title: "New Page"
+      icon: "plus"
+
+    contact_form:
+      flash:
+        success: "Thank you for your message"
+
+    delete:
+      title: "Delete page?"
+      icon: "trash"
+      text: "Are you sure you want to delete page '%{name}'?"
+
+    show:
+      private:
+        icon: "lock"
+
+    edit:
+      title: "Editing %{name}"
+      icon: "pencil"

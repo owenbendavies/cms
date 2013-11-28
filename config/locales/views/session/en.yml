@@ -1,0 +1,10 @@
+en:
+  session:
+    login:
+      title: "Login"
+
+      flash:
+        invalid_login: "Invalid email or password"
+
+    logout:
+      icon: "signout"

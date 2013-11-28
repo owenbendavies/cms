@@ -1,0 +1,7 @@
+/.bundle
+/config/application.yml
+/coverage
+/log/*.log
+/public/uploads
+/tmp
+/vendor/bundle

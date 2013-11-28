@@ -1,0 +1,24 @@
+/*
+ *= require bootstrap_and_overrides
+ *= require sections
+ *= require_self
+ *= require_tree .
+*/
+
+.input-full { width: 98% }
+
+#site_css {
+  background-color: inherit;
+  border: 0;
+  box-shadow: none;
+  font: inherit;
+  width: 100%;
+}
+
+body.mceContentBody  {
+  padding: 0 !important;
+}
+
+table a {
+  display: block;
+}

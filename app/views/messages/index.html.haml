@@ -1,0 +1,16 @@
+- content_for :title, t('.title')
+- content_for :page_icon, t('.icon')
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= Message.human_attribute_name(:created_at)
+      %th= Message.human_attribute_name(:name)
+      %th= Message.human_attribute_name(:email_address)
+
+  %tbody
+    - @messages.each do |message|
+      %tr
+        %td= link_to(l(message.created_at), site_message_path(message))
+        %td= link_to(message.name, site_message_path(message))
+        %td= link_to(message.email_address, site_message_path(message))

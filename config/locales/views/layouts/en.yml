@@ -1,0 +1,6 @@
+en:
+  layouts:
+    footer:
+      charity: "Registered charity number %{number}"
+      last_updated: "Page last updated %{updated_at}"
+

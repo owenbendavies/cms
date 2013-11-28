@@ -1,0 +1,10 @@
+en:
+  accounts:
+    edit:
+      title: "Account Settings"
+      icon: "user"
+
+    sites:
+      title: "Sites"
+      icon: "list"
+

@@ -1,0 +1,13 @@
+en:
+  activemodel:
+    models:
+      site: "Site"
+
+    attributes:
+      site:
+        host: "Host"
+        name: "Name"
+        sub_title: "Sub title"
+        copyright: "Copyright"
+        google_analytics: "Google Analytics"
+        charity_number: "Charity number"

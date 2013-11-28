@@ -1,0 +1,63 @@
+#topbar.dontprint
+  = nav_bar brand: @site.name, brand_link: root_path, fixed: :top, inverse: true, responsive: true, fluid: true do
+    = menu_group pull: :right do
+      = menu_text image_tag(@account.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+
+    = menu_group pull: :right do
+      = drop_down Page.model_name.human do
+        - if @page and @page.persisted?
+          = menu_item edit_page_path(@page.url) do
+            = glyph(t('pages.edit.icon'))
+            = t('actions.edit')
+
+          = menu_item glyph(t('pages.delete.icon')) + " " + t('actions.delete'),
+                       page_path(@page.url),
+                       method: :delete,
+                       data: {confirm: t('pages.delete.text', name: @page.name)},
+                       "data-confirm-title" => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,
+                       "data-confirm-proceed" => "<i class='icon-trash'></i> #{t('actions.delete')}".html_safe,
+                       "data-confirm-cancel" => "<i class='icon-remove'></i> #{t('actions.cancel')}".html_safe,
+                       "data-confirm-proceed-class" => "btn-danger"
+
+        = menu_item new_page_path do
+          = glyph(t('pages.new.icon'))
+          = t('pages.new.title')
+
+      = drop_down Site.model_name.human do
+        = menu_item site_messages_path do
+          = glyph(t('messages.index.icon'))
+          = t('messages.index.title')
+
+        = menu_item site_images_path do
+          = glyph(t('images.index.icon'))
+          = t('images.index.title')
+
+        = menu_item edit_site_path do
+          = glyph(t('sites.edit.icon'))
+          = t('sites.edit.title')
+
+        = menu_item site_users_path do
+          = glyph(t('users.index.icon'))
+          = t('users.index.title')
+
+        = menu_item css_site_path do
+          = glyph(t('sites.css.icon'))
+          = t('sites.css.title')
+
+        = menu_item sitemap_path do
+          = glyph(t('sitemap.show.icon'))
+          = t('sitemap.show.title')
+
+      = drop_down @account.email do
+        = menu_item edit_account_path do
+          = glyph(t('accounts.edit.icon'))
+          = t('accounts.edit.title')
+
+        - if @account.sites.size > 1
+          = menu_item sites_account_path do
+            = glyph(t('accounts.sites.icon'))
+            = t('accounts.sites.title')
+
+        = menu_item logout_path do
+          = glyph(t('session.logout.icon'))
+          = t('actions.logout')

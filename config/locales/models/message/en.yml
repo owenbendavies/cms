@@ -1,0 +1,22 @@
+en:
+  activemodel:
+    models:
+      message: "Message"
+
+    attributes:
+      message:
+        created_at: "Created at"
+        name: "Name"
+        email_address: "Email address"
+        phone_number: "Phone number"
+        message: "Message"
+
+    errors:
+      models:
+        message:
+          attributes:
+            do_not_fill_in:
+              too_long: "do not fill in"
+            message:
+              seo_spam: "Please do not send spam messages about SEO."
+

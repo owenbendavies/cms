@@ -1,0 +1,34 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
+
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+@import "fontawesome/font-awesome";
+
+@baseLineHeight: 24px;
+@navbarHeight: 30px;
+
+@gridColumnWidth1200: 60px;
+@gridGutterWidth1200: 20px;
+
+th { background-color: @tableBackgroundAccent }
+
+#main_menu .navbar .nav > li > a:focus,
+#main_menu .navbar .nav > li > a:hover {
+  background-color: @navbarLinkBackgroundActive;
+  .box-shadow(inset 0 3px 8px rgba(0,0,0,0.125));
+}
+
+.navbar-inner {
+  .border-radius(0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.navbar .nav > li > a { text-shadow: none }
