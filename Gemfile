@@ -88,6 +88,7 @@ group :test do
   gem 'capybara-webkit'
 
   # Code quality tools
+  gem 'coveralls', require: false
   gem 'simplecov-console', require: false
   gem 'cane', require: false
   gem 'brakeman', require: false
