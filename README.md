@@ -33,7 +33,6 @@ You will also need the following services:
 * [Rackspace](http://www.rackspace.com/) account for cloud files
 * Email sender, I user [SendGrid](http://sendgrid.com/)
 * [Airbreak](https://airbrake.io/) account for error tracking
-* [New Relic](http://newrelic.com/) for system monitoring
 * Optional [Heroku](https://www.heroku.com/) account for deployment
 * [Cloudant](https://cloudant.com/) for live Herok deployment
 
@@ -123,27 +122,47 @@ To test emails locally run the following:
 
 See http://mailcatcher.me/ for more information.
 
-Deploy
-------
+Deployment
+----------
 
 This project can either be deployed on a Linux server like Ubuntu, or deployed
 to Heroku.
 
-### Server
+Deploy to server
+----------------
 
-First setup the Nginx sites with the following command:
+### Services
+
+Sign up to the following services
+
+* [New Relic](http://newrelic.com/) for system monitoring
+
+Now add their settings to the configuration file:
+
+```
+config/application.yml
+```
+
+### Setup
+
+To setup the Nginx sites run the following command:
 
 ```shell
 sudo RAILS_ENV=production ./bin/rake config:nginx
 ```
 
-Next use Capistrano to deploy to your server:
+### Deploy
+
+Use Capistrano to deploy to your server:
 
 ```shell
 ./bin/bundle exec cap production deploy
 ```
 
-### Heroku
+Deploy to Heroku
+----------------
+
+### Setup
 
 First make sure you are logged into Heroku:
 
@@ -158,11 +177,15 @@ heroku create name
 heroku git:remote -a name
 ```
 
+### Domains
+
 Next add each domain you have:
 
 ```shell
 heroku domains:add www.example.com
 ```
+
+### Labs
 
 Next enable a lab that will make asset sync work:
 
@@ -177,6 +200,14 @@ dyno)
 heroku labs:enable preboot
 ```
 
+### Addons
+
+Add the following addons:
+
+```shell
+heroku addons:add newrelic
+```
+
 Now run figaro to set Heroku config:
 
 ```shell
@@ -184,15 +215,18 @@ RAILS_ENV=production ./bin/rake figaro:heroku
 heroku config:set HEROKU=true
 ```
 
-To deploy use git to push to Heroku:
+### Deploy
+
+First bring up the logs to keep an eye on:
+
+```shell
+heroku logs -t
+```
+
+Now use git to push to Heroku:
 
 ```shell
 git push heroku master
-```
-
-You can keep an eye on the logs to make sure it is working:
-```shell
-heroku logs -t
 ```
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/db0f06373b732860b25a2a19dffdf503 "githalytics.com")](http://githalytics.com/obduk/cms)
