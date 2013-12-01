@@ -31,7 +31,6 @@ You will need a system running the following software:
 You will also need the following services:
 
 * [Rackspace](http://www.rackspace.com/) account for cloud files
-* [Cloudant](https://cloudant.com/) for live Herok deployment
 
 For more detailed dependencies, this is the project I use for setting up my
 development and live server: https://github.com/obduk/server_setup
@@ -133,6 +132,7 @@ Deploy to server
 Sign up to the following services
 
 * [Airbreak](https://airbrake.io/) for error tracking
+* [Cloudant](https://cloudant.com/) for cloud CouchDB
 * [New Relic](http://newrelic.com/) for system monitoring
 * [SendGrid](http://sendgrid.com/) for sending emails
 
@@ -205,6 +205,7 @@ Add the following addons:
 
 ```shell
 heroku addons:add airbrake
+heroku addons:add cloudant
 heroku addons:add newrelic
 heroku addons:add sendgrid
 ```
