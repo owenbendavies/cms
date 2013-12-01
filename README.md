@@ -188,3 +188,4 @@ You can keep an eye on the logs to make sure it is working:
 heroku logs -t
 ```
 
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/db0f06373b732860b25a2a19dffdf503 "githalytics.com")](http://githalytics.com/obduk/cms)
