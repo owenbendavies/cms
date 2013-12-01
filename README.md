@@ -31,7 +31,6 @@ You will need a system running the following software:
 You will also need the following services:
 
 * [Rackspace](http://www.rackspace.com/) account for cloud files
-* Email sender, I user [SendGrid](http://sendgrid.com/)
 * [Airbreak](https://airbrake.io/) account for error tracking
 * Optional [Heroku](https://www.heroku.com/) account for deployment
 * [Cloudant](https://cloudant.com/) for live Herok deployment
@@ -136,6 +135,7 @@ Deploy to server
 Sign up to the following services
 
 * [New Relic](http://newrelic.com/) for system monitoring
+* [SendGrid](http://sendgrid.com/) for sending emails
 
 Now add their settings to the configuration file:
 
@@ -206,6 +206,7 @@ Add the following addons:
 
 ```shell
 heroku addons:add newrelic
+heroku addons:add sendgrid
 ```
 
 Now run figaro to set Heroku config:
