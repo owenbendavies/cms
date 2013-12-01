@@ -170,6 +170,13 @@ Next enable a lab that will make asset sync work:
 heroku labs:enable user-env-compile
 ```
 
+Enable lab that allows for zero downtime deployments (if you have more than 1
+dyno)
+
+```shell
+heroku labs:enable preboot
+```
+
 Now run figaro to set Heroku config:
 
 ```shell
