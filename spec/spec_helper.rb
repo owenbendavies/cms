@@ -10,6 +10,9 @@ if ENV['COVERAGE']
   ]
 
   SimpleCov.start 'rails'
+
+  require 'coveralls'
+  Coveralls.wear!
 end
 
 ENV['RAILS_ENV'] ||= 'test'
