@@ -31,8 +31,6 @@ You will need a system running the following software:
 You will also need the following services:
 
 * [Rackspace](http://www.rackspace.com/) account for cloud files
-* [Airbreak](https://airbrake.io/) account for error tracking
-* Optional [Heroku](https://www.heroku.com/) account for deployment
 * [Cloudant](https://cloudant.com/) for live Herok deployment
 
 For more detailed dependencies, this is the project I use for setting up my
@@ -134,6 +132,7 @@ Deploy to server
 
 Sign up to the following services
 
+* [Airbreak](https://airbrake.io/) for error tracking
 * [New Relic](http://newrelic.com/) for system monitoring
 * [SendGrid](http://sendgrid.com/) for sending emails
 
@@ -205,6 +204,7 @@ heroku labs:enable preboot
 Add the following addons:
 
 ```shell
+heroku addons:add airbrake
 heroku addons:add newrelic
 heroku addons:add sendgrid
 ```
