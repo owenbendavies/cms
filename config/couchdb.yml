@@ -1,23 +1,17 @@
-default: &default
+development:
   database: <%= ENV['COUCHDB_URL'] %>
 
-default_backup: &default_backup
+development_backup:
   database: <%= ENV['COUCHDB_BACKUP_URL'] %>
 
-development:
-  <<: *default
-
-development_backup:
-  <<: *default_backup
-
 test:
-  <<: *default
+  database: <%= ENV['COUCHDB_URL'] %>
 
 test_backup:
-  <<: *default_backup
+  database: <%= ENV['COUCHDB_BACKUP_URL'] %>
 
 production:
-  <<: *default
+  database: <%= ENV['CLOUDANT_URL'] %>
 
 production_backup:
-  <<: *default_backup
+  database: <%= ENV['COUCHDB_BACKUP_URL'] %>

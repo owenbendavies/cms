@@ -24,8 +24,8 @@ test:
   COUCHDB_URL: 'http://127.0.0.1:5984/test_cms'
 
 production:
-  COUCHDB_BACKUP_URL:
-  COUCHDB_URL:
+  # CLOUDANT_URL:
+  # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
   FOG_DIRECTORY:
