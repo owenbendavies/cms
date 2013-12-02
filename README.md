@@ -201,7 +201,13 @@ heroku labs:enable preboot
 
 ### Addons
 
-Add the following addons:
+First remove the postgresql addon as it is not needed:
+
+```shell
+heroku addons:remove heroku-postgresql
+```
+
+Now add the following addons:
 
 ```shell
 heroku addons:add airbrake
