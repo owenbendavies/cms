@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 # Application Gems
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 
 # Middleware
 gem 'rack-protection'
