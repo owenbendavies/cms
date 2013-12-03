@@ -69,7 +69,7 @@ site assets in both development and production. Follow these steps to set up:
 * Create a container called `environment_cms_host_name` for each site you create
   in the next steps and make a note of it's url, e.g. for a site with the host
   www.example.com in development mode, create a container called
-  `production_cms_www_example_com`.
+  `development_cms_www_example_com`.
 
 Setup data
 ----------
