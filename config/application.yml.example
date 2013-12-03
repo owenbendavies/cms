@@ -6,7 +6,7 @@ development:
   COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/development_cms_backup'
   COUCHDB_URL: 'http://127.0.0.1:5984/development_cms'
 
-  FOG_PROVIDER:
+  FOG_PROVIDER: 'Rackspace'
   RACKSPACE_API_KEY:
   RACKSPACE_AUTH_URL:
   RACKSPACE_USERNAME:
@@ -28,8 +28,8 @@ production:
   # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
-  FOG_DIRECTORY:
-  FOG_PROVIDER:
+  FOG_DIRECTORY: 'production_cms'
+  FOG_PROVIDER: 'Rackspace'
   RACKSPACE_API_KEY:
   RACKSPACE_AUTH_URL:
   RACKSPACE_USERNAME:
