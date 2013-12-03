@@ -28,10 +28,6 @@ You will need a system running the following software:
 * CouchDB
 * Imagemagick
 
-You will also need the following services:
-
-* [Rackspace](http://www.rackspace.com/) account for cloud files
-
 For more detailed dependencies, this is the project I use for setting up my
 development and live server: https://github.com/obduk/server_setup
 
@@ -42,12 +38,6 @@ First run the following to setup the project.
 
 ```shell
 ./bin/bootstrap
-```
-
-Next fill out the configuration file:
-
-```
-config/application.yml
 ```
 
 Test
@@ -64,6 +54,22 @@ Or you can run one test file:
 ```shell
 ./bin/test spec/some_file.rb
 ```
+
+Cloud Files
+-----------
+
+Rackspace cloud files is used to server rails assets in production, and store
+site assets in both development and production. Follow these steps to set up:
+
+* First signup up for a [Rackspace](http://www.rackspace.com/) account.
+* Update `RACKSPACE_USERNAME` and `RACKSPACE_API_KEY` in
+  `config/application.yml`
+* Create a container called `production_cms` and add the url to `ASSET_HOST`
+  in `config/application.yml`
+* Create a container called `environment_cms_host_name` for each site you create
+  in the next steps and make a note of it's url, e.g. for a site with the host
+  www.example.com in development mode, create a container called
+  `production_cms_www_example_com`.
 
 Setup data
 ----------
@@ -90,7 +96,8 @@ account.updated_from = '127.0.0.1'
 account.save!
 ```
 
-Finally create the site, replacing host and name with appropriate data.
+Finally create the site, replacing host and name with appropriate data, and
+asset_host with the url of the Rackspace cloud files container.
 
 ```ruby
 site = Site.new
@@ -98,6 +105,7 @@ site.host = 'localhost'
 site.name = 'Test Site'
 site.updated_from = '127.0.0.1'
 site.updated_by = account.id
+site.asset_host = 'http://b80c6e.rackcdn.com'
 site.save!
 ```
 
