@@ -6,7 +6,7 @@ services: couchdb
 
 cache: bundler
 
-bundler_args: --without development production
+bundler_args: --deployment --without development production
 
 before_script: ./bin/bootstrap
 
