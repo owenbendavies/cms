@@ -75,12 +75,10 @@ Setup data
 ----------
 
 Currently it is only possible to create sites and users via the command line.
-To set up data either for you development or production server, run one of the
-following:
+To set up data for your development server, run the following:
 
 ```shell
 ./bin/interactive
-RAILS_ENV=production ./bin/interactive
 ```
 
 Next create an account to use, replacing email, password and sites with
@@ -150,7 +148,17 @@ Now add their settings to the configuration file:
 config/application.yml
 ```
 
-### Setup
+### Setup data
+
+Next we need to set up the data for users and sites, run the following:
+
+```shell
+RAILS_ENV=production ./bin/interactive
+```
+
+Now follow the steps in [#setup-data](Setup data).
+
+### Setup domains
 
 To setup the Nginx sites run the following command:
 
@@ -182,14 +190,6 @@ Next either create a new app on Heroku, or add an existing remote:
 ```shell
 heroku create name
 heroku git:remote -a name
-```
-
-### Domains
-
-Next add each domain you have:
-
-```shell
-heroku domains:add www.example.com
 ```
 
 ### Labs
@@ -229,6 +229,24 @@ Now run figaro to set Heroku config:
 ```shell
 RAILS_ENV=production ./bin/rake figaro:heroku
 heroku config:set HEROKU=true
+```
+
+### Setup data
+
+Next we need to set up the data for users and sites, run the following:
+
+```shell
+heroku run ./bin/interactive
+```
+
+Now follow the steps in [#setup-data](Setup data).
+
+### Setup domains
+
+Next add each domain you have:
+
+```shell
+heroku domains:add www.example.com
 ```
 
 ### Deploy
