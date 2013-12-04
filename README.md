@@ -224,6 +224,15 @@ heroku addons:add newrelic
 heroku addons:add sendgrid
 ```
 
+Next add one of the following logging services (or add them all if you want to
+test them).
+
+```shell
+heroku addons:add loggly
+heroku addons:add logentries
+heroku addons:add papertrail
+```
+
 Now run figaro to set Heroku config:
 
 ```shell
