@@ -11,7 +11,7 @@ test_backup:
   database: <%= ENV['COUCHDB_BACKUP_URL'] %>
 
 production:
-  database: <%= ENV['CLOUDANT_URL'] %>
+  database: <%= ENV['CLOUDANT_URL'] + '/production_cms' %>
 
 production_backup:
   database: <%= ENV['COUCHDB_BACKUP_URL'] %>
