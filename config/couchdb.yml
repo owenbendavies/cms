@@ -1,17 +1,8 @@
 development:
-  database: <%= ENV['COUCHDB_URL'] %>
-
-development_backup:
-  database: <%= ENV['COUCHDB_BACKUP_URL'] %>
+  database: <%= [ENV['COUCHDB_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
 
 test:
-  database: <%= ENV['COUCHDB_URL'] %>
-
-test_backup:
-  database: <%= ENV['COUCHDB_BACKUP_URL'] %>
+  database: <%= [ENV['COUCHDB_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
 
 production:
-  database: <%= if ENV['CLOUDANT_URL'] then ENV['CLOUDANT_URL'] + '/production_cms' end %>
-
-production_backup:
-  database: <%= ENV['COUCHDB_BACKUP_URL'] %>
+  database: <%= [ENV['CLOUDANT_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
