@@ -3,8 +3,9 @@ NEW_RELIC_APP_NAME: 'cms'
 SECRET_KEY:
 
 development:
+  COUCHDB_URL: 'http://127.0.0.1:5984'
+  COUCHDB_NAME: 'development_cms'
   COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/development_cms_backup'
-  COUCHDB_URL: 'http://127.0.0.1:5984/development_cms'
 
   FOG_PROVIDER: 'Rackspace'
   RACKSPACE_API_KEY:
@@ -20,11 +21,13 @@ development:
   CAP_WEB_SERVERS:
 
 test:
+  COUCHDB_URL: 'http://127.0.0.1:5984'
+  COUCHDB_NAME: 'test_cms'
   COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/test_cms_backup'
-  COUCHDB_URL: 'http://127.0.0.1:5984/test_cms'
 
 production:
   # CLOUDANT_URL:
+  COUCHDB_NAME: 'production_cms'
   # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
