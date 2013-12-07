@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'request logging' do
   include_context 'default_site'
+  include_context 'new_fields'
 
   let(:events) { [] }
 
@@ -11,7 +12,8 @@ describe 'request logging' do
       events << ActiveSupport::Notifications::Event.new(*args)
     end
 
-    page.driver.browser.header('User-Agent', 'capybara')
+    page.driver.browser.header('User-Agent', new_company_name)
+    page.driver.browser.header('Heroku-Request-ID', new_id)
     visit_page '/home'
 
     events.size.should eq 1
@@ -24,7 +26,8 @@ describe 'request logging' do
   it 'logs extra information' do
     events.first.payload[:host].should eq 'localhost'
     events.first.payload[:remote_ip].should eq '127.0.0.1'
-    events.first.payload[:user_agent].should eq '"capybara"'
+    events.first.payload[:request_id].should eq new_id
+    events.first.payload[:user_agent].should eq new_company_name
   end
 
   it 'uses extra information in lograge' do
@@ -33,7 +36,8 @@ describe 'request logging' do
     result.should eq ({
       host: 'localhost',
       remote_ip: '127.0.0.1',
-      user_agent: '"capybara"',
+      request_id: new_id,
+      user_agent: "\"#{new_company_name}\"",
     })
   end
 end

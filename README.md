@@ -194,17 +194,12 @@ heroku git:remote -a name
 
 ### Labs
 
-Next enable a lab that will make asset sync work:
+Next enable some lab features:
 
 ```shell
-heroku labs:enable user-env-compile
-```
-
-Enable lab that allows for zero downtime deployments (if you have more than 1
-dyno)
-
-```shell
+heroku labs:enable http-request-id
 heroku labs:enable preboot
+heroku labs:enable user-env-compile
 ```
 
 ### Addons
