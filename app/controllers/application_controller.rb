@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
     super
     payload[:host] = request.host
     payload[:remote_ip] = request.remote_ip
-    payload[:user_agent] = "\"#{request.user_agent}\""
+    payload[:request_id] = request.env['HTTP_HEROKU_REQUEST_ID']
+    payload[:user_agent] = request.user_agent
   end
 end

@@ -34,7 +34,8 @@ module Cms
       {
         host: event.payload[:host],
         remote_ip: event.payload[:remote_ip],
-        user_agent: event.payload[:user_agent],
+        request_id: event.payload[:request_id],
+        user_agent: "\"#{event.payload[:user_agent]}\"",
       }
     end
 
