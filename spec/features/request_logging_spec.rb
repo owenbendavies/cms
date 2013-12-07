@@ -11,7 +11,9 @@ describe 'request logging' do
       events << ActiveSupport::Notifications::Event.new(*args)
     end
 
+    page.driver.browser.header('User-Agent', 'capybara')
     visit_page '/home'
+
     events.size.should eq 1
   end
 
@@ -22,6 +24,7 @@ describe 'request logging' do
   it 'logs extra information' do
     events.first.payload[:host].should eq 'localhost'
     events.first.payload[:remote_ip].should eq '127.0.0.1'
+    events.first.payload[:user_agent].should eq 'capybara'
   end
 
   it 'uses extra information in lograge' do
@@ -29,7 +32,8 @@ describe 'request logging' do
 
     result.should eq ({
       host: 'localhost',
-      remote_ip: '127.0.0.1'
+      remote_ip: '127.0.0.1',
+      user_agent: 'capybara',
     })
   end
 end
