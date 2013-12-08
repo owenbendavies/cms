@@ -31,12 +31,16 @@ module Cms
     config.i18n.enforce_available_locales = true
 
     config.lograge.custom_options = lambda do |event|
-      {
+      output = {
         host: event.payload[:host],
         remote_ip: event.payload[:remote_ip],
         request_id: event.payload[:request_id],
         user_agent: "\"#{event.payload[:user_agent]}\"",
       }
+
+      output[:account_id] = event.payload[:account_id] if event.payload[:account_id]
+
+      output
     end
 
     config.middleware.use Rack::Protection

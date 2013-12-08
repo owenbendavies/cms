@@ -41,9 +41,13 @@ class ApplicationController < ActionController::Base
 
   def append_info_to_payload(payload)
     super
-    payload[:host] = request.host
-    payload[:remote_ip] = request.remote_ip
-    payload[:request_id] = request.env['HTTP_HEROKU_REQUEST_ID']
-    payload[:user_agent] = request.user_agent
+
+    payload.merge!({
+      host: request.host,
+      remote_ip: request.remote_ip,
+      request_id: request.env['HTTP_HEROKU_REQUEST_ID'],
+      account_id: session[:account_id],
+      user_agent: request.user_agent,
+    })
   end
 end
