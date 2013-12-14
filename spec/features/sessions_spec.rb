@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'session' do
+describe 'sessions' do
   include_context 'default_site'
   include_context 'new_fields'
 
