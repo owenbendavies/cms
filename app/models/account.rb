@@ -45,9 +45,9 @@ function(doc) {
 }
 EOF
 
-  def self.find_and_authenticate(email, password, site)
+  def self.find_and_authenticate(email, password, host)
     account = CouchPotato.database.first(
-      Account.by_site_host_and_email(key: [site.host, email.squish.downcase])
+      Account.by_site_host_and_email(key: [host, email.squish.downcase])
     )
 
     return unless account

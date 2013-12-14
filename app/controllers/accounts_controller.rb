@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @account.update_attributes(account_params)
+    if user.update_attributes(account_params)
       flash[:success] = t('flash.updated', name: Account.model_name.human)
       redirect_to page_path('home')
     else

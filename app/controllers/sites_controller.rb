@@ -25,7 +25,7 @@ class SitesController < ApplicationController
       :google_analytics,
       :css
     ).merge({
-      updated_by: @account.id,
+      updated_by: user.id,
       updated_from: request.remote_ip
     })
   end

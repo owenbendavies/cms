@@ -1,8 +1,9 @@
 Cms::Application.routes.draw do
   root 'application#home'
 
-  match 'login', to: 'session#login', via: [:get, :post]
-  get 'logout', to: 'session#logout'
+  get 'login', to: 'session#new'
+  post 'login', to: 'session#create'
+  get 'logout', to: 'session#destroy'
 
   get 'sitemap', to: 'sitemap#show'
   get 'robots', to: 'robots#show'

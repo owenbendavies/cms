@@ -1,10 +1,11 @@
 en:
   session:
-    login:
+    new:
       title: "Login"
 
       flash:
         invalid_login: "Invalid email or password"
 
-    logout:
+    destroy:
+      title: "Logout"
       icon: "signout"

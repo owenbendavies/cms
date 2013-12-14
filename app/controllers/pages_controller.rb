@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(site_id: @site.id)
 
-    if @page.update_attributes(page_params.merge(created_by: @account.id))
+    if @page.update_attributes(page_params.merge(created_by: user.id))
       redirect_to page_path(@page.url)
     else
       render :new
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    return redirect_to(login_path) if @page.private and @account.blank?
+    login_required if @page.private
   end
 
   def contact_form
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   def destroy
     @page.update_attributes!({
       deleted: true,
-      updated_by: @account.id,
+      updated_by: user.id,
       updated_from: request.remote_ip
     })
 
@@ -66,7 +66,7 @@ class PagesController < ApplicationController
       :private,
       :html_content
     ).merge({
-      updated_by: @account.id,
+      updated_by: user.id,
       updated_from: request.remote_ip
     })
   end

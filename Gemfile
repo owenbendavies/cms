@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 # Middleware
 gem 'rack-protection'
 gem 'rack-timeout'
+gem 'rails_warden'
 
 # Model Gems
 gem 'couch_potato'
