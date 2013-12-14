@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
     flash[:error] = t(warden.message) if warden.message
   end

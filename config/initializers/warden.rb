@@ -2,7 +2,7 @@ Rails.configuration.middleware.use RailsWarden::Manager do |manager|
   manager.default_strategies :password
 
   manager.failure_app = lambda { |env|
-    SessionController.action(:new).call(env)
+    SessionsController.action(:new).call(env)
   }
 end
 
@@ -26,7 +26,7 @@ Warden::Strategies.add(:password) do
     if account = Account.find_and_authenticate(email, password, request.host)
       success! account
     else
-      fail! 'session.new.flash.invalid_login'
+      fail! 'sessions.new.flash.invalid_login'
     end
   end
 end

@@ -10,8 +10,8 @@
         %li= link_to t('sitemap.show.title'), sitemap_path
 
         - if authenticated?
-          %li= link_to t('session.destroy.title'), logout_path
+          %li= link_to t('sessions.destroy.title'), logout_path
         - else
-          %li= link_to t('session.new.title'), login_path
+          %li= link_to t('sessions.new.title'), login_path
 
 
