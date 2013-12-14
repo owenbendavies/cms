@@ -5,7 +5,7 @@
 
 %ul#sitemap.unstyled
   - @pages.each do |page|
-    - next if page.private and !@account
+    - next if page.private and !authenticated?
     %li
       = link_to(page.name, page_path(page.url))
       = content_tag(:i, nil, class: 'icon-lock') if page.private

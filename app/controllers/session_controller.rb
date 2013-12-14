@@ -1,21 +1,15 @@
 class SessionController < ApplicationController
-  def login
-    if request.post?
-      email = params['account']['email']
-      password = params['account']['password']
-
-      if account = Account.find_and_authenticate(email, password, @site)
-        session[:account_id] = account.id
-        session[:host] = @site.host
-        home
-      else
-        flash[:error] = t('session.login.flash.invalid_login')
-      end
-    end
+  def new
+    flash[:error] = t(warden.message) if warden.message
   end
 
-  def logout
-    reset_session
+  def create
+    authenticate!
+    home
+  end
+
+  def destroy
+    logout
     home
   end
 end

@@ -22,7 +22,7 @@ ProtectMassAssignmentCheck: { }
 RemoveEmptyHelpersCheck: { }
 #RemoveTabCheck: { }
 RemoveTrailingWhitespaceCheck: { }
-RemoveUnusedMethodsInControllersCheck: { except_methods: ['InvalidSessionHost#append_info_to_payload'] }
+RemoveUnusedMethodsInControllersCheck: { except_methods: ['ApplicationController#append_info_to_payload'] }
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 RemoveUnusedMethodsInModelsCheck: { except_methods: ['Site#css'] }
 ReplaceComplexCreationWithFactoryMethodCheck: { attribute_assignment_count: 2 }

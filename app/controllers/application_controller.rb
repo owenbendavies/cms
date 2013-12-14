@@ -1,11 +1,7 @@
 class ApplicationController < ActionController::Base
-  class InvalidSessionHost < RuntimeError; end
-
   protect_from_forgery with: :exception
 
   before_filter :find_site
-  before_filter :find_account
-  before_filter :check_session
   before_filter :check_format_is_nil
 
   def home
@@ -18,21 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    redirect_to(login_path) unless @account
+    redirect_to(login_path) unless authenticated?
   end
 
   private
 
   def find_site
     @site = Site.find_by_host!(request.host)
-  end
-
-  def find_account
-    @account = Account.find_by_id(session[:account_id]) if session[:account_id]
-  end
-
-  def check_session
-    raise InvalidSessionHost if @account and session[:host] != @site.host
   end
 
   def check_format_is_nil
@@ -46,7 +34,7 @@ class ApplicationController < ActionController::Base
       host: request.host,
       remote_ip: request.remote_ip,
       request_id: request.env['HTTP_HEROKU_REQUEST_ID'],
-      account_id: session[:account_id],
+      account_id: session['warden.user.default.key'],
       user_agent: request.user_agent,
     })
   end

@@ -3,8 +3,6 @@ en:
     edit: "Edit"
     cancel: "Cancel"
     delete: "Delete"
-    login: "Login"
-    logout: "Logout"
     send_message: "Send Message"
 
   flash:

@@ -90,7 +90,7 @@ describe Account do
       Account.find_and_authenticate(
         @account.email,
         @account.password,
-        site
+        site.host
       ).should eq @account
     end
 
@@ -98,7 +98,7 @@ describe Account do
       Account.find_and_authenticate(
         "  #{@account.email} ",
         @account.password,
-        site
+        site.host
       ).should eq @account
     end
 
@@ -106,7 +106,7 @@ describe Account do
       Account.find_and_authenticate(
         @account.email,
         "  #{@account.password}  ",
-        site
+        site.host
       ).should eq @account
     end
 
@@ -114,7 +114,7 @@ describe Account do
       Account.find_and_authenticate(
         @account.email.upcase,
         @account.password,
-        site
+        site.host
       ).should eq @account
     end
 
@@ -122,7 +122,7 @@ describe Account do
       Account.find_and_authenticate(
         new_email,
         @account.password,
-        site
+        site.host
       ).should be_nil
     end
 
@@ -130,7 +130,7 @@ describe Account do
       Account.find_and_authenticate(
         '',
         @account.password,
-        site
+        site.host
       ).should be_nil
     end
 
@@ -138,7 +138,7 @@ describe Account do
       Account.find_and_authenticate(
         @account.email,
         new_password,
-        site
+        site.host
       ).should be_nil
     end
 
@@ -146,17 +146,15 @@ describe Account do
       Account.find_and_authenticate(
         @account.email,
         '',
-        site
+        site.host
       ).should be_nil
     end
 
     it 'returnss nil for invalid site' do
-      site = FactoryGirl.build(:site, host: new_host)
-
       Account.find_and_authenticate(
         @account.email,
         @account.password,
-        site
+        new_host
       ).should be_nil
     end
   end

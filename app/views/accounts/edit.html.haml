@@ -1,13 +1,13 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-= simple_form_for @account do |form|
+= simple_form_for user do |form|
   = form.input :email, autofocus: true
   = form.input :password
   = form.input :password_confirmation
 
   .control-group
-    .controls= link_to(image_tag(@account.gravatar_url(size: 150), alt: 'Profile Image', class: 'img-circle', size: '150x150'), 'http://www.gravatar.com')
+    .controls= link_to(image_tag(user.gravatar_url(size: 150), alt: 'Profile Image', class: 'img-circle', size: '150x150'), 'http://www.gravatar.com')
 
   .form-actions
     = form.button :submit

@@ -1,7 +1,7 @@
 #topbar.dontprint
   = nav_bar brand: @site.name, brand_link: root_path, fixed: :top, inverse: true, responsive: true, fluid: true do
     = menu_group pull: :right do
-      = menu_text image_tag(@account.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+      = menu_text image_tag(user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
 
     = menu_group pull: :right do
       = drop_down Page.model_name.human do
@@ -48,16 +48,16 @@
           = glyph(t('sitemap.show.icon'))
           = t('sitemap.show.title')
 
-      = drop_down @account.email do
+      = drop_down user.email do
         = menu_item edit_account_path do
           = glyph(t('accounts.edit.icon'))
           = t('accounts.edit.title')
 
-        - if @account.sites.size > 1
+        - if user.sites.size > 1
           = menu_item sites_account_path do
             = glyph(t('accounts.sites.icon'))
             = t('accounts.sites.title')
 
         = menu_item logout_path do
-          = glyph(t('session.logout.icon'))
-          = t('actions.logout')
+          = glyph(t('session.destroy.icon'))
+          = t('session.destroy.title')

@@ -1,6 +1,8 @@
 #coding: utf-8
 
 module FeatureHelpers
+  include Warden::Test::Helpers
+
   def visit_page(url)
     visit url
     page.status_code.should eq 200
@@ -46,16 +48,13 @@ module FeatureHelpers
 
   shared_context 'logged in account' do
     before do
-      visit_page '/login'
+      login_as @account
 
-      fill_in 'Email', with: @account.email
-      fill_in 'Password', with: @account.password
-
-      click_button 'Login'
-
-      it_should_be_on_home_page
-
-      visit_page go_to_url if defined? go_to_url
+      if defined? go_to_url
+        visit_page go_to_url
+      else
+        visit_page '/home'
+      end
     end
   end
 

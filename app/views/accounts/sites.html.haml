@@ -2,5 +2,5 @@
 - content_for :page_icon, t('.icon')
 
 %ul#sites
-  - @account.sites.sort.each do |site|
+  - user.sites.sort.each do |site|
     %li= link_to(site, "http://#{site}")
