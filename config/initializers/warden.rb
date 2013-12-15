@@ -13,7 +13,15 @@ class Warden::SessionSerializer
   end
 
   def deserialize(id)
-    Account.find_by_id(id)
+    account = Account.find_by_id(id)
+
+    request = Rack::Request.new(env)
+
+    if account.sites.include? request.host
+      return account
+    else
+      return nil
+    end
   end
 end
 
