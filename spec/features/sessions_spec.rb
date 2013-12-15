@@ -42,6 +42,16 @@ describe 'sessions' do
 
       current_path.should eq '/login'
     end
+
+    it_behaves_like 'logged in account' do
+      it 'logs you out if removed from site' do
+        @account.sites = []
+        @account.save!
+
+        visit '/account/edit'
+        current_path.should eq '/login'
+      end
+    end
   end
 
   describe 'logout' do
