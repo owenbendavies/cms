@@ -216,6 +216,7 @@ Now add the following addons:
 ```shell
 heroku addons:add airbrake
 heroku addons:add cloudant
+heroku addons:add loaderio
 heroku addons:add newrelic
 heroku addons:add papertrail
 heroku addons:add sendgrid
