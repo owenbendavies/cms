@@ -140,6 +140,7 @@ Sign up to the following services
 
 * [Airbreak](https://airbrake.io/) for error tracking
 * [Cloudant](https://cloudant.com/) for cloud CouchDB
+* [loader.io](http://loader.io/) for load testing
 * [New Relic](http://newrelic.com/) for system monitoring
 * [SendGrid](http://sendgrid.com/) for sending emails
 
