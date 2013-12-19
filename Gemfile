@@ -49,10 +49,10 @@ gem 'turbolinks_transitions'
 gem 'google-analytics-turbolinks'
 
 # Monitoring
-gem 'airbrake'
-gem 'newrelic_rpm'
-gem 'syslogger'
 gem 'lograge'
+gem 'newrelic_rpm'
+gem 'sentry-raven'
+gem 'syslogger'
 
 # System management
 gem 'figaro'

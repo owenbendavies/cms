@@ -138,11 +138,11 @@ Deploy to server
 
 Sign up to the following services
 
-* [Airbreak](https://airbrake.io/) for error tracking
 * [Cloudant](https://cloudant.com/) for cloud CouchDB
 * [loader.io](http://loader.io/) for load testing
 * [New Relic](http://newrelic.com/) for system monitoring
 * [SendGrid](http://sendgrid.com/) for sending emails
+* [Sentry](https://www.getsentry.com/) for error tracking
 
 Now add their settings to the configuration file:
 
@@ -215,12 +215,12 @@ heroku addons:remove heroku-postgresql
 Now add the following addons:
 
 ```shell
-heroku addons:add airbrake
 heroku addons:add cloudant
 heroku addons:add loaderio
 heroku addons:add newrelic
 heroku addons:add papertrail
 heroku addons:add sendgrid
+heroku addons:add sentry
 ```
 
 Now run figaro to set Heroku config:
