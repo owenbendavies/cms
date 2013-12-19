@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 # Application Gems
 gem 'rails', '4.0.2'
@@ -75,7 +75,7 @@ end
 group :development do
   gem 'capistrano', '< 3'
   gem 'quiet_assets'
-  gem 'debugger'
+  gem 'debugger2'
   gem 'thin'
   gem 'mailcatcher'
 end

@@ -24,7 +24,7 @@ Dependencies
 
 You will need a system running the following software:
 
-* Ruby 1.9.3
+* Ruby
 * Bundler
 * CouchDB
 * Imagemagick
