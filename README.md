@@ -21,7 +21,7 @@ Some of the following concepts may be useful to look at:
 
 For an example, check out my personal website at http://www.obduk.com
 
-![Screen Shot](https://raw.github.com/obduk/cms/master/screen_shot.png)
+![Screen Shot](https://raw.github.com/obduk/cms/screenshot/screen_shot.png)
 
 Dependencies
 ------------
