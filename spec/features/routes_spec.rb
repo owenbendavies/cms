@@ -15,8 +15,21 @@ describe 'routes' do
     page.should have_content 'Page Not Found'
   end
 
-  it 'renders page not for for urls with .html in' do
+  it 'renders page not found for urls with .html in' do
     visit '/home.html'
+    page.status_code.should eq 404
+    page.should have_content 'Page Not Found'
+  end
+
+  it 'renders page not found for urls with unkown format in' do
+    visit '/home.txt'
+    page.status_code.should eq 404
+    page.should have_content 'Page Not Found'
+  end
+
+  it 'renders page not found for unknown accept header' do
+    page.driver.header('Accept', 'application/json')
+    visit '/home'
     page.status_code.should eq 404
     page.should have_content 'Page Not Found'
   end
