@@ -4,7 +4,7 @@ set -e
 bundle=`dirname $0`/bundle
 
 if [ $# -gt 0 ]; then
-  command="$bundle exec rspec --debugger --format documentation $@"
+  command="$bundle exec rspec --format documentation $@"
 
   filename=`echo $@ | sed 's/:[0-9]*//g'`
 

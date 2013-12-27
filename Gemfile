@@ -75,7 +75,7 @@ end
 group :development do
   gem 'capistrano', '< 3'
   gem 'quiet_assets'
-  gem 'debugger2'
+  gem 'byebug'
   gem 'thin'
   gem 'mailcatcher'
 end
