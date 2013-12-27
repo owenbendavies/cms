@@ -87,5 +87,13 @@ describe 'sitemap' do
         )
       end
     end
+
+    context 'unknown format' do
+      it 'renders page not found' do
+        visit '/sitemap.txt'
+        page.status_code.should eq 404
+        page.should have_content 'Page Not Found'
+      end
+    end
   end
 end

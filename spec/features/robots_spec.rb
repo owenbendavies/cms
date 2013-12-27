@@ -11,5 +11,11 @@ describe 'robots' do
       page.should have_content 'User-agent: *'
       page.should have_content 'Disallow:'
     end
+
+    it 'renders page not found when not txt' do
+      visit '/robots'
+      page.status_code.should eq 404
+      page.should have_content 'Page Not Found'
+    end
   end
 end

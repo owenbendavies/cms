@@ -1,16 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  rescue_from ActionView::MissingTemplate, with: :page_not_found
+  rescue_from ActionController::UnknownFormat, with: :page_not_found
+
   before_filter :find_site
-  before_filter :check_format_is_nil
+  before_filter :check_format_is_not_html
 
   def home
     redirect_to page_path('home')
   end
 
   def page_not_found
-    params[:format] = nil
-    render template: 'errors/page_not_found', status: 404
+    render template: 'errors/page_not_found', formats: ['html'], status: 404
   end
 
   def login_required
@@ -23,8 +25,8 @@ class ApplicationController < ActionController::Base
     @site = Site.find_by_host!(request.host)
   end
 
-  def check_format_is_nil
-    page_not_found unless params[:format].nil?
+  def check_format_is_not_html
+    page_not_found if params[:format] == 'html'
   end
 
   def append_info_to_payload(payload)
