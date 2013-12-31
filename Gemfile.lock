@@ -104,7 +104,7 @@ GEM
     docile (1.1.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.31.0)
+    excon (0.28.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
@@ -119,9 +119,9 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    fog (1.19.0)
+    fog (1.18.0)
       builder
-      excon (~> 0.31.0)
+      excon (~> 0.28.0)
       formatador (~> 0.2.0)
       mime-types
       multi_json (~> 1.0)
@@ -389,6 +389,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  fog (= 1.18.0)
   fuubar
   google-analytics-rails
   google-analytics-turbolinks

@@ -32,6 +32,7 @@ gem 'rails-timeago'
 gem 'tinymce-rails'
 
 # Assets
+gem 'fog', '1.18.0'
 gem 'asset_sync'
 
 # Stylesheets
