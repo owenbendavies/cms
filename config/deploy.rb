@@ -32,7 +32,3 @@ namespace :figaro do
 end
 
 after 'deploy:symlink:shared', 'figaro:upload_config'
-
-# New Relic notification
-#require 'new_relic/recipes'
-#after "deploy:update", "newrelic:notice_deployment"
