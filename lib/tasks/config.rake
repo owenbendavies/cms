@@ -6,7 +6,7 @@ namespace :config do
     File.open('/etc/nginx/sites-available/cms', 'w') do |file|
       file.puts <<EOF
 upstream cms_server {
-  server unix:/var/www/cms/shared/sockets/unicorn.sock fail_timeout=0;
+  server unix:/var/www/cms/shared/tmp/sockets/unicorn.sock fail_timeout=0;
 }
 
 server {

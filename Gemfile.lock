@@ -51,12 +51,16 @@ GEM
       debugger-linecache (~> 1.2.0)
     cane (2.6.1)
       parallel
-    capistrano (2.15.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
+    capistrano (3.0.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 0.0.23)
+    capistrano-bundler (1.1.1)
+      capistrano (~> 3.0)
+      sshkit (>= 1.2.0)
+    capistrano-rails (1.1.0)
+      capistrano (>= 3.0.0)
+      capistrano-bundler (>= 1.0.0)
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -185,11 +189,7 @@ GEM
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
-    net-ssh-gateway (1.2.0)
-      net-ssh (>= 2.6.5)
     newrelic_rpm (3.7.1.180)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -310,6 +310,10 @@ GEM
     sqlite3 (1.3.8)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    sshkit (1.3.0)
+      net-scp (>= 1.1.2)
+      net-ssh
+      term-ansicolor
     subexec (0.2.3)
     syslogger (1.5.1)
     temple (0.6.7)
@@ -381,7 +385,7 @@ DEPENDENCIES
   brakeman
   byebug
   cane
-  capistrano (< 3)
+  capistrano-rails
   capybara-webkit
   carrierwave
   couch_potato
