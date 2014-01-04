@@ -1,11 +1,3 @@
-# New Relic notification
-require 'new_relic/recipes'
-after "deploy:update", "newrelic:notice_deployment"
-
-# Update Cron
-set :whenever_command, "bundle exec whenever"
-require 'whenever/capistrano'
-
 # Web servers (compile assets)
 role :web, ENV['CAP_WEB_SERVERS']
 

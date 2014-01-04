@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 set :application, "cms"
 
 # Capistrano multi stage
-set :stages, %w(production localhost)
+set :stages, %w(production)
 require 'capistrano/ext/multistage'
 
 # SSH options
@@ -45,3 +45,11 @@ before 'deploy:finalize_update', 'deploy:copy_figaro_config'
 
 # Cleanup
 after "deploy:restart", "deploy:cleanup"
+
+# New Relic notification
+require 'new_relic/recipes'
+after "deploy:update", "newrelic:notice_deployment"
+
+# Update Cron
+set :whenever_command, "bundle exec whenever"
+require 'whenever/capistrano'
