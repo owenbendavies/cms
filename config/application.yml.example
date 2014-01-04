@@ -15,11 +15,6 @@ development:
   SMTP_ADDRESS: localhost
   SMTP_PORT: 1025
 
-  CAP_APP_SERVERS:
-  CAP_DB_SERVERS:
-  CAP_SSH_PORT:
-  CAP_WEB_SERVERS:
-
 test:
   COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'test_cms'

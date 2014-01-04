@@ -1,55 +1,40 @@
-require 'bundler/capistrano'
+set :application, 'cms'
+set :repo_url, 'git@github.com:obduk/cms.git'
 
-set :application, "cms"
+set :deploy_to, '/var/www/cms'
 
-# Capistrano multi stage
-set :stages, %w(production)
-require 'capistrano/ext/multistage'
+set :linked_dirs, %w{tmp/pids tmp/sockets}
 
-# SSH options
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-ssh_options[:port] = ENV['CAP_SSH_PORT'].to_i
-
-# Repo config
-set :repository,  "git@github.com:obduk/#{application}.git"
-set :branch, "master"
-set :deploy_via, :remote_cache
-
-# Server config
-set :user, "www-data"
-set :use_sudo, false
-set :deploy_to, "/var/www/#{application}"
-
-# Default folders
-_cset :shared_children, shared_children << 'tmp/sockets'
-
-# Unicorn deploy
 namespace :deploy do
-  task :restart, roles: :app, except: { no_release: true } do
-    pid_file = "#{current_path}/tmp/pids/unicorn.pid"
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      pid_file = "#{shared_path}/tmp/pids/unicorn.pid"
 
-    if File.exists? pid_file
-      pid = File.read(pid_file).to_i
-
-      run "kill -s USR2 #{pid}"
+      if test "[ -f #{pid_file} ]"
+        execute :kill, "-s USR2 `cat #{pid_file}`"
+      end
     end
   end
 
-  task :copy_figaro_config do
-    transfer :up, "config/application.yml", "#{release_path}/config/application.yml", :via => :scp
+  after :finishing, 'deploy:cleanup'
+end
+
+namespace :figaro do
+  desc 'SCP transfer figaro configuration'
+  task :upload_config do
+    on roles(:all) do
+      upload! 'config/application.yml', "#{release_path}/config/application.yml"
+    end
   end
 end
 
-before 'deploy:finalize_update', 'deploy:copy_figaro_config'
-
-# Cleanup
-after "deploy:restart", "deploy:cleanup"
+after 'deploy:symlink:shared', 'figaro:upload_config'
 
 # New Relic notification
-require 'new_relic/recipes'
-after "deploy:update", "newrelic:notice_deployment"
+#require 'new_relic/recipes'
+#after "deploy:update", "newrelic:notice_deployment"
 
 # Update Cron
-set :whenever_command, "bundle exec whenever"
-require 'whenever/capistrano'
+#set :whenever_command, "bundle exec whenever"
+#require 'whenever/capistrano'

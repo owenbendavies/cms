@@ -138,6 +138,14 @@ to Heroku.
 Deploy to server
 ----------------
 
+### Setup
+
+First setup the deploy servers in the capistrano file:
+
+```
+config/deploy/production.rb
+```
+
 ### Services
 
 Sign up to the following services

@@ -13,12 +13,12 @@ working_directory File.join(DEPLOY_PATH, 'current')
 
 SHARED_PATH = File.join(DEPLOY_PATH, 'shared')
 
-PID_FILE = File.join(SHARED_PATH, "/pids/unicorn.pid")
+PID_FILE = File.join(SHARED_PATH, "/tmp/pids/unicorn.pid")
 OLD_PID_FILE = PID_FILE + ".oldbin"
 
 pid PID_FILE
 
-listen File.join(SHARED_PATH, "/sockets/unicorn.sock")
+listen File.join(SHARED_PATH, "/tmp/sockets/unicorn.sock")
 
 before_fork do |server, worker|
   if File.exists?(OLD_PID_FILE)
