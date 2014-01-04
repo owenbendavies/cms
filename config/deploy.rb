@@ -1,3 +1,5 @@
+SSHKit.config.command_map[:whenever] = "bundle exec whenever"
+
 set :application, 'cms'
 set :repo_url, 'git@github.com:obduk/cms.git'
 
@@ -34,7 +36,3 @@ after 'deploy:symlink:shared', 'figaro:upload_config'
 # New Relic notification
 #require 'new_relic/recipes'
 #after "deploy:update", "newrelic:notice_deployment"
-
-# Update Cron
-#set :whenever_command, "bundle exec whenever"
-#require 'whenever/capistrano'
