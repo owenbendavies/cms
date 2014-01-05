@@ -1,6 +1,7 @@
 block_formats: 'Main Header=h2;Sub Header=h3;Paragraph=p;Code=pre'
 body_id: main_article
 browser_spellcheck: true
+inline: true
 menubar: false
 plugins:
   - autolink
@@ -8,7 +9,8 @@ plugins:
   - code
   - table
   - paste
-statusbar : false
+selector: 'div.tinymce'
+statusbar: false
 toolbar:
   - formatselect
   - bold
