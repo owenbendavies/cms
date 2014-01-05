@@ -29,7 +29,6 @@ gem 'haml'
 gem 'simple_form'
 gem 'google-analytics-rails'
 gem 'rails-timeago'
-gem 'tinymce-rails'
 
 # Assets
 gem 'fog', '1.18.0'

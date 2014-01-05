@@ -1,6 +1,3 @@
-- content_for :javascript do
-  = javascript_include_tag 'tinymce', 'data-turbolinks-track' => true
-
 = simple_form_for @page do |form|
   = form.input :name, autofocus: true
   = form.input :private, as: :boolean
@@ -11,5 +8,3 @@
   .form-actions
     = form.button :submit
     = link_to t('actions.cancel'), @page, class: 'btn'
-
-= tinymce
