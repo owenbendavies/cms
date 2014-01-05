@@ -4,10 +4,12 @@
 = simple_form_for @page do |form|
   = form.input :name, autofocus: true
   = form.input :private, as: :boolean
-  = form.text_area :html_content, rows: 20, cols: 120, class: 'tinymce'
+
+  .tinymce{:id => 'page[html_content]'}
+    = form.object.html_content.to_s.html_safe
 
   .form-actions
     = form.button :submit
     = link_to t('actions.cancel'), @page, class: 'btn'
 
-= tinymce content_css: "#{path_to_stylesheet('application')},#{@site.stylesheet.url}"
+= tinymce

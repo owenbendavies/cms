@@ -22,24 +22,19 @@ describe 'pages' do
         its_body_id_should_be 'page_url_new'
       end
 
-      it 'has tinymce' do
-        page.body.should include 'tinyMCE.init'
-        page.body.should include(
-          "/assets/application.css,#{@site.stylesheet.url}"
-        )
-      end
-
       it 'has cancel link' do
         click_link 'Cancel'
         it_should_be_on_home_page
       end
 
-      it 'creates a page' do
+      it 'creates a page', js: true do
         fill_in 'Name', with: 'New Page'
-        fill_in 'page[html_content]', with: "<p>#{new_message}</p>"
+
+        page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
 
         expect {
           click_button 'Create Page'
+          page.should have_content 'New Page'
         }.to change(Page, :count).by(1)
 
         new_page = Page.find_by_site_and_url(@site, 'new_page')
@@ -152,22 +147,16 @@ describe 'pages' do
         its_body_id_should_be 'page_url_test_page'
       end
 
-      it 'has tinymce' do
-        page.body.should include 'tinyMCE.init'
-        page.body.should include(
-          "/assets/application.css,#{@site.stylesheet.url}"
-        )
-      end
-
       it 'has cancel link' do
         click_link 'Cancel'
         current_path.should eq '/test_page'
       end
 
-      it 'edits the html content' do
-        find_field('page[private]').should_not be_checked
-        find_field('page[html_content]').value.should eq @test_page.html_content
-        fill_in 'page[html_content]', with: "<p>#{new_message}</p>"
+      it 'edits the html content', js: true do
+        page.body.should include @test_page.html_content
+
+        page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
+
         click_button 'Update Page'
 
         current_path.should eq '/test_page'
@@ -179,6 +168,7 @@ describe 'pages' do
       end
 
       it 'makes a page private' do
+        find_field('page[private]').should_not be_checked
         check 'Private'
         click_button 'Update Page'
 
@@ -207,7 +197,7 @@ describe 'pages' do
 
         expect {
           expect {
-            fill_in 'page[html_content]', with: @test_page.html_content
+            fill_in 'page[name]', with: @test_page.name
             click_button 'Update Page'
             current_path.should eq '/test_page'
           }.to_not change{ Site.find_by_host!('localhost')._rev }
