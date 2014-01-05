@@ -333,8 +333,6 @@ GEM
     tilt (1.4.1)
     timecop (0.7.0)
     tins (0.13.1)
-    tinymce-rails (4.0.12)
-      railties (>= 3.1.1)
     travis-lint (1.7.0)
       hashr (~> 0.0.22)
     treetop (1.4.15)
@@ -426,7 +424,6 @@ DEPENDENCIES
   therubyracer
   thin
   timecop
-  tinymce-rails
   travis-lint
   turbolinks
   turbolinks_transitions
