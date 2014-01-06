@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'sitemap' do
   include_context 'default_site'
   before do
-    site = Site.find_by_host!('localhost')
+    site = Site.find_by_host('localhost')
     site.main_menu = []
     site.save!
 

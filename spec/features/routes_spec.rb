@@ -39,8 +39,4 @@ describe 'routes' do
     page.status_code.should eq 404
     page.should have_content 'Page Not Found'
   end
-
-  it 'raises on unknown domain' do
-    expect { visit new_url }.to raise_error CouchPotato::NotFound
-  end
 end

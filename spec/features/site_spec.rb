@@ -38,7 +38,7 @@ describe 'site' do
         current_path.should eq '/home'
         it_should_have_alert_with 'Site successfully updated'
 
-        site = Site.find_by_host!('localhost')
+        site = Site.find_by_host('localhost')
         site.name.should eq new_company_name
         site.sub_title.should eq new_catch_phrase
         site.copyright.should eq new_name
@@ -51,7 +51,7 @@ describe 'site' do
         fill_in 'Copyright', with: ''
         click_button 'Update Site'
 
-        site = Site.find_by_host!('localhost')
+        site = Site.find_by_host('localhost')
         site.copyright.should be_nil
       end
 
@@ -80,7 +80,7 @@ describe 'site' do
 
   describe 'css' do
     before do
-      site = Site.find_by_host! 'localhost'
+      site = Site.find_by_host 'localhost'
       site.stylesheet_filename = ''
       site.save!
     end
@@ -100,7 +100,7 @@ describe 'site' do
 
         click_button 'Update Site'
 
-        site = Site.find_by_host!('localhost')
+        site = Site.find_by_host('localhost')
 
         site.stylesheet_filename.
           should eq 'b1192d422b8c8999043c2abd1b47b750.css'
