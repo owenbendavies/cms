@@ -200,7 +200,7 @@ describe 'pages' do
             fill_in 'page[name]', with: @test_page.name
             click_button 'Update Page'
             current_path.should eq '/test_page'
-          }.to_not change{ Site.find_by_host!('localhost')._rev }
+          }.to_not change{ Site.find_by_host('localhost')._rev }
         }.to_not change{ Page.find_by_site_and_url(@site, 'test_page')._rev }
       end
 

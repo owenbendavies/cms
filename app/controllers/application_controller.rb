@@ -22,7 +22,16 @@ class ApplicationController < ActionController::Base
   private
 
   def find_site
-    @site = Site.find_by_host!(request.host)
+    @site = Site.find_by_host(request.host)
+    site_not_found unless @site
+  end
+
+  def site_not_found
+    @site = Site.new
+    @site.name = t('errors.site_not_found.title')
+    @site.layout = 'site_not_found'
+
+    render template: 'errors/site_not_found', formats: ['html'], status: 404
   end
 
   def check_format_is_not_html

@@ -127,21 +127,19 @@ describe Site do
     end
   end
 
-  describe '.find_by_host!' do
+  describe '.find_by_host' do
     before { @site = FactoryGirl.create(:site) }
 
     it 'finds a site' do
-      Site.find_by_host!(@site.host).should eq @site
+      Site.find_by_host(@site.host).should eq @site
     end
 
     it 'ignores case' do
-      Site.find_by_host!(@site.host.upcase).should eq @site
+      Site.find_by_host(@site.host.upcase).should eq @site
     end
 
-    it 'raises exception when not found' do
-      expect{
-        Site.find_by_host!(new_host)
-      }.to raise_error CouchPotato::NotFound
+    it 'returns nil when not found' do
+      Site.find_by_host(new_host).should be_nil
     end
   end
 

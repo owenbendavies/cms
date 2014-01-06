@@ -45,8 +45,8 @@ class Site
 
   view :by_host, key: :host
 
-  def self.find_by_host!(host)
-    CouchPotato.database.first!(by_host(key: host.downcase))
+  def self.find_by_host(host)
+    CouchPotato.database.first(by_host(key: host.downcase))
   end
 
   def fog_directory
