@@ -20,6 +20,7 @@ gem 'gravtastic'
 gem 'unf'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog', '1.18.0'
 
 # Controller Gems
 gem 'xml-sitemap'
@@ -29,10 +30,6 @@ gem 'haml'
 gem 'simple_form'
 gem 'google-analytics-rails'
 gem 'rails-timeago'
-
-# Assets
-gem 'fog', '1.18.0'
-gem 'asset_sync'
 
 # Stylesheets
 gem 'less-rails'
