@@ -4,10 +4,10 @@
 //= require rails-timeago
 //= require twitter/bootstrap
 //= require twitter/bootstrap/rails/confirm
-//= require google-analytics-turbolinks
-//= require_tree .
 //= require turbolinks
 //= require turbolinks_transitions
+//= require google-analytics-turbolinks
+//= require_tree .
 
 $(document).ready(function() {
     $('textarea.autogrow').autoGrow();
