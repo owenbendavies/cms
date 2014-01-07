@@ -57,6 +57,7 @@ gem 'whenever', require: false
 
 group :heroku do
   gem 'rails_12factor'
+  gem 'heroku-deflater'
 end
 
 group :production do
