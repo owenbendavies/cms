@@ -213,6 +213,7 @@ Next enable some lab features:
 ```shell
 heroku labs:enable http-request-id
 heroku labs:enable preboot
+heroku labs:enable user-env-compile
 ```
 
 ### Addons
