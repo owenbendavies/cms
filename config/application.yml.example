@@ -26,7 +26,6 @@ production:
   # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
-  FOG_DIRECTORY: 'production_cms'
   FOG_PROVIDER: 'Rackspace'
   RACKSPACE_API_KEY:
   RACKSPACE_AUTH_URL:

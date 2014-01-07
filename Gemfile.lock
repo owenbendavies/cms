@@ -26,9 +26,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.1)
-    asset_sync (1.0.0)
-      activemodel
-      fog (>= 1.8.0)
     atomic (1.1.14)
     auto_strip_attributes (2.0.4)
       activerecord (>= 3.0)
@@ -378,7 +375,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asset_sync
   auto_strip_attributes
   bcrypt-ruby
   brakeman
