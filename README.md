@@ -276,7 +276,7 @@ git push heroku master
 Amazon CloudFront
 -----------------
 
-It is recommended to set up an Amazon CloudFront distribution to serve the Rails
-assets for your site. Once set up, and add the distribution url to `ASSET_HOST`
-in `config/application.yml`.
+It is recommended to set up a Amazon CloudFront distribution to serve the Rails
+assets for your site. Once set up, add the distribution url to `ASSET_HOST` in
+`config/application.yml`.
 
