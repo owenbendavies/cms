@@ -63,14 +63,12 @@ Or you can run one test file:
 Cloud Files
 -----------
 
-Rackspace cloud files is used to server rails assets in production, and store
-site assets in both development and production. Follow these steps to set up:
+Rackspace cloud files is used to store and serve site images and stylesheets in
+both development and production. Follow these steps to set up:
 
 * First signup up for a [Rackspace](http://www.rackspace.com/) account.
 * Update `RACKSPACE_USERNAME` and `RACKSPACE_API_KEY` in
   `config/application.yml`
-* Create a container called `production_cms` and add the url to `ASSET_HOST`
-  in `config/application.yml`
 * Create a container called `environment_cms_host_name` for each site you create
   in the next steps and make a note of it's url, e.g. for a site with the host
   www.example.com in development mode, create a container called
@@ -274,3 +272,11 @@ Now use git to push to Heroku:
 ```shell
 git push heroku master
 ```
+
+Amazon CloudFront
+-----------------
+
+It is recommended to set up an Amazon CloudFront distribution to serve the Rails
+assets for your site. Once set up, and add the distribution url to `ASSET_HOST`
+in `config/application.yml`.
+
