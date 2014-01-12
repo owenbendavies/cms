@@ -23,6 +23,10 @@ require 'rspec/autorun'
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
+  config.before :all do
+    CouchPotato.couchrest_database.create!
+  end
+
   config.before do
     if CouchPotato.couchrest_database.info['update_seq'] > 0
       CouchPotato.couchrest_database.recreate!
