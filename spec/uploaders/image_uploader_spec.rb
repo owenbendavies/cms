@@ -19,22 +19,24 @@ describe ImageUploader do
     end
 
     it 'has filename which is  md5 of content' do
-      files = [
-        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
-      ].map{|file| Rails.root.join('public/uploads', file).to_s}
+      storage_files = File.join(
+        CarrierWave.root,
+        CarrierWave::Uploader::Base.store_dir,
+        '*'
+      )
 
-      Dir.glob(Rails.root.join('public/uploads/*')).should be_empty
+      Dir.glob(storage_files).should be_empty
 
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
 
-      Dir.glob(Rails.root.join('public/uploads/*')).sort.should eq files.sort
+      'a7a78bb78134027c41d2eedc6efd4edb.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg'.should be_uploaded_file
+      'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg'.should be_uploaded_file
     end
 
     it 'creates multiple sized images at same aspect ratio' do

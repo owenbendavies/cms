@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 CarrierWave.configure do |config|
-  config.storage = :fog
+  config.storage = ENV['UPLOADS_STORAGE'].to_sym
 
   config.fog_credentials = {
     provider: ENV['FOG_PROVIDER'],
@@ -10,7 +10,7 @@ CarrierWave.configure do |config|
     rackspace_auth_url: ENV['RACKSPACE_AUTH_URL'],
   }
 
-  config.store_dir = nil
+  config.store_dir = ENV['UPLOADS_STORE_DIR']
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 
