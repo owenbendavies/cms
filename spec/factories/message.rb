@@ -6,6 +6,5 @@ FactoryGirl.define do
     email_address { Faker::Internet.safe_email }
     phone_number { Faker::PhoneNumber.phone_number }
     message { Faker::Lorem.paragraph }
-    updated_from { Faker::Internet.ip_v4_address }
   end
 end

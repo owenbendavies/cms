@@ -79,7 +79,6 @@ account.email = 'test@example.com'
 account.password = 'password'
 account.password_confirmation = 'password'
 account.sites = ['localhost']
-account.updated_from = '127.0.0.1'
 account.save!
 ```
 
@@ -89,7 +88,6 @@ Finally create the site, replacing host and name with appropriate data.
 site = Site.new
 site.host = 'localhost'
 site.name = 'Test Site'
-site.updated_from = '127.0.0.1'
 site.updated_by = account.id
 site.save!
 ```

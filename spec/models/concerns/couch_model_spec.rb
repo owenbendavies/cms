@@ -2,36 +2,24 @@ require 'spec_helper'
 
 describe CouchModel do
   include_context 'new_fields'
+  let(:name) { Faker::Name.name }
 
   class TestCouchModel
     include CouchModel
+
+    property :name, type: String
+
+    validates :name, presence: true
   end
 
-  subject { TestCouchModel.new(updated_from: new_ip_address) }
+  subject { TestCouchModel.new(name: name) }
 
-  its(:updated_from) { should eq new_ip_address }
+  its(:name) { should eq name }
 
   describe 'validate' do
     subject { TestCouchModel.new }
 
-    it { should validate_presence_of(:updated_from) }
-
-    it { should allow_values_for(
-      :updated_from,
-      '255.255.255.255',
-      '1.1.1.1',
-      '2001:0db8:0000:0000:0000:ff00:0042:8329',
-      '2001:db8:0:0:0:ff00:42:8329',
-      '2001:db8::ff00:42:8329',
-    )}
-
-    it { should_not allow_values_for(
-      :updated_from,
-      '9x',
-      '2.3.2',
-      '323.232.123.231',
-      '2001:db8:0:0:0:ff00:42:xxxx',
-    )}
+    it { should validate_presence_of(:name) }
   end
 
   describe '.by_id' do
@@ -83,7 +71,7 @@ describe CouchModel do
     end
 
     it 'returns false if errors' do
-      subject.updated_from = nil
+      subject.name = nil
 
       expect {
         subject.save.should eq false
@@ -99,7 +87,7 @@ describe CouchModel do
     end
 
     it 'raises an error if invalid' do
-      subject.updated_from = nil
+      subject.name = nil
 
       expect {
         expect {
@@ -114,34 +102,32 @@ describe CouchModel do
 
     it 'updates attributes and saves' do
       expect {
-        subject.update_attributes(updated_from: new_ip_address).should eq true
+        subject.update_attributes(name: new_name).should eq true
       }.to change(TestCouchModel, :count).by(1)
 
-      subject.updated_from.should eq new_ip_address
+      subject.name.should eq new_name
     end
 
     it 'returns false if errors' do
       expect {
-        subject.update_attributes(updated_from: nil).should eq false
+        subject.update_attributes(name: nil).should eq false
       }.to change(TestCouchModel, :count).by(0)
     end
 
     it 'sanitizes parameters' do
-      parameters = ActionController::Parameters.new(
-        updated_from: new_ip_address
-      )
+      parameters = ActionController::Parameters.new(name: new_name)
 
-      subject.update_attributes(parameters.permit(:updated_from))
-      subject.updated_from.should eq new_ip_address
+      subject.update_attributes(parameters.permit(:name))
+      subject.name.should eq new_name
     end
 
     it 'rejects bad parameters' do
       parameters = ActionController::Parameters.new(
-        updated_from: new_ip_address
+        name: new_name
       )
 
       subject.update_attributes(parameters.permit(:another))
-      subject.updated_from.should be_nil
+      subject.name.should be_nil
     end
   end
 
@@ -150,32 +136,32 @@ describe CouchModel do
 
     it 'updates attributes and saves' do
       expect {
-        subject.update_attributes!(updated_from: new_ip_address).should eq true
+        subject.update_attributes!(name: new_name).should eq true
       }.to change(TestCouchModel, :count).by(1)
 
-      subject.updated_from.should eq new_ip_address
+      subject.name.should eq new_name
     end
 
     it 'raises an error if invalid' do
       expect {
         expect {
-          subject.update_attributes!(updated_from: nil).should
+          subject.update_attributes!(name: nil).should
         }.to raise_error CouchPotato::Database::ValidationsFailedError
       }.to change(TestCouchModel, :count).by(0)
     end
 
     it 'sanitizes parameters' do
       parameters = ActionController::Parameters.new(
-        updated_from: new_ip_address
+        name: new_name
       )
 
-      subject.update_attributes!(parameters.permit(:updated_from))
-      subject.updated_from.should eq new_ip_address
+      subject.update_attributes!(parameters.permit(:name))
+      subject.name.should eq new_name
     end
 
     it 'rejects bad parameters' do
       parameters = ActionController::Parameters.new(
-        updated_from: new_ip_address
+        name: new_name
       )
 
       expect {
@@ -186,7 +172,7 @@ describe CouchModel do
 
   describe '#read_attribute' do
     it 'reads an attribute' do
-      subject.read_attribute(:updated_from).should eq new_ip_address
+      subject.read_attribute(:name).should eq name
     end
   end
 
@@ -194,8 +180,8 @@ describe CouchModel do
     subject { TestCouchModel.new }
 
     it 'writes an attribute' do
-      subject.write_attribute(:updated_from, new_ip_address)
-      subject.updated_from.should eq new_ip_address
+      subject.write_attribute(:name, new_name)
+      subject.name.should eq new_name
     end
   end
 end

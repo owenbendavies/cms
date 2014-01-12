@@ -20,6 +20,6 @@ class AccountsController < ApplicationController
       :email,
       :password,
       :password_confirmation
-    ).merge({updated_from: request.remote_ip})
+    )
   end
 end

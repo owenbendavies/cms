@@ -37,7 +37,6 @@ describe 'contact_form page' do
     message.email_address.should eq new_email
     message.phone_number.should eq new_phone_number
     message.message.should eq new_message
-    message.updated_from.should eq '127.0.0.1'
 
     last_message = ActionMailer::Base.deliveries.last
     last_message.from.should eq ["noreply@#{@site.host}"]
