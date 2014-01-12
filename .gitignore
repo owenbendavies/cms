@@ -4,5 +4,6 @@
 /coverage
 /log/*.log
 /public/uploads
+/public/test_uploads
 /tmp
 /vendor/bundle

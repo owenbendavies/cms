@@ -50,7 +50,11 @@ describe Site do
     subject { site.stylesheet }
 
     its(:url) {
-      should eq "#{site.asset_host}/uploads/#{site.stylesheet_filename}"
+      should eq File.join(
+        site.asset_host,
+        CarrierWave::Uploader::Base.store_dir,
+        site.stylesheet_filename
+      )
     }
 
     its(:fog_directory) { should eq site.fog_directory }
@@ -61,7 +65,11 @@ describe Site do
     subject { site.header_image }
 
     its(:url) {
-      should eq "#{site.asset_host}/uploads/#{site.header_image_filename}"
+      should eq File.join(
+        site.asset_host,
+        CarrierWave::Uploader::Base.store_dir,
+        site.header_image_filename
+      )
     }
 
     its(:fog_directory) { should eq site.fog_directory }

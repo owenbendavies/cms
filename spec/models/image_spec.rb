@@ -30,7 +30,12 @@ describe Image do
     let(:image) { FactoryGirl.build(:image, site: site) }
     subject { image.file }
 
-    its(:url) { should eq "#{image.asset_host}/uploads/#{image.filename}" }
+    its(:url) { should eq File.join(
+      image.asset_host,
+      CarrierWave::Uploader::Base.store_dir,
+      image.filename
+    )}
+
     its(:fog_directory) { should eq image.fog_directory }
   end
 
