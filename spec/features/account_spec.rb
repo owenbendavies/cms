@@ -40,7 +40,6 @@ describe 'account' do
 
         account = Account.find_by_id(@account.id)
         account.email.should eq new_email
-        account.updated_from.should eq '127.0.0.1'
 
         visit '/logout'
         visit_page '/login'

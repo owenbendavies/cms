@@ -24,9 +24,6 @@ class SitesController < ApplicationController
       :copyright,
       :google_analytics,
       :css
-    ).merge({
-      updated_by: user.id,
-      updated_from: request.remote_ip
-    })
+    ).merge(updated_by: user.id)
   end
 end

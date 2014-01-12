@@ -15,7 +15,6 @@ module NewFields
 
     let(:new_host) { Faker::Internet.domain_name }
     let(:new_id) { generate_md5 }
-    let(:new_ip_address) { Faker::Internet.ip_v4_address }
     let(:new_message) { Faker::Lorem.paragraph }
     let(:new_name) { Faker::Name.name }
     let(:new_number) { Faker::Number.number(Faker::Number.digit.to_i) }

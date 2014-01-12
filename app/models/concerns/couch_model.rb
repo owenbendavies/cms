@@ -6,10 +6,6 @@ module CouchModel
     extend CarrierWave::ActiveRecord
     include CouchPotato::Persistence
 
-    property :updated_from, type: String
-
-    validates :updated_from, presence: true, ip: true
-
     view :by_id, key: :_id
   end
 

@@ -45,8 +45,7 @@ class PagesController < ApplicationController
   def destroy
     @page.update_attributes!({
       deleted: true,
-      updated_by: user.id,
-      updated_from: request.remote_ip
+      updated_by: user.id
     })
 
     flash[:error] = t('flash.deleted', name: @page.name)
@@ -65,10 +64,7 @@ class PagesController < ApplicationController
       :name,
       :private,
       :html_content
-    ).merge({
-      updated_by: user.id,
-      updated_from: request.remote_ip
-    })
+    ).merge(updated_by: user.id)
   end
 
   def message_params
@@ -80,8 +76,7 @@ class PagesController < ApplicationController
       :do_not_fill_in
     ).merge({
       site: @site,
-      subject: @page.name,
-      updated_from: request.remote_ip
+      subject: @page.name
     })
   end
 end

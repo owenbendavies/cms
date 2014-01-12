@@ -42,7 +42,6 @@ describe 'pages' do
         new_page.html_content.should eq "<p>#{new_message}</p>"
         new_page.created_by.should eq @account.id
         new_page.updated_by.should eq @account.id
-        new_page.updated_from.should eq '127.0.0.1'
       end
 
       it 'shows errors' do
@@ -164,7 +163,6 @@ describe 'pages' do
 
         page = Page.find_by_site_and_url(@site, 'test_page')
         page.updated_by.should eq @account.id
-        page.updated_from.should eq '127.0.0.1'
       end
 
       it 'makes a page private' do
@@ -190,7 +188,6 @@ describe 'pages' do
       it 'does not save page with no edits' do
         test_page = Page.find_by_site_and_url(@site, 'test_page')
         test_page.updated_by = @account.id
-        test_page.updated_from = '127.0.0.1'
         test_page.save!
 
         visit_page '/test_page/edit'
@@ -237,7 +234,6 @@ describe 'pages' do
         deleted_page = Page.find_by_id(@test_page.id)
         deleted_page.deleted.should eq true
         deleted_page.updated_by.should eq @account.id
-        deleted_page.updated_from.should eq '127.0.0.1'
       end
 
       it 'does not delete page on cancel', js: true do

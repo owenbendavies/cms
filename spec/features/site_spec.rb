@@ -44,7 +44,6 @@ describe 'site' do
         site.copyright.should eq new_name
         site.google_analytics.should eq new_google_analytics
         site.updated_by.should eq @account.id
-        site.updated_from.should eq '127.0.0.1'
       end
 
       it 'does not store empty copyright' do
@@ -106,7 +105,6 @@ describe 'site' do
           should eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
         site.updated_by.should eq @account.id
-        site.updated_from.should eq '127.0.0.1'
 
         it_should_be_on_home_page
         it_should_have_alert_with 'Site successfully updated'
