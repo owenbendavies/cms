@@ -14,7 +14,6 @@ describe Page do
       html_content: new_message,
     )}
 
-    its(:deleted) { should eq false }
     its(:site_id) { should eq new_id }
     its(:url) { should eq new_page_url }
     its(:name) { should eq new_name }
@@ -115,11 +114,6 @@ describe Page do
       results.first.url.should eq page.url
       results.first.html_content.should eq page.html_content
     end
-
-    it 'does not show deleted pages' do
-      page = FactoryGirl.create(:page, deleted: true)
-      CouchPotato.database.view(Page.by_site_id_and_url).should eq []
-    end
   end
 
   describe '.link_by_site_id_and_url' do
@@ -143,11 +137,6 @@ describe Page do
       results.first.updated_at.should eq time.to_s
       results.first.updated_by.should eq @page.updated_by
       results.first.html_content.should be_nil
-    end
-
-    it 'does not show deleted pages' do
-      page = FactoryGirl.create(:page, deleted: true)
-      CouchPotato.database.view(Page.link_by_site_id_and_url).should eq []
     end
   end
 

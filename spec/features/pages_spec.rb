@@ -223,17 +223,15 @@ describe 'pages' do
             "Are you sure you want to delete page 'Test Page'?"
           )
 
-          click_link 'Delete'
+          expect {
+            click_link 'Delete'
+            current_path.should eq '/sitemap'
+          }.to change(Page, :count).by(-1)
         end
 
-        current_path.should eq '/sitemap'
         it_should_have_alert_with 'Test Page was deleted'
 
         Page.find_by_site_and_url(@site, 'test_page').should be_nil
-
-        deleted_page = Page.find_by_id(@test_page.id)
-        deleted_page.deleted.should eq true
-        deleted_page.updated_by.should eq @account.id
       end
 
       it 'does not delete page on cancel', js: true do
@@ -248,7 +246,10 @@ describe 'pages' do
             "Are you sure you want to delete page 'Test Page'?"
           )
 
-          click_link 'Cancel'
+          expect {
+            click_link 'Cancel'
+            current_path.should eq '/test_page'
+          }.to_not change(Page, :count)
         end
 
         current_path.should eq '/test_page'

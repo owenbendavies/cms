@@ -97,6 +97,16 @@ describe CouchModel do
     end
   end
 
+  describe '#destroy' do
+    it 'destroys the model' do
+      subject.save!
+
+      expect {
+        subject.destroy
+      }.to change(TestCouchModel, :count).by(-1)
+    end
+  end
+
   describe '#update_attributes' do
     subject { TestCouchModel.new }
 
