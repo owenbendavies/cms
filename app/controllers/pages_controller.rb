@@ -43,11 +43,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
-    @page.update_attributes!({
-      deleted: true,
-      updated_by: user.id
-    })
-
+    @page.destroy
     flash[:error] = t('flash.deleted', name: @page.name)
     redirect_to sitemap_path
   end

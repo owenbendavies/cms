@@ -35,6 +35,10 @@ module CouchModel
     CouchPotato.database.save_document! self
   end
 
+  def destroy
+    CouchPotato.database.destroy_document self
+  end
+
   def update_attributes(hash)
     self.attributes = hash
     save

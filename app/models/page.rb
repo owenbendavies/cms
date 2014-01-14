@@ -3,7 +3,6 @@ class Page
 
   INVALID_URLS = %w(new login logout robots sitemap site account validators)
 
-  property :deleted, type: :boolean, default: false
   property :site_id, type: String
   property :url, type: String
   property :name, type: String
@@ -31,15 +30,12 @@ class Page
     errors.add(:name) if new_url.blank? or INVALID_URLS.include? new_url
   end
 
-  view :by_site_id_and_url,
-    key: [:site_id, :url],
-    conditions: 'doc.deleted !== true'
+  view :by_site_id_and_url, key: [:site_id, :url]
 
   view :link_by_site_id_and_url,
     key: [:site_id, :url],
     type: :properties,
-    properties: [:url, :name, :private, :updated_at, :updated_by],
-    conditions: 'doc.deleted !== true'
+    properties: [:url, :name, :private, :updated_at, :updated_by]
 
   alias_method :to_param, :url
 
