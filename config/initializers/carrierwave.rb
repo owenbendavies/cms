@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 
 CarrierWave.configure do |config|
-  config.storage = ENV['UPLOADS_STORAGE'].to_sym
+  config.storage = ENV['UPLOADS_STORAGE'].to_sym if ENV['UPLOADS_STORAGE']
 
   config.fog_credentials = {
     provider: ENV['FOG_PROVIDER'],
