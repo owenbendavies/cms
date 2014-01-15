@@ -4,6 +4,7 @@
 //= require rails-timeago
 //= require twitter/bootstrap
 //= require twitter/bootstrap/rails/confirm
+//= require tinymce-jquery
 //= require turbolinks
 //= require turbolinks_transitions
 //= require google-analytics-turbolinks
