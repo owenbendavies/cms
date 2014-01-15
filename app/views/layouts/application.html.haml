@@ -8,7 +8,6 @@
       %script{src: '//html5shiv.googlecode.com/svn/trunk/html5.js'}
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag @site.stylesheet.url, media: 'all' if @site.stylesheet.url
-    = javascript_include_tag '//tinymce.cachefly.net/4.0/tinymce.min.js'
     = javascript_include_tag 'application'
     = analytics_init(tracker: @site.google_analytics, domain: @site.host) if @site.google_analytics
     = csrf_meta_tag
