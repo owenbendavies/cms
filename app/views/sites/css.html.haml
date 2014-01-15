@@ -2,7 +2,7 @@
 - content_for :page_icon, t('.icon')
 
 = simple_form_for @site do |form|
-  %pre= form.text_area :css, class: 'autogrow', autofocus: true
+  %pre= form.text_area :css, class: 'input-block-level autogrow', autofocus: true
 
   .form-actions
     = form.button :submit
