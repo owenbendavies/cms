@@ -131,6 +131,13 @@ production. Follow these steps to set up:
 * When adding sites, set the `asset_host`, e.g.
   `site.asset_host = 'http://b80c6e.rackcdn.com'`
 
+Amazon CloudFront
+-----------------
+
+It is recommended to set up a Amazon CloudFront distribution to serve the Rails
+assets for your site. Once set up, add the distribution url to `ASSET_HOST` in
+`config/application.yml`.
+
 Deploy to server
 ----------------
 
@@ -238,16 +245,6 @@ RAILS_ENV=production ./bin/rake figaro:heroku
 heroku config:set HEROKU=true
 ```
 
-### Setup data
-
-Next we need to set up the data for users and sites, run the following:
-
-```shell
-heroku run ./bin/interactive
-```
-
-Now follow the steps in [Setup data](#setup-data).
-
 ### Setup domains
 
 Next add each domain you have:
@@ -270,10 +267,12 @@ Now use git to push to Heroku:
 git push heroku master
 ```
 
-Amazon CloudFront
------------------
+### Setup data
 
-It is recommended to set up a Amazon CloudFront distribution to serve the Rails
-assets for your site. Once set up, add the distribution url to `ASSET_HOST` in
-`config/application.yml`.
+Next we need to set up the data for users and sites, run the following:
 
+```shell
+heroku run ./bin/interactive
+```
+
+Now follow the steps in [Setup data](#setup-data).
