@@ -220,12 +220,6 @@ heroku labs:enable preboot
 
 ### Addons
 
-First remove the postgresql addon as it is not needed:
-
-```shell
-heroku addons:remove heroku-postgresql
-```
-
 Now add the following addons:
 
 ```shell
@@ -266,6 +260,14 @@ Now use git to push to Heroku:
 ```shell
 git push heroku master
 ```
+
+First remove the postgresql addon as it is not needed:
+
+```shell
+heroku addons:remove heroku-postgresql
+heroku config:unset DATABASE_URL
+```
+
 
 ### Setup data
 

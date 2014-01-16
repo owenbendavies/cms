@@ -1,43 +1,43 @@
-NEW_RELIC_APP_NAME: 'cms'
-# NEW_RELIC_LICENSE_KEY:
 SECRET_KEY:
 
 development:
   COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'development_cms'
-  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/development_cms_backup'
+  COUCHDB_NAME: 'obduk-cms-development'
+  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/obduk-cms-development-backup'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'uploads'
 
-  SMTP_ADDRESS: localhost
-  SMTP_PORT: 1025
+  SMTP_ADDRESS: 'localhost'
+  SMTP_PORT: '1025'
 
 test:
   COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'test_cms'
-  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/test_cms_backup'
+  COUCHDB_NAME: 'obduk-cms-test'
+  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/obduk-cms-test-backup'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'test_uploads'
 
 production:
   # CLOUDANT_URL:
-  COUCHDB_NAME: 'production_cms'
+  COUCHDB_NAME: 'obduk-cms-production'
   # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
 
   UPLOADS_STORAGE: 'fog'
-  UPLOADS_STORE_DIR: null
   FOG_PROVIDER: 'Rackspace'
   RACKSPACE_API_KEY:
   RACKSPACE_AUTH_URL:
   RACKSPACE_USERNAME:
 
   SMTP_ADDRESS: 'smtp.sendgrid.net'
-  SMTP_PORT: 587
+  SMTP_PORT: '587'
   # SENDGRID_USERNAME:
   # SENDGRID_PASSWORD:
+
+  NEW_RELIC_APP_NAME: 'obduk-cms-production'
+  # NEW_RELIC_LICENSE_KEY:
 
   # SENTRY_DSN:
