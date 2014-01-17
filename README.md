@@ -209,15 +209,6 @@ heroku create name
 heroku git:remote -a name
 ```
 
-### Labs
-
-Next enable some lab features:
-
-```shell
-heroku labs:enable http-request-id
-heroku labs:enable preboot
-```
-
 ### Addons
 
 Now add the following addons:

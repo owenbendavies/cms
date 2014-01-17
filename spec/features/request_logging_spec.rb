@@ -13,7 +13,7 @@ describe 'request logging' do
     end
 
     page.driver.browser.header('User-Agent', new_company_name)
-    page.driver.browser.header('Heroku-Request-ID', new_id)
+    page.driver.browser.header('X-Request-Id', new_id)
     visit_page '/home'
 
     events.size.should eq 1
