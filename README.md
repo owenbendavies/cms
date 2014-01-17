@@ -261,7 +261,7 @@ Now use git to push to Heroku:
 git push heroku master
 ```
 
-# Remove addon
+### Remove addon
 
 Now remove the postgresql addon as it is not needed:
 
