@@ -261,13 +261,14 @@ Now use git to push to Heroku:
 git push heroku master
 ```
 
-First remove the postgresql addon as it is not needed:
+# Remove addon
+
+Now remove the postgresql addon as it is not needed:
 
 ```shell
 heroku addons:remove heroku-postgresql
 heroku config:unset DATABASE_URL
 ```
-
 
 ### Setup data
 
