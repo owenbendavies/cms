@@ -8,6 +8,10 @@ Cms::Application.routes.draw do
   get 'sitemap', to: 'sitemap#show'
   get 'robots', to: 'robots#show'
 
+  if ENV['LOADERIO_VERIFICATION_TOKEN']
+    get ENV['LOADERIO_VERIFICATION_TOKEN'], to: 'loaderios#show'
+  end
+
   resource :account, only: [:edit, :update] do
     get :sites
   end
