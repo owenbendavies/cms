@@ -8,6 +8,8 @@ cache: bundler
 
 bundler_args: --deployment --without development production
 
-before_script: ./bin/bootstrap
+before_script:
+  - ./bin/bootstrap
+  - ./bin/rake assets:precompile
 
 script: ./bin/test
