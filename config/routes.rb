@@ -12,6 +12,10 @@ Cms::Application.routes.draw do
     get ENV['LOADERIO_VERIFICATION_TOKEN'], to: 'loaderios#show'
   end
 
+  if ENV['TEST_ROUTES']
+    get 'timeout', to: 'test_routes#timeout'
+  end
+
   resource :account, only: [:edit, :update] do
     get :sites
   end
