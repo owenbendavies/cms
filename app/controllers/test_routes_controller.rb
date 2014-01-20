@@ -1,6 +1,6 @@
 class TestRoutesController < ApplicationController
   def timeout
-    sleep Float(params[:seconds])
+    sleep params[:seconds].to_f
     render text: 'ok'
   end
 end

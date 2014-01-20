@@ -3,6 +3,11 @@ require 'spec_helper'
 describe 'timeout' do
   include_context 'default_site'
 
+  it 'does not raise error when no timeout is passed in' do
+    visit '/timeout'
+    page.should have_content 'ok'
+  end
+
   it 'does not raise an error when render less than 1 second' do
     visit '/timeout?seconds=0.5'
     page.should have_content 'ok'
