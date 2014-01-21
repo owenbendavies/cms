@@ -10,15 +10,15 @@ gem 'rack-timeout'
 gem 'rails_warden'
 
 # Model Gems
-gem 'couch_potato'
-gem 'bcrypt-ruby'
-gem 'validates'
 gem 'auto_strip_attributes'
-gem 'gravtastic'
-gem 'unf'
+gem 'bcrypt-ruby'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'couch_potato'
 gem 'fog', '1.18.0'
+gem 'gravtastic'
+gem 'mini_magick'
+gem 'unf'
+gem 'validates'
 
 # Controller Gems
 gem 'xml-sitemap'
@@ -26,9 +26,6 @@ gem 'xml-sitemap'
 # View Gems
 gem 'haml'
 gem 'simple_form'
-gem 'google-analytics-rails'
-gem 'rails-timeago'
-gem 'tinymce-rails'
 
 # Stylesheets
 gem 'less-rails'
@@ -36,13 +33,16 @@ gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
-gem 'therubyracer'
-gem 'uglifier'
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'turbolinks_transitions'
+gem 'google-analytics-rails'
 gem 'google-analytics-turbolinks'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
+gem 'rails-timeago'
+gem 'therubyracer'
+gem 'tinymce-rails'
+gem 'turbolinks'
+gem 'turbolinks_transitions'
+gem 'uglifier'
 
 # Monitoring
 gem 'lograge'
@@ -55,8 +55,8 @@ gem 'figaro'
 gem 'whenever', require: false
 
 group :heroku do
-  gem 'rails_12factor'
   gem 'heroku-deflater'
+  gem 'rails_12factor'
 end
 
 group :production do
@@ -70,25 +70,25 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano-rails'
-  gem 'quiet_assets'
   gem 'byebug'
-  gem 'thin'
+  gem 'capistrano-rails'
   gem 'mailcatcher'
+  gem 'quiet_assets'
+  gem 'thin'
 end
 
 group :test do
-  gem 'fuubar'
-  gem 'timecop'
-  gem 'faker'
-  gem 'factory_girl_rails'
-  gem 'remarkable_activemodel', require: 'remarkable/active_model'
   gem 'capybara-webkit'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'fuubar'
+  gem 'remarkable_activemodel', require: 'remarkable/active_model'
+  gem 'timecop'
 
   # Code quality tools
-  gem 'coveralls', require: false
-  gem 'simplecov-console', require: false
-  gem 'cane', require: false
   gem 'brakeman', require: false
+  gem 'cane', require: false
+  gem 'coveralls', require: false
   gem 'rails_best_practices', require: false
+  gem 'simplecov-console', require: false
 end
