@@ -80,7 +80,6 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'fuubar'
   gem 'remarkable_activemodel', require: 'remarkable/active_model'
   gem 'timecop'
 
