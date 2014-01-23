@@ -44,6 +44,5 @@ module Cms
     end
 
     config.middleware.use Rack::Protection
-    config.middleware.insert 0, Rack::Timeout
   end
 end

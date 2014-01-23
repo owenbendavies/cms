@@ -200,7 +200,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rack-timeout (0.0.4)
+    rack-timeout (0.1.0beta3)
     rails (4.0.2)
       actionmailer (= 4.0.2)
       actionpack (= 4.0.2)
@@ -405,7 +405,7 @@ DEPENDENCIES
   newrelic_rpm
   quiet_assets
   rack-protection
-  rack-timeout
+  rack-timeout (= 0.1.0beta3)
   rails (= 4.0.2)
   rails-timeago
   rails_12factor

@@ -6,7 +6,7 @@ gem 'rails', '4.0.2'
 
 # Middleware
 gem 'rack-protection'
-gem 'rack-timeout'
+gem 'rack-timeout', '0.1.0beta3'
 gem 'rails_warden'
 
 # Model Gems

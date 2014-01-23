@@ -16,6 +16,6 @@ describe 'timeout' do
   it 'raises error when render is more than 1 second' do
     expect {
       visit '/timeout?seconds=2'
-    }.to raise_error Timeout::Error
+    }.to raise_error Rack::Timeout::RequestTimeoutError
   end
 end
