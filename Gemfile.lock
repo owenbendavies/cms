@@ -408,6 +408,7 @@ DEPENDENCIES
   rails_best_practices
   rails_warden
   remarkable_activemodel
+  rspec-core
   rspec-rails (~> 2.0)
   sentry-raven
   simple_form
