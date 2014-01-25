@@ -1,20 +1,25 @@
-RSpec::Matchers.define :be_uploaded_file do
-  match do |actual|
-    file = File.join(
-      CarrierWave.root,
-      CarrierWave::Uploader::Base.store_dir,
-      actual
-    )
-
-    File.exist?(file).should eq true
+module CarrierWaveHelpers
+  shared_context 'clear_uploaded_files' do
+    before do
+      FileUtils.rm_rf File.join(
+        CarrierWave.root,
+        CarrierWave::Uploader::Base.store_dir
+      )
+    end
   end
-end
 
-shared_context 'clear_uploaded_files' do
-  before do
-    FileUtils.rm_rf File.join(
+  def uploaded_files
+    uploads_dir = File.join(
       CarrierWave.root,
       CarrierWave::Uploader::Base.store_dir
     )
+
+    files = File.join(uploads_dir, '*')
+
+    Dir.glob(files).sort.map do |file|
+      file.gsub(uploads_dir + '/', '')
+    end
   end
 end
+
+RSpec.configuration.include CarrierWaveHelpers
