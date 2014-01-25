@@ -17,6 +17,8 @@ Cms::Application.routes.draw do
     get :sites
   end
 
+  resource :health, only: [:show]
+
   resource :robots, only: [:show]
 
   resource :site, only: [:edit, :update] do

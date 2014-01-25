@@ -77,6 +77,7 @@ describe Page do
       'NEW',
       'New',
       'account',
+      'health',
       'login',
       'logout',
       'new',
