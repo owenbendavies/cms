@@ -51,21 +51,6 @@ describe Message do
     end
   end
 
-  describe '#create' do
-    before { FactoryGirl.create(:account) }
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.build(:message, site: site) }
-
-    it 'sends an email' do
-      expect {
-        subject.save!
-      }.to change{ActionMailer::Base.deliveries.size}.by(1)
-
-      message = ActionMailer::Base.deliveries.last
-      message.subject.should eq subject.subject
-    end
-  end
-
   describe 'validate' do
     it { should validate_presence_of(:site_id) }
 
@@ -201,6 +186,25 @@ describe Message do
         messages.first.should eq @message1
         messages.second.should eq @message2
       end
+    end
+  end
+
+  describe 'deliver' do
+    before { FactoryGirl.create(:account) }
+    let(:site) { FactoryGirl.create(:site) }
+    subject { FactoryGirl.create(:message, site: site) }
+
+    it 'sends an email' do
+      subject.delivered.should eq false
+
+      expect {
+        subject.deliver
+      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+
+      subject.delivered.should eq true
+
+      message = ActionMailer::Base.deliveries.last
+      message.subject.should eq subject.subject
     end
   end
 end

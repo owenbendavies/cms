@@ -6,6 +6,7 @@ class Message
   property :name, type: String
   property :email_address, type: String
   property :phone_number, type: String
+  property :delivered, type: :boolean, default: false
 
   auto_strip_attributes *property_names, squish: true
 
@@ -16,10 +17,6 @@ class Message
 
   set_callback :validate, :before do
     self.site_id = site.id if site
-  end
-
-  set_callback :create, :after do
-    MessageMailer.new_message(self).deliver
   end
 
   validates *property_names, no_html: true
@@ -49,5 +46,11 @@ class Message
     CouchPotato.database.view(
       by_site_id_and_created_at(startkey: [site.id], endkey: [site.id, {}])
     ).reverse
+  end
+
+  def deliver
+    MessageMailer.new_message(self).deliver
+    self.delivered = true
+    self.save!
   end
 end

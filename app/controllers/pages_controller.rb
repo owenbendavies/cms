@@ -24,6 +24,7 @@ class PagesController < ApplicationController
     @message = Message.new
 
     if @message.update_attributes(message_params)
+      @message.deliver
       flash[:success] = t('pages.contact_form.flash.success')
       redirect_to page_path(@page.url)
     else
