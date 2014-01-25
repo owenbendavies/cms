@@ -111,6 +111,7 @@ describe Message do
     it { should_not allow_values_for(
       :message,
       'We can increase rankings of your website in search engines.',
+      'How about 100k facebook visitors!',
       message: 'Please do not send spam messages about.'
     )}
 
