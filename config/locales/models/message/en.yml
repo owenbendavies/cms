@@ -18,5 +18,5 @@ en:
             do_not_fill_in:
               too_long: "do not fill in"
             message:
-              seo_spam: "Please do not send spam messages about SEO."
+              spam: "Please do not send spam messages about."
 
