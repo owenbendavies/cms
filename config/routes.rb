@@ -5,9 +5,6 @@ Cms::Application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  get 'sitemap', to: 'sitemap#show'
-  get 'robots', to: 'robots#show'
-
   if ENV['LOADERIO_VERIFICATION_TOKEN']
     get ENV['LOADERIO_VERIFICATION_TOKEN'], to: 'loaderios#show'
   end
@@ -20,6 +17,8 @@ Cms::Application.routes.draw do
     get :sites
   end
 
+  resource :robots, only: [:show]
+
   resource :site, only: [:edit, :update] do
     match :css, via: [:get, :patch]
 
@@ -27,6 +26,8 @@ Cms::Application.routes.draw do
     resources :messages, only: [:index, :show]
     resources :users, only: [:index]
   end
+
+  resource :sitemap, only: [:show]
 
   resources :pages, path: '', only: [:new, :create, :show, :edit, :update, :destroy] do
     member do
