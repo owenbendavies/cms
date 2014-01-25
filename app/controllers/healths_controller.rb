@@ -1,7 +1,9 @@
 class HealthsController < ApplicationController
-  skip_before_filter :find_site
+  skip_before_filter :render_site_not_found
 
   def show
-    render text: 'ok'
+    respond_to do |format|
+      format.text { render text: 'ok' }
+    end
   end
 end

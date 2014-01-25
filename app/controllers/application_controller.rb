@@ -5,14 +5,25 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat, with: :page_not_found
 
   before_filter :find_site
+  before_filter :render_site_not_found
   before_filter :check_format_is_not_html
 
   def home
     redirect_to page_path('home')
   end
 
+  protected
+
   def page_not_found
-    render template: 'errors/page_not_found', formats: ['html'], status: 404
+    if @site
+      render template: 'errors/page_not_found', formats: ['html'], status: 404
+    else
+      @site = Site.new
+      @site.name = t('errors.site_not_found.title')
+      @site.layout = 'site_not_found'
+
+      render template: 'errors/site_not_found', formats: ['html'], status: 404
+    end
   end
 
   def login_required
@@ -23,15 +34,10 @@ class ApplicationController < ActionController::Base
 
   def find_site
     @site = Site.find_by_host(request.host)
-    site_not_found unless @site
   end
 
-  def site_not_found
-    @site = Site.new
-    @site.name = t('errors.site_not_found.title')
-    @site.layout = 'site_not_found'
-
-    render template: 'errors/site_not_found', formats: ['html'], status: 404
+  def render_site_not_found
+    page_not_found unless @site
   end
 
   def check_format_is_not_html
