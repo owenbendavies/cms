@@ -1,11 +1,11 @@
-SSHKit.config.command_map[:whenever] = "bundle exec whenever"
+SSHKit.config.command_map[:whenever] = 'bundle exec whenever'
 
 set :application, 'cms'
 set :repo_url, 'git@github.com:obduk/cms.git'
 
 set :deploy_to, '/var/www/cms'
 
-set :linked_dirs, %w{tmp/pids tmp/sockets}
+set :linked_dirs, fetch(:linked_dirs, []).push('tmp/pids', 'tmp/sockets')
 
 namespace :deploy do
   desc 'Restart application'
@@ -19,7 +19,7 @@ namespace :deploy do
     end
   end
 
-  after :finishing, 'deploy:cleanup'
+  after :publishing, :restart
 end
 
 namespace :figaro do
@@ -29,6 +29,6 @@ namespace :figaro do
       upload! 'config/application.yml', "#{release_path}/config/application.yml"
     end
   end
-end
 
-after 'deploy:symlink:shared', 'figaro:upload_config'
+  after 'deploy:updated', 'figaro:upload_config'
+end
