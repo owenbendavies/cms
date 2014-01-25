@@ -112,7 +112,7 @@ describe Message do
       :message,
       'We can increase rankings of your website in search engines.',
       'How about 100k facebook visitors!',
-      message: 'Please do not send spam messages about.'
+      message: 'Please do not send spam messages.'
     )}
 
     it { should validate_length_of(
