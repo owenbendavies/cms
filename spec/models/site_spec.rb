@@ -191,26 +191,32 @@ describe Site do
     end
 
     it 'saves a file' do
+      uploaded_files.should eq []
+
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
       subject.stylesheet_filename.
         should eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
 
-      'e6df26f541ebad8e8fed26a84e202a7c.css'.should be_uploaded_file
+      uploaded_files.should eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
     end
 
     it 'keeps old version' do
+      uploaded_files.should eq []
+
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      'e6df26f541ebad8e8fed26a84e202a7c.css'.should be_uploaded_file
+      uploaded_files.should eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
 
       subject.css = 'body{background-color: red}'
       subject.save!
 
-      'b1192d422b8c8999043c2abd1b47b750.css'.should be_uploaded_file
-      'e6df26f541ebad8e8fed26a84e202a7c.css'.should be_uploaded_file
+      uploaded_files.should eq [
+        'b1192d422b8c8999043c2abd1b47b750.css',
+        'e6df26f541ebad8e8fed26a84e202a7c.css'
+      ]
     end
   end
 end

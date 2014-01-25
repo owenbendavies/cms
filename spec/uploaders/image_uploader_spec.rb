@@ -19,24 +19,20 @@ describe ImageUploader do
     end
 
     it 'has filename which is  md5 of content' do
-      storage_files = File.join(
-        CarrierWave.root,
-        CarrierWave::Uploader::Base.store_dir,
-        '*'
-      )
-
-      Dir.glob(storage_files).should be_empty
+      uploaded_files.should eq []
 
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
 
-      'a7a78bb78134027c41d2eedc6efd4edb.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg'.should be_uploaded_file
+      uploaded_files.should eq [
+        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+      ].sort
     end
 
     it 'creates multiple sized images at same aspect ratio' do
@@ -64,21 +60,37 @@ describe ImageUploader do
     end
 
     it 'saves extension as downcase' do
-      Dir.glob(Rails.root.join('public/uploads/*')).should be_empty
+      uploaded_files.should eq []
 
       subject.store! File.open(Rails.root.join('spec/assets/test_image.JPG'))
 
-      'a7a78bb78134027c41d2eedc6efd4edb.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg'.should be_uploaded_file
+      uploaded_files.should eq [
+        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+      ].sort
     end
 
     it 'saves .jpeg as jpg' do
-      Dir.glob(Rails.root.join('public/uploads/*')).should be_empty
+      uploaded_files.should eq []
 
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpeg'))
 
-      'a7a78bb78134027c41d2eedc6efd4edb.jpg'.should be_uploaded_file
-      'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg'.should be_uploaded_file
+      uploaded_files.should eq [
+        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
+        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+      ].sort
     end
   end
 

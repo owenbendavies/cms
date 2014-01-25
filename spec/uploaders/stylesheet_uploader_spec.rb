@@ -19,11 +19,11 @@ describe StylesheetUploader do
     end
 
     it 'has filename which is  md5 of content' do
-      'e6df26f541ebad8e8fed26a84e202a7c.css'.should_not be_uploaded_file
+      uploaded_files.should eq []
 
       subject.store! StringUploader.new("stylesheet.css", css)
 
-      'e6df26f541ebad8e8fed26a84e202a7c.css'.should be_uploaded_file
+      uploaded_files.should eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
     end
   end
 
