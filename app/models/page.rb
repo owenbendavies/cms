@@ -1,7 +1,7 @@
 class Page
   include CouchModel
 
-  INVALID_URLS = %w(new login logout robots sitemap site account validators)
+  INVALID_URLS = %w(account login logout new robots site sitemap validators)
 
   property :site_id, type: String
   property :url, type: String
