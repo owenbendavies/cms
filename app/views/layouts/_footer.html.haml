@@ -7,7 +7,7 @@
 
     %li
       %ul#footer_links.unstyled
-        %li= link_to t('sitemap.show.title'), sitemap_path
+        %li= link_to t('sitemaps.show.title'), sitemap_path
 
         - if authenticated?
           %li= link_to t('sessions.destroy.title'), logout_path

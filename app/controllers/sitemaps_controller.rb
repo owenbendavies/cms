@@ -1,4 +1,4 @@
-class SitemapController < ApplicationController
+class SitemapsController < ApplicationController
   def show
     @pages = Page.find_all_links_by_site(@site)
 
