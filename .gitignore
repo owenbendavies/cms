@@ -3,7 +3,8 @@
 /config/deploy/production.rb
 /coverage
 /log/*.log
-/public/uploads
+/public/assets
 /public/test_uploads
+/public/uploads
 /tmp
 /vendor/bundle
