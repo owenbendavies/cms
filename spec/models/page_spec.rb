@@ -76,13 +76,13 @@ describe Page do
       '@',
       'NEW',
       'New',
-      'new',
+      'account',
       'login',
       'logout',
+      'new',
       'robots',
-      'sitemap',
       'site',
-      'account',
+      'sitemap',
       'validators'
     )}
 
