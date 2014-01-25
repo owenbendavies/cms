@@ -29,7 +29,9 @@ class Message
   validates :do_not_fill_in, length: {maximum: 0}
 
   validate do
-    if message.to_s.downcase.include? 'search engine'
+    text = message.to_s.downcase
+
+    if text.include? 'search engine' or text.include? 'facebook visitors'
       errors.add(:message, :spam)
     end
   end
