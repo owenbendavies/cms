@@ -30,7 +30,7 @@ class Message
 
   validate do
     if message.to_s.downcase.include? 'search engine'
-      errors.add(:message, :seo_spam)
+      errors.add(:message, :spam)
     end
   end
 

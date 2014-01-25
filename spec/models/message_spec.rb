@@ -111,7 +111,7 @@ describe Message do
     it { should_not allow_values_for(
       :message,
       'We can increase rankings of your website in search engines.',
-      message: 'Please do not send spam messages about SEO.'
+      message: 'Please do not send spam messages about.'
     )}
 
     it { should validate_length_of(
