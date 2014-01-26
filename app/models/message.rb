@@ -20,18 +20,31 @@ class Message
   end
 
   validates *property_names, no_html: true
-  validates :site_id, presence: true
-  validates :subject, presence: true
-  validates :name, presence: true, length: {maximum: 64}
+
+  validates :site_id,
+    presence: true
+
+  validates :subject,
+    presence: true
+
+  validates :name,
+    presence: true,
+    length: {maximum: 64}
 
   validates :email_address,
     presence: true,
     length: {maximum: 64},
     email_format: true
 
-  validates :phone_number, length: {maximum: 32}
-  validates :message, presence: true, length: {maximum: 2048}
-  validates :do_not_fill_in, length: {maximum: 0}
+  validates :phone_number,
+    length: {maximum: 32}
+
+  validates :message,
+    presence: true,
+    length: {maximum: 2048}
+
+  validates :do_not_fill_in,
+    length: {maximum: 0}
 
   validate do
     text = message.to_s.downcase
@@ -41,9 +54,11 @@ class Message
     end
   end
 
-  view :by_site_id_and_created_at, key: [:site_id, :created_at]
+  view :by_site_id_and_created_at,
+    key: [:site_id, :created_at]
 
-  view :by_site_id_and_id, key: [:site_id, :_id]
+  view :by_site_id_and_id,
+    key: [:site_id, :_id]
 
   def self.find_by_site_and_id(site, id)
     CouchPotato.database.first(by_site_id_and_id(key: [site.id, id]))

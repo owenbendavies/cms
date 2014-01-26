@@ -26,22 +26,34 @@ class Site
   mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
 
   auto_strip_attributes *property_names, squish: true
+
   validates *property_names, no_html: true
 
   property :sidebar_html_content, type: String
 
-  validates :host, presence: true
-  validates :name, presence: true, length: {maximum: 64}
-  validates :sub_title, length: {maximum: 64}
-  validates :layout, inclusion: {in: LAYOUTS}
-  validates :copyright, length: {maximum: 64}
+  validates :host,
+    presence: true
+
+  validates :name,
+    presence: true,
+    length: {maximum: 64}
+
+  validates :sub_title,
+    length: {maximum: 64}
+
+  validates :layout,
+    inclusion: {in: LAYOUTS}
+
+  validates :copyright,
+    length: {maximum: 64}
 
   validates :google_analytics, format: {
     with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
     allow_blank: true
   }
 
-  validates :updated_by, presence: true
+  validates :updated_by,
+    presence: true
 
   view :by_host, key: :host
 

@@ -9,13 +9,19 @@ class Account
   property :sites, type: Array, default: []
 
   auto_strip_attributes *property_names, squish: true
+
   validates *property_names, no_html: true
 
   property :password_digest
   has_secure_password
 
-  validates :password, length: {minimum: 8, maximum: 64, allow_blank: true}
-  validates :email, presence: true, length: {maximum: 64}, email_format: true
+  validates :password,
+    length: {minimum: 8, maximum: 64, allow_blank: true}
+
+  validates :email,
+    presence: true,
+    length: {maximum: 64},
+    email_format: true
 
   view :by_site_host_and_email,
     type: :custom,
