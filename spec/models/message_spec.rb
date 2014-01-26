@@ -72,16 +72,16 @@ describe Message do
 
     it { should allow_values_for(
       :email_address,
-      'someone@localhost',
-      'someone@localhost.com',
-      'some.one@localhost'
+      'someone@example.com',
+      'some.one@example.com'
     )}
 
     it { should_not allow_values_for(
       :email_address,
       'someone',
       '@localhost',
-      'someone@'
+      'someone@',
+      message: 'is not a valid email address'
     )}
 
     it { should_not allow_values_for(

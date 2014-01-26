@@ -18,7 +18,7 @@ gem 'fog', '1.18.0'
 gem 'gravtastic'
 gem 'mini_magick'
 gem 'unf'
-gem 'validates'
+gem 'validates_email_format_of'
 
 # Controller Gems
 gem 'xml-sitemap'

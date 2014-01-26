@@ -356,9 +356,7 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.4)
-    validates (0.0.8)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    validates_email_format_of (1.5.3)
     warden (1.2.3)
       rack (>= 1.0)
     whenever (0.9.0)
@@ -426,6 +424,6 @@ DEPENDENCIES
   uglifier
   unf
   unicorn
-  validates
+  validates_email_format_of
   whenever
   xml-sitemap

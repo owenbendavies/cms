@@ -44,16 +44,16 @@ describe Account do
 
     it { should allow_values_for(
       :email,
-      'someone@localhost',
-      'someone@localhost.com',
-      'some.one@localhost'
+      'someone@example.com',
+      'some.one@example.com'
     )}
 
     it { should_not allow_values_for(
       :email,
       'someone',
       '@localhost',
-      'someone@'
+      'someone@',
+      message: 'is not a valid email address'
     )}
   end
 

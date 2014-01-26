@@ -15,7 +15,7 @@ class Account
   has_secure_password
 
   validates :password, length: {minimum: 8, maximum: 64, allow_blank: true}
-  validates :email, presence: true, length: {maximum: 64}, email: true
+  validates :email, presence: true, length: {maximum: 64}, email_format: true
 
   view :by_site_host_and_email,
     type: :custom,
