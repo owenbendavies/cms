@@ -23,7 +23,12 @@ class Message
   validates :site_id, presence: true
   validates :subject, presence: true
   validates :name, presence: true, length: {maximum: 64}
-  validates :email_address, presence: true, length: {maximum: 64}, email: true
+
+  validates :email_address,
+    presence: true,
+    length: {maximum: 64},
+    email_format: true
+
   validates :phone_number, length: {maximum: 32}
   validates :message, presence: true, length: {maximum: 2048}
   validates :do_not_fill_in, length: {maximum: 0}
