@@ -9,13 +9,13 @@ describe 'timeout' do
   end
 
   it 'does not raise an error when render less than 1 second' do
-    visit '/timeout?seconds=0.5'
+    visit '/timeout?seconds=1'
     page.should have_content 'ok'
   end
 
   it 'raises error when render is more than 1 second' do
     expect {
-      visit '/timeout?seconds=2'
+      visit '/timeout?seconds=3.5'
     }.to raise_error Rack::Timeout::RequestTimeoutError
   end
 end
