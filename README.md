@@ -175,14 +175,6 @@ RAILS_ENV=production ./bin/interactive
 
 Now follow the steps in [Setup data](#setup-data).
 
-### Setup domains
-
-To setup the Nginx sites run the following command:
-
-```shell
-sudo RAILS_ENV=production ./bin/rake config:nginx
-```
-
 ### Deploy
 
 Use Capistrano to deploy to your server:
