@@ -12,6 +12,7 @@ class Page
   property :updated_by, type: String
 
   auto_strip_attributes *property_names, squish: true
+
   validates *property_names, no_html: true
 
   property :html_content, type: String
@@ -20,11 +21,21 @@ class Page
     self.url = new_url
   end
 
-  validates :site_id, presence: true
-  validates :name, presence: true, length: {maximum: 64}
-  validates :bottom_section, inclusion: {in: %w(contact_form), allow_nil: true}
-  validates :created_by, presence: true
-  validates :updated_by, presence: true
+  validates :site_id,
+    presence: true
+
+  validates :name,
+    presence: true,
+    length: {maximum: 64}
+
+  validates :bottom_section,
+    inclusion: {in: %w(contact_form), allow_nil: true}
+
+  validates :created_by,
+    presence: true
+
+  validates :updated_by,
+    presence: true
 
   validate do
     errors.add(:name) if new_url.blank? or INVALID_URLS.include? new_url
