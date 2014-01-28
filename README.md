@@ -210,7 +210,6 @@ heroku addons:add cloudant
 heroku addons:add loaderio
 heroku addons:add logentries
 heroku addons:add newrelic
-heroku addons:add papertrail
 heroku addons:add sendgrid
 heroku addons:add sentry
 ```
