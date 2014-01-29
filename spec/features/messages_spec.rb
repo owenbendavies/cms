@@ -5,7 +5,7 @@ describe 'messages' do
   include_context 'new_fields'
 
   before do
-    Timecop.freeze('2012-03-12 09:23:05') do
+    Timecop.freeze(Time.now - 1.month) do
       @message = FactoryGirl.create(:message, site: @site)
     end
   end
@@ -16,7 +16,7 @@ describe 'messages' do
     it_should_behave_like 'restricted page'
 
     it_behaves_like 'logged in account' do
-      it 'has list of messages' do
+      it 'has list of messages', js: true do
         find('#main_article h1').text.should eq 'Messages'
         page.should have_selector 'h1 i.icon-envelope'
 
@@ -25,7 +25,7 @@ describe 'messages' do
         page.should have_content 'Email address'
 
         page.should have_link(
-          'Mon, 12 Mar 2012 09:23:05 +0000',
+          'about a month ago',
           href: "/site/messages/#{@message.id}"
         )
 
@@ -58,12 +58,12 @@ describe 'messages' do
     it_should_behave_like 'restricted page'
 
     it_behaves_like 'logged in account' do
-      it 'shows message' do
+      it 'shows message', js: true do
         find('#main_article h1').text.should eq 'Message'
         page.should have_selector 'h1 i.icon-envelope'
 
         page.should have_content 'Created at'
-        page.should have_content 'Mon, 12 Mar 2012 09:23:05 +0000'
+        page.should have_content 'about a month ago'
 
         page.should have_content 'Name'
         page.should have_content @message.name

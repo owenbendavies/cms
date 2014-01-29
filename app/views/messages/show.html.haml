@@ -3,7 +3,7 @@
 
 %dl.dl-horizontal
   %dt= Message.human_attribute_name(:created_at)
-  %dd= l(@message.created_at)
+  %dd= timeago_tag(@message.created_at, force: true)
 
   %dt= Message.human_attribute_name(:name)
   %dd= @message.name

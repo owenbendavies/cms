@@ -11,6 +11,6 @@
   %tbody
     - @messages.each do |message|
       %tr
-        %td= link_to(l(message.created_at), site_message_path(message))
+        %td= link_to(timeago_tag(message.created_at, force: true), site_message_path(message))
         %td= link_to(message.name, site_message_path(message))
         %td= link_to(message.email_address, site_message_path(message))
