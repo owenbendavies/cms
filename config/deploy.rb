@@ -1,5 +1,3 @@
-SSHKit.config.command_map[:whenever] = 'bundle exec whenever'
-
 set :application, 'cms'
 set :repo_url, 'git@github.com:obduk/cms.git'
 

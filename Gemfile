@@ -52,7 +52,6 @@ gem 'syslogger'
 
 # System management
 gem 'figaro'
-gem 'whenever', require: false
 
 group :heroku do
   gem 'heroku-deflater'
