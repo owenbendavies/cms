@@ -1,6 +1,6 @@
 /.bundle
 /config/application.yml
-/config/deploy/production.rb
+/config/deploy/*
 /coverage
 /log/*.log
 /public/assets
