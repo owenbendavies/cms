@@ -7,6 +7,8 @@ set :deploy_to, '/var/www/cms'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('tmp/pids', 'tmp/sockets')
 
+set :log_level, :info
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
