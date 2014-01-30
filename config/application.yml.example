@@ -3,7 +3,6 @@ SECRET_KEY:
 development:
   COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'obduk-cms-development'
-  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/obduk-cms-development-backup'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'uploads'
@@ -17,7 +16,6 @@ development:
 test:
   COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'obduk-cms-test'
-  COUCHDB_BACKUP_URL: 'http://127.0.0.1:5984/obduk-cms-test-backup'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'test_uploads'
@@ -28,7 +26,6 @@ test:
 production:
   # CLOUDANT_URL:
   COUCHDB_NAME: 'obduk-cms-production'
-  # COUCHDB_BACKUP_URL:
 
   ASSET_HOST:
 
