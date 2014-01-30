@@ -3,13 +3,15 @@ set :repo_url, 'git@github.com:obduk/cms.git'
 
 set :deploy_to, '/var/www/cms'
 
+set :linked_dirs, fetch(:linked_dirs, []).push('tmp/pids', 'tmp/sockets')
+
 set :log_level, :info
 
 namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      pid_file = '/var/run/cms.pid'
+      pid_file = "#{shared_path}/tmp/pids/unicorn.pid"
 
       if test "[ -f #{pid_file} ]"
         execute :kill, "-s USR2 `cat #{pid_file}`"
