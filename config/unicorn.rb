@@ -7,23 +7,16 @@ timeout 5
 
 preload_app true
 
-DEPLOY_PATH = File.expand_path('../../..', __FILE__)
+working_directory '/var/www/cms/current'
 
-working_directory File.join(DEPLOY_PATH, 'current')
+pid '/var/run/cms.pid'
 
-SHARED_PATH = File.join(DEPLOY_PATH, 'shared')
-
-PID_FILE = File.join(SHARED_PATH, "/tmp/pids/unicorn.pid")
-OLD_PID_FILE = PID_FILE + ".oldbin"
-
-pid PID_FILE
-
-listen File.join(SHARED_PATH, "/tmp/sockets/unicorn.sock")
+listen '/var/run/cms.socket'
 
 before_fork do |server, worker|
-  if File.exists?(OLD_PID_FILE)
+  if File.exists? '/var/run/cms.pid.oldbin'
     begin
-      Process.kill("QUIT", File.read(OLD_PID_FILE).to_i)
+      Process.kill("QUIT", File.read('/var/run/cms.pid.oldbin').to_i)
     rescue Errno::ENOENT, Errno::ESRCH
     end
   end
