@@ -1,7 +1,7 @@
 require 'syslogger'
 logger Syslogger.new('cms')
 
-worker_processes 4
+worker_processes Integer(ENV['WORKER_PROCESSES'])
 
 timeout 5
 
