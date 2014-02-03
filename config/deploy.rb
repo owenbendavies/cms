@@ -26,7 +26,7 @@ namespace :figaro do
   desc 'SCP transfer figaro configuration'
   task :upload_config do
     on roles(:all) do
-      upload! 'config/application.yml', "#{release_path}/config/application.yml"
+      upload! "config/deploy/#{fetch(:stage)}.application.yml", "#{release_path}/config/application.yml"
     end
   end
 

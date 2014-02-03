@@ -5,15 +5,21 @@ cd `dirname $0`/..
 
 bin/bundle
 
-if [ ! -f config/application.yml ]
-then
-  cp config/application.yml.example config/application.yml
-fi
+files="
+config/application.yml
+config/deploy/production.application.yml
+config/deploy/production.rb
+config/deploy/staging.application.yml
+config/deploy/staging.rb
+"
 
-if [ ! -f config/deploy/production.rb ]
-then
-  cp config/deploy/production.rb.example config/deploy/production.rb
-fi
+for file in $files
+do
+  if [ ! -f $file ]
+  then
+    cp ${file}.example $file
+  fi
+done
 
 if grep -q '^SECRET_KEY:$' config/application.yml
 then
