@@ -24,7 +24,8 @@ test:
   TEST_ROUTES: 'true'
 
 production:
-  # CLOUDANT_URL:
+  HEROKU: true
+
   COUCHDB_NAME: 'obduk-cms-production'
 
   ASSET_HOST:
@@ -37,12 +38,5 @@ production:
 
   SMTP_ADDRESS: 'smtp.sendgrid.net'
   SMTP_PORT: '587'
-  # SENDGRID_USERNAME:
-  # SENDGRID_PASSWORD:
 
-  NEW_RELIC_APP_NAME: 'obduk-cms-production'
-  # NEW_RELIC_LICENSE_KEY:
-
-  # SENTRY_DSN:
-
-  # LOADERIO_VERIFICATION_TOKEN:
+  LOADERIO_VERIFICATION_TOKEN:
