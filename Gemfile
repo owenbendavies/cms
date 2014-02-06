@@ -70,7 +70,7 @@ end
 
 group :development do
   gem 'byebug'
-  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
   gem 'mailcatcher'
   gem 'quiet_assets'
   gem 'thin'
