@@ -55,9 +55,6 @@ GEM
     capistrano-bundler (1.1.1)
       capistrano (~> 3.0)
       sshkit (>= 1.2.0)
-    capistrano-rails (1.1.1)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -372,7 +369,7 @@ DEPENDENCIES
   brakeman
   byebug
   cane
-  capistrano-rails
+  capistrano-bundler
   capybara-webkit
   carrierwave
   couch_potato
