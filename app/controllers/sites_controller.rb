@@ -1,5 +1,6 @@
 class SitesController < ApplicationController
   before_filter :login_required
+  before_filter :edit_css_feature, only: [:css]
 
   def edit
   end
@@ -25,5 +26,9 @@ class SitesController < ApplicationController
       :google_analytics,
       :css
     ).merge(updated_by: user.id)
+  end
+
+  def edit_css_feature
+    return page_not_found unless feature.edit_css
   end
 end
