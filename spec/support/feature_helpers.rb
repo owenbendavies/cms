@@ -30,6 +30,7 @@ module FeatureHelpers
       Timecop.freeze('2012-03-12 09:23:05') do
         @account = FactoryGirl.create(:account)
         @site = FactoryGirl.create(:site)
+        @features = FactoryGirl.create(:features)
 
         @home_page = FactoryGirl.create(
           :page,

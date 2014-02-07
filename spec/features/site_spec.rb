@@ -125,6 +125,22 @@ describe 'site' do
 
         current_path.should eq '/site/css'
       end
+
+      context 'css feature disabled' do
+        before do
+          @features.edit_css = false
+          @features.save!
+          visit go_to_url
+        end
+
+        it 'should retun page not found' do
+          page.status_code.should eq 404
+        end
+
+        it 'does not have link in topbar' do
+          page.should_not have_link 'CSS'
+        end
+      end
     end
   end
 end

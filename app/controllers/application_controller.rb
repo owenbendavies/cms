@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :render_site_not_found
   before_filter :check_format_is_not_html
 
+  helper_method :feature
+
   def home
     redirect_to page_path('home')
   end
@@ -28,6 +30,10 @@ class ApplicationController < ActionController::Base
 
   def login_required
     redirect_to(login_path) unless authenticated?
+  end
+
+  def feature
+    @features ||= Features.find_by_id('features')
   end
 
   private

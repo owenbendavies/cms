@@ -70,6 +70,12 @@ To set up data for your development server, run the following:
 ./bin/interactive
 ```
 
+First we need to create the features object, used to enable or disable features.
+
+```ruby
+Features.new.save!
+```
+
 Next create an account to use, replacing email, password and sites with
 appropriate data.
 
