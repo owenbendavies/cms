@@ -1,6 +1,6 @@
-SECRET_KEY:
-
 development:
+  SECRET_KEY:
+
   COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'obduk-cms-development'
 
@@ -14,6 +14,8 @@ development:
   TEST_ROUTES: 'true'
 
 test:
+  SECRET_KEY:
+
   COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'obduk-cms-test'
 
@@ -24,6 +26,8 @@ test:
   TEST_ROUTES: 'true'
 
 production:
+  SECRET_KEY:
+
   HEROKU: true
 
   COUCHDB_NAME: 'obduk-cms-production'

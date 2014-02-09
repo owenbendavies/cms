@@ -21,9 +21,19 @@ do
   fi
 done
 
-if grep -q '^SECRET_KEY:$' config/application.yml
-then
-  secret=`bin/rake secret`
-  sed -i "s/^SECRET_KEY:$/SECRET_KEY: '$secret'/" config/application.yml
-fi
+rails_secrets="
+config/application.yml
+config/deploy/production.application.yml
+config/deploy/staging.application.yml
+"
+
+for file in $rails_secrets
+do
+  if grep -q '^  SECRET_KEY:$' $file
+  then
+    echo "Generating secret for $file"
+    secret=`bin/rake secret`
+    sed -i "s/^  SECRET_KEY:$/  SECRET_KEY: '$secret'/" $file
+  fi
+done
 
