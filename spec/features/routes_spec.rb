@@ -21,6 +21,12 @@ describe 'routes' do
     page.should have_content 'Page Not Found'
   end
 
+  it 'renders page not found for urls with dots in path' do
+    visit '/file.pid/file'
+    page.status_code.should eq 404
+    page.should have_content 'Page Not Found'
+  end
+
   it 'renders page not found for urls with unkown format in' do
     visit '/home.txt'
     page.status_code.should eq 404
