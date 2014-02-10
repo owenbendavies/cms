@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     redirect_to page_path('home')
   end
 
-  protected
-
   def page_not_found
     if @site
       render template: 'errors/page_not_found', formats: ['html'], status: 404
@@ -27,6 +25,8 @@ class ApplicationController < ActionController::Base
       render template: 'errors/site_not_found', formats: ['html'], status: 404
     end
   end
+
+  protected
 
   def login_required
     redirect_to(login_path) unless authenticated?
