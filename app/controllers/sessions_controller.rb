@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    flash[:error] = t(warden.message) if warden.message
+    flash.now[:error] = t(warden.message) if warden.message
   end
 
   def create
