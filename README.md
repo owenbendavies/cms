@@ -32,6 +32,7 @@ You will need a system running the following software:
 * Bundler
 * CouchDB
 * Imagemagick
+* Mailcatcher (For development)
 
 For more detailed dependencies, this is the project I use for setting up my
 development and live server: https://github.com/obduk/server_setup
@@ -106,14 +107,6 @@ Run the following to spin up a server locally for development:
 ```shell
 ./bin/server
 ```
-
-To test emails locally run the following:
-
-```shell
-./bin/bundle exec mailcatcher
-```
-
-See http://mailcatcher.me/ for more information.
 
 Deployment
 ----------

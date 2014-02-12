@@ -71,7 +71,6 @@ end
 group :development do
   gem 'byebug'
   gem 'capistrano-bundler'
-  gem 'mailcatcher'
   gem 'quiet_assets'
   gem 'thin'
 end

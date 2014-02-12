@@ -161,16 +161,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mailcatcher (0.2.4)
-      eventmachine
-      haml
-      i18n
-      json
-      mail
-      sinatra
-      skinny (>= 0.1.2)
-      sqlite3-ruby
-      thin
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
@@ -278,13 +268,6 @@ GEM
       hirb
       simplecov
     simplecov-html (0.8.0)
-    sinatra (1.4.4)
-      rack (~> 1.4)
-      rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
-    skinny (0.2.3)
-      eventmachine (~> 1.0.0)
-      thin (~> 1.5.0)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -297,9 +280,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.8)
-    sqlite3-ruby (1.3.3)
-      sqlite3 (>= 1.3.3)
     sshkit (1.3.0)
       net-scp (>= 1.1.2)
       net-ssh
@@ -387,7 +367,6 @@ DEPENDENCIES
   jquery-turbolinks
   less-rails
   lograge
-  mailcatcher
   mini_magick
   newrelic_rpm
   quiet_assets
