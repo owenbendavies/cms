@@ -7,6 +7,8 @@ set :linked_dirs, ['tmp/pids', 'tmp/sockets']
 
 set :log_level, :info
 
+set :keep_releases, 3
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
