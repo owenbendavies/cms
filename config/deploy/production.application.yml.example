@@ -1,7 +1,7 @@
 production:
   SECRET_KEY:
 
-  CLOUDANT_URL:
+  COUCHDB_URL: 'http://127.0.0.1:5984'
   COUCHDB_NAME: 'obduk-cms-production'
 
   ASSET_HOST:
@@ -14,8 +14,8 @@ production:
 
   SMTP_ADDRESS: 'smtp.sendgrid.net'
   SMTP_PORT: '587'
-  SENDGRID_USERNAME:
-  SENDGRID_PASSWORD:
+  SMTP_USERNAME:
+  SMTP_PASSWORD:
 
   NEW_RELIC_APP_NAME: 'obduk-cms-production'
   NEW_RELIC_LICENSE_KEY:

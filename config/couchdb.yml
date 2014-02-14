@@ -1,8 +1,11 @@
+defaults: &defaults
+  database: <%= [(ENV['COUCHDB_URL'] || ENV['CLOUDANT_URL']), ENV['COUCHDB_NAME']].compact.join('/') %>
+
 development:
-  database: <%= [ENV['COUCHDB_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
+  <<: *defaults
 
 test:
-  database: <%= [ENV['COUCHDB_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
+  <<: *defaults
 
 production:
-  database: <%= [ENV['CLOUDANT_URL'], ENV['COUCHDB_NAME']].compact.join('/') %>
+  <<: *defaults
