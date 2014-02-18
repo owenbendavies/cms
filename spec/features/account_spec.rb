@@ -112,7 +112,7 @@ describe 'account' do
 
       context 'with one site' do
         it 'has no link in topbar' do
-          page.should_not have_link 'Sites'
+          page.should have_no_link 'Sites'
         end
       end
     end

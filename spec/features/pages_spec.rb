@@ -15,7 +15,7 @@ describe 'pages' do
       end
 
       it 'does not has page last updated in footer' do
-        page.should_not have_content 'last updated'
+        page.should have_no_content 'last updated'
       end
 
       it 'has page url on body' do
@@ -80,7 +80,7 @@ describe 'pages' do
         end
 
         it 'has no link to edit' do
-          page.should_not have_link 'Edit'
+          page.should have_no_link 'Edit'
         end
       end
 
@@ -111,7 +111,7 @@ describe 'pages' do
       end
 
       it 'does not show header' do
-        page.should_not have_selector 'article header h1'
+        page.should have_no_selector 'article header h1'
       end
     end
 

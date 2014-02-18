@@ -85,7 +85,7 @@ describe 'messages' do
         visit "/site/messages/#{@message.id}"
         find('#main_article h1').text.should eq 'Message'
 
-        page.should_not have_content 'Phone number'
+        page.should have_no_content 'Phone number'
       end
 
       it "renders page not found for unknow message" do
