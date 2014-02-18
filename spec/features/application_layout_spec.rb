@@ -12,7 +12,7 @@ describe 'application layout' do
     end
 
     it 'has no topbar' do
-      page.should_not have_selector '#topbar'
+      page.should have_no_selector '#topbar'
     end
 
     it 'has title' do

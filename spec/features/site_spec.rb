@@ -138,7 +138,7 @@ describe 'site' do
         end
 
         it 'does not have link in topbar' do
-          page.should_not have_link 'CSS'
+          page.should have_no_link 'CSS'
         end
       end
     end

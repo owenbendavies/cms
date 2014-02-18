@@ -33,7 +33,7 @@ describe 'sitemap' do
         end
 
         it 'does not show private pages' do
-          page.should_not have_link @private_page.name
+          page.should have_no_link @private_page.name
         end
 
         it 'has link in footer' do
@@ -81,7 +81,7 @@ describe 'sitemap' do
       end
 
       it 'does not include private pages' do
-        page.should_not have_xpath(
+        page.should have_no_xpath(
           '//loc',
           text: "http://localhost/#{@private_page.url}"
         )
