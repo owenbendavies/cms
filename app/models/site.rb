@@ -18,9 +18,7 @@ class Site
   property :google_analytics, type: String
   property :charity_number, type: String
   property :updated_by, type: String
-
-  property :stylesheet_filename, type: String
-  mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
+  property :css_filename, type: String
 
   property :header_image_filename, type: String
   mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
@@ -57,8 +55,14 @@ class Site
 
   view :by_host, key: :host
 
+  view :by_css_filename, key: :css_filename
+
   def self.find_by_host(host)
     CouchPotato.database.first(by_host(key: host.downcase))
+  end
+
+  def self.find_by_css_filename(css_filename)
+    CouchPotato.database.first(by_css_filename(key: css_filename))
   end
 
   def fog_directory
@@ -67,13 +71,19 @@ class Site
   end
 
   def css
-    stylesheet.read
+    return unless self._attachments['css']
+    CouchPotato.couchrest_database.fetch_attachment self, 'css'
   end
 
   def css=(posted_css)
     posted_css.gsub!(/\t/, '  ')
     posted_css.gsub!(/ +\r\n/, "\r\n")
 
-    self.stylesheet = StringUploader.new("stylesheet.css", posted_css)
+    self._attachments['css'] = {
+      'content_type' => 'text/css',
+      'data' => posted_css,
+    }
+
+    self.css_filename = "#{Digest::MD5.hexdigest(posted_css)}.css"
   end
 end

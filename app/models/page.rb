@@ -1,7 +1,17 @@
 class Page
   include CouchModel
 
-  INVALID_URLS = %w(account health login logout new robots site sitemap)
+  INVALID_URLS = [
+    'account',
+    'health',
+    'login',
+    'logout',
+    'new',
+    'robots',
+    'site',
+    'sitemap',
+    'stylesheets',
+  ]
 
   property :site_id, type: String
   property :url, type: String

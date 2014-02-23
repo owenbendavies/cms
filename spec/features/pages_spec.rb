@@ -152,7 +152,7 @@ describe 'pages' do
       end
 
       it 'edits the html content', js: true do
-        page.body.should include @test_page.html_content
+        body.should include @test_page.html_content
 
         page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
 

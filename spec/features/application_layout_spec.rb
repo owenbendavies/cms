@@ -20,17 +20,12 @@ describe 'application layout' do
         should eq "#{@site.name} | Test Page"
     end
 
-    it 'has site stylesheet' do
-      link = "link[href=\"#{@site.stylesheet.url}\"]"
-      page.should have_selector link, visible: false
-    end
-
     it 'has google analytics' do
-      page.body.should include(
+      body.should include(
         "_gaq.push(['_setAccount','#{@site.google_analytics}']);"
       )
 
-      page.body.should include "_gaq.push(['_setDomainName','localhost']);"
+      body.should include "_gaq.push(['_setDomainName','localhost']);"
     end
 
     it 'has header image' do

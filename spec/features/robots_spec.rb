@@ -10,6 +10,7 @@ describe 'robots' do
       page.should have_content 'Sitemap: http://localhost:37511/sitemap.xml'
       page.should have_content 'User-agent: *'
       page.should have_content 'Disallow:'
+      response_headers['Content-Type'].should eq 'text/plain; charset=utf-8'
     end
 
     it 'renders page not found when not txt' do
