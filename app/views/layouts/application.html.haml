@@ -7,7 +7,7 @@
     /[if lt IE 9]
       %script{src: '//html5shiv.googlecode.com/svn/trunk/html5.js'}
     = stylesheet_link_tag 'application', media: 'all'
-    = stylesheet_link_tag @site.stylesheet.url, media: 'all' if @site.stylesheet.url
+    = stylesheet_link_tag @site.css_filename, media: 'all' if @site.css_filename
     = javascript_include_tag 'application'
     = analytics_init(tracker: @site.google_analytics, domain: @site.host) if @site.google_analytics
     = csrf_meta_tag

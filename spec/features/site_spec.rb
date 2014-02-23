@@ -78,12 +78,6 @@ describe 'site' do
   end
 
   describe 'css' do
-    before do
-      site = Site.find_by_host 'localhost'
-      site.stylesheet_filename = ''
-      site.save!
-    end
-
     let(:go_to_url) { '/site/css' }
 
     it_should_behave_like 'restricted page'
@@ -99,18 +93,18 @@ describe 'site' do
 
         click_button 'Update Site'
 
-        site = Site.find_by_host('localhost')
-
-        site.stylesheet_filename.
-          should eq 'b1192d422b8c8999043c2abd1b47b750.css'
-
-        site.updated_by.should eq @account.id
-
         it_should_be_on_home_page
         it_should_have_alert_with 'Site successfully updated'
 
+        link = 'link[href="/stylesheets/b1192d422b8c8999043c2abd1b47b750.css"]'
+        page.should have_selector link, visible: false
+
         visit_page '/site/css'
         find('pre textarea').text.should eq "body{background-color: red}"
+
+        site = Site.find_by_host('localhost')
+        site.css_filename.should eq 'b1192d422b8c8999043c2abd1b47b750.css'
+        site.updated_by.should eq @account.id
       end
 
       it 'has cancel button' do

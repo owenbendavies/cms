@@ -83,7 +83,8 @@ describe Page do
       'new',
       'robots',
       'site',
-      'sitemap'
+      'sitemap',
+      'stylesheets',
     )}
 
     it { should allow_values_for(

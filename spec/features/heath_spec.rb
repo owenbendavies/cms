@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe 'health' do
-  context 'unknwon site' do
+  context 'unknown site' do
     it 'renders ok' do
       visit_page '/health.txt'
       page.should have_content 'ok'
+      response_headers['Content-Type'].should eq 'text/plain; charset=utf-8'
     end
 
     it 'renders site not found when not txt' do

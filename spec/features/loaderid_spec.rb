@@ -7,6 +7,7 @@ describe 'loaderio' do
     visit_page '/loaderio-12345.txt'
 
     page.should have_content 'loaderio-12345'
+    response_headers['Content-Type'].should eq 'text/plain; charset=utf-8'
   end
 
   it 'renders page not found when not txt' do
