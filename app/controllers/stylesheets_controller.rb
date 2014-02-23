@@ -3,6 +3,8 @@ class StylesheetsController < ApplicationController
   before_filter :find_css_site
 
   def show
+    expires_in 1.year, public: true
+
     respond_to do |format|
       format.css { render text: @css_site.css }
     end

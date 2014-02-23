@@ -12,6 +12,7 @@ describe 'stylesheets' do
       visit_page '/stylesheets/e6df26f541ebad8e8fed26a84e202a7c.css'
       body.should eq "body {\r\n  padding: 4em;\r\n}"
       response_headers['Content-Type'].should eq 'text/css; charset=utf-8'
+      response_headers['Cache-Control'].should eq 'max-age=31557600, public'
     end
 
     it 'renders any sites stylesheet' do
