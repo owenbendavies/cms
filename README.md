@@ -154,7 +154,6 @@ config/deploy/production.rb
 
 Sign up to the following services
 
-* [Cloudant](https://cloudant.com/) for cloud CouchDB
 * [loader.io](http://loader.io/) for load testing
 * [New Relic](http://newrelic.com/) for system monitoring
 * [SendGrid](http://sendgrid.com/) for sending emails
