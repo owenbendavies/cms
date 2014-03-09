@@ -49,8 +49,12 @@ class Message
   validate do
     text = message.to_s.downcase
 
-    if text.include? 'search engine' or text.include? 'facebook visitors'
-      errors.add(:message, :spam)
+    [
+      'search engine',
+      'facebook visitors',
+      'facebook page likes',
+    ].each do |spam_text|
+      errors.add(:message, :spam) if text.include? spam_text
     end
   end
 
