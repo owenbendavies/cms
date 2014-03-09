@@ -112,6 +112,7 @@ describe Message do
       :message,
       'We can increase rankings of your website in search engines.',
       'How about 100k facebook visitors!',
+      'Millions of Facebook page likes',
       message: 'Please do not send spam messages.'
     )}
 
