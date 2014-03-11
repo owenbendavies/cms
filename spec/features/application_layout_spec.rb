@@ -50,7 +50,7 @@ describe 'application layout' do
     end
 
     it 'last updated should be in words', js: true do
-      Timecop.freeze(Time.now - 1.month) do
+      Timecop.freeze(Time.now - 1.month - 3.days) do
         @test_page.updated_at = Time.now
         @test_page.save!
       end
