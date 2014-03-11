@@ -5,7 +5,7 @@ describe 'messages' do
   include_context 'new_fields'
 
   before do
-    Timecop.freeze(Time.now - 1.month) do
+    Timecop.freeze(Time.now - 1.month - 3.days) do
       @message = FactoryGirl.create(:message, site: @site)
     end
   end
