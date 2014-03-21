@@ -50,9 +50,11 @@ class Message
     text = message.to_s.downcase
 
     [
-      'search engine',
-      'facebook visitors',
+      'facebook followers',
+      'facebook likes',
       'facebook page likes',
+      'facebook visitors',
+      'search engine',
     ].each do |spam_text|
       errors.add(:message, :spam) if text.include? spam_text
     end

@@ -113,6 +113,8 @@ describe Message do
       'We can increase rankings of your website in search engines.',
       'How about 100k facebook visitors!',
       'Millions of Facebook page likes',
+      'We can get you Facebook likes',
+      'Get thousands of facebook followers to your site',
       message: 'Please do not send spam messages.'
     )}
 
