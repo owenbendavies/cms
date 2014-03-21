@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Application Gems
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 # Middleware
 gem 'rack-protection'
@@ -12,7 +12,7 @@ gem 'rails_warden'
 # Model Gems
 gem 'auto_strip_attributes'
 gem 'bcrypt-ruby'
-gem 'carrierwave'
+gem 'carrierwave', '0.9.0'
 gem 'couch_potato'
 gem 'fog', '1.18.0'
 gem 'gravtastic'
@@ -33,6 +33,7 @@ gem 'twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
+gem 'sprockets', '2.10.1'
 gem 'google-analytics-rails'
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
