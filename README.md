@@ -5,7 +5,6 @@ CMS
 [![Dependency Status](https://gemnasium.com/obduk/cms.png)](https://gemnasium.com/obduk/cms)
 [![Code Climate](https://codeclimate.com/github/obduk/cms.png)](https://codeclimate.com/github/obduk/cms)
 [![Coverage Status](https://coveralls.io/repos/obduk/cms/badge.png)](https://coveralls.io/r/obduk/cms)
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/db0f06373b732860b25a2a19dffdf503 "githalytics.com")](http://githalytics.com/obduk/cms)
 
 A Content Management System (CMS) written with Ruby on Rails and CouchDB.
 Although it is a working project, it was not created with the intention of being
