@@ -11,7 +11,7 @@ gem 'rails_warden'
 
 # Model Gems
 gem 'auto_strip_attributes'
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 gem 'carrierwave', '0.9.0'
 gem 'couch_potato'
 gem 'fog', '1.18.0'
