@@ -2,7 +2,7 @@ production:
   SECRET_KEY:
 
   COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'obduk-cms-staging'
+  COUCHDB_NAME: 'cms-staging'
 
   ASSET_HOST:
 
@@ -17,7 +17,7 @@ production:
   SMTP_USERNAME:
   SMTP_PASSWORD:
 
-  NEW_RELIC_APP_NAME: 'obduk-cms-staging'
+  NEW_RELIC_APP_NAME: 'cms-staging'
   NEW_RELIC_LICENSE_KEY:
 
   SENTRY_DSN:
