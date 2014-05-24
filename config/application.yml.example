@@ -2,7 +2,7 @@ development:
   SECRET_KEY:
 
   COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'obduk-cms-development'
+  COUCHDB_NAME: 'cms-development'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'uploads'
@@ -17,7 +17,7 @@ test:
   SECRET_KEY:
 
   COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'obduk-cms-test'
+  COUCHDB_NAME: 'cms-test'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'test_uploads'
@@ -30,7 +30,7 @@ production:
 
   HEROKU: true
 
-  COUCHDB_NAME: 'obduk-cms-production'
+  COUCHDB_NAME: 'cms-production'
 
   ASSET_HOST:
 
@@ -43,6 +43,6 @@ production:
   SMTP_ADDRESS: 'smtp.sendgrid.net'
   SMTP_PORT: '587'
 
-  NEW_RELIC_APP_NAME: 'obduk-cms-production'
+  NEW_RELIC_APP_NAME: 'cms-production'
 
   LOADERIO_VERIFICATION_TOKEN:
