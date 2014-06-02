@@ -4,8 +4,6 @@ rvm: 2.0.0
 
 services: couchdb
 
-cache: bundler
-
 bundler_args: --deployment --without development production
 
 before_script:
