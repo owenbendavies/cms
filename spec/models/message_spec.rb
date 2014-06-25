@@ -115,6 +115,7 @@ describe Message do
       'Millions of Facebook page likes',
       'We can get you Facebook likes',
       'Get thousands of facebook followers to your site',
+      'superbsocial',
       message: 'Please do not send spam messages.'
     )}
 

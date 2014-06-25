@@ -55,6 +55,7 @@ class Message
       'facebook page likes',
       'facebook visitors',
       'search engine',
+      'superbsocial',
     ].each do |spam_text|
       errors.add(:message, :spam) if text.include? spam_text
     end
