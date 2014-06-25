@@ -12,7 +12,7 @@ set :keep_releases, 3
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:app), in: :sequence, wait: 10 do
       pid_file = "#{shared_path}/tmp/pids/unicorn.pid"
 
       if test "[ -f #{pid_file} ]"
