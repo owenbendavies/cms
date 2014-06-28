@@ -28,6 +28,7 @@ class PagesController < ApplicationController
       flash[:success] = t('pages.contact_form.flash.success')
       redirect_to page_path(@page.url)
     else
+      @message.save_spam_message
       render :show
     end
   end

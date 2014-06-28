@@ -82,4 +82,12 @@ class Message
     self.delivered = true
     self.save!
   end
+
+  def save_spam_message
+    if not valid?
+      attributes = to_hash.except(:delivered, "ruby_class")
+      spam_message = SpamMessage.new
+      spam_message.update_attributes(attributes)
+    end
+  end
 end

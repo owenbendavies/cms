@@ -212,4 +212,30 @@ describe Message do
       message.subject.should eq subject.subject
     end
   end
+
+  describe 'save_spam_message' do
+    let(:site) { FactoryGirl.create(:site) }
+    subject { FactoryGirl.build(:message, site: site) }
+
+    it 'creates spam message when spam' do
+      subject.message = 'facebook followers'
+
+      expect {
+        subject.save_spam_message
+      }.to change(SpamMessage, :count).by(1)
+
+      spam_message = SpamMessage.all.first
+      spam_message.site_id.should eq site.id
+      spam_message.name.should eq subject.name
+      spam_message.email_address.should eq subject.email_address
+      spam_message.phone_number.should eq subject.phone_number
+      spam_message.message.should eq 'facebook followers'
+    end
+
+    it 'does not create spam message if valid' do
+      expect {
+        subject.save_spam_message
+      }.to_not change(SpamMessage, :count)
+    end
+  end
 end
