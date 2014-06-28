@@ -28,24 +28,24 @@ describe 'contact_form page' do
       }.to change(Message, :count).by(1)
     }.to change{ActionMailer::Base.deliveries.size}.by(1)
 
-    current_path.should eq "/#{@contact_page.url}"
+    expect(current_path).to eq "/#{@contact_page.url}"
     it_should_have_alert_with 'Thank you for your message'
 
     message = Message.find_all_by_site(@site).first
-    message.site_id.should eq @site.id
-    message.name.should eq new_name
-    message.email_address.should eq new_email
-    message.phone_number.should eq new_phone_number
-    message.message.should eq new_message
+    expect(message.site_id).to eq @site.id
+    expect(message.name).to eq new_name
+    expect(message.email_address).to eq new_email
+    expect(message.phone_number).to eq new_phone_number
+    expect(message.message).to eq new_message
 
     last_message = ActionMailer::Base.deliveries.last
-    last_message.from.should eq ["noreply@#{@site.host}"]
-    last_message.to.should eq [@account.email]
-    last_message.subject.should eq @contact_page.name
-    last_message.body.should include "Name: #{new_name}"
-    last_message.body.should include "Email address: #{new_email}"
-    last_message.body.should include "Phone number: #{new_phone_number}"
-    last_message.body.should include "Message: #{new_message}"
+    expect(last_message.from).to eq ["noreply@#{@site.host}"]
+    expect(last_message.to).to eq [@account.email]
+    expect(last_message.subject).to eq @contact_page.name
+    expect(last_message.body).to include "Name: #{new_name}"
+    expect(last_message.body).to include "Email address: #{new_email}"
+    expect(last_message.body).to include "Phone number: #{new_phone_number}"
+    expect(last_message.body).to include "Message: #{new_message}"
   end
 
   it 'does not send a message with invalid data' do
@@ -58,7 +58,7 @@ describe 'contact_form page' do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    current_path.should eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
     it_should_have_form_error "can't be blank"
   end
 
@@ -75,7 +75,7 @@ describe 'contact_form page' do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    current_path.should eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
     it_should_have_form_error 'do not fill in'
   end
 
@@ -93,14 +93,14 @@ describe 'contact_form page' do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    current_path.should eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
     it_should_have_form_error 'Please do not send spam messages.'
 
     spam_message = SpamMessage.all.first
-    spam_message.site_id.should eq @site.id
-    spam_message.name.should eq new_name
-    spam_message.email_address.should eq new_email
-    spam_message.phone_number.should eq new_phone_number
-    spam_message.message.should eq 'facebook followers'
+    expect(spam_message.site_id).to eq @site.id
+    expect(spam_message.name).to eq new_name
+    expect(spam_message.email_address).to eq new_email
+    expect(spam_message.phone_number).to eq new_phone_number
+    expect(spam_message.message).to eq 'facebook followers'
   end
 end

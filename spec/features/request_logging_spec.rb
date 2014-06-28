@@ -16,25 +16,25 @@ describe 'request logging' do
     page.driver.browser.header('X-Request-Id', new_id)
     visit_page '/home'
 
-    events.size.should eq 1
+    expect(events.size).to eq 1
   end
 
   it 'logs default information' do
-    events.first.payload[:controller].should eq 'PagesController'
+    expect(events.first.payload[:controller]).to eq 'PagesController'
   end
 
   it 'logs extra information' do
-    events.first.payload[:host].should eq 'localhost'
-    events.first.payload[:remote_ip].should eq '127.0.0.1'
-    events.first.payload[:request_id].should eq new_id
-    events.first.payload[:user_agent].should eq new_company_name
-    events.first.payload[:account_id].should be_nil
+    expect(events.first.payload[:host]).to eq 'localhost'
+    expect(events.first.payload[:remote_ip]).to eq '127.0.0.1'
+    expect(events.first.payload[:request_id]).to eq new_id
+    expect(events.first.payload[:user_agent]).to eq new_company_name
+    expect(events.first.payload[:account_id]).to be_nil
   end
 
   it 'uses extra information in lograge' do
     result = Cms::Application.config.lograge.custom_options.call(events.first)
 
-    result.should eq ({
+    expect(result).to eq ({
       host: 'localhost',
       remote_ip: '127.0.0.1',
       request_id: new_id,
@@ -44,10 +44,10 @@ describe 'request logging' do
 
   it_behaves_like 'logged in account' do
     it 'logs account_id' do
-      events.last.payload[:account_id].should eq @account.id
+      expect(events.last.payload[:account_id]).to eq @account.id
 
       result = Cms::Application.config.lograge.custom_options.call(events.last)
-      result.should eq ({
+      expect(result).to eq ({
         host: 'localhost',
         remote_ip: '127.0.0.1',
         request_id: new_id,

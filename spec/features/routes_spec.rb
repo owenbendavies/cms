@@ -6,43 +6,43 @@ describe 'routes' do
 
   it 'redirects root path to home' do
     visit '/'
-    current_path.should eq '/home'
+    expect(current_path).to eq '/home'
   end
 
   it 'renders page not found for urls with capitals in' do
     visit '/Home'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 
   it 'renders page not found for urls with .html in' do
     visit '/home.html'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 
   it 'renders page not found for urls with dots in path' do
     visit '/file.pid/file'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 
   it 'renders page not found for urls with unkown format in' do
     visit '/home.txt'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 
   it 'renders page not found for unknown accept header' do
     page.driver.header('Accept', 'application/json')
     visit '/home'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 
   it "renders page not found for unknown url" do
     visit '/badroute'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 end

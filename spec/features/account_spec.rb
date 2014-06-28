@@ -11,23 +11,23 @@ describe 'account' do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        page.should have_selector 'h1 i.icon-user'
+        expect(page).to have_selector 'h1 i.icon-user'
       end
 
       it 'updates account' do
-        find_field('Email')['autofocus'].should eq 'autofocus'
-        find_field('Email').value.should eq @account.email
-        find_field('Password').value.should be_nil
-        find_field('Confirm password').value.should be_nil
+        expect(find_field('Email')['autofocus']).to eq 'autofocus'
+        expect(find_field('Email').value).to eq @account.email
+        expect(find_field('Password').value).to be_nil
+        expect(find_field('Confirm password').value).to be_nil
 
         within 'a[href="http://www.gravatar.com"]' do
           gravatar_image = find('img')
 
-          gravatar_image['src'].should eq @account.gravatar_url(size: 150)
+          expect(gravatar_image['src']).to eq @account.gravatar_url(size: 150)
 
-          gravatar_image['alt'].should eq 'Profile Image'
-          gravatar_image['width'].should eq '150'
-          gravatar_image['height'].should eq '150'
+          expect(gravatar_image['alt']).to eq 'Profile Image'
+          expect(gravatar_image['width']).to eq '150'
+          expect(gravatar_image['height']).to eq '150'
         end
 
         fill_in 'Email', with: " #{new_email} "
@@ -39,7 +39,7 @@ describe 'account' do
         it_should_have_alert_with 'Account successfully updated'
 
         account = Account.find_by_id(@account.id)
-        account.email.should eq new_email
+        expect(account.email).to eq new_email
 
         visit '/logout'
         visit_page '/login'
@@ -70,7 +70,7 @@ describe 'account' do
           click_link 'Account'
         end
 
-        current_path.should eq '/account/edit'
+        expect(current_path).to eq '/account/edit'
       end
     end
   end
@@ -91,12 +91,12 @@ describe 'account' do
         end
 
         it 'has icon' do
-          page.should have_selector 'h1 i.icon-list'
+          expect(page).to have_selector 'h1 i.icon-list'
         end
 
         it 'lists the accounts sites' do
-          page.should have_link 'localhost', href: 'http://localhost'
-          page.should have_link new_host, href: "http://#{new_host}"
+          expect(page).to have_link 'localhost', href: 'http://localhost'
+          expect(page).to have_link new_host, href: "http://#{new_host}"
         end
 
         it 'has link in topbar' do
@@ -106,13 +106,13 @@ describe 'account' do
             click_link 'Sites'
           end
 
-          current_path.should eq '/account/sites'
+          expect(current_path).to eq '/account/sites'
         end
       end
 
       context 'with one site' do
         it 'has no link in topbar' do
-          page.should have_no_link 'Sites'
+          expect(page).to have_no_link 'Sites'
         end
       end
     end

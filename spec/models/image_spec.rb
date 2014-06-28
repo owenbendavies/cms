@@ -50,7 +50,7 @@ describe Image do
 
     it 'saves site_id' do
       subject.save!
-      subject.site_id.should eq site.id
+      expect(subject.site_id).to eq site.id
     end
   end
 
@@ -80,8 +80,8 @@ describe Image do
         Image.by_site_id_and_name(key: [new_id, image.name])
       )
 
-      results.size.should eq 1
-      results.first.should eq image
+      expect(results.size).to eq 1
+      expect(results.first).to eq image
     end
   end
 
@@ -102,10 +102,10 @@ describe Image do
       FactoryGirl.create(:image)
 
       images = Image.find_all_by_site(site)
-      images.size.should eq 2
-      images.first.should eq image1
-      images.first.site.should eq site
-      images.second.should eq image2
+      expect(images.size).to eq 2
+      expect(images.first).to eq image1
+      expect(images.first.site).to eq site
+      expect(images.second).to eq image2
     end
   end
 end

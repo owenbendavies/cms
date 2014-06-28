@@ -6,13 +6,13 @@ describe 'loaderio' do
   it 'renders loaderio verification' do
     visit_page '/loaderio-12345.txt'
 
-    page.should have_content 'loaderio-12345'
-    response_headers['Content-Type'].should eq 'text/plain; charset=utf-8'
+    expect(page).to have_content 'loaderio-12345'
+    expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
   end
 
   it 'renders page not found when not txt' do
     visit '/loaderio-12345'
-    page.status_code.should eq 404
-    page.should have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+    expect(page).to have_content 'Page Not Found'
   end
 end

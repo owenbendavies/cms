@@ -10,19 +10,19 @@ describe ApplicationHelper do
 
       context 'with content' do
         it 'shows title and content' do
-          page_title(new_name).should eq "#{@site.name} | #{new_name}"
+          expect(page_title(new_name)).to eq "#{@site.name} | #{new_name}"
         end
       end
 
       context 'blank content' do
         it 'shows title and sub title' do
-          page_title('').should eq "#{@site.name} | #{@site.sub_title}"
+          expect(page_title('')).to eq "#{@site.name} | #{@site.sub_title}"
         end
       end
 
       context 'no content' do
         it 'shows title and sub title' do
-          page_title(nil).should eq "#{@site.name} | #{@site.sub_title}"
+          expect(page_title(nil)).to eq "#{@site.name} | #{@site.sub_title}"
         end
       end
     end
@@ -32,13 +32,13 @@ describe ApplicationHelper do
 
       context 'with content' do
         it 'shows title and content' do
-          page_title(new_name).should eq "#{@site.name} | #{new_name}"
+          expect(page_title(new_name)).to eq "#{@site.name} | #{new_name}"
         end
       end
 
       context 'no content' do
         it 'shows title' do
-          page_title('').should eq @site.name
+          expect(page_title('')).to eq @site.name
         end
       end
     end
@@ -51,9 +51,9 @@ describe ApplicationHelper do
 
     context 'site with copyright and charity' do
       it 'includes copyright and charity number' do
-        footer_copyright.should include "#{@site.copyright} © 2012"
+        expect(footer_copyright).to include "#{@site.copyright} © 2012"
 
-        footer_copyright.should include(
+        expect(footer_copyright).to include(
           "Registered charity number #{@site.charity_number}"
         )
       end
@@ -63,7 +63,7 @@ describe ApplicationHelper do
       before { @site.copyright = nil }
 
       it 'uses site name for copyright' do
-        footer_copyright.should include "#{@site.name} © 2012"
+        expect(footer_copyright).to include "#{@site.name} © 2012"
       end
     end
 
@@ -71,7 +71,7 @@ describe ApplicationHelper do
       before { @site.charity_number = nil }
 
       it 'does not show charity number' do
-        footer_copyright.should eq "#{@site.copyright} © 2012"
+        expect(footer_copyright).to eq "#{@site.copyright} © 2012"
       end
     end
   end

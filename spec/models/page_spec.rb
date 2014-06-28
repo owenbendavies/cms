@@ -111,9 +111,9 @@ describe Page do
         Page.by_site_id_and_url(key: [new_id, page.url])
       )
 
-      results.size.should eq 1
-      results.first.url.should eq page.url
-      results.first.html_content.should eq page.html_content
+      expect(results.size).to eq 1
+      expect(results.first.url).to eq page.url
+      expect(results.first.html_content).to eq page.html_content
     end
   end
 
@@ -131,13 +131,13 @@ describe Page do
         Page.link_by_site_id_and_url(key: [new_id, @page.url])
       )
 
-      results.size.should eq 1
-      results.first.url.should eq @page.url
-      results.first.name.should eq @page.name
-      results.first.private.should eq false
-      results.first.updated_at.should eq time.to_s
-      results.first.updated_by.should eq @page.updated_by
-      results.first.html_content.should be_nil
+      expect(results.size).to eq 1
+      expect(results.first.url).to eq @page.url
+      expect(results.first.name).to eq @page.name
+      expect(results.first.private).to eq false
+      expect(results.first.updated_at).to eq time.to_s
+      expect(results.first.updated_by).to eq @page.updated_by
+      expect(results.first.html_content).to be_nil
     end
   end
 
@@ -148,11 +148,11 @@ describe Page do
     }
 
     it 'finds a page' do
-      Page.find_by_site_and_url(@site, @page.url).should eq @page
+      expect(Page.find_by_site_and_url(@site, @page.url)).to eq @page
     end
 
     it 'returns nil when not found' do
-      Page.find_by_site_and_url(@site, new_page_url).should be_nil
+      expect(Page.find_by_site_and_url(@site, new_page_url)).to be_nil
     end
   end
 
@@ -169,31 +169,31 @@ describe Page do
 
     it 'returns all page links' do
       pages = Page.find_all_links_by_site(site)
-      pages.size.should eq 1
+      expect(pages.size).to eq 1
       page = pages.first
-      page.url.should eq @page.url
-      page.name.should eq @page.name
-      page.private.should eq @page.private
-      page.updated_at.should eq time.to_s
-      page.updated_by.should eq @page.updated_by
-      page.html_content.should be_nil
+      expect(page.url).to eq @page.url
+      expect(page.name).to eq @page.name
+      expect(page.private).to eq @page.private
+      expect(page.updated_at).to eq time.to_s
+      expect(page.updated_by).to eq @page.updated_by
+      expect(page.html_content).to be_nil
     end
   end
 
   describe '#new_url' do
     it 'downcases name' do
       subject.name = 'Name'
-      subject.new_url.should eq 'name'
+      expect(subject.new_url).to eq 'name'
     end
 
     it 'replaces spaces with _' do
       subject.name = 'new name'
-      subject.new_url.should eq 'new_name'
+      expect(subject.new_url).to eq 'new_name'
     end
 
     it 'works when name is nil' do
       subject.name = nil
-      subject.new_url.should eq ''
+      expect(subject.new_url).to eq ''
     end
   end
 end

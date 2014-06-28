@@ -18,8 +18,8 @@ describe MessageMailer do
     subject { ActionMailer::Base.deliveries.last }
 
     it 'should have from address of site' do
-      subject.header["From"].to_s.gsub('"', '').
-        should eq "#{site.name} <noreply@#{site.host}>"
+      expect(subject.header["From"].to_s.gsub('"', '')).
+        to eq "#{site.name} <noreply@#{site.host}>"
     end
 
     its(:to) { should eq [@account.email] }
@@ -45,8 +45,8 @@ describe MessageMailer do
     subject { ActionMailer::Base.deliveries.last }
 
     it 'should remove www from email' do
-      subject.header["From"].to_s.gsub('"', '').
-        should eq "#{site.name} <noreply@example.com>"
+      expect(subject.header["From"].to_s.gsub('"', '')).
+        to eq "#{site.name} <noreply@example.com>"
     end
   end
 end

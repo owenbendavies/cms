@@ -10,9 +10,9 @@ describe 'stylesheets' do
 
     it 'renders stylesheet' do
       visit_page '/stylesheets/e6df26f541ebad8e8fed26a84e202a7c.css'
-      body.should eq "body {\r\n  padding: 4em;\r\n}"
-      response_headers['Content-Type'].should eq 'text/css; charset=utf-8'
-      response_headers['Cache-Control'].should eq 'max-age=31557600, public'
+      expect(body).to eq "body {\r\n  padding: 4em;\r\n}"
+      expect(response_headers['Content-Type']).to eq 'text/css; charset=utf-8'
+      expect(response_headers['Cache-Control']).to eq 'max-age=31557600, public'
     end
 
     it 'renders any sites stylesheet' do
@@ -21,13 +21,13 @@ describe 'stylesheets' do
       other_site.save!
 
       visit_page '/stylesheets/b1192d422b8c8999043c2abd1b47b750.css'
-      body.should eq 'body{background-color: red}'
+      expect(body).to eq 'body{background-color: red}'
     end
 
     it 'renders page not found when not found' do
       visit '/stylesheets/unknown.css'
-      page.status_code.should eq 404
-      page.should have_content 'Page Not Found'
+      expect(page.status_code).to eq 404
+      expect(page).to have_content 'Page Not Found'
     end
   end
 
@@ -38,13 +38,13 @@ describe 'stylesheets' do
       site.save!
 
       visit_page '/stylesheets/e6df26f541ebad8e8fed26a84e202a7c.css'
-      body.should eq "body {\r\n  padding: 4em;\r\n}"
+      expect(body).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
     it 'renders site not found when not found' do
       visit '/stylesheets/unknown.css'
-      page.status_code.should eq 404
-      page.should have_content 'Site Not Found'
+      expect(page.status_code).to eq 404
+      expect(page).to have_content 'Site Not Found'
     end
   end
 end

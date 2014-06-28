@@ -68,7 +68,7 @@ describe Account do
     }
 
     it 'returns the account' do
-      subject.should eq [@account]
+      expect(subject).to eq [@account]
     end
   end
 
@@ -78,7 +78,7 @@ describe Account do
     subject { CouchPotato.database.view(Account.emails_by_site) }
 
     it 'returns array of emails' do
-      subject.should eq [@account.email]
+      expect(subject).to eq [@account.email]
     end
   end
 
@@ -87,75 +87,75 @@ describe Account do
     before { @account = FactoryGirl.create(:account) }
 
     it 'authenticates a valid account' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email,
         @account.password,
         site.host
-      ).should eq @account
+      )).to eq @account
     end
 
     it 'ignores white space for email' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         "  #{@account.email} ",
         @account.password,
         site.host
-      ).should eq @account
+      )).to eq @account
     end
 
     it 'ignores white space for password' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email,
         "  #{@account.password}  ",
         site.host
-      ).should eq @account
+      )).to eq @account
     end
 
     it 'ignores case for email' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email.upcase,
         @account.password,
         site.host
-      ).should eq @account
+      )).to eq @account
     end
 
     it 'returns nil for an invalid email' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         new_email,
         @account.password,
         site.host
-      ).should be_nil
+      )).to be_nil
     end
 
     it 'returns nil for a blank email' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         '',
         @account.password,
         site.host
-      ).should be_nil
+      )).to be_nil
     end
 
     it 'returns nil for an invalid password' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email,
         new_password,
         site.host
-      ).should be_nil
+      )).to be_nil
     end
 
     it 'returns nil for a blank password' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email,
         '',
         site.host
-      ).should be_nil
+      )).to be_nil
     end
 
     it 'returnss nil for invalid site' do
-      Account.find_and_authenticate(
+      expect(Account.find_and_authenticate(
         @account.email,
         @account.password,
         new_host
-      ).should be_nil
+      )).to be_nil
     end
   end
 
@@ -167,7 +167,7 @@ describe Account do
     end
 
     it 'returns all emails' do
-      Account.find_emails_by_site(@site).should eq(
+      expect(Account.find_emails_by_site(@site)).to eq(
         [@account.email, @another_account.email].sort
       )
     end

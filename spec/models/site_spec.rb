@@ -5,7 +5,7 @@ describe Site do
 
   describe 'LAYOUTS' do
     specify {
-      Site::LAYOUTS.should eq [
+      expect(Site::LAYOUTS).to eq [
         'one_column',
         'right_sidebar',
         'small_right_sidebar',
@@ -115,8 +115,8 @@ describe Site do
       FactoryGirl.create(:site, host: new_host)
 
       results = CouchPotato.database.view(Site.by_host(key: site.host))
-      results.size.should eq 1
-      results.first.should eq site
+      expect(results.size).to eq 1
+      expect(results.first).to eq site
     end
   end
 
@@ -129,8 +129,8 @@ describe Site do
       results = CouchPotato.database.view(
         Site.by_css_filename(key: site.css_filename)
       )
-      results.size.should eq 1
-      results.first.should eq site
+      expect(results.size).to eq 1
+      expect(results.first).to eq site
     end
   end
 
@@ -138,15 +138,15 @@ describe Site do
     before { @site = FactoryGirl.create(:site) }
 
     it 'finds a site' do
-      Site.find_by_host(@site.host).should eq @site
+      expect(Site.find_by_host(@site.host)).to eq @site
     end
 
     it 'ignores case' do
-      Site.find_by_host(@site.host.upcase).should eq @site
+      expect(Site.find_by_host(@site.host.upcase)).to eq @site
     end
 
     it 'returns nil when not found' do
-      Site.find_by_host(new_host).should be_nil
+      expect(Site.find_by_host(new_host)).to be_nil
     end
   end
 
@@ -158,11 +158,11 @@ describe Site do
     end
 
     it 'finds a site' do
-      Site.find_by_css_filename(@site.css_filename).should eq @site
+      expect(Site.find_by_css_filename(@site.css_filename)).to eq @site
     end
 
     it 'returns nil when not found' do
-      Site.find_by_css_filename(new_filename).should be_nil
+      expect(Site.find_by_css_filename(new_filename)).to be_nil
     end
   end
 
@@ -185,9 +185,9 @@ describe Site do
       its(:css_filename) { should eq 'e6df26f541ebad8e8fed26a84e202a7c.css' }
 
       it 'saves css as attachment' do
-        subject._attachments.size.should eq 1
+        expect(subject._attachments.size).to eq 1
         attachment = subject._attachments['css']
-        attachment['content_type'].should eq 'text/css'
+        expect(attachment['content_type']).to eq 'text/css'
       end
     end
 
@@ -202,13 +202,13 @@ describe Site do
     it 'strips end of line whitespace' do
       subject.css = "body {\r\n  padding: 4em; \r\n}"
       subject.save!
-      subject.css.should eq "body {\r\n  padding: 4em;\r\n}"
+      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
     it 'converts tabs to spaces' do
       subject.css = "body {\r\n\tpadding: 4em;\r\n}"
       subject.save!
-      subject.css.should eq "body {\r\n  padding: 4em;\r\n}"
+      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
   end
 end

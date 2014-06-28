@@ -21,7 +21,7 @@ describe 'sitemap' do
 
       it_behaves_like 'non logged in account' do
         it 'has icon' do
-          page.should have_selector 'h1 i.icon-sitemap'
+          expect(page).to have_selector 'h1 i.icon-sitemap'
         end
 
         it 'has page url on body' do
@@ -29,11 +29,11 @@ describe 'sitemap' do
         end
 
         it 'has link to pages' do
-          page.should have_link 'Home', href: '/home'
+          expect(page).to have_link 'Home', href: '/home'
         end
 
         it 'does not show private pages' do
-          page.should have_no_link @private_page.name
+          expect(page).to have_no_link @private_page.name
         end
 
         it 'has link in footer' do
@@ -43,15 +43,15 @@ describe 'sitemap' do
             click_link 'Sitemap'
           end
 
-          current_path.should eq '/sitemap'
+          expect(current_path).to eq '/sitemap'
         end
       end
 
       it_behaves_like 'logged in account' do
         it 'has lock icon for private pages' do
           find('ul#sitemap li:nth-child(2)').tap do |item|
-            item.should have_link @private_page.name, href: '/private'
-            item.should have_selector 'i[class="icon-lock"]'
+            expect(item).to have_link @private_page.name, href: '/private'
+            expect(item).to have_selector 'i[class="icon-lock"]'
           end
         end
 
@@ -62,7 +62,7 @@ describe 'sitemap' do
             click_link 'Sitemap'
           end
 
-          current_path.should eq '/sitemap'
+          expect(current_path).to eq '/sitemap'
         end
       end
     end
@@ -71,17 +71,17 @@ describe 'sitemap' do
       before { visit_page '/sitemap.xml' }
 
       it 'has loc' do
-        find(:xpath, '//urlset/url[1]/loc').text.
-          should eq 'http://localhost/home'
+        expect(find(:xpath, '//urlset/url[1]/loc').text).
+          to eq 'http://localhost/home'
       end
 
       it 'has lastmod' do
-        find(:xpath, '//urlset/url[1]/lastmod').
-          text.should eq  '2012-03-12T09:23:05Z'
+        expect(find(:xpath, '//urlset/url[1]/lastmod').
+          text).to eq  '2012-03-12T09:23:05Z'
       end
 
       it 'does not include private pages' do
-        page.should have_no_xpath(
+        expect(page).to have_no_xpath(
           '//loc',
           text: "http://localhost/#{@private_page.url}"
         )
@@ -91,8 +91,8 @@ describe 'sitemap' do
     context 'unknown format' do
       it 'renders page not found' do
         visit '/sitemap.txt'
-        page.status_code.should eq 404
-        page.should have_content 'Page Not Found'
+        expect(page.status_code).to eq 404
+        expect(page).to have_content 'Page Not Found'
       end
     end
   end

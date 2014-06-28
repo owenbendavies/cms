@@ -15,14 +15,14 @@ describe 'images' do
 
     it_behaves_like 'logged in account' do
       it 'has list of images' do
-        find('#main_article h1').text.should eq 'Images'
-        page.should have_selector 'h1 i.icon-picture'
+        expect(find('#main_article h1').text).to eq 'Images'
+        expect(page).to have_selector 'h1 i.icon-picture'
 
         image = find('#main_article img')
-        image['src'].should eq @image.file.span3.url
-        image['alt'].should eq @image.name
+        expect(image['src']).to eq @image.file.span3.url
+        expect(image['alt']).to eq @image.name
 
-        page.should have_content @image.name
+        expect(page).to have_content @image.name
       end
 
       it 'has link in topbar' do
@@ -32,7 +32,7 @@ describe 'images' do
           click_link 'Images'
         end
 
-        current_path.should eq go_to_url
+        expect(current_path).to eq go_to_url
       end
     end
   end

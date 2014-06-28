@@ -11,23 +11,25 @@ describe 'site' do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        page.should have_selector 'h1 i.icon-cog'
+        expect(page).to have_selector 'h1 i.icon-cog'
       end
 
       it 'shoud update site' do
         host_field = find('#site_host')
-        host_field.value.should eq 'localhost'
-        host_field['disabled'].should eq 'disabled'
+        expect(host_field.value).to eq 'localhost'
+        expect(host_field['disabled']).to eq 'disabled'
 
-        find_field('Name').value.should eq @site.name
-        find_field('Name')['autofocus'].should eq 'autofocus'
-        find_field('Sub title').value.should eq @site.sub_title
-        find_field('Copyright').value.should eq @site.copyright
-        find_field('Google Analytics').value.should eq @site.google_analytics
+        expect(find_field('Name').value).to eq @site.name
+        expect(find_field('Name')['autofocus']).to eq 'autofocus'
+        expect(find_field('Sub title').value).to eq @site.sub_title
+        expect(find_field('Copyright').value).to eq @site.copyright
+
+        expect(find_field('Google Analytics').value).
+          to eq @site.google_analytics
 
         charity_field = find('#site_charity_number')
-        charity_field.value.should eq @site.charity_number
-        charity_field['disabled'].should eq 'disabled'
+        expect(charity_field.value).to eq @site.charity_number
+        expect(charity_field['disabled']).to eq 'disabled'
 
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
@@ -35,15 +37,15 @@ describe 'site' do
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
         click_button 'Update Site'
 
-        current_path.should eq '/home'
+        expect(current_path).to eq '/home'
         it_should_have_alert_with 'Site successfully updated'
 
         site = Site.find_by_host('localhost')
-        site.name.should eq new_company_name
-        site.sub_title.should eq new_catch_phrase
-        site.copyright.should eq new_name
-        site.google_analytics.should eq new_google_analytics
-        site.updated_by.should eq @account.id
+        expect(site.name).to eq new_company_name
+        expect(site.sub_title).to eq new_catch_phrase
+        expect(site.copyright).to eq new_name
+        expect(site.google_analytics).to eq new_google_analytics
+        expect(site.updated_by).to eq @account.id
       end
 
       it 'does not store empty copyright' do
@@ -51,7 +53,7 @@ describe 'site' do
         click_button 'Update Site'
 
         site = Site.find_by_host('localhost')
-        site.copyright.should be_nil
+        expect(site.copyright).to be_nil
       end
 
       it 'fails with invalid data' do
@@ -72,7 +74,7 @@ describe 'site' do
           click_link 'Site Settings'
         end
 
-        current_path.should eq '/site/edit'
+        expect(current_path).to eq '/site/edit'
       end
     end
   end
@@ -84,11 +86,11 @@ describe 'site' do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        page.should have_selector 'h1 i.icon-file'
+        expect(page).to have_selector 'h1 i.icon-file'
       end
 
       it 'edits the css' do
-        find('pre textarea')['autofocus'].should eq 'autofocus'
+        expect(find('pre textarea')['autofocus']).to eq 'autofocus'
         fill_in 'site_css', with: 'body{background-color: red}'
 
         click_button 'Update Site'
@@ -97,14 +99,14 @@ describe 'site' do
         it_should_have_alert_with 'Site successfully updated'
 
         link = 'link[href="/stylesheets/b1192d422b8c8999043c2abd1b47b750.css"]'
-        page.should have_selector link, visible: false
+        expect(page).to have_selector link, visible: false
 
         visit_page '/site/css'
-        find('pre textarea').text.should eq "body{background-color: red}"
+        expect(find('pre textarea').text).to eq "body{background-color: red}"
 
         site = Site.find_by_host('localhost')
-        site.css_filename.should eq 'b1192d422b8c8999043c2abd1b47b750.css'
-        site.updated_by.should eq @account.id
+        expect(site.css_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+        expect(site.updated_by).to eq @account.id
       end
 
       it 'has cancel button' do
@@ -117,7 +119,7 @@ describe 'site' do
           click_link 'CSS'
         end
 
-        current_path.should eq '/site/css'
+        expect(current_path).to eq '/site/css'
       end
 
       context 'css feature disabled' do
@@ -128,11 +130,11 @@ describe 'site' do
         end
 
         it 'should retun page not found' do
-          page.status_code.should eq 404
+          expect(page.status_code).to eq 404
         end
 
         it 'does not have link in topbar' do
-          page.should have_no_link 'CSS'
+          expect(page).to have_no_link 'CSS'
         end
       end
     end

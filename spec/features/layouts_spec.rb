@@ -13,10 +13,10 @@ describe 'layouts' do
     end
 
     it 'has all sections' do
-      page.should have_selector 'header#page_header'
-      page.should have_selector '#main_menu'
-      page.should have_selector 'article#main_article'
-      page.should have_selector 'footer#page_footer'
+      expect(page).to have_selector 'header#page_header'
+      expect(page).to have_selector '#main_menu'
+      expect(page).to have_selector 'article#main_article'
+      expect(page).to have_selector 'footer#page_footer'
     end
   end
 
@@ -33,7 +33,7 @@ describe 'layouts' do
     context layout do
       it_behaves_like 'layout', layout do
         it 'has sidebar' do
-          page.should have_selector 'aside#sidebar'
+          expect(page).to have_selector 'aside#sidebar'
         end
       end
     end
