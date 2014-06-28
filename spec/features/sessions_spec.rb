@@ -14,7 +14,7 @@ describe 'sessions' do
     end
 
     it 'accepts spaces in email' do
-      find_field('Email')['autofocus'].should eq 'autofocus'
+      expect(find_field('Email')['autofocus']).to eq 'autofocus'
       fill_in 'Email', with: "  #{@account.email} "
       fill_in 'Password', with: @account.password
 
@@ -29,7 +29,7 @@ describe 'sessions' do
 
       click_button 'Login'
 
-      current_path.should eq '/login'
+      expect(current_path).to eq '/login'
       it_should_have_alert_with 'Invalid email or password'
     end
 
@@ -40,7 +40,7 @@ describe 'sessions' do
         click_link 'Login'
       end
 
-      current_path.should eq '/login'
+      expect(current_path).to eq '/login'
     end
 
     it_behaves_like 'logged in account' do
@@ -49,7 +49,7 @@ describe 'sessions' do
         @account.save!
 
         visit '/account/edit'
-        current_path.should eq '/login'
+        expect(current_path).to eq '/login'
       end
     end
   end

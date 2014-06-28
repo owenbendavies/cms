@@ -4,14 +4,14 @@ describe 'health' do
   context 'unknown site' do
     it 'renders ok' do
       visit_page '/health.txt'
-      page.should have_content 'ok'
-      response_headers['Content-Type'].should eq 'text/plain; charset=utf-8'
+      expect(page).to have_content 'ok'
+      expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
     end
 
     it 'renders site not found when not txt' do
       visit '/health.xml'
-      page.status_code.should eq 404
-      page.should have_content 'Site Not Found'
+      expect(page.status_code).to eq 404
+      expect(page).to have_content 'Site Not Found'
     end
   end
 
@@ -20,13 +20,13 @@ describe 'health' do
 
     it 'renders ok' do
       visit_page '/health.txt'
-      page.should have_content 'ok'
+      expect(page).to have_content 'ok'
     end
 
     it 'renders page not found when not txt' do
       visit '/health'
-      page.status_code.should eq 404
-      page.should have_content 'Page Not Found'
+      expect(page.status_code).to eq 404
+      expect(page).to have_content 'Page Not Found'
     end
   end
 end

@@ -28,8 +28,8 @@ describe CouchModel do
       subject.save!
 
       results = CouchPotato.database.view(TestCouchModel.by_id)
-      results.size.should eq 1
-      results.first.should eq subject
+      expect(results.size).to eq 1
+      expect(results.first).to eq subject
     end
   end
 
@@ -39,8 +39,8 @@ describe CouchModel do
       subject.save!
 
       results = TestCouchModel.all
-      results.size.should eq 1
-      results.first.should eq subject
+      expect(results.size).to eq 1
+      expect(results.first).to eq subject
     end
   end
 
@@ -55,18 +55,18 @@ describe CouchModel do
   describe '.find_by_id' do
     it 'returns the model' do
       subject.save!
-      TestCouchModel.find_by_id(subject.id).should eq subject
+      expect(TestCouchModel.find_by_id(subject.id)).to eq subject
     end
 
     it 'returns nil if not found' do
-      TestCouchModel.find_by_id(new_id).should be_nil
+      expect(TestCouchModel.find_by_id(new_id)).to be_nil
     end
   end
 
   describe '#save' do
     it 'saves the model' do
       expect {
-        subject.save.should eq true
+        expect(subject.save).to eq true
       }.to change(TestCouchModel, :count).by(1)
     end
 
@@ -74,7 +74,7 @@ describe CouchModel do
       subject.name = nil
 
       expect {
-        subject.save.should eq false
+        expect(subject.save).to eq false
       }.to change(TestCouchModel, :count).by(0)
     end
   end
@@ -82,7 +82,7 @@ describe CouchModel do
   describe '#save!' do
     it 'saves the model' do
       expect {
-        subject.save!.should eq true
+        expect(subject.save!).to eq true
       }.to change(TestCouchModel, :count).by(1)
     end
 
@@ -112,15 +112,15 @@ describe CouchModel do
 
     it 'updates attributes and saves' do
       expect {
-        subject.update_attributes(name: new_name).should eq true
+        expect(subject.update_attributes(name: new_name)).to eq true
       }.to change(TestCouchModel, :count).by(1)
 
-      subject.name.should eq new_name
+      expect(subject.name).to eq new_name
     end
 
     it 'returns false if errors' do
       expect {
-        subject.update_attributes(name: nil).should eq false
+        expect(subject.update_attributes(name: nil)).to eq false
       }.to change(TestCouchModel, :count).by(0)
     end
 
@@ -128,7 +128,7 @@ describe CouchModel do
       parameters = ActionController::Parameters.new(name: new_name)
 
       subject.update_attributes(parameters.permit(:name))
-      subject.name.should eq new_name
+      expect(subject.name).to eq new_name
     end
 
     it 'rejects bad parameters' do
@@ -137,7 +137,7 @@ describe CouchModel do
       )
 
       subject.update_attributes(parameters.permit(:another))
-      subject.name.should be_nil
+      expect(subject.name).to be_nil
     end
   end
 
@@ -146,16 +146,16 @@ describe CouchModel do
 
     it 'updates attributes and saves' do
       expect {
-        subject.update_attributes!(name: new_name).should eq true
+        expect(subject.update_attributes!(name: new_name)).to eq true
       }.to change(TestCouchModel, :count).by(1)
 
-      subject.name.should eq new_name
+      expect(subject.name).to eq new_name
     end
 
     it 'raises an error if invalid' do
       expect {
         expect {
-          subject.update_attributes!(name: nil).should
+          expect(subject.update_attributes!(name: nil)).to
         }.to raise_error CouchPotato::Database::ValidationsFailedError
       }.to change(TestCouchModel, :count).by(0)
     end
@@ -166,7 +166,7 @@ describe CouchModel do
       )
 
       subject.update_attributes!(parameters.permit(:name))
-      subject.name.should eq new_name
+      expect(subject.name).to eq new_name
     end
 
     it 'rejects bad parameters' do
@@ -182,7 +182,7 @@ describe CouchModel do
 
   describe '#read_attribute' do
     it 'reads an attribute' do
-      subject.read_attribute(:name).should eq name
+      expect(subject.read_attribute(:name)).to eq name
     end
   end
 
@@ -191,7 +191,7 @@ describe CouchModel do
 
     it 'writes an attribute' do
       subject.write_attribute(:name, new_name)
-      subject.name.should eq new_name
+      expect(subject.name).to eq new_name
     end
   end
 end

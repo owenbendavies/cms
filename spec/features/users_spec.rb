@@ -15,12 +15,12 @@ describe 'users' do
     it_behaves_like 'logged in account' do
       it 'has list of users' do
         within '#main_article' do
-          page.should have_content 'Users'
-          page.should have_selector 'h1 i.icon-group'
+          expect(page).to have_content 'Users'
+          expect(page).to have_selector 'h1 i.icon-group'
 
-          page.should have_content 'Email'
-          page.should have_content @account.email
-          page.should have_content @another_account.email
+          expect(page).to have_content 'Email'
+          expect(page).to have_content @account.email
+          expect(page).to have_content @another_account.email
         end
       end
 
@@ -31,7 +31,7 @@ describe 'users' do
           click_link 'Users'
         end
 
-        current_path.should eq go_to_url
+        expect(current_path).to eq go_to_url
       end
     end
   end

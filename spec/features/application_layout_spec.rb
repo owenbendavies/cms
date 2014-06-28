@@ -12,40 +12,40 @@ describe 'application layout' do
     end
 
     it 'has no topbar' do
-      page.should have_no_selector '#topbar'
+      expect(page).to have_no_selector '#topbar'
     end
 
     it 'has title' do
-      find('title', visible: false).native.text.
-        should eq "#{@site.name} | Test Page"
+      expect(find('title', visible: false).native.text).
+        to eq "#{@site.name} | Test Page"
     end
 
     it 'has google analytics' do
-      body.should include(
+      expect(body).to include(
         "_gaq.push(['_setAccount','#{@site.google_analytics}']);"
       )
 
-      body.should include "_gaq.push(['_setDomainName','localhost']);"
+      expect(body).to include "_gaq.push(['_setDomainName','localhost']);"
     end
 
     it 'has header image' do
       image = page.find('h1#site_name a[href="/home"] img')
-      image['src'].should eq @site.header_image.span12.url
-      image['alt'].should eq @site.name
+      expect(image['src']).to eq @site.header_image.span12.url
+      expect(image['alt']).to eq @site.name
     end
 
     it 'has sub title' do
-      find('h2#site_sub_title').text.should eq @site.sub_title
+      expect(find('h2#site_sub_title').text).to eq @site.sub_title
     end
 
     it 'has main menu' do
-      page.should have_link 'Home', href: '/home'
-      page.should have_link 'Test Page', href: '/test_page'
+      expect(page).to have_link 'Home', href: '/home'
+      expect(page).to have_link 'Test Page', href: '/test_page'
     end
 
     it 'has page last updated in footer' do
       within 'footer' do
-        find('#last_update').text.should eq 'Page last updated 2012-03-12'
+        expect(find('#last_update').text).to eq 'Page last updated 2012-03-12'
       end
     end
 
@@ -58,14 +58,14 @@ describe 'application layout' do
       visit_page '/test_page'
 
       within 'footer' do
-        find('#last_update').text.
-          should eq 'Page last updated about a month ago'
+        expect(find('#last_update').text).
+          to eq 'Page last updated about a month ago'
       end
     end
 
     it 'has copyright in footer' do
       within 'footer' do
-        find('#copyright').text.should include "#{@site.copyright} © 2012"
+        expect(find('#copyright').text).to include "#{@site.copyright} © 2012"
       end
     end
   end
@@ -75,14 +75,14 @@ describe 'application layout' do
       let(:topbar) { find('#topbar') }
 
       it 'has link to home' do
-        topbar.should have_link @site.name, href: '/'
+        expect(topbar).to have_link @site.name, href: '/'
       end
 
       it 'has gravatar image' do
         within '#topbar' do
           image = find('img')
-          image['src'].should eq @account.gravatar_url
-          image['alt'].should eq 'Profile Image'
+          expect(image['src']).to eq @account.gravatar_url
+          expect(image['alt']).to eq 'Profile Image'
         end
       end
     end

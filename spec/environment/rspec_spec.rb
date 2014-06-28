@@ -8,7 +8,7 @@ describe RSpec do
         Dir[Rails.root.join('spec/factories/**/*.rb')] -
         Dir[Rails.root.join('spec/*/**/*_spec.rb')]
 
-      bad_files.should eq []
+      expect(bad_files).to eq []
     end
   end
 end

@@ -17,24 +17,24 @@ describe 'messages' do
 
     it_behaves_like 'logged in account' do
       it 'has list of messages', js: true do
-        find('#main_article h1').text.should eq 'Messages'
-        page.should have_selector 'h1 i.icon-envelope'
+        expect(find('#main_article h1').text).to eq 'Messages'
+        expect(page).to have_selector 'h1 i.icon-envelope'
 
-        page.should have_content 'Created at'
-        page.should have_content 'Name'
-        page.should have_content 'Email address'
+        expect(page).to have_content 'Created at'
+        expect(page).to have_content 'Name'
+        expect(page).to have_content 'Email address'
 
-        page.should have_link(
+        expect(page).to have_link(
           'about a month ago',
           href: "/site/messages/#{@message.id}"
         )
 
-        page.should have_link(
+        expect(page).to have_link(
           @message.name,
           href: "/site/messages/#{@message.id}"
         )
 
-        page.should have_link(
+        expect(page).to have_link(
           @message.email_address,
           href: "/site/messages/#{@message.id}"
         )
@@ -47,7 +47,7 @@ describe 'messages' do
           click_link 'Messages'
         end
 
-        current_path.should eq go_to_url
+        expect(current_path).to eq go_to_url
       end
     end
   end
@@ -59,23 +59,23 @@ describe 'messages' do
 
     it_behaves_like 'logged in account' do
       it 'shows message', js: true do
-        find('#main_article h1').text.should eq 'Message'
-        page.should have_selector 'h1 i.icon-envelope'
+        expect(find('#main_article h1').text).to eq 'Message'
+        expect(page).to have_selector 'h1 i.icon-envelope'
 
-        page.should have_content 'Created at'
-        page.should have_content 'about a month ago'
+        expect(page).to have_content 'Created at'
+        expect(page).to have_content 'about a month ago'
 
-        page.should have_content 'Name'
-        page.should have_content @message.name
+        expect(page).to have_content 'Name'
+        expect(page).to have_content @message.name
 
-        page.should have_content 'Email address'
-        page.should have_content @message.email_address
+        expect(page).to have_content 'Email address'
+        expect(page).to have_content @message.email_address
 
-        page.should have_content 'Phone number'
-        page.should have_content @message.phone_number
+        expect(page).to have_content 'Phone number'
+        expect(page).to have_content @message.phone_number
 
-        page.should have_content 'Message'
-        page.should have_content @message.message
+        expect(page).to have_content 'Message'
+        expect(page).to have_content @message.message
       end
 
       it 'does not show phone number when blank' do
@@ -83,15 +83,15 @@ describe 'messages' do
         @message.save!
 
         visit "/site/messages/#{@message.id}"
-        find('#main_article h1').text.should eq 'Message'
+        expect(find('#main_article h1').text).to eq 'Message'
 
-        page.should have_no_content 'Phone number'
+        expect(page).to have_no_content 'Phone number'
       end
 
       it "renders page not found for unknow message" do
         visit "/site/messages/#{new_id}"
-        page.status_code.should eq 404
-        page.should have_content 'Page Not Found'
+        expect(page.status_code).to eq 404
+        expect(page).to have_content 'Page Not Found'
       end
     end
   end

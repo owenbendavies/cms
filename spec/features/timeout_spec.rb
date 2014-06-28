@@ -5,12 +5,12 @@ describe 'timeout' do
 
   it 'does not raise error when no timeout is passed in' do
     visit '/timeout'
-    page.should have_content 'ok'
+    expect(page).to have_content 'ok'
   end
 
   it 'does not raise an error when render less than 1 second' do
     visit '/timeout?seconds=1'
-    page.should have_content 'ok'
+    expect(page).to have_content 'ok'
   end
 
   it 'raises error when render is more than 1 second' do

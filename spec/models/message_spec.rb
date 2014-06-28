@@ -47,7 +47,7 @@ describe Message do
 
     it 'saves site_id' do
       subject.save!
-      subject.site_id.should eq site.id
+      expect(subject.site_id).to eq site.id
     end
   end
 
@@ -156,40 +156,40 @@ describe Message do
           )
         )
 
-        messages.size.should eq 2
-        messages.first.should eq @message2
-        messages.second.should eq @message1
+        expect(messages.size).to eq 2
+        expect(messages.first).to eq @message2
+        expect(messages.second).to eq @message1
       end
     end
 
     describe '.by_site_id_and_id' do
       it 'returns messages' do
-        CouchPotato.database.view(
+        expect(CouchPotato.database.view(
           Message.by_site_id_and_id(key: [site.id, @message1.id])
-        ).should eq [@message1]
+        )).to eq [@message1]
       end
     end
 
     describe '.find_by_site_and_id' do
       it 'finds a message' do
-        Message.find_by_site_and_id(site, @message1.id).should eq @message1
+        expect(Message.find_by_site_and_id(site, @message1.id)).to eq @message1
       end
 
       it 'returns nil when not found' do
-        Message.find_by_site_and_id(site, new_id).should be_nil
+        expect(Message.find_by_site_and_id(site, new_id)).to be_nil
       end
 
       it 'does not find other sites message' do
-        Message.find_by_site_and_id(site, @other_message.id).should be_nil
+        expect(Message.find_by_site_and_id(site, @other_message.id)).to be_nil
       end
     end
 
     describe '.find_all_by_site' do
       it 'returns messages in reverse order' do
         messages = Message.find_all_by_site(site)
-        messages.size.should eq 2
-        messages.first.should eq @message1
-        messages.second.should eq @message2
+        expect(messages.size).to eq 2
+        expect(messages.first).to eq @message1
+        expect(messages.second).to eq @message2
       end
     end
   end
@@ -200,16 +200,16 @@ describe Message do
     subject { FactoryGirl.create(:message, site: site) }
 
     it 'sends an email' do
-      subject.delivered.should eq false
+      expect(subject.delivered).to eq false
 
       expect {
         subject.deliver
       }.to change{ActionMailer::Base.deliveries.size}.by(1)
 
-      subject.delivered.should eq true
+      expect(subject.delivered).to eq true
 
       message = ActionMailer::Base.deliveries.last
-      message.subject.should eq subject.subject
+      expect(message.subject).to eq subject.subject
     end
   end
 
@@ -225,11 +225,11 @@ describe Message do
       }.to change(SpamMessage, :count).by(1)
 
       spam_message = SpamMessage.all.first
-      spam_message.site_id.should eq site.id
-      spam_message.name.should eq subject.name
-      spam_message.email_address.should eq subject.email_address
-      spam_message.phone_number.should eq subject.phone_number
-      spam_message.message.should eq 'facebook followers'
+      expect(spam_message.site_id).to eq site.id
+      expect(spam_message.name).to eq subject.name
+      expect(spam_message.email_address).to eq subject.email_address
+      expect(spam_message.phone_number).to eq subject.phone_number
+      expect(spam_message.message).to eq 'facebook followers'
     end
 
     it 'does not create spam message if valid' do
