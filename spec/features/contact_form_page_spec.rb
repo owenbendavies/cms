@@ -53,7 +53,9 @@ describe 'contact_form page' do
     fill_in 'Message', with: new_message
 
     expect {
-      click_button 'Send Message'
+      expect {
+        click_button 'Send Message'
+      }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
     current_path.should eq "/#{@contact_page.url}/contact_form"
@@ -68,11 +70,37 @@ describe 'contact_form page' do
     fill_in 'Do not fill in', with: new_name
 
     expect {
-      click_button 'Send Message'
+      expect {
+        click_button 'Send Message'
+      }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
     current_path.should eq "/#{@contact_page.url}/contact_form"
-
     it_should_have_form_error 'do not fill in'
+  end
+
+  it 'saves spam messages' do
+    fill_in 'Name', with: new_name
+    fill_in 'Email address', with: new_email
+    fill_in 'Phone number', with: new_phone_number
+    fill_in 'Message', with: 'facebook followers'
+
+    expect {
+      expect {
+        expect {
+          click_button 'Send Message'
+        }.to change(SpamMessage, :count).by(1)
+      }.to_not change(Message, :count)
+    }.to_not change{ActionMailer::Base.deliveries.size}
+
+    current_path.should eq "/#{@contact_page.url}/contact_form"
+    it_should_have_form_error 'Please do not send spam messages.'
+
+    spam_message = SpamMessage.all.first
+    spam_message.site_id.should eq @site.id
+    spam_message.name.should eq new_name
+    spam_message.email_address.should eq new_email
+    spam_message.phone_number.should eq new_phone_number
+    spam_message.message.should eq 'facebook followers'
   end
 end
