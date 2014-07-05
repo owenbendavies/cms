@@ -72,6 +72,7 @@ end
 group :development do
   gem 'byebug'
   gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
   gem 'quiet_assets'
   gem 'thin'
 end
