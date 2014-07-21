@@ -4,7 +4,6 @@
 %ul.thumbnails
   - @images.each do |image|
     %li.span3
-      .thumbnail
-        = link_to(image.file.url, target: '_blank') do
-          = image_tag(image.file.span3.url, alt: image.name)
+      = link_to(image.file.url, target: '_blank', class: 'thumbnail') do
+        = image_tag(image.file.span3.url, alt: image.name)
         %h5= image.name
