@@ -18,7 +18,7 @@ describe 'images' do
         expect(find('#main_article h1').text).to eq 'Images'
         expect(page).to have_selector 'h1 i.icon-picture'
 
-        image = find('#main_article img')
+        image = find("#main_article a[href='#{@image.file.url}'] img")
         expect(image['src']).to eq @image.file.span3.url
         expect(image['alt']).to eq @image.name
 
