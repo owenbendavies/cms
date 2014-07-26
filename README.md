@@ -28,7 +28,7 @@ You will need a system running the following software:
 * Mailcatcher (For development)
 
 For more detailed dependencies, this is the project I use for setting up my
-development and live server: https://github.com/obduk/server_setup
+development and live servers: https://github.com/obduk/setup_server
 
 Setup
 -----
