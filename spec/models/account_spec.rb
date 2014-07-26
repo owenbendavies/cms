@@ -31,30 +31,26 @@ describe Account do
   end
 
   describe 'validate' do
-    it { should validate_length_of(
-      :password,
-      minimum: 8,
-      maximum: 64,
-      allow_blank: true)
-    }
+    it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
 
     it { should validate_presence_of(:email) }
 
-    it { should validate_length_of(:email, maximum: 64) }
+    it { should ensure_length_of(:email).is_at_most(64) }
 
-    it { should allow_values_for(
-      :email,
-      'someone@example.com',
-      'some.one@example.com'
-    )}
+    it {
+      should allow_value(
+        'someone@example.com',
+        'some.one@example.com'
+      ).for(:email)
+    }
 
-    it { should_not allow_values_for(
-      :email,
-      'someone',
-      '@localhost',
-      'someone@',
-      message: 'is not a valid email address'
-    )}
+    it {
+      should_not allow_value(
+        'someone',
+        '@localhost',
+        'someone@',
+      ).for(:email).with_message('is not a valid email address')
+    }
   end
 
   describe '.by_site_host_and_email' do

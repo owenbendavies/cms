@@ -74,39 +74,48 @@ describe Site do
 
     it { should validate_presence_of(:name) }
 
-    it { should validate_length_of(:name, maximum: 64) }
+    it { should ensure_length_of(:name).is_at_most(64) }
 
-    it { should_not allow_values_for(
-      :name,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:name).with_message('HTML not allowed')
+    }
 
-    it { should validate_length_of(:sub_title, maximum: 64) }
+    it { should ensure_length_of(:sub_title).is_at_most(64) }
 
-    it { should validate_inclusion_of(:layout, in: Site::LAYOUTS) }
+    it {
+      should allow_value(
+        'one_column',
+        'right_sidebar',
+        'small_right_sidebar',
+        'fluid',
+      ).for(:layout)
+    }
 
-    it { should validate_length_of(:copyright, maximum: 64) }
+    it { should ensure_length_of(:copyright).is_at_most(64) }
 
-    it { should allow_values_for(
-      :google_analytics,
-      '',
-      'UA-1234-1',
-      'UA-123456-1',
-      'UA-123456-22'
-    )}
+    it {
+      should allow_value(
+        '',
+        'UA-1234-1',
+        'UA-123456-1',
+        'UA-123456-22'
+      ).for(:google_analytics)
+    }
 
-    it { should_not allow_values_for(
-      :google_analytics,
-      'XA-1234-1',
-      'UA-1234',
-      'UA123',
-      'AS'
-    )}
+    it {
+      should_not allow_value(
+        'XA-1234-1',
+        'UA-1234',
+        'UA123',
+        'AS'
+      ).for(:google_analytics)
+    }
 
     it { should validate_presence_of(:updated_by) }
 
-    it { should allow_values_for(:sidebar_html_content, '<a>html</a>') }
+    it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
   end
 
   describe '.by_host' do
