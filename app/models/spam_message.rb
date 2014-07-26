@@ -7,4 +7,5 @@ class SpamMessage
   property :email_address, type: String
   property :phone_number, type: String
   property :message, type: String
+  property :do_not_fill_in, type: String
 end

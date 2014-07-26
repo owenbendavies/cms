@@ -219,7 +219,7 @@ describe Message do
     subject { FactoryGirl.build(:message, site: site) }
 
     it 'creates spam message when spam' do
-      subject.message = 'facebook followers'
+      subject.do_not_fill_in = new_name
 
       expect {
         subject.save_spam_message
@@ -230,7 +230,8 @@ describe Message do
       expect(spam_message.name).to eq subject.name
       expect(spam_message.email_address).to eq subject.email_address
       expect(spam_message.phone_number).to eq subject.phone_number
-      expect(spam_message.message).to eq 'facebook followers'
+      expect(spam_message.message).to eq subject.message
+      expect(spam_message.do_not_fill_in).to eq new_name
     end
 
     it 'does not create spam message if valid' do
