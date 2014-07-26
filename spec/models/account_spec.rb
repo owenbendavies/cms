@@ -33,6 +33,8 @@ describe Account do
   describe 'validate' do
     it { should have_secure_password }
 
+    it { should validate_confirmation_of(:password) }
+
     it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
 
     it { should validate_presence_of(:email) }
