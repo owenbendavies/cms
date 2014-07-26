@@ -32,7 +32,7 @@ Next we need to set up the data for users and sites, run the following:
 RAILS_ENV=production ./bin/interactive
 ```
 
-Now follow the steps in [Setup data](#setup-data).
+Now follow the steps in [Setup data](README.md#setup-data).
 
 ### Deploy
 
