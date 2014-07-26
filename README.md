@@ -20,7 +20,7 @@ Some of the following concepts may be useful to look at:
 
 For an example, check out my personal website at http://www.obduk.com
 
-![Screen Shot](https://raw.github.com/obduk/cms/master/docs/screen_shot.png)
+![Screen Shot](docs/screen_shot.png)
 
 Dependencies
 ------------
