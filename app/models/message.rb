@@ -87,6 +87,7 @@ class Message
     if not valid?
       attributes = to_hash.except(:delivered, "ruby_class")
       spam_message = SpamMessage.new
+      spam_message.do_not_fill_in = self.do_not_fill_in
       spam_message.update_attributes(attributes)
     end
   end

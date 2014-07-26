@@ -83,7 +83,8 @@ describe 'contact_form page' do
     fill_in 'Name', with: new_name
     fill_in 'Email address', with: new_email
     fill_in 'Phone number', with: new_phone_number
-    fill_in 'Message', with: 'facebook followers'
+    fill_in 'Message', with: new_message
+    fill_in 'Do not fill in', with: new_name
 
     expect {
       expect {
@@ -94,13 +95,14 @@ describe 'contact_form page' do
     }.to_not change{ActionMailer::Base.deliveries.size}
 
     expect(current_path).to eq "/#{@contact_page.url}/contact_form"
-    it_should_have_form_error 'Please do not send spam messages.'
+    it_should_have_form_error 'do not fill in'
 
     spam_message = SpamMessage.all.first
     expect(spam_message.site_id).to eq @site.id
     expect(spam_message.name).to eq new_name
     expect(spam_message.email_address).to eq new_email
     expect(spam_message.phone_number).to eq new_phone_number
-    expect(spam_message.message).to eq 'facebook followers'
+    expect(spam_message.message).to eq new_message
+    expect(spam_message.do_not_fill_in).to eq new_name
   end
 end
