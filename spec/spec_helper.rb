@@ -24,6 +24,8 @@ require 'shoulda/matchers'
 Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+
   config.before :all do
     CouchPotato.couchrest_database.create!
   end
