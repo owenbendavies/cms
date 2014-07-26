@@ -12,12 +12,6 @@ a production system. Instead this has been my practice project over the years,
 used for testing new ideas. For example, this project originally used MySQL,
 however I switched it to use CouchDB after doing performance checks.
 
-Some of the following concepts may be useful to look at:
-
-* A complete example of a project using CouchDB
-* Some of the Gems used, e.g. timeout
-* How the tests are written, using a lot of features from rspec
-
 For an example, check out my personal website at http://www.obduk.com
 
 ![Screen Shot](docs/screen_shot.png)
