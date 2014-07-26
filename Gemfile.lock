@@ -223,19 +223,10 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
-    remarkable (4.0.0.alpha4)
-      rspec (>= 2.0.0.alpha11)
-    remarkable_activemodel (4.0.0.alpha4)
-      remarkable (~> 4.0.0.alpha4)
-      rspec (>= 2.0.0.alpha11)
     require_all (1.3.2)
     rest-client (1.6.8)
       mime-types (~> 1.16)
       rdoc (>= 2.4.2)
-    rspec (2.99.0)
-      rspec-core (~> 2.99.0)
-      rspec-expectations (~> 2.99.0)
-      rspec-mocks (~> 2.99.0)
     rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.1)
@@ -264,6 +255,8 @@ GEM
       hashie (>= 1.1.0)
       uuidtools
     sexp_processor (4.4.3)
+    shoulda-matchers (2.6.2)
+      activesupport (>= 3.0.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -385,10 +378,9 @@ DEPENDENCIES
   rails_12factor
   rails_best_practices
   rails_warden
-  remarkable_activemodel
-  rspec-core
   rspec-rails (~> 2.0)
   sentry-raven
+  shoulda-matchers
   simple_form
   simplecov-console
   sprockets (= 2.10.1)

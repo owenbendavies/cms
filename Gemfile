@@ -64,7 +64,6 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-core'
   gem 'rspec-rails', '~> 2.0'
   gem 'travis-lint'
 end
@@ -81,7 +80,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'remarkable_activemodel', require: 'remarkable/active_model'
+  gem 'shoulda-matchers', require: false
   gem 'timecop'
 
   # Code quality tools

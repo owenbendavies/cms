@@ -63,43 +63,40 @@ describe Page do
 
     it { should validate_presence_of(:name) }
 
-    it { should validate_length_of(:name, maximum: 64) }
+    it { should ensure_length_of(:name).is_at_most(64) }
 
-    it { should_not allow_values_for(
-      :name,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:name).with_message('HTML not allowed')
+    }
 
-    it { should_not allow_values_for(
-      :name,
-      '@',
-      'NEW',
-      'New',
-      'account',
-      'health',
-      'login',
-      'logout',
-      'new',
-      'robots',
-      'site',
-      'sitemap',
-      'stylesheets',
-    )}
+    it {
+      should_not allow_value(
+        '@',
+        'NEW',
+        'New',
+        'account',
+        'health',
+        'login',
+        'logout',
+        'new',
+        'robots',
+        'site',
+        'sitemap',
+        'stylesheets',
+      ).for(:name)
+    }
 
-    it { should allow_values_for(
-      :bottom_section,
-      'contact_form',
-      allow_nil: true
-    )}
+    it { should allow_value('contact_form').for(:bottom_section) }
 
-    it { should_not allow_values_for(:bottom_section, 'bad') }
+    it { should_not allow_value('bad').for(:bottom_section) }
 
     it { should validate_presence_of(:created_by) }
 
     it { should validate_presence_of(:updated_by) }
 
-    it { should allow_values_for(:html_content, '<a>html</a>') }
+    it { should allow_value('<a>html</a>').for(:html_content) }
   end
 
   describe '.by_site_id_and_url' do

@@ -58,72 +58,73 @@ describe Message do
 
     it { should validate_presence_of(:name) }
 
-    it { should validate_length_of(:name, maximum: 64) }
+    it { should ensure_length_of(:name).is_at_most(64) }
 
-    it { should_not allow_values_for(
-      :name,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:name).with_message('HTML not allowed')
+    }
 
     it { should validate_presence_of(:email_address) }
 
-    it { should validate_length_of(:email_address, maximum: 64) }
+    it { should ensure_length_of(:email_address).is_at_most(64) }
 
-    it { should allow_values_for(
-      :email_address,
-      'someone@example.com',
-      'some.one@example.com'
-    )}
+    it {
+      should allow_value(
+        'someone@example.com',
+        'some.one@example.com'
+      ).for(:email_address)
+    }
 
-    it { should_not allow_values_for(
-      :email_address,
-      'someone',
-      '@localhost',
-      'someone@',
-      message: 'is not a valid email address'
-    )}
+    it {
+      should_not allow_value(
+        'someone',
+        '@localhost',
+        'someone@',
+      ).for(:email_address).with_message('is not a valid email address')
+    }
 
-    it { should_not allow_values_for(
-      :email_address,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:email_address).with_message('HTML not allowed')
+    }
 
-    it { should validate_length_of(:phone_number, maximum: 32) }
+    it { should ensure_length_of(:phone_number).is_at_most(32) }
 
-    it { should_not allow_values_for(
-      :phone_number,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:phone_number).with_message('HTML not allowed')
+    }
 
     it { should validate_presence_of(:message) }
 
-    it { should validate_length_of(:message, maximum: 2048) }
+    it { should ensure_length_of(:message).is_at_most(2048) }
 
-    it { should_not allow_values_for(
-      :message,
-      '<a>bad</a>',
-      message: 'HTML not allowed'
-    )}
+    it {
+      should_not allow_value(
+        '<a>bad</a>'
+      ).for(:message).with_message('HTML not allowed')
+    }
 
-    it { should_not allow_values_for(
-      :message,
-      'We can increase rankings of your website in search engines.',
-      'How about 100k facebook visitors!',
-      'Millions of Facebook page likes',
-      'We can get you Facebook likes',
-      'Get thousands of facebook followers to your site',
-      'superbsocial',
-      message: 'Please do not send spam messages.'
-    )}
+    it {
+      should_not allow_value(
+        'We can increase rankings of your website in search engines.',
+        'How about 100k facebook visitors!',
+        'Millions of Facebook page likes',
+        'We can get you Facebook likes',
+        'Get thousands of facebook followers to your site',
+        'superbsocial'
+      ).for(:message).with_message('Please do not send spam messages.')
+    }
 
-    it { should validate_length_of(
-      :do_not_fill_in,
-      maximum: 0,
-      message: 'do not fill in'
-    )}
+    it {
+      should ensure_length_of(:do_not_fill_in).
+               is_at_most(0).
+               with_message('do not fill in')
+    }
   end
 
   describe 'views' do
