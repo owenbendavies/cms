@@ -64,6 +64,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'rspec-its'
   gem 'rspec-rails', '~> 2.0'
   gem 'travis-lint'
 end
