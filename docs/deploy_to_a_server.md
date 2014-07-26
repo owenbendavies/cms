@@ -1,5 +1,5 @@
-Deploy to server
-================
+Deploy to a server
+==================
 
 ### Setup
 
