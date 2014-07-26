@@ -113,6 +113,6 @@ Deployment
 This project can either be deployed on a Linux server like Ubuntu, or deployed
 to Heroku. It also uses cloud storage for asset serving.
 
-[Deployment Cloud Storage](docs/deployment_cloud_storage.md)
-[Deploy to Heroku](docs/deploy_to_heroku.md)
-[Deploy to Server](docs/deploy_to_server.md)
+* [Deployment Cloud Storage](docs/deployment_cloud_storage.md)
+* [Deploy to Heroku](docs/deploy_to_heroku.md)
+* [Deploy to Server](docs/deploy_to_server.md)
