@@ -109,4 +109,4 @@ to Heroku. It also uses cloud storage for asset serving.
 
 * [Deployment Cloud Storage](docs/deployment_cloud_storage.md)
 * [Deploy to Heroku](docs/deploy_to_heroku.md)
-* [Deploy to Server](docs/deploy_to_server.md)
+* [Deploy to a server](docs/deploy_to_a_server.md)
