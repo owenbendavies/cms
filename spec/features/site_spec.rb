@@ -129,7 +129,7 @@ describe 'site' do
           visit go_to_url
         end
 
-        it 'should retun page not found' do
+        it 'retuns page not found' do
           expect(page.status_code).to eq 404
         end
 

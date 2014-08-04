@@ -105,7 +105,7 @@ describe Image do
   end
 
   describe '#fog_directory' do
-    it 'should use the site fog_directory' do
+    it 'uses the site fog_directory' do
       site = FactoryGirl.build(:site)
       image = FactoryGirl.build(:image, site: site)
 
