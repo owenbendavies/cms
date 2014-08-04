@@ -14,8 +14,8 @@ describe Site do
     }
   end
 
-  describe 'properties' do
-    subject { Site.new(
+  it 'has accessors for its properties' do
+    site = Site.new(
       host: new_host,
       name: new_company_name,
       sub_title: new_catch_phrase,
@@ -28,45 +28,45 @@ describe Site do
       css_filename: new_filename,
       header_image_filename: new_filename,
       sidebar_html_content: new_message,
-    )}
+    )
 
-    its(:host) { should eq new_host }
-    its(:name) { should eq new_company_name }
-    its(:sub_title) { should eq new_catch_phrase }
-    its(:layout) { should eq 'one_column' }
-    its(:asset_host) { should eq new_host }
-    its(:main_menu) { should eq [{'url' => new_page_url, 'text' => new_name}]}
-    its(:copyright) { should eq new_name }
-    its(:google_analytics) { should eq new_google_analytics }
-    its(:charity_number) { should eq new_number }
-    its(:updated_by) { should eq new_id }
-    its(:css_filename) { should eq new_filename }
-    its(:header_image_filename) { should eq new_filename }
-    its(:sidebar_html_content) { should eq new_message }
+    expect(site.host).to eq new_host
+    expect(site.name).to eq new_company_name
+    expect(site.sub_title).to eq new_catch_phrase
+    expect(site.layout).to eq 'one_column'
+    expect(site.asset_host).to eq new_host
+    expect(site.main_menu).to eq [{'url' => new_page_url, 'text' => new_name}]
+    expect(site.copyright).to eq new_name
+    expect(site.google_analytics).to eq new_google_analytics
+    expect(site.charity_number).to eq new_number
+    expect(site.updated_by).to eq new_id
+    expect(site.css_filename).to eq new_filename
+    expect(site.header_image_filename).to eq new_filename
+    expect(site.sidebar_html_content).to eq new_message
   end
 
-  describe 'header_image' do
-    let(:site) { FactoryGirl.build(:site) }
-    subject { site.header_image }
+  it 'has a header image' do
+    site = FactoryGirl.build(:site)
+    header_image = site.header_image
 
-    its(:url) {
-      should eq File.join(
-        site.asset_host,
-        CarrierWave::Uploader::Base.store_dir,
-        site.header_image_filename
-      )
-    }
+    expect(header_image.url).to eq File.join(
+      site.asset_host,
+      CarrierWave::Uploader::Base.store_dir,
+      site.header_image_filename
+    )
 
-    its(:fog_directory) { should eq site.fog_directory }
+    expect(header_image.fog_directory).to eq site.fog_directory
   end
 
-  describe '#auto_strip_attributes' do
-    subject {
-      FactoryGirl.create(:site, name: " #{new_company_name} ", copyright: '')
-    }
+  it 'auto strips attributes' do
+    site = FactoryGirl.create(
+      :site,
+      name: " #{new_company_name} ",
+      copyright: ''
+    )
 
-    its(:name) { should eq new_company_name }
-    its(:copyright) { should be_nil }
+    expect(site.name).to eq new_company_name
+    expect(site.copyright).to be_nil
   end
 
   describe 'validate' do
@@ -177,7 +177,10 @@ describe Site do
 
   describe '#fog_directory' do
     subject { FactoryGirl.build(:site, host: 'www.example.com') }
-    its(:fog_directory) { should eq 'test_cms_www_example_com' }
+
+    it 'is based on host and environment' do
+      expect(subject.fog_directory).to eq 'test_cms_www_example_com'
+    end
   end
 
   describe '#css' do
@@ -189,9 +192,14 @@ describe Site do
         subject.save!
       end
 
-      its(:css) { should eq "body {\r\n  padding: 4em;\r\n}" }
+      it 'returns css' do
+        expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+      end
 
-      its(:css_filename) { should eq 'e6df26f541ebad8e8fed26a84e202a7c.css' }
+      it 'returns css_filename' do
+        expect(subject.css_filename).
+          to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
+      end
 
       it 'saves css as attachment' do
         expect(subject._attachments.size).to eq 1
@@ -201,7 +209,9 @@ describe Site do
     end
 
     context 'when empty' do
-      its(:css) { should be_nil }
+      it 'returns nil' do
+        expect(subject.css).to be_nil
+      end
     end
   end
 

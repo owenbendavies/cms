@@ -14,8 +14,6 @@ describe CouchModel do
 
   subject { TestCouchModel.new(name: name) }
 
-  its(:name) { should eq name }
-
   describe 'validate' do
     subject { TestCouchModel.new }
 

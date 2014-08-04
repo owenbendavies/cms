@@ -3,15 +3,14 @@ require 'spec_helper'
 describe Features do
   subject { Features.new }
 
-  describe 'properties' do
-    its(:edit_css) { should eq true }
+  it 'has accessors for its properties' do
+    features = Features.new(edit_css: false)
+    expect(features.edit_css).to eq false
   end
 
-  context 'when saved' do
-    before do
-      subject.save!
-    end
-
-    its(:id) { should eq 'features' }
+  it 'sets its id as features on save' do
+    features = Features.new
+    features.save!
+    expect(features.id).to eq 'features'
   end
 end

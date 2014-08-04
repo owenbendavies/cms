@@ -93,7 +93,4 @@ describe ImageUploader do
       ].sort
     end
   end
-
-  its(:asset_host) { should eq site.asset_host }
-  its(:fog_directory) { should eq site.fog_directory }
 end

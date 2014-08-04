@@ -3,45 +3,40 @@ require 'spec_helper'
 describe Image do
   include_context 'new_fields'
 
-  describe 'properties' do
-    let(:site) { FactoryGirl.build(:site) }
+  it 'has accessors for its properties' do
+    site = FactoryGirl.build(:site)
 
-    subject { Image.new(
-      site_id: new_id,
+    image = Image.new(
       name: new_name,
       created_by: new_id,
       updated_by: new_id,
       site: site,
       filename: new_filename,
-    )}
+    )
 
-    its(:site_id) { should eq new_id }
-    its(:name) { should eq new_name }
-    its(:created_by) { should eq new_id }
-    its(:updated_by) { should eq new_id }
-    its(:site) { should eq site }
-    its(:filename) { should eq new_filename }
-    its(:asset_host) { should eq site.asset_host }
-    its(:fog_directory) { should eq site.fog_directory }
+    expect(image.name).to eq new_name
+    expect(image.created_by).to eq new_id
+    expect(image.updated_by).to eq new_id
+    expect(image.site).to eq site
   end
 
-  describe 'file' do
-    let(:site) { FactoryGirl.build(:site) }
-    let(:image) { FactoryGirl.build(:image, site: site) }
-    subject { image.file }
+  it 'has a file' do
+    site = FactoryGirl.build(:site)
+    image = FactoryGirl.build(:image, site: site)
+    file = image.file
 
-    its(:url) { should eq File.join(
+    expect(file.url).to eq File.join(
       image.asset_host,
       CarrierWave::Uploader::Base.store_dir,
       image.filename
-    )}
+    )
 
-    its(:fog_directory) { should eq image.fog_directory }
+    expect(file.fog_directory).to eq image.fog_directory
   end
 
-  describe '#auto_strip_attributes' do
-    subject { FactoryGirl.create(:image, name: "  #{new_name} ")}
-    its(:name) { should eq new_name }
+  it 'auto strips attributes' do
+    image = FactoryGirl.create(:image, name: "  #{new_name} ")
+    expect(image.name).to eq new_name
   end
 
   describe '#save' do
@@ -106,6 +101,15 @@ describe Image do
       expect(images.first).to eq image1
       expect(images.first.site).to eq site
       expect(images.second).to eq image2
+    end
+  end
+
+  describe '#fog_directory' do
+    it 'should use the site fog_directory' do
+      site = FactoryGirl.build(:site)
+      image = FactoryGirl.build(:image, site: site)
+
+      expect(image.fog_directory).to eq site.fog_directory
     end
   end
 end

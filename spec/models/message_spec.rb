@@ -3,41 +3,43 @@ require 'spec_helper'
 describe Message do
   include_context 'new_fields'
 
-  describe 'properties' do
-    let(:site) { FactoryGirl.build(:site) }
+  it 'has accessors for its properties' do
+    site = FactoryGirl.build(:site)
 
-    subject { Message.new(
-      site_id: new_id,
+    message = Message.new(
       subject: new_name,
       name: new_name,
       email_address: new_email,
       phone_number: new_phone_number,
       message: new_message,
       site: site,
-    )}
+    )
 
-    its(:site_id) { should eq new_id }
-    its(:subject) { should eq new_name }
-    its(:name) { should eq new_name }
-    its(:email_address) { should eq new_email }
-    its(:phone_number) { should eq new_phone_number }
-    its(:message) { should eq new_message }
-    its(:site) { should eq site }
+    expect(message.subject).to eq new_name
+    expect(message.name).to eq new_name
+    expect(message.email_address).to eq new_email
+    expect(message.phone_number).to eq new_phone_number
+    expect(message.site).to eq site
   end
 
-  describe 'auto_strip_attributes' do
-    before { FactoryGirl.create(:account) }
+  it 'auto strips attributes' do
+    message = FactoryGirl.create(
+      :message,
+      email_address: "  #{new_email} ",
+    )
 
-    subject {
-      FactoryGirl.create(:message,
-        email_address: "  #{new_email} ",
-        message: " #{new_message}  ",
-        site: FactoryGirl.create(:site),
-      )
-    }
+    expect(message.email_address).to eq new_email
+  end
 
-    its(:email_address) { should eq new_email }
-    its(:message) { should eq " #{new_message}  " }
+  it 'does not auto strip message' do
+    text = " #{new_message}  "
+
+    message = FactoryGirl.create(
+      :message,
+      message: text,
+    )
+
+    expect(message.message).to eq text
   end
 
   describe '#save' do
