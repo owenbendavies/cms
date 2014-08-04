@@ -54,7 +54,7 @@ describe MessageMailer do
 
     subject { ActionMailer::Base.deliveries.last }
 
-    it 'should remove www from email' do
+    it 'removes www from email' do
       expect(subject.header["From"].to_s.gsub('"', '')).
         to eq "#{site.name} <noreply@example.com>"
     end
