@@ -3,31 +3,31 @@ require 'spec_helper'
 describe Account do
   include_context 'new_fields'
 
-  describe 'properties' do
-    subject {
-      Account.new(
-        email: new_email,
-        password: new_password,
-        password_confirmation: new_password,
-        sites: [new_host],
-      )
-    }
+  it 'has a gravatar_url' do
+    account = Account.new(email: 'test@example.com')
+    md5 = '55502f40dc8b7c769880b10874abc9d0'
 
-    its(:gravatar_url) {
-      md5 = Digest::MD5.hexdigest(new_email)
-      should eq  "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
-    }
-
-    its(:email) { should eq new_email }
-    its(:sites) { should eq [new_host] }
-    its(:password) { should eq new_password }
-    its(:password_confirmation) { should eq new_password }
+    expect(account.gravatar_url).
+      to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
   end
 
-  describe 'auto_strip_attributes' do
-    subject { FactoryGirl.create(:account, email: "  #{new_email} ") }
+  it 'has accessors for its properties' do
+    account = Account.new(
+      email: new_email,
+      password: new_password,
+      password_confirmation: new_password,
+      sites: [new_host],
+    )
 
-    its(:email) { should eq new_email }
+    expect(account.email).to eq new_email
+    expect(account.password).to eq new_password
+    expect(account.password_confirmation).to eq new_password
+    expect(account.sites).to eq [new_host]
+  end
+
+  it 'auto strips attributes' do
+    account = FactoryGirl.create(:account, email: "  #{new_email} ")
+    expect(account.email).to eq new_email
   end
 
   describe 'validate' do

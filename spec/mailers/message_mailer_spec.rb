@@ -17,17 +17,27 @@ describe MessageMailer do
 
     subject { ActionMailer::Base.deliveries.last }
 
-    it 'should have from address of site' do
+    it 'has from address of site' do
       expect(subject.header["From"].to_s.gsub('"', '')).
         to eq "#{site.name} <noreply@#{site.host}>"
     end
 
-    its(:to) { should eq [@account.email] }
-    its(:subject) { should eq message.subject }
-    its(:body) { should include "Name: #{message.name}" }
-    its(:body) { should include "Email address: #{message.email_address}" }
-    its(:body) { should include "Phone number: #{message.phone_number}" }
-    its(:body) { should include "Message: #{message.message}" }
+    it 'is sent to account email address' do
+      expect(subject.to).to eq [@account.email]
+    end
+
+    it 'includes message subject' do
+      expect(subject.subject).to eq message.subject
+    end
+
+    it 'has a message body' do
+      body = subject.body
+
+      expect(body).to include "Name: #{message.name}"
+      expect(body).to include "Email address: #{message.email_address}"
+      expect(body).to include "Phone number: #{message.phone_number}"
+      expect(body).to include "Message: #{message.message}"
+    end
   end
 
   describe 'site with www host' do

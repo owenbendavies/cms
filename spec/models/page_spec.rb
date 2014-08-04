@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Page do
   include_context 'new_fields'
 
-  describe 'properties' do
-    subject { Page.new(
+  it 'has accessors for its properties' do
+    page = Page.new(
       site_id: new_id,
       url: new_page_url,
       name: new_name,
@@ -12,50 +12,58 @@ describe Page do
       created_by: new_id,
       updated_by: new_id,
       html_content: new_message,
-    )}
+    )
 
-    its(:site_id) { should eq new_id }
-    its(:url) { should eq new_page_url }
-    its(:name) { should eq new_name }
-    its(:private) { should eq false }
-    its(:bottom_section) { should eq 'contact_form' }
-    its(:created_by) { should eq new_id }
-    its(:updated_by) { should eq new_id }
-    its(:html_content) { should eq new_message }
-    its(:to_param) { should eq new_page_url }
+    expect(page.site_id).to eq new_id
+    expect(page.url).to eq new_page_url
+    expect(page.name).to eq new_name
+    expect(page.private).to eq false
+    expect(page.bottom_section).to eq 'contact_form'
+    expect(page.created_by).to eq new_id
+    expect(page.updated_by).to eq new_id
+    expect(page.html_content).to eq new_message
+    expect(page.to_param).to eq new_page_url
   end
 
-  context 'saved page' do
-    subject { FactoryGirl.build(:page) }
-    let(:time) { Time.now }
+  it 'auto strips attributes' do
+    page = FactoryGirl.create(
+      :page,
+      name: "  #{new_name} ",
+    )
 
-    before do
+    expect(page.name).to eq new_name
+  end
+
+  it 'does not auto strip html_content' do
+    text = "  #{new_message}"
+
+    page = FactoryGirl.create(
+      :page,
+      html_content: text,
+    )
+
+    expect(page.html_content).to eq text
+  end
+
+  describe 'on save' do
+    it 'sets updated_at to now' do
+      page = FactoryGirl.build(:page)
+      time = Time.now
+
       Timecop.freeze(time) do
-        subject.save!
+        page.save!
       end
+
+      expect(page.updated_at).to eq time.to_s
     end
 
-    its(:updated_at) { should eq time.to_s }
-  end
+    it 'sets url from name' do
+      page = FactoryGirl.build(:page, name: 'Test Page')
+      page.save!
 
-  describe 'auto_strip_attributes' do
-    subject {
-      FactoryGirl.create(:page,
-        name: "  #{new_name} ",
-        html_content: "  #{new_message} ",
-      )
-    }
-
-    its(:name) { should eq new_name }
-    its(:html_content) { should eq "  #{new_message} " }
-  end
-
-  context 'updated name' do
-    subject { FactoryGirl.build(:page, name: 'Test Page') }
-    before { subject.save! }
-
-    its(:name) { should eq 'Test Page' }
-    its(:url) { should eq 'test_page' }
+      expect(page.name).to eq 'Test Page'
+      expect(page.url).to eq 'test_page'
+    end
   end
 
   describe 'validate' do
