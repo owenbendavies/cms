@@ -1,5 +1,5 @@
 #coding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
   include_context 'new_fields'

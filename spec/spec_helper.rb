@@ -1,37 +1,17 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  require 'simplecov-console'
-  require 'coveralls'
-
-  SimpleCov.minimum_coverage 100
-
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-    SimpleCov::Formatter::HTMLFormatter,
-    SimpleCov::Formatter::Console,
-    Coveralls::SimpleCov::Formatter,
-  ]
-
-  SimpleCov.start 'rails'
-end
-
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-
-require 'rspec/rails'
-require 'shoulda/matchers'
-
-Dir[Rails.root.join('spec/support/**/*.rb')].each {|f| require f}
-
 RSpec.configure do |config|
-  config.infer_spec_type_from_file_location!
-
-  config.before :all do
-    CouchPotato.couchrest_database.create!
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
+  else
+    config.order = :random
+    config.profile_examples = 10
   end
 
-  config.before do
-    if CouchPotato.couchrest_database.info['update_seq'] > 0
-      CouchPotato.couchrest_database.recreate!
-    end
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = :expect
+  end
+
+  config.mock_with :rspec do |mocks|
+    mocks.syntax = :expect
+    mocks.verify_partial_doubles = true
   end
 end
