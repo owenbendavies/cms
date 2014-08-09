@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'health' do
+RSpec.describe 'health', type: :feature do
   context 'unknown site' do
     it 'renders ok' do
       visit_page '/health.txt'

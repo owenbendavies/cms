@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'robots' do
+RSpec.describe 'robots', type: :feature do
   include_context 'default_site'
 
   describe 'show' do

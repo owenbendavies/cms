@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'stylesheets' do
+RSpec.describe 'stylesheets', type: :feature do
   context 'known site' do
     before do
       @site = FactoryGirl.build(:site)

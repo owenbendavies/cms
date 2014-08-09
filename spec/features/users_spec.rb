@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'users' do
+RSpec.describe 'users', type: :feature do
   include_context 'default_site'
 
   before do

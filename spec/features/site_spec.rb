@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'site' do
+RSpec.describe 'site', type: :feature do
   include_context 'default_site'
   include_context 'new_fields'
 

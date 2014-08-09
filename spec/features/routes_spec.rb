@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'routes' do
+RSpec.describe 'routes', type: :feature do
   include_context 'default_site'
   include_context 'new_fields'
 

@@ -1,7 +1,7 @@
 #coding: utf-8
 require 'rails_helper'
 
-RSpec.describe 'application layout' do
+RSpec.describe 'application layout', type: :feature do
   include_context 'default_site'
 
   it_behaves_like 'non logged in account' do
