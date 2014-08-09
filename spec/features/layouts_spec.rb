@@ -1,7 +1,7 @@
 #coding: utf-8
 require 'rails_helper'
 
-describe 'layouts' do
+RSpec.describe 'layouts' do
   include_context 'default_site'
 
   shared_context 'layout' do |layout|

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'users' do
+RSpec.describe 'users' do
   include_context 'default_site'
 
   before do

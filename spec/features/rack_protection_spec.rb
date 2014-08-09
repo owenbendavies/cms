@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'rack protection' do
+RSpec.describe 'rack protection' do
   include_context 'default_site'
 
   it 'protects against attacks' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ImageUploader do
+RSpec.describe ImageUploader do
   include CarrierWave::Test::Matchers
   include_context 'clear_uploaded_files'
 

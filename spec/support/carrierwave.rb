@@ -1,5 +1,5 @@
 module CarrierWaveHelpers
-  shared_context 'clear_uploaded_files' do
+  RSpec.shared_context 'clear_uploaded_files' do
     before do
       FileUtils.rm_rf File.join(
         CarrierWave.root,

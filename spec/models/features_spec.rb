@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Features do
+RSpec.describe Features do
   subject { Features.new }
 
   it 'has accessors for its properties' do

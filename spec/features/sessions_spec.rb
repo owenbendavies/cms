@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'sessions' do
+RSpec.describe 'sessions' do
   include_context 'default_site'
   include_context 'new_fields'
 

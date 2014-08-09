@@ -1,7 +1,7 @@
 #coding: utf-8
 require 'rails_helper'
 
-describe ApplicationHelper do
+RSpec.describe ApplicationHelper do
   include_context 'new_fields'
 
   describe 'page_title' do

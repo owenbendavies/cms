@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'images' do
+RSpec.describe 'images' do
   include_context 'default_site'
   include_context 'new_fields'
 

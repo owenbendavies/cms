@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'request logging' do
+RSpec.describe 'request logging' do
   include_context 'default_site'
   include_context 'new_fields'
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Page do
+RSpec.describe Page do
   include_context 'new_fields'
 
   it 'has accessors for its properties' do

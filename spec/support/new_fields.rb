@@ -3,7 +3,7 @@ module NewFields
     Digest::MD5.hexdigest(rand.to_s)
   end
 
-  shared_context 'new_fields' do
+  RSpec.shared_context 'new_fields' do
     let(:new_catch_phrase) { Faker::Company.catch_phrase }
     let(:new_company_name) { Faker::Company.name.gsub("'", '') }
     let(:new_email) { Faker::Internet.safe_email }
