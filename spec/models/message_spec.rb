@@ -234,6 +234,9 @@ describe Message do
       expect(spam_message.phone_number).to eq subject.phone_number
       expect(spam_message.message).to eq subject.message
       expect(spam_message.do_not_fill_in).to eq new_name
+
+      expect(spam_message.error_messages).
+        to eq({"do_not_fill_in" => ["do not fill in"]})
     end
 
     it 'does not create spam message if valid' do
