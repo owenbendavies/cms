@@ -83,11 +83,18 @@ class Message
     self.save!
   end
 
+  def error_messages
+    self.errors.messages.delete_if do |_, message|
+      message.blank?
+    end
+  end
+
   def save_spam_message
     if not valid?
       attributes = to_hash.except(:delivered, "ruby_class")
       spam_message = SpamMessage.new
       spam_message.do_not_fill_in = self.do_not_fill_in
+      spam_message.error_messages = error_messages
       spam_message.update_attributes(attributes)
     end
   end
