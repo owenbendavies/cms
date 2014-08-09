@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe MessageMailer do
+RSpec.describe MessageMailer do
   include_context 'new_fields'
 
   describe '.new_message' do

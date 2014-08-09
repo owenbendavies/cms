@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'contact_form page' do
+RSpec.describe 'contact_form page' do
   include_context 'default_site'
   include_context 'new_fields'
 

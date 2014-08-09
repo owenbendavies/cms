@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Site do
+RSpec.describe Site do
   include_context 'new_fields'
 
   describe 'LAYOUTS' do

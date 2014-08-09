@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'unknown domain' do
+RSpec.describe 'unknown domain' do
   it 'displays site not found' do
     visit '/home'
     expect(page.status_code).to eq 404

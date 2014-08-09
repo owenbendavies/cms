@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'account' do
+RSpec.describe 'account' do
   include_context 'default_site'
   include_context 'new_fields'
 

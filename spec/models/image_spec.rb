@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Image do
+RSpec.describe Image do
   include_context 'new_fields'
 
   it 'has accessors for its properties' do

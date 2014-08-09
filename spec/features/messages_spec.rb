@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'messages' do
+RSpec.describe 'messages' do
   include_context 'default_site'
   include_context 'new_fields'
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RSpec do
+RSpec.describe RSpec do
   describe 'spec files' do
     it 'has correctly named files' do
       bad_files = Dir[Rails.root.join('spec/*/**/*.rb')] -

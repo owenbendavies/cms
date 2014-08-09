@@ -25,7 +25,7 @@ module FeatureHelpers
     expect(find('.help-inline').text).to eq text
   end
 
-  shared_context 'default_site' do
+  RSpec.shared_context 'default_site' do
     before do
       Timecop.freeze('2012-03-12 09:23:05') do
         @account = FactoryGirl.create(:account)
@@ -47,7 +47,7 @@ module FeatureHelpers
     end
   end
 
-  shared_context 'logged in account' do
+  RSpec.shared_context 'logged in account' do
     before do
       login_as @account
 
@@ -59,13 +59,13 @@ module FeatureHelpers
     end
   end
 
-  shared_context 'non logged in account' do
+  RSpec.shared_context 'non logged in account' do
     before do
       visit_page go_to_url if defined? go_to_url
     end
   end
 
-  shared_context 'restricted page' do
+  RSpec.shared_context 'restricted page' do
     before do
       visit go_to_url
     end

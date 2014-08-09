@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Account do
+RSpec.describe Account do
   include_context 'new_fields'
 
   it 'has a gravatar_url' do
