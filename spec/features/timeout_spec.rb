@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'timeout' do
+RSpec.describe 'timeout', type: :feature do
   include_context 'default_site'
 
   it 'does not raise error when no timeout is passed in' do

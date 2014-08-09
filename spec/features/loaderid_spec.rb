@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'loaderio' do
+RSpec.describe 'loaderio', type: :feature do
   include_context 'default_site'
 
   it 'renders loaderio verification' do

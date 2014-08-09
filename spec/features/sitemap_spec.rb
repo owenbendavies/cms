@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'sitemap' do
+RSpec.describe 'sitemap', type: :feature do
   include_context 'default_site'
   before do
     site = Site.find_by_host('localhost')
