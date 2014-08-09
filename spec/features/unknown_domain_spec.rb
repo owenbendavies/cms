@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'unknown domain' do
   it 'displays site not found' do
