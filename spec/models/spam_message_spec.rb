@@ -11,7 +11,8 @@ describe SpamMessage do
       email_address: new_email,
       phone_number: new_phone_number,
       message: new_message,
-      do_not_fill_in: new_name
+      do_not_fill_in: new_name,
+      error_messages: {:field => ["error message"]},
     )
 
     expect(spam_message.site_id).to eq new_id
@@ -21,5 +22,6 @@ describe SpamMessage do
     expect(spam_message.phone_number).to eq new_phone_number
     expect(spam_message.message).to eq new_message
     expect(spam_message.do_not_fill_in).to eq new_name
+    expect(spam_message.error_messages).to eq({:field => ["error message"]})
   end
 end
