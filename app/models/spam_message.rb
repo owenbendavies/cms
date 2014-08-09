@@ -8,4 +8,5 @@ class SpamMessage
   property :phone_number, type: String
   property :message, type: String
   property :do_not_fill_in, type: String
+  property :error_messages, type: Hash
 end
