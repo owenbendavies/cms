@@ -34,7 +34,7 @@ RSpec.describe Image do
     expect(file.fog_directory).to eq image.fog_directory
   end
 
-  it 'auto strips attributes' do
+  it 'strips attributes' do
     image = FactoryGirl.create(:image, name: "  #{new_name} ")
     expect(image.name).to eq new_name
   end

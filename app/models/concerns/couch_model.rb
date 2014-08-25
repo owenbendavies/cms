@@ -2,7 +2,6 @@ module CouchModel
   extend ActiveSupport::Concern
 
   included do
-    extend AutoStripAttributes
     extend CarrierWave::ActiveRecord
     include CouchPotato::Persistence
 

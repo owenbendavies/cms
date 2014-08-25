@@ -25,7 +25,7 @@ RSpec.describe Page do
     expect(page.to_param).to eq new_page_url
   end
 
-  it 'auto strips attributes' do
+  it 'strips attributes' do
     page = FactoryGirl.create(
       :page,
       name: "  #{new_name} ",
@@ -34,7 +34,7 @@ RSpec.describe Page do
     expect(page.name).to eq new_name
   end
 
-  it 'does not auto strip html_content' do
+  it 'does not strip html_content' do
     text = "  #{new_message}"
 
     page = FactoryGirl.create(

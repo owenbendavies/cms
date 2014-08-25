@@ -8,7 +8,7 @@ class Account
   property :email, type: String
   property :sites, type: Array, default: []
 
-  auto_strip_attributes *property_names, squish: true
+  strip_attributes only: :email, collapse_spaces: true
 
   validates *property_names, no_html: true
 

@@ -10,7 +10,7 @@ gem 'rack-timeout', '0.1.0beta3'
 gem 'rails_warden'
 
 # Model Gems
-gem 'auto_strip_attributes'
+gem 'strip_attributes'
 gem 'bcrypt'
 gem 'carrierwave', '0.9.0'
 gem 'couch_potato'

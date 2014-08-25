@@ -7,10 +7,9 @@ class Message
   property :email_address, type: String
   property :phone_number, type: String
   property :delivered, type: :boolean, default: false
-
-  auto_strip_attributes *property_names, squish: true
-
   property :message, type: String
+
+  strip_attributes except: :message, collapse_spaces: true
 
   attr_accessor :do_not_fill_in
   attr_accessor :site

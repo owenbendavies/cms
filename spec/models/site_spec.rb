@@ -58,7 +58,7 @@ RSpec.describe Site do
     expect(header_image.fog_directory).to eq site.fog_directory
   end
 
-  it 'auto strips attributes' do
+  it 'strips attributes' do
     site = FactoryGirl.create(
       :site,
       name: " #{new_company_name} ",
