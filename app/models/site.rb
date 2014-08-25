@@ -23,11 +23,11 @@ class Site
   property :header_image_filename, type: String
   mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
 
-  auto_strip_attributes *property_names, squish: true
-
   validates *property_names, no_html: true
 
   property :sidebar_html_content, type: String
+
+  strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
   validates :host,
     presence: true

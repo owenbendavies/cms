@@ -22,7 +22,7 @@ RSpec.describe Message do
     expect(message.site).to eq site
   end
 
-  it 'auto strips attributes' do
+  it 'strips attributes' do
     message = FactoryGirl.create(
       :message,
       email_address: "  #{new_email} ",
@@ -31,7 +31,7 @@ RSpec.describe Message do
     expect(message.email_address).to eq new_email
   end
 
-  it 'does not auto strip message' do
+  it 'does not strip message' do
     text = " #{new_message}  "
 
     message = FactoryGirl.create(

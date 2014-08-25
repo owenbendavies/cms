@@ -25,7 +25,7 @@ RSpec.describe Account do
     expect(account.sites).to eq [new_host]
   end
 
-  it 'auto strips attributes' do
+  it 'strips attributes' do
     account = FactoryGirl.create(:account, email: "  #{new_email} ")
     expect(account.email).to eq new_email
   end

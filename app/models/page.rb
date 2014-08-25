@@ -21,11 +21,11 @@ class Page
   property :created_by, type: String
   property :updated_by, type: String
 
-  auto_strip_attributes *property_names, squish: true
-
   validates *property_names, no_html: true
 
   property :html_content, type: String
+
+  strip_attributes except: :html_content, collapse_spaces: true
 
   set_callback :save, :before do
     self.url = new_url

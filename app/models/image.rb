@@ -9,7 +9,7 @@ class Image
   property :filename, type: String
   mount_uploader :file, ImageUploader, mount_on: :filename
 
-  auto_strip_attributes *property_names, squish: true
+  strip_attributes collapse_spaces: true
 
   attr_accessor :site
 
