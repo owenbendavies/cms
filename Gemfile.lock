@@ -81,7 +81,7 @@ GEM
     colorize (0.7.3)
     columnize (0.8.9)
     commonjs (0.2.7)
-    couch_potato (1.2.0)
+    couch_potato (1.3.0)
       activemodel
       couchrest (~> 1.2.0)
       json (~> 1.6)
