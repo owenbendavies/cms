@@ -13,7 +13,7 @@ config/deploy/production.rb
 
 Sign up to the following services
 
-* Email servuce (e.g. [Amazon SES](http://aws.amazon.com/ses/), [SendGrid](http://sendgrid.com/))
+* Email service (e.g. [Amazon SES](http://aws.amazon.com/ses/) or [SendGrid](http://sendgrid.com/))
 * [New Relic](http://newrelic.com/) for system monitoring
 * [Sentry](https://www.getsentry.com/) for error tracking
 * [loader.io](http://loader.io/) for load testing
