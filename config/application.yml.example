@@ -28,8 +28,6 @@ test:
 production:
   SECRET_KEY:
 
-  HEROKU: true
-
   COUCHDB_NAME: 'cms-production'
 
   ASSET_HOST:

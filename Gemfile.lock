@@ -132,8 +132,6 @@ GEM
     gravtastic (3.2.6)
     haml (4.0.5)
       tilt
-    heroku-deflater (0.5.3)
-      rack (>= 1.4.5)
     highline (1.6.21)
     hike (1.2.3)
     hirb (0.7.2)
@@ -193,9 +191,6 @@ GEM
     rails-timeago (2.11.1)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
-    rails_12factor (0.0.2)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_best_practices (1.15.4)
       activesupport
       awesome_print
@@ -206,8 +201,6 @@ GEM
       json
       require_all
       ruby-progressbar
-    rails_serve_static_assets (0.0.2)
-    rails_stdout_logging (0.0.3)
     rails_warden (0.5.8)
       warden (>= 1.0.0)
     railties (4.0.9)
@@ -363,7 +356,6 @@ DEPENDENCIES
   google-analytics-turbolinks
   gravtastic
   haml
-  heroku-deflater
   jquery-rails
   jquery-turbolinks
   less-rails
@@ -375,7 +367,6 @@ DEPENDENCIES
   rack-timeout (= 0.1.0beta3)
   rails (= 4.0.9)
   rails-timeago
-  rails_12factor
   rails_best_practices
   rails_warden
   rspec-rails
