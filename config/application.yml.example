@@ -24,23 +24,3 @@ test:
 
   LOADERIO_VERIFICATION_TOKEN: 'loaderio-12345'
   TEST_ROUTES: 'true'
-
-production:
-  SECRET_KEY:
-
-  COUCHDB_NAME: 'cms-production'
-
-  ASSET_HOST:
-
-  UPLOADS_STORAGE: 'fog'
-  FOG_PROVIDER: 'Rackspace'
-  RACKSPACE_API_KEY:
-  RACKSPACE_AUTH_URL:
-  RACKSPACE_USERNAME:
-
-  SMTP_ADDRESS: 'smtp.sendgrid.net'
-  SMTP_PORT: '587'
-
-  NEW_RELIC_APP_NAME: 'cms-production'
-
-  LOADERIO_VERIFICATION_TOKEN:
