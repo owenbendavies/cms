@@ -1,5 +1,5 @@
 defaults: &defaults
-  database: <%= [(ENV['COUCHDB_URL'] || ENV['CLOUDANT_URL']), ENV['COUCHDB_NAME']].compact.join('/') %>
+  database: <%= ENV['COUCHDB_URL'] %>
 
 development:
   <<: *defaults
