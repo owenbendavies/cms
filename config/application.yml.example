@@ -1,8 +1,7 @@
 development:
   SECRET_KEY:
 
-  COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'cms-development'
+  COUCHDB_URL: 'http://127.0.0.1:5984/cms-development'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'uploads'
@@ -16,33 +15,10 @@ development:
 test:
   SECRET_KEY:
 
-  COUCHDB_URL: 'http://127.0.0.1:5984'
-  COUCHDB_NAME: 'cms-test'
+  COUCHDB_URL: 'http://127.0.0.1:5984/cms-test'
 
   UPLOADS_STORAGE: 'file'
   UPLOADS_STORE_DIR: 'test_uploads'
 
   LOADERIO_VERIFICATION_TOKEN: 'loaderio-12345'
   TEST_ROUTES: 'true'
-
-production:
-  SECRET_KEY:
-
-  HEROKU: true
-
-  COUCHDB_NAME: 'cms-production'
-
-  ASSET_HOST:
-
-  UPLOADS_STORAGE: 'fog'
-  FOG_PROVIDER: 'Rackspace'
-  RACKSPACE_API_KEY:
-  RACKSPACE_AUTH_URL:
-  RACKSPACE_USERNAME:
-
-  SMTP_ADDRESS: 'smtp.sendgrid.net'
-  SMTP_PORT: '587'
-
-  NEW_RELIC_APP_NAME: 'cms-production'
-
-  LOADERIO_VERIFICATION_TOKEN:

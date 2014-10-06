@@ -54,11 +54,6 @@ gem 'syslogger'
 # System management
 gem 'figaro'
 
-group :heroku do
-  gem 'heroku-deflater'
-  gem 'rails_12factor'
-end
-
 group :production do
   gem 'unicorn'
 end
