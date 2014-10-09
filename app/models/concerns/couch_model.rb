@@ -2,17 +2,13 @@ module CouchModel
   extend ActiveSupport::Concern
 
   included do
-    extend CarrierWave::ActiveRecord
+    extend CarrierWaveCouchPotato
     include CouchPotato::Persistence
 
     view :by_id, key: :_id
   end
 
   module ClassMethods
-    # Method only needed to get CarrierWave working
-    def after_commit(*args)
-    end
-
     def all
       CouchPotato.database.view(by_id)
     end

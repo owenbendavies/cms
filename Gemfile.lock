@@ -69,6 +69,9 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
+    carrierwave_couch_potato (0.0.1)
+      carrierwave (>= 0.8.0, < 0.11.0)
+      couch_potato (>= 1.0.0, < 1.4.0)
     code_analyzer (0.4.5)
       sexp_processor
     coffee-rails (4.0.1)
@@ -346,6 +349,7 @@ DEPENDENCIES
   capistrano-rbenv
   capybara-webkit
   carrierwave (= 0.9.0)
+  carrierwave_couch_potato
   couch_potato
   coveralls
   factory_girl_rails
