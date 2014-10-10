@@ -388,7 +388,7 @@ DEPENDENCIES
   travis-lint
   turbolinks
   turbolinks_transitions
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails (= 2.2.8)
   twitter-bootstrap-rails-confirm
   uglifier
   unf
