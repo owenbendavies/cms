@@ -31,7 +31,7 @@ gem 'simple_form'
 # Stylesheets
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.8'
-gem 'twitter-bootstrap-rails-confirm'
+gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
 gem 'sprockets', '2.10.1'
