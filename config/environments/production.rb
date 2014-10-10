@@ -49,7 +49,7 @@ Rails.application.configure do
   # config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different logger for distributed setups.
-  config.logger = Syslogger.new(parent_name.downcase)
+  config.logger = Syslogger.new('cms')
   config.lograge.enabled = true
 
   # Use a different cache store in production.
