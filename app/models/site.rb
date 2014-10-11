@@ -66,8 +66,7 @@ class Site
   end
 
   def fog_directory
-    application_name = Rails.application.class.parent_name.downcase
-    [Rails.env, application_name, host.parameterize('_')].join('_')
+    [Rails.env, 'cms', host.parameterize('_')].join('_')
   end
 
   def css

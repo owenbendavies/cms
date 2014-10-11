@@ -32,7 +32,7 @@ RSpec.describe 'request logging', type: :feature do
   end
 
   it 'uses extra information in lograge' do
-    result = Cms::Application.config.lograge.custom_options.call(events.first)
+    result = Rails.application.config.lograge.custom_options.call(events.first)
 
     expect(result).to eq ({
       host: 'localhost',
@@ -46,7 +46,7 @@ RSpec.describe 'request logging', type: :feature do
     it 'logs account_id' do
       expect(events.last.payload[:account_id]).to eq @account.id
 
-      result = Cms::Application.config.lograge.custom_options.call(events.last)
+      result = Rails.application.config.lograge.custom_options.call(events.last)
       expect(result).to eq ({
         host: 'localhost',
         remote_ip: '127.0.0.1',
