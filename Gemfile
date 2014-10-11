@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 # Application Gems
-gem 'rails', '4.0.9'
+gem 'rails', '4.1.6'
 
 # Middleware
 gem 'rack-protection'
@@ -31,7 +31,7 @@ gem 'simple_form'
 # Stylesheets
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.8'
-gem 'twitter-bootstrap-rails-confirm'
+gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
 gem 'sprockets', '2.10.1'
@@ -69,6 +69,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
+  gem 'spring'
   gem 'thin'
 end
 

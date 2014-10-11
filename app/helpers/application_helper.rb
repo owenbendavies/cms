@@ -24,4 +24,32 @@ module ApplicationHelper
 
     return footer.join('. ')
   end
+
+  def flash_messages
+    flash_messages = []
+    flash.each do |type, message|
+      next if message.blank?
+
+      type = type.to_sym
+      type = :danger  if type == :error
+
+      Array(message).each do |msg|
+        button = content_tag(
+          :button,
+          raw("&times;"),
+          :class => "close",
+          "data-dismiss" => "alert"
+        )
+
+        text = content_tag(
+          :div,
+          button + msg,
+          :class => "alert fade in alert-#{type}"
+        )
+
+        flash_messages << text if msg
+      end
+    end
+    flash_messages.join("\n").html_safe
+  end
 end
