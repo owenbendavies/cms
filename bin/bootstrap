@@ -3,7 +3,7 @@ set -e
 
 cd `dirname $0`/..
 
-bin/bundle install --path vendor/bundle
+./bin/bundle install --path vendor/bundle
 
 files="
 config/application.yml
@@ -32,7 +32,7 @@ do
   if grep -q '^  SECRET_KEY:$' $file
   then
     echo "Generating secret for $file"
-    secret=`bin/rake secret`
+    secret=`./bin/rake secret`
     sed -i "s/^  SECRET_KEY:$/  SECRET_KEY: '$secret'/" $file
   fi
 done
