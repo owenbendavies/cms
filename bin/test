@@ -1,18 +1,18 @@
 #!/bin/bash
 set -e
 
-bundle=`dirname $0`/bundle
+cd `dirname $0`/..
 
 if [ $# -gt 0 ]; then
   set -v
-  eval "xvfb-run --auto-servernum $bundle exec rspec $@"
+  eval "xvfb-run --auto-servernum ./bin/rspec $@"
 else
   set -v
-  eval "COVERAGE=on xvfb-run --auto-servernum $bundle exec rspec"
-  eval "$bundle exec cane --no-doc"
-  eval "$bundle exec rails_best_practices --silent"
-  eval "$bundle exec brakeman --quiet --exit-on-warn"
-  eval "$bundle exec travis-lint"
+  eval "COVERAGE=on xvfb-run --auto-servernum ./bin/rspec"
+  eval "./bin/bundle exec cane --no-doc"
+  eval "./bin/bundle exec rails_best_practices --silent"
+  eval "./bin/bundle exec brakeman --quiet --exit-on-warn"
+  eval "./bin/bundle exec travis-lint"
   echo "Build success"
 fi
 
