@@ -7,11 +7,7 @@ services: couchdb
 bundler_args: --deployment --without development production
 
 before_script:
-  - ./bin/spring status
   - ./bin/bootstrap
-  - ./bin/spring status
+  - ./bin/spring stop
 
-script:
-  - ./bin/spring status
-  - ./bin/test
-  - ./bin/spring status
+script: ./bin/test
