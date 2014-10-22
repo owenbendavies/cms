@@ -8,6 +8,7 @@ if [ $# -gt 0 ]; then
   eval "xvfb-run --auto-servernum ./bin/rspec $@"
 else
   set -v
+  eval "./bin/compile"
   eval "COVERAGE=on xvfb-run --auto-servernum ./bin/rspec"
   eval "./bin/bundle exec cane --no-doc"
   eval "./bin/bundle exec rails_best_practices --silent"
