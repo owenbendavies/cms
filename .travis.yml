@@ -8,6 +8,4 @@ bundler_args: --deployment --without development production
 
 before_script: ./bin/bootstrap
 
-script:
-  - cat config/application.yml
-  - ./bin/test
+script: ./bin/test
