@@ -6,6 +6,8 @@ services: couchdb
 
 bundler_args: --deployment --without development production
 
+before_script: ./bin/bootstrap
+
 script:
-  - ./bin/bootstrap
+  - cat config/application.yml
   - ./bin/test
