@@ -1,4 +1,6 @@
 #!/bin/bash
 set -e
 
-`dirname $0`/rails server
+cd `dirname $0`/..
+
+./bin/rails server

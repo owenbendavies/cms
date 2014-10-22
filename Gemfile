@@ -61,6 +61,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
   gem 'travis-lint'
 end
 

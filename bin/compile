@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
+cd `dirname $0`/..
+
 export RAILS_ENV=production
 
-`dirname $0`/bundle exec rake assets:precompile
-`dirname $0`/bundle exec rake assets:clean
+./bin/rake assets:precompile
+./bin/rake assets:clean
