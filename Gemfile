@@ -10,7 +10,6 @@ gem 'rack-timeout', '0.1.0beta3'
 gem 'rails_warden'
 
 # Model Gems
-gem 'strip_attributes'
 gem 'bcrypt'
 gem 'carrierwave', '0.9.0'
 gem 'carrierwave_couch_potato'
@@ -18,6 +17,7 @@ gem 'couch_potato'
 gem 'fog', '1.18.0'
 gem 'gravtastic'
 gem 'mini_magick'
+gem 'strip_attributes'
 gem 'unf'
 gem 'validates_email_format_of'
 
@@ -34,12 +34,12 @@ gem 'twitter-bootstrap-rails', '2.2.8'
 gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
-gem 'sprockets', '2.10.1'
 gem 'google-analytics-rails'
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'rails-timeago'
+gem 'sprockets', '2.10.1'
 gem 'therubyracer'
 gem 'tinymce-rails', '4.0.19'
 gem 'turbolinks'
@@ -70,7 +70,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
-  gem 'spring'
   gem 'thin'
 end
 
