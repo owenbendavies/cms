@@ -28,6 +28,7 @@ RSpec.describe Site do
       css_filename: new_filename,
       header_image_filename: new_filename,
       sidebar_html_content: new_message,
+      allow_search_engines: false,
     )
 
     expect(site.host).to eq new_host
@@ -43,6 +44,14 @@ RSpec.describe Site do
     expect(site.css_filename).to eq new_filename
     expect(site.header_image_filename).to eq new_filename
     expect(site.sidebar_html_content).to eq new_message
+    expect(site.allow_search_engines).to eq false
+  end
+
+  describe '#allow_search_engines' do
+    it 'defaults to true' do
+      site = Site.new
+      expect(site.allow_search_engines).to eq true
+    end
   end
 
   it 'has a header image' do

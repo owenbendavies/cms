@@ -19,6 +19,7 @@ class Site
   property :charity_number, type: String
   property :updated_by, type: String
   property :css_filename, type: String
+  property :allow_search_engines, type: :boolean, default: true
 
   property :header_image_filename, type: String
   mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
