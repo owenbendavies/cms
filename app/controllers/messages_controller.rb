@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  before_filter :login_required
-
   def index
     @messages = Message.find_all_by_site(@site)
   end

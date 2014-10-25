@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :find_page, except: [:new, :create]
-  before_filter :login_required, except: [:show, :contact_form]
+  skip_before_filter :login_required, only: [:show, :contact_form]
 
   def new
     @page = Page.new
