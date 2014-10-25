@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :find_site
   before_filter :render_site_not_found
   before_filter :check_format_is_not_html
+  before_filter :login_required, except: [:home, :page_not_found]
 
   helper_method :feature
 

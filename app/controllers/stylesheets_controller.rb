@@ -1,5 +1,6 @@
 class StylesheetsController < ApplicationController
   skip_before_filter :render_site_not_found
+  skip_before_filter :login_required
   before_filter :find_css_site
 
   def show

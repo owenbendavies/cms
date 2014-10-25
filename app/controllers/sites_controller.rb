@@ -1,5 +1,4 @@
 class SitesController < ApplicationController
-  before_filter :login_required
   before_filter :edit_css_feature, only: [:css]
 
   def edit
