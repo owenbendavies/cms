@@ -1,6 +1,4 @@
 class AccountsController < ApplicationController
-  before_filter :login_required
-
   def edit
   end
 
