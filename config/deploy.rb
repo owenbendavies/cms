@@ -9,7 +9,7 @@ set :log_level, :info
 
 set :keep_releases, 3
 
-set :rbenv_custom_path, '/opt/rbenv'
+set :rbenv_custom_path, '/usr/local/rbenv'
 set :rbenv_ruby, '2.1.2'
 
 namespace :deploy do
