@@ -54,10 +54,7 @@ gem 'syslogger'
 
 # System management
 gem 'figaro'
-
-group :production do
-  gem 'unicorn'
-end
+gem 'unicorn-rails'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -70,7 +67,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
-  gem 'thin'
 end
 
 group :test do
