@@ -1,12 +1,12 @@
-%footer#page_footer.dontprint
-  %ul.unstyled
+%footer#page_footer.hidden-print
+  %ul.list-unstyled
     - if @page and @page.persisted?
       %li#last_update= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
     %li#copyright= footer_copyright
 
     %li
-      %ul#footer_links.unstyled
+      %ul#footer_links.list-inline
         %li= link_to t('sitemaps.show.title'), sitemap_path
 
         - if authenticated?
