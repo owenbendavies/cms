@@ -1,9 +1,9 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%ul.thumbnails
-  - @images.each do |image|
-    %li.span3
+.row
+  .col-xs-6.col-md-3
+    - @images.each do |image|
       = link_to(image.file.url, target: '_blank', class: 'thumbnail') do
         = image_tag(image.file.span3.url, alt: image.name)
         %h5= image.name
