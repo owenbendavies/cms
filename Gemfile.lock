@@ -378,7 +378,6 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov-console
-  spring
   spring-commands-rspec
   sprockets (= 2.10.1)
   strip_attributes

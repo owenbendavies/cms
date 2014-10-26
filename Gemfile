@@ -67,7 +67,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
-  gem 'spring'
 end
 
 group :test do
