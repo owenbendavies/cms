@@ -30,29 +30,22 @@ class Site
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
-  validates :host,
-    presence: true
+  validates :host, presence: true
 
-  validates :name,
-    presence: true,
-    length: {maximum: 64}
+  validates :name, presence: true, length: {maximum: 64}
 
-  validates :sub_title,
-    length: {maximum: 64}
+  validates :sub_title, length: {maximum: 64}
 
-  validates :layout,
-    inclusion: {in: LAYOUTS}
+  validates :layout, inclusion: {in: LAYOUTS}
 
-  validates :copyright,
-    length: {maximum: 64}
+  validates :copyright, length: {maximum: 64}
 
   validates :google_analytics, format: {
     with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
     allow_blank: true
   }
 
-  validates :updated_by,
-    presence: true
+  validates :updated_by, presence: true
 
   view :by_host, key: :host
 
