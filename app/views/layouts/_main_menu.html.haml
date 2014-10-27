@@ -1,5 +1,5 @@
 - unless @site.main_menu.blank?
-  #main_menu.dontprint
+  #main_menu.hidden-print
     = nav_bar do
       = menu_group do
         - @site.main_menu.each do |link|
