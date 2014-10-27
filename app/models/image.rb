@@ -19,21 +19,15 @@ class Image
 
   validates *property_names, no_html: true
 
-  validates :site_id,
-    presence: true
+  validates :site_id, presence: true
 
-  validates :name,
-    presence: true,
-    length: {maximum: 64}
+  validates :name, presence: true, length: {maximum: 64}
 
-  validates :created_by,
-    presence: true
+  validates :created_by, presence: true
 
-  validates :updated_by,
-    presence: true
+  validates :updated_by, presence: true
 
-  view :by_site_id_and_name,
-    key:[:site_id, :name]
+  view :by_site_id_and_name, key:[:site_id, :name]
 
   def self.find_all_by_site(site)
     CouchPotato.database.view(
