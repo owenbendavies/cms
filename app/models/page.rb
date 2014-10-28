@@ -17,7 +17,7 @@ class Page
   property :url, type: String
   property :name, type: String
   property :private, type: :boolean, default: false
-  property :bottom_section, type: String
+  property :contact_form, type: :boolean, default: false
   property :created_by, type: String
   property :updated_by, type: String
 
@@ -34,8 +34,6 @@ class Page
   validates :site_id, presence: true
 
   validates :name, presence: true, length: {maximum: 64}
-
-  validates :bottom_section, inclusion: {in: %w(contact_form), allow_nil: true}
 
   validates :created_by, presence: true
 

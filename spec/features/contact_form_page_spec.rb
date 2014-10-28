@@ -7,10 +7,9 @@ RSpec.describe 'contact_form page', type: :feature do
   before do
     @contact_page = FactoryGirl.create(:page,
       site_id: @site.id,
-      bottom_section: 'contact_form',
+      contact_form: true,
     )
   end
-
 
   before do
     visit_page "/#{@contact_page.url}"

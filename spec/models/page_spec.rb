@@ -8,7 +8,7 @@ RSpec.describe Page do
       site_id: new_id,
       url: new_page_url,
       name: new_name,
-      bottom_section: 'contact_form',
+      contact_form: true,
       created_by: new_id,
       updated_by: new_id,
       html_content: new_message,
@@ -18,7 +18,7 @@ RSpec.describe Page do
     expect(page.url).to eq new_page_url
     expect(page.name).to eq new_name
     expect(page.private).to eq false
-    expect(page.bottom_section).to eq 'contact_form'
+    expect(page.contact_form).to eq true
     expect(page.created_by).to eq new_id
     expect(page.updated_by).to eq new_id
     expect(page.html_content).to eq new_message
@@ -95,10 +95,6 @@ RSpec.describe Page do
         'stylesheets',
       ).for(:name)
     }
-
-    it { should allow_value('contact_form').for(:bottom_section) }
-
-    it { should_not allow_value('bad').for(:bottom_section) }
 
     it { should validate_presence_of(:created_by) }
 
