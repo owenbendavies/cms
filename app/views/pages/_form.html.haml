@@ -5,6 +5,8 @@
   .tinymce{:id => 'page[html_content]'}
     = form.object.html_content.to_s.html_safe
 
+  = form.input :contact_form, as: :boolean
+
   .form-actions
     = form.button :submit
     = link_to t('actions.cancel'), @page, class: 'btn'
