@@ -3,7 +3,7 @@ set -e
 
 cd `dirname $0`/..
 
-./bin/bundle install --path vendor/bundle
+./bin/bundle install
 
 files="
 config/application.yml
