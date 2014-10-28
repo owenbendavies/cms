@@ -6,5 +6,6 @@ en:
     attributes:
       page:
         name: "Name"
+        contact_form: "Contact Form"
         private: "Private"
 

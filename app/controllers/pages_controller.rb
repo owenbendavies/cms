@@ -60,6 +60,7 @@ class PagesController < ApplicationController
   def page_params
     params.require(:page).permit(
       :name,
+      :contact_form,
       :private,
       :html_content
     ).merge(updated_by: user.id)
