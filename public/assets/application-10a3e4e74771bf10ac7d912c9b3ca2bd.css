@@ -5867,8 +5867,8 @@ a.badge:focus {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(/assets/fontawesome-webfont-f3f204f825c2304505eb307846d210f8.eot);
-  src: url(/assets/fontawesome-webfont-f3f204f825c2304505eb307846d210f8.eot?#iefix) format('embedded-opentype'), url(/assets/fontawesome-webfont-61e12c5ec371b233f1672bf8957410de.woff) format('woff'), url(/assets/fontawesome-webfont-163471424b215787d6a0b20df25da04a.ttf) format('truetype'), url(/assets/fontawesome-webfont-1367811c656aa83a2f43998a255be591.svg#fontawesomeregular) format('svg');
+  src: url(/assets/fontawesome-webfont-a23700b5d089947e553a14b4524f904a.eot);
+  src: url(/assets/fontawesome-webfont-a23700b5d089947e553a14b4524f904a.eot?#iefix) format('embedded-opentype'), url(/assets/fontawesome-webfont-ab5772f3ce0d65e38714e90a8e96e250.woff) format('woff'), url(/assets/fontawesome-webfont-b24d8a30f41091c32f11ec960e9c8cb3.ttf) format('truetype'), url(/assets/fontawesome-webfont-0e19d575f69a7bd799ea627806ac2fda.svg#fontawesomeregular) format('svg');
   font-weight: normal;
   font-style: normal;
 }
