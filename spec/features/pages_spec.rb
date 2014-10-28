@@ -177,6 +177,18 @@ RSpec.describe 'pages', type: :feature do
         expect(find_field('page[private]')).to be_checked
       end
 
+      it 'adds a contact form' do
+        expect(find_field('page[contact_form]')).not_to be_checked
+        check 'Contact Form'
+        click_button 'Update Page'
+
+        expect(current_path).to eq '/test_page'
+        expect(page).to have_content 'Name'
+
+        click_link 'Edit'
+        expect(find_field('page[contact_form]')).to be_checked
+      end
+
       it 'renames a page' do
         expect(find_field('Name')['autofocus']).to eq 'autofocus'
         fill_in 'Name', with: 'New Page Name'
