@@ -34,7 +34,6 @@ gem 'twitter-bootstrap-rails', '2.2.8'
 gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 
 # Javscript
-gem 'google-analytics-rails'
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
