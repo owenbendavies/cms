@@ -130,7 +130,6 @@ GEM
       nokogiri (~> 1.5)
       ruby-hmac
     formatador (0.2.5)
-    google-analytics-rails (0.0.6)
     google-analytics-turbolinks (0.0.4)
     gravtastic (3.2.6)
     haml (4.0.5)
@@ -356,7 +355,6 @@ DEPENDENCIES
   faker
   figaro
   fog (= 1.18.0)
-  google-analytics-rails
   google-analytics-turbolinks
   gravtastic
   haml

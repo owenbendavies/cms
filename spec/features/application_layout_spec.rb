@@ -20,14 +20,10 @@ RSpec.describe 'application layout', type: :feature do
         to eq "#{@site.name} | Test Page"
     end
 
-    it 'has google analytics doubleckick' do
+    it 'has google analytics' do
       expect(body).to include(
-        "_gaq.push(['_setAccount','#{@site.google_analytics}']);"
+        "ga('create', '#{@site.google_analytics}', 'localhost');"
       )
-
-      expect(body).to include "_gaq.push(['_setDomainName','localhost']);"
-
-      expect(body).to include 'stats.g.doubleclick.net'
     end
 
     it 'has header image' do
