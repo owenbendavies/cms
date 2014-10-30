@@ -53,12 +53,6 @@ gem 'syslogger'
 gem 'figaro'
 gem 'unicorn-rails'
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'spring-commands-rspec'
-  gem 'travis-lint'
-end
-
 group :development do
   gem 'byebug'
   gem 'capistrano-bundler'
@@ -70,8 +64,11 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
+  gem 'spring-commands-rspec'
   gem 'timecop'
+  gem 'travis-lint'
 
   # Code quality tools
   gem 'brakeman', require: false
