@@ -25,7 +25,7 @@ gem 'validates_email_format_of'
 gem 'xml-sitemap'
 
 # View Gems
-gem 'haml'
+gem 'haml-rails'
 gem 'simple_form'
 
 # Assets
