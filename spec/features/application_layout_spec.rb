@@ -26,6 +26,10 @@ RSpec.describe 'application layout', type: :feature do
       )
     end
 
+    it 'does not have google analytics uid' do
+      expect(body).to_not include('&uid')
+    end
+
     it 'has header image' do
       image = page.find('h1#site_name a[href="/home"] img')
       expect(image['src']).to eq @site.header_image.span12.url
@@ -74,6 +78,10 @@ RSpec.describe 'application layout', type: :feature do
 
       it 'has link to home' do
         expect(topbar).to have_link @site.name, href: '/'
+      end
+
+      it 'has google analytics uid' do
+        expect(body).to include("ga('set', '&uid', '#{@account.id}');")
       end
 
       it 'has gravatar image' do
