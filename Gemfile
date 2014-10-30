@@ -28,21 +28,19 @@ gem 'xml-sitemap'
 gem 'haml'
 gem 'simple_form'
 
-# Stylesheets
-gem 'less-rails'
-gem 'twitter-bootstrap-rails', '2.2.8'
-gem 'twitter-bootstrap-rails-confirm', '1.0.1'
-
-# Javscript
+# Assets
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+gem 'less-rails'
 gem 'rails-timeago'
 gem 'sprockets', '2.10.1'
 gem 'therubyracer'
 gem 'tinymce-rails', '4.0.19'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
+gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 gem 'uglifier'
 
 # Monitoring
