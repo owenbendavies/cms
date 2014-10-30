@@ -389,6 +389,7 @@ DEPENDENCIES
   timecop
   tinymce-rails (= 4.0.19)
   travis-lint
+  turbolinks
   turbolinks_transitions
   twitter-bootstrap-rails (= 2.2.8)
   twitter-bootstrap-rails-confirm (= 1.0.1)
