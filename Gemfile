@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-# Application Gems
 gem 'rails', '4.1.6'
 
 # Middleware
@@ -25,24 +24,22 @@ gem 'validates_email_format_of'
 gem 'xml-sitemap'
 
 # View Gems
-gem 'haml'
+gem 'haml-rails'
 gem 'simple_form'
 
-# Stylesheets
-gem 'less-rails'
-gem 'twitter-bootstrap-rails', '2.2.8'
-gem 'twitter-bootstrap-rails-confirm', '1.0.1'
-
-# Javscript
+# Assets
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+gem 'less-rails'
 gem 'rails-timeago'
 gem 'sprockets', '2.10.1'
 gem 'therubyracer'
 gem 'tinymce-rails', '4.0.19'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
+gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 gem 'uglifier'
 
 # Monitoring
@@ -55,12 +52,6 @@ gem 'syslogger'
 gem 'figaro'
 gem 'unicorn-rails'
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'spring-commands-rspec'
-  gem 'travis-lint'
-end
-
 group :development do
   gem 'byebug'
   gem 'capistrano-bundler'
@@ -72,7 +63,9 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
+  gem 'spring-commands-rspec'
   gem 'timecop'
 
   # Code quality tools
@@ -81,4 +74,5 @@ group :test do
   gem 'coveralls', require: false
   gem 'rails_best_practices', require: false
   gem 'simplecov-console', require: false
+  gem 'travis-lint', require: false
 end
