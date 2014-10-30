@@ -67,7 +67,6 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
   gem 'timecop'
-  gem 'travis-lint'
 
   # Code quality tools
   gem 'brakeman', require: false
@@ -75,4 +74,5 @@ group :test do
   gem 'coveralls', require: false
   gem 'rails_best_practices', require: false
   gem 'simplecov-console', require: false
+  gem 'travis-lint', require: false
 end
