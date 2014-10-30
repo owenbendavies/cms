@@ -9,8 +9,8 @@ set :log_level, :info
 
 set :keep_releases, 3
 
-set :rbenv_custom_path, '/usr/local/rbenv'
 set :rbenv_ruby, '2.1.2'
+set :rbenv_type, :system
 
 namespace :deploy do
   desc 'Restart application'
