@@ -1,7 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'rails', '4.1.6'
+RAILS_VERSION = '4.1.6'
+
+gem 'actionmailer', RAILS_VERSION
+gem 'actionpack', RAILS_VERSION
+gem 'actionview', RAILS_VERSION
+gem 'activemodel', RAILS_VERSION
+gem 'activesupport', RAILS_VERSION
+gem 'bundler', '>= 1.3.0', '< 2.0'
+gem 'railties', RAILS_VERSION
 
 # Middleware
 gem 'rack-protection'
@@ -34,6 +42,7 @@ gem 'jquery-turbolinks'
 gem 'less-rails'
 gem 'rails-timeago'
 gem 'sprockets', '2.10.1'
+gem 'sprockets-rails'
 gem 'therubyracer'
 gem 'tinymce-rails', '4.0.19'
 gem 'turbolinks'
