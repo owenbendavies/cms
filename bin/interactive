@@ -4,3 +4,5 @@ set -e
 cd `dirname $0`/..
 
 ./bin/rails console
+
+echo "interactive complete"

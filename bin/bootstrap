@@ -37,3 +37,4 @@ do
   fi
 done
 
+echo "bootstrap complete"
