@@ -36,6 +36,7 @@ gem 'haml-rails'
 gem 'simple_form'
 
 # Assets
+gem 'coffee-rails'
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
