@@ -4,3 +4,5 @@ set -e
 cd `dirname $0`/..
 
 ./bin/rails server
+
+echo "server complete"
