@@ -7,3 +7,5 @@ export RAILS_ENV=production
 
 ./bin/rake assets:precompile
 ./bin/rake assets:clean
+
+echo "compile complete"
