@@ -1,14 +1,16 @@
 CarrierWave.configure do |config|
-  config.storage = ENV['UPLOADS_STORAGE'].to_sym if ENV['UPLOADS_STORAGE']
+  if Rails.application.secrets.uploads_storage
+    config.storage = Rails.application.secrets.uploads_storage.to_sym
+  end
 
   config.fog_credentials = {
-    provider: ENV['FOG_PROVIDER'],
-    rackspace_username: ENV['RACKSPACE_USERNAME'],
-    rackspace_api_key: ENV['RACKSPACE_API_KEY'],
-    rackspace_auth_url: ENV['RACKSPACE_AUTH_URL'],
+    provider: Rails.application.secrets.fog_provider,
+    rackspace_username: Rails.application.secrets.rackspace_username,
+    rackspace_api_key: Rails.application.secrets.rackspace_api_key,
+    rackspace_auth_url: Rails.application.secrets.rackspace_auth_url,
   }
 
-  config.store_dir = ENV['UPLOADS_STORE_DIR']
+  config.store_dir = Rails.application.secrets.uploads_store_dir
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 

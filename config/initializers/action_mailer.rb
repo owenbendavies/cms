@@ -1,8 +1,8 @@
 ActionMailer::Base.smtp_settings = {
-  address: ENV['SMTP_ADDRESS'],
-  port: ENV['SMTP_PORT'].to_i,
+  address: Rails.application.secrets.smtp_address,
+  port: Rails.application.secrets.smtp_port,
   authentication: :plain,
-  user_name: ENV['SMTP_USERNAME'],
-  password: ENV['SMTP_PASSWORD'],
+  user_name: Rails.application.secrets.smtp_username,
+  password: Rails.application.secrets.smtp_password,
   domain: `hostname -f`.strip,
 }
