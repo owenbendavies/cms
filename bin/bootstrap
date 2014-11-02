@@ -33,22 +33,7 @@ do
   then
     echo "Generating secret for $file"
     secret=`./bin/rake secret`
-
-    echo "-------------------------"
-    echo $secret
-    echo "-------------------------"
-    echo "$secret"
-    echo "-------------------------"
-    echo "${secret}"
-    echo "-------------------------"
-    echo "s/^  secret_key_base:$/  secret_key_base: '${secret}'/"
-    echo "-------------------------"
-    echo $file
-    echo "-------------------------"
-    env
-    echo "-------------------------"
-
-    sed -i "s/^  secret_key_base:$/  secret_key_base: '${secret}'/" $file
+    sed -i "s/^  secret_key_base:$/  secret_key_base: '$secret'/" $file
   fi
 done
 
