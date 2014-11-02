@@ -45,6 +45,8 @@ do
     echo "-------------------------"
     echo $file
     echo "-------------------------"
+    env
+    echo "-------------------------"
 
     sed -i "s/^  secret_key_base:$/  secret_key_base: '${secret}'/" $file
   fi
