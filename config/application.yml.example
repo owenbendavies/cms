@@ -1,6 +1,4 @@
 development:
-  SECRET_KEY:
-
   COUCHDB_URL: 'http://127.0.0.1:5984/cms-development'
 
   UPLOADS_STORAGE: 'file'
@@ -13,8 +11,6 @@ development:
   TEST_ROUTES: 'true'
 
 test:
-  SECRET_KEY:
-
   COUCHDB_URL: 'http://127.0.0.1:5984/cms-test'
 
   UPLOADS_STORAGE: 'file'

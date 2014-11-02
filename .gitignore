@@ -1,6 +1,8 @@
 /.bundle
 /config/application.yml
-/config/deploy/*
+/config/secrets.yml
+/config/deploy/*.rb
+/config/deploy/*.yml
 /coverage
 /log/*.log
 /public/test_uploads
