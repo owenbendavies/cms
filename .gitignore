@@ -1,7 +1,7 @@
 /.bundle
 /config/secrets.yml
 /config/deploy/*.rb
-/config/deploy/*.yml
+/config/deploy/*.secrets.yml
 /coverage
 /log/*.log
 /public/test_uploads
