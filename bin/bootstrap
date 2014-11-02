@@ -6,10 +6,10 @@ cd `dirname $0`/..
 ./bin/bundle install
 
 files="
-config/application.yml
-config/deploy/production.application.yml
+config/secrets.yml
+config/deploy/production.secrets.yml
 config/deploy/production.rb
-config/deploy/staging.application.yml
+config/deploy/staging.secrets.yml
 config/deploy/staging.rb
 "
 
@@ -22,18 +22,18 @@ do
 done
 
 rails_secrets="
-config/application.yml
-config/deploy/production.application.yml
-config/deploy/staging.application.yml
+config/secrets.yml
+config/deploy/production.secrets.yml
+config/deploy/staging.secrets.yml
 "
 
 for file in $rails_secrets
 do
-  if grep -q '^  SECRET_KEY:$' $file
+  if grep -q '^  secret_key_base:$' $file
   then
     echo "Generating secret for $file"
     secret=`./bin/rake secret`
-    sed -i "s/^  SECRET_KEY:$/  SECRET_KEY: '$secret'/" $file
+    sed -i "s/^  secret_key_base:$/  secret_key_base: '$secret'/" $file
   fi
 done
 

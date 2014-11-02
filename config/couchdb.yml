@@ -1,5 +1,5 @@
 defaults: &defaults
-  database: <%= ENV['COUCHDB_URL'] %>
+  database: <%= Rails.application.secrets.couchdb_url %>
 
 development:
   <<: *defaults

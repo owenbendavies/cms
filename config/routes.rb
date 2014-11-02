@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  if ENV['LOADERIO_VERIFICATION_TOKEN']
-    get ENV['LOADERIO_VERIFICATION_TOKEN'], to: 'loaderios#show'
+  if Rails.application.secrets.loaderio_token
+    get Rails.application.secrets.loaderio_token, to: 'loaderios#show'
   end
 
-  if ENV['TEST_ROUTES']
+  if Rails.application.secrets.test_routes
     get 'timeout', to: 'test_routes#timeout'
   end
 
