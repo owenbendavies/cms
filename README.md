@@ -164,6 +164,6 @@ Now follow the steps in [Setup data](#setup-data).
 Use Capistrano to deploy to the servers:
 
 ```shell
-./bin/bundle exec cap production deploy
+./bin/cap production deploy
 ```
 
