@@ -57,8 +57,7 @@ gem 'newrelic_rpm'
 gem 'sentry-raven'
 gem 'syslogger'
 
-# System management
-gem 'figaro'
+# Server
 gem 'unicorn-rails'
 
 group :development do
