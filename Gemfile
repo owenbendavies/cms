@@ -54,11 +54,14 @@ gem 'uglifier'
 # Monitoring
 gem 'lograge'
 gem 'newrelic_rpm'
-gem 'sentry-raven'
 gem 'syslogger'
 
 # Server
 gem 'unicorn-rails'
+
+group :production do
+  gem 'sentry-raven'
+end
 
 group :development do
   gem 'byebug'
