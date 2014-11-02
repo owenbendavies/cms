@@ -9,9 +9,7 @@ Rails.application.routes.draw do
     get Rails.application.secrets.loaderio_token, to: 'loaderios#show'
   end
 
-  if Rails.application.secrets.test_routes
-    get 'timeout', to: 'test_routes#timeout'
-  end
+  get 'timeout', to: 'test_routes#timeout'
 
   resource :account, only: [:edit, :update] do
     get :sites
