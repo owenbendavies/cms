@@ -6,12 +6,9 @@ cd `dirname $0`/..
 ./bin/bundle install
 
 files="
-config/application.yml
 config/secrets.yml
-config/deploy/production.application.yml
 config/deploy/production.secrets.yml
 config/deploy/production.rb
-config/deploy/staging.application.yml
 config/deploy/staging.secrets.yml
 config/deploy/staging.rb
 "

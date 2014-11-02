@@ -31,7 +31,6 @@ namespace :config_files do
   desc 'SCP local config files'
   task :upload do
     on roles(:all) do
-      upload! "config/deploy/#{fetch(:stage)}.application.yml", "#{release_path}/config/application.yml"
       upload! "config/deploy/#{fetch(:stage)}.secrets.yml", "#{release_path}/config/secrets.yml"
     end
   end
