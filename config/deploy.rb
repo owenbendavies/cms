@@ -27,13 +27,14 @@ namespace :deploy do
   after :publishing, :restart
 end
 
-namespace :figaro do
-  desc 'SCP transfer figaro configuration'
-  task :upload_config do
+namespace :config_files do
+  desc 'SCP local config files'
+  task :upload do
     on roles(:all) do
       upload! "config/deploy/#{fetch(:stage)}.application.yml", "#{release_path}/config/application.yml"
+      upload! "config/deploy/#{fetch(:stage)}.secrets.yml", "#{release_path}/config/secrets.yml"
     end
   end
 
-  after 'deploy:updated', 'figaro:upload_config'
+  after 'deploy:updated', 'config_files:upload'
 end
