@@ -135,7 +135,7 @@ Rackspace cloud files is used to store and serve site images and stylesheets in
 production. Follow these steps to set up:
 
 * Signup up for a [Rackspace](http://www.rackspace.com/) account
-* Update `RACKSPACE_USERNAME` and `RACKSPACE_API_KEY` in
+* Update `rackspace_username` and `rackspace_api_key` in
   `config/deploy/production.secrets.yml`
 * Create a container called `environment_cms_host_name` for each site created
   and make a note of it's url, e.g. for a site with the host www.example.com in
@@ -146,7 +146,7 @@ production. Follow these steps to set up:
 ### Amazon CloudFront
 
 It is recommended to set up a Amazon CloudFront distribution to serve the Rails
-assets. Once set up, add the distribution url to `ASSET_HOST` in
+assets. Once set up, add the distribution url to `asset_host` in
 `config/deploy/production.secrets.yml`.
 
 ### Setup data

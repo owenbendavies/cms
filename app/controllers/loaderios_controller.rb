@@ -3,7 +3,7 @@ class LoaderiosController < ApplicationController
 
   def show
     respond_to do |format|
-      format.text { render text: ENV['LOADERIO_VERIFICATION_TOKEN'] }
+      format.text { render text: Rails.application.secrets.loaderio_token }
     end
   end
 end
