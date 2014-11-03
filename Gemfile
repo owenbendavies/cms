@@ -48,7 +48,7 @@ gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
-gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'twitter-bootstrap-rails-confirm', '1.0.1'
 gem 'uglifier'
 
