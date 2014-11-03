@@ -9,20 +9,5 @@ plugins:
   - table
   - paste
 selector: 'div.tinymce'
-toolbar:
-  - formatselect
-  - bold
-  - italic
-  - strikethrough
-  - subscript
-  - superscript
-  - '|'
-  - bullist
-  - numlist
-  - '|'
-  - link
-  - '|'
-  - table
-  - '|'
-  - code
+toolbar: 'formatselect bold italic strikethrough subscript superscript | bullist numlist | link | table | code'
 visual_table_class: 'table table-bordered'
