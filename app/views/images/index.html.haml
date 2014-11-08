@@ -6,4 +6,4 @@
     - @images.each do |image|
       = link_to(image.file.url, target: '_blank', class: 'thumbnail') do
         = image_tag(image.file.span3.url, alt: image.name)
-        %h5= image.name
+        %h5.text-center= image.name
