@@ -22,7 +22,7 @@ module FeatureHelpers
   end
 
   def it_should_have_form_error(text)
-    expect(find('.help-inline').text).to eq text
+    expect(find('.help-block').text).to eq text
   end
 
   RSpec.shared_context 'default_site' do
