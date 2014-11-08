@@ -17,23 +17,14 @@
 // Font Awesome
 @import "fontawesome/font-awesome";
 
-// @baseLineHeight: 24px;
-// @navbarHeight: 30px;
-//
-// @gridColumnWidth1200: 60px;
-// @gridGutterWidth1200: 20px;
-//
-// th { background-color: @tableBackgroundAccent }
-//
-// #main_menu .navbar .nav > li > a:focus,
-// #main_menu .navbar .nav > li > a:hover {
-//   background-color: @navbarLinkBackgroundActive;
-//   .box-shadow(inset 0 3px 8px rgba(0,0,0,0.125));
-// }
-//
-// .navbar-inner {
-//   .border-radius(0);
-//   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-// }
-//
-// .navbar .nav > li > a { text-shadow: none }
+@line-height-base: 1.6;
+@navbar-height: 30px;
+
+@screen-lg: 8000px;
+
+th { background-color: @table-bg-accent }
+
+#main_menu .navbar .nav > li > a:focus,
+#main_menu .navbar .nav > li > a:hover {
+  background-color: @navbar-default-link-active-bg;
+}
