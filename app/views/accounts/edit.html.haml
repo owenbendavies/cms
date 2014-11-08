@@ -6,9 +6,11 @@
   = form.input :password
   = form.input :password_confirmation
 
-  .control-group
-    .controls= link_to(image_tag(user.gravatar_url(size: 150), alt: 'Profile Image', class: 'img-circle', size: '150x150'), 'http://www.gravatar.com')
+  .form-group
+    .col-sm-offset-3.col-md-offset-2.col-sm-9.col-md-10
+      = link_to(image_tag(user.gravatar_url(size: 150), alt: 'Profile Image', class: 'img-circle', size: '150x150'), 'http://www.gravatar.com')
 
-  .form-actions
-    = form.button :submit
-    = link_to t('actions.cancel'), page_path('home'), class: 'btn'
+  .form-group
+    .col-sm-offset-3.col-md-offset-2.col-sm-9.col-md-10
+      = form.button :submit
+      = link_to t('actions.cancel'), page_path('home'), class: 'btn'
