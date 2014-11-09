@@ -28,7 +28,6 @@ RSpec.describe 'layouts', type: :feature do
   [
     'right_sidebar',
     'small_right_sidebar',
-    'fluid'
   ].each do |layout|
     context layout do
       it_behaves_like 'layout', layout do
