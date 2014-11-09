@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bluerail/twitter-bootstrap-rails-confirm.git
+  revision: 92dd750dd04f492526aca894c5ec1b321a6e25a9
+  branch: bootstrap3
+  specs:
+    twitter-bootstrap-rails-confirm (1.0.2)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 3edf24de985d946f16a2781644289cfdc51ba95b
   specs:
@@ -318,7 +325,6 @@ GEM
       coffee-rails
     turbolinks_transitions (0.0.5)
       coffee-rails
-    twitter-bootstrap-rails-confirm (1.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -402,7 +408,7 @@ DEPENDENCIES
   turbolinks
   turbolinks_transitions
   twitter-bootstrap-rails!
-  twitter-bootstrap-rails-confirm (= 1.0.1)
+  twitter-bootstrap-rails-confirm!
   uglifier
   unf
   unicorn-rails

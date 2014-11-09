@@ -49,7 +49,7 @@ gem 'tinymce-rails'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
-gem 'twitter-bootstrap-rails-confirm', '1.0.1'
+gem 'twitter-bootstrap-rails-confirm', github: 'bluerail/twitter-bootstrap-rails-confirm', branch: 'bootstrap3'
 gem 'uglifier'
 
 # Monitoring
