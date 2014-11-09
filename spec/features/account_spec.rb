@@ -11,7 +11,7 @@ RSpec.describe 'account', type: :feature  do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.icon-user'
+        expect(page).to have_selector 'h1 i.glyphicon-user'
       end
 
       it 'updates account' do
@@ -91,7 +91,7 @@ RSpec.describe 'account', type: :feature  do
         end
 
         it 'has icon' do
-          expect(page).to have_selector 'h1 i.icon-list'
+          expect(page).to have_selector 'h1 i.glyphicon-list'
         end
 
         it 'lists the accounts sites' do

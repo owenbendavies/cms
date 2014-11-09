@@ -11,7 +11,7 @@ RSpec.describe 'site', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.icon-cog'
+        expect(page).to have_selector 'h1 i.glyphicon-cog'
       end
 
       it 'shoud update site' do
@@ -90,7 +90,7 @@ RSpec.describe 'site', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.icon-file'
+        expect(page).to have_selector 'h1 i.glyphicon-file'
       end
 
       it 'edits the css' do

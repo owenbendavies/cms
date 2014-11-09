@@ -18,7 +18,7 @@ RSpec.describe 'messages', type: :feature do
     it_behaves_like 'logged in account' do
       it 'has list of messages', js: true do
         expect(find('#main_article h1').text).to eq 'Messages'
-        expect(page).to have_selector 'h1 i.icon-envelope'
+        expect(page).to have_selector 'h1 i.glyphicon-envelope'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'Name'
@@ -60,7 +60,7 @@ RSpec.describe 'messages', type: :feature do
     it_behaves_like 'logged in account' do
       it 'shows message', js: true do
         expect(find('#main_article h1').text).to eq 'Message'
-        expect(page).to have_selector 'h1 i.icon-envelope'
+        expect(page).to have_selector 'h1 i.glyphicon-envelope'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'about a month ago'
