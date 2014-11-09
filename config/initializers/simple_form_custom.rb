@@ -23,6 +23,7 @@ SimpleForm.setup do |config|
 
   config.default_wrapper = :bootstrap3
 
+  config.boolean_style = :inline
   config.browser_validations = true
   config.button_class = 'btn btn-primary'
   config.form_class = 'form-horizontal'
