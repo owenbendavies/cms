@@ -5,7 +5,6 @@ class Site
     'one_column',
     'right_sidebar',
     'small_right_sidebar',
-    'fluid'
   ]
 
   property :host, type: String
