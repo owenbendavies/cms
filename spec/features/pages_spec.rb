@@ -229,7 +229,7 @@ RSpec.describe 'pages', type: :feature do
         click_link 'Delete'
 
         within '.modal' do
-          expect(find('h3').text).to eq 'Delete page?'
+          expect(page).to have_content('Delete page?')
 
           expect(find('.modal-body').text).to eq(
             "Are you sure you want to delete page 'Test Page'?"
@@ -252,7 +252,7 @@ RSpec.describe 'pages', type: :feature do
         click_link 'Delete'
 
         within '.modal' do
-          expect(find('h3').text).to eq 'Delete page?'
+          expect(page).to have_content('Delete page?')
 
           expect(find('.modal-body').text).to eq(
             "Are you sure you want to delete page 'Test Page'?"
