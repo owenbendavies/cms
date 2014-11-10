@@ -237,6 +237,7 @@ RSpec.describe 'pages', type: :feature do
 
           expect {
             click_link 'Delete'
+            sleep 1
             expect(page.body).to include('Test Page was deleted')
           }.to change(Page, :count).by(-1)
         end
