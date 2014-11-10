@@ -1,7 +1,7 @@
 GIT
-  remote: git://github.com/bluerail/twitter-bootstrap-rails-confirm.git
-  revision: 92dd750dd04f492526aca894c5ec1b321a6e25a9
-  branch: bootstrap3
+  remote: git://github.com/obduk/twitter-bootstrap-rails-confirm.git
+  revision: f0953f80ca7846c92de3fcdb242b0e30af788727
+  branch: fix_events
   specs:
     twitter-bootstrap-rails-confirm (1.0.2)
 
