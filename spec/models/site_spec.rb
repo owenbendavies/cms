@@ -7,6 +7,7 @@ RSpec.describe Site do
     specify {
       expect(Site::LAYOUTS).to eq [
         'one_column',
+        'one_narrow_column',
         'right_sidebar',
         'small_right_sidebar',
       ]
@@ -95,6 +96,7 @@ RSpec.describe Site do
     it {
       should allow_value(
         'one_column',
+        'one_narrow_column',
         'right_sidebar',
         'small_right_sidebar',
       ).for(:layout)

@@ -3,6 +3,7 @@ class Site
 
   LAYOUTS = [
     'one_column',
+    'one_narrow_column',
     'right_sidebar',
     'small_right_sidebar',
   ]
