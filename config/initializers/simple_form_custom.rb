@@ -3,7 +3,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :label
-    b.wrapper tag: 'div', class: 'col-sm-4 col-md-3' do |ba|
+    b.wrapper tag: 'div', class: 'col-control' do |ba|
       ba.use :input
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :label
-    b.wrapper tag: 'div', class: 'col-sm-9 col-md-8' do |ba|
+    b.wrapper tag: 'div', class: 'col-control-wide' do |ba|
       ba.use :input
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -28,5 +28,5 @@ SimpleForm.setup do |config|
   config.button_class = 'btn btn-primary'
   config.form_class = 'form-horizontal'
   config.input_class = 'form-control'
-  config.label_class = 'control-label col-sm-3 col-md-2'
+  config.label_class = 'control-label col-control-label'
 end
