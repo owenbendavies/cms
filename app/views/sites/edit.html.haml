@@ -11,6 +11,6 @@
   = form.input :layout, collection: Site::LAYOUTS.map{|i| [i.humanize, i]}, prompt: nil
 
   .form-group
-    .col-sm-offset-3.col-md-offset-2.col-sm-9.col-md-10
+    .col-control-offset
       = form.button :submit
       = link_to t('actions.cancel'), page_path('home'), class: 'btn'

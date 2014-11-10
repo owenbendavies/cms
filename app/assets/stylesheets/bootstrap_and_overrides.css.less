@@ -33,3 +33,49 @@ th { background-color: @table-bg-accent }
 #main_menu .navbar .nav > li > a:hover {
   background-color: @navbar-default-link-active-bg;
 }
+
+.col-control-label {
+  .make-sm-column(3);
+  .make-md-column(2);
+}
+
+.col-control {
+  .make-sm-column(4);
+  .make-md-column(3);
+}
+
+.col-control-wide {
+  .make-sm-column(9);
+  .make-md-column(8);
+}
+
+.col-control-offset {
+  .make-sm-column-offset(3);
+  .make-md-column-offset(2);
+  .make-sm-column(9);
+  .make-sm-column(10);
+}
+
+.col-sm-8 {
+  .col-control-label {
+    .make-sm-column(4);
+    .make-md-column(3);
+  }
+
+  .col-control {
+    .make-sm-column(8);
+    .make-md-column(5);
+  }
+
+  .col-control-wide {
+    .make-sm-column(8);
+    .make-md-column(9);
+  }
+
+  .col-control-offset {
+    .make-sm-column-offset(4);
+    .make-md-column-offset(3);
+    .make-sm-column(8);
+    .make-sm-column(9);
+  }
+}
