@@ -6391,13 +6391,18 @@ th {
 }
 #page_header h1 a {
   color: inherit;
-  text-decoration: inherit;
+}
+#page_header img {
+  margin-left: auto;
+  margin-right: auto;
 }
 #page_header h2 {
   color: #999999;
   font-size: 17.5px;
   font-weight: normal;
-  line-height: 1;
+}
+#main_menu {
+  padding: 0;
 }
 #main_menu .navbar {
   margin-bottom: 0;
@@ -6411,18 +6416,13 @@ th {
 #main h3 {
   clear: both;
   padding-bottom: 9px;
-  margin: 20px 0 30px;
-}
-#main p {
-  margin-bottom: 24px;
 }
 #main_article {
   background: white;
   min-height: 200px;
 }
-#page_footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
+#page_footer ul.list-unstyled {
+  margin-top: 11px;
 }
 #page_footer li {
   line-height: 16px;
