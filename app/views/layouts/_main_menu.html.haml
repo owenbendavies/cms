@@ -1,6 +1,7 @@
 - unless @site.main_menu.blank?
-  #main_menu.hidden-print
-    = nav_bar do
-      = menu_group do
-        - @site.main_menu.each do |link|
-          = menu_item link["text"], link["url"]
+  .row
+    #main_menu.col-sm-12.hidden-print
+      = nav_bar do
+        = menu_group do
+          - @site.main_menu.each do |link|
+            = menu_item link["text"], link["url"]

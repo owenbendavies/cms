@@ -1,8 +1,11 @@
 .container
   .row
-    #page.col-sm-offset-1.col-sm-10.col-main-article
+    #page.col-sm-offset-1.col-sm-10.narrow-forms
       = render 'layouts/header'
       = render 'layouts/main_menu'
-      = render 'layouts/main_article'
-      = render 'layouts/footer'
 
+      #main.row
+        %article#main_article.col-sm-12
+          = render 'layouts/main_article'
+
+      = render 'layouts/footer'
