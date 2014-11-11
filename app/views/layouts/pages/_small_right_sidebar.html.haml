@@ -3,10 +3,9 @@
   = render 'layouts/main_menu'
 
   #main.row
-    .col-sm-9.col-main-article
+    %article#main_article.col-sm-9.narrow-forms
       = render 'layouts/main_article'
-    .col-sm-3
-      = render 'layouts/sidebar'
+    %aside#sidebar.col-sm-3.hidden-print
+      = @site.sidebar_html_content.to_s.html_safe
 
   = render 'layouts/footer'
-

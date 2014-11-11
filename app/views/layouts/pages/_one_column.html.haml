@@ -1,6 +1,9 @@
 #page.container
   = render 'layouts/header'
   = render 'layouts/main_menu'
-  = render 'layouts/main_article'
-  = render 'layouts/footer'
 
+  #main.row
+    %article#main_article.col-sm-12
+      = render 'layouts/main_article'
+
+  = render 'layouts/footer'
