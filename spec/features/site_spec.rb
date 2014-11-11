@@ -31,10 +31,13 @@ RSpec.describe 'site', type: :feature do
         expect(charity_field.value).to eq @site.charity_number
         expect(charity_field['disabled']).to eq 'disabled'
 
+        expect(find_field('Layout').value).to eq @site.layout
+
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
         fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
+        select 'Right sidebar', from: 'Layout'
         click_button 'Update Site'
 
         expect(current_path).to eq '/home'
@@ -45,6 +48,7 @@ RSpec.describe 'site', type: :feature do
         expect(site.sub_title).to eq new_catch_phrase
         expect(site.copyright).to eq new_name
         expect(site.google_analytics).to eq new_google_analytics
+        expect(site.layout).to eq 'right_sidebar'
         expect(site.updated_by).to eq @account.id
       end
 
