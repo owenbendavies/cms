@@ -19,11 +19,12 @@ class SitesController < ApplicationController
 
   def site_params
     params.require(:site).permit(
+      :copyright,
+      :css,
+      :google_analytics,
+      :layout,
       :name,
       :sub_title,
-      :copyright,
-      :google_analytics,
-      :css
     ).merge(updated_by: user.id)
   end
 
