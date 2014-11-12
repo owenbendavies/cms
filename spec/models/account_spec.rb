@@ -37,6 +37,20 @@ RSpec.describe Account do
 
     it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
 
+    it {
+      should allow_value(
+        'apel203pd0pa',
+        'po)@2sALos',
+      ).for(:password)
+    }
+
+    it {
+      should_not allow_value(
+        'password',
+        'password1',
+      ).for(:password).with_message('is too weak, crack time: instant')
+    }
+
     it { should validate_presence_of(:email) }
 
     it { should ensure_length_of(:email).is_at_most(64) }

@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem 'strip_attributes'
 gem 'unf'
 gem 'validates_email_format_of'
+gem 'zxcvbn-ruby', require: 'zxcvbn'
 
 # Controller Gems
 gem 'xml-sitemap'
