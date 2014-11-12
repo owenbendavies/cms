@@ -15,7 +15,9 @@ class Account
   property :password_digest
   has_secure_password
 
-  validates :password, length: {minimum: 8, maximum: 64, allow_blank: true}
+  validates :password,
+    length: {minimum: 8, maximum: 64, allow_blank: true},
+    password_strength: true
 
   validates :email, presence: true, length: {maximum: 64}, email_format: true
 
