@@ -6389,13 +6389,40 @@ th {
     width: 75%;
   }
 }
+.img-center,
+.img-left,
+.img-right {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+}
+@media (min-width: 768px) {
+  .img-left {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+  .img-right {
+    float: right;
+    margin: 0 0 20px 20px;
+  }
+}
 #page_header h1 a {
   color: inherit;
+}
+#page_header img {
+  margin-left: auto;
+  margin-right: auto;
 }
 #page_header h2 {
   color: #999999;
   font-size: 17.5px;
   font-weight: normal;
+}
+#main_menu {
+  padding: 0;
 }
 #main_menu .navbar {
   margin-bottom: 0;
@@ -6413,6 +6440,10 @@ th {
 #main_article {
   background: white;
   min-height: 200px;
+  padding-top: 15px;
+}
+#page_footer ul.list-unstyled {
+  margin-top: 11px;
 }
 #page_footer li {
   line-height: 16px;
