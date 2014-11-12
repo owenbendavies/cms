@@ -78,3 +78,24 @@ th { background-color: @table-bg-accent }
     .make-sm-column(9);
   }
 }
+
+.img-center,
+.img-left,
+.img-right {
+  .img-responsive();
+  .center-block();
+
+  clear: both;
+}
+
+@media (min-width: @screen-sm-min) {
+  .img-left {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+
+  .img-right {
+    float: right;
+    margin: 0 0 20px 20px;
+  }
+}
