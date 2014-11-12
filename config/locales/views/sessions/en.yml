@@ -8,4 +8,4 @@ en:
 
     destroy:
       title: "Logout"
-      icon: "signout"
+      icon: "log-out"

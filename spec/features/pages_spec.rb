@@ -11,7 +11,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.icon-plus'
+        expect(page).to have_selector 'h1 i.glyphicon-plus'
       end
 
       it 'does not has page last updated in footer' do
@@ -126,7 +126,7 @@ RSpec.describe 'pages', type: :feature do
 
       it_behaves_like 'logged in account' do
         it 'shows page' do
-          expect(page).to have_selector 'h1 i.icon-lock'
+          expect(page).to have_selector 'h1 i.glyphicon-lock'
         end
       end
     end
@@ -139,7 +139,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.icon-pencil'
+        expect(page).to have_selector 'h1 i.glyphicon-pencil'
       end
 
       it 'has page url on body' do
@@ -171,7 +171,7 @@ RSpec.describe 'pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(page).to have_selector 'i.icon-lock'
+        expect(page).to have_selector 'i.glyphicon-lock'
 
         click_link 'Edit'
         expect(find_field('page[private]')).to be_checked
@@ -229,7 +229,7 @@ RSpec.describe 'pages', type: :feature do
         click_link 'Delete'
 
         within '.modal' do
-          expect(find('h3').text).to eq 'Delete page?'
+          expect(page).to have_content('Delete page?')
 
           expect(find('.modal-body').text).to eq(
             "Are you sure you want to delete page 'Test Page'?"
@@ -237,12 +237,12 @@ RSpec.describe 'pages', type: :feature do
 
           expect {
             click_link 'Delete'
-            expect(current_path).to eq '/sitemap'
+            expect(page.body).to include('Test Page was deleted')
           }.to change(Page, :count).by(-1)
         end
 
         it_should_have_alert_with 'Test Page was deleted'
-
+        expect(current_path).to eq '/sitemap'
         expect(Page.find_by_site_and_url(@site, 'test_page')).to be_nil
       end
 
@@ -252,7 +252,7 @@ RSpec.describe 'pages', type: :feature do
         click_link 'Delete'
 
         within '.modal' do
-          expect(find('h3').text).to eq 'Delete page?'
+          expect(page).to have_content('Delete page?')
 
           expect(find('.modal-body').text).to eq(
             "Are you sure you want to delete page 'Test Page'?"

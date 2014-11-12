@@ -1,10 +1,11 @@
-%header#page_header.dontprint
-  %h1#site_name
-    = link_to page_path('home') do
-      - if @site.header_image_filename
-        = image_tag(@site.header_image.span12.url, alt: @site.name)
-      - else
-        = @site.name
+.row
+  %header#page_header.col-sm-12.hidden-print.text-center
+    %h1#site_name
+      = link_to page_path('home') do
+        - if @site.header_image_filename
+          = image_tag(@site.header_image.span12.url, alt: @site.name, class: 'img-responsive')
+        - else
+          = @site.name
 
-  - unless @site.sub_title.blank?
-    %h2#site_sub_title= @site.sub_title
+    - unless @site.sub_title.blank?
+      %h2#site_sub_title= @site.sub_title

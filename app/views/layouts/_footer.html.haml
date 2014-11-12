@@ -1,17 +1,21 @@
-%footer#page_footer.dontprint
-  %ul.unstyled
-    - if @page and @page.persisted?
-      %li#last_update= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
+.row
+  %footer#page_footer.col-sm-12.hidden-print.text-center
+    %ul.list-unstyled
+      - if @page and @page.persisted?
+        %li#last_update
+          %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
-    %li#copyright= footer_copyright
+      %li#copyright
+        %small= footer_copyright
 
-    %li
-      %ul#footer_links.unstyled
-        %li= link_to t('sitemaps.show.title'), sitemap_path
+      %li
+        %ul#footer_links.list-inline
+          %li
+            %small= link_to t('sitemaps.show.title'), sitemap_path
 
-        - if authenticated?
-          %li= link_to t('sessions.destroy.title'), logout_path
-        - else
-          %li= link_to t('sessions.new.title'), login_path
-
-
+          - if authenticated?
+            %li
+              %small= link_to t('sessions.destroy.title'), logout_path
+          - else
+            %li
+              %small= link_to t('sessions.new.title'), login_path

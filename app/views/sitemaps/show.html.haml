@@ -3,9 +3,9 @@
 
 - content_for :body_id, 'page_url_sitemap'
 
-%ul#sitemap.unstyled
+%ul#sitemap.list-unstyled
   - @pages.each do |page|
     - next if page.private and !authenticated?
     %li
       = link_to(page.name, page_path(page.url))
-      = content_tag(:i, nil, class: 'icon-lock') if page.private
+      = glyph(t('pages.show.private.icon')) if page.private
