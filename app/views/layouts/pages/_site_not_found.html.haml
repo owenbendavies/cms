@@ -1,3 +1,6 @@
 #page.container
   = render 'layouts/header'
-  = render 'layouts/main_article'
+
+  #main.row
+    %article#main_article.col-sm-12.text-center
+      = render 'layouts/main_article'

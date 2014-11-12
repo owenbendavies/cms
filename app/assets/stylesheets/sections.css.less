@@ -1,21 +1,22 @@
 #page_header {
-  h1, h2 { text-align: center }
+  h1 a { color: inherit }
 
-  h1 a {
-    color: inherit;
-    text-decoration: inherit;
+  img {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h2 {
     color: #999999;
     font-size: 17.5px;
     font-weight: normal;
-    line-height: 1;
   }
 }
 
-#main_menu .navbar {
-  margin-bottom: 0;
+#main_menu {
+  padding: 0;
+
+  .navbar { margin-bottom: 0 }
 }
 
 #main {
@@ -24,10 +25,7 @@
   h1, h2, h3 {
     clear: both;
     padding-bottom: 9px;
-    margin: 20px 0 30px;
   }
-
-  p { margin-bottom: 24px }
 }
 
 #main_article {
@@ -36,32 +34,18 @@
 }
 
 #page_footer {
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  font-size: 11px;
-  text-align: center;
+  ul.list-unstyled { margin-top: 11px }
 
   li { line-height: 16px }
-
-  #footer_links li {
-    display: inline;
-    margin: 0 5px;
-  }
 }
 
-.thumbnails {
-  h5 { text-align: center }
+#site_css {
+  background-color: inherit;
+  border: 0;
+  box-shadow: none;
+  font: inherit;
 }
 
-@media print {
-  .dontprint { display: none !important }
+div.tinymce { outline: 1px dotted #333 }
 
-  a { color: inherit !important }
-
-  body, #page, #main_article {
-    padding: 0 !important;
-    border: none !important;
-  }
-}
-
+table a { display: block }

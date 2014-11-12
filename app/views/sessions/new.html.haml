@@ -5,6 +5,6 @@
   = form.input :email, autofocus: true
   = form.input :password
 
-  .form-actions
-    = form.button :submit, value: t('.title')
-
+  .form-group
+    .col-control-offset
+      = form.button :submit, value: t('.title')

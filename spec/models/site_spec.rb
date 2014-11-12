@@ -9,7 +9,6 @@ RSpec.describe Site do
         'one_column',
         'right_sidebar',
         'small_right_sidebar',
-        'fluid'
       ]
     }
   end
@@ -98,7 +97,6 @@ RSpec.describe Site do
         'one_column',
         'right_sidebar',
         'small_right_sidebar',
-        'fluid',
       ).for(:layout)
     }
 
