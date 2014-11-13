@@ -19,7 +19,7 @@ module NewFields
     let(:new_name) { Faker::Name.name }
     let(:new_number) { Faker::Number.number(Faker::Number.digit.to_i) }
     let(:new_page_url) { Faker::Internet.slug(nil, '_') }
-    let(:new_password) { Faker::Lorem.words(4).join }
+    let(:new_password) { 'Aq2%' + Faker::Lorem.words(3).join }
     let(:new_phone_number) { Faker::PhoneNumber.phone_number }
     let(:new_url) { Faker::Internet.url }
   end
