@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'images', type: :feature do
-  include_context 'default_site'
-
   before do
     @image = FactoryGirl.create(:image, site: @site)
   end

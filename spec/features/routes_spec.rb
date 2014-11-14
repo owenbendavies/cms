@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'routes', type: :feature do
-  include_context 'default_site'
-
   it 'redirects root path to home' do
     visit '/'
     expect(current_path).to eq '/home'

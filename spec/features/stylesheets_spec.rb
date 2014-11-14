@@ -32,6 +32,10 @@ RSpec.describe 'stylesheets', type: :feature do
   end
 
   context 'unknown site' do
+    before do
+      @site.destroy
+    end
+
     it 'renders stylesheet' do
       site = FactoryGirl.build(:site, host: 'www.example.com')
       site.css = "body {\r\n  padding: 4em;\r\n}"

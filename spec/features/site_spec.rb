@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'site', type: :feature do
-  include_context 'default_site'
-
   describe 'edit' do
     let(:go_to_url) { '/site/edit' }
 

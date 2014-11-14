@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'sitemap', type: :feature do
-  include_context 'default_site'
   before do
     site = Site.find_by_host('localhost')
     site.main_menu = []

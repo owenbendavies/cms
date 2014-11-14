@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'rack protection', type: :feature do
-  include_context 'default_site'
-
   it 'protects against attacks' do
     page.driver.browser.header('X_FORWARDED_FOR', 'x')
     page.driver.browser.header('CLIENT_IP', 'y')

@@ -2,8 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe 'application layout', type: :feature do
-  include_context 'default_site'
-
   it_behaves_like 'non logged in account' do
     before do
       Timecop.freeze('2012-03-20 10:41:02') do
