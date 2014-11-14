@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'sessions', type: :feature do
-  include_context 'default_site'
-
   describe 'login' do
     before do
       visit_page '/login'

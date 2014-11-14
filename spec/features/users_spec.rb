@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'users', type: :feature do
-  include_context 'default_site'
-
   before do
     @another_account = FactoryGirl.create(:account)
   end

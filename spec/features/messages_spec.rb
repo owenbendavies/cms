@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'messages', type: :feature do
-  include_context 'default_site'
-
   before do
     Timecop.freeze(Time.now - 1.month - 3.days) do
       @message = FactoryGirl.create(:message, site: @site)

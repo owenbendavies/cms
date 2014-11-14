@@ -2,8 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe 'layouts', type: :feature do
-  include_context 'default_site'
-
   shared_context 'layout' do |layout|
     before do
       @site.layout = layout
