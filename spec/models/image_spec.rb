@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Image do
-  include_context 'new_fields'
-
   it 'has accessors for its properties' do
     site = FactoryGirl.build(:site)
 

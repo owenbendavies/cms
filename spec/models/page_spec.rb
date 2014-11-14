@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Page do
-  include_context 'new_fields'
-
   it 'has accessors for its properties' do
     page = Page.new(
       site_id: new_id,

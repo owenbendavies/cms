@@ -2,8 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
-  include_context 'new_fields'
-
   describe 'page_title' do
     context 'site with sub title' do
       before { @site = FactoryGirl.build(:site) }

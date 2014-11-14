@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CouchModel do
-  include_context 'new_fields'
   let(:name) { Faker::Name.name }
 
   class TestCouchModel

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'account', type: :feature  do
   include_context 'default_site'
-  include_context 'new_fields'
 
   describe 'edit' do
     let(:go_to_url) { '/account/edit' }

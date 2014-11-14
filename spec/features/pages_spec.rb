@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'pages', type: :feature do
   include_context 'default_site'
-  include_context 'new_fields'
 
   describe 'new' do
     let(:go_to_url) { '/new' }

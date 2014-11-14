@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'contact_form page', type: :feature do
   include_context 'default_site'
-  include_context 'new_fields'
 
   before do
     @contact_page = FactoryGirl.create(:page,
