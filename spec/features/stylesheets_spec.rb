@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe 'stylesheets', type: :feature do
   context 'known site' do
     before do
-      @site = FactoryGirl.build(:site)
-      @site.css = "body {\r\n  padding: 4em;\r\n}"
-      @site.save!
+      site.css = "body {\r\n  padding: 4em;\r\n}"
+      site.save!
     end
 
     it 'renders stylesheet' do
@@ -33,7 +32,7 @@ RSpec.describe 'stylesheets', type: :feature do
 
   context 'unknown site' do
     before do
-      @site.destroy
+      site.destroy
     end
 
     it 'renders stylesheet' do

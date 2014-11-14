@@ -5,25 +5,25 @@ module FeatureHelpers
   include Warden::Test::Helpers
 
   included do
-    before do
-      Timecop.freeze('2012-03-12 09:23:05') do
-        @account = FactoryGirl.create(:account)
-        @site = FactoryGirl.create(:site)
-        @features = FactoryGirl.create(:features)
+    let!(:account) { FactoryGirl.create(:account) }
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:features) { FactoryGirl.create(:features) }
 
-        @home_page = FactoryGirl.create(
-          :page,
-          name: 'Home',
-          site_id: @site.id
-        )
+    let!(:home_page) {
+      FactoryGirl.create(
+        :page,
+        name: 'Home',
+        site_id: site.id,
+      )
+    }
 
-        @test_page = FactoryGirl.create(
-          :page,
-          name: 'Test Page',
-          site_id: @site.id
-        )
-      end
-    end
+    let!(:test_page) {
+      FactoryGirl.create(
+        :page,
+        name: 'Test Page',
+        site_id: site.id,
+      )
+    }
   end
 
   def visit_page(url)
@@ -50,7 +50,7 @@ module FeatureHelpers
 
   RSpec.shared_context 'logged in account' do
     before do
-      login_as @account
+      login_as account
 
       if defined? go_to_url
         visit_page go_to_url

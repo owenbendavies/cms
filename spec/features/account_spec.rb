@@ -13,14 +13,14 @@ RSpec.describe 'account', type: :feature  do
 
       it 'updates account' do
         expect(find_field('Email')['autofocus']).to eq 'autofocus'
-        expect(find_field('Email').value).to eq @account.email
+        expect(find_field('Email').value).to eq account.email
         expect(find_field('Password').value).to be_nil
         expect(find_field('Confirm password').value).to be_nil
 
         within 'a[href="http://www.gravatar.com"]' do
           gravatar_image = find('img')
 
-          expect(gravatar_image['src']).to eq @account.gravatar_url(size: 150)
+          expect(gravatar_image['src']).to eq account.gravatar_url(size: 150)
 
           expect(gravatar_image['alt']).to eq 'Profile Image'
           expect(gravatar_image['width']).to eq '150'
@@ -35,8 +35,8 @@ RSpec.describe 'account', type: :feature  do
         it_should_be_on_home_page
         it_should_have_alert_with 'Account successfully updated'
 
-        account = Account.find_by_id(@account.id)
-        expect(account.email).to eq new_email
+        found_account = Account.find_by_id(account.id)
+        expect(found_account.email).to eq new_email
 
         visit '/logout'
         visit_page '/login'
@@ -80,7 +80,6 @@ RSpec.describe 'account', type: :feature  do
     it_behaves_like 'logged in account' do
       context 'with multiple sites' do
         before do
-          account = Account.find_by_id(@account.id)
           account.sites += [new_host]
           account.save!
 

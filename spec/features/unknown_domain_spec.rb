@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'unknown domain', type: :feature do
   before do
-    @site.destroy
+    site.destroy
   end
 
   it 'displays site not found' do

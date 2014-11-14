@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'messages', type: :feature do
   before do
     Timecop.freeze(Time.now - 1.month - 3.days) do
-      @message = FactoryGirl.create(:message, site: @site)
+      @message = FactoryGirl.create(:message, site: site)
     end
   end
 
