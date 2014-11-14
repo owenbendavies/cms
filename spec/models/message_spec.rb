@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-  include_context 'new_fields'
-
   it 'has accessors for its properties' do
     site = FactoryGirl.build(:site)
 
@@ -133,18 +131,22 @@ RSpec.describe Message do
     before { FactoryGirl.create(:account) }
     let(:site) { FactoryGirl.create(:site) }
 
-    before {
-      @message1 = FactoryGirl.create(:message,
+    let!(:message1) {
+      FactoryGirl.create(:message,
         site: site,
         created_at: Time.now - 1.day
       )
+    }
 
-      @message2 = FactoryGirl.create(:message,
+    let!(:message2) {
+      FactoryGirl.create(:message,
         site: site,
         created_at: Time.now - 2.days
       )
+    }
 
-      @other_message = FactoryGirl.create(
+    let!(:other_message) {
+      FactoryGirl.create(
         :message,
         site: FactoryGirl.create(:site)
       )
@@ -160,22 +162,22 @@ RSpec.describe Message do
         )
 
         expect(messages.size).to eq 2
-        expect(messages.first).to eq @message2
-        expect(messages.second).to eq @message1
+        expect(messages.first).to eq message2
+        expect(messages.second).to eq message1
       end
     end
 
     describe '.by_site_id_and_id' do
       it 'returns messages' do
         expect(CouchPotato.database.view(
-          Message.by_site_id_and_id(key: [site.id, @message1.id])
-        )).to eq [@message1]
+          Message.by_site_id_and_id(key: [site.id, message1.id])
+        )).to eq [message1]
       end
     end
 
     describe '.find_by_site_and_id' do
       it 'finds a message' do
-        expect(Message.find_by_site_and_id(site, @message1.id)).to eq @message1
+        expect(Message.find_by_site_and_id(site, message1.id)).to eq message1
       end
 
       it 'returns nil when not found' do
@@ -183,7 +185,7 @@ RSpec.describe Message do
       end
 
       it 'does not find other sites message' do
-        expect(Message.find_by_site_and_id(site, @other_message.id)).to be_nil
+        expect(Message.find_by_site_and_id(site, other_message.id)).to be_nil
       end
     end
 
@@ -191,8 +193,8 @@ RSpec.describe Message do
       it 'returns messages in reverse order' do
         messages = Message.find_all_by_site(site)
         expect(messages.size).to eq 2
-        expect(messages.first).to eq @message1
-        expect(messages.second).to eq @message2
+        expect(messages.first).to eq message1
+        expect(messages.second).to eq message2
       end
     end
   end

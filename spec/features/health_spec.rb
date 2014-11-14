@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'health', type: :feature do
   context 'unknown site' do
+    before do
+      site.destroy
+    end
+
     it 'renders ok' do
       visit_page '/health.txt'
       expect(page).to have_content 'ok'
@@ -16,8 +20,6 @@ RSpec.describe 'health', type: :feature do
   end
 
   context 'known site' do
-    include_context 'default_site'
-
     it 'renders ok' do
       visit_page '/health.txt'
       expect(page).to have_content 'ok'

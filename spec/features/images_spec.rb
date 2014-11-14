@@ -1,12 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'images', type: :feature do
-  include_context 'default_site'
-  include_context 'new_fields'
-
-  before do
-    @image = FactoryGirl.create(:image, site: @site)
-  end
+  let!(:image) { FactoryGirl.create(:image, site: site) }
 
   describe 'index' do
     let(:go_to_url) { '/site/images' }
@@ -18,11 +13,11 @@ RSpec.describe 'images', type: :feature do
         expect(find('#main_article h1').text).to eq 'Images'
         expect(page).to have_selector 'h1 i.glyphicon-picture'
 
-        image = find("#main_article a[href='#{@image.file.url}'] img")
-        expect(image['src']).to eq @image.file.span3.url
-        expect(image['alt']).to eq @image.name
+        image_tag = find("#main_article a[href='#{image.file.url}'] img")
+        expect(image_tag['src']).to eq image.file.span3.url
+        expect(image_tag['alt']).to eq image.name
 
-        expect(page).to have_content @image.name
+        expect(page).to have_content image.name
       end
 
       it 'has link in topbar' do

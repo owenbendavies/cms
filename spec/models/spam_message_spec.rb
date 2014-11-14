@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SpamMessage do
-  include_context 'new_fields'
-
   it 'has accessors for its properties' do
     spam_message = SpamMessage.new(
       site_id: new_id,

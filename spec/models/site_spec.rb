@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Site do
-  include_context 'new_fields'
-
   describe 'LAYOUTS' do
     specify {
       expect(Site::LAYOUTS).to eq [
@@ -151,14 +149,14 @@ RSpec.describe Site do
   end
 
   describe '.find_by_host' do
-    before { @site = FactoryGirl.create(:site) }
+    let!(:site) { FactoryGirl.create(:site) }
 
     it 'finds a site' do
-      expect(Site.find_by_host(@site.host)).to eq @site
+      expect(Site.find_by_host(site.host)).to eq site
     end
 
     it 'ignores case' do
-      expect(Site.find_by_host(@site.host.upcase)).to eq @site
+      expect(Site.find_by_host(site.host.upcase)).to eq site
     end
 
     it 'returns nil when not found' do
@@ -167,14 +165,12 @@ RSpec.describe Site do
   end
 
   describe '.find_by_css_filename' do
-    before do
-      @site = FactoryGirl.build(:site)
-      @site.css = "body {\r\n  padding: 4em;\r\n}"
-      @site.save!
-    end
+    let!(:site) {
+      FactoryGirl.create(:site, css: "body {\r\n  padding: 4em;\r\n}")
+    }
 
     it 'finds a site' do
-      expect(Site.find_by_css_filename(@site.css_filename)).to eq @site
+      expect(Site.find_by_css_filename(site.css_filename)).to eq site
     end
 
     it 'returns nil when not found' do

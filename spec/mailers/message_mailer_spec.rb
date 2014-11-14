@@ -1,15 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe MessageMailer do
-  include_context 'new_fields'
-
   describe '.new_message' do
     let(:site) { FactoryGirl.build(:site) }
     let(:message) { FactoryGirl.build(:message, site: site) }
-
-    before do
-      @account = FactoryGirl.create(:account)
-    end
+    let!(:account) { FactoryGirl.create(:account) }
 
     it 'sends a message' do
       expect {
@@ -46,7 +41,7 @@ RSpec.describe MessageMailer do
       MessageMailer.new_message(message).deliver
       subject = ActionMailer::Base.deliveries.last
 
-      expect(subject.to).to eq [@account.email]
+      expect(subject.to).to eq [account.email]
     end
 
     it 'includes message subject' do

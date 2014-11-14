@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Page do
-  include_context 'new_fields'
-
   it 'has accessors for its properties' do
     page = Page.new(
       site_id: new_id,
@@ -119,64 +117,54 @@ RSpec.describe Page do
   end
 
   describe '.link_by_site_id_and_url' do
-    let(:time) { Time.now }
+    let!(:page) { FactoryGirl.create(:page, site_id: new_id) }
 
     it 'returns properties needed for links' do
-      Timecop.freeze(time) do
-        @page = FactoryGirl.create(:page, site_id: new_id)
-      end
-
       FactoryGirl.create(:page, site_id: new_id)
 
       results = CouchPotato.database.view(
-        Page.link_by_site_id_and_url(key: [new_id, @page.url])
+        Page.link_by_site_id_and_url(key: [new_id, page.url])
       )
 
       expect(results.size).to eq 1
-      expect(results.first.url).to eq @page.url
-      expect(results.first.name).to eq @page.name
+      expect(results.first.url).to eq page.url
+      expect(results.first.name).to eq page.name
       expect(results.first.private).to eq false
-      expect(results.first.updated_at).to eq time.to_s
-      expect(results.first.updated_by).to eq @page.updated_by
+      expect(results.first.updated_at).to eq page.updated_at.to_s
+      expect(results.first.updated_by).to eq page.updated_by
       expect(results.first.html_content).to be_nil
     end
   end
 
   describe '.find_by_site_and_url' do
-    before {
-      @site = FactoryGirl.create(:site)
-      @page = FactoryGirl.create(:page, site_id: @site.id)
-    }
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:page) { FactoryGirl.create(:page, site_id: site.id) }
 
     it 'finds a page' do
-      expect(Page.find_by_site_and_url(@site, @page.url)).to eq @page
+      expect(Page.find_by_site_and_url(site, page.url)).to eq page
     end
 
     it 'returns nil when not found' do
-      expect(Page.find_by_site_and_url(@site, new_page_url)).to be_nil
+      expect(Page.find_by_site_and_url(site, new_page_url)).to be_nil
     end
   end
 
   describe '.find_all_links_by_site' do
-    let(:time) { Time.now }
     let(:site) { FactoryGirl.create(:site) }
 
-    before {
-      Timecop.freeze(time) do
-        @page = FactoryGirl.create(:page, site_id: site.id)
-        FactoryGirl.create(:page)
-      end
-    }
+    let!(:page) { FactoryGirl.create(:page, site_id: site.id) }
 
     it 'returns all page links' do
+      FactoryGirl.create(:page)
+
       pages = Page.find_all_links_by_site(site)
       expect(pages.size).to eq 1
       page = pages.first
-      expect(page.url).to eq @page.url
-      expect(page.name).to eq @page.name
-      expect(page.private).to eq @page.private
-      expect(page.updated_at).to eq time.to_s
-      expect(page.updated_by).to eq @page.updated_by
+      expect(page.url).to eq page.url
+      expect(page.name).to eq page.name
+      expect(page.private).to eq page.private
+      expect(page.updated_at).to eq page.updated_at.to_s
+      expect(page.updated_by).to eq page.updated_by
       expect(page.html_content).to be_nil
     end
   end
