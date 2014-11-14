@@ -20,8 +20,8 @@ EOF
 
     context 'when site allow_search_engines is false' do
       it 'disallows all robots' do
-        @site.allow_search_engines = false
-        @site.save!
+        site.allow_search_engines = false
+        site.save!
 
         visit_page '/robots.txt'
 

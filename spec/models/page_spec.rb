@@ -141,17 +141,15 @@ RSpec.describe Page do
   end
 
   describe '.find_by_site_and_url' do
-    before {
-      @site = FactoryGirl.create(:site)
-      @page = FactoryGirl.create(:page, site_id: @site.id)
-    }
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:page) { FactoryGirl.create(:page, site_id: site.id) }
 
     it 'finds a page' do
-      expect(Page.find_by_site_and_url(@site, @page.url)).to eq @page
+      expect(Page.find_by_site_and_url(site, page.url)).to eq page
     end
 
     it 'returns nil when not found' do
-      expect(Page.find_by_site_and_url(@site, new_page_url)).to be_nil
+      expect(Page.find_by_site_and_url(site, new_page_url)).to be_nil
     end
   end
 

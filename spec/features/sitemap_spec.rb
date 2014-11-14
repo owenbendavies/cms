@@ -2,17 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'sitemap', type: :feature do
   before do
-    site = Site.find_by_host('localhost')
     site.main_menu = []
     site.save!
+  end
 
-    @private_page = FactoryGirl.create(
+  let!(:private_page) {
+    FactoryGirl.create(
       :page,
       name: 'Private',
-      site_id: @site.id,
+      site_id: site.id,
       private: true
     )
-  end
+  }
 
   describe 'show' do
     context 'html' do
@@ -32,7 +33,7 @@ RSpec.describe 'sitemap', type: :feature do
         end
 
         it 'does not show private pages' do
-          expect(page).to have_no_link @private_page.name
+          expect(page).to have_no_link private_page.name
         end
 
         it 'has link in footer' do
@@ -49,7 +50,7 @@ RSpec.describe 'sitemap', type: :feature do
       it_behaves_like 'logged in account' do
         it 'has lock icon for private pages' do
           find('ul#sitemap li:nth-child(2)').tap do |item|
-            expect(item).to have_link @private_page.name, href: '/private'
+            expect(item).to have_link private_page.name, href: '/private'
             expect(item).to have_selector 'i[class="glyphicon glyphicon-lock"]'
           end
         end
@@ -75,14 +76,14 @@ RSpec.describe 'sitemap', type: :feature do
       end
 
       it 'has lastmod' do
-        expect(find(:xpath, '//urlset/url[1]/lastmod').
-          text).to eq  '2012-03-12T09:23:05Z'
+        expect(find(:xpath, '//urlset/url[1]/lastmod').text).
+          to eq test_page.updated_at.iso8601
       end
 
       it 'does not include private pages' do
         expect(page).to have_no_xpath(
           '//loc',
-          text: "http://localhost/#{@private_page.url}"
+          text: "http://localhost/#{private_page.url}"
         )
       end
     end
