@@ -6,7 +6,7 @@
           %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
       %li#copyright
-        %small= footer_copyright
+        %small= footer_copyright(@site)
 
       %li
         %ul#footer_links.list-inline

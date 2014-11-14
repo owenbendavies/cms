@@ -4,9 +4,7 @@ require 'rails_helper'
 RSpec.describe 'application layout', type: :feature do
   it_behaves_like 'non logged in account' do
     before do
-      Timecop.freeze('2012-03-20 10:41:02') do
-        visit_page '/test_page'
-      end
+      visit_page '/test_page'
     end
 
     it 'has no topbar' do
@@ -66,7 +64,8 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has copyright in footer' do
       within 'footer' do
-        expect(find('#copyright').text).to include "#{site.copyright} © 2012"
+        expect(find('#copyright').text).
+          to include "#{site.copyright} © #{Time.now.year}"
       end
     end
   end
