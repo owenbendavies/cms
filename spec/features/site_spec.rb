@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'site', type: :feature do
-  include_context 'default_site'
-  include_context 'new_fields'
-
   describe 'edit' do
     let(:go_to_url) { '/site/edit' }
 
@@ -19,19 +16,19 @@ RSpec.describe 'site', type: :feature do
         expect(host_field.value).to eq 'localhost'
         expect(host_field['disabled']).to eq 'disabled'
 
-        expect(find_field('Name').value).to eq @site.name
+        expect(find_field('Name').value).to eq site.name
         expect(find_field('Name')['autofocus']).to eq 'autofocus'
-        expect(find_field('Sub title').value).to eq @site.sub_title
-        expect(find_field('Copyright').value).to eq @site.copyright
+        expect(find_field('Sub title').value).to eq site.sub_title
+        expect(find_field('Copyright').value).to eq site.copyright
 
         expect(find_field('Google Analytics').value).
-          to eq @site.google_analytics
+          to eq site.google_analytics
 
         charity_field = find('#site_charity_number')
-        expect(charity_field.value).to eq @site.charity_number
+        expect(charity_field.value).to eq site.charity_number
         expect(charity_field['disabled']).to eq 'disabled'
 
-        expect(find_field('Layout').value).to eq @site.layout
+        expect(find_field('Layout').value).to eq site.layout
 
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
@@ -49,7 +46,7 @@ RSpec.describe 'site', type: :feature do
         expect(site.copyright).to eq new_name
         expect(site.google_analytics).to eq new_google_analytics
         expect(site.layout).to eq 'right_sidebar'
-        expect(site.updated_by).to eq @account.id
+        expect(site.updated_by).to eq account.id
       end
 
       it 'does not store empty copyright' do
@@ -110,7 +107,7 @@ RSpec.describe 'site', type: :feature do
 
         site = Site.find_by_host('localhost')
         expect(site.css_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
-        expect(site.updated_by).to eq @account.id
+        expect(site.updated_by).to eq account.id
       end
 
       it 'has cancel button' do
@@ -128,8 +125,8 @@ RSpec.describe 'site', type: :feature do
 
       context 'css feature disabled' do
         before do
-          @features.edit_css = false
-          @features.save!
+          features.edit_css = false
+          features.save!
           visit go_to_url
         end
 

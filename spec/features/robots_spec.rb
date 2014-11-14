@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'robots', type: :feature do
-  include_context 'default_site'
-
   describe 'show' do
     context 'when site allow_search_engines is true' do
       it 'has robots files' do
@@ -22,8 +20,8 @@ EOF
 
     context 'when site allow_search_engines is false' do
       it 'disallows all robots' do
-        @site.allow_search_engines = false
-        @site.save!
+        site.allow_search_engines = false
+        site.save!
 
         visit_page '/robots.txt'
 

@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Account do
-  include_context 'new_fields'
-
   it 'has a gravatar_url' do
     account = Account.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
@@ -73,69 +71,69 @@ RSpec.describe Account do
 
   describe '.by_site_host_and_email' do
     let(:site) { FactoryGirl.create(:site) }
-    before { @account = FactoryGirl.create(:account) }
+    let!(:account) { FactoryGirl.create(:account) }
 
     subject {
       CouchPotato.database.view(
-        Account.by_site_host_and_email(key: [site.host, @account.email])
+        Account.by_site_host_and_email(key: [site.host, account.email])
       )
     }
 
     it 'returns the account' do
-      expect(subject).to eq [@account]
+      expect(subject).to eq [account]
     end
   end
 
   describe '.emails_by_site' do
-    before { @account = FactoryGirl.create(:account) }
+    let!(:account) { FactoryGirl.create(:account) }
 
     subject { CouchPotato.database.view(Account.emails_by_site) }
 
     it 'returns array of emails' do
-      expect(subject).to eq [@account.email]
+      expect(subject).to eq [account.email]
     end
   end
 
   describe '.find_and_authenticate' do
     let(:site) { FactoryGirl.build(:site) }
-    before { @account = FactoryGirl.create(:account) }
+    let!(:account) { FactoryGirl.create(:account) }
 
     it 'authenticates a valid account' do
       expect(Account.find_and_authenticate(
-        @account.email,
-        @account.password,
+        account.email,
+        account.password,
         site.host
-      )).to eq @account
+      )).to eq account
     end
 
     it 'ignores white space for email' do
       expect(Account.find_and_authenticate(
-        "  #{@account.email} ",
-        @account.password,
+        "  #{account.email} ",
+        account.password,
         site.host
-      )).to eq @account
+      )).to eq account
     end
 
     it 'ignores white space for password' do
       expect(Account.find_and_authenticate(
-        @account.email,
-        "  #{@account.password}  ",
+        account.email,
+        "  #{account.password}  ",
         site.host
-      )).to eq @account
+      )).to eq account
     end
 
     it 'ignores case for email' do
       expect(Account.find_and_authenticate(
-        @account.email.upcase,
-        @account.password,
+        account.email.upcase,
+        account.password,
         site.host
-      )).to eq @account
+      )).to eq account
     end
 
     it 'returns nil for an invalid email' do
       expect(Account.find_and_authenticate(
         new_email,
-        @account.password,
+        account.password,
         site.host
       )).to be_nil
     end
@@ -143,14 +141,14 @@ RSpec.describe Account do
     it 'returns nil for a blank email' do
       expect(Account.find_and_authenticate(
         '',
-        @account.password,
+        account.password,
         site.host
       )).to be_nil
     end
 
     it 'returns nil for an invalid password' do
       expect(Account.find_and_authenticate(
-        @account.email,
+        account.email,
         new_password,
         site.host
       )).to be_nil
@@ -158,7 +156,7 @@ RSpec.describe Account do
 
     it 'returns nil for a blank password' do
       expect(Account.find_and_authenticate(
-        @account.email,
+        account.email,
         '',
         site.host
       )).to be_nil
@@ -166,23 +164,21 @@ RSpec.describe Account do
 
     it 'returnss nil for invalid site' do
       expect(Account.find_and_authenticate(
-        @account.email,
-        @account.password,
+        account.email,
+        account.password,
         new_host
       )).to be_nil
     end
   end
 
   describe '.find_emails_by_site' do
-    before do
-      @site = FactoryGirl.create(:site)
-      @account = FactoryGirl.create(:account)
-      @another_account = FactoryGirl.create(:account)
-    end
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:account) { FactoryGirl.create(:account) }
+    let!(:another_account) { FactoryGirl.create(:account) }
 
     it 'returns all emails' do
-      expect(Account.find_emails_by_site(@site)).to eq(
-        [@account.email, @another_account.email].sort
+      expect(Account.find_emails_by_site(site)).to eq(
+        [account.email, another_account.email].sort
       )
     end
   end

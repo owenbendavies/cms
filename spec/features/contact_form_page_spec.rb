@@ -1,18 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'contact_form page', type: :feature do
-  include_context 'default_site'
-  include_context 'new_fields'
-
-  before do
-    @contact_page = FactoryGirl.create(:page,
-      site_id: @site.id,
+  let!(:contact_page) {
+    FactoryGirl.create(:page,
+      site_id: site.id,
       contact_form: true,
     )
-  end
+  }
 
   before do
-    visit_page "/#{@contact_page.url}"
+    visit_page "/#{contact_page.url}"
   end
 
   it 'sends a message' do
@@ -27,20 +24,20 @@ RSpec.describe 'contact_form page', type: :feature do
       }.to change(Message, :count).by(1)
     }.to change{ActionMailer::Base.deliveries.size}.by(1)
 
-    expect(current_path).to eq "/#{@contact_page.url}"
+    expect(current_path).to eq "/#{contact_page.url}"
     it_should_have_alert_with 'Thank you for your message'
 
-    message = Message.find_all_by_site(@site).first
-    expect(message.site_id).to eq @site.id
+    message = Message.find_all_by_site(site).first
+    expect(message.site_id).to eq site.id
     expect(message.name).to eq new_name
     expect(message.email_address).to eq new_email
     expect(message.phone_number).to eq new_phone_number
     expect(message.message).to eq new_message
 
     last_message = ActionMailer::Base.deliveries.last
-    expect(last_message.from).to eq ["noreply@#{@site.host}"]
-    expect(last_message.to).to eq [@account.email]
-    expect(last_message.subject).to eq @contact_page.name
+    expect(last_message.from).to eq ["noreply@#{site.host}"]
+    expect(last_message.to).to eq [account.email]
+    expect(last_message.subject).to eq contact_page.name
     expect(last_message.body).to include "Name: #{new_name}"
     expect(last_message.body).to include "Email address: #{new_email}"
     expect(last_message.body).to include "Phone number: #{new_phone_number}"
@@ -57,7 +54,7 @@ RSpec.describe 'contact_form page', type: :feature do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error "can't be blank"
   end
 
@@ -74,7 +71,7 @@ RSpec.describe 'contact_form page', type: :feature do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error 'do not fill in'
   end
 
@@ -93,11 +90,11 @@ RSpec.describe 'contact_form page', type: :feature do
       }.to_not change(Message, :count)
     }.to_not change{ActionMailer::Base.deliveries.size}
 
-    expect(current_path).to eq "/#{@contact_page.url}/contact_form"
+    expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error 'do not fill in'
 
     spam_message = SpamMessage.all.first
-    expect(spam_message.site_id).to eq @site.id
+    expect(spam_message.site_id).to eq site.id
     expect(spam_message.name).to eq new_name
     expect(spam_message.email_address).to eq new_email
     expect(spam_message.phone_number).to eq new_phone_number

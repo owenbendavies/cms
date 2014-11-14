@@ -1,11 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'users', type: :feature do
-  include_context 'default_site'
-
-  before do
-    @another_account = FactoryGirl.create(:account)
-  end
+  let!(:another_account) { FactoryGirl.create(:account) }
 
   describe 'index' do
     let(:go_to_url) { '/site/users' }
@@ -19,8 +15,8 @@ RSpec.describe 'users', type: :feature do
           expect(page).to have_selector 'h1 i.glyphicon-group'
 
           expect(page).to have_content 'Email'
-          expect(page).to have_content @account.email
-          expect(page).to have_content @another_account.email
+          expect(page).to have_content account.email
+          expect(page).to have_content another_account.email
         end
       end
 

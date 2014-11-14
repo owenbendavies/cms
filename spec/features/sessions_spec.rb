@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'sessions', type: :feature do
-  include_context 'default_site'
-  include_context 'new_fields'
-
   describe 'login' do
     before do
       visit_page '/login'
@@ -15,8 +12,8 @@ RSpec.describe 'sessions', type: :feature do
 
     it 'accepts spaces in email' do
       expect(find_field('Email')['autofocus']).to eq 'autofocus'
-      fill_in 'Email', with: "  #{@account.email} "
-      fill_in 'Password', with: @account.password
+      fill_in 'Email', with: "  #{account.email} "
+      fill_in 'Password', with: account.password
 
       click_button 'Login'
 
@@ -24,7 +21,7 @@ RSpec.describe 'sessions', type: :feature do
     end
 
     it 'does not allow invalid password' do
-      fill_in 'Email', with: @account.email
+      fill_in 'Email', with: account.email
       fill_in 'Password', with: new_password
 
       click_button 'Login'
@@ -45,8 +42,8 @@ RSpec.describe 'sessions', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'logs you out if removed from site' do
-        @account.sites = []
-        @account.save!
+        account.sites = []
+        account.save!
 
         visit '/account/edit'
         expect(current_path).to eq '/login'

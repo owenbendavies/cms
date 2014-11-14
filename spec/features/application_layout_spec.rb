@@ -2,13 +2,9 @@
 require 'rails_helper'
 
 RSpec.describe 'application layout', type: :feature do
-  include_context 'default_site'
-
   it_behaves_like 'non logged in account' do
     before do
-      Timecop.freeze('2012-03-20 10:41:02') do
-        visit_page '/test_page'
-      end
+      visit_page '/test_page'
     end
 
     it 'has no topbar' do
@@ -17,12 +13,12 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has title' do
       expect(find('title', visible: false).native.text).
-        to eq "#{@site.name} | Test Page"
+        to eq "#{site.name} | Test Page"
     end
 
     it 'has google analytics' do
       expect(body).to include(
-        "ga('create', '#{@site.google_analytics}', 'localhost');"
+        "ga('create', '#{site.google_analytics}', 'localhost');"
       )
     end
 
@@ -32,12 +28,12 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has header image' do
       image = page.find('h1#site_name a[href="/home"] img')
-      expect(image['src']).to eq @site.header_image.span12.url
-      expect(image['alt']).to eq @site.name
+      expect(image['src']).to eq site.header_image.span12.url
+      expect(image['alt']).to eq site.name
     end
 
     it 'has sub title' do
-      expect(find('h2#site_sub_title').text).to eq @site.sub_title
+      expect(find('h2#site_sub_title').text).to eq site.sub_title
     end
 
     it 'has main menu' do
@@ -47,14 +43,15 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has page last updated in footer' do
       within 'footer' do
-        expect(find('#last_update').text).to eq 'Page last updated 2012-03-12'
+        expect(find('#last_update').text).
+          to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
       end
     end
 
     it 'last updated should be in words', js: true do
       Timecop.freeze(Time.now - 1.month - 3.days) do
-        @test_page.updated_at = Time.now
-        @test_page.save!
+        test_page.updated_at = Time.now
+        test_page.save!
       end
 
       visit_page '/test_page'
@@ -67,7 +64,8 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has copyright in footer' do
       within 'footer' do
-        expect(find('#copyright').text).to include "#{@site.copyright} © 2012"
+        expect(find('#copyright').text).
+          to include "#{site.copyright} © #{Time.now.year}"
       end
     end
   end
@@ -77,17 +75,17 @@ RSpec.describe 'application layout', type: :feature do
       let(:topbar) { find('#topbar') }
 
       it 'has link to home' do
-        expect(topbar).to have_link @site.name, href: '/'
+        expect(topbar).to have_link site.name, href: '/'
       end
 
       it 'has google analytics uid' do
-        expect(body).to include("ga('set', '&uid', '#{@account.id}');")
+        expect(body).to include("ga('set', '&uid', '#{account.id}');")
       end
 
       it 'has gravatar image' do
         within '#topbar' do
           image = find('img')
-          expect(image['src']).to eq @account.gravatar_url
+          expect(image['src']).to eq account.gravatar_url
           expect(image['alt']).to eq 'Profile Image'
         end
       end
