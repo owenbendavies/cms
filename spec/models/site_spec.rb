@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Site do
-  include_context 'new_fields'
-
   describe 'LAYOUTS' do
     specify {
       expect(Site::LAYOUTS).to eq [

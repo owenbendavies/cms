@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MessageMailer do
-  include_context 'new_fields'
-
   describe '.new_message' do
     let(:site) { FactoryGirl.build(:site) }
     let(:message) { FactoryGirl.build(:message, site: site) }

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'sessions', type: :feature do
   include_context 'default_site'
-  include_context 'new_fields'
 
   describe 'login' do
     before do

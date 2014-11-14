@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'messages', type: :feature do
   include_context 'default_site'
-  include_context 'new_fields'
 
   before do
     Timecop.freeze(Time.now - 1.month - 3.days) do
