@@ -9,7 +9,7 @@ set :log_level, :info
 
 set :keep_releases, 3
 
-set :rbenv_ruby, '2.1.4'
+set :rbenv_ruby, '2.1.5'
 set :rbenv_type, :system
 
 namespace :deploy do
