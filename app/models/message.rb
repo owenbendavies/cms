@@ -84,7 +84,7 @@ class Message
       spam_message = SpamMessage.new
       spam_message.do_not_fill_in = self.do_not_fill_in
       spam_message.error_messages = error_messages
-      spam_message.update_attributes(attributes)
+      spam_message.update_attributes!(attributes)
     end
   end
 end
