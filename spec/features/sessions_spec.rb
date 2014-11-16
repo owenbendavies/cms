@@ -74,4 +74,20 @@ RSpec.describe 'sessions', type: :feature do
       end
     end
   end
+
+  it_behaves_like 'logged in account' do
+    let(:go_to_url) { '/account/edit' }
+
+    context 'after 30 days' do
+      before do
+        Timecop.travel Time.now + 31.days
+      end
+
+      after do
+        Timecop.return
+      end
+
+      it_behaves_like 'restricted page'
+    end
+  end
 end
