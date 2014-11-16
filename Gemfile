@@ -10,6 +10,7 @@ gem 'activemodel', RAILS_VERSION
 gem 'activesupport', RAILS_VERSION
 gem 'bundler', '>= 1.3.0', '< 2.0'
 gem 'railties', RAILS_VERSION
+gem 'redis-actionpack'
 
 # Middleware
 gem 'rack-protection'
