@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-RAILS_VERSION = '4.1.7'
+RAILS_VERSION = '4.1.8'
 
 gem 'actionmailer', RAILS_VERSION
 gem 'actionpack', RAILS_VERSION
