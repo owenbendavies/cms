@@ -7,7 +7,6 @@ module FeatureHelpers
   included do
     let!(:account) { FactoryGirl.create(:account) }
     let!(:site) { FactoryGirl.create(:site) }
-    let!(:features) { FactoryGirl.create(:features) }
 
     let!(:home_page) {
       FactoryGirl.create(

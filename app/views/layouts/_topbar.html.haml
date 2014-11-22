@@ -40,10 +40,9 @@
           = glyph(t('users.index.icon'))
           = t('users.index.title')
 
-        - if feature.edit_css
-          = menu_item css_site_path do
-            = glyph(t('sites.css.icon'))
-            = t('sites.css.title')
+        = menu_item css_site_path do
+          = glyph(t('sites.css.icon'))
+          = t('sites.css.title')
 
         = menu_item sitemap_path do
           = glyph(t('sitemaps.show.icon'))

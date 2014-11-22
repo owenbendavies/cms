@@ -64,13 +64,7 @@ To set up data run the following:
 ./bin/interactive
 ```
 
-Create the features object used to enable or disable features.
-
-```ruby
-Features.new.save!
-```
-
-Next create an account to use, replacing email, password and sites with
+First create an account to use, replacing email, password and sites with
 appropriate data.
 
 ```ruby
