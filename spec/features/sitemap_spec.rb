@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'sitemap', type: :feature do
-  before do
-    site.main_menu = []
-    site.save!
-  end
-
   let!(:private_page) {
     FactoryGirl.create(
       :page,

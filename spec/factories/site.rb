@@ -4,12 +4,6 @@ FactoryGirl.define do
     name { Faker::Company.name.gsub("'", '') }
     sub_title { Faker::Company.catch_phrase }
     asset_host { "http://#{Faker::Internet.domain_name}" }
-
-    main_menu [
-      {'url' => '/home', 'text' => 'Home'},
-      {'url' => '/test_page', 'text' => 'Test Page'},
-    ]
-
     copyright { Faker::Name.name }
     google_analytics { "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}" }
     charity_number { Faker::Number.number(Faker::Number.digit.to_i) }
