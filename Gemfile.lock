@@ -34,12 +34,17 @@ GEM
     activemodel (4.1.8)
       activesupport (= 4.1.8)
       builder (~> 3.1)
+    activerecord (4.1.8)
+      activemodel (= 4.1.8)
+      activesupport (= 4.1.8)
+      arel (~> 5.0.0)
     activesupport (4.1.8)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
     bcrypt (3.1.9)
     brakeman (2.6.3)
@@ -67,6 +72,9 @@ GEM
     capistrano-bundler (1.1.3)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-rails (1.1.2)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.0.2)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
@@ -186,6 +194,7 @@ GEM
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     parallel (1.3.3)
+    pg (0.17.1)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -194,6 +203,16 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rack-timeout (0.1.0beta3)
+    rails (4.1.8)
+      actionmailer (= 4.1.8)
+      actionpack (= 4.1.8)
+      actionview (= 4.1.8)
+      activemodel (= 4.1.8)
+      activerecord (= 4.1.8)
+      activesupport (= 4.1.8)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.1.8)
+      sprockets-rails (~> 2.0)
     rails-timeago (2.11.1)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
@@ -346,17 +365,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionmailer (= 4.1.8)
-  actionpack (= 4.1.8)
-  actionview (= 4.1.8)
-  activemodel (= 4.1.8)
-  activesupport (= 4.1.8)
   bcrypt
   brakeman
-  bundler (>= 1.3.0, < 2.0)
   byebug
   cane
-  capistrano-bundler
+  capistrano-rails
   capistrano-rbenv
   capybara-webkit
   carrierwave (= 0.9.0)
@@ -376,13 +389,14 @@ DEPENDENCIES
   lograge
   mini_magick
   newrelic_rpm
+  pg
   quiet_assets
   rack-protection
   rack-timeout (= 0.1.0beta3)
+  rails (= 4.1.8)
   rails-timeago
   rails_best_practices
   rails_warden
-  railties (= 4.1.8)
   redis-actionpack
   rspec-rails
   sentry-raven
@@ -390,7 +404,6 @@ DEPENDENCIES
   simple_form
   simplecov-console
   spring-commands-rspec
-  sprockets-rails
   strip_attributes
   syslogger
   therubyracer

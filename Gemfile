@@ -1,15 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-RAILS_VERSION = '4.1.8'
+gem 'rails', '4.1.8'
 
-gem 'actionmailer', RAILS_VERSION
-gem 'actionpack', RAILS_VERSION
-gem 'actionview', RAILS_VERSION
-gem 'activemodel', RAILS_VERSION
-gem 'activesupport', RAILS_VERSION
-gem 'bundler', '>= 1.3.0', '< 2.0'
-gem 'railties', RAILS_VERSION
+# Databases
+gem 'pg'
 gem 'redis-actionpack'
 
 # Middleware
@@ -44,7 +39,6 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'less-rails'
 gem 'rails-timeago'
-gem 'sprockets-rails'
 gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
@@ -67,7 +61,7 @@ end
 
 group :development do
   gem 'byebug'
-  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
 end
