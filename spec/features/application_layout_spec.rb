@@ -4,6 +4,9 @@ require 'rails_helper'
 RSpec.describe 'application layout', type: :feature do
   it_behaves_like 'non logged in account' do
     before do
+      site.main_menu_page_ids = [home_page.id, test_page.id]
+      site.save!
+
       visit_page '/test_page'
     end
 
