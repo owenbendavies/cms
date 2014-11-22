@@ -12,7 +12,7 @@ class Site
   property :sub_title, type: String
   property :layout, type: String, default: 'one_column'
   property :asset_host, type: String
-  property :main_menu, type: Array, default: []
+  property :main_menu_page_ids, type: Array, default: []
   property :copyright, type: String
   property :google_analytics, type: String
   property :charity_number, type: String
@@ -77,5 +77,9 @@ class Site
     }
 
     self.css_filename = "#{Digest::MD5.hexdigest(posted_css)}.css"
+  end
+
+  def main_menu_pages
+    Page.find_by_id(main_menu_page_ids)
   end
 end

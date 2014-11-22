@@ -4,6 +4,7 @@ require 'rails_helper'
 RSpec.describe 'layouts', type: :feature do
   shared_context 'layout' do |layout|
     before do
+      site.main_menu_page_ids = [home_page.id, test_page.id]
       site.layout = layout
       site.save!
 
