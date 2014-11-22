@@ -122,22 +122,6 @@ RSpec.describe 'site', type: :feature do
 
         expect(current_path).to eq '/site/css'
       end
-
-      context 'css feature disabled' do
-        before do
-          features.edit_css = false
-          features.save!
-          visit go_to_url
-        end
-
-        it 'retuns page not found' do
-          expect(page.status_code).to eq 404
-        end
-
-        it 'does not have link in topbar' do
-          expect(page).to have_no_link 'CSS'
-        end
-      end
     end
   end
 end
