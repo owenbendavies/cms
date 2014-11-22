@@ -74,31 +74,4 @@ RSpec.describe 'contact_form page', type: :feature do
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error 'do not fill in'
   end
-
-  it 'saves spam messages' do
-    fill_in 'Name', with: new_name
-    fill_in 'Email address', with: new_email
-    fill_in 'Phone number', with: new_phone_number
-    fill_in 'Message', with: new_message
-    fill_in 'Do not fill in', with: new_name
-
-    expect {
-      expect {
-        expect {
-          click_button 'Send Message'
-        }.to change(SpamMessage, :count).by(1)
-      }.to_not change(Message, :count)
-    }.to_not change{ActionMailer::Base.deliveries.size}
-
-    expect(current_path).to eq "/#{contact_page.url}/contact_form"
-    it_should_have_form_error 'do not fill in'
-
-    spam_message = SpamMessage.all.first
-    expect(spam_message.site_id).to eq site.id
-    expect(spam_message.name).to eq new_name
-    expect(spam_message.email_address).to eq new_email
-    expect(spam_message.phone_number).to eq new_phone_number
-    expect(spam_message.message).to eq new_message
-    expect(spam_message.do_not_fill_in).to eq new_name
-  end
 end
