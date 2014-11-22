@@ -17,7 +17,6 @@ RSpec.describe Site do
       name: new_company_name,
       sub_title: new_catch_phrase,
       asset_host: new_host,
-      main_menu: [{'url' => new_page_url, 'text' => new_name}],
       copyright: new_name,
       google_analytics: new_google_analytics,
       charity_number: new_number,
@@ -33,7 +32,6 @@ RSpec.describe Site do
     expect(site.sub_title).to eq new_catch_phrase
     expect(site.layout).to eq 'one_column'
     expect(site.asset_host).to eq new_host
-    expect(site.main_menu).to eq [{'url' => new_page_url, 'text' => new_name}]
     expect(site.copyright).to eq new_name
     expect(site.google_analytics).to eq new_google_analytics
     expect(site.charity_number).to eq new_number
@@ -231,6 +229,22 @@ RSpec.describe Site do
       subject.css = "body {\r\n\tpadding: 4em;\r\n}"
       subject.save!
       expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+    end
+  end
+
+  describe '#main_menu_pages' do
+    it 'returns empty array when no pages' do
+      subject = FactoryGirl.build(:site)
+      expect(subject.main_menu_pages).to eq []
+    end
+
+    it 'returns pages when page ids' do
+      page1 = FactoryGirl.create(:page)
+      page2 = FactoryGirl.create(:page)
+      subject = FactoryGirl.build(:site)
+      subject.main_menu_page_ids = [page1.id, page2.id]
+
+      expect(subject.main_menu_pages).to eq [page1, page2]
     end
   end
 end
