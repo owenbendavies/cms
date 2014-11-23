@@ -12,9 +12,9 @@
 #  copyright             :string(64)
 #  google_analytics      :string(255)
 #  charity_number        :string(255)
-#  stylesheet_filename   :string(255)
 #  allow_search_engines  :boolean          default(TRUE)
-#  header_image_filename :string(255)
+#  stylesheet_filename   :string(32)
+#  header_image_filename :string(32)
 #  sidebar_html_content  :text
 #  created_by_id         :integer          not null
 #  updated_by_id         :integer          not null
