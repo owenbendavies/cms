@@ -8,7 +8,7 @@ class AddMessages < ActiveRecord::Migration
       table.string :email, null: false, limit: 64
       table.string :phone, limit: 32
       table.boolean :delivered
-      table.text :message, limit: 2048
+      table.text :message, null: false
 
       table.timestamps null: false
     end

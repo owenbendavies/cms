@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.string   "email",      limit: 64, null: false
     t.string   "phone",      limit: 32
     t.boolean  "delivered"
-    t.text     "message"
+    t.text     "message",               null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
