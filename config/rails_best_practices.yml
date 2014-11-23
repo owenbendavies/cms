@@ -35,7 +35,7 @@ UseModelAssociationCheck: { }
 #UseMultipartAlternativeAsContentTypeOfEmailCheck: { }
 UseParenthesesInMethodDefCheck: { }
 UseObserverCheck: { }
-UseQueryAttributeCheck: { }
+#UseQueryAttributeCheck: { }
 UseSayWithTimeInMigrationsCheck: { }
 UseScopeAccessCheck: { }
 UseTurboSprocketsRails3Check: { }
