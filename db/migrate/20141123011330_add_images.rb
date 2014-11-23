@@ -9,7 +9,7 @@ class AddImages < ActiveRecord::Migration
       table.belongs_to :created_by, null: false
       table.belongs_to :updated_by, null: false
 
-      table.timestamps
+      table.timestamps null: false
     end
   end
 end

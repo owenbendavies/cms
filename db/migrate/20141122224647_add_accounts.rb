@@ -4,7 +4,7 @@ class AddAccounts < ActiveRecord::Migration
       table.string :email, null: false, limit: 64
       table.string :password_digest, null: false, limit: 64
 
-      table.timestamps
+      table.timestamps null: false
     end
 
     add_index :accounts, :email, unique: true
