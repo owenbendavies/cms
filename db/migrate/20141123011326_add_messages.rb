@@ -10,7 +10,7 @@ class AddMessages < ActiveRecord::Migration
       table.boolean :delivered
       table.text :message, limit: 2048
 
-      table.timestamps
+      table.timestamps null: false
     end
   end
 end

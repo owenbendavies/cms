@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20141123011330) do
   create_table "accounts", force: true do |t|
     t.string   "email",           limit: 64, null: false
     t.string   "password_digest", limit: 64, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
@@ -30,14 +30,17 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.integer "site_id",    null: false
   end
 
+  add_index "accounts_sites", ["account_id"], name: "index_accounts_sites_on_account_id", using: :btree
+  add_index "accounts_sites", ["site_id"], name: "index_accounts_sites_on_site_id", using: :btree
+
   create_table "images", force: true do |t|
     t.integer  "site_id",                  null: false
     t.string   "name",          limit: 64, null: false
     t.string   "filename",                 null: false
     t.integer  "created_by_id",            null: false
     t.integer  "updated_by_id",            null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "images", ["site_id"], name: "index_images_on_site_id", using: :btree
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.string   "phone",      limit: 32
     t.boolean  "delivered"
     t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "messages", ["site_id"], name: "index_messages_on_site_id", using: :btree
@@ -65,31 +68,31 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.text     "html_content"
     t.integer  "created_by_id",                            null: false
     t.integer  "updated_by_id",                            null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
   add_index "pages", ["site_id"], name: "index_pages_on_site_id", using: :btree
 
   create_table "sites", force: true do |t|
-    t.string   "host",                                                    null: false
+    t.string   "host",                  limit: 64,                        null: false
     t.string   "name",                  limit: 64,                        null: false
     t.string   "sub_title",             limit: 64
     t.string   "layout",                           default: "one_column"
     t.string   "asset_host"
-    t.string   "main_menu"
+    t.string   "main_menu_page_ids"
     t.string   "copyright",             limit: 64
     t.string   "google_analytics"
     t.string   "charity_number"
-    t.string   "css_filename"
+    t.string   "stylesheet_filename"
     t.boolean  "allow_search_engines",             default: true
     t.string   "header_image_filename"
     t.text     "sidebar_html_content"
     t.integer  "created_by_id",                                           null: false
     t.integer  "updated_by_id",                                           null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
   end
 
   add_index "sites", ["host"], name: "index_sites_on_host", unique: true, using: :btree
