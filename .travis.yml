@@ -12,6 +12,8 @@ services:
 bundler_args: --deployment --without development production
 
 before_script:
+  - psql -c 'create database cms_development;' -U postgres
+  - "sed -i \"s/  database:.*/  database: 'postgres://postgres@localhost/cms_test'/\" config/secrets.yml"
   - ./bin/bootstrap
   - ./bin/spring stop
 
