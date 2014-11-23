@@ -59,8 +59,11 @@ group :production do
   gem 'sentry-raven'
 end
 
-group :development do
+group :development, :test do
   gem 'annotate'
+end
+
+group :development do
   gem 'byebug'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
