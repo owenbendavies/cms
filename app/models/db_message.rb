@@ -9,7 +9,7 @@
 #  email      :string(64)       not null
 #  phone      :string(32)
 #  delivered  :boolean
-#  message    :text
+#  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
