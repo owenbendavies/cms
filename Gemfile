@@ -60,6 +60,7 @@ group :production do
 end
 
 group :development do
+  gem 'annotate'
   gem 'byebug'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
