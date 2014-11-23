@@ -217,34 +217,4 @@ RSpec.describe Message do
       expect(message.subject).to eq subject.subject
     end
   end
-
-  describe 'save_spam_message' do
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.build(:message, site: site) }
-
-    it 'creates spam message when spam' do
-      subject.do_not_fill_in = new_name
-
-      expect {
-        subject.save_spam_message
-      }.to change(SpamMessage, :count).by(1)
-
-      spam_message = SpamMessage.all.first
-      expect(spam_message.site_id).to eq site.id
-      expect(spam_message.name).to eq subject.name
-      expect(spam_message.email_address).to eq subject.email_address
-      expect(spam_message.phone_number).to eq subject.phone_number
-      expect(spam_message.message).to eq subject.message
-      expect(spam_message.do_not_fill_in).to eq new_name
-
-      expect(spam_message.error_messages).
-        to eq({"do_not_fill_in" => ["do not fill in"]})
-    end
-
-    it 'does not create spam message if valid' do
-      expect {
-        subject.save_spam_message
-      }.to_not change(SpamMessage, :count)
-    end
-  end
 end
