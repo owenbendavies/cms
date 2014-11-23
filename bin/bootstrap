@@ -38,5 +38,6 @@ do
 done
 
 RAILS_ENV=development ./bin/rake db:migrate
+./bin/annotate
 
 echo "bootstrap complete"
