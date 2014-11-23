@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.string   "name",       limit: 64, null: false
     t.string   "email",      limit: 64, null: false
     t.string   "phone",      limit: 32
-    t.boolean  "delivered"
+    t.boolean  "delivered",             null: false
     t.text     "message",               null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.integer  "site_id",                                  null: false
     t.string   "url",           limit: 64,                 null: false
     t.string   "name",          limit: 64,                 null: false
-    t.boolean  "private",                  default: false
-    t.boolean  "contact_form",             default: false
+    t.boolean  "private",                  default: false, null: false
+    t.boolean  "contact_form",             default: false, null: false
     t.text     "html_content"
     t.integer  "created_by_id",                            null: false
     t.integer  "updated_by_id",                            null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.string   "copyright",             limit: 64
     t.string   "google_analytics"
     t.string   "charity_number"
-    t.boolean  "allow_search_engines",             default: true
+    t.boolean  "allow_search_engines",             default: true,         null: false
     t.string   "stylesheet_filename",   limit: 32
     t.string   "header_image_filename", limit: 32
     t.text     "sidebar_html_content"

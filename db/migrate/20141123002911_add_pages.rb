@@ -5,8 +5,8 @@ class AddPages < ActiveRecord::Migration
 
       table.string :url, null: false, limit: 64
       table.string :name, null: false, limit: 64
-      table.boolean :private, default: false
-      table.boolean :contact_form, default: false
+      table.boolean :private, default: false, null: false
+      table.boolean :contact_form, default: false, null: false
       table.text :html_content
 
       table.belongs_to :created_by, null: false
