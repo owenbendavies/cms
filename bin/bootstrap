@@ -37,4 +37,6 @@ do
   fi
 done
 
+RAILS_ENV=development ./bin/rake db:migrate
+
 echo "bootstrap complete"
