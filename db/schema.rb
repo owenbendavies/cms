@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141123011330) do
   create_table "images", force: true do |t|
     t.integer  "site_id",                  null: false
     t.string   "name",          limit: 64, null: false
-    t.string   "filename",      limit: 32, null: false
+    t.string   "filename",      limit: 36, null: false
     t.integer  "created_by_id",            null: false
     t.integer  "updated_by_id",            null: false
     t.datetime "created_at",               null: false
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.string   "google_analytics"
     t.string   "charity_number"
     t.boolean  "allow_search_engines",             default: true,         null: false
-    t.string   "stylesheet_filename",   limit: 32
-    t.string   "header_image_filename", limit: 32
+    t.string   "stylesheet_filename",   limit: 36
+    t.string   "header_image_filename", limit: 36
     t.text     "sidebar_html_content"
     t.integer  "created_by_id",                                           null: false
     t.integer  "updated_by_id",                                           null: false
