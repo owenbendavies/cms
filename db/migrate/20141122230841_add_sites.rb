@@ -15,8 +15,8 @@ class AddSites < ActiveRecord::Migration
       table.string :header_image_filename
       table.text :sidebar_html_content
 
-      table.integer :created_by_id, null: false
-      table.integer :updated_by_id, null: false
+      table.belongs_to :created_by, null: false
+      table.belongs_to :updated_by, null: false
 
       table.timestamps
     end
