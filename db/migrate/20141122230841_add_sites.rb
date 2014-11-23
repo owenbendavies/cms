@@ -10,7 +10,7 @@ class AddSites < ActiveRecord::Migration
       table.string :copyright, limit: 64
       table.string :google_analytics
       table.string :charity_number
-      table.boolean :allow_search_engines, default: true
+      table.boolean :allow_search_engines, default: true, null: false
       table.string :stylesheet_filename, limit: 32
       table.string :header_image_filename, limit: 32
       table.text :sidebar_html_content

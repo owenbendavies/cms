@@ -8,7 +8,7 @@
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
-#  delivered  :boolean
+#  delivered  :boolean          not null
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
