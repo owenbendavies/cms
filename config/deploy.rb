@@ -35,5 +35,5 @@ namespace :config_files do
     end
   end
 
-  after 'deploy:updated', 'config_files:upload'
+  before 'deploy:updated', 'config_files:upload'
 end
