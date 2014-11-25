@@ -33,8 +33,9 @@ namespace :data do
       data.delete 'ruby_class'
       data.delete :css_filename
       data.delete :main_menu_page_ids
+      updated_by_id = data.delete :updated_by
 
-      account = accounts.find{|account| account.id == data.delete(:updated_by)}
+      account = accounts.find{|account| account.id == updated_by_id }
       updated_by = DBAccount.find_by(email: account.email)
 
       data[:updated_by] = updated_by
@@ -72,14 +73,17 @@ namespace :data do
       data.delete '_id'
       data.delete '_rev'
       data.delete 'ruby_class'
+      site_id = data.delete :site_id
+      created_by_id = data.delete :created_by
+      updated_by_id = data.delete :updated_by
 
-      site = sites.find{|site| site.id == data.delete(:site_id) }
+      site = sites.find{|site| site.id == site_id }
       data[:site] = DBSite.find_by(host: site.host)
 
-      account = accounts.find{|account| account.id == data.delete(:created_by) }
+      account = accounts.find{|account| account.id == created_by_id }
       data[:created_by] = DBAccount.find_by(email: account.email)
 
-      account = accounts.find{|account| account.id == data.delete(:updated_by) }
+      account = accounts.find{|account| account.id == updated_by_id }
       data[:updated_by] = DBAccount.find_by(email: account.email)
 
       db_page = DBPage.find_or_initialize_by(site: data[:site], url: page.url)
@@ -116,11 +120,12 @@ namespace :data do
       data.delete '_id'
       data.delete '_rev'
       data.delete 'ruby_class'
+      site_id = data.delete :site_id
 
       data[:email] = data.delete :email_address
       data[:phone] = data.delete :phone_number
 
-      site = sites.find{|site| site.id == data.delete(:site_id) }
+      site = sites.find{|site| site.id == site_id }
       data[:site] = DBSite.find_by(host: site.host)
 
       db_message = DBMessage.find_or_initialize_by(site: data[:site], created_at: message.created_at)
@@ -139,14 +144,17 @@ namespace :data do
       data.delete '_id'
       data.delete '_rev'
       data.delete 'ruby_class'
+      site_id = data.delete :site_id
+      created_by_id = data.delete :created_by
+      updated_by_id = data.delete :updated_by
 
-      site = sites.find{|site| site.id == data.delete(:site_id) }
+      site = sites.find{|site| site.id == site_id }
       data[:site] = DBSite.find_by(host: site.host)
 
-      account = accounts.find{|account| account.id == data.delete(:created_by) }
+      account = accounts.find{|account| account.id == created_by_id }
       data[:created_by] = DBAccount.find_by(email: account.email)
 
-      account = accounts.find{|account| account.id == data.delete(:updated_by) }
+      account = accounts.find{|account| account.id == updated_by_id }
       data[:updated_by] = DBAccount.find_by(email: account.email)
 
       db_image = DBImage.find_or_initialize_by(site: data[:site], name: image.name)
