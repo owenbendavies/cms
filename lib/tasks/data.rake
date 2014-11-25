@@ -128,6 +128,14 @@ namespace :data do
       site = sites.find{|site| site.id == site_id }
       data[:site] = DBSite.find_by(host: site.host)
 
+      if data[:subject].blank?
+        data[:subject] = "Contact Us"
+      end
+
+      if !data.keys.include? :delivered
+        data[:delivered] = true
+      end
+
       db_message = DBMessage.find_or_initialize_by(site: data[:site], created_at: message.created_at)
       db_message.attributes = data
 
