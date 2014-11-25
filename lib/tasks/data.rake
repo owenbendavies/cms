@@ -114,7 +114,7 @@ namespace :data do
     end
 
     Message.all.each do |message|
-      puts "page: #{message.site_id} #{message.id}"
+      puts "message: #{message.site_id} #{message.id}"
 
       data = message.to_hash
       data.delete '_id'
