@@ -5,7 +5,7 @@ RSpec.describe 'sitemap', type: :feature do
     FactoryGirl.create(
       :page,
       name: 'Private',
-      site_id: site.id,
+      site: site,
       private: true
     )
   }

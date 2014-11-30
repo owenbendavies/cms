@@ -1,10 +1,9 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.find_all_by_site(@site)
+    @messages = @site.messages
   end
 
   def show
-    @message = Message.find_by_site_and_id(@site, params[:id])
-    return page_not_found unless @message
+    @message = Message.find_by_site_id_and_id!(@site, params[:id])
   end
 end

@@ -7,9 +7,9 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(site_id: @site.id)
+    @page = Page.new(site: @site)
 
-    if @page.update_attributes(page_params.merge(created_by: user.id))
+    if @page.update_attributes(page_params.merge(created_by: user))
       redirect_to page_path(@page.url)
     else
       render :new
@@ -52,8 +52,7 @@ class PagesController < ApplicationController
   private
 
   def find_page
-    @page = Page.find_by_site_and_url(@site, params[:id])
-    return page_not_found unless @page
+    @page = Page.find_by_site_id_and_url!(@site, params[:id])
   end
 
   def page_params
@@ -62,14 +61,14 @@ class PagesController < ApplicationController
       :contact_form,
       :private,
       :html_content
-    ).merge(updated_by: user.id)
+    ).merge(updated_by: user)
   end
 
   def message_params
     params.require(:message).permit(
       :name,
-      :email_address,
-      :phone_number,
+      :email,
+      :phone,
       :message,
       :do_not_fill_in
     ).merge({

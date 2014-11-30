@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe MessageMailer do
   describe '.new_message' do
-    let(:site) { FactoryGirl.build(:site) }
-    let(:message) { FactoryGirl.build(:message, site: site) }
-    let!(:account) { FactoryGirl.create(:account) }
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:message) { FactoryGirl.create(:message, site: site) }
+    let!(:account) { site.accounts.first }
 
     it 'sends a message' do
       expect {
@@ -25,9 +25,9 @@ RSpec.describe MessageMailer do
 
       context 'site with www in host' do
         it 'removes the www' do
-          site = FactoryGirl.build(:site, host: 'www.example.com')
-          message = FactoryGirl.build(:message, site: site)
-          FactoryGirl.create(:account, sites: ['www.example.com'])
+          site.host = 'www.example.com'
+          site.save!
+
           MessageMailer.new_message(message).deliver
           subject = ActionMailer::Base.deliveries.last
 
@@ -37,11 +37,11 @@ RSpec.describe MessageMailer do
       end
     end
 
-    it 'is sent to account email address' do
+    it 'is sent to sites account email' do
       MessageMailer.new_message(message).deliver
       subject = ActionMailer::Base.deliveries.last
 
-      expect(subject.to).to eq [account.email]
+      expect(subject.to).to eq site.accounts.map(&:email).sort
     end
 
     it 'includes message subject' do
@@ -57,8 +57,8 @@ RSpec.describe MessageMailer do
       body = subject.body
 
       expect(body).to include "Name: #{message.name}"
-      expect(body).to include "Email address: #{message.email_address}"
-      expect(body).to include "Phone number: #{message.phone_number}"
+      expect(body).to include "Email: #{message.email}"
+      expect(body).to include "Phone: #{message.phone}"
       expect(body).to include "Message: #{message.message}"
     end
   end

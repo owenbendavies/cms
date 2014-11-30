@@ -11,7 +11,7 @@ RSpec.describe ImageUploader do
   describe 'store' do
     it 'must be an image' do
       expect {
-        subject.store! File.open(Rails.root.join('spec/assets/bad.exe'))
+        subject.store! StringUploader.new("stylesheet.exe", 'asd')
       }.to raise_error(
         CarrierWave::IntegrityError,
         /.* "exe" files, allowed types: jpg, jpeg, png/

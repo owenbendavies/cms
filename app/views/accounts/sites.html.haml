@@ -3,4 +3,4 @@
 
 %ul#sites
   - user.sites.sort.each do |site|
-    %li= link_to(site, "http://#{site}")
+    %li= link_to(site.host, "http://#{site.host}")

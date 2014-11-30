@@ -8,12 +8,12 @@
   %dt= Message.human_attribute_name(:name)
   %dd= @message.name
 
-  %dt= Message.human_attribute_name(:email_address)
-  %dd= @message.email_address
+  %dt= Message.human_attribute_name(:email)
+  %dd= @message.email
 
-  - unless @message.phone_number.blank?
-    %dt= Message.human_attribute_name(:phone_number)
-    %dd= @message.phone_number
+  - if @message.phone
+    %dt= Message.human_attribute_name(:phone)
+    %dd= @message.phone
 
   %dt= Message.human_attribute_name(:message)
   %dd

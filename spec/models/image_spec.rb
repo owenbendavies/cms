@@ -1,26 +1,22 @@
+# == Schema Information
+#
+# Table name: images
+#
+#  id            :integer          not null, primary key
+#  site_id       :integer          not null
+#  name          :string(64)       not null
+#  filename      :string(36)       not null
+#  created_by_id :integer          not null
+#  updated_by_id :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Image do
-  it 'has accessors for its properties' do
-    site = FactoryGirl.build(:site)
-
-    image = Image.new(
-      name: new_name,
-      created_by: new_id,
-      updated_by: new_id,
-      site: site,
-      filename: new_filename,
-    )
-
-    expect(image.name).to eq new_name
-    expect(image.created_by).to eq new_id
-    expect(image.updated_by).to eq new_id
-    expect(image.site).to eq site
-  end
-
   it 'has a file' do
-    site = FactoryGirl.build(:site)
-    image = FactoryGirl.build(:image, site: site)
+    image = FactoryGirl.build(:image)
     file = image.file
 
     expect(file.url).to eq File.join(
@@ -35,16 +31,6 @@ RSpec.describe Image do
   it 'strips attributes' do
     image = FactoryGirl.create(:image, name: "  #{new_name} ")
     expect(image.name).to eq new_name
-  end
-
-  describe '#save' do
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.build(:image, site: site) }
-
-    it 'saves site_id' do
-      subject.save!
-      expect(subject.site_id).to eq site.id
-    end
   end
 
   describe 'validate' do
@@ -65,49 +51,19 @@ RSpec.describe Image do
     it { should validate_presence_of(:updated_by) }
   end
 
-  describe '.by_site_id_and_name' do
-    it 'returns all images in alphabetical order' do
-      image = FactoryGirl.create(:image, site_id: new_id)
+  describe '#asset_host' do
+    subject { FactoryGirl.build(:image) }
 
-      results = CouchPotato.database.view(
-        Image.by_site_id_and_name(key: [new_id, image.name])
-      )
-
-      expect(results.size).to eq 1
-      expect(results.first).to eq image
-    end
-  end
-
-  describe '.find_all_by_site' do
-    it 'returns all images in alphabetical order' do
-      site = FactoryGirl.create(:site)
-
-      image1 = FactoryGirl.create( :image,
-        site: site,
-        name: "Image 1",
-      )
-
-      image2 = FactoryGirl.create(:image,
-        site: site,
-        name: "Image 2",
-      )
-
-      FactoryGirl.create(:image)
-
-      images = Image.find_all_by_site(site)
-      expect(images.size).to eq 2
-      expect(images.first).to eq image1
-      expect(images.first.site).to eq site
-      expect(images.second).to eq image2
+    it 'uses the site asset_host' do
+      expect(subject.asset_host).to eq subject.site.asset_host
     end
   end
 
   describe '#fog_directory' do
-    it 'uses the site fog_directory' do
-      site = FactoryGirl.build(:site)
-      image = FactoryGirl.build(:image, site: site)
+    subject { FactoryGirl.build(:image) }
 
-      expect(image.fog_directory).to eq site.fog_directory
+    it 'uses the site fog_directory' do
+      expect(subject.fog_directory).to eq subject.site.fog_directory
     end
   end
 end

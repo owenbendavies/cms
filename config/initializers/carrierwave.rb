@@ -13,6 +13,4 @@ CarrierWave.configure do |config|
   config.store_dir = Rails.application.secrets.uploads_store_dir
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
-
-  config.remove_previously_stored_files_after_update = false
 end

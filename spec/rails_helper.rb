@@ -22,14 +22,23 @@ require 'shoulda/matchers'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+ActiveRecord::Migration.maintain_test_schema!
+
 RSpec.configure do |config|
   config.before :all do
-    CouchPotato.couchrest_database.create!
+    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.strategy = :transaction
   end
 
-  config.before do
-    if CouchPotato.couchrest_database.info['update_seq'] > 0
-      CouchPotato.couchrest_database.recreate!
-    end
+  config.before :each, js: true do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before :each do
+    DatabaseCleaner.start
+  end
+
+  config.after :each do
+    DatabaseCleaner.clean
   end
 end

@@ -7,5 +7,5 @@
         - else
           = @site.name
 
-    - unless @site.sub_title.blank?
+    - if @site.sub_title
       %h2#site_sub_title= @site.sub_title
