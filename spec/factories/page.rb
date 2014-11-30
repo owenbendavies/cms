@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :page do
-    site_id { Digest::MD5.hexdigest(rand.to_s) }
+    site
     name { Faker::Name.name }
-    created_by { Digest::MD5.hexdigest(rand.to_s) }
-    updated_by { Digest::MD5.hexdigest(rand.to_s) }
     html_content { "<p>#{ Faker::Lorem.paragraph }</p>" }
+    association :created_by, factory: :account
+    association :updated_by, factory: :account
   end
 end

@@ -1,52 +1,41 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id                    :integer          not null, primary key
+#  host                  :string(64)       not null
+#  name                  :string(64)       not null
+#  sub_title             :string(64)
+#  layout                :string(255)      default("one_column")
+#  asset_host            :string(255)
+#  main_menu_page_ids    :string(255)
+#  copyright             :string(64)
+#  google_analytics      :string(255)
+#  charity_number        :string(255)
+#  allow_search_engines  :boolean          default(TRUE), not null
+#  stylesheet_filename   :string(36)
+#  header_image_filename :string(36)
+#  sidebar_html_content  :text
+#  created_by_id         :integer          not null
+#  updated_by_id         :integer          not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Site do
-  describe 'LAYOUTS' do
-    specify {
-      expect(Site::LAYOUTS).to eq [
-        'one_column',
-        'right_sidebar',
-        'small_right_sidebar',
-      ]
-    }
-  end
+  it 'has a stylesheet' do
+    site = FactoryGirl.build(:site)
+    stylesheet = site.stylesheet
 
-  it 'has accessors for its properties' do
-    site = Site.new(
-      host: new_host,
-      name: new_company_name,
-      sub_title: new_catch_phrase,
-      asset_host: new_host,
-      copyright: new_name,
-      google_analytics: new_google_analytics,
-      charity_number: new_number,
-      updated_by: new_id,
-      css_filename: new_filename,
-      header_image_filename: new_filename,
-      sidebar_html_content: new_message,
-      allow_search_engines: false,
+    expect(stylesheet.url).to eq File.join(
+      site.asset_host,
+      CarrierWave::Uploader::Base.store_dir,
+      site.stylesheet_filename
     )
 
-    expect(site.host).to eq new_host
-    expect(site.name).to eq new_company_name
-    expect(site.sub_title).to eq new_catch_phrase
-    expect(site.layout).to eq 'one_column'
-    expect(site.asset_host).to eq new_host
-    expect(site.copyright).to eq new_name
-    expect(site.google_analytics).to eq new_google_analytics
-    expect(site.charity_number).to eq new_number
-    expect(site.updated_by).to eq new_id
-    expect(site.css_filename).to eq new_filename
-    expect(site.header_image_filename).to eq new_filename
-    expect(site.sidebar_html_content).to eq new_message
-    expect(site.allow_search_engines).to eq false
-  end
-
-  describe '#allow_search_engines' do
-    it 'defaults to true' do
-      site = Site.new
-      expect(site.allow_search_engines).to eq true
-    end
+    expect(stylesheet.fog_directory).to eq site.fog_directory
   end
 
   it 'has a header image' do
@@ -121,61 +110,6 @@ RSpec.describe Site do
     it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
   end
 
-  describe '.by_host' do
-    it 'returns site' do
-      site = FactoryGirl.create(:site)
-      FactoryGirl.create(:site, host: new_host)
-
-      results = CouchPotato.database.view(Site.by_host(key: site.host))
-      expect(results.size).to eq 1
-      expect(results.first).to eq site
-    end
-  end
-
-  describe '.by_css_filename' do
-    it 'returns site' do
-      site = FactoryGirl.build(:site)
-      site.css = "body {\r\n  padding: 4em;\r\n}"
-      site.save!
-
-      results = CouchPotato.database.view(
-        Site.by_css_filename(key: site.css_filename)
-      )
-      expect(results.size).to eq 1
-      expect(results.first).to eq site
-    end
-  end
-
-  describe '.find_by_host' do
-    let!(:site) { FactoryGirl.create(:site) }
-
-    it 'finds a site' do
-      expect(Site.find_by_host(site.host)).to eq site
-    end
-
-    it 'ignores case' do
-      expect(Site.find_by_host(site.host.upcase)).to eq site
-    end
-
-    it 'returns nil when not found' do
-      expect(Site.find_by_host(new_host)).to be_nil
-    end
-  end
-
-  describe '.find_by_css_filename' do
-    let!(:site) {
-      FactoryGirl.create(:site, css: "body {\r\n  padding: 4em;\r\n}")
-    }
-
-    it 'finds a site' do
-      expect(Site.find_by_css_filename(site.css_filename)).to eq site
-    end
-
-    it 'returns nil when not found' do
-      expect(Site.find_by_css_filename(new_filename)).to be_nil
-    end
-  end
-
   describe '#fog_directory' do
     subject { FactoryGirl.build(:site, host: 'www.example.com') }
 
@@ -185,7 +119,9 @@ RSpec.describe Site do
   end
 
   describe '#css' do
-    subject { FactoryGirl.build(:site) }
+    include_context 'clear_uploaded_files'
+
+    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
 
     context 'with css' do
       before do
@@ -195,17 +131,6 @@ RSpec.describe Site do
 
       it 'returns css' do
         expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
-      end
-
-      it 'returns css_filename' do
-        expect(subject.css_filename).
-          to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
-      end
-
-      it 'saves css as attachment' do
-        expect(subject._attachments.size).to eq 1
-        attachment = subject._attachments['css']
-        expect(attachment['content_type']).to eq 'text/css'
       end
     end
 
@@ -217,7 +142,9 @@ RSpec.describe Site do
   end
 
   describe '#css=' do
-    subject { FactoryGirl.build(:site) }
+    include_context 'clear_uploaded_files'
+
+    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
 
     it 'strips end of line whitespace' do
       subject.css = "body {\r\n  padding: 4em; \r\n}"
@@ -227,24 +154,51 @@ RSpec.describe Site do
 
     it 'converts tabs to spaces' do
       subject.css = "body {\r\n\tpadding: 4em;\r\n}"
+      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+    end
+
+    it 'saves a file' do
+      expect(uploaded_files).to eq []
+
+      subject.css = "body {\r\n  padding: 4em;\r\n}"
+      subject.save!
+
+      expect(subject.stylesheet_filename).
+        to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
+
+      expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
+    end
+
+    it 'deletes old version' do
+      expect(uploaded_files).to eq []
+
+      subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
       expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+
+      expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
+
+      subject.css = 'body{background-color: red}'
+      subject.save!
+      expect(subject.css).to eq 'body{background-color: red}'
+
+      expect(uploaded_files).to eq ['b1192d422b8c8999043c2abd1b47b750.css']
     end
   end
 
   describe '#main_menu_pages' do
+    subject { FactoryGirl.create(:site) }
+
     it 'returns empty array when no pages' do
-      subject = FactoryGirl.build(:site)
       expect(subject.main_menu_pages).to eq []
     end
 
     it 'returns pages when page ids' do
-      page1 = FactoryGirl.create(:page)
-      page2 = FactoryGirl.create(:page)
-      subject = FactoryGirl.build(:site)
-      subject.main_menu_page_ids = [page1.id, page2.id]
+      page1 = FactoryGirl.create(:page, site: subject)
+      page2 = FactoryGirl.create(:page, site: subject)
+      subject.main_menu_page_ids = [page2.id, page1.id]
 
-      expect(subject.main_menu_pages).to eq [page1, page2]
+      expect(subject.main_menu_pages).to eq [page2, page1]
     end
   end
 end

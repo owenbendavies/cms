@@ -34,11 +34,11 @@ RSpec.describe 'pages', type: :feature do
           expect(page).to have_content 'New Page'
         }.to change(Page, :count).by(1)
 
-        new_page = Page.find_by_site_and_url(site, 'new_page')
+        new_page = Page.find_by_site_id_and_url!(site, 'new_page')
         expect(new_page.name).to eq 'New Page'
         expect(new_page.html_content).to eq "<p>#{new_message}</p>"
-        expect(new_page.created_by).to eq account.id
-        expect(new_page.updated_by).to eq account.id
+        expect(new_page.created_by).to eq account
+        expect(new_page.updated_by).to eq account
       end
 
       it 'shows errors' do
@@ -114,7 +114,7 @@ RSpec.describe 'pages', type: :feature do
 
     context 'private page' do
       let(:private_page) {
-        FactoryGirl.create(:page, site_id: site.id, private: true)
+        FactoryGirl.create(:page, site: site, private: true)
       }
 
       let(:go_to_url) { "/#{private_page.url}" }
@@ -158,8 +158,8 @@ RSpec.describe 'pages', type: :feature do
         expect(current_path).to eq '/test_page'
         expect(find('#main_article p').text).to eq new_message
 
-        page = Page.find_by_site_and_url(site, 'test_page')
-        expect(page.updated_by).to eq account.id
+        page = Page.find_by_site_id_and_url!(site, 'test_page')
+        expect(page.updated_by).to eq account
       end
 
       it 'makes a page private' do
@@ -195,8 +195,8 @@ RSpec.describe 'pages', type: :feature do
       end
 
       it 'does not save page with no edits' do
-        test_page = Page.find_by_site_and_url(site, 'test_page')
-        test_page.updated_by = account.id
+        test_page = Page.find_by_site_id_and_url!(site, 'test_page')
+        test_page.updated_by = account
         test_page.save!
 
         visit_page '/test_page/edit'
@@ -206,8 +206,10 @@ RSpec.describe 'pages', type: :feature do
             fill_in 'page[name]', with: test_page.name
             click_button 'Update Page'
             expect(current_path).to eq '/test_page'
-          }.to_not change{ Site.find_by_host('localhost')._rev }
-        }.to_not change{ Page.find_by_site_and_url(site, 'test_page')._rev }
+          }.to_not change{ Site.find_by_host!('localhost').updated_at }
+        }.to_not change {
+          Page.find_by_site_id_and_url!(site, 'test_page').updated_at
+        }
       end
 
       it 'shows errors' do
@@ -219,9 +221,10 @@ RSpec.describe 'pages', type: :feature do
   end
 
   describe 'delete' do
+    let(:go_to_url) { '/test_page' }
+
     it_behaves_like 'logged in account' do
       it 'deletes a page', js: true do
-        visit_page '/test_page'
         click_link 'Page'
         click_link 'Delete'
 
@@ -240,11 +243,10 @@ RSpec.describe 'pages', type: :feature do
 
         it_should_have_alert_with 'Test Page was deleted'
         expect(current_path).to eq '/sitemap'
-        expect(Page.find_by_site_and_url(site, 'test_page')).to be_nil
+        expect(Page.find_by_site_id_and_url(site, 'test_page')).to be_nil
       end
 
       it 'does not delete page on cancel', js: true do
-        visit_page '/test_page'
         click_link 'Page'
         click_link 'Delete'
 
@@ -262,7 +264,7 @@ RSpec.describe 'pages', type: :feature do
         end
 
         expect(current_path).to eq '/test_page'
-        expect(Page.find_by_site_and_url(site, 'test_page')).to eq test_page
+        expect(Page.find_by_site_id_and_url!(site, 'test_page')).to eq test_page
       end
     end
   end

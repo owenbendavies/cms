@@ -1,42 +1,55 @@
-class Site
-  include CouchModel
+# == Schema Information
+#
+# Table name: sites
+#
+#  id                    :integer          not null, primary key
+#  host                  :string(64)       not null
+#  name                  :string(64)       not null
+#  sub_title             :string(64)
+#  layout                :string(255)      default("one_column")
+#  asset_host            :string(255)
+#  main_menu_page_ids    :string(255)
+#  copyright             :string(64)
+#  google_analytics      :string(255)
+#  charity_number        :string(255)
+#  allow_search_engines  :boolean          default(TRUE), not null
+#  stylesheet_filename   :string(36)
+#  header_image_filename :string(36)
+#  sidebar_html_content  :text
+#  created_by_id         :integer          not null
+#  updated_by_id         :integer          not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
 
+class Site < ActiveRecord::Base
   LAYOUTS = [
     'one_column',
     'right_sidebar',
     'small_right_sidebar',
   ]
 
-  property :host, type: String
-  property :name, type: String
-  property :sub_title, type: String
-  property :layout, type: String, default: 'one_column'
-  property :asset_host, type: String
-  property :main_menu_page_ids, type: Array, default: []
-  property :copyright, type: String
-  property :google_analytics, type: String
-  property :charity_number, type: String
-  property :updated_by, type: String
-  property :css_filename, type: String
-  property :allow_search_engines, type: :boolean, default: true
+  belongs_to :created_by, class_name: 'Account'
+  belongs_to :updated_by, class_name: 'Account'
 
-  property :header_image_filename, type: String
+  has_and_belongs_to_many :accounts
+
+  has_many :images, -> { order :name }
+  has_many :messages, -> { order created_at: :desc }
+  has_many :pages, -> { order :name }
+
+  serialize :main_menu_page_ids, Array
+
+  mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
   mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
-
-  validates *property_names, no_html: true
-
-  property :sidebar_html_content, type: String
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
-  validates :host, presence: true
-
+  validates *(attribute_names - ['sidebar_html_content']), no_html: true
+  validates :host, presence: true, length: {maximum: 64}
   validates :name, presence: true, length: {maximum: 64}
-
   validates :sub_title, length: {maximum: 64}
-
   validates :layout, inclusion: {in: LAYOUTS}
-
   validates :copyright, length: {maximum: 64}
 
   validates :google_analytics, format: {
@@ -44,42 +57,29 @@ class Site
     allow_blank: true
   }
 
+  validates :created_by, presence: true
   validates :updated_by, presence: true
-
-  view :by_host, key: :host
-
-  view :by_css_filename, key: :css_filename
-
-  def self.find_by_host(host)
-    CouchPotato.database.first(by_host(key: host.downcase))
-  end
-
-  def self.find_by_css_filename(css_filename)
-    CouchPotato.database.first(by_css_filename(key: css_filename))
-  end
 
   def fog_directory
     [Rails.env, 'cms', host.parameterize('_')].join('_')
   end
 
   def css
-    return unless self._attachments['css']
-    CouchPotato.couchrest_database.fetch_attachment self, 'css'
+    stylesheet.read
   end
 
   def css=(posted_css)
     posted_css.gsub!(/\t/, '  ')
     posted_css.gsub!(/ +\r\n/, "\r\n")
 
-    self._attachments['css'] = {
-      'content_type' => 'text/css',
-      'data' => posted_css,
-    }
-
-    self.css_filename = "#{Digest::MD5.hexdigest(posted_css)}.css"
+    self.stylesheet = StringUploader.new("stylesheet.css", posted_css)
   end
 
   def main_menu_pages
-    Page.find_by_id(main_menu_page_ids)
+    pages = Page.find(main_menu_page_ids)
+
+    main_menu_page_ids.map do |id|
+      pages.find{|page| page.id == id}
+    end
   end
 end

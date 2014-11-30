@@ -1,5 +1,5 @@
 en:
-  activemodel:
+  activerecord:
     models:
       message: "Message"
 
@@ -7,8 +7,8 @@ en:
       message:
         created_at: "Created at"
         name: "Name"
-        email_address: "Email address"
-        phone_number: "Phone number"
+        email: "Email"
+        phone: "Phone"
         message: "Message"
 
     errors:

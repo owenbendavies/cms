@@ -1,39 +1,31 @@
-class Image
-  include CouchModel
+# == Schema Information
+#
+# Table name: images
+#
+#  id            :integer          not null, primary key
+#  site_id       :integer          not null
+#  name          :string(64)       not null
+#  filename      :string(36)       not null
+#  created_by_id :integer          not null
+#  updated_by_id :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 
-  property :site_id, type: String
-  property :name, type: String
-  property :created_by, type: String
-  property :updated_by, type: String
+class Image < ActiveRecord::Base
+  belongs_to :site
+  belongs_to :created_by, class_name: 'Account'
+  belongs_to :updated_by, class_name: 'Account'
 
-  property :filename, type: String
   mount_uploader :file, ImageUploader, mount_on: :filename
 
   strip_attributes collapse_spaces: true
 
-  attr_accessor :site
-
-  set_callback :validate, :before do
-    self.site_id = site.id if site
-  end
-
-  validates *property_names, no_html: true
-
+  validates *attribute_names, no_html: true
   validates :site_id, presence: true
-
   validates :name, presence: true, length: {maximum: 64}
-
   validates :created_by, presence: true
-
   validates :updated_by, presence: true
-
-  view :by_site_id_and_name, key:[:site_id, :name]
-
-  def self.find_all_by_site(site)
-    CouchPotato.database.view(
-      by_site_id_and_name(startkey: [site.id], endkey: [site.id, {}])
-    ).each{|image| image.site = site}
-  end
 
   def asset_host
     site.asset_host

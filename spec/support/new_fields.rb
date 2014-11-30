@@ -9,7 +9,6 @@ module NewFields
     let(:new_catch_phrase) { Faker::Company.catch_phrase }
     let(:new_company_name) { Faker::Company.name.gsub("'", '') }
     let(:new_email) { Faker::Internet.safe_email }
-    let(:new_filename) { "#{generate_md5}.jpg" }
 
     let(:new_google_analytics) {
       "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
@@ -19,11 +18,8 @@ module NewFields
     let(:new_id) { generate_md5 }
     let(:new_message) { Faker::Lorem.paragraph }
     let(:new_name) { Faker::Name.name }
-    let(:new_number) { Faker::Number.number(Faker::Number.digit.to_i) }
-    let(:new_page_url) { Faker::Internet.slug(nil, '_') }
     let(:new_password) { 'Aq2%' + Faker::Lorem.words(3).join }
-    let(:new_phone_number) { Faker::PhoneNumber.phone_number }
-    let(:new_url) { Faker::Internet.url }
+    let(:new_phone) { Faker::PhoneNumber.phone_number }
   end
 end
 

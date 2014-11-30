@@ -6,11 +6,10 @@ CMS
 [![Code Climate](https://codeclimate.com/github/obduk/cms.png)](https://codeclimate.com/github/obduk/cms)
 [![Coverage Status](https://coveralls.io/repos/obduk/cms/badge.png)](https://coveralls.io/r/obduk/cms)
 
-A Content Management System (CMS) written with Ruby on Rails and CouchDB.
-Although it is a working project, it was not created with the intention of being
-a production system. Instead this has been my practice project over the years,
-used for testing new ideas. For example, this project originally used MySQL,
-however I switched it to use CouchDB after doing performance checks.
+A Content Management System (CMS) written with Ruby on Rails. Although it is a
+working project, it was not created with the intention of being a production
+system. Instead this has been my practice project over the years, used for
+testing new ideas.
 
 For an example, check out my personal website at http://www.obduk.com
 
@@ -23,7 +22,7 @@ This project requires a system running the following software:
 
 * Ruby
 * Bundler
-* CouchDB
+* PostgreSQL
 * Imagemagick
 * Mailcatcher (For development)
 
@@ -72,18 +71,24 @@ account = Account.new
 account.email = 'test@example.com'
 account.password = 'password'
 account.password_confirmation = 'password'
-account.sites = ['localhost']
 account.save!
 ```
 
-Finally create the site, replacing host and name with appropriate data.
+Next create the site, replacing host and name with appropriate data.
 
 ```ruby
 site = Site.new
 site.host = 'localhost'
 site.name = 'Test Site'
-site.updated_by = account.id
+site.created_by = account
+site.updated_by = account
 site.save!
+```
+
+Next add the site to the account.
+
+```ruby
+account.sites << site
 ```
 
 Development

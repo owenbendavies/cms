@@ -15,8 +15,6 @@ gem 'rails_warden'
 # Model Gems
 gem 'bcrypt'
 gem 'carrierwave', '0.9.0'
-gem 'carrierwave_couch_potato'
-gem 'couch_potato'
 gem 'fog', '1.18.0'
 gem 'gravtastic'
 gem 'mini_magick'
@@ -72,6 +70,7 @@ end
 
 group :test do
   gem 'capybara-webkit'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'

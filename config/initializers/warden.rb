@@ -14,10 +14,11 @@ class Warden::SessionSerializer
 
   def deserialize(id)
     account = Account.find_by_id(id)
+    return unless account
 
     request = Rack::Request.new(env)
 
-    if account.sites.include? request.host
+    if account.sites.map(&:host).include? request.host
       return account
     else
       return nil

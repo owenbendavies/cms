@@ -6,11 +6,11 @@
     %tr
       %th= Message.human_attribute_name(:created_at)
       %th= Message.human_attribute_name(:name)
-      %th= Message.human_attribute_name(:email_address)
+      %th= Message.human_attribute_name(:email)
 
   %tbody
     - @messages.each do |message|
       %tr
         %td= link_to(timeago_tag(message.created_at, force: true), site_message_path(message))
         %td= link_to(message.name, site_message_path(message))
-        %td= link_to(message.email_address, site_message_path(message))
+        %td= link_to(message.email, site_message_path(message))
