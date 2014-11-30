@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'contact_form page', type: :feature do
   let!(:contact_page) {
     FactoryGirl.create(:page,
-      site_id: site.id,
+      site: site,
       contact_form: true,
     )
   }
@@ -14,8 +14,8 @@ RSpec.describe 'contact_form page', type: :feature do
 
   it 'sends a message' do
     fill_in 'Name', with: "  #{new_name} "
-    fill_in 'Email address', with: "  #{new_email} "
-    fill_in 'Phone number', with: " #{new_phone_number} "
+    fill_in 'Email', with: "  #{new_email} "
+    fill_in 'Phone', with: " #{new_phone} "
     fill_in 'Message', with: new_message
 
     expect {
@@ -27,25 +27,25 @@ RSpec.describe 'contact_form page', type: :feature do
     expect(current_path).to eq "/#{contact_page.url}"
     it_should_have_alert_with 'Thank you for your message'
 
-    message = Message.find_all_by_site(site).first
-    expect(message.site_id).to eq site.id
+    message = site.messages.first
+    expect(message.site).to eq site
     expect(message.name).to eq new_name
-    expect(message.email_address).to eq new_email
-    expect(message.phone_number).to eq new_phone_number
+    expect(message.email).to eq new_email
+    expect(message.phone).to eq new_phone
     expect(message.message).to eq new_message
 
     last_message = ActionMailer::Base.deliveries.last
     expect(last_message.from).to eq ["noreply@#{site.host}"]
-    expect(last_message.to).to eq [account.email]
+    expect(last_message.to).to eq site.accounts.map(&:email).sort
     expect(last_message.subject).to eq contact_page.name
     expect(last_message.body).to include "Name: #{new_name}"
-    expect(last_message.body).to include "Email address: #{new_email}"
-    expect(last_message.body).to include "Phone number: #{new_phone_number}"
+    expect(last_message.body).to include "Email: #{new_email}"
+    expect(last_message.body).to include "Phone: #{new_phone}"
     expect(last_message.body).to include "Message: #{new_message}"
   end
 
   it 'does not send a message with invalid data' do
-    fill_in 'Email address', with: new_email
+    fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message
 
     expect {
@@ -60,8 +60,8 @@ RSpec.describe 'contact_form page', type: :feature do
 
   it 'does not send a message with do_not_fill_in field' do
     fill_in 'Name', with: new_name
-    fill_in 'Email address', with: new_email
-    fill_in 'Phone number', with: new_phone_number
+    fill_in 'Email', with: new_email
+    fill_in 'Phone', with: new_phone
     fill_in 'Message', with: new_message
     fill_in 'Do not fill in', with: new_name
 

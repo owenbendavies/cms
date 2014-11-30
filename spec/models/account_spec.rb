@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id              :integer          not null, primary key
+#  email           :string(64)       not null
+#  password_digest :string(64)       not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Account do
@@ -7,20 +18,6 @@ RSpec.describe Account do
 
     expect(account.gravatar_url).
       to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
-  end
-
-  it 'has accessors for its properties' do
-    account = Account.new(
-      email: new_email,
-      password: new_password,
-      password_confirmation: new_password,
-      sites: [new_host],
-    )
-
-    expect(account.email).to eq new_email
-    expect(account.password).to eq new_password
-    expect(account.password_confirmation).to eq new_password
-    expect(account.sites).to eq [new_host]
   end
 
   it 'strips attributes' do
@@ -69,34 +66,9 @@ RSpec.describe Account do
     }
   end
 
-  describe '.by_site_host_and_email' do
-    let(:site) { FactoryGirl.create(:site) }
-    let!(:account) { FactoryGirl.create(:account) }
-
-    subject {
-      CouchPotato.database.view(
-        Account.by_site_host_and_email(key: [site.host, account.email])
-      )
-    }
-
-    it 'returns the account' do
-      expect(subject).to eq [account]
-    end
-  end
-
-  describe '.emails_by_site' do
-    let!(:account) { FactoryGirl.create(:account) }
-
-    subject { CouchPotato.database.view(Account.emails_by_site) }
-
-    it 'returns array of emails' do
-      expect(subject).to eq [account.email]
-    end
-  end
-
   describe '.find_and_authenticate' do
-    let(:site) { FactoryGirl.build(:site) }
-    let!(:account) { FactoryGirl.create(:account) }
+    let!(:site) { FactoryGirl.create(:site) }
+    let!(:account) { site.accounts.first }
 
     it 'authenticates a valid account' do
       expect(Account.find_and_authenticate(
@@ -162,24 +134,12 @@ RSpec.describe Account do
       )).to be_nil
     end
 
-    it 'returnss nil for invalid site' do
+    it 'returns nil for invalid site' do
       expect(Account.find_and_authenticate(
         account.email,
         account.password,
         new_host
       )).to be_nil
-    end
-  end
-
-  describe '.find_emails_by_site' do
-    let!(:site) { FactoryGirl.create(:site) }
-    let!(:account) { FactoryGirl.create(:account) }
-    let!(:another_account) { FactoryGirl.create(:account) }
-
-    it 'returns all emails' do
-      expect(Account.find_emails_by_site(site)).to eq(
-        [account.email, another_account.email].sort
-      )
     end
   end
 end

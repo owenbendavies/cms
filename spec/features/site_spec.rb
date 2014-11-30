@@ -40,20 +40,20 @@ RSpec.describe 'site', type: :feature do
         expect(current_path).to eq '/home'
         it_should_have_alert_with 'Site successfully updated'
 
-        site = Site.find_by_host('localhost')
+        site = Site.find_by_host!('localhost')
         expect(site.name).to eq new_company_name
         expect(site.sub_title).to eq new_catch_phrase
         expect(site.copyright).to eq new_name
         expect(site.google_analytics).to eq new_google_analytics
         expect(site.layout).to eq 'right_sidebar'
-        expect(site.updated_by).to eq account.id
+        expect(site.updated_by).to eq account
       end
 
       it 'does not store empty copyright' do
         fill_in 'Copyright', with: ''
         click_button 'Update Site'
 
-        site = Site.find_by_host('localhost')
+        site = Site.find_by_host!('localhost')
         expect(site.copyright).to be_nil
       end
 
@@ -81,6 +81,12 @@ RSpec.describe 'site', type: :feature do
   end
 
   describe 'css' do
+    before do
+      site = Site.find_by_host! 'localhost'
+      site.stylesheet_filename = ''
+      site.save!
+    end
+
     let(:go_to_url) { '/site/css' }
 
     it_should_behave_like 'restricted page'
@@ -96,18 +102,28 @@ RSpec.describe 'site', type: :feature do
 
         click_button 'Update Site'
 
+        site = Site.find_by_host!('localhost')
+
+        expect(site.stylesheet_filename).
+          to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+
+        expect(site.updated_by).to eq account
+
         it_should_be_on_home_page
         it_should_have_alert_with 'Site successfully updated'
 
-        link = 'link[href="/stylesheets/b1192d422b8c8999043c2abd1b47b750.css"]'
+        link = "link[href=\"#{site.stylesheet.url}\"]"
         expect(page).to have_selector link, visible: false
 
         visit_page '/site/css'
         expect(find('pre textarea').text).to eq "body{background-color: red}"
 
-        site = Site.find_by_host('localhost')
-        expect(site.css_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
-        expect(site.updated_by).to eq account.id
+        site = Site.find_by_host!('localhost')
+
+        expect(site.stylesheet_filename).
+          to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+
+        expect(site.updated_by).to eq account
       end
 
       it 'has cancel button' do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123011330) do
+ActiveRecord::Schema.define(version: 20141130194056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,18 +43,20 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.datetime "updated_at",               null: false
   end
 
+  add_index "images", ["created_by_id"], name: "index_images_on_created_by_id", using: :btree
   add_index "images", ["site_id"], name: "index_images_on_site_id", using: :btree
+  add_index "images", ["updated_by_id"], name: "index_images_on_updated_by_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.integer  "site_id",               null: false
-    t.string   "subject",               null: false
-    t.string   "name",       limit: 64, null: false
-    t.string   "email",      limit: 64, null: false
+    t.integer  "site_id",                               null: false
+    t.string   "subject",                               null: false
+    t.string   "name",       limit: 64,                 null: false
+    t.string   "email",      limit: 64,                 null: false
     t.string   "phone",      limit: 32
-    t.boolean  "delivered",             null: false
-    t.text     "message",               null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.boolean  "delivered",             default: false, null: false
+    t.text     "message",                               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "messages", ["site_id"], name: "index_messages_on_site_id", using: :btree
@@ -72,8 +74,10 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.datetime "updated_at",                               null: false
   end
 
+  add_index "pages", ["created_by_id"], name: "index_pages_on_created_by_id", using: :btree
   add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
   add_index "pages", ["site_id"], name: "index_pages_on_site_id", using: :btree
+  add_index "pages", ["updated_by_id"], name: "index_pages_on_updated_by_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "host",                  limit: 64,                        null: false
@@ -95,6 +99,8 @@ ActiveRecord::Schema.define(version: 20141123011330) do
     t.datetime "updated_at",                                              null: false
   end
 
+  add_index "sites", ["created_by_id"], name: "index_sites_on_created_by_id", using: :btree
   add_index "sites", ["host"], name: "index_sites_on_host", unique: true, using: :btree
+  add_index "sites", ["updated_by_id"], name: "index_sites_on_updated_by_id", using: :btree
 
 end
