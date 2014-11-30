@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionView::MissingTemplate, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
   before_filter :find_site
   before_filter :render_site_not_found
@@ -25,12 +26,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
-
-  def login_required
-    redirect_to(login_path) unless authenticated?
-  end
-
   private
 
   def find_site
@@ -43,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   def check_format_is_not_html
     page_not_found if params[:format] == 'html'
+  end
+
+  def login_required
+    redirect_to(login_path) unless authenticated?
   end
 
   def append_info_to_payload(payload)

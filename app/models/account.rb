@@ -1,65 +1,37 @@
-class Account
-  include CouchModel
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id              :integer          not null, primary key
+#  email           :string(64)       not null
+#  password_digest :string(64)       not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+class Account < ActiveRecord::Base
   include Gravtastic
   extend ActiveModel::SecurePassword::ClassMethods
 
   gravtastic secure: false, default: 'mm', size: 24
 
-  property :email, type: String
-  property :sites, type: Array, default: []
+  has_secure_password
+  has_and_belongs_to_many :sites
 
   strip_attributes only: :email, collapse_spaces: true
 
-  validates *property_names, no_html: true
-
-  property :password_digest
-  has_secure_password
+  validates :email, presence: true, length: {maximum: 64}, email_format: true
 
   validates :password,
     length: {minimum: 8, maximum: 64, allow_blank: true},
     password_strength: true
 
-  validates :email, presence: true, length: {maximum: 64}, email_format: true
-
-  view :by_site_host_and_email,
-    type: :custom,
-    include_docs: true,
-    map: <<EOF
-function(doc) {
-  if(doc.ruby_class && doc.ruby_class == 'Account') {
-    for(var i in doc.sites) {
-      emit([doc.sites[i], doc.email], 1);
-    }
-  }
-}
-EOF
-
-  view :emails_by_site,
-    type: :raw,
-    results_filter: lambda {|results|
-      results['rows'].map{|row| row['value']['email']}
-    },
-    map: <<EOF
-function(doc) {
-  if(doc.ruby_class && doc.ruby_class == 'Account') {
-    for(var i in doc.sites) {
-      emit(doc.sites[i], {'email': doc.email});
-    }
-  }
-}
-EOF
-
   def self.find_and_authenticate(email, password, host)
-    account = CouchPotato.database.first(
-      Account.by_site_host_and_email(key: [host, email.squish.downcase])
-    )
+    account = find_by_email(email.squish.downcase)
 
     return unless account
     return unless account.authenticate(password.squish)
-    account
-  end
-
-  def self.find_emails_by_site(site)
-    CouchPotato.database.view(emails_by_site(key: site.host)).sort
+    return unless account.sites.map(&:host).include? host
+    return account
   end
 end

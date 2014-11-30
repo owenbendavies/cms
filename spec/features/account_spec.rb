@@ -35,7 +35,7 @@ RSpec.describe 'account', type: :feature  do
         it_should_be_on_home_page
         it_should_have_alert_with 'Account successfully updated'
 
-        found_account = Account.find_by_id(account.id)
+        found_account = Account.find(account)
         expect(found_account.email).to eq new_email
 
         visit '/logout'
@@ -80,8 +80,7 @@ RSpec.describe 'account', type: :feature  do
     it_behaves_like 'logged in account' do
       context 'with multiple sites' do
         before do
-          account.sites += [new_host]
-          account.save!
+          account.sites << FactoryGirl.build(:site, host: new_host)
 
           visit_page go_to_url
         end

@@ -5,14 +5,15 @@ module FeatureHelpers
   include Warden::Test::Helpers
 
   included do
-    let!(:account) { FactoryGirl.create(:account) }
-    let!(:site) { FactoryGirl.create(:site) }
+    let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
+
+    let!(:account) { site.accounts.first }
 
     let!(:home_page) {
       FactoryGirl.create(
         :page,
         name: 'Home',
-        site_id: site.id,
+        site: site,
       )
     }
 
@@ -20,7 +21,7 @@ module FeatureHelpers
       FactoryGirl.create(
         :page,
         name: 'Test Page',
-        site_id: site.id,
+        site: site,
       )
     }
   end

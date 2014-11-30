@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'users', type: :feature do
-  let!(:another_account) { FactoryGirl.create(:account) }
-
   describe 'index' do
     let(:go_to_url) { '/site/users' }
 
@@ -16,7 +14,7 @@ RSpec.describe 'users', type: :feature do
 
           expect(page).to have_content 'Email'
           expect(page).to have_content account.email
-          expect(page).to have_content another_account.email
+          expect(page).to have_content site.accounts.second.email
         end
       end
 

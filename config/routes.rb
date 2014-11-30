@@ -29,8 +29,6 @@ Rails.application.routes.draw do
 
   resource :sitemap, only: [:show]
 
-  resources :stylesheets, only: [:show]
-
   resources :pages, path: '', only: [:new, :create, :show, :edit, :update, :destroy] do
     member do
       post :contact_form
