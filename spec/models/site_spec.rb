@@ -12,7 +12,6 @@
 #  copyright             :string(64)
 #  google_analytics      :string(255)
 #  charity_number        :string(255)
-#  allow_search_engines  :boolean          default(TRUE), not null
 #  stylesheet_filename   :string(36)
 #  header_image_filename :string(36)
 #  sidebar_html_content  :text
