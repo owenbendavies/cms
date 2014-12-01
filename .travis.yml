@@ -6,7 +6,6 @@ language: ruby
 rvm: 2.1.5
 
 services:
-  - couchdb
   - redis-server
 
 bundler_args: --deployment --without development production
