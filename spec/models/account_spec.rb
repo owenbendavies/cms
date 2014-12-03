@@ -32,17 +32,11 @@ RSpec.describe Account do
 
     it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
 
-    it {
-      should allow_value(
-        'apel203pd0pa',
-        'po)@2sALos',
-      ).for(:password)
-    }
+    it { should allow_value('apel203pd0pa').for (:password) }
 
     it {
       should_not allow_value(
-        'password',
-        'password1',
+        'password'
       ).for(:password).with_message('is too weak, crack time: instant')
     }
 
@@ -50,18 +44,11 @@ RSpec.describe Account do
 
     it { should ensure_length_of(:email).is_at_most(64) }
 
-    it {
-      should allow_value(
-        'someone@example.com',
-        'some.one@example.com'
-      ).for(:email)
-    }
+    it { should allow_value('someone@example.com').for(:email) }
 
     it {
       should_not allow_value(
-        'someone',
-        '@localhost',
-        'someone@',
+        'someone@'
       ).for(:email).with_message('is not a valid email address')
     }
   end
