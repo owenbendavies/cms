@@ -56,18 +56,11 @@ RSpec.describe Message do
 
     it { should ensure_length_of(:email).is_at_most(64) }
 
-    it {
-      should allow_value(
-        'someone@example.com',
-        'some.one@example.com'
-      ).for(:email)
-    }
+    it { should allow_value('someone@example.com').for(:email) }
 
     it {
       should_not allow_value(
-        'someone',
-        '@localhost',
-        'someone@',
+        'someone@'
       ).for(:email).with_message('is not a valid email address')
     }
 
@@ -95,16 +88,20 @@ RSpec.describe Message do
       ).for(:message).with_message('HTML not allowed')
     }
 
-    it {
-      should_not allow_value(
-        'We can increase rankings of your website in search engines.',
-        'How about 100k facebook visitors!',
-        'Millions of Facebook page likes',
-        'We can get you Facebook likes',
-        'Get thousands of facebook followers to your site',
-        'superbsocial'
-      ).for(:message).with_message('Please do not send spam messages.')
-    }
+    [
+      'We can increase rankings of your website in search engines.',
+      'How about 100k facebook visitors!',
+      'Millions of Facebook page likes',
+      'We can get you Facebook likes',
+      'Get thousands of facebook followers to your site',
+      'superbsocial',
+    ].each do |message|
+      it {
+        should_not allow_value(
+          message
+        ).for(:message).with_message('Please do not send spam messages.')
+      }
+    end
 
     it {
       should ensure_length_of(:do_not_fill_in).
