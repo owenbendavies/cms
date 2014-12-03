@@ -61,21 +61,21 @@ RSpec.describe Page do
       ).for(:name).with_message('HTML not allowed')
     }
 
-    it {
-      should_not allow_value(
-        '@',
-        'NEW',
-        'New',
-        'account',
-        'health',
-        'login',
-        'logout',
-        'new',
-        'robots',
-        'site',
-        'sitemap',
-      ).for(:name)
-    }
+    [
+      '@',
+      'NEW',
+      'New',
+      'account',
+      'health',
+      'login',
+      'logout',
+      'new',
+      'robots',
+      'site',
+      'sitemap',
+    ].each do |value|
+      it { should_not allow_value(value).for(:name) }
+    end
 
     it { should validate_presence_of(:created_by) }
 
