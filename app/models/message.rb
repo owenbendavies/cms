@@ -38,6 +38,7 @@ class Message < ActiveRecord::Base
       'facebook likes',
       'facebook page likes',
       'facebook visitors',
+      'first page of google',
       'search engine',
       'superbsocial',
     ].each do |spam_text|
