@@ -76,33 +76,21 @@ RSpec.describe Site do
 
     it { should ensure_length_of(:sub_title).is_at_most(64) }
 
-    it {
-      should allow_value(
-        'one_column',
-        'right_sidebar',
-        'small_right_sidebar',
-      ).for(:layout)
-    }
+    it { should allow_value('one_column').for(:layout) }
+    it { should allow_value('right_sidebar').for(:layout) }
+    it { should allow_value('small_right_sidebar').for(:layout) }
 
     it { should ensure_length_of(:copyright).is_at_most(64) }
 
-    it {
-      should allow_value(
-        '',
-        'UA-1234-1',
-        'UA-123456-1',
-        'UA-123456-22'
-      ).for(:google_analytics)
-    }
+    it { should allow_value('').for(:google_analytics) }
+    it { should allow_value('UA-1234-1').for(:google_analytics) }
+    it { should allow_value('UA-123456-1').for(:google_analytics) }
+    it { should allow_value('UA-123456-22').for(:google_analytics) }
 
-    it {
-      should_not allow_value(
-        'XA-1234-1',
-        'UA-1234',
-        'UA123',
-        'AS'
-      ).for(:google_analytics)
-    }
+    it { should_not allow_value('XA-1234-1').for(:google_analytics) }
+    it { should_not allow_value('UA-1234').for(:google_analytics) }
+    it { should_not allow_value('UA123').for(:google_analytics) }
+    it { should_not allow_value('AS').for(:google_analytics) }
 
     it { should validate_presence_of(:updated_by) }
 
