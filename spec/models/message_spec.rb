@@ -89,11 +89,12 @@ RSpec.describe Message do
     }
 
     [
-      'We can increase rankings of your website in search engines.',
+      'Get thousands of facebook followers to your site',
       'How about 100k facebook visitors!',
       'Millions of Facebook page likes',
       'We can get you Facebook likes',
-      'Get thousands of facebook followers to your site',
+      'We can help your website to get on first page of Google',
+      'We can increase rankings of your website in search engines.',
       'superbsocial',
     ].each do |message|
       it {
