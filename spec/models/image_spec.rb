@@ -20,12 +20,10 @@ RSpec.describe Image do
     file = image.file
 
     expect(file.url).to eq File.join(
-      image.asset_host,
+      '/',
       CarrierWave::Uploader::Base.store_dir,
       image.filename
     )
-
-    expect(file.fog_directory).to eq image.fog_directory
   end
 
   it 'strips attributes' do
@@ -49,21 +47,5 @@ RSpec.describe Image do
     it { should validate_presence_of(:created_by) }
 
     it { should validate_presence_of(:updated_by) }
-  end
-
-  describe '#asset_host' do
-    subject { FactoryGirl.build(:image) }
-
-    it 'uses the site asset_host' do
-      expect(subject.asset_host).to eq subject.site.asset_host
-    end
-  end
-
-  describe '#fog_directory' do
-    subject { FactoryGirl.build(:image) }
-
-    it 'uses the site fog_directory' do
-      expect(subject.fog_directory).to eq subject.site.fog_directory
-    end
   end
 end

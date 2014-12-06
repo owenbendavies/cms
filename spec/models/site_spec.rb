@@ -7,7 +7,6 @@
 #  name                  :string(64)       not null
 #  sub_title             :string(64)
 #  layout                :string(255)      default("one_column")
-#  asset_host            :string(255)
 #  main_menu_page_ids    :string(255)
 #  copyright             :string(64)
 #  google_analytics      :string(255)
@@ -29,12 +28,10 @@ RSpec.describe Site do
     stylesheet = site.stylesheet
 
     expect(stylesheet.url).to eq File.join(
-      site.asset_host,
+      '/',
       CarrierWave::Uploader::Base.store_dir,
       site.stylesheet_filename
     )
-
-    expect(stylesheet.fog_directory).to eq site.fog_directory
   end
 
   it 'has a header image' do
@@ -42,12 +39,10 @@ RSpec.describe Site do
     header_image = site.header_image
 
     expect(header_image.url).to eq File.join(
-      site.asset_host,
+      '/',
       CarrierWave::Uploader::Base.store_dir,
       site.header_image_filename
     )
-
-    expect(header_image.fog_directory).to eq site.fog_directory
   end
 
   it 'strips attributes' do
@@ -95,14 +90,6 @@ RSpec.describe Site do
     it { should validate_presence_of(:updated_by) }
 
     it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
-  end
-
-  describe '#fog_directory' do
-    subject { FactoryGirl.build(:site, host: 'www.example.com') }
-
-    it 'is based on host and environment' do
-      expect(subject.fog_directory).to eq 'test_cms_www_example_com'
-    end
   end
 
   describe '#css' do
