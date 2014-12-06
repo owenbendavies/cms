@@ -5,14 +5,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
   end
 
-  def asset_host
-    model.asset_host
-  end
-
-  def fog_directory
-    model.fog_directory
-  end
-
   def filename
     if original_filename
       unless version_name

@@ -117,7 +117,9 @@ config/deploy/production.rb
 
 Sign up to the following services
 
-* Email service (e.g. [Amazon SES](http://aws.amazon.com/ses/) or [SendGrid](http://sendgrid.com/))
+* [Amazon CloudFront](http://aws.amazon.com/cloudfront/) for caching assets
+* [Amazon S3](http://aws.amazon.com/s3/) for storing images and css files
+* [Amazon SES](http://aws.amazon.com/ses/) for sending emails
 * [New Relic](http://newrelic.com/) for system monitoring
 * [Sentry](https://www.getsentry.com/) for error tracking
 * [loader.io](http://loader.io/) for load testing
@@ -127,26 +129,6 @@ Now add their settings to the configuration file:
 ```
 config/deploy/production.secrets.yml
 ```
-
-### Cloud Files
-
-Rackspace cloud files is used to store and serve site images and stylesheets in
-production. Follow these steps to set up:
-
-* Signup up for a [Rackspace](http://www.rackspace.com/) account
-* Update `rackspace_username` and `rackspace_api_key` in
-  `config/deploy/production.secrets.yml`
-* Create a container called `environment_cms_host_name` for each site created
-  and make a note of it's url, e.g. for a site with the host www.example.com in
-  development mode, create a container called `development_cms_www_example_com`
-* When adding sites, set the `asset_host`, e.g.
-  `site.asset_host = 'http://b80c6e.rackcdn.com'`
-
-### Amazon CloudFront
-
-It is recommended to set up a Amazon CloudFront distribution to serve the Rails
-assets. Once set up, add the distribution url to `asset_host` in
-`config/deploy/production.secrets.yml`.
 
 ### Setup data
 
