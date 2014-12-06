@@ -1,14 +1,24 @@
 CarrierWave.configure do |config|
-  if Rails.application.secrets.uploads_storage
-    config.storage = Rails.application.secrets.uploads_storage.to_sym
-  end
+  uploads_storage = Rails.application.secrets.uploads_storage
 
-  config.fog_credentials = {
-    provider: Rails.application.secrets.fog_provider,
-    rackspace_username: Rails.application.secrets.rackspace_username,
-    rackspace_api_key: Rails.application.secrets.rackspace_api_key,
-    rackspace_auth_url: Rails.application.secrets.rackspace_auth_url,
-  }
+  config.storage = uploads_storage.to_sym if uploads_storage
+
+  if uploads_storage == 'fog'
+    config.asset_host = Rails.application.secrets.aws_host
+
+    config.fog_attributes = {
+      'Cache-Control' => "public, max-age=#{365.day.to_i}"
+    }
+
+    config.fog_credentials = {
+      provider: 'AWS',
+      aws_access_key_id: Rails.application.secrets.aws_key,
+      aws_secret_access_key: Rails.application.secrets.aws_secret,
+      region: Rails.application.secrets.aws_region,
+    }
+
+    config.fog_directory = Rails.application.secrets.aws_bucket
+  end
 
   config.store_dir = Rails.application.secrets.uploads_store_dir
 

@@ -14,8 +14,8 @@ gem 'rails_warden'
 
 # Model Gems
 gem 'bcrypt'
-gem 'carrierwave', '0.9.0'
-gem 'fog', '1.18.0'
+gem 'fog', require: 'fog/aws/storage'
+gem 'carrierwave'
 gem 'gravtastic'
 gem 'mini_magick'
 gem 'strip_attributes'
