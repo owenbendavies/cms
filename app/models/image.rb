@@ -26,12 +26,4 @@ class Image < ActiveRecord::Base
   validates :name, presence: true, length: {maximum: 64}
   validates :created_by, presence: true
   validates :updated_by, presence: true
-
-  def asset_host
-    site.asset_host
-  end
-
-  def fog_directory
-    site.fog_directory
-  end
 end

@@ -7,7 +7,6 @@
 #  name                  :string(64)       not null
 #  sub_title             :string(64)
 #  layout                :string(255)      default("one_column")
-#  asset_host            :string(255)
 #  main_menu_page_ids    :string(255)
 #  copyright             :string(64)
 #  google_analytics      :string(255)
@@ -58,10 +57,6 @@ class Site < ActiveRecord::Base
 
   validates :created_by, presence: true
   validates :updated_by, presence: true
-
-  def fog_directory
-    [Rails.env, 'cms', host.parameterize('_')].join('_')
-  end
 
   def css
     stylesheet.read

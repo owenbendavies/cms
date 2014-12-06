@@ -25,16 +25,4 @@ RSpec.describe StylesheetUploader do
       expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
     end
   end
-
-  describe '.asset_host' do
-    it 'uses sites asset_host' do
-      expect(subject.asset_host).to eq site.asset_host
-    end
-  end
-
-  describe '.fog_directory' do
-    it 'uses sites fog_directory' do
-      expect(subject.fog_directory).to eq site.fog_directory
-    end
-  end
 end
