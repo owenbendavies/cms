@@ -8,4 +8,8 @@ class StylesheetUploader < CarrierWave::Uploader::Base
       "#{Digest::MD5.hexdigest(read)}.#{file.extension}"
     end
   end
+
+  def store_dir
+    model.store_dir
+  end
 end

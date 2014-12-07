@@ -20,7 +20,5 @@ CarrierWave.configure do |config|
     config.fog_directory = Rails.application.secrets.aws_bucket
   end
 
-  config.store_dir = Rails.application.secrets.uploads_store_dir
-
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 end
