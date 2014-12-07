@@ -29,7 +29,8 @@ RSpec.describe Site do
 
     expect(stylesheet.url).to eq File.join(
       '/',
-      CarrierWave::Uploader::Base.store_dir,
+      Rails.application.secrets.uploads_store_dir,
+      site.id.to_s,
       site.stylesheet_filename
     )
   end
@@ -40,7 +41,8 @@ RSpec.describe Site do
 
     expect(header_image.url).to eq File.join(
       '/',
-      CarrierWave::Uploader::Base.store_dir,
+      Rails.application.secrets.uploads_store_dir,
+      site.id.to_s,
       site.header_image_filename
     )
   end
@@ -140,7 +142,10 @@ RSpec.describe Site do
       expect(subject.stylesheet_filename).
         to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
 
-      expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
+      expect(uploaded_files).to eq [
+        "#{subject.id}",
+        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
+      ]
     end
 
     it 'deletes old version' do
@@ -150,13 +155,19 @@ RSpec.describe Site do
       subject.save!
       expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
 
-      expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
+      expect(uploaded_files).to eq [
+        "#{subject.id}",
+        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
+      ]
 
       subject.css = 'body{background-color: red}'
       subject.save!
       expect(subject.css).to eq 'body{background-color: red}'
 
-      expect(uploaded_files).to eq ['b1192d422b8c8999043c2abd1b47b750.css']
+      expect(uploaded_files).to eq [
+        "#{subject.id}",
+        "#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css",
+      ]
     end
   end
 
@@ -173,6 +184,16 @@ RSpec.describe Site do
       subject.main_menu_page_ids = [page2.id, page1.id]
 
       expect(subject.main_menu_pages).to eq [page2, page1]
+    end
+  end
+
+  describe '#store_dir' do
+    subject { FactoryGirl.create(:site) }
+
+    it 'includes site id' do
+      uploads_store_dir = Rails.application.secrets.uploads_store_dir
+
+      expect(subject.store_dir).to eq "#{uploads_store_dir}/#{subject.id}"
     end
   end
 end
