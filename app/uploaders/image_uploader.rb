@@ -23,6 +23,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     [base_name, version_name].compact.join('_') + ext
   end
 
+  def store_dir
+    model.store_dir
+  end
+
   version :span12 do
     process resize_to_limit: [940, 705]
   end

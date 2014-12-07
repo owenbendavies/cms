@@ -21,7 +21,8 @@ RSpec.describe Image do
 
     expect(file.url).to eq File.join(
       '/',
-      CarrierWave::Uploader::Base.store_dir,
+      Rails.application.secrets.uploads_store_dir,
+      image.site.id.to_s,
       image.filename
     )
   end
@@ -47,5 +48,13 @@ RSpec.describe Image do
     it { should validate_presence_of(:created_by) }
 
     it { should validate_presence_of(:updated_by) }
+  end
+
+  describe '#store_dir' do
+    subject { FactoryGirl.build(:image) }
+
+    it 'uses site store_dir' do
+      expect(subject.store_dir).to eq subject.site.store_dir
+    end
   end
 end

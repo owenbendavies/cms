@@ -4,7 +4,7 @@ RSpec.describe StylesheetUploader do
   include_context 'clear_uploaded_files'
 
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
-  let(:site) { FactoryGirl.build(:site) }
+  let(:site) { FactoryGirl.create(:site) }
   subject { StylesheetUploader.new(site) }
 
   describe 'store' do
@@ -22,7 +22,16 @@ RSpec.describe StylesheetUploader do
 
       subject.store! StringUploader.new("stylesheet.css", css)
 
-      expect(uploaded_files).to eq ['e6df26f541ebad8e8fed26a84e202a7c.css']
+      expect(uploaded_files).to eq [
+        "#{site.id}",
+        "#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
+      ]
+    end
+  end
+
+  describe '#store_dir' do
+    it 'uses site store_dir' do
+      expect(subject.store_dir).to eq site.store_dir
     end
   end
 end
