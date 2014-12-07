@@ -76,4 +76,8 @@ class Site < ActiveRecord::Base
       pages.find{|page| page.id == id}
     end
   end
+
+  def store_dir
+    [Rails.application.secrets.uploads_store_dir, self.id].compact.join('/')
+  end
 end

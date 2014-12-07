@@ -4,7 +4,7 @@ RSpec.describe ImageUploader do
   include CarrierWave::Test::Matchers
   include_context 'clear_uploaded_files'
 
-  let(:site) { FactoryGirl.build(:site) }
+  let(:site) { FactoryGirl.create(:site) }
   let(:image) { FactoryGirl.build(:image, site: site) }
   subject { ImageUploader.new(image) }
 
@@ -24,14 +24,15 @@ RSpec.describe ImageUploader do
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
 
       expect(uploaded_files).to eq [
-        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+        "#{site.id}",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
       ].sort
     end
 
@@ -65,14 +66,15 @@ RSpec.describe ImageUploader do
       subject.store! File.open(Rails.root.join('spec/assets/test_image.JPG'))
 
       expect(uploaded_files).to eq [
-        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+        "#{site.id}",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
       ].sort
     end
 
@@ -82,15 +84,22 @@ RSpec.describe ImageUploader do
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpeg'))
 
       expect(uploaded_files).to eq [
-        'a7a78bb78134027c41d2eedc6efd4edb.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span1.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span2.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span3.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span4.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span8.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span10.jpg',
-        'a7a78bb78134027c41d2eedc6efd4edb_span12.jpg',
+        "#{site.id}",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
       ].sort
+    end
+  end
+
+  describe '#store_dir' do
+    it 'uses site store_dir' do
+      expect(subject.store_dir).to eq site.store_dir
     end
   end
 end
