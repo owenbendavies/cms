@@ -3,7 +3,7 @@ set :repo_url, 'git@github.com:obduk/cms.git'
 
 set :deploy_to, '/var/www/cms'
 
-set :linked_dirs, ['tmp/pids', 'tmp/sockets']
+set :linked_dirs, ['log', 'tmp/pids', 'tmp/sockets']
 
 set :log_level, :info
 
