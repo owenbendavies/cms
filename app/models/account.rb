@@ -11,7 +11,6 @@
 
 class Account < ActiveRecord::Base
   include Gravtastic
-  extend ActiveModel::SecurePassword::ClassMethods
 
   gravtastic secure: false, default: 'mm', size: 24
 
