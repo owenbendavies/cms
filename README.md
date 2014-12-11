@@ -103,7 +103,7 @@ Run the following to spin up a server locally for development:
 Deployment
 ----------
 
-For deploying to a Linux server like Ubuntu.
+For deploying to Amazon Web Services (AWS).
 
 ### Setup
 
@@ -115,9 +115,12 @@ config/deploy/production.rb
 
 ### Services
 
-Sign up to the following services
+Sign up to the following services (most of them are optional):
 
 * [Amazon CloudFront](http://aws.amazon.com/cloudfront/) for caching assets
+* [Amazon ElastiCache](http://aws.amazon.com/elasticache/) for Redis server
+* [Amazon IAM](http://aws.amazon.com/iam/) for S3 and SES users
+* [Amazon RDS](http://aws.amazon.com/rds/) for PostgreSQL database
 * [Amazon S3](http://aws.amazon.com/s3/) for storing images and css files
 * [Amazon SES](http://aws.amazon.com/ses/) for sending emails
 * [New Relic](http://newrelic.com/) for system monitoring
