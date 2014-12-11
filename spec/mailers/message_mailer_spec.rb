@@ -9,7 +9,7 @@ RSpec.describe MessageMailer do
     it 'sends a message' do
       expect {
         MessageMailer.new_message(message).deliver
-      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+      }.to change {ActionMailer::Base.deliveries.size}.by(1)
     end
 
     describe 'from address' do

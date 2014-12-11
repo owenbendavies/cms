@@ -6,8 +6,6 @@ class StylesheetUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    if original_filename
-      "#{Digest::MD5.hexdigest(read)}.#{file.extension}"
-    end
+    "#{Digest::MD5.hexdigest(read)}.#{file.extension}" if original_filename
   end
 end

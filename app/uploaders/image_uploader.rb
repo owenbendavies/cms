@@ -8,15 +8,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    if original_filename
-      unless version_name
-        md5 = Digest::MD5.hexdigest(read)
-        extension = file.extension.gsub('jpeg', 'jpg').downcase
-        model.filename = "#{md5}.#{extension}"
-      end
+    return unless original_filename
 
-      return model.filename
+    unless version_name
+      md5 = Digest::MD5.hexdigest(read)
+      extension = file.extension.gsub('jpeg', 'jpg').downcase
+      model.filename = "#{md5}.#{extension}"
     end
+
+    model.filename
   end
 
   def full_filename(for_file)

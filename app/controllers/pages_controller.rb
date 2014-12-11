@@ -71,9 +71,6 @@ class PagesController < ApplicationController
       :phone,
       :message,
       :do_not_fill_in
-    ).merge({
-      site: @site,
-      subject: @page.name
-    })
+    ).merge({site: @site, subject: @page.name})
   end
 end

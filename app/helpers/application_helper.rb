@@ -1,12 +1,12 @@
-#coding: utf-8
+# coding: utf-8
 
 module ApplicationHelper
   def page_title(site, content)
     title = [site.name]
 
-    if not content.blank?
+    if !content.blank?
       title << content
-    elsif not site.sub_title.blank?
+    elsif !site.sub_title.blank?
       title << site.sub_title
     end
 
@@ -22,6 +22,6 @@ module ApplicationHelper
       footer << t('layouts.footer.charity', number: site.charity_number)
     end
 
-    return footer.join('. ')
+    footer.join('. ')
   end
 end

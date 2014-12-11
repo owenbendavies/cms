@@ -119,7 +119,7 @@ RSpec.describe Message do
 
       expect {
         subject.deliver
-      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+      }.to change {ActionMailer::Base.deliveries.size}.by(1)
 
       expect(subject.delivered).to eq true
 
