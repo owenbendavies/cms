@@ -6,7 +6,7 @@ RSpec.describe ImageUploader do
 
   let(:site) { FactoryGirl.create(:site) }
   let(:image) { FactoryGirl.build(:image, site: site) }
-  subject { ImageUploader.new(image) }
+  subject { described_class.new(image) }
 
   describe '#store_dir' do
     it 'delegates to site' do
