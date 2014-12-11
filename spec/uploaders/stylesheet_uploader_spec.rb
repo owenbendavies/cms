@@ -5,7 +5,7 @@ RSpec.describe StylesheetUploader do
 
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
   let(:site) { FactoryGirl.create(:site) }
-  subject { StylesheetUploader.new(site) }
+  subject { described_class.new(site) }
 
   describe '#store_dir' do
     it 'delegates to site' do
