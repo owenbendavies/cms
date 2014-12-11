@@ -73,11 +73,11 @@ class Site < ActiveRecord::Base
     pages = Page.find(main_menu_page_ids)
 
     main_menu_page_ids.map do |id|
-      pages.find{|page| page.id == id}
+      pages.find {|page| page.id == id}
     end
   end
 
   def store_dir
-    [Rails.application.secrets.uploads_store_dir, self.id].compact.join('/')
+    [Rails.application.secrets.uploads_store_dir, id].compact.join('/')
   end
 end

@@ -31,6 +31,6 @@ class Account < ActiveRecord::Base
     return unless account
     return unless account.authenticate(password.squish)
     return unless account.sites.map(&:host).include? host
-    return account
+    account
   end
 end

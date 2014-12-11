@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  before_filter :find_page, except: [:new, :create]
-  skip_before_filter :login_required, only: [:show, :contact_form]
+  before_action :find_page, except: [:new, :create]
+  skip_before_action :login_required, only: [:show, :contact_form]
 
   def new
     @page = Page.new
@@ -71,9 +71,6 @@ class PagesController < ApplicationController
       :phone,
       :message,
       :do_not_fill_in
-    ).merge({
-      site: @site,
-      subject: @page.name
-    })
+    ).merge({site: @site, subject: @page.name})
   end
 end
