@@ -1,2 +1,2 @@
 Rack::Timeout.timeout = 3
-Rack::Timeout.logger.level = ::Logger::FATAL
+Rack::Timeout.unregister_state_change_observer(:logger)
