@@ -72,8 +72,8 @@ GEM
       slop (~> 3.6)
     cane (2.6.2)
       parallel
-    capistrano (3.3.3)
-      capistrano-stats (~> 1.0.3)
+    capistrano (3.3.4)
+      capistrano-stats (~> 1.1.0)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
@@ -86,7 +86,7 @@ GEM
     capistrano-rbenv (2.0.2)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-    capistrano-stats (1.0.3)
+    capistrano-stats (1.1.0)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -111,7 +111,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colored (1.2)
-    colorize (0.7.3)
+    colorize (0.7.4)
     columnize (0.9.0)
     commonjs (0.2.7)
     coveralls (0.7.1)
@@ -245,7 +245,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    netrc (0.9.0)
+    netrc (0.10.0)
     newrelic_rpm (3.9.8.273)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
@@ -266,7 +266,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rack-timeout (0.1.0beta3)
+    rack-timeout (0.1.1)
     rails (4.1.8)
       actionmailer (= 4.1.8)
       actionpack (= 4.1.8)
@@ -304,7 +304,7 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
-    redis (3.1.0)
+    redis (3.2.0)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
       redis-rack (~> 1.5.0)
@@ -335,7 +335,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    rubocop (0.27.1)
+    rubocop (0.28.0)
       astrolabe (~> 1.3)
       parser (>= 2.2.0.pre.7, < 3.0)
       powerpack (~> 0.0.6)
@@ -349,7 +349,7 @@ GEM
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
     sass (3.4.9)
-    sentry-raven (0.12.1)
+    sentry-raven (0.12.2)
       faraday (>= 0.7.6)
     sexp_processor (4.4.4)
     shoulda-matchers (2.7.0)
@@ -371,7 +371,7 @@ GEM
       tilt (~> 1.3, >= 1.3.3)
     slop (3.6.0)
     spring (1.2.0)
-    spring-commands-rspec (1.0.2)
+    spring-commands-rspec (1.0.3)
       spring (>= 0.9.1)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -406,13 +406,13 @@ GEM
     travis-lint (2.0.0)
       json
     trollop (2.0)
-    turbolinks (2.5.2)
+    turbolinks (2.5.3)
       coffee-rails
     turbolinks_transitions (0.0.5)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.5.3)
+    uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
@@ -466,7 +466,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rack-protection
-  rack-timeout (= 0.1.0beta3)
+  rack-timeout
   rails (= 4.1.8)
   rails-timeago
   rails_best_practices
