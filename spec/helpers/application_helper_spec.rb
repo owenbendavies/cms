@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
@@ -44,7 +44,6 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe 'footer_copyright' do
     let(:site) { FactoryGirl.build(:site) }
-
 
     context 'site with copyright and charity' do
       it 'includes copyright and charity number' do

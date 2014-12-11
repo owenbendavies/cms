@@ -18,9 +18,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 10 do
       pid_file = "#{shared_path}/tmp/pids/unicorn.pid"
 
-      if test "[ -f #{pid_file} ]"
-        execute :kill, "-s USR2 `cat #{pid_file}`"
-      end
+      execute :kill, "-s USR2 `cat #{pid_file}`" if test "[ -f #{pid_file} ]"
     end
   end
 

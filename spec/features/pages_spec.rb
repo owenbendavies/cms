@@ -206,7 +206,7 @@ RSpec.describe 'pages', type: :feature do
             fill_in 'page[name]', with: test_page.name
             click_button 'Update Page'
             expect(current_path).to eq '/test_page'
-          }.to_not change{ Site.find_by_host!('localhost').updated_at }
+          }.to_not change { Site.find_by_host!('localhost').updated_at }
         }.to_not change {
           Page.find_by_site_id_and_url!(site, 'test_page').updated_at
         }

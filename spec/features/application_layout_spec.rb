@@ -1,4 +1,4 @@
-#coding: utf-8
+# coding: utf-8
 require 'rails_helper'
 
 RSpec.describe 'application layout', type: :feature do

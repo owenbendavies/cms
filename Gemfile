@@ -85,4 +85,5 @@ group :test do
   gem 'rails_best_practices', require: false
   gem 'simplecov-console', require: false
   gem 'travis-lint', require: false
+  gem 'rubocop', require: false
 end

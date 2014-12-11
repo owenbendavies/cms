@@ -15,6 +15,14 @@
 require 'rails_helper'
 
 RSpec.describe Image do
+  describe '#store_dir' do
+    subject { FactoryGirl.build(:image) }
+
+    it 'delegates to site' do
+      expect(subject.store_dir).to eq subject.site.store_dir
+    end
+  end
+
   it 'has a file' do
     image = FactoryGirl.build(:image)
     file = image.file
@@ -48,13 +56,5 @@ RSpec.describe Image do
     it { should validate_presence_of(:created_by) }
 
     it { should validate_presence_of(:updated_by) }
-  end
-
-  describe '#store_dir' do
-    subject { FactoryGirl.build(:image) }
-
-    it 'uses site store_dir' do
-      expect(subject.store_dir).to eq subject.site.store_dir
-    end
   end
 end
