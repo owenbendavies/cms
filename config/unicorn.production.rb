@@ -18,7 +18,7 @@ pid PID_FILE
 
 listen File.join(DEPLOY_PATH, "/tmp/sockets/unicorn.sock")
 
-before_fork do
+before_fork do |server, worker|
   if File.exist?(OLD_PID_FILE)
     begin
       Process.kill("QUIT", File.read(OLD_PID_FILE).to_i)
