@@ -9,7 +9,7 @@ gem 'redis-actionpack'
 
 # Middleware
 gem 'rack-protection'
-gem 'rack-timeout', '0.1.0beta3'
+gem 'rack-timeout'
 gem 'rails_warden'
 
 # Model Gems
