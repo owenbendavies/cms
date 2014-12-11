@@ -2,6 +2,7 @@ AllCops:
   RunRailsCops: true
   Exclude:
     - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
 
 HasAndBelongsToMany:
   Enabled: false
