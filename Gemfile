@@ -86,4 +86,5 @@ group :test do
   gem 'simplecov-console', require: false
   gem 'travis-lint', require: false
   gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end

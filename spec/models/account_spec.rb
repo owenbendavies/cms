@@ -13,7 +13,7 @@ require 'rails_helper'
 
 RSpec.describe Account do
   it 'has a gravatar_url' do
-    account = Account.new(email: 'test@example.com')
+    account = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
 
     expect(account.gravatar_url).
@@ -58,7 +58,7 @@ RSpec.describe Account do
     let!(:account) { site.accounts.first }
 
     it 'authenticates a valid account' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email,
         account.password,
         site.host
@@ -66,7 +66,7 @@ RSpec.describe Account do
     end
 
     it 'ignores white space for email' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         "  #{account.email} ",
         account.password,
         site.host
@@ -74,7 +74,7 @@ RSpec.describe Account do
     end
 
     it 'ignores white space for password' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email,
         "  #{account.password}  ",
         site.host
@@ -82,7 +82,7 @@ RSpec.describe Account do
     end
 
     it 'ignores case for email' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email.upcase,
         account.password,
         site.host
@@ -90,7 +90,7 @@ RSpec.describe Account do
     end
 
     it 'returns nil for an invalid email' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         new_email,
         account.password,
         site.host
@@ -98,7 +98,7 @@ RSpec.describe Account do
     end
 
     it 'returns nil for a blank email' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         '',
         account.password,
         site.host
@@ -106,7 +106,7 @@ RSpec.describe Account do
     end
 
     it 'returns nil for an invalid password' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email,
         new_password,
         site.host
@@ -114,7 +114,7 @@ RSpec.describe Account do
     end
 
     it 'returns nil for a blank password' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email,
         '',
         site.host
@@ -122,7 +122,7 @@ RSpec.describe Account do
     end
 
     it 'returns nil for invalid site' do
-      expect(Account.find_and_authenticate(
+      expect(described_class.find_and_authenticate(
         account.email,
         account.password,
         new_host

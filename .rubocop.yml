@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   RunRailsCops: true
   Exclude:
@@ -6,6 +8,10 @@ AllCops:
 
 HasAndBelongsToMany:
   Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*'
 
 Style/Documentation:
   Enabled: false
