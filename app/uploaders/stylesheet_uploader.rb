@@ -1,4 +1,6 @@
 class StylesheetUploader < CarrierWave::Uploader::Base
+  delegate :store_dir, to: :model
+
   def extension_white_list
     %w(css)
   end
@@ -7,9 +9,5 @@ class StylesheetUploader < CarrierWave::Uploader::Base
     if original_filename
       "#{Digest::MD5.hexdigest(read)}.#{file.extension}"
     end
-  end
-
-  def store_dir
-    model.store_dir
   end
 end

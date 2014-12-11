@@ -1,6 +1,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  delegate :store_dir, to: :model
+
   def extension_white_list
     %w(jpg jpeg png)
   end
@@ -21,10 +23,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     ext         = File.extname(for_file)
     base_name   = for_file.chomp(ext)
     [base_name, version_name].compact.join('_') + ext
-  end
-
-  def store_dir
-    model.store_dir
   end
 
   version :span12 do
