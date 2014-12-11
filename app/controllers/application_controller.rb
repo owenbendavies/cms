@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
-  before_filter :find_site
-  before_filter :render_site_not_found
-  before_filter :check_format_is_not_html
-  before_filter :login_required, except: [:home, :page_not_found]
+  before_action :find_site
+  before_action :render_site_not_found
+  before_action :check_format_is_not_html
+  before_action :login_required, except: [:home, :page_not_found]
 
   def home
     redirect_to page_path('home')
