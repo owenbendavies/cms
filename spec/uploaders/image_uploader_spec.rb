@@ -8,6 +8,12 @@ RSpec.describe ImageUploader do
   let(:image) { FactoryGirl.build(:image, site: site) }
   subject { ImageUploader.new(image) }
 
+  describe '#store_dir' do
+    it 'delegates to site' do
+      expect(subject.store_dir).to eq site.store_dir
+    end
+  end
+
   describe 'store' do
     it 'must be an image' do
       expect {
@@ -94,12 +100,6 @@ RSpec.describe ImageUploader do
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
       ].sort
-    end
-  end
-
-  describe '#store_dir' do
-    it 'uses site store_dir' do
-      expect(subject.store_dir).to eq site.store_dir
     end
   end
 end

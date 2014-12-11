@@ -7,6 +7,12 @@ RSpec.describe StylesheetUploader do
   let(:site) { FactoryGirl.create(:site) }
   subject { StylesheetUploader.new(site) }
 
+  describe '#store_dir' do
+    it 'delegates to site' do
+      expect(subject.store_dir).to eq site.store_dir
+    end
+  end
+
   describe 'store' do
     it 'must be css' do
       expect {
@@ -26,12 +32,6 @@ RSpec.describe StylesheetUploader do
         "#{site.id}",
         "#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
       ]
-    end
-  end
-
-  describe '#store_dir' do
-    it 'uses site store_dir' do
-      expect(subject.store_dir).to eq site.store_dir
     end
   end
 end
