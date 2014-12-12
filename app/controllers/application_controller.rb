@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
       remote_ip: request.remote_ip,
       request_id: request.uuid,
       account_id: session['warden.user.default.key'],
-      user_agent: request.user_agent,
+      user_agent: request.user_agent
     )
   end
 end

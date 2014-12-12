@@ -17,7 +17,7 @@ RSpec.describe ImageUploader do
   describe 'store' do
     it 'must be an image' do
       expect {
-        subject.store! StringUploader.new("stylesheet.exe", 'asd')
+        subject.store! StringUploader.new('stylesheet.exe', 'asd')
       }.to raise_error(
         CarrierWave::IntegrityError,
         /.* "exe" files, allowed types: jpg, jpeg, png/
@@ -38,7 +38,7 @@ RSpec.describe ImageUploader do
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
       ].sort
     end
 
@@ -80,7 +80,7 @@ RSpec.describe ImageUploader do
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
       ].sort
     end
 
@@ -98,7 +98,7 @@ RSpec.describe ImageUploader do
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg",
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
       ].sort
     end
   end

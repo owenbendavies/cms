@@ -21,8 +21,8 @@ RSpec.describe 'site', type: :feature do
         expect(find_field('Sub title').value).to eq site.sub_title
         expect(find_field('Copyright').value).to eq site.copyright
 
-        expect(find_field('Google Analytics').value).
-          to eq site.google_analytics
+        expect(find_field('Google Analytics').value)
+          .to eq site.google_analytics
 
         charity_field = find('#site_charity_number')
         expect(charity_field.value).to eq site.charity_number
@@ -104,8 +104,8 @@ RSpec.describe 'site', type: :feature do
 
         site = Site.find_by_host!('localhost')
 
-        expect(site.stylesheet_filename).
-          to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+        expect(site.stylesheet_filename)
+          .to eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
         expect(site.updated_by).to eq account
 
@@ -116,12 +116,12 @@ RSpec.describe 'site', type: :feature do
         expect(page).to have_selector link, visible: false
 
         visit_page '/site/css'
-        expect(find('pre textarea').text).to eq "body{background-color: red}"
+        expect(find('pre textarea').text).to eq 'body{background-color: red}'
 
         site = Site.find_by_host!('localhost')
 
-        expect(site.stylesheet_filename).
-          to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+        expect(site.stylesheet_filename)
+          .to eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
         expect(site.updated_by).to eq account
       end

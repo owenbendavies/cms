@@ -37,7 +37,7 @@ RSpec.describe 'routes', type: :feature do
     expect(page).to have_content 'Page Not Found'
   end
 
-  it "renders page not found for unknown url" do
+  it 'renders page not found for unknown url' do
     visit '/badroute'
     expect(page.status_code).to eq 404
     expect(page).to have_content 'Page Not Found'

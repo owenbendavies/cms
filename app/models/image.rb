@@ -25,7 +25,7 @@ class Image < ActiveRecord::Base
 
   validates *attribute_names, no_html: true
   validates :site_id, presence: true
-  validates :name, presence: true, length: {maximum: 64}
+  validates :name, presence: true, length: { maximum: 64 }
   validates :created_by, presence: true
   validates :updated_by, presence: true
 end

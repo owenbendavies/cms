@@ -16,16 +16,7 @@
 #
 
 class Page < ActiveRecord::Base
-  INVALID_URLS = [
-    'account',
-    'health',
-    'login',
-    'logout',
-    'new',
-    'robots',
-    'site',
-    'sitemap',
-  ]
+  INVALID_URLS = %w(account health login logout new robots site sitemap)
 
   belongs_to :site
   belongs_to :created_by, class_name: 'Account'
@@ -39,7 +30,7 @@ class Page < ActiveRecord::Base
 
   validates *(attribute_names - ['html_content']), no_html: true
   validates :site_id, presence: true
-  validates :name, presence: true, length: {maximum: 64}
+  validates :name, presence: true, length: { maximum: 64 }
   validates :created_by, presence: true
   validates :updated_by, presence: true
 
