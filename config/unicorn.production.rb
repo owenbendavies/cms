@@ -18,8 +18,8 @@ pid PID_FILE
 
 listen File.join(DEPLOY_PATH, "/tmp/sockets/unicorn.sock")
 
-before_fork do |server, worker|
-  if File.exists?(OLD_PID_FILE)
+before_fork do
+  if File.exist?(OLD_PID_FILE)
     begin
       Process.kill("QUIT", File.read(OLD_PID_FILE).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
