@@ -16,8 +16,8 @@ RSpec.describe Account do
     account = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
 
-    expect(account.gravatar_url).
-      to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
+    expect(account.gravatar_url)
+      .to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
   end
 
   it 'strips attributes' do
@@ -34,11 +34,11 @@ RSpec.describe Account do
 
     it { should allow_value('apel203pd0pa').for(:password) }
 
-    it {
+    it do
       should_not allow_value(
         'password'
       ).for(:password).with_message('is too weak, crack time: instant')
-    }
+    end
 
     it { should validate_presence_of(:email) }
 
@@ -46,11 +46,11 @@ RSpec.describe Account do
 
     it { should allow_value('someone@example.com').for(:email) }
 
-    it {
+    it do
       should_not allow_value(
         'someone@'
       ).for(:email).with_message('is not a valid email address')
-    }
+    end
   end
 
   describe '.find_and_authenticate' do

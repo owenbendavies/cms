@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'sitemap', type: :feature do
-  let!(:private_page) {
+  let!(:private_page) do
     FactoryGirl.create(
       :page,
       name: 'Private',
       site: site,
       private: true
     )
-  }
+  end
 
   describe 'show' do
     context 'html' do
@@ -66,13 +66,13 @@ RSpec.describe 'sitemap', type: :feature do
       before { visit_page '/sitemap.xml' }
 
       it 'has loc' do
-        expect(find(:xpath, '//urlset/url[1]/loc').text).
-          to eq 'http://localhost/home'
+        expect(find(:xpath, '//urlset/url[1]/loc').text)
+          .to eq 'http://localhost/home'
       end
 
       it 'has lastmod' do
-        expect(find(:xpath, '//urlset/url[1]/lastmod').text).
-          to eq test_page.updated_at.iso8601
+        expect(find(:xpath, '//urlset/url[1]/lastmod').text)
+          .to eq test_page.updated_at.iso8601
       end
 
       it 'does not include private pages' do

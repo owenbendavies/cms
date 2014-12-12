@@ -4,5 +4,5 @@ ActionMailer::Base.smtp_settings = {
   authentication: :plain,
   user_name: Rails.application.secrets.smtp_username,
   password: Rails.application.secrets.smtp_password,
-  domain: `hostname -f`.strip,
+  domain: `hostname -f`.strip
 }

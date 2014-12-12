@@ -1,5 +1,10 @@
 SimpleForm.setup do |config|
-  config.wrappers :bootstrap3, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers(
+    :bootstrap3,
+    tag: 'div',
+    class: 'form-group',
+    error_class: 'has-error'
+  )do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -15,7 +20,12 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :wide, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers(
+    :wide,
+    tag: 'div',
+    class: 'form-group',
+    error_class: 'has-error'
+  ) do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -33,9 +43,7 @@ SimpleForm.setup do |config|
 
   config.default_wrapper = :bootstrap3
 
-  config.wrapper_mappings = {
-    text: :wide,
-  }
+  config.wrapper_mappings = { text: :wide }
 
   config.boolean_style = :inline
   config.browser_validations = true

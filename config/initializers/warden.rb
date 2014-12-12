@@ -32,7 +32,9 @@ Warden::Strategies.add(:password) do
     email = params['account']['email']
     password = params['account']['password']
 
-    if account = Account.find_and_authenticate(email, password, request.host)
+    account = Account.find_and_authenticate(email, password, request.host)
+
+    if account
       success! account
     else
       fail! 'sessions.new.flash.invalid_login'

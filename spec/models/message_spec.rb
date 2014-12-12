@@ -18,10 +18,7 @@ require 'rails_helper'
 
 RSpec.describe Message do
   it 'strips attributes' do
-    message = FactoryGirl.create(
-      :message,
-      email: "  #{new_email} ",
-    )
+    message = FactoryGirl.create(:message, email: "  #{new_email} ")
 
     expect(message.email).to eq new_email
   end
@@ -29,10 +26,7 @@ RSpec.describe Message do
   it 'does not strip message' do
     text = " #{new_message}  "
 
-    message = FactoryGirl.create(
-      :message,
-      message: text,
-    )
+    message = FactoryGirl.create(:message, message: text)
 
     expect(message.message).to eq text
   end
@@ -46,11 +40,11 @@ RSpec.describe Message do
 
     it { should ensure_length_of(:name).is_at_most(64) }
 
-    it {
+    it do
       should_not allow_value(
         '<a>bad</a>'
       ).for(:name).with_message('HTML not allowed')
-    }
+    end
 
     it { should validate_presence_of(:email) }
 
@@ -95,7 +89,7 @@ RSpec.describe Message do
       'We can get you Facebook likes',
       'We can help your website to get on first page of Google',
       'We can increase rankings of your website in search engines.',
-      'superbsocial',
+      'superbsocial'
     ].each do |message|
       it {
         should_not allow_value(
@@ -105,9 +99,9 @@ RSpec.describe Message do
     end
 
     it {
-      should ensure_length_of(:do_not_fill_in).
-               is_at_most(0).
-               with_message('do not fill in')
+      should ensure_length_of(:do_not_fill_in)
+        .is_at_most(0)
+        .with_message('do not fill in')
     }
   end
 

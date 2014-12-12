@@ -21,11 +21,7 @@
 #
 
 class Site < ActiveRecord::Base
-  LAYOUTS = [
-    'one_column',
-    'right_sidebar',
-    'small_right_sidebar',
-  ]
+  LAYOUTS = %w(one_column right_sidebar small_right_sidebar)
 
   belongs_to :created_by, class_name: 'Account'
   belongs_to :updated_by, class_name: 'Account'
@@ -44,11 +40,11 @@ class Site < ActiveRecord::Base
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
   validates *(attribute_names - ['sidebar_html_content']), no_html: true
-  validates :host, presence: true, length: {maximum: 64}
-  validates :name, presence: true, length: {maximum: 64}
-  validates :sub_title, length: {maximum: 64}
-  validates :layout, inclusion: {in: LAYOUTS}
-  validates :copyright, length: {maximum: 64}
+  validates :host, presence: true, length: { maximum: 64 }
+  validates :name, presence: true, length: { maximum: 64 }
+  validates :sub_title, length: { maximum: 64 }
+  validates :layout, inclusion: { in: LAYOUTS }
+  validates :copyright, length: { maximum: 64 }
 
   validates :google_analytics, format: {
     with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
@@ -66,14 +62,14 @@ class Site < ActiveRecord::Base
     posted_css.gsub!(/\t/, '  ')
     posted_css.gsub!(/ +\r\n/, "\r\n")
 
-    self.stylesheet = StringUploader.new("stylesheet.css", posted_css)
+    self.stylesheet = StringUploader.new('stylesheet.css', posted_css)
   end
 
   def main_menu_pages
     pages = Page.find(main_menu_page_ids)
 
     main_menu_page_ids.map do |id|
-      pages.find {|page| page.id == id}
+      pages.find { |page| page.id == id }
     end
   end
 
