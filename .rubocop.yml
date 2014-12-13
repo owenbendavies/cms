@@ -36,6 +36,11 @@ Lint/AssignmentInCondition:
 Lint/HandleExceptions:
   Enabled: false
 
+# Offense count: 2
+# Cop supports --auto-correct.
+Lint/UnusedBlockArgument:
+  Enabled: false
+
 # Offense count: 1
 Metrics/AbcSize:
   Max: 18
