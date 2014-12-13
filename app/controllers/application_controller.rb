@@ -48,13 +48,11 @@ class ApplicationController < ActionController::Base
     super
 
     payload.merge!(
-      {
-        host: request.host,
-        remote_ip: request.remote_ip,
-        request_id: request.uuid,
-        account_id: session['warden.user.default.key'],
-        user_agent: request.user_agent,
-      }
+      host: request.host,
+      remote_ip: request.remote_ip,
+      request_id: request.uuid,
+      account_id: session['warden.user.default.key'],
+      user_agent: request.user_agent,
     )
   end
 end

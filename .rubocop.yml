@@ -32,22 +32,8 @@ Lint/AmbiguousOperator:
 Lint/AssignmentInCondition:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/DeprecatedClassMethods:
-  Enabled: false
-
 # Offense count: 4
 Lint/HandleExceptions:
-  Enabled: false
-
-# Offense count: 3
-Lint/ParenthesesAsGroupedExpression:
-  Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Lint/UnusedBlockArgument:
   Enabled: false
 
 # Offense count: 1
@@ -76,21 +62,9 @@ Style/AlignHash:
 Style/AlignParameters:
   Enabled: false
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/AndOr:
-  Enabled: false
-
 # Offense count: 35
 # Cop supports --auto-correct.
 Style/Blocks:
-  Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/BracesAroundHashParameters:
   Enabled: false
 
 # Offense count: 1
@@ -119,12 +93,6 @@ Style/GuardClause:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/MultilineOperationIndentation:
   Enabled: false
-
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/NumericLiterals:
-  MinDigits: 15
 
 # Offense count: 8
 # Cop supports --auto-correct.

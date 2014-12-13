@@ -31,12 +31,12 @@ RSpec.describe 'request logging', type: :feature do
   it 'uses extra information in lograge' do
     result = Rails.application.config.lograge.custom_options.call(events.first)
 
-    expect(result).to eq ({
+    expect(result).to eq(
       host: 'localhost',
       remote_ip: '127.0.0.1',
       request_id: new_id,
       user_agent: "\"#{new_company_name}\"",
-    })
+    )
   end
 
   it_behaves_like 'logged in account' do
@@ -44,13 +44,13 @@ RSpec.describe 'request logging', type: :feature do
       expect(events.last.payload[:account_id]).to eq account.id
 
       result = Rails.application.config.lograge.custom_options.call(events.last)
-      expect(result).to eq ({
+      expect(result).to eq(
         host: 'localhost',
         remote_ip: '127.0.0.1',
         request_id: new_id,
         user_agent: "\"#{new_company_name}\"",
         account_id: account.id,
-      })
+      )
     end
   end
 end
