@@ -44,7 +44,7 @@ class Page < ActiveRecord::Base
   validates :updated_by, presence: true
 
   validate do
-    errors.add(:name) if new_url.blank? or INVALID_URLS.include? new_url
+    errors.add(:name) if new_url.blank? || INVALID_URLS.include?(new_url)
   end
 
   def new_url
