@@ -23,6 +23,77 @@
 require 'rails_helper'
 
 RSpec.describe Site do
+  describe '#created_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:site, created_by: account) }
+
+    it 'returns account' do
+      expect(subject.created_by).to eq account
+    end
+  end
+
+  describe '#updated_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:site, updated_by: account) }
+
+    it 'returns account' do
+      expect(subject.updated_by).to eq account
+    end
+  end
+
+  describe '#accounts' do
+    let!(:account1) { FactoryGirl.create(:account, email: 'a@example.com') }
+    let!(:account2) { FactoryGirl.create(:account, email: 'b@example.com') }
+
+    subject do
+      FactoryGirl.create(:site, created_by: account1, updated_by: account2)
+    end
+
+    it 'returns accounts sorted by email' do
+      subject.reload
+
+      expect(subject.accounts).to eq [account1, account2]
+    end
+  end
+
+  describe '#images' do
+    subject { FactoryGirl.create(:site) }
+    let!(:image1) { FactoryGirl.create(:image, site: subject, name: 'a') }
+    let!(:image2) { FactoryGirl.create(:image, site: subject, name: 'b') }
+
+    it 'returns images sorted by name' do
+      expect(subject.images).to eq [image1, image2]
+    end
+  end
+
+  describe '#messages' do
+    subject { FactoryGirl.create(:site) }
+
+    let!(:message1) { FactoryGirl.create(:message, site: subject) }
+
+    let!(:message2) do
+      FactoryGirl.create(
+        :message,
+        site: subject,
+        created_at: (Time.now - 1.day)
+      )
+    end
+
+    it 'returns messages sorted by created_at' do
+      expect(subject.messages).to eq [message1, message2]
+    end
+  end
+
+  describe '#pages' do
+    subject { FactoryGirl.create(:site) }
+    let!(:page1) { FactoryGirl.create(:page, site: subject, name: 'a') }
+    let!(:page2) { FactoryGirl.create(:page, site: subject, name: 'b') }
+
+    it 'returns pages sorted by name' do
+      expect(subject.pages).to eq [page1, page2]
+    end
+  end
+
   it 'has a stylesheet' do
     site = FactoryGirl.build(:site)
     stylesheet = site.stylesheet
