@@ -23,6 +23,33 @@ RSpec.describe Image do
     end
   end
 
+  describe '#site' do
+    let(:site) { FactoryGirl.create(:site) }
+    subject { FactoryGirl.create(:image, site: site) }
+
+    it 'returns images site' do
+      expect(subject.site).to eq site
+    end
+  end
+
+  describe '#created_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:image, created_by: account) }
+
+    it 'returns account' do
+      expect(subject.created_by).to eq account
+    end
+  end
+
+  describe '#updated_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:image, updated_by: account) }
+
+    it 'returns account' do
+      expect(subject.updated_by).to eq account
+    end
+  end
+
   it 'has a file' do
     image = FactoryGirl.build(:image)
     file = image.file

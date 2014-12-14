@@ -18,6 +18,33 @@
 require 'rails_helper'
 
 RSpec.describe Page do
+  describe '#site' do
+    let(:site) { FactoryGirl.create(:site) }
+    subject { FactoryGirl.create(:page, site: site) }
+
+    it 'returns images site' do
+      expect(subject.site).to eq site
+    end
+  end
+
+  describe '#created_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:page, created_by: account) }
+
+    it 'returns account' do
+      expect(subject.created_by).to eq account
+    end
+  end
+
+  describe '#updated_by' do
+    let(:account) { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:page, updated_by: account) }
+
+    it 'returns account' do
+      expect(subject.updated_by).to eq account
+    end
+  end
+
   it 'strips attributes' do
     page = FactoryGirl.create(:page, name: "  #{new_name} ")
 
