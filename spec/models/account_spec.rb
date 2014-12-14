@@ -20,6 +20,19 @@ RSpec.describe Account do
       .to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
   end
 
+  describe '#sites' do
+    subject { FactoryGirl.create(:account) }
+    let!(:site1) { FactoryGirl.create(:site, name: 'a') }
+    let!(:site2) { FactoryGirl.create(:site, name: 'b') }
+
+    it 'returns sites sorted by site name' do
+      subject.sites << site1
+      subject.sites << site2
+
+      expect(subject.sites).to eq [site1, site2]
+    end
+  end
+
   it 'strips attributes' do
     account = FactoryGirl.create(:account, email: "  #{new_email} ")
     expect(account.email).to eq new_email
