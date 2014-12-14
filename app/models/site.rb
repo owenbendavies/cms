@@ -26,7 +26,7 @@ class Site < ActiveRecord::Base
   belongs_to :created_by, class_name: 'Account'
   belongs_to :updated_by, class_name: 'Account'
 
-  has_and_belongs_to_many :accounts
+  has_and_belongs_to_many :accounts, -> { order :email }
 
   has_many :images, -> { order :name }
   has_many :messages, -> { order created_at: :desc }

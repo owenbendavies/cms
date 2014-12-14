@@ -15,7 +15,8 @@ class Account < ActiveRecord::Base
   gravtastic secure: false, default: 'mm', size: 24
 
   has_secure_password
-  has_and_belongs_to_many :sites
+
+  has_and_belongs_to_many :sites, -> { order :name }
 
   strip_attributes only: :email, collapse_spaces: true
 
