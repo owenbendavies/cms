@@ -15,8 +15,8 @@ RSpec.describe 'application layout', type: :feature do
     end
 
     it 'has title' do
-      expect(find('title', visible: false).native.text).
-        to eq "#{site.name} | Test Page"
+      expect(find('title', visible: false).native.text)
+        .to eq "#{site.name} | Test Page"
     end
 
     it 'has site stylesheet' do
@@ -51,8 +51,8 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has page last updated in footer' do
       within 'footer' do
-        expect(find('#last_update').text).
-          to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
+        expect(find('#last_update').text)
+          .to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
       end
     end
 
@@ -65,15 +65,15 @@ RSpec.describe 'application layout', type: :feature do
       visit_page '/test_page'
 
       within 'footer' do
-        expect(find('#last_update').text).
-          to eq 'Page last updated about a month ago'
+        expect(find('#last_update').text)
+          .to eq 'Page last updated about a month ago'
       end
     end
 
     it 'has copyright in footer' do
       within 'footer' do
-        expect(find('#copyright').text).
-          to include "#{site.copyright} © #{Time.now.year}"
+        expect(find('#copyright').text)
+          .to include "#{site.copyright} © #{Time.now.year}"
       end
     end
   end

@@ -10,9 +10,9 @@ module NewFields
     let(:new_company_name) { Faker::Company.name.gsub("'", '') }
     let(:new_email) { Faker::Internet.safe_email }
 
-    let(:new_google_analytics) {
+    let(:new_google_analytics) do
       "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
-    }
+    end
 
     let(:new_host) { Faker::Internet.domain_name }
     let(:new_id) { generate_md5 }

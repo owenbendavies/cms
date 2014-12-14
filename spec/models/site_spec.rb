@@ -65,11 +65,11 @@ RSpec.describe Site do
 
     it { should ensure_length_of(:name).is_at_most(64) }
 
-    it {
+    it do
       should_not allow_value(
         '<a>bad</a>'
       ).for(:name).with_message('HTML not allowed')
-    }
+    end
 
     it { should ensure_length_of(:sub_title).is_at_most(64) }
 
@@ -139,12 +139,12 @@ RSpec.describe Site do
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      expect(subject.stylesheet_filename).
-        to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
+      expect(subject.stylesheet_filename)
+        .to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
 
       expect(uploaded_files).to eq [
         "#{subject.id}",
-        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
+        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"
       ]
     end
 
@@ -157,7 +157,7 @@ RSpec.describe Site do
 
       expect(uploaded_files).to eq [
         "#{subject.id}",
-        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css",
+        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"
       ]
 
       subject.css = 'body{background-color: red}'
@@ -166,7 +166,7 @@ RSpec.describe Site do
 
       expect(uploaded_files).to eq [
         "#{subject.id}",
-        "#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css",
+        "#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css"
       ]
     end
   end

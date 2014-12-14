@@ -45,11 +45,11 @@ RSpec.describe Image do
 
     it { should validate_presence_of(:name) }
 
-    it {
+    it do
       should_not allow_value(
         '<a>bad</a>'
       ).for(:name).with_message('HTML not allowed')
-    }
+    end
 
     it { should ensure_length_of(:name).is_at_most(64) }
 

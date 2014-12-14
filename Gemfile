@@ -41,8 +41,19 @@ gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
-gem 'twitter-bootstrap-rails', github: 'obduk/twitter-bootstrap-rails', branch: 'remove_rails_dependency'
-gem 'twitter-bootstrap-rails-confirm', github: 'obduk/twitter-bootstrap-rails-confirm', branch: 'fix_events'
+
+gem(
+  'twitter-bootstrap-rails',
+  github: 'obduk/twitter-bootstrap-rails',
+  branch: 'remove_rails_dependency'
+)
+
+gem(
+  'twitter-bootstrap-rails-confirm',
+  github: 'obduk/twitter-bootstrap-rails-confirm',
+  branch: 'fix_events'
+)
+
 gem 'uglifier'
 
 # Monitoring

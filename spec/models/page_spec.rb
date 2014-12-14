@@ -19,10 +19,7 @@ require 'rails_helper'
 
 RSpec.describe Page do
   it 'strips attributes' do
-    page = FactoryGirl.create(
-      :page,
-      name: "  #{new_name} ",
-    )
+    page = FactoryGirl.create(:page, name: "  #{new_name} ")
 
     expect(page.name).to eq new_name
   end
@@ -32,7 +29,7 @@ RSpec.describe Page do
 
     page = FactoryGirl.create(
       :page,
-      html_content: text,
+      html_content: text
     )
 
     expect(page.html_content).to eq text
@@ -55,11 +52,11 @@ RSpec.describe Page do
 
     it { should ensure_length_of(:name).is_at_most(64) }
 
-    it {
+    it do
       should_not allow_value(
         '<a>bad</a>'
       ).for(:name).with_message('HTML not allowed')
-    }
+    end
 
     [
       '@',
@@ -72,7 +69,7 @@ RSpec.describe Page do
       'new',
       'robots',
       'site',
-      'sitemap',
+      'sitemap'
     ].each do |value|
       it { should_not allow_value(value).for(:name) }
     end

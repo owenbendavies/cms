@@ -4,8 +4,8 @@ RSpec.describe 'request logging', type: :feature do
   let(:events) { [] }
 
   before do
-    ActiveSupport::Notifications.
-      subscribe('process_action.action_controller') do |*args|
+    ActiveSupport::Notifications
+      .subscribe('process_action.action_controller') do |*args|
       events << ActiveSupport::Notifications::Event.new(*args)
     end
 
@@ -35,7 +35,7 @@ RSpec.describe 'request logging', type: :feature do
       host: 'localhost',
       remote_ip: '127.0.0.1',
       request_id: new_id,
-      user_agent: "\"#{new_company_name}\"",
+      user_agent: "\"#{new_company_name}\""
     )
   end
 
@@ -49,7 +49,7 @@ RSpec.describe 'request logging', type: :feature do
         remote_ip: '127.0.0.1',
         request_id: new_id,
         user_agent: "\"#{new_company_name}\"",
-        account_id: account.id,
+        account_id: account.id
       )
     end
   end

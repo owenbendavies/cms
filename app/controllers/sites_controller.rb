@@ -22,7 +22,7 @@ class SitesController < ApplicationController
       :google_analytics,
       :layout,
       :name,
-      :sub_title,
+      :sub_title
     ).merge(updated_by: user)
   end
 end

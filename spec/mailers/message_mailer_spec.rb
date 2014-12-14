@@ -18,8 +18,8 @@ RSpec.describe MessageMailer do
           described_class.new_message(message).deliver
           subject = ActionMailer::Base.deliveries.last
 
-          expect(subject.header["From"].to_s.gsub('"', '')).
-            to eq "#{site.name} <noreply@#{site.host}>"
+          expect(subject.header['From'].to_s.gsub('"', ''))
+            .to eq "#{site.name} <noreply@#{site.host}>"
         end
       end
 
@@ -31,8 +31,8 @@ RSpec.describe MessageMailer do
           described_class.new_message(message).deliver
           subject = ActionMailer::Base.deliveries.last
 
-          expect(subject.header["From"].to_s.gsub('"', '')).
-            to eq "#{site.name} <noreply@example.com>"
+          expect(subject.header['From'].to_s.gsub('"', ''))
+            .to eq "#{site.name} <noreply@example.com>"
         end
       end
     end
