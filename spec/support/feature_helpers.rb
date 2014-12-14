@@ -9,21 +9,11 @@ module FeatureHelpers
 
     let!(:account) { site.accounts.first }
 
-    let!(:home_page) {
-      FactoryGirl.create(
-        :page,
-        name: 'Home',
-        site: site,
-      )
-    }
+    let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
 
-    let!(:test_page) {
-      FactoryGirl.create(
-        :page,
-        name: 'Test Page',
-        site: site,
-      )
-    }
+    let!(:test_page) do
+      FactoryGirl.create(:page, name: 'Test Page', site: site)
+    end
   end
 
   def visit_page(url)

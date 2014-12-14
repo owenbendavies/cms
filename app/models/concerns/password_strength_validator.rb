@@ -4,12 +4,12 @@ class PasswordStrengthValidator < ActiveModel::EachValidator
 
     password = Zxcvbn.test(value)
 
-    if password.score < 2
-      record.errors.add(
-        attribute,
-        :weak_password,
-        time: password.crack_time_display
-      )
-    end
+    return if password.score >= 2
+
+    record.errors.add(
+      attribute,
+      :weak_password,
+      time: password.crack_time_display
+    )
   end
 end

@@ -19,19 +19,12 @@ RSpec.describe 'layouts', type: :feature do
     end
   end
 
-  [
-    'one_column',
-  ].each do |layout|
-    context layout do
-      it_behaves_like 'layout', layout do
-      end
+  context 'one_column' do
+    it_behaves_like 'layout', 'one_column' do
     end
   end
 
-  [
-    'right_sidebar',
-    'small_right_sidebar',
-  ].each do |layout|
+  %w(right_sidebar small_right_sidebar).each do |layout|
     context layout do
       it_behaves_like 'layout', layout do
         it 'has sidebar' do

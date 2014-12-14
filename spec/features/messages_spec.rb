@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'messages', type: :feature do
-  let!(:message) {
+  let!(:message) do
     FactoryGirl.create(
       :message,
       site: site,
       created_at: Time.now - 1.month - 3.days,
-      updated_at: Time.now - 1.month - 3.days,
+      updated_at: Time.now - 1.month - 3.days
     )
-  }
+  end
 
   describe 'index' do
     let(:go_to_url) { '/site/messages' }
@@ -88,7 +88,7 @@ RSpec.describe 'messages', type: :feature do
         expect(page).to have_no_content 'Phone'
       end
 
-      it "renders page not found for unknow message" do
+      it 'renders page not found for unknow message' do
         visit "/site/messages/#{new_id}"
         expect(page.status_code).to eq 404
         expect(page).to have_content 'Page Not Found'

@@ -47,8 +47,8 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context 'site with copyright and charity' do
       it 'includes copyright and charity number' do
-        expect(footer_copyright(site)).
-          to include "#{site.copyright} © #{Time.now.year}"
+        expect(footer_copyright(site))
+          .to include "#{site.copyright} © #{Time.now.year}"
 
         expect(footer_copyright(site)).to include(
           "Registered charity number #{site.charity_number}"
@@ -60,8 +60,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       before { site.copyright = nil }
 
       it 'uses site name for copyright' do
-        expect(footer_copyright(site)).
-          to include "#{site.name} © #{Time.now.year}"
+        expect(footer_copyright(site))
+          .to include "#{site.name} © #{Time.now.year}"
       end
     end
 
@@ -69,8 +69,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       before { site.charity_number = nil }
 
       it 'does not show charity number' do
-        expect(footer_copyright(site)).
-          to eq "#{site.copyright} © #{Time.now.year}"
+        expect(footer_copyright(site))
+          .to eq "#{site.copyright} © #{Time.now.year}"
       end
     end
   end

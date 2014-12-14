@@ -24,11 +24,11 @@ class Message < ActiveRecord::Base
   validates *attribute_names, no_html: true
   validates :site_id, presence: true
   validates :subject, presence: true
-  validates :name, presence: true, length: {maximum: 64}
-  validates :email, presence: true, length: {maximum: 64}, email_format: true
-  validates :phone, length: {maximum: 32}
-  validates :message, presence: true, length: {maximum: 2048}
-  validates :do_not_fill_in, length: {maximum: 0}
+  validates :name, presence: true, length: { maximum: 64 }
+  validates :email, presence: true, length: { maximum: 64 }, email_format: true
+  validates :phone, length: { maximum: 32 }
+  validates :message, presence: true, length: { maximum: 2048 }
+  validates :do_not_fill_in, length: { maximum: 0 }
 
   validate do
     text = message.to_s.downcase
@@ -40,7 +40,7 @@ class Message < ActiveRecord::Base
       'facebook visitors',
       'first page of google',
       'search engine',
-      'superbsocial',
+      'superbsocial'
     ].each do |spam_text|
       errors.add(:message, :spam) if text.include? spam_text
     end

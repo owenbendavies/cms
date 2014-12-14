@@ -19,11 +19,11 @@ class Account < ActiveRecord::Base
 
   strip_attributes only: :email, collapse_spaces: true
 
-  validates :email, presence: true, length: {maximum: 64}, email_format: true
+  validates :email, presence: true, length: { maximum: 64 }, email_format: true
 
   validates :password,
-    length: {minimum: 8, maximum: 64, allow_blank: true},
-    password_strength: true
+            length: { minimum: 8, maximum: 64, allow_blank: true },
+            password_strength: true
 
   def self.find_and_authenticate(email, password, host)
     account = find_by_email(email.squish.downcase)
