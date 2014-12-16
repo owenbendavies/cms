@@ -30,7 +30,12 @@ class Page < ActiveRecord::Base
 
   validates *(attribute_names - ['html_content']), no_html: true
   validates :site_id, presence: true
-  validates :name, presence: true, length: { maximum: 64 }
+
+  validates :name,
+            presence: true,
+            length: { maximum: 64 },
+            uniqueness: { scope: :site_id }
+
   validates :created_by, presence: true
   validates :updated_by, presence: true
 

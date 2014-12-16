@@ -130,7 +130,11 @@ RSpec.describe Site do
   end
 
   describe 'validate' do
+    subject { FactoryGirl.build(:site) }
+
     it { should validate_presence_of(:host) }
+
+    it { should validate_uniqueness_of(:host) }
 
     it { should validate_presence_of(:name) }
 
