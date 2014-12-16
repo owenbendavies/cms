@@ -15,14 +15,6 @@
 require 'rails_helper'
 
 RSpec.describe Image do
-  describe '#store_dir' do
-    subject { FactoryGirl.build(:image) }
-
-    it 'delegates to site' do
-      expect(subject.store_dir).to eq subject.site.store_dir
-    end
-  end
-
   describe '#site' do
     let(:site) { FactoryGirl.create(:site) }
     subject { FactoryGirl.create(:image, site: site) }
@@ -47,6 +39,14 @@ RSpec.describe Image do
 
     it 'returns account' do
       expect(subject.updated_by).to eq account
+    end
+  end
+
+  describe '#store_dir' do
+    subject { FactoryGirl.build(:image) }
+
+    it 'delegates to site' do
+      expect(subject.store_dir).to eq subject.site.store_dir
     end
   end
 
