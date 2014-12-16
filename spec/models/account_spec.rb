@@ -20,6 +20,8 @@ RSpec.describe Account do
       .to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
   end
 
+  it { should have_secure_password }
+
   describe '#sites' do
     subject { FactoryGirl.create(:account) }
     let!(:site1) { FactoryGirl.create(:site, name: 'a') }
@@ -39,7 +41,17 @@ RSpec.describe Account do
   end
 
   describe 'validate' do
-    it { should have_secure_password }
+    it { should validate_presence_of(:email) }
+
+    it { should ensure_length_of(:email).is_at_most(64) }
+
+    it { should allow_value('someone@example.com').for(:email) }
+
+    it do
+      should_not allow_value(
+        'someone@'
+      ).for(:email).with_message('is not a valid email address')
+    end
 
     it { should validate_confirmation_of(:password) }
 
@@ -51,18 +63,6 @@ RSpec.describe Account do
       should_not allow_value(
         'password'
       ).for(:password).with_message('is too weak, crack time: instant')
-    end
-
-    it { should validate_presence_of(:email) }
-
-    it { should ensure_length_of(:email).is_at_most(64) }
-
-    it { should allow_value('someone@example.com').for(:email) }
-
-    it do
-      should_not allow_value(
-        'someone@'
-      ).for(:email).with_message('is not a valid email address')
     end
   end
 

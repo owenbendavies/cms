@@ -45,6 +45,16 @@ RSpec.describe Page do
     end
   end
 
+  describe 'on save' do
+    it 'sets url from name' do
+      page = FactoryGirl.build(:page, name: 'Test Page')
+      page.save!
+
+      expect(page.name).to eq 'Test Page'
+      expect(page.url).to eq 'test_page'
+    end
+  end
+
   it 'strips attributes' do
     page = FactoryGirl.create(:page, name: "  #{new_name} ")
 
@@ -60,16 +70,6 @@ RSpec.describe Page do
     )
 
     expect(page.html_content).to eq text
-  end
-
-  describe 'on save' do
-    it 'sets url from name' do
-      page = FactoryGirl.build(:page, name: 'Test Page')
-      page.save!
-
-      expect(page.name).to eq 'Test Page'
-      expect(page.url).to eq 'test_page'
-    end
   end
 
   describe 'validate' do
