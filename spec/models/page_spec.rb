@@ -73,11 +73,15 @@ RSpec.describe Page do
   end
 
   describe 'validate' do
+    subject { FactoryGirl.build(:page) }
+
     it { should validate_presence_of(:site_id) }
 
     it { should validate_presence_of(:name) }
 
     it { should ensure_length_of(:name).is_at_most(64) }
+
+    it { should validate_uniqueness_of(:name).scoped_to(:site_id) }
 
     it do
       should_not allow_value(
