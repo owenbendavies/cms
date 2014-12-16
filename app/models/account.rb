@@ -20,7 +20,11 @@ class Account < ActiveRecord::Base
 
   strip_attributes only: :email, collapse_spaces: true
 
-  validates :email, presence: true, length: { maximum: 64 }, email_format: true
+  validates :email,
+            presence: true,
+            length: { maximum: 64 },
+            email_format: true,
+            uniqueness: true
 
   validates :password,
             length: { minimum: 8, maximum: 64, allow_blank: true },
