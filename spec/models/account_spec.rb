@@ -53,6 +53,8 @@ RSpec.describe Account do
       ).for(:email).with_message('is not a valid email address')
     end
 
+    it { should validate_uniqueness_of(:email) }
+
     it { should validate_confirmation_of(:password) }
 
     it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
