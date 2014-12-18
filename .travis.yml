@@ -13,6 +13,5 @@ bundler_args: --deployment --without development production
 before_script:
   - cp config/secrets.yml.travis config/secrets.yml
   - ./bin/bootstrap
-  - ./bin/spring stop
 
 script: ./bin/test
