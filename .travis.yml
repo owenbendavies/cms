@@ -1,9 +1,13 @@
+sudo: false
+
 branches:
   only: master
 
 language: ruby
 
 rvm: 2.1.5
+
+cache: bundler
 
 services:
   - redis-server
