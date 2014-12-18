@@ -11,8 +11,6 @@ services:
 bundler_args: --deployment --without development production
 
 before_script:
-  - psql -c 'create database cms_development;' -U postgres
-  - psql -c 'create database cms_test;' -U postgres
   - cp config/secrets.yml.travis config/secrets.yml
   - ./bin/bootstrap
   - ./bin/spring stop
