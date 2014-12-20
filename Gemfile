@@ -18,6 +18,7 @@ gem 'fog', require: 'fog/aws/storage'
 gem 'carrierwave'
 gem 'gravtastic'
 gem 'mini_magick'
+gem 'paper_trail'
 gem 'strip_attributes'
 gem 'unf'
 gem 'validates_email_format_of'
@@ -94,8 +95,8 @@ group :test do
   gem 'cane', require: false
   gem 'coveralls', require: false
   gem 'rails_best_practices', require: false
-  gem 'simplecov-console', require: false
-  gem 'travis-lint', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'simplecov-console', require: false
+  gem 'travis-lint', require: false
 end
