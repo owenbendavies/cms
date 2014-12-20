@@ -17,7 +17,7 @@ class Image < ActiveRecord::Base
   belongs_to :created_by, class_name: 'Account'
   belongs_to :updated_by, class_name: 'Account'
 
-  delegate :store_dir, to: :site
+  delegate :store_dir, to: :site, allow_nil: true
 
   mount_uploader :file, ImageUploader, mount_on: :filename
 
@@ -25,7 +25,14 @@ class Image < ActiveRecord::Base
 
   validates *attribute_names, no_html: true
   validates :site_id, presence: true
-  validates :name, presence: true, length: { maximum: 64 }
+
+  validates :name,
+            presence: true,
+            length: { maximum: 64 },
+            uniqueness: { scope: :site_id }
+
+  validates :filename, uniqueness: { scope: :site_id }
+
   validates :created_by, presence: true
   validates :updated_by, presence: true
 end
