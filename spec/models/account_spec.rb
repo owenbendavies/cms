@@ -35,6 +35,10 @@ RSpec.describe Account do
     end
   end
 
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
   it 'strips attributes' do
     account = FactoryGirl.create(:account, email: "  #{new_email} ")
     expect(account.email).to eq new_email

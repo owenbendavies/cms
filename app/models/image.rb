@@ -19,6 +19,8 @@ class Image < ActiveRecord::Base
 
   delegate :store_dir, to: :site, allow_nil: true
 
+  has_paper_trail
+
   mount_uploader :file, ImageUploader, mount_on: :filename
 
   strip_attributes collapse_spaces: true

@@ -18,6 +18,8 @@ class Account < ActiveRecord::Base
 
   has_and_belongs_to_many :sites, -> { order :name }
 
+  has_paper_trail
+
   strip_attributes only: :email, collapse_spaces: true
 
   validates :email,
