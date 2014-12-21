@@ -26,6 +26,8 @@ class Page < ActiveRecord::Base
     self.url = new_url
   end
 
+  has_paper_trail
+
   strip_attributes except: :html_content, collapse_spaces: true
 
   validates *(attribute_names - ['html_content']), no_html: true

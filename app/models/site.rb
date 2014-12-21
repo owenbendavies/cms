@@ -32,6 +32,8 @@ class Site < ActiveRecord::Base
   has_many :messages, -> { order created_at: :desc }
   has_many :pages, -> { order :name }
 
+  has_paper_trail
+
   serialize :main_menu_page_ids, Array
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
