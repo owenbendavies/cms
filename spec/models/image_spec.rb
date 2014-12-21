@@ -50,6 +50,10 @@ RSpec.describe Image do
     end
   end
 
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
   it 'has a file' do
     image = FactoryGirl.build(:image)
     file = image.file

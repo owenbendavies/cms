@@ -94,6 +94,10 @@ RSpec.describe Site do
     end
   end
 
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
   it 'has a stylesheet' do
     site = FactoryGirl.build(:site)
     stylesheet = site.stylesheet
