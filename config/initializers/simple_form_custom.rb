@@ -48,5 +48,5 @@ SimpleForm.setup do |config|
   config.default_wrapper = :bootstrap3
   config.wrapper_mappings = { text: :wide }
   config.browser_validations = true
-  config.form_class = 'form-horizontal'
+  config.default_form_class = 'form-horizontal'
 end
