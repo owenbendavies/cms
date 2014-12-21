@@ -19,6 +19,8 @@ class Message < ActiveRecord::Base
 
   belongs_to :site
 
+  has_paper_trail
+
   strip_attributes except: :message, collapse_spaces: true
 
   validates *attribute_names, no_html: true

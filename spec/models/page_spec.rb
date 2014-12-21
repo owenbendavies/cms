@@ -55,6 +55,10 @@ RSpec.describe Page do
     end
   end
 
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
   it 'strips attributes' do
     page = FactoryGirl.create(:page, name: "  #{new_name} ")
 

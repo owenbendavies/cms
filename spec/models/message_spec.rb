@@ -26,6 +26,10 @@ RSpec.describe Message do
     end
   end
 
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
   it 'strips attributes' do
     message = FactoryGirl.create(:message, email: "  #{new_email} ")
 
