@@ -12,7 +12,7 @@
 class Account < ActiveRecord::Base
   include Gravtastic
 
-  gravtastic secure: false, default: 'mm', size: 24
+  gravtastic default: 'mm', size: 24
 
   has_secure_password
 
