@@ -17,7 +17,7 @@ RSpec.describe 'account', type: :feature  do
         expect(find_field('Password').value).to be_nil
         expect(find_field('Confirm password').value).to be_nil
 
-        within 'a[href="http://www.gravatar.com"]' do
+        within 'a[href="https://www.gravatar.com"]' do
           gravatar_image = find('img')
 
           expect(gravatar_image['src']).to eq account.gravatar_url(size: 150)
