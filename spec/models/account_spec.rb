@@ -17,7 +17,7 @@ RSpec.describe Account do
     md5 = '55502f40dc8b7c769880b10874abc9d0'
 
     expect(account.gravatar_url)
-      .to eq "http://gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
+      .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=24"
   end
 
   it { should have_secure_password }
