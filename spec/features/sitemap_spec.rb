@@ -63,23 +63,37 @@ RSpec.describe 'sitemap', type: :feature do
     end
 
     context 'xml' do
-      before { visit_page '/sitemap.xml' }
-
       it 'has loc' do
+        visit_page '/sitemap.xml'
+
         expect(find(:xpath, '//urlset/url[1]/loc').text)
           .to eq 'http://localhost/home'
       end
 
       it 'has lastmod' do
+        visit_page '/sitemap.xml'
+
         expect(find(:xpath, '//urlset/url[1]/lastmod').text)
           .to eq test_page.updated_at.iso8601
       end
 
       it 'does not include private pages' do
+        visit_page '/sitemap.xml'
+
         expect(page).to have_no_xpath(
           '//loc',
           text: "http://localhost/#{private_page.url}"
         )
+      end
+
+      context 'https' do
+        it 'has https links' do
+          page.driver.browser.header('X-Forwarded-Proto', 'https')
+          visit_page '/sitemap.xml'
+
+          expect(find(:xpath, '//urlset/url[1]/loc').text)
+            .to eq 'https://localhost/home'
+        end
       end
     end
 
