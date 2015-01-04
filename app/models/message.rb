@@ -49,7 +49,7 @@ class Message < ActiveRecord::Base
   end
 
   def deliver
-    MessageMailer.new_message(self).deliver
+    MessageMailer.new_message(self).deliver_now
     self.delivered = true
     self.save!
   end

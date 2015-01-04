@@ -35,7 +35,7 @@ RSpec.describe 'account', type: :feature  do
         it_should_be_on_home_page
         it_should_have_alert_with 'Account successfully updated'
 
-        found_account = Account.find(account)
+        found_account = Account.find(account.id)
         expect(found_account.email).to eq new_email
 
         visit '/logout'

@@ -29,6 +29,8 @@ module Cms
     config.i18n.enforce_available_locales = true
     config.action_view.raise_on_missing_translations = true
 
+    config.active_record.raise_in_transactional_callbacks = true
+
     config.lograge.custom_options = lambda do |event|
       output = {
         host: event.payload[:host],

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 
 # Databases
 gem 'pg'
@@ -78,6 +78,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
+  gem 'web-console'
 end
 
 group :test do
