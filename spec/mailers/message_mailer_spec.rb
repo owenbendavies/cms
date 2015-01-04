@@ -8,14 +8,14 @@ RSpec.describe MessageMailer do
 
     it 'sends a message' do
       expect {
-        described_class.new_message(message).deliver
+        described_class.new_message(message).deliver_now
       }.to change {ActionMailer::Base.deliveries.size}.by(1)
     end
 
     describe 'from address' do
       context 'site without www in host' do
         it 'has from address of site' do
-          described_class.new_message(message).deliver
+          described_class.new_message(message).deliver_now
           subject = ActionMailer::Base.deliveries.last
 
           expect(subject.header['From'].to_s.gsub('"', ''))
@@ -28,7 +28,7 @@ RSpec.describe MessageMailer do
           site.host = 'www.example.com'
           site.save!
 
-          described_class.new_message(message).deliver
+          described_class.new_message(message).deliver_now
           subject = ActionMailer::Base.deliveries.last
 
           expect(subject.header['From'].to_s.gsub('"', ''))
@@ -38,21 +38,21 @@ RSpec.describe MessageMailer do
     end
 
     it 'is sent to sites account email' do
-      described_class.new_message(message).deliver
+      described_class.new_message(message).deliver_now
       subject = ActionMailer::Base.deliveries.last
 
       expect(subject.to).to eq site.accounts.map(&:email).sort
     end
 
     it 'includes message subject' do
-      described_class.new_message(message).deliver
+      described_class.new_message(message).deliver_now
       subject = ActionMailer::Base.deliveries.last
 
       expect(subject.subject).to eq message.subject
     end
 
     it 'has a message body' do
-      described_class.new_message(message).deliver
+      described_class.new_message(message).deliver_now
       subject = ActionMailer::Base.deliveries.last
       body = subject.body
 

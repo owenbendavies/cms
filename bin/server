@@ -3,6 +3,6 @@ set -e
 
 cd `dirname $0`/..
 
-./bin/rails server
+./bin/rails server --binding=0.0.0.0
 
 echo "server complete"
