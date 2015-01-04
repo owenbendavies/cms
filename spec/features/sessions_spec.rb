@@ -90,4 +90,24 @@ RSpec.describe 'sessions', type: :feature do
       it_behaves_like 'restricted page'
     end
   end
+
+  describe 'session' do
+    context 'http' do
+      it 'sets session cookie as http only' do
+        visit_page '/home'
+
+        expect(response_headers['Set-Cookie']).to_not include 'secure'
+      end
+    end
+
+    context 'https' do
+      it 'sets session cookie as https' do
+        page.driver.browser.header('X-Forwarded-Proto', 'https')
+
+        visit_page '/home'
+
+        expect(response_headers['Set-Cookie']).to include 'secure'
+      end
+    end
+  end
 end
