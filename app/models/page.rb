@@ -6,8 +6,8 @@
 #  site_id       :integer          not null
 #  url           :string(64)       not null
 #  name          :string(64)       not null
-#  private       :boolean          default(FALSE), not null
-#  contact_form  :boolean          default(FALSE), not null
+#  private       :boolean          default("false"), not null
+#  contact_form  :boolean          default("false"), not null
 #  html_content  :text
 #  created_by_id :integer          not null
 #  updated_by_id :integer          not null
