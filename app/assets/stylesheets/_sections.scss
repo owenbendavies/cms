@@ -16,7 +16,15 @@
 #main_menu {
   padding: 0;
 
-  .navbar { margin-bottom: 0 }
+  .navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+
+    .nav > li > a:focus,
+    .nav > li > a:hover {
+      background-color: $navbar-default-link-active-bg;
+    }
+  }
 }
 
 #main {
@@ -46,7 +54,3 @@
   box-shadow: none;
   font: inherit;
 }
-
-div.tinymce { outline: 1px dotted #333 }
-
-table a { display: block }
