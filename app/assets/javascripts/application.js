@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require rails-timeago
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require twitter/bootstrap/rails/confirm
 //= require tinymce-jquery
 //= require turbolinks
