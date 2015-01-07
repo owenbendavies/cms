@@ -74,7 +74,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
-  gem 'web-console'
 end
 
 group :test do
