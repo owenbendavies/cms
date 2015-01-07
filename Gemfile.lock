@@ -436,8 +436,6 @@ GEM
       json
     turbolinks (2.5.3)
       coffee-rails
-    turbolinks_transitions (0.0.5)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.6.1)
@@ -524,7 +522,6 @@ DEPENDENCIES
   tinymce-rails
   travis-lint
   turbolinks
-  turbolinks_transitions
   twitter-bootstrap-rails-confirm!
   uglifier
   unf

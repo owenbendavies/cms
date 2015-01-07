@@ -44,7 +44,6 @@ gem 'sass-rails'
 gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
-gem 'turbolinks_transitions'
 
 gem(
   'twitter-bootstrap-rails-confirm',
