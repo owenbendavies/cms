@@ -28,6 +28,7 @@ gem 'zxcvbn-ruby', require: 'zxcvbn'
 gem 'xml-sitemap'
 
 # View Gems
+gem 'bh'
 gem 'haml-rails'
 gem 'simple_form'
 
@@ -44,12 +45,6 @@ gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
 gem 'turbolinks_transitions'
-
-gem(
-  'twitter-bootstrap-rails',
-  github: 'obduk/twitter-bootstrap-rails',
-  branch: 'remove_rails_dependency'
-)
 
 gem(
   'twitter-bootstrap-rails-confirm',

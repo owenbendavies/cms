@@ -1,8 +1,13 @@
 - if content_for?(:title)
   %header
     %h1
-      = glyph(content_for(:page_icon)) if content_for(:page_icon)
+      = icon(content_for(:page_icon)) if content_for(:page_icon)
       = content_for(:title)
 
-= bootstrap_flash
+- if flash[:success]
+  = alert_box flash[:success], context: :success, dismissible: true
+
+- if flash[:error]
+  = alert_box flash[:error], context: :danger, dismissible: true
+
 = yield
