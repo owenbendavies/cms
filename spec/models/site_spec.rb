@@ -6,11 +6,11 @@
 #  host                  :string(64)       not null
 #  name                  :string(64)       not null
 #  sub_title             :string(64)
-#  layout                :string(255)      default("one_column")
-#  main_menu_page_ids    :string(255)
+#  layout                :string           default("one_column")
+#  main_menu_page_ids    :string
 #  copyright             :string(64)
-#  google_analytics      :string(255)
-#  charity_number        :string(255)
+#  google_analytics      :string
+#  charity_number        :string
 #  stylesheet_filename   :string(36)
 #  header_image_filename :string(36)
 #  sidebar_html_content  :text

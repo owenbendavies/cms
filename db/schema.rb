@@ -50,15 +50,15 @@ ActiveRecord::Schema.define(version: 20141221170643) do
   add_index "images", ["updated_by_id"], name: "index_images_on_updated_by_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "site_id",                                null: false
-    t.string   "subject",    limit: 255,                 null: false
-    t.string   "name",       limit: 64,                  null: false
-    t.string   "email",      limit: 64,                  null: false
+    t.integer  "site_id",                               null: false
+    t.string   "subject",                               null: false
+    t.string   "name",       limit: 64,                 null: false
+    t.string   "email",      limit: 64,                 null: false
     t.string   "phone",      limit: 32
-    t.boolean  "delivered",              default: false, null: false
-    t.text     "message",                                null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.boolean  "delivered",             default: false, null: false
+    t.text     "message",                               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "messages", ["site_id"], name: "index_messages_on_site_id", using: :btree
@@ -82,21 +82,21 @@ ActiveRecord::Schema.define(version: 20141221170643) do
   add_index "pages", ["updated_by_id"], name: "index_pages_on_updated_by_id", using: :btree
 
   create_table "sites", force: :cascade do |t|
-    t.string   "host",                  limit: 64,                         null: false
-    t.string   "name",                  limit: 64,                         null: false
+    t.string   "host",                  limit: 64,                        null: false
+    t.string   "name",                  limit: 64,                        null: false
     t.string   "sub_title",             limit: 64
-    t.string   "layout",                limit: 255, default: "one_column"
-    t.string   "main_menu_page_ids",    limit: 255
+    t.string   "layout",                           default: "one_column"
+    t.string   "main_menu_page_ids"
     t.string   "copyright",             limit: 64
-    t.string   "google_analytics",      limit: 255
-    t.string   "charity_number",        limit: 255
+    t.string   "google_analytics"
+    t.string   "charity_number"
     t.string   "stylesheet_filename",   limit: 36
     t.string   "header_image_filename", limit: 36
     t.text     "sidebar_html_content"
-    t.integer  "created_by_id",                                            null: false
-    t.integer  "updated_by_id",                                            null: false
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.integer  "created_by_id",                                           null: false
+    t.integer  "updated_by_id",                                           null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
   end
 
   add_index "sites", ["created_by_id"], name: "index_sites_on_created_by_id", using: :btree
@@ -104,10 +104,10 @@ ActiveRecord::Schema.define(version: 20141221170643) do
   add_index "sites", ["updated_by_id"], name: "index_sites_on_updated_by_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  limit: 255, null: false
-    t.integer  "item_id",                null: false
-    t.string   "event",      limit: 255, null: false
-    t.string   "whodunnit",  limit: 255
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
+    t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
   end
