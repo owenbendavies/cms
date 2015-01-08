@@ -44,7 +44,6 @@ gem 'sass-rails'
 gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
-gem 'turbolinks_transitions'
 
 gem(
   'twitter-bootstrap-rails-confirm',
@@ -75,7 +74,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'quiet_assets'
-  gem 'web-console'
 end
 
 group :test do
