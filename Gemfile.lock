@@ -5,16 +5,6 @@ GIT
   specs:
     twitter-bootstrap-rails-confirm (1.0.2)
 
-GIT
-  remote: git://github.com/obduk/twitter-bootstrap-rails.git
-  revision: f083ef0e74d14c6e433b03b5aa0cdc56b8ce67f2
-  branch: remove_rails_dependency
-  specs:
-    twitter-bootstrap-rails (3.2.0)
-      actionpack (>= 3.1)
-      execjs
-      railties (>= 3.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,6 +55,9 @@ GEM
       execjs
     awesome_print (1.6.1)
     bcrypt (3.1.9)
+    bh (1.2.0)
+      actionpack
+      activesupport
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.1.0)
@@ -482,6 +475,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   bcrypt
+  bh
   bootstrap-sass
   brakeman
   byebug
@@ -531,7 +525,6 @@ DEPENDENCIES
   travis-lint
   turbolinks
   turbolinks_transitions
-  twitter-bootstrap-rails!
   twitter-bootstrap-rails-confirm!
   uglifier
   unf

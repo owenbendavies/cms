@@ -27,7 +27,7 @@ RSpec.describe 'sessions', type: :feature do
       click_button 'Login'
 
       expect(current_path).to eq '/login'
-      it_should_have_alert_with 'Invalid email or password'
+      it_should_have_error_alert_with 'Invalid email or password'
     end
 
     it 'has link in footer' do

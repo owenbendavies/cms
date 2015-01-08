@@ -22,7 +22,7 @@ RSpec.describe 'contact_form page', type: :feature do
     }.to change{ActionMailer::Base.deliveries.size}.by(1)
 
     expect(current_path).to eq "/#{contact_page.url}"
-    it_should_have_alert_with 'Thank you for your message'
+    it_should_have_success_alert_with 'Thank you for your message'
 
     message = site.messages.first
     expect(message.site).to eq site

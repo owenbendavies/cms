@@ -8,7 +8,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.glyphicon-plus'
+        expect(page).to have_selector 'h1 .glyphicon-plus'
       end
 
       it 'does not has page last updated in footer' do
@@ -123,7 +123,7 @@ RSpec.describe 'pages', type: :feature do
 
       it_behaves_like 'logged in account' do
         it 'shows page' do
-          expect(page).to have_selector 'h1 i.glyphicon-lock'
+          expect(page).to have_selector 'h1 .glyphicon-lock'
         end
       end
     end
@@ -136,7 +136,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.glyphicon-pencil'
+        expect(page).to have_selector 'h1 .glyphicon-pencil'
       end
 
       it 'has page url on body' do
@@ -168,7 +168,7 @@ RSpec.describe 'pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(page).to have_selector 'i.glyphicon-lock'
+        expect(page).to have_selector '.glyphicon-lock'
 
         click_link 'Edit'
         expect(find_field('page[private]')).to be_checked
@@ -241,7 +241,7 @@ RSpec.describe 'pages', type: :feature do
           }.to change(Page, :count).by(-1)
         end
 
-        it_should_have_alert_with 'Test Page was deleted'
+        it_should_have_error_alert_with 'Test Page was deleted'
         expect(current_path).to eq '/sitemap'
         expect(Page.find_by_site_id_and_url(site, 'test_page')).to be_nil
       end
