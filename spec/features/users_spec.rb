@@ -10,7 +10,7 @@ RSpec.describe 'users', type: :feature do
       it 'has list of users' do
         within '#main_article' do
           expect(page).to have_content 'Users'
-          expect(page).to have_selector 'h1 i.glyphicon-group'
+          expect(page).to have_selector 'h1 .glyphicon-group'
 
           expect(page).to have_content 'Email'
           expect(page).to have_content account.email

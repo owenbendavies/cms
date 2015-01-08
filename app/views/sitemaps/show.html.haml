@@ -8,4 +8,4 @@
     - next if page.private and !authenticated?
     %li
       = link_to(page.name, page_path(page.url))
-      = glyph(t('pages.show.private.icon')) if page.private
+      = icon(t('pages.show.private.icon')) if page.private

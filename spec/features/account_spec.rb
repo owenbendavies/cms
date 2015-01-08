@@ -8,7 +8,7 @@ RSpec.describe 'account', type: :feature  do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.glyphicon-user'
+        expect(page).to have_selector 'h1 .glyphicon-user'
       end
 
       it 'updates account' do
@@ -33,7 +33,7 @@ RSpec.describe 'account', type: :feature  do
         click_button 'Update Account'
 
         it_should_be_on_home_page
-        it_should_have_alert_with 'Account successfully updated'
+        it_should_have_success_alert_with 'Account successfully updated'
 
         found_account = Account.find(account.id)
         expect(found_account.email).to eq new_email
@@ -86,7 +86,7 @@ RSpec.describe 'account', type: :feature  do
         end
 
         it 'has icon' do
-          expect(page).to have_selector 'h1 i.glyphicon-list'
+          expect(page).to have_selector 'h1 .glyphicon-list'
         end
 
         it 'lists the accounts sites' do

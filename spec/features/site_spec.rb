@@ -8,7 +8,7 @@ RSpec.describe 'site', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.glyphicon-cog'
+        expect(page).to have_selector 'h1 .glyphicon-cog'
       end
 
       it 'shoud update site' do
@@ -38,7 +38,7 @@ RSpec.describe 'site', type: :feature do
         click_button 'Update Site'
 
         expect(current_path).to eq '/home'
-        it_should_have_alert_with 'Site successfully updated'
+        it_should_have_success_alert_with 'Site successfully updated'
 
         site = Site.find_by_host!('localhost')
         expect(site.name).to eq new_company_name
@@ -93,7 +93,7 @@ RSpec.describe 'site', type: :feature do
 
     it_behaves_like 'logged in account' do
       it 'has icon' do
-        expect(page).to have_selector 'h1 i.glyphicon-file'
+        expect(page).to have_selector 'h1 .glyphicon-file'
       end
 
       it 'edits the css' do
@@ -110,7 +110,7 @@ RSpec.describe 'site', type: :feature do
         expect(site.updated_by).to eq account
 
         it_should_be_on_home_page
-        it_should_have_alert_with 'Site successfully updated'
+        it_should_have_success_alert_with 'Site successfully updated'
 
         link = "link[href=\"#{site.stylesheet.url}\"]"
         expect(page).to have_selector link, visible: false
