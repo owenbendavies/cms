@@ -30,8 +30,12 @@ module FeatureHelpers
     expect(find('body')['id']).to eq body_id
   end
 
-  def it_should_have_alert_with(text)
-    expect(find('.alert').text).to eq "×#{text}"
+  def it_should_have_success_alert_with(text)
+    expect(find('.alert.alert-success').text).to eq "× Close #{text}"
+  end
+
+  def it_should_have_error_alert_with(text)
+    expect(find('.alert.alert-danger').text).to eq "× Close #{text}"
   end
 
   def it_should_have_form_error(text)
