@@ -11,3 +11,5 @@
 $(document).ready(function() {
     $('textarea.autogrow').autoGrow();
 });
+
+Turbolinks.enableProgressBar();
