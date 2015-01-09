@@ -3,8 +3,7 @@
 .img-right {
   @include img-responsive;
   @include center-block;
-
-  clear: both;
+  @include clearfix;
 }
 
 @media (min-width: $screen-sm-min) {
