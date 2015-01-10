@@ -9,7 +9,7 @@ set :log_level, :info
 
 set :rails_env, :production
 
-set :rbenv_ruby, '2.1.5'
+set :rbenv_ruby, '2.2.0'
 set :rbenv_type, :system
 
 namespace :deploy do
