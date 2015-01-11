@@ -3,7 +3,6 @@
 //= require jquery.turbolinks
 //= require rails-timeago
 //= require twitter/bootstrap/rails/confirm
-//= require tinymce-jquery
 //= require turbolinks
 //= require google-analytics-turbolinks
 //= require_tree .
