@@ -76,4 +76,4 @@
               = icon(t('sessions.destroy.icon'))
               = t('sessions.destroy.title')
 
-        = link_to image_tag(user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+        %li.avatar= image_tag(user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
