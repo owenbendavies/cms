@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'application', 'data-turbolinks-track': true, media: 'all'
     = stylesheet_link_tag @site.stylesheet.url, 'data-turbolinks-track': true, media: 'all' if @site.stylesheet.url
     = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = content_for(:head)
     = render 'layouts/google_analytics'
     = csrf_meta_tag
 
