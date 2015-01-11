@@ -10,8 +10,8 @@ Rails.application.configure do
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
 
-  # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  # Configure static file server for tests with Cache-Control for performance.
+  config.serve_static_files   = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Compress JavaScripts and CSS.
@@ -21,7 +21,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Generate digests for assets URLs.
+  # Asset digests allow you to set far-future HTTP expiration dates on all
+  # assets, yet still be able to expire them through the digest params.
   config.assets.digest = true
 
   # Show full error reports and disable caching.
