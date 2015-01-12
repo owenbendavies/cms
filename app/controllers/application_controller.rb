@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
   def secure_ssl
     if request.ssl?
       headers['Content-Security-Policy'] = 'default-src https:'
+      headers['Strict-Transport-Security'] = "max-age=#{1.month.to_i}"
       session.options[:secure] = true
     end
   end

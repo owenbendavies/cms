@@ -49,6 +49,10 @@ RSpec.describe 'application', type: :feature do
     it 'does not set a content security policy' do
       expect(response_headers['Content-Security-Policy']).to eq nil
     end
+
+    it 'does not set strict transport security header' do
+      expect(response_headers['Strict-Transport-Security']).to eq nil
+    end
   end
 
   context 'https' do
@@ -64,6 +68,11 @@ RSpec.describe 'application', type: :feature do
     it 'sets content security policy to https only' do
       expect(response_headers['Content-Security-Policy'])
         .to eq 'default-src https:'
+    end
+
+    it 'sets strict transport security header' do
+      expect(response_headers['Strict-Transport-Security'])
+        .to eq 'max-age=2592000'
     end
   end
 
