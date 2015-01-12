@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
-  before_action :set_secure_session
+  before_action :secure_ssl
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
@@ -29,8 +29,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_secure_session
-    session.options[:secure] = true if request.ssl?
+  def secure_ssl
+    if request.ssl?
+      headers['Content-Security-Policy'] = 'default-src https:'
+      session.options[:secure] = true
+    end
   end
 
   def find_site
