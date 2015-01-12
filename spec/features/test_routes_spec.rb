@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'timeout', type: :feature do
+RSpec.describe 'test routes', type: :feature do
   it 'does not raise error when no timeout is passed in' do
     visit '/timeout'
     expect(page).to have_content 'ok'
