@@ -91,23 +91,27 @@ RSpec.describe 'sessions', type: :feature do
     end
   end
 
-  describe 'session' do
-    context 'http' do
-      it 'sets session cookie as http only' do
-        visit_page '/home'
+  context 'http' do
+    it 'sets session cookie as http only' do
+      visit_page '/home'
 
-        expect(response_headers['Set-Cookie']).to_not include 'secure'
-      end
+      expect(response_headers['Set-Cookie']).to_not include 'secure'
     end
+  end
 
-    context 'https' do
-      it 'sets session cookie as https' do
-        page.driver.browser.header('X-Forwarded-Proto', 'https')
+  context 'https' do
+    it 'sets session cookie as https' do
+      page.driver.browser.header('X-Forwarded-Proto', 'https')
 
-        visit_page '/home'
+      visit_page '/home'
 
-        expect(response_headers['Set-Cookie']).to include 'secure'
-      end
+      expect(response_headers['Set-Cookie']).to include 'secure'
     end
+  end
+
+  it 'stores session data in database' do
+    visit_page '/home'
+    expect(response_headers['Set-Cookie'])
+      .to match(/^_cms_session=[0-9a-f]{32};.*/)
   end
 end
