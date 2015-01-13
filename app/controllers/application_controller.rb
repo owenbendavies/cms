@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
-  before_action :secure_ssl
+  before_action :set_secure_session
+  before_action :set_secure_headers
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
@@ -29,12 +30,28 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def secure_ssl
-    return unless request.ssl?
+  def set_secure_session
+    session.options[:secure] = true if request.ssl?
+  end
 
-    headers['Content-Security-Policy'] = 'default-src https:'
-    headers['Strict-Transport-Security'] = "max-age=#{1.month.to_i}"
-    session.options[:secure] = true
+  def csp_options
+    origins = request.ssl? ? 'https:' : '*'
+
+    {
+      default_src: origins,
+      disable_fill_missing: true,
+      enforce: true,
+      script_src: "#{origins} inline",
+      style_src: "#{origins} inline"
+    }
+  end
+
+  def set_secure_headers
+    set_security_headers(
+      hsts: { max_age: 1.month.to_i },
+      x_xss_protection: { value: 1, mode: 'block' },
+      csp: csp_options
+    )
   end
 
   def find_site
