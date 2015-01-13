@@ -46,8 +46,13 @@ RSpec.describe 'application', type: :feature do
       expect(response_headers['Set-Cookie']).to_not include 'secure'
     end
 
-    it 'does not set a content security policy' do
-      expect(response_headers['Content-Security-Policy']).to eq nil
+    it 'sets content security policy to *' do
+      expect(response_headers['Content-Security-Policy']).to eq [
+        'default-src *',
+        'img-src * data:',
+        "script-src * 'unsafe-inline'",
+        "style-src * 'unsafe-inline'"
+      ].join('; ') + ';'
     end
 
     it 'does not set strict transport security header' do
@@ -66,8 +71,12 @@ RSpec.describe 'application', type: :feature do
     end
 
     it 'sets content security policy to https only' do
-      expect(response_headers['Content-Security-Policy'])
-        .to eq 'default-src https:'
+      expect(response_headers['Content-Security-Policy']).to eq [
+        'default-src https:',
+        'img-src https: data:',
+        "script-src https: 'unsafe-inline'",
+        "style-src https: 'unsafe-inline'"
+      ].join('; ') + ';'
     end
 
     it 'sets strict transport security header' do
