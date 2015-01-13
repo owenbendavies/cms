@@ -25,6 +25,7 @@ gem 'validates_email_format_of'
 gem 'zxcvbn-ruby', require: 'zxcvbn'
 
 # Controller Gems
+gem 'secure_headers'
 gem 'xml-sitemap'
 
 # View Gems
