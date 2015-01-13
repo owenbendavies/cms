@@ -74,44 +74,4 @@ RSpec.describe 'sessions', type: :feature do
       end
     end
   end
-
-  it_behaves_like 'logged in account' do
-    let(:go_to_url) { '/account/edit' }
-
-    context 'after 30 days' do
-      before do
-        Timecop.travel Time.now + 31.days
-      end
-
-      after do
-        Timecop.return
-      end
-
-      it_behaves_like 'restricted page'
-    end
-  end
-
-  context 'http' do
-    it 'sets session cookie as http only' do
-      visit_page '/home'
-
-      expect(response_headers['Set-Cookie']).to_not include 'secure'
-    end
-  end
-
-  context 'https' do
-    it 'sets session cookie as https' do
-      page.driver.browser.header('X-Forwarded-Proto', 'https')
-
-      visit_page '/home'
-
-      expect(response_headers['Set-Cookie']).to include 'secure'
-    end
-  end
-
-  it 'stores session data in database' do
-    visit_page '/home'
-    expect(response_headers['Set-Cookie'])
-      .to match(/^_cms_session=[0-9a-f]{32};.*/)
-  end
 end
