@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
-#  subject    :string           not null
+#  subject    :string(64)       not null
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
