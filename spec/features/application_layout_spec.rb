@@ -88,12 +88,10 @@ RSpec.describe 'application layout', type: :feature do
 
       it 'has dropdowns', js: true do
         within '#topbar' do
-          expect {
-            click_link 'Messages'
-          }.to raise_error Capybara::ElementNotFound
+          expect(page).to_not have_link 'Toggle navigation'
+          expect(page).to_not have_link 'Messages'
 
           click_link 'Site'
-
           click_link 'Messages'
         end
       end
@@ -102,15 +100,13 @@ RSpec.describe 'application layout', type: :feature do
         windows.first.resize_to 640, 1136
 
         within '#topbar' do
-          expect {
-            click_link 'Messages'
-          }.to raise_error Capybara::ElementNotFound
-
-          expect {
-            click_link 'Site'
-          }.to raise_error Capybara::ElementNotFound
+          expect(page).to_not have_link 'Site'
+          expect(page).to_not have_link 'Messages'
 
           click_button 'Toggle navigation'
+
+          expect(page).to_not have_link 'Messages'
+
           click_link 'Site'
           click_link 'Messages'
         end
