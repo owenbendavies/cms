@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221170643) do
+ActiveRecord::Schema.define(version: 20150114144837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141221170643) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "site_id",                               null: false
-    t.string   "subject",                               null: false
+    t.string   "subject",    limit: 64,                 null: false
     t.string   "name",       limit: 64,                 null: false
     t.string   "email",      limit: 64,                 null: false
     t.string   "phone",      limit: 32
@@ -85,11 +85,11 @@ ActiveRecord::Schema.define(version: 20141221170643) do
     t.string   "host",                  limit: 64,                        null: false
     t.string   "name",                  limit: 64,                        null: false
     t.string   "sub_title",             limit: 64
-    t.string   "layout",                           default: "one_column"
-    t.string   "main_menu_page_ids"
+    t.string   "layout",                limit: 32, default: "one_column"
+    t.text     "main_menu_page_ids"
     t.string   "copyright",             limit: 64
-    t.string   "google_analytics"
-    t.string   "charity_number"
+    t.string   "google_analytics",      limit: 32
+    t.string   "charity_number",        limit: 32
     t.string   "stylesheet_filename",   limit: 36
     t.string   "header_image_filename", limit: 36
     t.text     "sidebar_html_content"
