@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'request logging', type: :feature do
   let(:events) { [] }
+  let(:new_id) { Digest::MD5.hexdigest(rand.to_s) }
 
   before do
     ActiveSupport::Notifications
