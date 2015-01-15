@@ -12,8 +12,8 @@ RSpec.describe 'sessions', type: :feature do
 
     it 'accepts spaces in email' do
       expect(find_field('Email')['autofocus']).to eq 'autofocus'
-      fill_in 'Email', with: "  #{account.email} "
-      fill_in 'Password', with: account.password
+      fill_in 'Email', with: "  #{user.email} "
+      fill_in 'Password', with: user.password
 
       click_button 'Login'
 
@@ -21,7 +21,7 @@ RSpec.describe 'sessions', type: :feature do
     end
 
     it 'does not allow invalid password' do
-      fill_in 'Email', with: account.email
+      fill_in 'Email', with: user.email
       fill_in 'Password', with: new_password
 
       click_button 'Login'
@@ -40,19 +40,19 @@ RSpec.describe 'sessions', type: :feature do
       expect(current_path).to eq '/login'
     end
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'logs you out if removed from site' do
-        account.sites = []
-        account.save!
+        user.sites = []
+        user.save!
 
-        visit '/account/edit'
+        visit '/user/edit'
         expect(current_path).to eq '/login'
       end
     end
   end
 
   describe 'logout' do
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has link in topbar' do
         visit_page '/home'
 

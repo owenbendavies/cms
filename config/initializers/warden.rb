@@ -8,18 +8,18 @@ end
 
 # Setup Session Serialization
 class Warden::SessionSerializer
-  def serialize(account)
-    account.id
+  def serialize(user)
+    user.id
   end
 
   def deserialize(id)
-    account = Account.find_by_id(id)
-    return unless account
+    user = User.find_by_id(id)
+    return unless user
 
     request = Rack::Request.new(env)
 
-    if account.sites.map(&:host).include? request.host
-      return account
+    if user.sites.map(&:host).include? request.host
+      return user
     else
       return nil
     end
@@ -29,13 +29,13 @@ end
 # Strategies
 Warden::Strategies.add(:password) do
   def authenticate!
-    email = params['account']['email']
-    password = params['account']['password']
+    email = params['user']['email']
+    password = params['user']['password']
 
-    account = Account.find_and_authenticate(email, password, request.host)
+    user = User.find_and_authenticate(email, password, request.host)
 
-    if account
-      success! account
+    if user
+      success! user
     else
       fail! 'sessions.new.flash.invalid_login'
     end

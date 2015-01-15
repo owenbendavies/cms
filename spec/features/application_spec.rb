@@ -109,8 +109,8 @@ RSpec.describe 'application', type: :feature do
     expect(page.status_code).to eq 403
   end
 
-  it_behaves_like 'logged in account' do
-    let(:go_to_url) { '/account/edit' }
+  it_behaves_like 'logged in user' do
+    let(:go_to_url) { '/user/edit' }
 
     context 'after 30 days' do
       before do

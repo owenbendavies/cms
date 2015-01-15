@@ -15,7 +15,7 @@ RSpec.describe 'messages', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has list of messages', js: true do
         expect(find('#main_article h1').text).to eq 'Messages'
         expect(page).to have_selector 'h1 .glyphicon-envelope'
@@ -57,7 +57,7 @@ RSpec.describe 'messages', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'shows message', js: true do
         expect(find('#main_article h1').text).to eq 'Message'
         expect(page).to have_selector 'h1 .glyphicon-envelope'

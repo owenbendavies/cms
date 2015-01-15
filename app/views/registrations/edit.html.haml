@@ -1,7 +1,7 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-= simple_form_for user do |form|
+= simple_form_for user, url: registrations_path do |form|
   = form.input :email, autofocus: true
   = form.input :password
   = form.input :password_confirmation

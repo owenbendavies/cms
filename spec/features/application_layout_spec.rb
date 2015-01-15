@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe 'application layout', type: :feature do
-  it_behaves_like 'non logged in account' do
+  it_behaves_like 'non logged in user' do
     before do
       site.main_menu_page_ids = [home_page.id, test_page.id]
       site.save!
@@ -78,7 +78,7 @@ RSpec.describe 'application layout', type: :feature do
     end
   end
 
-  it_behaves_like 'logged in account' do
+  it_behaves_like 'logged in user' do
     describe 'topbar' do
       let(:topbar) { find('#topbar') }
 
@@ -115,14 +115,14 @@ RSpec.describe 'application layout', type: :feature do
       it 'has gravatar image' do
         within '#topbar' do
           image = find('img')
-          expect(image['src']).to eq account.gravatar_url
+          expect(image['src']).to eq user.gravatar_url
           expect(image['alt']).to eq 'Profile Image'
         end
       end
     end
 
     it 'has google analytics uid' do
-      expect(body).to include("ga('set', '&uid', '#{account.id}');")
+      expect(body).to include("ga('set', '&uid', '#{user.id}');")
     end
   end
 end

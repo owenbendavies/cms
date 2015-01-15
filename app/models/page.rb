@@ -16,11 +16,11 @@
 #
 
 class Page < ActiveRecord::Base
-  INVALID_URLS = %w(account health login logout new robots site sitemap)
+  INVALID_URLS = %w(user health login logout new robots site sitemap)
 
   belongs_to :site
-  belongs_to :created_by, class_name: 'Account'
-  belongs_to :updated_by, class_name: 'Account'
+  belongs_to :created_by, class_name: 'User'
+  belongs_to :updated_by, class_name: 'User'
 
   before_save do
     self.url = new_url

@@ -4,9 +4,9 @@
 %table.table.table-bordered
   %thead
     %tr
-      %th= Account.human_attribute_name(:email)
+      %th= User.human_attribute_name(:email)
 
   %tbody
-    - @site.accounts.each do |account|
+    - @site.users.each do |user|
       %tr
-        %td= account.email
+        %td= user.email

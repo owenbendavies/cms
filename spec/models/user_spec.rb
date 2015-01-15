@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: accounts
+# Table name: users
 #
 #  id              :integer          not null, primary key
 #  email           :string(64)       not null
@@ -11,19 +11,19 @@
 
 require 'rails_helper'
 
-RSpec.describe Account do
+RSpec.describe User do
   it 'has a gravatar_url' do
-    account = described_class.new(email: 'test@example.com')
+    user = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
 
-    expect(account.gravatar_url)
+    expect(user.gravatar_url)
       .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
   it { should have_secure_password }
 
   describe '#sites' do
-    subject { FactoryGirl.create(:account) }
+    subject { FactoryGirl.create(:user) }
     let!(:site1) { FactoryGirl.create(:site, name: 'a') }
     let!(:site2) { FactoryGirl.create(:site, name: 'b') }
 
@@ -40,8 +40,8 @@ RSpec.describe Account do
   end
 
   it 'strips attributes' do
-    account = FactoryGirl.create(:account, email: "  #{new_email} ")
-    expect(account.email).to eq new_email
+    user = FactoryGirl.create(:user, email: "  #{new_email} ")
+    expect(user.email).to eq new_email
   end
 
   describe 'validate' do
@@ -74,44 +74,44 @@ RSpec.describe Account do
 
   describe '.find_and_authenticate' do
     let!(:site) { FactoryGirl.create(:site) }
-    let!(:account) { site.accounts.first }
+    let!(:user) { site.users.first }
 
-    it 'authenticates a valid account' do
+    it 'authenticates a valid user' do
       expect(described_class.find_and_authenticate(
-        account.email,
-        account.password,
+        user.email,
+        user.password,
         site.host
-      )).to eq account
+      )).to eq user
     end
 
     it 'ignores white space for email' do
       expect(described_class.find_and_authenticate(
-        "  #{account.email} ",
-        account.password,
+        "  #{user.email} ",
+        user.password,
         site.host
-      )).to eq account
+      )).to eq user
     end
 
     it 'ignores white space for password' do
       expect(described_class.find_and_authenticate(
-        account.email,
-        "  #{account.password}  ",
+        user.email,
+        "  #{user.password}  ",
         site.host
-      )).to eq account
+      )).to eq user
     end
 
     it 'ignores case for email' do
       expect(described_class.find_and_authenticate(
-        account.email.upcase,
-        account.password,
+        user.email.upcase,
+        user.password,
         site.host
-      )).to eq account
+      )).to eq user
     end
 
     it 'returns nil for an invalid email' do
       expect(described_class.find_and_authenticate(
         new_email,
-        account.password,
+        user.password,
         site.host
       )).to be_nil
     end
@@ -119,14 +119,14 @@ RSpec.describe Account do
     it 'returns nil for a blank email' do
       expect(described_class.find_and_authenticate(
         '',
-        account.password,
+        user.password,
         site.host
       )).to be_nil
     end
 
     it 'returns nil for an invalid password' do
       expect(described_class.find_and_authenticate(
-        account.email,
+        user.email,
         new_password,
         site.host
       )).to be_nil
@@ -134,7 +134,7 @@ RSpec.describe Account do
 
     it 'returns nil for a blank password' do
       expect(described_class.find_and_authenticate(
-        account.email,
+        user.email,
         '',
         site.host
       )).to be_nil
@@ -142,8 +142,8 @@ RSpec.describe Account do
 
     it 'returns nil for invalid site' do
       expect(described_class.find_and_authenticate(
-        account.email,
-        account.password,
+        user.email,
+        user.password,
         new_host
       )).to be_nil
     end
