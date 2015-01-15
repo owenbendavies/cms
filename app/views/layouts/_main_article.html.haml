@@ -4,10 +4,10 @@
       = icon(content_for(:page_icon)) if content_for(:page_icon)
       = content_for(:title)
 
-- if flash[:success]
-  = alert_box flash[:success], context: :success, dismissible: true
+- if notice
+  = alert_box notice, context: :success, dismissible: true
 
-- if flash[:error]
-  = alert_box flash[:error], context: :danger, dismissible: true
+- if alert
+  = alert_box alert, context: :danger, dismissible: true
 
 = yield

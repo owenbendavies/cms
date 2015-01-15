@@ -4,7 +4,7 @@ class SitesController < ApplicationController
 
   def update
     if @site.update_attributes site_params
-      flash[:success] = t('flash.updated', name: Site.model_name.human)
+      flash.notice = t('flash.updated', name: Site.model_name.human)
       redirect_to page_path('home')
     else
       render :edit
