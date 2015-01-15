@@ -14,8 +14,8 @@
 
 class Image < ActiveRecord::Base
   belongs_to :site
-  belongs_to :created_by, class_name: 'Account'
-  belongs_to :updated_by, class_name: 'Account'
+  belongs_to :created_by, class_name: 'User'
+  belongs_to :updated_by, class_name: 'User'
 
   delegate :store_dir, to: :site, allow_nil: true
 

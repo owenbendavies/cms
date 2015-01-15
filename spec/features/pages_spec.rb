@@ -6,7 +6,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has icon' do
         expect(page).to have_selector 'h1 .glyphicon-plus'
       end
@@ -37,8 +37,8 @@ RSpec.describe 'pages', type: :feature do
         new_page = Page.find_by_site_id_and_url!(site, 'new_page')
         expect(new_page.name).to eq 'New Page'
         expect(new_page.html_content).to eq "<p>#{new_message}</p>"
-        expect(new_page.created_by).to eq account
-        expect(new_page.updated_by).to eq account
+        expect(new_page.created_by).to eq user
+        expect(new_page.updated_by).to eq user
       end
 
       it 'shows errors' do
@@ -65,7 +65,7 @@ RSpec.describe 'pages', type: :feature do
     context 'test_page' do
       let(:go_to_url) { '/test_page' }
 
-      it_behaves_like 'non logged in account' do
+      it_behaves_like 'non logged in user' do
         it 'has page url on body' do
           its_body_id_should_be 'page_url_test_page'
         end
@@ -81,7 +81,7 @@ RSpec.describe 'pages', type: :feature do
         end
       end
 
-      it_behaves_like 'logged in account' do
+      it_behaves_like 'logged in user' do
         it 'shows the page' do
           within 'article' do
             expect(find('h1').text).to eq 'Test Page'
@@ -121,7 +121,7 @@ RSpec.describe 'pages', type: :feature do
 
       it_should_behave_like 'restricted page'
 
-      it_behaves_like 'logged in account' do
+      it_behaves_like 'logged in user' do
         it 'shows page' do
           expect(page).to have_selector 'h1 .glyphicon-lock'
         end
@@ -134,7 +134,7 @@ RSpec.describe 'pages', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has icon' do
         expect(page).to have_selector 'h1 .glyphicon-pencil'
       end
@@ -159,7 +159,7 @@ RSpec.describe 'pages', type: :feature do
         expect(find('#main_article p').text).to eq new_message
 
         page = Page.find_by_site_id_and_url!(site, 'test_page')
-        expect(page.updated_by).to eq account
+        expect(page.updated_by).to eq user
       end
 
       it 'makes a page private' do
@@ -196,7 +196,7 @@ RSpec.describe 'pages', type: :feature do
 
       it 'does not save page with no edits' do
         test_page = Page.find_by_site_id_and_url!(site, 'test_page')
-        test_page.updated_by = account
+        test_page.updated_by = user
         test_page.save!
 
         visit_page '/test_page/edit'
@@ -223,7 +223,7 @@ RSpec.describe 'pages', type: :feature do
   describe 'delete' do
     let(:go_to_url) { '/test_page' }
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'deletes a page', js: true do
         click_link 'Page'
         click_link 'Delete'

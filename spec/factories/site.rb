@@ -9,11 +9,11 @@ FactoryGirl.define do
     stylesheet_filename { "#{Digest::MD5.hexdigest(rand.to_s)}.css" }
     header_image_filename { "#{Digest::MD5.hexdigest(rand.to_s)}.png" }
     sidebar_html_content { "<h2>#{ Faker::Lorem.sentence }</h2>" }
-    association :created_by, factory: :account
-    association :updated_by, factory: :account
+    association :created_by, factory: :user
+    association :updated_by, factory: :user
 
     after(:create) do |site|
-      site.accounts += [site.created_by, site.updated_by]
+      site.users += [site.created_by, site.updated_by]
     end
   end
 end

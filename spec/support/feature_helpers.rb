@@ -7,7 +7,7 @@ module FeatureHelpers
   included do
     let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
-    let!(:account) { site.accounts.first }
+    let!(:user) { site.users.first }
 
     let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
 
@@ -42,9 +42,9 @@ module FeatureHelpers
     expect(find('.help-block').text).to eq text
   end
 
-  RSpec.shared_context 'logged in account' do
+  RSpec.shared_context 'logged in user' do
     before do
-      login_as account
+      login_as user
 
       if defined? go_to_url
         visit_page go_to_url
@@ -54,7 +54,7 @@ module FeatureHelpers
     end
   end
 
-  RSpec.shared_context 'non logged in account' do
+  RSpec.shared_context 'non logged in user' do
     before do
       visit_page go_to_url if defined? go_to_url
     end

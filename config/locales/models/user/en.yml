@@ -1,10 +1,10 @@
 en:
   activerecord:
     models:
-      account: "Account"
+      user: "User"
 
     attributes:
-      account:
+      user:
         password: "Password"
         password_confirmation: "Confirm password"
         email: "Email"

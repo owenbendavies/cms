@@ -6,15 +6,15 @@ RSpec.describe 'users', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has list of users' do
         within '#main_article' do
           expect(page).to have_content 'Users'
           expect(page).to have_selector 'h1 .glyphicon-group'
 
           expect(page).to have_content 'Email'
-          expect(page).to have_content account.email
-          expect(page).to have_content site.accounts.second.email
+          expect(page).to have_content user.email
+          expect(page).to have_content site.users.second.email
         end
       end
 

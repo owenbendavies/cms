@@ -1,7 +1,7 @@
 - content_for :title, t('.title')
 - content_for :body_id, 'page_url_login'
 
-= simple_form_for Account.new, url: login_path do |form|
+= simple_form_for User.new, url: login_path do |form|
   = form.input :email, autofocus: true
   = form.input :password
 

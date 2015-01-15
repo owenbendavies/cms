@@ -63,14 +63,14 @@
             = user.email
             %b.caret
           %ul.dropdown-menu
-            = link_to edit_account_path do
-              = icon(t('accounts.edit.icon'))
-              = t('accounts.edit.title')
+            = link_to edit_registrations_path do
+              = icon(t('registrations.edit.icon'))
+              = t('registrations.edit.title')
 
             - if user.sites.size > 1
-              = link_to sites_account_path do
-                = icon(t('accounts.sites.icon'))
-                = t('accounts.sites.title')
+              = link_to sites_registrations_path do
+                = icon(t('registrations.sites.icon'))
+                = t('registrations.sites.title')
 
             = link_to logout_path do
               = icon(t('sessions.destroy.icon'))

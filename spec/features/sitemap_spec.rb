@@ -14,7 +14,7 @@ RSpec.describe 'sitemap', type: :feature do
     context 'html' do
       let(:go_to_url) { '/sitemap' }
 
-      it_behaves_like 'non logged in account' do
+      it_behaves_like 'non logged in user' do
         it 'has icon' do
           expect(page).to have_selector 'h1 .glyphicon-sitemap'
         end
@@ -42,7 +42,7 @@ RSpec.describe 'sitemap', type: :feature do
         end
       end
 
-      it_behaves_like 'logged in account' do
+      it_behaves_like 'logged in user' do
         it 'has lock icon for private pages' do
           find('ul#sitemap li:nth-child(2)').tap do |item|
             expect(item).to have_link private_page.name, href: '/private'
