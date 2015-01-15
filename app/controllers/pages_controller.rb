@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 
     if @message.update_attributes(message_params)
       @message.deliver
-      flash[:success] = t('pages.contact_form.flash.success')
+      flash.notice = t('pages.contact_form.flash.success')
       redirect_to page_path(@page.url)
     else
       render :show
@@ -45,8 +45,7 @@ class PagesController < ApplicationController
 
   def destroy
     @page.destroy
-    flash[:error] = t('flash.deleted', name: @page.name)
-    redirect_to sitemap_path
+    redirect_to sitemap_path, alert: t('flash.deleted', name: @page.name)
   end
 
   private
