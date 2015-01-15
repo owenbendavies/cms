@@ -86,8 +86,34 @@ RSpec.describe 'application layout', type: :feature do
         expect(topbar).to have_link site.name, href: '/'
       end
 
-      it 'has google analytics uid' do
-        expect(body).to include("ga('set', '&uid', '#{account.id}');")
+      it 'has dropdowns', js: true do
+        within '#topbar' do
+          expect {
+            click_link 'Messages'
+          }.to raise_error Capybara::ElementNotFound
+
+          click_link 'Site'
+
+          click_link 'Messages'
+        end
+      end
+
+      it 'has mobile dropdowns', js: true do
+        windows.first.resize_to 640, 1136
+
+        within '#topbar' do
+          expect {
+            click_link 'Messages'
+          }.to raise_error Capybara::ElementNotFound
+
+          expect {
+            click_link 'Site'
+          }.to raise_error Capybara::ElementNotFound
+
+          click_button 'Toggle navigation'
+          click_link 'Site'
+          click_link 'Messages'
+        end
       end
 
       it 'has gravatar image' do
@@ -97,6 +123,10 @@ RSpec.describe 'application layout', type: :feature do
           expect(image['alt']).to eq 'Profile Image'
         end
       end
+    end
+
+    it 'has google analytics uid' do
+      expect(body).to include("ga('set', '&uid', '#{account.id}');")
     end
   end
 end
