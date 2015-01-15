@@ -89,7 +89,7 @@ RSpec.describe 'messages', type: :feature do
       end
 
       it 'renders page not found for unknow message' do
-        visit "/site/messages/#{new_id}"
+        visit '/site/messages/bad'
         expect(page.status_code).to eq 404
         expect(page).to have_content 'Page Not Found'
       end
