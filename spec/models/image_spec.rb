@@ -25,20 +25,20 @@ RSpec.describe Image do
   end
 
   describe '#created_by' do
-    let(:account) { FactoryGirl.create(:account) }
-    subject { FactoryGirl.create(:image, created_by: account) }
+    let(:user) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:image, created_by: user) }
 
-    it 'returns account' do
-      expect(subject.created_by).to eq account
+    it 'returns user' do
+      expect(subject.created_by).to eq user
     end
   end
 
   describe '#updated_by' do
-    let(:account) { FactoryGirl.create(:account) }
-    subject { FactoryGirl.create(:image, updated_by: account) }
+    let(:user) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:image, updated_by: user) }
 
-    it 'returns account' do
-      expect(subject.updated_by).to eq account
+    it 'returns user' do
+      expect(subject.updated_by).to eq user
     end
   end
 

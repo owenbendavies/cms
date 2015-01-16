@@ -24,35 +24,35 @@ require 'rails_helper'
 
 RSpec.describe Site do
   describe '#created_by' do
-    let(:account) { FactoryGirl.create(:account) }
-    subject { FactoryGirl.create(:site, created_by: account) }
+    let(:user) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:site, created_by: user) }
 
-    it 'returns account' do
-      expect(subject.created_by).to eq account
+    it 'returns user' do
+      expect(subject.created_by).to eq user
     end
   end
 
   describe '#updated_by' do
-    let(:account) { FactoryGirl.create(:account) }
-    subject { FactoryGirl.create(:site, updated_by: account) }
+    let(:user) { FactoryGirl.create(:user) }
+    subject { FactoryGirl.create(:site, updated_by: user) }
 
-    it 'returns account' do
-      expect(subject.updated_by).to eq account
+    it 'returns user' do
+      expect(subject.updated_by).to eq user
     end
   end
 
-  describe '#accounts' do
-    let!(:account1) { FactoryGirl.create(:account, email: 'a@example.com') }
-    let!(:account2) { FactoryGirl.create(:account, email: 'b@example.com') }
+  describe '#users' do
+    let!(:user1) { FactoryGirl.create(:user, email: 'a@example.com') }
+    let!(:user2) { FactoryGirl.create(:user, email: 'b@example.com') }
 
     subject do
-      FactoryGirl.create(:site, created_by: account1, updated_by: account2)
+      FactoryGirl.create(:site, created_by: user1, updated_by: user2)
     end
 
-    it 'returns accounts sorted by email' do
+    it 'returns users sorted by email' do
       subject.reload
 
-      expect(subject.accounts).to eq [account1, account2]
+      expect(subject.users).to eq [user1, user2]
     end
   end
 

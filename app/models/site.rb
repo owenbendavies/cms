@@ -23,10 +23,10 @@
 class Site < ActiveRecord::Base
   LAYOUTS = %w(one_column right_sidebar small_right_sidebar)
 
-  belongs_to :created_by, class_name: 'Account'
-  belongs_to :updated_by, class_name: 'Account'
+  belongs_to :created_by, class_name: 'User'
+  belongs_to :updated_by, class_name: 'User'
 
-  has_and_belongs_to_many :accounts, -> { order :email }
+  has_and_belongs_to_many :users, -> { order :email }
 
   has_many :images, -> { order :name }
   has_many :messages, -> { order created_at: :desc }

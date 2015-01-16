@@ -63,15 +63,15 @@ To set up data run the following:
 ./bin/interactive
 ```
 
-First create an account to use, replacing email, password and sites with
+First create a user to use, replacing email, password and sites with
 appropriate data.
 
 ```ruby
-account = Account.new
-account.email = 'test@example.com'
-account.password = 'password'
-account.password_confirmation = 'password'
-account.save!
+user = User.new
+user.email = 'test@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.save!
 ```
 
 Next create the site, replacing host and name with appropriate data.
@@ -80,15 +80,15 @@ Next create the site, replacing host and name with appropriate data.
 site = Site.new
 site.host = 'localhost'
 site.name = 'Test Site'
-site.created_by = account
-site.updated_by = account
+site.created_by = user
+site.updated_by = user
 site.save!
 ```
 
-Next add the site to the account.
+Next add the site to the user.
 
 ```ruby
-account.sites << site
+user.sites << site
 ```
 
 Development

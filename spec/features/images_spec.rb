@@ -8,7 +8,7 @@ RSpec.describe 'images', type: :feature do
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has list of images' do
         expect(find('#main_article h1').text).to eq 'Images'
         expect(page).to have_selector 'h1 .glyphicon-picture'

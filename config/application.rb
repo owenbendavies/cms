@@ -24,9 +24,7 @@ module Cms
         user_agent: "\"#{event.payload[:user_agent]}\""
       }
 
-      if event.payload[:account_id]
-        output[:account_id] = event.payload[:account_id]
-      end
+      output[:user_id] = event.payload[:user_id] if event.payload[:user_id]
 
       output
     end

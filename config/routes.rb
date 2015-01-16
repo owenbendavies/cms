@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'timeout', to: 'test_routes#timeout'
 
-  resource :account, only: [:edit, :update] do
+  resource :registrations, only: [:edit, :update], path: 'user' do
     get :sites
   end
 

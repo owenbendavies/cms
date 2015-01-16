@@ -1,26 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe 'account', type: :feature  do
+RSpec.describe 'user', type: :feature  do
   describe 'edit' do
-    let(:go_to_url) { '/account/edit' }
+    let(:go_to_url) { '/user/edit' }
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       it 'has icon' do
         expect(page).to have_selector 'h1 .glyphicon-user'
       end
 
-      it 'updates account' do
+      it 'updates user' do
         expect(find_field('Email')['autofocus']).to eq 'autofocus'
-        expect(find_field('Email').value).to eq account.email
+        expect(find_field('Email').value).to eq user.email
         expect(find_field('Password').value).to be_nil
         expect(find_field('Confirm password').value).to be_nil
 
         within 'a[href="https://www.gravatar.com"]' do
           gravatar_image = find('img')
 
-          expect(gravatar_image['src']).to eq account.gravatar_url(size: 150)
+          expect(gravatar_image['src']).to eq user.gravatar_url(size: 150)
 
           expect(gravatar_image['alt']).to eq 'Profile Image'
           expect(gravatar_image['width']).to eq '150'
@@ -30,13 +30,13 @@ RSpec.describe 'account', type: :feature  do
         fill_in 'Email', with: " #{new_email} "
         fill_in 'Password', with: new_password
         fill_in 'Confirm password', with: new_password
-        click_button 'Update Account'
+        click_button 'Update User'
 
         it_should_be_on_home_page
-        it_should_have_success_alert_with 'Account successfully updated'
+        it_should_have_success_alert_with 'User successfully updated'
 
-        found_account = Account.find(account.id)
-        expect(found_account.email).to eq new_email
+        found_user = User.find(user.id)
+        expect(found_user.email).to eq new_email
 
         visit '/logout'
         visit_page '/login'
@@ -51,7 +51,7 @@ RSpec.describe 'account', type: :feature  do
 
       it 'fails with invalid data' do
         fill_in 'Email', with: ''
-        click_button 'Update Account'
+        click_button 'Update User'
         it_should_have_form_error "can't be blank"
       end
 
@@ -64,23 +64,23 @@ RSpec.describe 'account', type: :feature  do
         visit_page '/home'
 
         within('#topbar') do
-          click_link 'Account'
+          click_link 'User Settings'
         end
 
-        expect(current_path).to eq '/account/edit'
+        expect(current_path).to eq '/user/edit'
       end
     end
   end
 
   describe 'sites' do
-    let(:go_to_url) { '/account/sites' }
+    let(:go_to_url) { '/user/sites' }
 
     it_should_behave_like 'restricted page'
 
-    it_behaves_like 'logged in account' do
+    it_behaves_like 'logged in user' do
       context 'with multiple sites' do
         before do
-          account.sites << FactoryGirl.build(:site, host: new_host)
+          user.sites << FactoryGirl.build(:site, host: new_host)
 
           visit_page go_to_url
         end
@@ -89,7 +89,7 @@ RSpec.describe 'account', type: :feature  do
           expect(page).to have_selector 'h1 .glyphicon-list'
         end
 
-        it 'lists the accounts sites' do
+        it 'lists the users sites' do
           expect(page).to have_link 'localhost', href: 'http://localhost'
           expect(page).to have_link new_host, href: "http://#{new_host}"
         end
@@ -101,7 +101,7 @@ RSpec.describe 'account', type: :feature  do
             click_link 'Sites'
           end
 
-          expect(current_path).to eq '/account/sites'
+          expect(current_path).to eq '/user/sites'
         end
       end
 
