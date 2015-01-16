@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    if user.update_attributes(user_params)
+    if current_user.update_attributes(user_params)
       flash.notice = t('flash.updated', name: User.model_name.human)
       redirect_to page_path('home')
     else

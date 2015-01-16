@@ -109,22 +109,6 @@ RSpec.describe 'application', type: :feature do
     expect(page.status_code).to eq 403
   end
 
-  it_behaves_like 'logged in user' do
-    let(:go_to_url) { '/user/edit' }
-
-    context 'after 30 days' do
-      before do
-        Timecop.travel Time.now + 31.days
-      end
-
-      after do
-        Timecop.return
-      end
-
-      it_behaves_like 'restricted page'
-    end
-  end
-
   it 'stores session data in database' do
     visit_page '/home'
     expect(response_headers['Set-Cookie'])

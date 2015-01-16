@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 
+# Frameworks
 gem 'rails', '4.2.0'
+gem 'devise'
 
 # Databases
 gem 'pg'
@@ -10,7 +12,6 @@ gem 'redis-actionpack'
 # Middleware
 gem 'rack-protection'
 gem 'rack-timeout'
-gem 'rails_warden'
 
 # Model Gems
 gem 'bcrypt'

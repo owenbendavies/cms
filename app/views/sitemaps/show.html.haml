@@ -5,7 +5,7 @@
 
 %ul#sitemap.list-unstyled
   - @pages.each do |page|
-    - next if page.private and !authenticated?
+    - next if page.private and !user_signed_in?
     %li
       = link_to(page.name, page_path(page.url))
       = icon(t('pages.show.private.icon')) if page.private
