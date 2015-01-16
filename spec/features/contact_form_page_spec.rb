@@ -33,7 +33,7 @@ RSpec.describe 'contact_form page', type: :feature do
 
     last_message = ActionMailer::Base.deliveries.last
     expect(last_message.from).to eq ["noreply@#{site.host}"]
-    expect(last_message.to).to eq site.accounts.map(&:email).sort
+    expect(last_message.to).to eq site.users.map(&:email).sort
     expect(last_message.subject).to eq contact_page.name
     expect(last_message.body).to include "Name: #{new_name}"
     expect(last_message.body).to include "Email: #{new_email}"

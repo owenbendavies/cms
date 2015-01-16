@@ -9,7 +9,7 @@ class MessageMailer < ActionMailer::Base
 
     mail(
       from: from.format,
-      to: message.site.accounts.map(&:email).sort,
+      to: message.site.users.map(&:email).sort,
       subject: message.subject
     )
   end

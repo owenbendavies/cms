@@ -1,7 +1,7 @@
 en:
-  accounts:
+  registrations:
     edit:
-      title: "Account Settings"
+      title: "User Settings"
       icon: "user"
 
     sites:

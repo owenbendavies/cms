@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: accounts
+# Table name: users
 #
 #  id              :integer          not null, primary key
 #  email           :string(64)       not null
@@ -9,7 +9,7 @@
 #  updated_at      :datetime         not null
 #
 
-class Account < ActiveRecord::Base
+class User < ActiveRecord::Base
   include Gravtastic
 
   gravtastic default: 'mm', size: 40
@@ -33,11 +33,11 @@ class Account < ActiveRecord::Base
             password_strength: true
 
   def self.find_and_authenticate(email, password, host)
-    account = find_by_email(email.squish.downcase)
+    user = find_by_email(email.squish.downcase)
 
-    return unless account
-    return unless account.authenticate(password.squish)
-    return unless account.sites.map(&:host).include? host
-    account
+    return unless user
+    return unless user.authenticate(password.squish)
+    return unless user.sites.map(&:host).include? host
+    user
   end
 end

@@ -11,27 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114144837) do
+ActiveRecord::Schema.define(version: 20150115164135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "accounts", force: :cascade do |t|
-    t.string   "email",           limit: 64, null: false
-    t.string   "password_digest", limit: 64, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  add_index "accounts", ["email"], name: "index_accounts_on_email", unique: true, using: :btree
-
-  create_table "accounts_sites", id: false, force: :cascade do |t|
-    t.integer "account_id", null: false
-    t.integer "site_id",    null: false
-  end
-
-  add_index "accounts_sites", ["account_id"], name: "index_accounts_sites_on_account_id", using: :btree
-  add_index "accounts_sites", ["site_id"], name: "index_accounts_sites_on_site_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.integer  "site_id",                  null: false
@@ -102,6 +85,23 @@ ActiveRecord::Schema.define(version: 20150114144837) do
   add_index "sites", ["created_by_id"], name: "index_sites_on_created_by_id", using: :btree
   add_index "sites", ["host"], name: "index_sites_on_host", unique: true, using: :btree
   add_index "sites", ["updated_by_id"], name: "index_sites_on_updated_by_id", using: :btree
+
+  create_table "sites_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "site_id", null: false
+  end
+
+  add_index "sites_users", ["site_id"], name: "index_sites_users_on_site_id", using: :btree
+  add_index "sites_users", ["user_id"], name: "index_sites_users_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",           limit: 64, null: false
+    t.string   "password_digest", limit: 64, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false

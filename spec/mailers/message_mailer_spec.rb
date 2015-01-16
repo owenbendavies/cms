@@ -4,7 +4,7 @@ RSpec.describe MessageMailer do
   describe '.new_message' do
     let!(:site) { FactoryGirl.create(:site) }
     let!(:message) { FactoryGirl.create(:message, site: site) }
-    let!(:account) { site.accounts.first }
+    let!(:user) { site.users.first }
 
     it 'sends a message' do
       expect {
@@ -37,11 +37,11 @@ RSpec.describe MessageMailer do
       end
     end
 
-    it 'is sent to sites account email' do
+    it 'is sent to sites user email' do
       described_class.new_message(message).deliver_now
       subject = ActionMailer::Base.deliveries.last
 
-      expect(subject.to).to eq site.accounts.map(&:email).sort
+      expect(subject.to).to eq site.users.map(&:email).sort
     end
 
     it 'includes message subject' do

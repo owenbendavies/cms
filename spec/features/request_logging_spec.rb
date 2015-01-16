@@ -26,7 +26,7 @@ RSpec.describe 'request logging', type: :feature do
     expect(events.first.payload[:remote_ip]).to eq '127.0.0.1'
     expect(events.first.payload[:request_id]).to eq new_id
     expect(events.first.payload[:user_agent]).to eq new_company_name
-    expect(events.first.payload[:account_id]).to be_nil
+    expect(events.first.payload[:user_id]).to be_nil
   end
 
   it 'uses extra information in lograge' do
@@ -40,9 +40,9 @@ RSpec.describe 'request logging', type: :feature do
     )
   end
 
-  it_behaves_like 'logged in account' do
-    it 'logs account_id' do
-      expect(events.last.payload[:account_id]).to eq account.id
+  it_behaves_like 'logged in user' do
+    it 'logs user_id' do
+      expect(events.last.payload[:user_id]).to eq user.id
 
       result = Rails.application.config.lograge.custom_options.call(events.last)
       expect(result).to eq(
@@ -50,7 +50,7 @@ RSpec.describe 'request logging', type: :feature do
         remote_ip: '127.0.0.1',
         request_id: new_id,
         user_agent: "\"#{new_company_name}\"",
-        account_id: account.id
+        user_id: user.id
       )
     end
   end
