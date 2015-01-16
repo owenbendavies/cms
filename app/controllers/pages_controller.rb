@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :find_page, except: [:new, :create]
-  skip_before_action :login_required, only: [:show, :contact_form]
+  skip_before_action :authenticate_user!, only: [:show, :contact_form]
 
   def new
     @page = Page.new
@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(site: @site)
 
-    if @page.update_attributes(page_params.merge(created_by: user))
+    if @page.update_attributes(page_params.merge(created_by: current_user))
       redirect_to page_path(@page.url)
     else
       render :new
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def show
-    login_required if @page.private
+    authenticate_user! if @page.private
   end
 
   def contact_form
@@ -60,7 +60,7 @@ class PagesController < ApplicationController
       :contact_form,
       :private,
       :html_content
-    ).merge(updated_by: user)
+    ).merge(updated_by: current_user)
   end
 
   def message_params

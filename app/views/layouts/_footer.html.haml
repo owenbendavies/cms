@@ -13,9 +13,9 @@
           %li
             %small= link_to t('sitemaps.show.title'), sitemap_path
 
-          - if authenticated?
+          - if user_signed_in?
             %li
-              %small= link_to t('sessions.destroy.title'), logout_path
+              %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
           - else
             %li
-              %small= link_to t('sessions.new.title'), login_path
+              %small= link_to t('devise.sessions.new.title'), new_user_session_path

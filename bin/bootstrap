@@ -29,11 +29,11 @@ config/deploy/staging.secrets.yml
 
 for file in $rails_secrets
 do
-  if grep -q '^  secret_key_base:$' $file
+  if grep -q "^  secret_key_base: 'xxx'$" $file
   then
     echo "Generating secret for $file"
     secret=`./bin/rake secret`
-    sed -i "s/^  secret_key_base:$/  secret_key_base: '$secret'/" $file
+    sed -i "s/^  secret_key_base: 'xxx'$/  secret_key_base: '$secret'/" $file
   fi
 done
 

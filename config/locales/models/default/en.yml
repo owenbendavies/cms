@@ -3,6 +3,5 @@ en:
     errors:
       messages:
         no_html: "HTML not allowed"
-        ip: "Invalid IP address"
         invalid_email_address: "is not a valid email address"
         weak_password: "is too weak, crack time: %{time}"

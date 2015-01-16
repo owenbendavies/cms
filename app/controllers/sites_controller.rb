@@ -23,6 +23,6 @@ class SitesController < ApplicationController
       :layout,
       :name,
       :sub_title
-    ).merge(updated_by: user)
+    ).merge(updated_by: current_user)
   end
 end

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   root 'application#home'
 
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
+  devise_for :users, skip: [:sessions]
+
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new', as: :new_user_session
+    post 'login', to: 'devise/sessions#create', as: :user_session
+    get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
 
   if Rails.application.secrets.loaderio_token
     get Rails.application.secrets.loaderio_token, to: 'loaderios#show'

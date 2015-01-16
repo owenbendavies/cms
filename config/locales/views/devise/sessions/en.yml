@@ -1,0 +1,9 @@
+en:
+  devise:
+    sessions:
+      new:
+        title: "Login"
+
+      destroy:
+        title: "Logout"
+        icon: "log-out"
