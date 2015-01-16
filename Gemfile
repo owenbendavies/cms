@@ -34,6 +34,7 @@ gem 'haml-rails'
 gem 'simple_form'
 
 # Assets
+gem 'autogrow-textarea-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
