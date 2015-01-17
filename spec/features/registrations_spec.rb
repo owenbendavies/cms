@@ -78,37 +78,22 @@ RSpec.describe '/user', type: :feature  do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      context 'with multiple sites' do
-        before do
-          user.sites << FactoryGirl.build(:site, host: new_host)
-
-          visit_page go_to_url
-        end
-
-        it 'has icon' do
-          expect(page).to have_selector 'h1 .glyphicon-list'
-        end
-
-        it 'lists the users sites' do
-          expect(page).to have_link 'localhost', href: 'http://localhost'
-          expect(page).to have_link new_host, href: "http://#{new_host}"
-        end
-
-        it 'has link in topbar' do
-          visit_page '/home'
-
-          within('#topbar') do
-            click_link 'Sites'
-          end
-
-          expect(current_path).to eq '/user/sites'
-        end
+      it 'has icon' do
+        expect(page).to have_selector 'h1 .glyphicon-list'
       end
 
-      context 'with one site' do
-        it 'has no link in topbar' do
-          expect(page).to have_no_link 'Sites'
+      it 'lists the users sites' do
+        expect(page).to have_link 'localhost', href: 'http://localhost'
+      end
+
+      it 'has link in topbar' do
+        visit_page '/home'
+
+        within('#topbar') do
+          click_link 'Sites'
         end
+
+        expect(current_path).to eq '/user/sites'
       end
     end
   end
