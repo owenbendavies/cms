@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe 'images', type: :feature do
+RSpec.describe '/images', type: :feature do
   let!(:image) { FactoryGirl.create(:image, site: site) }
 
-  describe 'index' do
+  describe '/index' do
     let(:go_to_url) { '/site/images' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has list of images' do

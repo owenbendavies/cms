@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'loaderio', type: :feature do
+RSpec.describe '/loaderio', type: :feature do
   it 'renders loaderio verification' do
     visit_page '/loaderio-12345.txt'
 
