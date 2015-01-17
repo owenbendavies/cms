@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'site', type: :feature do
-  describe 'edit' do
+RSpec.describe '/site', type: :feature do
+  describe '/edit' do
     let(:go_to_url) { '/site/edit' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has icon' do
@@ -80,7 +80,7 @@ RSpec.describe 'site', type: :feature do
     end
   end
 
-  describe 'css' do
+  describe '/css' do
     before do
       site = Site.find_by_host! 'localhost'
       site.stylesheet_filename = ''
@@ -89,7 +89,7 @@ RSpec.describe 'site', type: :feature do
 
     let(:go_to_url) { '/site/css' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has icon' do

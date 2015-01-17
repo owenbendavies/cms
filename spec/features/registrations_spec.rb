@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'user', type: :feature  do
-  describe 'edit' do
+RSpec.describe '/user', type: :feature  do
+  describe '/edit' do
     let(:go_to_url) { '/user/edit' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has icon' do
@@ -72,10 +72,10 @@ RSpec.describe 'user', type: :feature  do
     end
   end
 
-  describe 'sites' do
+  describe '/sites' do
     let(:go_to_url) { '/user/sites' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       context 'with multiple sites' do
