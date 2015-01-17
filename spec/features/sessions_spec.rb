@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'sessions', type: :feature do
-  describe 'login' do
+  describe '/login' do
     before do
       visit_page '/login'
     end
@@ -110,7 +110,7 @@ RSpec.describe 'sessions', type: :feature do
     end
   end
 
-  describe 'logout' do
+  describe '/logout' do
     let(:go_to_url) { '/home' }
 
     it_behaves_like 'logged in user' do

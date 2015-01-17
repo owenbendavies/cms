@@ -13,7 +13,7 @@ RSpec.describe StylesheetUploader do
     end
   end
 
-  describe 'store' do
+  describe '.store!' do
     it 'must be css' do
       expect {
         subject.store! StringUploader.new('stylesheet.exe', css)

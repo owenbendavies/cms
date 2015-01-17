@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'health', type: :feature do
+RSpec.describe '/health', type: :feature do
   context 'unknown site' do
     before do
       site.destroy
