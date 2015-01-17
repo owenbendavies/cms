@@ -128,6 +128,13 @@ GEM
       thor
     database_cleaner (1.4.0)
     debugger-linecache (1.2.0)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -266,6 +273,7 @@ GEM
     newrelic_rpm (3.9.9.275)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
@@ -315,8 +323,6 @@ GEM
       json
       require_all
       ruby-progressbar
-    rails_warden (0.5.8)
-      warden (>= 1.0.0)
     railties (4.2.0)
       actionpack (= 4.2.0)
       activesupport (= 4.2.0)
@@ -337,6 +343,8 @@ GEM
       redis (>= 2.2)
     ref (1.0.5)
     require_all (1.3.2)
+    responders (2.0.2)
+      railties (>= 4.2.0.alpha, < 5)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -480,6 +488,7 @@ DEPENDENCIES
   coffee-rails
   coveralls
   database_cleaner
+  devise
   factory_girl_rails
   faker
   fog
@@ -499,7 +508,6 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-timeago
   rails_best_practices
-  rails_warden
   redis-actionpack
   rspec-rails
   rubocop

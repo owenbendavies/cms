@@ -3,7 +3,6 @@
     = vertical do
       = link_to @site.name, root_path
 
-
     = horizontal do
       = nav class: 'navbar-right' do
         %li.dropdown
@@ -60,20 +59,20 @@
 
         %li.dropdown
           %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-            = user.email
+            = current_user.email
             %b.caret
           %ul.dropdown-menu
             = link_to edit_registrations_path do
               = icon(t('registrations.edit.icon'))
               = t('registrations.edit.title')
 
-            - if user.sites.size > 1
+            - if current_user.sites.size > 1
               = link_to sites_registrations_path do
                 = icon(t('registrations.sites.icon'))
                 = t('registrations.sites.title')
 
-            = link_to logout_path do
-              = icon(t('sessions.destroy.icon'))
-              = t('sessions.destroy.title')
+            = link_to destroy_user_session_path do
+              = icon(t('devise.sessions.destroy.icon'))
+              = t('devise.sessions.destroy.title')
 
-        %li.avatar= image_tag(user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+        %li.avatar= image_tag(current_user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')

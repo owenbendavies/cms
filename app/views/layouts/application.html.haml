@@ -13,5 +13,5 @@
     = csrf_meta_tag
 
   %body{id: (content_for(:body_id) if content_for?(:body_id))}
-    = render 'layouts/topbar' if authenticated?
+    = render 'layouts/topbar' if user_signed_in?
     = render "layouts/pages/#{@site.layout}"

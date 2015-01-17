@@ -9,8 +9,9 @@ class ApplicationController < ActionController::Base
   before_action :set_secure_headers
   before_action :find_site
   before_action :render_site_not_found
+  before_action :check_user_site
   before_action :check_format_is_not_html
-  before_action :login_required, except: [:home, :page_not_found]
+  before_action :authenticate_user!, except: [:home, :page_not_found]
 
   def home
     redirect_to page_path('home')
@@ -62,23 +63,27 @@ class ApplicationController < ActionController::Base
     page_not_found unless @site
   end
 
-  def check_format_is_not_html
-    page_not_found if params[:format] == 'html'
+  def check_user_site
+    return unless current_user
+    return if current_user.sites.map(&:host).include?(@site.host)
+    sign_out
   end
 
-  def login_required
-    redirect_to(login_path) unless authenticated?
+  def check_format_is_not_html
+    page_not_found if params[:format] == 'html'
   end
 
   def append_info_to_payload(payload)
     super
 
-    payload.merge!(
+    output = payload.merge!(
       host: request.host,
       remote_ip: request.remote_ip,
       request_id: request.uuid,
-      user_id: session['warden.user.default.key'],
       user_agent: request.user_agent
     )
+
+    output[:user_id] = current_user.id if current_user
+    output
   end
 end

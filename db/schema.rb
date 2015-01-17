@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115164135) do
+ActiveRecord::Schema.define(version: 20150115172002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,10 +95,15 @@ ActiveRecord::Schema.define(version: 20150115164135) do
   add_index "sites_users", ["user_id"], name: "index_sites_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           limit: 64, null: false
-    t.string   "password_digest", limit: 64, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "email",              limit: 64,             null: false
+    t.string   "encrypted_password", limit: 64,             null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "sign_in_count",                 default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

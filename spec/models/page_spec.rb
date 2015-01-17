@@ -97,14 +97,15 @@ RSpec.describe Page do
       '@',
       'NEW',
       'New',
-      'user',
       'health',
       'login',
       'logout',
       'new',
       'robots',
       'site',
-      'sitemap'
+      'sitemap',
+      'timeout',
+      'user'
     ].each do |value|
       it { should_not allow_value(value).for(:name) }
     end
