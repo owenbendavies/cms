@@ -66,10 +66,9 @@
               = icon(t('registrations.edit.icon'))
               = t('registrations.edit.title')
 
-            - if current_user.sites.size > 1
-              = link_to sites_registrations_path do
-                = icon(t('registrations.sites.icon'))
-                = t('registrations.sites.title')
+            = link_to sites_registrations_path do
+              = icon(t('registrations.sites.icon'))
+              = t('registrations.sites.title')
 
             = link_to destroy_user_session_path do
               = icon(t('devise.sessions.destroy.icon'))
