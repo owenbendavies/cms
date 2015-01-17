@@ -18,10 +18,6 @@ RSpec.describe '/sitemap', type: :feature do
         expect(page).to have_selector 'h1 .glyphicon-sitemap'
       end
 
-      it 'has page url on body' do
-        its_body_id_should_be 'page_url_sitemap'
-      end
-
       it 'has link to pages' do
         expect(page).to have_link 'Home', href: '/home'
       end

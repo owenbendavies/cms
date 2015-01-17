@@ -1,8 +1,6 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-- content_for :body_id, 'page_url_sitemap'
-
 %ul#sitemap.list-unstyled
   - @pages.each do |page|
     - next if page.private and !user_signed_in?
