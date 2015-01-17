@@ -2,11 +2,16 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string(64)       not null
-#  password_digest :string(64)       not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  email              :string(64)       not null
+#  encrypted_password :string(64)       not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  sign_in_count      :integer          default("0"), not null
+#  current_sign_in_at :datetime
+#  last_sign_in_at    :datetime
+#  current_sign_in_ip :inet
+#  last_sign_in_ip    :inet
 #
 
 require 'rails_helper'
@@ -19,8 +24,6 @@ RSpec.describe User do
     expect(user.gravatar_url)
       .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
-
-  it { should have_secure_password }
 
   describe '#sites' do
     subject { FactoryGirl.create(:user) }
@@ -57,8 +60,6 @@ RSpec.describe User do
       ).for(:email).with_message('is not a valid email address')
     end
 
-    it { should validate_uniqueness_of(:email) }
-
     it { should validate_confirmation_of(:password) }
 
     it { should ensure_length_of(:password).is_at_least(8).is_at_most(64) }
@@ -69,83 +70,6 @@ RSpec.describe User do
       should_not allow_value(
         'password'
       ).for(:password).with_message('is too weak, crack time: instant')
-    end
-  end
-
-  describe '.find_and_authenticate' do
-    let!(:site) { FactoryGirl.create(:site) }
-    let!(:user) { site.users.first }
-
-    it 'authenticates a valid user' do
-      expect(described_class.find_and_authenticate(
-        user.email,
-        user.password,
-        site.host
-      )).to eq user
-    end
-
-    it 'ignores white space for email' do
-      expect(described_class.find_and_authenticate(
-        "  #{user.email} ",
-        user.password,
-        site.host
-      )).to eq user
-    end
-
-    it 'ignores white space for password' do
-      expect(described_class.find_and_authenticate(
-        user.email,
-        "  #{user.password}  ",
-        site.host
-      )).to eq user
-    end
-
-    it 'ignores case for email' do
-      expect(described_class.find_and_authenticate(
-        user.email.upcase,
-        user.password,
-        site.host
-      )).to eq user
-    end
-
-    it 'returns nil for an invalid email' do
-      expect(described_class.find_and_authenticate(
-        new_email,
-        user.password,
-        site.host
-      )).to be_nil
-    end
-
-    it 'returns nil for a blank email' do
-      expect(described_class.find_and_authenticate(
-        '',
-        user.password,
-        site.host
-      )).to be_nil
-    end
-
-    it 'returns nil for an invalid password' do
-      expect(described_class.find_and_authenticate(
-        user.email,
-        new_password,
-        site.host
-      )).to be_nil
-    end
-
-    it 'returns nil for a blank password' do
-      expect(described_class.find_and_authenticate(
-        user.email,
-        '',
-        site.host
-      )).to be_nil
-    end
-
-    it 'returns nil for invalid site' do
-      expect(described_class.find_and_authenticate(
-        user.email,
-        user.password,
-        new_host
-      )).to be_nil
     end
   end
 end

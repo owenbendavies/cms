@@ -1,5 +1,5 @@
 class SitemapsController < ApplicationController
-  skip_before_action :login_required
+  skip_before_action :authenticate_user!
 
   def show
     @pages = @site.pages
