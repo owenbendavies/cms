@@ -10,6 +10,10 @@ RSpec.describe 'application layout', type: :feature do
       visit_page '/test_page'
     end
 
+    it 'has page url as body id' do
+      expect(find('body')['id']).to eq 'page_url_test_page'
+    end
+
     it 'has no topbar' do
       expect(page).to have_no_selector '#topbar'
     end

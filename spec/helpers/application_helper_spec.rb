@@ -2,6 +2,20 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
+  describe '#body_id' do
+    it 'uses path' do
+      expect(body_id('/home')).to eq 'page_url_home'
+    end
+
+    it 'changes / to _' do
+      expect(body_id('/user/sites')).to eq 'page_url_user_sites'
+    end
+
+    it 'removes edit' do
+      expect(body_id('/home/edit')).to eq 'page_url_home'
+    end
+  end
+
   describe '#page_title' do
     context 'site with sub title' do
       let(:site) { FactoryGirl.build(:site) }
