@@ -3,8 +3,6 @@
 - if @page.private
   - content_for :page_icon, t('.private.icon')
 
-- content_for :body_id, "page_url_#{@page.url}"
-
 = @page.html_content.html_safe if @page.html_content
 
 = render 'pages/contact_form' if @page.contact_form

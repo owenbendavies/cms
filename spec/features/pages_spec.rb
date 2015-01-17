@@ -15,10 +15,6 @@ RSpec.describe '/pages', type: :feature do
         expect(page).to have_no_content 'last updated'
       end
 
-      it 'has page url on body' do
-        its_body_id_should_be 'page_url_new'
-      end
-
       it 'has cancel link' do
         click_link 'Cancel'
         it_should_be_on_home_page
@@ -66,10 +62,6 @@ RSpec.describe '/pages', type: :feature do
       let(:go_to_url) { '/test_page' }
 
       it_behaves_like 'non logged in user' do
-        it 'has page url on body' do
-          its_body_id_should_be 'page_url_test_page'
-        end
-
         it 'shows page name in header' do
           within 'article' do
             expect(find('h1').text).to eq 'Test Page'
@@ -99,15 +91,8 @@ RSpec.describe '/pages', type: :feature do
     end
 
     context 'home' do
-      before do
-        visit_page '/home'
-      end
-
-      it 'has page url on body' do
-        its_body_id_should_be 'page_url_home'
-      end
-
       it 'does not show header' do
+        visit_page '/home'
         expect(page).to have_no_selector 'article header h1'
       end
     end
@@ -137,10 +122,6 @@ RSpec.describe '/pages', type: :feature do
     it_behaves_like 'logged in user' do
       it 'has icon' do
         expect(page).to have_selector 'h1 .glyphicon-pencil'
-      end
-
-      it 'has page url on body' do
-        its_body_id_should_be 'page_url_test_page'
       end
 
       it 'has cancel link' do
