@@ -6,10 +6,6 @@ RSpec.describe 'sessions', type: :feature do
       visit_page '/login'
     end
 
-    it 'has page url on body' do
-      its_body_id_should_be 'page_url_login'
-    end
-
     it 'logs in with valid username and password' do
       expect(find_field('Email')['autofocus']).to eq 'autofocus'
       fill_in 'Email', with: user.email

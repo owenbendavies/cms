@@ -12,6 +12,6 @@
     = render 'layouts/google_analytics'
     = csrf_meta_tag
 
-  %body{id: (content_for(:body_id) if content_for?(:body_id))}
+  %body{id: body_id(request.path)}
     = render 'layouts/topbar' if user_signed_in?
     = render "layouts/pages/#{@site.layout}"

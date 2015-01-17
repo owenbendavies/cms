@@ -26,10 +26,6 @@ module FeatureHelpers
     expect(current_path).to eq '/home'
   end
 
-  def its_body_id_should_be(body_id)
-    expect(find('body')['id']).to eq body_id
-  end
-
   def it_should_have_success_alert_with(text)
     expect(find('.alert.alert-success').text).to eq "× Close #{text}"
   end
