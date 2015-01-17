@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, type: :helper do
-  describe 'page_title' do
+  describe '#page_title' do
     context 'site with sub title' do
       let(:site) { FactoryGirl.build(:site) }
 
@@ -42,7 +42,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe 'footer_copyright' do
+  describe '#footer_copyright' do
     let(:site) { FactoryGirl.build(:site) }
 
     context 'site with copyright and charity' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'messages', type: :feature do
+RSpec.describe '/messages', type: :feature do
   let!(:message) do
     FactoryGirl.create(
       :message,
@@ -10,10 +10,10 @@ RSpec.describe 'messages', type: :feature do
     )
   end
 
-  describe 'index' do
+  describe '/index' do
     let(:go_to_url) { '/site/messages' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has list of messages', js: true do
@@ -52,10 +52,10 @@ RSpec.describe 'messages', type: :feature do
     end
   end
 
-  describe 'show' do
+  describe '/id' do
     let(:go_to_url) { "/site/messages/#{message.id}" }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'shows message', js: true do

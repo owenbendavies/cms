@@ -14,7 +14,7 @@ RSpec.describe ImageUploader do
     end
   end
 
-  describe 'store' do
+  describe '.store!' do
     it 'must be an image' do
       expect {
         subject.store! StringUploader.new('stylesheet.exe', 'asd')

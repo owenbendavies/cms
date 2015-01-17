@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'pages', type: :feature do
-  describe 'new' do
+RSpec.describe '/pages', type: :feature do
+  describe '/new' do
     let(:go_to_url) { '/new' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has icon' do
@@ -61,7 +61,7 @@ RSpec.describe 'pages', type: :feature do
     end
   end
 
-  describe 'show' do
+  describe '/url' do
     context 'test_page' do
       let(:go_to_url) { '/test_page' }
 
@@ -119,7 +119,7 @@ RSpec.describe 'pages', type: :feature do
 
       let(:go_to_url) { "/#{private_page.url}" }
 
-      it_should_behave_like 'restricted page'
+      it_behaves_like 'restricted page'
 
       it_behaves_like 'logged in user' do
         it 'shows page' do
@@ -129,10 +129,10 @@ RSpec.describe 'pages', type: :feature do
     end
   end
 
-  describe 'edit' do
+  describe '/edit' do
     let(:go_to_url) { '/test_page/edit' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has icon' do
@@ -220,7 +220,7 @@ RSpec.describe 'pages', type: :feature do
     end
   end
 
-  describe 'delete' do
+  describe '/delete' do
     let(:go_to_url) { '/test_page' }
 
     it_behaves_like 'logged in user' do

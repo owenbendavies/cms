@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'contact_form page', type: :feature do
+RSpec.describe '/contact_form', type: :feature do
   let!(:contact_page) do
     FactoryGirl.create(:page, site: site, contact_form: true)
   end

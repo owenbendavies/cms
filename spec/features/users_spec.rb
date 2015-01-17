@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'users', type: :feature do
-  describe 'index' do
+RSpec.describe '/users', type: :feature do
+  describe '/index' do
     let(:go_to_url) { '/site/users' }
 
-    it_should_behave_like 'restricted page'
+    it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
       it 'has list of users' do
