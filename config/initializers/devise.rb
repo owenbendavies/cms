@@ -77,4 +77,7 @@ Devise.setup do |config|
   # ==> Mountable engine configurations
   # config.router_name = :my_engine
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  # ==> zxcvbn
+  config.min_password_score = 3
 end
