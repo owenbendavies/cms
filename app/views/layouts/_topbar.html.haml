@@ -62,13 +62,13 @@
             = current_user.email
             %b.caret
           %ul.dropdown-menu
-            = link_to edit_registrations_path do
-              = icon(t('registrations.edit.icon'))
-              = t('registrations.edit.title')
+            = link_to edit_user_registration_path do
+              = icon(t('devise.registrations.edit.icon'))
+              = t('devise.registrations.edit.title')
 
-            = link_to sites_registrations_path do
-              = icon(t('registrations.sites.icon'))
-              = t('registrations.sites.title')
+            = link_to sites_path do
+              = icon(t('sites.index.icon'))
+              = t('sites.index.title')
 
             = link_to destroy_user_session_path do
               = icon(t('devise.sessions.destroy.icon'))

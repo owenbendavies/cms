@@ -1,0 +1,8 @@
+en:
+  devise:
+    registrations:
+      edit:
+        title: "User Settings"
+        icon: "user"
+        current_password_hint: "needed to validate changes"
+        password_hint: "leave blank if not changing"
