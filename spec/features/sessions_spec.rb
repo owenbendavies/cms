@@ -70,6 +70,45 @@ RSpec.describe 'sessions', type: :feature do
       it_should_have_error_alert_with 'Invalid email or password.'
     end
 
+    it 'locks out user after 5 attempts' do
+      expect {
+        3.times do
+          fill_in 'Email', with: user.email
+          fill_in 'Password', with: new_password
+          click_button 'Login'
+          it_should_have_error_alert_with 'Invalid email or password.'
+        end
+
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: new_password
+        click_button 'Login'
+
+        it_should_have_error_alert_with(
+          'You have one more attempt before your account is locked.'
+        )
+
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: new_password
+      }.to_not change{ActionMailer::Base.deliveries.size}
+
+      expect {
+        click_button 'Login'
+      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+
+      it_should_have_error_alert_with 'Your account is locked.'
+
+      email = ActionMailer::Base.deliveries.last
+      expect(email.from).to eq ["noreply@#{site.host}"]
+      expect(email.to).to eq [user.email]
+      expect(email.subject).to eq 'Unlock instructions'
+
+      token = user.unlock_token
+      link = "http://#{site.host}/users/unlock?unlock_token=#{token}"
+      email_body = email.body.raw_source
+      expect(email_body).to have_content 'Your account has been locked'
+      expect(email_body).to have_link 'Unlock my account', link
+    end
+
     it 'has link in footer' do
       visit_page '/home'
 

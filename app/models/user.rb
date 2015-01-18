@@ -12,12 +12,19 @@
 #  last_sign_in_at    :datetime
 #  current_sign_in_ip :inet
 #  last_sign_in_ip    :inet
+#  failed_attempts    :integer          default("0"), not null
+#  unlock_token       :string
+#  locked_at          :datetime
 #
 
 class User < ActiveRecord::Base
   include Gravtastic
 
-  devise :database_authenticatable, :trackable, :validatable, :zxcvbnable
+  devise :database_authenticatable,
+         :lockable,
+         :trackable,
+         :validatable,
+         :zxcvbnable
 
   gravtastic default: 'mm', size: 40
 

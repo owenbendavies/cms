@@ -250,6 +250,18 @@ RSpec.describe Site do
     end
   end
 
+  describe '#email' do
+    it 'returns noreply email address' do
+      site =  FactoryGirl.create(:site, host: 'example.com')
+      expect(site.email).to eq 'noreply@example.com'
+    end
+
+    it 'returns host without www' do
+      site =  FactoryGirl.create(:site, host: 'www.example.com')
+      expect(site.email).to eq 'noreply@example.com'
+    end
+  end
+
   describe '#main_menu_pages' do
     subject { FactoryGirl.create(:site) }
 

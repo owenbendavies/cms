@@ -1,0 +1,6 @@
+en:
+  devise:
+    mailer:
+      unlock_instructions:
+        text: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        link_title: "Unlock my account"
