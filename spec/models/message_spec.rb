@@ -130,8 +130,8 @@ RSpec.describe Message do
 
       expect(subject.delivered).to eq true
 
-      message = ActionMailer::Base.deliveries.last
-      expect(message.subject).to eq subject.subject
+      email = ActionMailer::Base.deliveries.last
+      expect(email.subject).to eq subject.subject
     end
   end
 end

@@ -67,6 +67,10 @@ class Site < ActiveRecord::Base
     self.stylesheet = StringUploader.new('stylesheet.css', posted_css)
   end
 
+  def email
+    "noreply@#{host.gsub(/^www\./, '')}"
+  end
+
   def main_menu_pages
     pages = Page.find(main_menu_page_ids)
 
