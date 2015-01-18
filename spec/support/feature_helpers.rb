@@ -35,7 +35,7 @@ module FeatureHelpers
   end
 
   def it_should_have_form_error(text)
-    expect(find('.help-block').text).to eq text
+    expect(find('.has-error span.help-block').text).to eq text
   end
 
   RSpec.shared_context 'logged in user' do

@@ -105,7 +105,7 @@ RSpec.describe Page do
       'site',
       'sitemap',
       'timeout',
-      'user'
+      'users'
     ].each do |value|
       it { should_not allow_value(value).for(:name) }
     end

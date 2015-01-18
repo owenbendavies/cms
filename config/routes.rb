@@ -7,6 +7,14 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
     post 'login', to: 'devise/sessions#create', as: :user_session
     get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+
+    get(
+      'users/edit',
+      to: 'devise/registrations#edit',
+      as: 'edit_user_registration'
+    )
+
+    patch 'users', to: 'devise/registrations#update', as: 'user_registration'
   end
 
   if Rails.application.secrets.loaderio_token
@@ -14,10 +22,6 @@ Rails.application.routes.draw do
   end
 
   get 'timeout', to: 'test_routes#timeout'
-
-  resource :registrations, only: [:edit, :update], path: 'user' do
-    get :sites
-  end
 
   resource :health, only: [:show]
 
@@ -30,6 +34,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :show]
     resources :users, only: [:index]
   end
+
+  resources :sites, only: [:index]
 
   resource :sitemap, only: [:show]
 

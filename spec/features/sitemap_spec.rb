@@ -33,7 +33,7 @@ RSpec.describe '/sitemap', type: :feature do
           click_link 'Sitemap'
         end
 
-        expect(current_path).to eq '/sitemap'
+        expect(current_path).to eq go_to_url
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe '/sitemap', type: :feature do
           click_link 'Sitemap'
         end
 
-        expect(current_path).to eq '/sitemap'
+        expect(current_path).to eq go_to_url
       end
     end
   end

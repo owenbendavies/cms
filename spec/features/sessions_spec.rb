@@ -82,7 +82,7 @@ RSpec.describe 'sessions', type: :feature do
   end
 
   it_behaves_like 'logged in user' do
-    let(:go_to_url) { '/user/edit' }
+    let(:go_to_url) { '/home/edit' }
 
     context 'user removed from site' do
       before do
