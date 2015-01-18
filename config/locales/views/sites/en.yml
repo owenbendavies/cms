@@ -8,3 +8,6 @@ en:
       title: "Site Settings"
       icon: "cog"
 
+    index:
+      title: "Sites"
+      icon: "list"

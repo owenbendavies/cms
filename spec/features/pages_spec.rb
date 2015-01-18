@@ -52,7 +52,7 @@ RSpec.describe '/pages', type: :feature do
           click_link 'New Page'
         end
 
-        expect(current_path).to eq '/new'
+        expect(current_path).to eq go_to_url
       end
     end
   end
