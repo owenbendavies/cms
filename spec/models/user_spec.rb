@@ -66,10 +66,6 @@ RSpec.describe User do
 
     it { should allow_value('apel203pd0pa').for(:password) }
 
-    it do
-      should_not allow_value(
-        'password'
-      ).for(:password).with_message('is too weak, crack time: instant')
-    end
+    it { should_not allow_value('password').for(:password) }
   end
 end

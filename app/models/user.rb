@@ -17,7 +17,7 @@
 class User < ActiveRecord::Base
   include Gravtastic
 
-  devise :database_authenticatable, :trackable, :validatable
+  devise :database_authenticatable, :trackable, :validatable, :zxcvbnable
 
   gravtastic default: 'mm', size: 40
 
@@ -28,9 +28,4 @@ class User < ActiveRecord::Base
   strip_attributes only: :email, collapse_spaces: true
 
   validates :email, length: { maximum: 64 }, email_format: true
-  validates :password, password_strength: true
-
-  def password_required?
-    !password.blank?
-  end
 end
