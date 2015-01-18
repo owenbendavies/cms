@@ -115,4 +115,56 @@ RSpec.describe '/users', type: :feature do
       end
     end
   end
+
+  describe '/unlock/new' do
+    let(:go_to_url) { '/users/unlock/new' }
+
+    it 're-sends unlock token' do
+      expect {
+        user.lock_access!(send_instructions: false)
+
+        visit_page go_to_url
+
+        expect(page).to have_content 'Unlock account'
+
+        fill_in 'Email', with: user.email
+      }.to_not change{ActionMailer::Base.deliveries.size}
+
+      expect {
+        click_button 'Resend unlock instructions'
+      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+
+      it_should_have_success_alert_with(
+        'If your account exists, you will receive an email with instructions ' \
+        'for how to unlock it in a few minutes.'
+      )
+    end
+
+    it 'does not give away if email exist or not' do
+      expect {
+        visit_page go_to_url
+
+        fill_in 'Email', with: new_email
+        click_button 'Resend unlock instructions'
+
+        it_should_have_success_alert_with(
+          'If your account exists, you will receive an email with ' \
+          'instructions for how to unlock it in a few minutes.'
+        )
+      }.to_not change{ActionMailer::Base.deliveries.size}
+    end
+  end
+
+  describe '/unlock' do
+    it 'unlocks an account' do
+      token = user.lock_access!
+
+      visit "/users/unlock?unlock_token=#{token}"
+
+      it_should_have_success_alert_with(
+        'Your account has been unlocked successfully. Please sign in to ' \
+        'continue.'
+      )
+    end
+  end
 end

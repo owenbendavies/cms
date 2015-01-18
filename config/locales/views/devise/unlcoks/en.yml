@@ -1,0 +1,6 @@
+en:
+  devise:
+    unlocks:
+      new:
+        title: "Unlock account"
+        submit: "Resend unlock instructions"
