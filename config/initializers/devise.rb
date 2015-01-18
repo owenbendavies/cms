@@ -1,7 +1,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
-  # config.mailer_sender = ''
-  # config.mailer = 'Devise::Mailer'
+  # config.mailer_sender = 'admin@example.com'
+  config.mailer = 'AccountMailer'
 
   # ==> ORM configuration
   require 'devise/orm/active_record'
@@ -43,12 +43,12 @@ Devise.setup do |config|
   # config.expire_auth_token_on_timeout = false
 
   # ==> Configuration for :lockable
-  # config.lock_strategy = :failed_attempts
-  # config.unlock_keys = [ :email ]
-  # config.unlock_strategy = :both
-  # config.maximum_attempts = 20
+  config.lock_strategy = :failed_attempts
+  config.unlock_keys = [:email]
+  config.unlock_strategy = :email
+  config.maximum_attempts = 5
   # config.unlock_in = 1.hour
-  # config.last_attempt_warning = true
+  config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
   # config.reset_password_keys = [ :email ]

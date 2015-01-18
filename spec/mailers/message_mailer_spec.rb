@@ -12,29 +12,11 @@ RSpec.describe MessageMailer do
       }.to change {ActionMailer::Base.deliveries.size}.by(1)
     end
 
-    describe 'from address' do
-      context 'site without www in host' do
-        it 'has from address of site' do
-          described_class.new_message(message).deliver_now
-          subject = ActionMailer::Base.deliveries.last
+    it 'has from address as site email' do
+      described_class.new_message(message).deliver_now
+      subject = ActionMailer::Base.deliveries.last
 
-          expect(subject.header['From'].to_s.gsub('"', ''))
-            .to eq "#{site.name} <noreply@#{site.host}>"
-        end
-      end
-
-      context 'site with www in host' do
-        it 'removes the www' do
-          site.host = 'www.example.com'
-          site.save!
-
-          described_class.new_message(message).deliver_now
-          subject = ActionMailer::Base.deliveries.last
-
-          expect(subject.header['From'].to_s.gsub('"', ''))
-            .to eq "#{site.name} <noreply@example.com>"
-        end
-      end
+      expect(subject.from).to eq [site.email]
     end
 
     it 'is sent to sites user email' do

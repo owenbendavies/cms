@@ -31,14 +31,14 @@ RSpec.describe '/contact_form', type: :feature do
     expect(message.phone).to eq new_phone
     expect(message.message).to eq new_message
 
-    last_message = ActionMailer::Base.deliveries.last
-    expect(last_message.from).to eq ["noreply@#{site.host}"]
-    expect(last_message.to).to eq site.users.map(&:email).sort
-    expect(last_message.subject).to eq contact_page.name
-    expect(last_message.body).to include "Name: #{new_name}"
-    expect(last_message.body).to include "Email: #{new_email}"
-    expect(last_message.body).to include "Phone: #{new_phone}"
-    expect(last_message.body).to include "Message: #{new_message}"
+    email = ActionMailer::Base.deliveries.last
+    expect(email.from).to eq ["noreply@#{site.host}"]
+    expect(email.to).to eq site.users.map(&:email).sort
+    expect(email.subject).to eq contact_page.name
+    expect(email.body).to include "Name: #{new_name}"
+    expect(email.body).to include "Email: #{new_email}"
+    expect(email.body).to include "Phone: #{new_phone}"
+    expect(email.body).to include "Message: #{new_message}"
   end
 
   it 'does not send a message with invalid data' do
