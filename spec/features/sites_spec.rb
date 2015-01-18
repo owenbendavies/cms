@@ -1,6 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe '/site', type: :feature do
+  describe '/index' do
+    let(:go_to_url) { '/sites' }
+
+    it_behaves_like 'restricted page'
+
+    it_behaves_like 'logged in user' do
+      it 'has icon' do
+        expect(page).to have_selector 'h1 .glyphicon-list'
+      end
+
+      it 'lists the users sites' do
+        expect(page).to have_link 'localhost', href: 'http://localhost'
+      end
+
+      it 'has link in topbar' do
+        visit_page '/home'
+
+        within('#topbar') do
+          click_link 'Sites'
+        end
+
+        expect(current_path).to eq go_to_url
+      end
+    end
+  end
+
   describe '/edit' do
     let(:go_to_url) { '/site/edit' }
 
@@ -75,7 +101,7 @@ RSpec.describe '/site', type: :feature do
           click_link 'Site Settings'
         end
 
-        expect(current_path).to eq '/site/edit'
+        expect(current_path).to eq go_to_url
       end
     end
   end
@@ -136,7 +162,7 @@ RSpec.describe '/site', type: :feature do
           click_link 'CSS'
         end
 
-        expect(current_path).to eq '/site/css'
+        expect(current_path).to eq go_to_url
       end
     end
   end
