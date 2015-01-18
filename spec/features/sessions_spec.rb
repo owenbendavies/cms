@@ -72,20 +72,12 @@ RSpec.describe 'sessions', type: :feature do
 
     it 'locks out user after 5 attempts' do
       expect {
-        3.times do
+        4.times do
           fill_in 'Email', with: user.email
           fill_in 'Password', with: new_password
           click_button 'Login'
           it_should_have_error_alert_with 'Invalid email or password.'
         end
-
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: new_password
-        click_button 'Login'
-
-        it_should_have_error_alert_with(
-          'You have one more attempt before your account is locked.'
-        )
 
         fill_in 'Email', with: user.email
         fill_in 'Password', with: new_password
@@ -95,7 +87,7 @@ RSpec.describe 'sessions', type: :feature do
         click_button 'Login'
       }.to change{ActionMailer::Base.deliveries.size}.by(1)
 
-      it_should_have_error_alert_with 'Your account is locked.'
+      it_should_have_error_alert_with 'Invalid email or password.'
 
       email = ActionMailer::Base.deliveries.last
       expect(email.from).to eq ["noreply@#{site.host}"]

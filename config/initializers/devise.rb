@@ -1,6 +1,6 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
-  # config.mailer_sender = 'admin@example.com'
+  # config.mailer_sender = ''
   config.mailer = 'AccountMailer'
 
   # ==> ORM configuration
@@ -15,7 +15,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
   # config.http_authenticatable_on_xhr = true
   # config.http_authentication_realm = 'Application'
-  # config.paranoid = true
+  config.paranoid = true
   config.skip_session_storage = [:http_auth]
   # config.clean_up_csrf_token_on_authentication = true
 
@@ -48,7 +48,7 @@ Devise.setup do |config|
   config.unlock_strategy = :email
   config.maximum_attempts = 5
   # config.unlock_in = 1.hour
-  config.last_attempt_warning = true
+  # config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
   # config.reset_password_keys = [ :email ]
