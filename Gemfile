@@ -4,6 +4,7 @@ ruby '2.2.0'
 # Frameworks
 gem 'rails', '4.2.0'
 gem 'devise'
+gem 'devise_zxcvbn'
 
 # Databases
 gem 'pg'
@@ -23,7 +24,6 @@ gem 'paper_trail'
 gem 'strip_attributes'
 gem 'unf'
 gem 'validates_email_format_of'
-gem 'zxcvbn-ruby', require: 'zxcvbn'
 
 # Controller Gems
 gem 'secure_headers'
