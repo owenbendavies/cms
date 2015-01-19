@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe ImageUploader do
+RSpec.describe ImageUploader, uploads: true do
   include CarrierWave::Test::Matchers
-  include_context 'clear_uploaded_files'
 
   let(:site) { FactoryGirl.create(:site) }
   let(:image) { FactoryGirl.build(:image, site: site) }
