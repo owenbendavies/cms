@@ -173,9 +173,7 @@ RSpec.describe Site do
     it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
   end
 
-  describe '#css' do
-    include_context 'clear_uploaded_files'
-
+  describe '#css', uploads: true do
     subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
 
     context 'with css' do
@@ -196,9 +194,7 @@ RSpec.describe Site do
     end
   end
 
-  describe '#css=' do
-    include_context 'clear_uploaded_files'
-
+  describe '#css=', uploads: true do
     subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
 
     it 'strips end of line whitespace' do
