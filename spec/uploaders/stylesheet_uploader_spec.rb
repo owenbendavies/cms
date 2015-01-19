@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe StylesheetUploader do
-  include_context 'clear_uploaded_files'
-
+RSpec.describe StylesheetUploader, uploads: true do
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
   let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(site) }

@@ -1,13 +1,13 @@
-module CarrierWaveHelpers
-  RSpec.shared_context 'clear_uploaded_files' do
-    before do
-      FileUtils.rm_rf File.join(
-        CarrierWave.root,
-        Rails.application.secrets.uploads_store_dir
-      )
-    end
+RSpec.configure do |config|
+  config.before :each, uploads: true do
+    FileUtils.rm_rf File.join(
+      CarrierWave.root,
+      Rails.application.secrets.uploads_store_dir
+    )
   end
+end
 
+module CarrierWaveHelpers
   def uploaded_files
     uploads_dir = File.join(
       CarrierWave.root,
@@ -22,4 +22,4 @@ module CarrierWaveHelpers
   end
 end
 
-RSpec.configuration.include CarrierWaveHelpers
+RSpec.configuration.include CarrierWaveHelpers, uploads: true
