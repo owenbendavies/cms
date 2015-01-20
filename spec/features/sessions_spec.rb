@@ -123,17 +123,65 @@ RSpec.describe 'sessions', type: :feature do
 
       it_behaves_like 'restricted page'
     end
+  end
 
-    context 'after 30 days' do
+  describe 'timeouts' do
+    let(:go_to_url) { '/home/edit' }
+    after { Timecop.return }
+
+    context 'logged in user with remember me' do
       before do
-        Timecop.travel Time.now + 31.days
+        visit_page '/login'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
+        check 'Remember me'
+        click_button 'Login'
       end
 
-      after do
-        Timecop.return
+      context 'after less than 30 minutes' do
+        before { Timecop.travel Time.now + 29.minutes }
+
+        it 'is logged in' do
+          visit_page go_to_url
+        end
       end
 
-      it_behaves_like 'restricted page'
+      context 'after less than 2 weeks' do
+        before { Timecop.travel Time.now + 13.days }
+
+        it 'is logged in' do
+          visit_page go_to_url
+        end
+      end
+
+      context 'after 2 weeks' do
+        before { Timecop.travel Time.now + 15.days }
+
+        it_behaves_like 'restricted page'
+      end
+    end
+
+    context 'logged in user without remember me' do
+      before do
+        visit_page '/login'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
+        click_button 'Login'
+      end
+
+      context 'after less than 30 minutes' do
+        before { Timecop.travel Time.now + 29.minutes }
+
+        it 'is logged in' do
+          visit_page go_to_url
+        end
+      end
+
+      context 'after 30 minutes' do
+        before { Timecop.travel Time.now + 31.minutes }
+
+        it_behaves_like 'restricted page'
+      end
     end
   end
 

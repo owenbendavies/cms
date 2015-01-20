@@ -29,7 +29,7 @@ Devise.setup do |config|
   # config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
-  # config.remember_for = 2.weeks
+  config.remember_for = 2.weeks
   config.expire_all_remember_me_on_sign_out = true
   # config.extend_remember_period = false
   # config.rememberable_options = {}
@@ -39,7 +39,7 @@ Devise.setup do |config|
   # config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 30.minutes
   # config.expire_auth_token_on_timeout = false
 
   # ==> Configuration for :lockable
