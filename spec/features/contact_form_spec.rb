@@ -35,10 +35,10 @@ RSpec.describe '/contact_form', type: :feature do
     expect(email.from).to eq ["noreply@#{site.host}"]
     expect(email.to).to eq site.users.map(&:email).sort
     expect(email.subject).to eq contact_page.name
-    expect(email.body).to include "Name: #{new_name}"
-    expect(email.body).to include "Email: #{new_email}"
-    expect(email.body).to include "Phone: #{new_phone}"
-    expect(email.body).to include "Message: #{new_message}"
+    expect(email.body).to have_content "Name: #{new_name}"
+    expect(email.body).to have_content "Email: #{new_email}"
+    expect(email.body).to have_content "Phone: #{new_phone}"
+    expect(email.body).to have_content "Message: #{new_message}"
   end
 
   it 'does not send a message with invalid data' do

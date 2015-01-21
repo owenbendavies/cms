@@ -96,9 +96,8 @@ RSpec.describe 'sessions', type: :feature do
 
       token = user.unlock_token
       link = "http://#{site.host}/users/unlock?unlock_token=#{token}"
-      email_body = email.body.raw_source
-      expect(email_body).to have_content 'Your account has been locked'
-      expect(email_body).to have_link 'Unlock my account', link
+      expect(email.body).to have_content 'Your account has been locked'
+      expect(email.body).to have_link 'Unlock my account', link
     end
 
     it 'has link in footer' do
