@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MessageMailer do
+RSpec.describe MessageMailer, type: :feature do
   describe '.new_message' do
     let!(:site) { FactoryGirl.create(:site) }
     let!(:message) { FactoryGirl.create(:message, site: site) }
@@ -36,12 +36,11 @@ RSpec.describe MessageMailer do
     it 'has a message body' do
       described_class.new_message(message).deliver_now
       subject = ActionMailer::Base.deliveries.last
-      body = subject.body
 
-      expect(body).to include "Name: #{message.name}"
-      expect(body).to include "Email: #{message.email}"
-      expect(body).to include "Phone: #{message.phone}"
-      expect(body).to include "Message: #{message.message}"
+      expect(subject.body).to have_content "Name: #{message.name}"
+      expect(subject.body).to have_content "Email: #{message.email}"
+      expect(subject.body).to have_content "Phone: #{message.phone}"
+      expect(subject.body).to have_content "Message: #{message.message}"
     end
   end
 end
