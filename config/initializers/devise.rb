@@ -7,26 +7,26 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
-  # config.authentication_keys = [:email]
-  # config.request_keys = []
+  config.authentication_keys = [:email]
+  config.request_keys = []
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
-  # config.params_authenticatable = true
-  # config.http_authenticatable = false
+  config.params_authenticatable = true
+  config.http_authenticatable = false
   # config.http_authenticatable_on_xhr = true
   # config.http_authentication_realm = 'Application'
   config.paranoid = true
   config.skip_session_storage = [:http_auth]
-  # config.clean_up_csrf_token_on_authentication = true
+  config.clean_up_csrf_token_on_authentication = true
 
   # ==> Configuration for :database_authenticatable
   config.stretches = Rails.env.test? ? 1 : 10
 
   # ==> Configuration for :confirmable
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 0.days
   # config.confirm_within = 3.days
   config.reconfirmable = true
-  # config.confirmation_keys = [ :email ]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   config.remember_for = 2.weeks
@@ -51,7 +51,7 @@ Devise.setup do |config|
   # config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [:email]
   config.reset_password_within = 6.hours
 
   # ==> Configuration for :encryptable
@@ -63,6 +63,7 @@ Devise.setup do |config|
   # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
+  # config.navigational_formats = ['*/*', :html]
   config.sign_out_via = :get
 
   # ==> OmniAuth
