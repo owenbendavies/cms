@@ -94,10 +94,14 @@ RSpec.describe 'sessions', type: :feature do
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Unlock instructions'
 
-      token = user.unlock_token
+      token = user.send_unlock_instructions
+
+      email = ActionMailer::Base.deliveries.last
+
       link = "http://#{site.host}/users/unlock?unlock_token=#{token}"
+
       expect(email.body).to have_content 'Your account has been locked'
-      expect(email.body).to have_link 'Unlock my account', link
+      expect(email.body).to have_link 'Unlock account', href: link
     end
 
     it 'has link in footer' do

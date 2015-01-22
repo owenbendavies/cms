@@ -127,6 +127,62 @@ RSpec.describe '/users', type: :feature do
     end
   end
 
+  describe '/password/new' do
+    let(:go_to_url) { '/users/password/new' }
+
+    it 'sends reset password email' do
+      visit_page go_to_url
+      expect(page).to have_content 'Forgot your password?'
+      fill_in 'Email', with: user.email
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+
+      click_button 'Send reset password instructions'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+
+      it_should_have_success_alert_with(
+        'If your email address exists in our database, you will receive a ' \
+        'password recovery link at your email address in a few minutes.'
+      )
+
+      email = ActionMailer::Base.deliveries.last
+      expect(email.from).to eq ["noreply@#{site.host}"]
+      expect(email.to).to eq [user.email]
+      expect(email.subject).to eq 'Reset password instructions'
+
+      token = user.send_reset_password_instructions
+
+      email = ActionMailer::Base.deliveries.last
+
+      host = "http://#{site.host}"
+      path = "/users/password/edit?reset_password_token=#{token}"
+      link = "#{host}#{path}"
+      email_body = email.body
+
+      expect(email_body).to have_content(
+        'Someone has requested a link to change your password.'
+      )
+
+      expect(email_body).to have_link 'Change password', href: link
+
+      visit_page path
+
+      expect(page).to have_content 'Change password'
+
+      fill_in 'New password', with: new_password
+      fill_in 'Confirm new password', with: new_password
+      click_button 'Change password'
+
+      it_should_have_success_alert_with(
+        'Your password has been changed successfully. You are now signed in.'
+      )
+
+      user.reload
+      expect(user.valid_password?(new_password)).to eq true
+    end
+  end
+
   describe '/unlock/new' do
     let(:go_to_url) { '/users/unlock/new' }
 
