@@ -71,21 +71,21 @@ RSpec.describe 'sessions', type: :feature do
     end
 
     it 'locks out user after 5 attempts' do
-      expect {
-        4.times do
-          fill_in 'Email', with: user.email
-          fill_in 'Password', with: new_password
-          click_button 'Login'
-          it_should_have_error_alert_with 'Invalid email or password.'
-        end
-
+      4.times do
         fill_in 'Email', with: user.email
         fill_in 'Password', with: new_password
-      }.to_not change{ActionMailer::Base.deliveries.size}
-
-      expect {
         click_button 'Login'
-      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+        it_should_have_error_alert_with 'Invalid email or password.'
+      end
+
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: new_password
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+
+      click_button 'Login'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       it_should_have_error_alert_with 'Invalid email or password.'
 

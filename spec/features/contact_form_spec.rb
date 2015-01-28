@@ -15,11 +15,10 @@ RSpec.describe '/contact_form', type: :feature do
     fill_in 'Phone', with: " #{new_phone} "
     fill_in 'Message', with: new_message
 
-    expect {
-      expect {
-        click_button 'Send Message'
-      }.to change(Message, :count).by(1)
-    }.to change{ActionMailer::Base.deliveries.size}.by(1)
+    click_button 'Send Message'
+
+    expect(Message.count).to eq 1
+    expect(ActionMailer::Base.deliveries.size).to eq 1
 
     expect(current_path).to eq "/#{contact_page.url}"
     it_should_have_success_alert_with 'Thank you for your message'
@@ -45,12 +44,10 @@ RSpec.describe '/contact_form', type: :feature do
     fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message
 
-    expect {
-      expect {
-        click_button 'Send Message'
-      }.to_not change(Message, :count)
-    }.to_not change{ActionMailer::Base.deliveries.size}
+    click_button 'Send Message'
 
+    expect(Message.count).to eq 0
+    expect(ActionMailer::Base.deliveries.size).to eq 0
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error "can't be blank"
   end
@@ -62,12 +59,10 @@ RSpec.describe '/contact_form', type: :feature do
     fill_in 'Message', with: new_message
     fill_in 'Do not fill in', with: new_name
 
-    expect {
-      expect {
-        click_button 'Send Message'
-      }.to_not change(Message, :count)
-    }.to_not change{ActionMailer::Base.deliveries.size}
+    click_button 'Send Message'
 
+    expect(Message.count).to eq 0
+    expect(ActionMailer::Base.deliveries.size).to eq 0
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
     it_should_have_form_error 'do not fill in'
   end
