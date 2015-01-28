@@ -120,19 +120,19 @@ RSpec.describe '/users', type: :feature do
     let(:go_to_url) { '/users/unlock/new' }
 
     it 're-sends unlock token' do
-      expect {
-        user.lock_access!(send_instructions: false)
+      user.lock_access!(send_instructions: false)
 
-        visit_page go_to_url
+      visit_page go_to_url
 
-        expect(page).to have_content 'Unlock account'
+      expect(page).to have_content 'Unlock account'
 
-        fill_in 'Email', with: user.email
-      }.to_not change{ActionMailer::Base.deliveries.size}
+      fill_in 'Email', with: user.email
 
-      expect {
-        click_button 'Resend unlock instructions'
-      }.to change{ActionMailer::Base.deliveries.size}.by(1)
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+
+      click_button 'Resend unlock instructions'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       it_should_have_success_alert_with(
         'If your account exists, you will receive an email with instructions ' \
@@ -141,17 +141,17 @@ RSpec.describe '/users', type: :feature do
     end
 
     it 'does not give away if email exist or not' do
-      expect {
-        visit_page go_to_url
+      visit_page go_to_url
 
-        fill_in 'Email', with: new_email
-        click_button 'Resend unlock instructions'
+      fill_in 'Email', with: new_email
+      click_button 'Resend unlock instructions'
 
-        it_should_have_success_alert_with(
-          'If your account exists, you will receive an email with ' \
-          'instructions for how to unlock it in a few minutes.'
-        )
-      }.to_not change{ActionMailer::Base.deliveries.size}
+      it_should_have_success_alert_with(
+        'If your account exists, you will receive an email with ' \
+        'instructions for how to unlock it in a few minutes.'
+      )
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
   end
 
