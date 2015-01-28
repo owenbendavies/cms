@@ -124,10 +124,9 @@ RSpec.describe Message do
     it 'sends an email' do
       expect(subject.delivered).to eq false
 
-      expect {
-        subject.deliver
-      }.to change {ActionMailer::Base.deliveries.size}.by(1)
+      subject.deliver
 
+      expect(ActionMailer::Base.deliveries.size).to eq 1
       expect(subject.delivered).to eq true
 
       email = ActionMailer::Base.deliveries.last
