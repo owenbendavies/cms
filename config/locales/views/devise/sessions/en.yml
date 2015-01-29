@@ -6,4 +6,4 @@ en:
 
       destroy:
         title: "Logout"
-        icon: "log-out"
+        icon: "sign-out"

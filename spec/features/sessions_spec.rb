@@ -207,6 +207,10 @@ RSpec.describe 'sessions', type: :feature do
         it_should_be_on_home_page
         it_should_have_success_alert_with 'Signed out successfully.'
       end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-sign-out'
+      end
     end
   end
 end
