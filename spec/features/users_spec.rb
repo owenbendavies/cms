@@ -10,7 +10,6 @@ RSpec.describe '/users', type: :feature do
       it 'has list of users' do
         within '#main_article' do
           expect(page).to have_content 'Users'
-          expect(page).to have_selector 'h1 .glyphicon-group'
 
           expect(page).to have_content 'Email'
           expect(page).to have_content user.email
@@ -27,6 +26,14 @@ RSpec.describe '/users', type: :feature do
 
         expect(current_path).to eq go_to_url
       end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-group'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-group'
+      end
     end
   end
 
@@ -36,10 +43,6 @@ RSpec.describe '/users', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-user'
-      end
-
       it 'updates user' do
         expect(find_field('Current password')['autofocus']).to eq 'autofocus'
         expect(find_field('Password').value).to be_nil
@@ -112,6 +115,14 @@ RSpec.describe '/users', type: :feature do
         end
 
         expect(current_path).to eq go_to_url
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-user'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-user'
       end
     end
   end
