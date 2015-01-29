@@ -18,7 +18,6 @@ RSpec.describe '/messages', type: :feature do
     it_behaves_like 'logged in user' do
       it 'has list of messages', js: true do
         expect(find('#main_article h1').text).to eq 'Messages'
-        expect(page).to have_selector 'h1 .glyphicon-envelope'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'Name'
@@ -38,6 +37,14 @@ RSpec.describe '/messages', type: :feature do
           message.email,
           href: "/site/messages/#{message.id}"
         )
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-envelope'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-envelope'
       end
 
       it 'has link in topbar' do
@@ -60,7 +67,6 @@ RSpec.describe '/messages', type: :feature do
     it_behaves_like 'logged in user' do
       it 'shows message', js: true do
         expect(find('#main_article h1').text).to eq 'Message'
-        expect(page).to have_selector 'h1 .glyphicon-envelope'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'about a month ago'
@@ -92,6 +98,10 @@ RSpec.describe '/messages', type: :feature do
         visit '/site/messages/bad'
         expect(page.status_code).to eq 404
         expect(page).to have_content 'Page Not Found'
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-envelope'
       end
     end
   end

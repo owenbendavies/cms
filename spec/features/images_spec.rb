@@ -11,7 +11,6 @@ RSpec.describe '/images', type: :feature do
     it_behaves_like 'logged in user' do
       it 'has list of images' do
         expect(find('#main_article h1').text).to eq 'Images'
-        expect(page).to have_selector 'h1 .glyphicon-picture'
 
         image_tag = find("#main_article a[href='#{image.file.url}'] img")
         expect(image_tag['src']).to eq image.file.span3.url
@@ -28,6 +27,14 @@ RSpec.describe '/images', type: :feature do
         end
 
         expect(current_path).to eq go_to_url
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-picture-o'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-picture-o'
       end
     end
   end

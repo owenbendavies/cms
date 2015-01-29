@@ -7,10 +7,6 @@ RSpec.describe '/site', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-list'
-      end
-
       it 'lists the users sites' do
         expect(page).to have_link 'localhost', href: 'http://localhost'
       end
@@ -24,6 +20,14 @@ RSpec.describe '/site', type: :feature do
 
         expect(current_path).to eq go_to_url
       end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-list'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-list'
+      end
     end
   end
 
@@ -33,10 +37,6 @@ RSpec.describe '/site', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-cog'
-      end
-
       it 'shoud update site' do
         host_field = find('#site_host')
         expect(host_field.value).to eq 'localhost'
@@ -103,6 +103,14 @@ RSpec.describe '/site', type: :feature do
 
         expect(current_path).to eq go_to_url
       end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-cog'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-cog'
+      end
     end
   end
 
@@ -118,10 +126,6 @@ RSpec.describe '/site', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-file'
-      end
-
       it 'edits the css' do
         expect(find('pre textarea')['autofocus']).to eq 'autofocus'
         fill_in 'site_css', with: 'body{background-color: red}'
@@ -163,6 +167,14 @@ RSpec.describe '/site', type: :feature do
         end
 
         expect(current_path).to eq go_to_url
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-file'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-file'
       end
     end
   end

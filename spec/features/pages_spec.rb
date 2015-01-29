@@ -7,10 +7,6 @@ RSpec.describe '/pages', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-plus'
-      end
-
       it 'does not has page last updated in footer' do
         expect(page).to have_no_content 'last updated'
       end
@@ -53,6 +49,14 @@ RSpec.describe '/pages', type: :feature do
         end
 
         expect(current_path).to eq go_to_url
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-plus'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-plus'
       end
     end
   end
@@ -107,8 +111,8 @@ RSpec.describe '/pages', type: :feature do
       it_behaves_like 'restricted page'
 
       it_behaves_like 'logged in user' do
-        it 'shows page' do
-          expect(page).to have_selector 'h1 .glyphicon-lock'
+        it 'has icon on page' do
+          expect(page).to have_selector 'h1 .fa-lock'
         end
       end
     end
@@ -120,10 +124,6 @@ RSpec.describe '/pages', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'has icon' do
-        expect(page).to have_selector 'h1 .glyphicon-pencil'
-      end
-
       it 'has cancel link' do
         click_link 'Cancel'
         expect(current_path).to eq '/test_page'
@@ -149,7 +149,7 @@ RSpec.describe '/pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(page).to have_selector '.glyphicon-lock'
+        expect(page).to have_selector 'h1 .fa-lock'
 
         click_link 'Edit'
         expect(find_field('page[private]')).to be_checked
@@ -197,6 +197,14 @@ RSpec.describe '/pages', type: :feature do
         fill_in 'page[name]', with: ''
         click_button 'Update Page'
         it_should_have_form_error "can't be blank"
+      end
+
+      it 'has icon on page' do
+        expect(page).to have_selector 'h1 .fa-pencil'
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-pencil'
       end
     end
   end
@@ -246,6 +254,10 @@ RSpec.describe '/pages', type: :feature do
 
         expect(current_path).to eq '/test_page'
         expect(Page.find_by_site_id_and_url!(site, 'test_page')).to eq test_page
+      end
+
+      it 'has icon in topbar' do
+        expect(page).to have_selector '#topbar .fa-trash'
       end
     end
   end
