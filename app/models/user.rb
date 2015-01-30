@@ -2,20 +2,22 @@
 #
 # Table name: users
 #
-#  id                  :integer          not null, primary key
-#  email               :string(64)       not null
-#  encrypted_password  :string(64)       not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  sign_in_count       :integer          default("0"), not null
-#  current_sign_in_at  :datetime
-#  last_sign_in_at     :datetime
-#  current_sign_in_ip  :inet
-#  last_sign_in_ip     :inet
-#  failed_attempts     :integer          default("0"), not null
-#  unlock_token        :string
-#  locked_at           :datetime
-#  remember_created_at :datetime
+#  id                     :integer          not null, primary key
+#  email                  :string(64)       not null
+#  encrypted_password     :string(64)       not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  failed_attempts        :integer          default("0"), not null
+#  unlock_token           :string
+#  locked_at              :datetime
+#  remember_created_at    :datetime
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
 #
 
 class User < ActiveRecord::Base
@@ -23,6 +25,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable,
          :lockable,
+         :recoverable,
          :rememberable,
          :timeoutable,
          :trackable,

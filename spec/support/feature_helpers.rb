@@ -19,7 +19,7 @@ module FeatureHelpers
   def visit_page(url)
     visit url
     expect(page.status_code).to eq 200
-    expect(current_path).to eq url
+    expect(current_path).to eq url.split('?').first
   end
 
   def it_should_be_on_home_page
