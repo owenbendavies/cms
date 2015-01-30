@@ -158,15 +158,29 @@ RSpec.describe '/users', type: :feature do
       host = "http://#{site.host}"
       path = "/users/password/edit?reset_password_token=#{token}"
       link = "#{host}#{path}"
-      email_body = email.body
 
-      expect(email_body).to have_content(
+      expect(email.body).to have_content(
         'Someone has requested a link to change your password.'
       )
 
-      expect(email_body).to have_link 'Change password', href: link
+      expect(email.body).to have_link 'Change password', href: link
+    end
 
-      visit_page path
+    it 'has link on login page' do
+      visit_page '/login'
+
+      click_link 'Forgot your password?'
+
+      expect(current_path).to eq go_to_url
+    end
+  end
+
+  describe '/password/edit' do
+    let(:token) { user.send_reset_password_instructions }
+    let(:go_to_url) { "/users/password/edit?reset_password_token=#{token}" }
+
+    it 'resets users password' do
+      visit_page go_to_url
 
       expect(page).to have_content 'Change password'
 
