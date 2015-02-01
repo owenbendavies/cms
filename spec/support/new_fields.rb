@@ -14,7 +14,7 @@ module NewFields
     let(:new_message) { Faker::Lorem.paragraph }
     let(:new_name) { Faker::Name.name }
     let(:new_password) { Faker::Internet.password(20, 30) }
-    let(:new_phone) { Faker::PhoneNumber.phone_number }
+    let(:new_phone) { "+447#{rand(1_000_000_000).to_s.ljust(9, '0')}" }
   end
 end
 
