@@ -148,6 +148,10 @@ RSpec.describe '/users', type: :feature do
 
       email = ActionMailer::Base.deliveries.last
       expect(email.from).to eq ["noreply@#{site.host}"]
+
+      addresses = email.header['from'].address_list.addresses
+      expect(addresses.first.display_name).to eq site.name
+
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Reset password instructions'
 
