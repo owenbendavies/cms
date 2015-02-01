@@ -4,7 +4,10 @@ class AccountMailer < Devise::Mailer
 
     default_url_options[:host] = site.host
 
-    super(record, token, opts.merge(from: site.email))
+    from = Mail::Address.new(site.email)
+    from.display_name = site.name
+
+    super(record, token, opts.merge(from: from))
   end
 
   def unlock_instructions(record, token, opts = {})
@@ -12,6 +15,9 @@ class AccountMailer < Devise::Mailer
 
     default_url_options[:host] = site.host
 
-    super(record, token, opts.merge(from: site.email))
+    from = Mail::Address.new(site.email)
+    from.display_name = site.name
+
+    super(record, token, opts.merge(from: from))
   end
 end
