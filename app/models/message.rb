@@ -53,4 +53,8 @@ class Message < ActiveRecord::Base
     self.delivered = true
     self.save!
   end
+
+  def phone=(value)
+    super(Phoner::Phone.parse(value, country_code: '44'))
+  end
 end

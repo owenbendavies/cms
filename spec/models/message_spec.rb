@@ -77,14 +77,6 @@ RSpec.describe Message do
       ).for(:email).with_message('HTML not allowed')
     }
 
-    it { should validate_length_of(:phone).is_at_most(32) }
-
-    it {
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:phone).with_message('HTML not allowed')
-    }
-
     it { should validate_presence_of(:message) }
 
     it { should validate_length_of(:message).is_at_most(2048) }
@@ -131,6 +123,18 @@ RSpec.describe Message do
 
       email = ActionMailer::Base.deliveries.last
       expect(email.subject).to eq subject.subject
+    end
+  end
+
+  describe 'phone=' do
+    it 'formats phone numbers' do
+      subject.phone = '+44 1234 567 890'
+      expect(subject.phone).to eq '+441234567890'
+    end
+
+    it 'defaults to uk' do
+      subject.phone = '01234567890'
+      expect(subject.phone).to eq '+441234567890'
     end
   end
 end
