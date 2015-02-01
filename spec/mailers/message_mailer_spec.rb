@@ -12,6 +12,11 @@ RSpec.describe MessageMailer, type: :feature do
       expect(subject.from).to eq [site.email]
     end
 
+    it 'has from name as site name' do
+      addresses = subject.header['from'].address_list.addresses
+      expect(addresses.first.display_name).to eq site.name
+    end
+
     it 'is sent to sites user email' do
       expect(subject.to).to eq site.users.map(&:email).sort
     end
