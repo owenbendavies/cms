@@ -93,6 +93,7 @@ group :test do
   gem 'brakeman', require: false
   gem 'cane', require: false
   gem 'coveralls', require: false
+  gem 'i18n-tasks', require: false
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
