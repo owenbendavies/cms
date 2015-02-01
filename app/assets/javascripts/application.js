@@ -6,10 +6,5 @@
 //= require twitter/bootstrap/rails/confirm
 //= require turbolinks
 //= require google-analytics-turbolinks
-//= require_tree .
-
-$(document).ready(function() {
-    $('textarea.autogrow').autoGrow();
-});
-
-Turbolinks.enableProgressBar();
+//= require bootstrap-custom
+//= require main
