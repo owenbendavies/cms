@@ -142,6 +142,10 @@ GEM
       zxcvbn-ruby (>= 0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    easy_translate (0.5.0)
+      json
+      thread
+      thread_safe
     erubis (2.7.0)
     excon (0.44.0)
     execjs (2.2.2)
@@ -256,6 +260,15 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    i18n-tasks (0.7.11)
+      activesupport
+      easy_translate (>= 0.5.0)
+      erubis
+      highline
+      i18n
+      slop (~> 3.5)
+      term-ansicolor
+      terminal-table
     inflecto (0.0.2)
     ipaddress (0.8.0)
     jquery-rails (4.0.3)
@@ -452,6 +465,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
+    thread (0.1.4)
     thread_safe (0.3.4)
     tilt (1.4.1)
     timecop (0.7.1)
@@ -513,6 +527,7 @@ DEPENDENCIES
   google-analytics-turbolinks
   gravtastic
   haml-rails
+  i18n-tasks
   jquery-rails
   jquery-turbolinks
   lograge
