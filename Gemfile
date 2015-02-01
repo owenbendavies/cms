@@ -15,7 +15,6 @@ gem 'rack-protection'
 gem 'rack-timeout'
 
 # Model Gems
-gem 'bcrypt'
 gem 'fog', require: 'fog/aws/storage'
 gem 'carrierwave'
 gem 'gravtastic'
@@ -36,9 +35,7 @@ gem 'simple_form'
 
 # Assets
 gem 'autogrow-textarea-rails'
-gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
-gem 'coffee-rails'
 gem 'font-awesome-sass'
 gem 'google-analytics-turbolinks'
 gem 'jquery-rails'

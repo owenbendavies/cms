@@ -86,7 +86,7 @@ RSpec.describe Image do
       ).for(:name).with_message('HTML not allowed')
     end
 
-    it { should ensure_length_of(:name).is_at_most(64) }
+    it { should validate_length_of(:name).is_at_most(64) }
 
     it { should validate_uniqueness_of(:filename).scoped_to(:site_id) }
 
