@@ -142,7 +142,7 @@ RSpec.describe Site do
 
     it { should validate_presence_of(:name) }
 
-    it { should ensure_length_of(:name).is_at_most(64) }
+    it { should validate_length_of(:name).is_at_most(64) }
 
     it do
       should_not allow_value(
@@ -150,13 +150,13 @@ RSpec.describe Site do
       ).for(:name).with_message('HTML not allowed')
     end
 
-    it { should ensure_length_of(:sub_title).is_at_most(64) }
+    it { should validate_length_of(:sub_title).is_at_most(64) }
 
     it { should allow_value('one_column').for(:layout) }
     it { should allow_value('right_sidebar').for(:layout) }
     it { should allow_value('small_right_sidebar').for(:layout) }
 
-    it { should ensure_length_of(:copyright).is_at_most(64) }
+    it { should validate_length_of(:copyright).is_at_most(64) }
 
     it { should allow_value('').for(:google_analytics) }
     it { should allow_value('UA-1234-1').for(:google_analytics) }

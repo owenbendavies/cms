@@ -51,7 +51,7 @@ RSpec.describe Message do
 
     it { should validate_presence_of(:name) }
 
-    it { should ensure_length_of(:name).is_at_most(64) }
+    it { should validate_length_of(:name).is_at_most(64) }
 
     it do
       should_not allow_value(
@@ -61,7 +61,7 @@ RSpec.describe Message do
 
     it { should validate_presence_of(:email) }
 
-    it { should ensure_length_of(:email).is_at_most(64) }
+    it { should validate_length_of(:email).is_at_most(64) }
 
     it { should allow_value('someone@example.com').for(:email) }
 
@@ -77,7 +77,7 @@ RSpec.describe Message do
       ).for(:email).with_message('HTML not allowed')
     }
 
-    it { should ensure_length_of(:phone).is_at_most(32) }
+    it { should validate_length_of(:phone).is_at_most(32) }
 
     it {
       should_not allow_value(
@@ -87,7 +87,7 @@ RSpec.describe Message do
 
     it { should validate_presence_of(:message) }
 
-    it { should ensure_length_of(:message).is_at_most(2048) }
+    it { should validate_length_of(:message).is_at_most(2048) }
 
     it {
       should_not allow_value(
@@ -112,7 +112,7 @@ RSpec.describe Message do
     end
 
     it {
-      should ensure_length_of(:do_not_fill_in)
+      should validate_length_of(:do_not_fill_in)
         .is_at_most(0)
         .with_message('do not fill in')
     }
