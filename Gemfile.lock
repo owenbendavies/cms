@@ -8,7 +8,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
+    CFPropertyList (2.3.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -52,25 +52,26 @@ GEM
     astrolabe (1.3.0)
       parser (>= 2.2.0.pre.3, < 3.0)
     autogrow-textarea-rails (3.1.0)
-    autoprefixer-rails (4.0.2.2)
+    autoprefixer-rails (5.1.1)
       execjs
+      json
     awesome_print (1.6.1)
-    bcrypt (3.1.9)
+    bcrypt (3.1.10)
     bh (1.2.0)
       actionpack
       activesupport
-    bootstrap-sass (3.3.1.0)
-      sass (~> 3.2)
-    brakeman (2.0.0)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
+    brakeman (3.0.1)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
       haml (>= 3.0, < 5.0)
-      highline (~> 1.6.19)
+      highline (~> 1.6.20)
       multi_json (~> 1.2)
-      ruby2ruby (~> 2.0.5)
-      ruby_parser (~> 3.1.1)
+      ruby2ruby (~> 2.1.1)
+      ruby_parser (~> 3.5.0)
       sass (~> 3.0)
-      slim (~> 1.3.6)
       terminal-table (~> 1.4)
     builder (3.2.2)
     byebug (3.5.1)
@@ -84,13 +85,13 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
-    capistrano-bundler (1.1.3)
+    capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.0.2)
+    capistrano-rbenv (2.0.3)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
     capistrano-stats (1.1.1)
@@ -100,8 +101,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.3.1)
-      capybara (>= 2.0.2, < 2.5.0)
+    capybara-webkit (1.4.1)
+      capybara (>= 2.3.0, < 2.5.0)
       json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -117,16 +118,16 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.8.0)
+    coffee-script-source (1.9.0)
     colored (1.2)
     colorize (0.7.5)
     columnize (0.9.0)
-    coveralls (0.7.1)
-      multi_json (~> 1.3)
-      rest-client
-      simplecov (>= 0.7)
-      term-ansicolor
-      thor
+    coveralls (0.7.8)
+      multi_json (~> 1.10)
+      rest-client (~> 1.7)
+      simplecov (~> 0.9.1)
+      term-ansicolor (~> 1.3)
+      thor (~> 0.19.1)
     database_cleaner (1.4.0)
     debugger-linecache (1.2.0)
     devise (3.4.1)
@@ -142,7 +143,7 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
-    excon (0.42.1)
+    excon (0.44.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -151,20 +152,22 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.26.0)
+    fog (1.27.0)
       fog-atmos
+      fog-aws (~> 0.0)
       fog-brightbox (~> 0.4)
-      fog-core (~> 1.27, >= 1.27.1)
+      fog-core (~> 1.27, >= 1.27.3)
       fog-ecloud
       fog-json
       fog-profitbricks
       fog-radosgw (>= 0.0.2)
       fog-sakuracloud (>= 0.0.4)
+      fog-serverlove
       fog-softlayer
       fog-storm_on_demand
       fog-terremark
@@ -176,11 +179,16 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
+    fog-aws (0.0.8)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
     fog-brightbox (0.7.1)
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.27.2)
+    fog-core (1.28.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -200,10 +208,13 @@ GEM
       fog-core (>= 1.21.0)
       fog-json
       fog-xml (>= 0.0.1)
-    fog-sakuracloud (0.1.1)
+    fog-sakuracloud (1.0.0)
       fog-core
       fog-json
-    fog-softlayer (0.3.26)
+    fog-serverlove (0.1.1)
+      fog-core
+      fog-json
+    fog-softlayer (0.4.0)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.0)
@@ -221,16 +232,16 @@ GEM
     fog-xml (0.1.1)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    font-awesome-sass (4.2.2)
+    font-awesome-sass (4.3.0)
       sass (~> 3.2)
     formatador (0.2.5)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     google-analytics-turbolinks (0.0.4)
     gravtastic (3.2.6)
-    haml (4.1.0.beta.1)
+    haml (4.0.6)
       tilt
-    haml-rails (0.6.0)
+    haml-rails (0.8.2)
       actionpack (>= 4.0.1)
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
@@ -238,13 +249,12 @@ GEM
       railties (>= 4.0.1)
     highline (1.6.21)
     hike (1.2.3)
-    hirb (0.7.2)
-    hpricot (0.8.6)
-    html2haml (1.0.1)
+    hirb (0.7.3)
+    html2haml (2.0.0)
       erubis (~> 2.7.0)
-      haml (>= 4.0.0.rc.1)
-      hpricot (~> 0.8.6)
-      ruby_parser (~> 3.1.1)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -255,10 +265,10 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (1.8.1)
-    kgio (2.9.2)
+    json (1.8.2)
+    kgio (2.9.3)
     libv8 (3.16.14.7)
-    lograge (0.3.0)
+    lograge (0.3.1)
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
@@ -268,27 +278,26 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.0.1)
+    mini_magick (4.0.3)
     mini_portile (0.6.2)
-    minitest (5.5.0)
+    minitest (5.5.1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
+    net-ssh (2.9.2)
     netrc (0.10.2)
     newrelic_rpm (3.9.9.275)
-    nokogiri (1.6.5)
+    nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paper_trail (3.0.6)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
     parallel (1.3.3)
-    parser (2.2.0.1)
+    parser (2.2.0.2)
       ast (>= 1.1, < 3.0)
-      slop (~> 3.4, >= 3.4.5)
-    pg (0.18.0)
+    pg (0.18.1)
     powerpack (0.0.9)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -301,9 +310,9 @@ GEM
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
-    rack-timeout (0.1.1)
+    rack-timeout (0.2.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -356,8 +365,8 @@ GEM
       redis (>= 2.2)
     ref (1.0.5)
     require_all (1.3.2)
-    responders (2.0.2)
-      railties (>= 4.2.0.alpha, < 5)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -385,23 +394,23 @@ GEM
       ruby-progressbar (~> 1.4)
     rubocop-rspec (1.2.1)
     ruby-progressbar (1.7.1)
-    ruby2ruby (2.0.8)
+    ruby2ruby (2.1.3)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
-    ruby_parser (3.1.3)
+    ruby_parser (3.5.0)
       sexp_processor (~> 4.1)
-    sass (3.4.9)
+    sass (3.4.11)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    secure_headers (1.4.1)
-    sentry-raven (0.12.2)
+    secure_headers (2.0.0)
+    sentry-raven (0.12.3)
       faraday (>= 0.7.6)
-    sexp_processor (4.4.4)
-    shoulda-matchers (2.7.0)
+    sexp_processor (4.4.5)
+    shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -415,9 +424,6 @@ GEM
       hirb
       simplecov
     simplecov-html (0.8.0)
-    slim (1.3.9)
-      temple (~> 0.6.3)
-      tilt (~> 1.3, >= 1.3.3)
     slop (3.6.0)
     spring (1.2.0)
     spring-commands-rspec (1.0.4)
@@ -427,7 +433,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.2)
+    sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -435,10 +441,9 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    strip_attributes (1.5.1)
+    strip_attributes (1.6.0)
       activemodel (>= 3.0, < 5.0)
     syslogger (1.6.0)
-    temple (0.6.10)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     terminal-table (1.4.5)
@@ -458,7 +463,7 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.6.1)
+    uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
@@ -487,8 +492,6 @@ PLATFORMS
 DEPENDENCIES
   annotate
   autogrow-textarea-rails
-  autoprefixer-rails
-  bcrypt
   bh
   bootstrap-sass
   brakeman
@@ -498,7 +501,6 @@ DEPENDENCIES
   capistrano-rbenv
   capybara-webkit
   carrierwave
-  coffee-rails
   coveralls
   database_cleaner
   devise
