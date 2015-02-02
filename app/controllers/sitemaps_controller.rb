@@ -16,7 +16,7 @@ class SitemapsController < ApplicationController
     XmlSitemap::Map.new(@site.host, home: false, secure: request.ssl?) do |map|
       @pages.each do |page|
         next if page.private?
-        map.add page_path(page.url), updated: page.updated_at
+        map.add page_path(page.to_param), updated: page.updated_at
       end
     end
   end

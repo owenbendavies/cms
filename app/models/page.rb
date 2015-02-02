@@ -22,34 +22,21 @@ class Page < ActiveRecord::Base
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
 
-  before_save do
-    self.url = new_url
-  end
-
   has_paper_trail
 
   strip_attributes except: :html_content, collapse_spaces: true
 
+  auto_validate
   validates *(attribute_names - ['html_content']), no_html: true
-  validates :site_id, presence: true
+  validates :url, exclusion: { in: INVALID_URLS }
+  validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
 
-  validates :name,
-            presence: true,
-            length: { maximum: 64 },
-            uniqueness: { scope: :site_id }
-
-  validates :created_by, presence: true
-  validates :updated_by, presence: true
-
-  validate do
-    errors.add(:name) if new_url.blank? || INVALID_URLS.include?(new_url)
-  end
-
-  def new_url
-    name.to_s.parameterize('_')
+  def name=(value)
+    self.url = value.parameterize('_') if value
+    super(value)
   end
 
   def to_param
-    url
+    url_was
   end
 end
