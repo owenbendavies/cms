@@ -76,6 +76,7 @@ group :development do
   gem 'byebug'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'letter_opener_web'
   gem 'pry-rails'
   gem 'quiet_assets'
 end

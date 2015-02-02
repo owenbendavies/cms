@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/emails' if Rails.env.development?
+
   root 'application#home'
 
   devise_for :users, skip: [:sessions]

@@ -44,6 +44,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -282,6 +283,13 @@ GEM
       turbolinks
     json (1.8.2)
     kgio (2.9.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.3.0)
+      launchy (~> 2.2)
+    letter_opener_web (1.2.3)
+      letter_opener (~> 1.0)
+      rails (>= 3.2)
     libv8 (3.16.14.7)
     lograge (0.3.1)
       actionpack (>= 3)
@@ -533,6 +541,7 @@ DEPENDENCIES
   i18n-tasks
   jquery-rails
   jquery-turbolinks
+  letter_opener_web
   lograge
   mini_magick
   newrelic_rpm
