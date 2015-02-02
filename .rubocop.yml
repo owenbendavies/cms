@@ -13,10 +13,6 @@ HasAndBelongsToMany:
 Lint/AmbiguousOperator:
   Enabled: false
 
-Lint/UnusedBlockArgument:
-  Exclude:
-    - 'config/unicorn.production.rb'
-
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*'
@@ -32,10 +28,6 @@ RSpec/DescribeClass:
 Style/Blocks:
   Exclude:
     - 'spec/**/*'
-
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'config/initializers/warden.rb'
 
 Style/Documentation:
   Enabled: false
