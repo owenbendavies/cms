@@ -15,6 +15,7 @@ gem 'rack-protection'
 gem 'rack-timeout'
 
 # Model Gems
+gem 'auto_validate'
 gem 'fog', require: 'fog/aws/storage'
 gem 'carrierwave'
 gem 'gravtastic'
