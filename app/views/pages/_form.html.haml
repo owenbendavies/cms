@@ -1,6 +1,7 @@
 - content_for :head, javascript_include_tag('tinymce', 'data-turbolinks-track': true)
 
 = simple_form_for @page do |form|
+  = form.input :url, disabled: true
   = form.input :name, autofocus: true
   = form.input :private, as: :boolean
 
