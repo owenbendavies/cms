@@ -90,8 +90,8 @@ RSpec.describe Image do
 
     it { should validate_uniqueness_of(:filename).scoped_to(:site_id) }
 
-    it { should validate_presence_of(:created_by) }
+    it { should validate_presence_of(:created_by_id) }
 
-    it { should validate_presence_of(:updated_by) }
+    it { should validate_presence_of(:updated_by_id) }
   end
 end
