@@ -34,11 +34,11 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'shows errors' do
-        fill_in 'Name', with: ''
+        fill_in 'Name', with: 'Site'
         click_button 'Create Page'
 
         expect(current_path).to eq '/'
-        it_should_have_form_error "can't be blank"
+        it_should_have_form_error 'is reserved'
       end
 
       it 'has link in topbar' do
@@ -168,7 +168,13 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'renames a page' do
+        url_field = find('#page_url')
+        expect(url_field['disabled']).to eq 'disabled'
+        expect(url_field.value).to eq test_page.url
+
+        expect(find_field('Name').value).to eq test_page.name
         expect(find_field('Name')['autofocus']).to eq 'autofocus'
+
         fill_in 'Name', with: 'New Page Name'
         click_button 'Update Page'
 
@@ -194,9 +200,9 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'shows errors' do
-        fill_in 'page[name]', with: ''
+        fill_in 'page[name]', with: 'Site'
         click_button 'Update Page'
-        it_should_have_form_error "can't be blank"
+        it_should_have_form_error 'is reserved'
       end
 
       it 'has icon on page' do
