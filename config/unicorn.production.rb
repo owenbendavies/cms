@@ -7,7 +7,7 @@ timeout 5
 
 preload_app true
 
-DEPLOY_PATH = File.expand_path('../..', __FILE__)
+DEPLOY_PATH = '/var/www/cms/current'
 
 working_directory DEPLOY_PATH
 
@@ -18,8 +18,18 @@ pid PID_FILE
 
 listen File.join(DEPLOY_PATH, '/tmp/sockets/unicorn.sock')
 
-before_fork do |server, worker|
+before_exec do |_|
+  ENV['BUNDLE_GEMFILE'] = File.join(DEPLOY_PATH, 'Gemfile')
+end
+
+before_fork do |_, _|
+  ActiveRecord::Base.connection.disconnect!
+
   if File.exist?(OLD_PID_FILE)
     Process.kill('QUIT', File.read(OLD_PID_FILE).to_i)
   end
+end
+
+after_fork do |_, _|
+  ActiveRecord::Base.establish_connection
 end
