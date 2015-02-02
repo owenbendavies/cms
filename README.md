@@ -24,7 +24,6 @@ This project requires a system running the following software:
 * Bundler
 * PostgreSQL
 * Imagemagick
-* Mailcatcher (For development)
 
 For more detailed dependencies, this is the project I use for setting up my
 development and live servers: https://github.com/obduk/setup_server
