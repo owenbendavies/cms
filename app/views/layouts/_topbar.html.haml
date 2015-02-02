@@ -11,12 +11,12 @@
             %b.caret
           %ul.dropdown-menu
             - if @page and @page.persisted?
-              = link_to edit_page_path(@page.url) do
+              = link_to edit_page_path(@page.to_param) do
                 = icon(t('pages.edit.icon'))
                 = t('actions.edit')
 
               = link_to icon(t('pages.delete.icon')) + " " + t('actions.delete'),
-                          page_path(@page.url),
+                          page_path(@page.to_param),
                           method: :delete,
                           data: {confirm: t('pages.delete.text', name: @page.name)},
                           "data-confirm-title" => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,

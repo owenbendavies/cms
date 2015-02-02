@@ -4,4 +4,4 @@
       = navbar do
         = nav do
           - @site.main_menu_pages.each do |page|
-            = link_to page.name, page_path(page.url)
+            = link_to page.name, page_path(page.to_param)

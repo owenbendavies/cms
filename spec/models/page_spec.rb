@@ -81,6 +81,22 @@ RSpec.describe Page do
 
     it { should validate_presence_of(:site_id) }
 
+    it { should validate_presence_of(:url) }
+
+    %w(
+      health
+      login
+      logout
+      new
+      robots
+      site
+      sitemap
+      timeout
+      users
+    ).each do |value|
+      it { should_not allow_value(value).for(:url) }
+    end
+
     it { should validate_presence_of(:name) }
 
     it { should validate_length_of(:name).is_at_most(64) }
@@ -93,50 +109,39 @@ RSpec.describe Page do
       ).for(:name).with_message('HTML not allowed')
     end
 
-    [
-      '@',
-      'NEW',
-      'New',
-      'health',
-      'login',
-      'logout',
-      'new',
-      'robots',
-      'site',
-      'sitemap',
-      'timeout',
-      'users'
-    ].each do |value|
-      it { should_not allow_value(value).for(:name) }
-    end
+    it { should validate_presence_of(:created_by_id) }
 
-    it { should validate_presence_of(:created_by) }
-
-    it { should validate_presence_of(:updated_by) }
+    it { should validate_presence_of(:updated_by_id) }
 
     it { should allow_value('<a>html</a>').for(:html_content) }
   end
 
-  describe '#new_url' do
-    it 'downcases name' do
+  describe '#name=' do
+    it 'sets url as downcases name' do
       subject.name = 'Name'
-      expect(subject.new_url).to eq 'name'
+      expect(subject.url).to eq 'name'
     end
 
-    it 'replaces spaces with _' do
+    it 'sets url spaces with _' do
       subject.name = 'new name'
-      expect(subject.new_url).to eq 'new_name'
+      expect(subject.url).to eq 'new_name'
     end
 
     it 'works when name is nil' do
       subject.name = nil
-      expect(subject.new_url).to eq ''
+      expect(subject.url).to eq nil
     end
   end
 
   describe '#to_param' do
+    subject { FactoryGirl.create(:page, name: 'Test Page') }
+
     it 'uses url' do
-      subject.url = 'test_page'
+      expect(subject.to_param).to eq 'test_page'
+    end
+
+    it 'uses unchanged url' do
+      subject.url = 'new_page'
       expect(subject.to_param).to eq 'test_page'
     end
   end

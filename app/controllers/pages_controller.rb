@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @page = Page.new(site: @site)
 
     if @page.update_attributes(page_params.merge(created_by: current_user))
-      redirect_to page_path(@page.url)
+      redirect_to page_path(@page.to_param)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     if @message.update_attributes(message_params)
       @message.deliver
       flash.notice = t('pages.contact_form.flash.success')
-      redirect_to page_path(@page.url)
+      redirect_to page_path(@page.to_param)
     else
       render :show
     end
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
 
   def update
     if @page.update_attributes(page_params)
-      redirect_to page_path(@page.url)
+      redirect_to page_path(@page.to_param)
     else
       render :edit
     end
