@@ -41,9 +41,9 @@ class Site < ActiveRecord::Base
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
+  auto_validate
   validates *(attribute_names - ['sidebar_html_content']), no_html: true
-  validates :host, presence: true, length: { maximum: 64 }, uniqueness: true
-  validates :name, presence: true, length: { maximum: 64 }
+  validates :name, length: { maximum: 64 }
   validates :sub_title, length: { maximum: 64 }
   validates :layout, inclusion: { in: LAYOUTS }
   validates :copyright, length: { maximum: 64 }

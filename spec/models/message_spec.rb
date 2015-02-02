@@ -61,8 +61,6 @@ RSpec.describe Message do
 
     it { should validate_presence_of(:email) }
 
-    it { should validate_length_of(:email).is_at_most(64) }
-
     it { should allow_value('someone@example.com').for(:email) }
 
     it {

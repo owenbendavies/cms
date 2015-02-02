@@ -25,16 +25,8 @@ class Image < ActiveRecord::Base
 
   strip_attributes collapse_spaces: true
 
+  auto_validate
   validates *attribute_names, no_html: true
-  validates :site_id, presence: true
-
-  validates :name,
-            presence: true,
-            length: { maximum: 64 },
-            uniqueness: { scope: :site_id }
-
+  validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
   validates :filename, uniqueness: { scope: :site_id }
-
-  validates :created_by, presence: true
-  validates :updated_by, presence: true
 end
