@@ -15,11 +15,12 @@ Lint/AmbiguousOperator:
 
 Metrics/AbcSize:
   Exclude:
-    - 'db/migrate/*'
+    - 'db/migrate/20141122230841_add_sites.rb'
 
 Metrics/MethodLength:
   Exclude:
-    - 'db/migrate/*'
+    - 'db/migrate/20141122230841_add_sites.rb'
+    - 'db/migrate/20141123002911_add_pages.rb'
 
 RSpec/DescribeClass:
   Exclude:
@@ -31,11 +32,3 @@ Style/Blocks:
 
 Style/Documentation:
   Enabled: false
-
-Style/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'spec/**/*'
-
-Style/SpaceInsideBlockBraces:
-  Exclude:
-    - 'spec/**/*'
