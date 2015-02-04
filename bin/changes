@@ -5,10 +5,12 @@ cd `dirname $0`/..
 
 changes=$(git status --porcelain)
 
-echo $changes
-
 if [[ $changes != "" ]]
 then
   echo "Uncommited changes"
+  echo $changes
+
+  git diff
+
   exit 1
 fi
