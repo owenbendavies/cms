@@ -15,12 +15,11 @@ RSpec.describe ImageUploader, uploads: true do
 
   describe '.store!' do
     it 'must be an image' do
-      expect {
-        subject.store! StringUploader.new('stylesheet.exe', 'asd')
-      }.to raise_error(
-        CarrierWave::IntegrityError,
-        /.* "exe" files, allowed types: jpg, jpeg, png/
-      )
+      expect { subject.store! StringUploader.new('stylesheet.exe', 'asd') }
+        .to raise_error(
+          CarrierWave::IntegrityError,
+          /.* "exe" files, allowed types: jpg, jpeg, png/
+        )
     end
 
     it 'has filename which is  md5 of content' do

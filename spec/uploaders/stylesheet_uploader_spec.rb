@@ -13,12 +13,11 @@ RSpec.describe StylesheetUploader, uploads: true do
 
   describe '.store!' do
     it 'must be css' do
-      expect {
-        subject.store! StringUploader.new('stylesheet.exe', css)
-      }.to raise_error(
-        CarrierWave::IntegrityError,
-        'You are not allowed to upload "exe" files, allowed types: css'
-      )
+      expect { subject.store! StringUploader.new('stylesheet.exe', css) }
+        .to raise_error(
+          CarrierWave::IntegrityError,
+          'You are not allowed to upload "exe" files, allowed types: css'
+        )
     end
 
     it 'has filename which is  md5 of content' do

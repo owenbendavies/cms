@@ -13,9 +13,8 @@ RSpec.describe 'test routes', type: :feature do
     end
 
     it 'raises error when render is more than 1 second' do
-      expect {
-        visit '/timeout?seconds=3.5'
-      }.to raise_error Rack::Timeout::RequestTimeoutError
+      expect { visit '/timeout?seconds=3.5' }
+        .to raise_error Rack::Timeout::RequestTimeoutError
     end
   end
 end
