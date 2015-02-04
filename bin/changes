@@ -3,7 +3,7 @@ set -e
 
 cd `dirname $0`/..
 
-changes=$(git status --porcelain | grep -v "public/assets/manifest-")
+changes=$(git status --porcelain)
 
 if [[ $changes != "" ]]
 then

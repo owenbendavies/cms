@@ -20,4 +20,5 @@ before_script:
 
 script:
   - ./bin/test
+  - git checkout public/assets/manifest-*
   - ./bin/changes
