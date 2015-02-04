@@ -3,7 +3,11 @@ set -e
 
 cd `dirname $0`/..
 
-if [[ $(git status --porcelain) != "" ]]
+changes=$(git status --porcelain)
+
+echo $changes
+
+if [[ $changes != "" ]]
 then
   echo "Uncommited changes"
   exit 1
