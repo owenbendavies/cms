@@ -88,6 +88,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'spring-commands-rspec'
   gem 'timecop'
+  gem 'webmock'
 
   # Code quality tools
   gem 'brakeman', require: false
