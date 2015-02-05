@@ -163,11 +163,11 @@ RSpec.describe '/users', type: :feature do
       path = "/users/password/edit?reset_password_token=#{token}"
       link = "#{host}#{path}"
 
-      expect(email.body).to have_content(
+      expect(email.html_part.body).to have_content(
         'Someone has requested a link to change your password.'
       )
 
-      expect(email.body).to have_link 'Change password', href: link
+      expect(email.html_part.body).to have_link 'Change password', href: link
     end
 
     it 'has link on login page' do
