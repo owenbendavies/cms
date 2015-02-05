@@ -77,6 +77,9 @@ GEM
       sass (~> 3.0)
       terminal-table (~> 1.4)
     builder (3.2.2)
+    bullet (4.14.2)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -501,6 +504,7 @@ GEM
     unicorn-rails (2.2.0)
       rack
       unicorn
+    uniform_notifier (1.6.2)
     validates_email_format_of (1.6.1)
       i18n
     warden (1.2.3)
@@ -521,6 +525,7 @@ DEPENDENCIES
   bh
   bootstrap-sass
   brakeman
+  bullet
   byebug
   cane
   capistrano-rails
