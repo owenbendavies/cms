@@ -33,6 +33,7 @@ gem 'xml-sitemap'
 # View Gems
 gem 'bh'
 gem 'haml-rails'
+gem 'premailer-rails'
 gem 'simple_form'
 
 # Assets
@@ -68,13 +69,16 @@ group :production do
   gem 'sentry-raven'
 end
 
+group :development, :test do
+  gem 'pry-rails'
+end
+
 group :development do
   gem 'annotate'
   gem 'byebug'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'letter_opener_web'
-  gem 'pry-rails'
   gem 'quiet_assets'
 end
 

@@ -25,11 +25,27 @@ RSpec.describe MessageMailer, type: :feature do
       expect(subject.subject).to eq message.subject
     end
 
-    it 'has a message body' do
-      expect(subject.body).to have_content "Name: #{message.name}"
-      expect(subject.body).to have_content "Email: #{message.email}"
-      expect(subject.body).to have_content "Phone: #{message.phone}"
-      expect(subject.body).to have_content "Message: #{message.message}"
+    describe 'body' do
+      it 'has site name' do
+        expect(subject.body).to have_content site.name
+      end
+
+      it 'has text' do
+        expect(subject.body)
+          .to have_content "A new message has been posted on #{site.name}:"
+      end
+
+      it 'has message' do
+        expect(subject.body).to have_content "Name: #{message.name}"
+        expect(subject.body).to have_content "Email: #{message.email}"
+        expect(subject.body).to have_content "Phone: #{message.phone}"
+        expect(subject.body).to have_content "Message: #{message.message}"
+      end
+
+      it 'has copyright in footer' do
+        expect(subject.body)
+          .to have_content "#{site.copyright} © #{Time.now.year}"
+      end
     end
   end
 end

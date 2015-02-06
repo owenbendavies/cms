@@ -1,3 +1,5 @@
+%p= t('.text', site_name: @site.name)
+
 %p= "#{Message.human_attribute_name(:name)}: #{@message.name}"
 
 %p= "#{Message.human_attribute_name(:email)}: #{@message.email}"
