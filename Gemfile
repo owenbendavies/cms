@@ -70,12 +70,12 @@ group :production do
 end
 
 group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
 end
 
 group :development do
   gem 'annotate'
-  gem 'byebug'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'letter_opener_web'
