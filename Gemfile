@@ -60,6 +60,7 @@ gem 'uglifier'
 # Monitoring
 gem 'lograge'
 gem 'newrelic_rpm'
+gem 'newrelic-redis'
 gem 'syslogger'
 
 # Server
