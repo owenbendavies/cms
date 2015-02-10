@@ -78,7 +78,6 @@ group :development do
   gem 'annotate'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'coffeelint'
   gem 'letter_opener_web'
   gem 'quiet_assets'
 end
@@ -98,6 +97,7 @@ group :test do
   # Code quality tools
   gem 'brakeman', require: false
   gem 'cane', require: false
+  gem 'coffeelint'
   gem 'coveralls', require: false
   gem 'i18n-tasks', require: false
   gem 'rails_best_practices', require: false
