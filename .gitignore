@@ -1,10 +1,11 @@
 /.bundle
-/config/secrets.yml
 /config/deploy/*.rb
 /config/deploy/*.secrets.yml
+/config/secrets.yml
 /coverage
 /log/*.log
 /public/test_uploads
 /public/uploads
+/puppet/modules
 /tmp
 /vendor/bundle
