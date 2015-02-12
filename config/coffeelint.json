@@ -74,6 +74,9 @@
     "no_plusplus": {
         "level": "error"
     },
+    "spacing_after_comma": {
+        "level": "error"
+    },
     "no_stand_alone_at": {
         "level": "error"
     },
@@ -89,7 +92,7 @@
     "no_trailing_whitespace": {
         "level": "error",
         "allowed_in_comments": false,
-        "allowed_in_empty_lines": true
+        "allowed_in_empty_lines": false
     },
     "no_unnecessary_double_quotes": {
         "level": "error"
