@@ -3,7 +3,6 @@ require: rubocop-rspec
 AllCops:
   RunRailsCops: true
   Exclude:
-    - 'Vagrantfile'
     - 'bin/*'
     - 'db/schema.rb'
     - 'puppet/**/*'
