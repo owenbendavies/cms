@@ -101,8 +101,7 @@ Deployment
 ----------
 
 For deploying to Amazon Web Services (AWS). This is the project I use for
-setting up my development and live servers:
-https://github.com/obduk/setup_server
+setting up live servers: https://github.com/obduk/setup_server
 
 ### Setup
 
