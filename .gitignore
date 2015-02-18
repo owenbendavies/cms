@@ -1,4 +1,5 @@
 /.bundle
+/.vagrant/
 /config/deploy/*.rb
 /config/deploy/*.secrets.yml
 /config/secrets.yml
@@ -6,6 +7,8 @@
 /log/*.log
 /public/test_uploads
 /public/uploads
+/puppet/.librarian/
+/puppet/.tmp/
 /puppet/modules
 /tmp
 /vendor/bundle

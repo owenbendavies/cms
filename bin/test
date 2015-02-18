@@ -12,7 +12,7 @@ else
   eval "COVERAGE=on xvfb-run --auto-servernum ./bin/rspec"
   eval "./bin/rubocop --format simple"
   eval "./bin/cane --no-doc"
-  eval "./bin/rails_best_practices --silent"
+  eval "./bin/rails_best_practices --silent --exclude puppet"
   eval "RAILS_ENV=test ./bin/rake coffeelint"
   eval "./bin/brakeman --quiet --exit-on-warn"
   eval "./bin/travis-lint"
