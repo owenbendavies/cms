@@ -5,6 +5,7 @@ AllCops:
   Exclude:
     - 'bin/*'
     - 'db/schema.rb'
+    - 'puppet/**/*'
     - 'vendor/bundle/**/*'
 
 HasAndBelongsToMany:
