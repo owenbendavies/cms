@@ -15,18 +15,16 @@ For an example, check out my personal website at http://www.obduk.com
 
 ![Screen Shot](screen_shot.png)
 
-Dependencies
-------------
+Development dependencies
+------------------------
 
-This project requires a system running the following software:
+This project uses [Vagrant](https://www.vagrantup.com/) for development.
 
-* Ruby
-* Bundler
-* PostgreSQL
-* Imagemagick
-
-For more detailed dependencies, this is the project I use for setting up my
-development and live servers: https://github.com/obduk/setup_server
+```shell
+vagrant up
+vagrant ssh
+cd /vagrant
+```
 
 Setup
 -----
@@ -102,7 +100,8 @@ Run the following to spin up a server locally for development:
 Deployment
 ----------
 
-For deploying to Amazon Web Services (AWS).
+For deploying to Amazon Web Services (AWS). This is the project I use for
+setting up live servers: https://github.com/obduk/setup_server
 
 ### Setup
 
