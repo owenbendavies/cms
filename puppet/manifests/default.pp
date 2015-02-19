@@ -18,7 +18,6 @@ class { 'postgresql::lib::devel': link_pg_config => false }
 package {
   [
     'imagemagick',
-    'libffi-dev',
     'libqtwebkit-dev',
     'redis-server',
     'xvfb',
