@@ -8,14 +8,15 @@ if [ $# -gt 0 ]; then
   eval "xvfb-run --auto-servernum ./bin/rspec $@"
 else
   set -v
-  eval "./bin/compile"
-  eval "COVERAGE=on xvfb-run --auto-servernum ./bin/rspec"
-  eval "./bin/rubocop --format simple"
-  eval "./bin/cane --no-doc"
-  eval "./bin/rails_best_practices --silent --exclude puppet"
-  eval "RAILS_ENV=test ./bin/rake coffeelint"
-  eval "./bin/brakeman --quiet --exit-on-warn"
-  eval "./bin/travis-lint"
+  eval './bin/compile'
+  eval 'COVERAGE=on xvfb-run --auto-servernum ./bin/rspec'
+  eval './bin/rubocop --format simple'
+  eval './bin/cane --no-doc'
+  eval './bin/rails_best_practices --silent --exclude puppet'
+  eval 'RAILS_ENV=test ./bin/rake coffeelint'
+  eval './bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename'
+  eval './bin/brakeman --quiet --exit-on-warn'
+  eval './bin/travis-lint'
 fi
 
-echo "test complete"
+echo 'test complete'
