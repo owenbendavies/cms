@@ -79,6 +79,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'letter_opener_web'
+  gem 'puppet-lint', require: false
   gem 'quiet_assets'
 end
 
