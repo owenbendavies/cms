@@ -11,7 +11,7 @@
 }
 
 #main_menu, #footer_main_menu {
-  padding: 0;
+  .col-sm-12 { padding: 0 }
 
   .navbar {
     border-radius: 0;
