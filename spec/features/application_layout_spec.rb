@@ -3,12 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'application layout', type: :feature do
   it_behaves_like 'non logged in user' do
-    before do
-      site.main_menu_page_ids = [home_page.id, test_page.id]
-      site.save!
-
-      visit_page '/test_page'
-    end
+    before { visit_page '/test_page' }
 
     it 'has page url as body id' do
       expect(find('body')['id']).to eq 'page_url_test_page'
@@ -46,11 +41,6 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has sub title' do
       expect(find('h2#site_sub_title').text).to eq site.sub_title
-    end
-
-    it 'has main menu' do
-      expect(page).to have_link 'Home', href: '/home'
-      expect(page).to have_link 'Test Page', href: '/test_page'
     end
 
     it 'has page last updated in footer' do

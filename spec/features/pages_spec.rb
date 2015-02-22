@@ -144,7 +144,7 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'makes a page private' do
-        expect(find_field('page[private]')).not_to be_checked
+        expect(find_field('Private')).not_to be_checked
         check 'Private'
         click_button 'Update Page'
 

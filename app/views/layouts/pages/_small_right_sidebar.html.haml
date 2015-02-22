@@ -1,11 +1,18 @@
 #page.container
   = render 'layouts/header'
-  = render 'layouts/main_menu'
+
+  - if @site.main_menu_in_page and !@site.main_menu_pages.blank?
+    #main_menu
+      = render 'layouts/main_menu'
 
   #main.row
     %article#main_article.col-sm-9.narrow-forms
       = render 'layouts/main_article'
     %aside#sidebar.col-sm-3.hidden-print
       = @site.sidebar_html_content.to_s.html_safe
+
+  - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
+    #footer_main_menu
+      = render 'layouts/main_menu'
 
   = render 'layouts/footer'

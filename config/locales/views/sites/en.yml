@@ -7,6 +7,7 @@ en:
     edit:
       title: "Site Settings"
       icon: "cog"
+      main_menu: "Main Menu"
 
     index:
       title: "Sites"
