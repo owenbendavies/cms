@@ -18,6 +18,9 @@
 #  updated_by_id         :integer          not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  main_menu_in_topbar   :boolean          default("false"), not null
+#  main_menu_in_page     :boolean          default("true"), not null
+#  main_menu_in_footer   :boolean          default("false"), not null
 #
 
 require 'rails_helper'

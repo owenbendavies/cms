@@ -1,7 +1,6 @@
-- unless @site.main_menu_pages.blank?
-  .row
-    #main_menu.col-sm-12.hidden-print
-      = navbar do
-        = nav do
-          - @site.main_menu_pages.each do |page|
-            = link_to page.name, page_path(page.to_param)
+.row
+  .col-sm-12.hidden-print
+    = navbar do
+      = nav do
+        - @site.main_menu_pages.each do |page|
+          = link_to page.name, page_path(page.to_param)

@@ -1,77 +1,83 @@
-#topbar.hidden-print
-  = navbar position: :top, inverted: true, fluid: true do
-    = vertical do
-      = link_to @site.name, root_path
+- if user_signed_in? or (@site.main_menu_in_topbar and !@site.main_menu_pages.blank?)
+  #topbar.hidden-print
+    = navbar position: :top, inverted: true, fluid: true do
+      = vertical do
+        = link_to @site.name, root_path
 
-    = horizontal do
-      = nav class: 'navbar-right' do
-        %li.dropdown
-          %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-            = Page.model_name.human
-            %b.caret
-          %ul.dropdown-menu
-            - if @page and @page.persisted?
-              = link_to edit_page_path(@page.to_param) do
-                = icon(t('pages.edit.icon'))
-                = t('actions.edit')
+      = horizontal do
+        = nav class: 'navbar-right' do
+          - if @site.main_menu_in_topbar
+            - @site.main_menu_pages.each do |page|
+              = link_to page.name, page_path(page.to_param)
 
-              = link_to icon(t('pages.delete.icon')) + " " + t('actions.delete'),
-                          page_path(@page.to_param),
-                          method: :delete,
-                          data: {confirm: t('pages.delete.text', name: @page.name)},
-                          "data-confirm-title" => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,
-                          "data-confirm-proceed" => "<i class='icon-trash'></i> #{t('actions.delete')}".html_safe,
-                          "data-confirm-cancel" => "<i class='icon-remove'></i> #{t('actions.cancel')}".html_safe,
-                          "data-confirm-proceed-class" => "btn-danger"
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+                = Page.model_name.human
+                %b.caret
+              %ul.dropdown-menu
+                - if @page and @page.persisted?
+                  = link_to edit_page_path(@page.to_param) do
+                    = icon(t('pages.edit.icon'))
+                    = t('actions.edit')
 
-            = link_to new_page_path do
-              = icon(t('pages.new.icon'))
-              = t('pages.new.title')
+                  = link_to icon(t('pages.delete.icon')) + " " + t('actions.delete'),
+                              page_path(@page.to_param),
+                              method: :delete,
+                              data: {confirm: t('pages.delete.text', name: @page.name)},
+                              "data-confirm-title" => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,
+                              "data-confirm-proceed" => "<i class='icon-trash'></i> #{t('actions.delete')}".html_safe,
+                              "data-confirm-cancel" => "<i class='icon-remove'></i> #{t('actions.cancel')}".html_safe,
+                              "data-confirm-proceed-class" => "btn-danger"
 
-        %li.dropdown
-          %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-            = Site.model_name.human
-            %b.caret
-          %ul.dropdown-menu
-            = link_to site_messages_path do
-              = icon(t('messages.index.icon'))
-              = t('messages.index.title')
+                = link_to new_page_path do
+                  = icon(t('pages.new.icon'))
+                  = t('pages.new.title')
 
-            = link_to site_images_path do
-              = icon(t('images.index.icon'))
-              = t('images.index.title')
+            %li.dropdown
+              %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+                = Site.model_name.human
+                %b.caret
+              %ul.dropdown-menu
+                = link_to site_messages_path do
+                  = icon(t('messages.index.icon'))
+                  = t('messages.index.title')
 
-            = link_to edit_site_path do
-              = icon(t('sites.edit.icon'))
-              = t('sites.edit.title')
+                = link_to site_images_path do
+                  = icon(t('images.index.icon'))
+                  = t('images.index.title')
 
-            = link_to site_users_path do
-              = icon(t('users.index.icon'))
-              = t('users.index.title')
+                = link_to edit_site_path do
+                  = icon(t('sites.edit.icon'))
+                  = t('sites.edit.title')
 
-            = link_to css_site_path do
-              = icon(t('sites.css.icon'))
-              = t('sites.css.title')
+                = link_to site_users_path do
+                  = icon(t('users.index.icon'))
+                  = t('users.index.title')
 
-            = link_to sitemap_path do
-              = icon(t('sitemaps.show.icon'))
-              = t('sitemaps.show.title')
+                = link_to css_site_path do
+                  = icon(t('sites.css.icon'))
+                  = t('sites.css.title')
 
-        %li.dropdown
-          %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-            = current_user.email
-            %b.caret
-          %ul.dropdown-menu
-            = link_to edit_user_registration_path do
-              = icon(t('devise.registrations.edit.icon'))
-              = t('devise.registrations.edit.title')
+                = link_to sitemap_path do
+                  = icon(t('sitemaps.show.icon'))
+                  = t('sitemaps.show.title')
 
-            = link_to sites_path do
-              = icon(t('sites.index.icon'))
-              = t('sites.index.title')
+            %li.dropdown
+              %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+                = current_user.email
+                %b.caret
+              %ul.dropdown-menu
+                = link_to edit_user_registration_path do
+                  = icon(t('devise.registrations.edit.icon'))
+                  = t('devise.registrations.edit.title')
 
-            = link_to destroy_user_session_path do
-              = icon(t('devise.sessions.destroy.icon'))
-              = t('devise.sessions.destroy.title')
+                = link_to sites_path do
+                  = icon(t('sites.index.icon'))
+                  = t('sites.index.title')
 
-        %li.avatar= image_tag(current_user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+                = link_to destroy_user_session_path do
+                  = icon(t('devise.sessions.destroy.icon'))
+                  = t('devise.sessions.destroy.title')
+
+            %li.avatar= image_tag(current_user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
