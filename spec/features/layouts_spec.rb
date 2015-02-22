@@ -5,6 +5,8 @@ RSpec.describe 'layouts', type: :feature do
   shared_context 'layout' do |layout|
     before do
       site.main_menu_page_ids = [home_page.id, test_page.id]
+      site.main_menu_in_page = true
+      site.main_menu_in_footer = true
       site.layout = layout
       site.save!
 
@@ -15,6 +17,7 @@ RSpec.describe 'layouts', type: :feature do
       expect(page).to have_selector 'header#page_header'
       expect(page).to have_selector '#main_menu'
       expect(page).to have_selector 'article#main_article'
+      expect(page).to have_selector '#footer_main_menu'
       expect(page).to have_selector 'footer#page_footer'
     end
   end

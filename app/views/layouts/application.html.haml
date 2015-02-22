@@ -17,5 +17,5 @@
     <![endif]-->
 
   %body{id: body_id(request.path)}
-    = render 'layouts/topbar' if user_signed_in?
+    = render 'layouts/topbar'
     = render "layouts/pages/#{@site.layout}"

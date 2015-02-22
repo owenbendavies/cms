@@ -37,7 +37,7 @@ RSpec.describe '/site', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'shoud update site' do
+      it 'updates the site' do
         host_field = find('#site_host')
         expect(host_field.value).to eq 'localhost'
         expect(host_field['disabled']).to eq 'disabled'
@@ -46,9 +46,7 @@ RSpec.describe '/site', type: :feature do
         expect(find_field('Name')['autofocus']).to eq 'autofocus'
         expect(find_field('Sub title').value).to eq site.sub_title
         expect(find_field('Copyright').value).to eq site.copyright
-
-        expect(find_field('Google Analytics').value)
-          .to eq site.google_analytics
+        expect(find_field('Google Analytics').value).to eq site.google_analytics
 
         charity_field = find('#site_charity_number')
         expect(charity_field.value).to eq site.charity_number
@@ -56,11 +54,20 @@ RSpec.describe '/site', type: :feature do
 
         expect(find_field('Layout').value).to eq site.layout
 
+        expect(find_field('Display in topbar')).to_not be_checked
+        expect(find_field('Display in page')).to be_checked
+        expect(find_field('Display in footer')).to_not be_checked
+
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
         fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
         select 'Right sidebar', from: 'Layout'
+
+        check 'Display in topbar'
+        uncheck 'Display in page'
+        check 'Display in footer'
+
         click_button 'Update Site'
 
         expect(current_path).to eq '/home'
@@ -73,6 +80,9 @@ RSpec.describe '/site', type: :feature do
         expect(site.google_analytics).to eq new_google_analytics
         expect(site.layout).to eq 'right_sidebar'
         expect(site.updated_by).to eq user
+        expect(site.main_menu_in_topbar).to eq true
+        expect(site.main_menu_in_page).to eq false
+        expect(site.main_menu_in_footer).to eq true
       end
 
       it 'does not store empty copyright' do

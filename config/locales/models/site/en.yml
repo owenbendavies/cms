@@ -11,3 +11,6 @@ en:
         copyright: "Copyright"
         google_analytics: "Google Analytics"
         charity_number: "Charity number"
+        main_menu_in_topbar: "Display in topbar"
+        main_menu_in_page: "Display in page"
+        main_menu_in_footer: "Display in footer"
