@@ -7,7 +7,6 @@ en:
     edit:
       title: "Site Settings"
       icon: "cog"
-      main_menu: "Main Menu"
       footer: "Footer"
 
     index:
