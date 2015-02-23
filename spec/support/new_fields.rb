@@ -15,6 +15,7 @@ module NewFields
     let(:new_name) { Faker::Name.name }
     let(:new_password) { Faker::Internet.password(20, 30) }
     let(:new_phone) { "+447#{rand(1_000_000_000).to_s.ljust(9, '0')}" }
+    let(:new_number) { rand 10_000 }
   end
 end
 
