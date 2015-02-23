@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
     else
       @site = Site.new
       @site.name = t('errors.site_not_found.title')
-      @site.layout = 'site_not_found'
 
       render template: 'errors/site_not_found', formats: ['html'], status: 404
     end
