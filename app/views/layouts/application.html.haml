@@ -18,4 +18,19 @@
 
   %body{id: body_id(request.path)}
     = render 'layouts/topbar'
-    = render "layouts/pages/#{@site.layout}"
+
+    #page.container
+      = render 'layouts/header'
+
+      - if @site.main_menu_in_page and !@site.main_menu_pages.blank?
+        #main_menu
+          = render 'layouts/main_menu'
+
+      #main.row
+        = render "layouts/pages/#{@site.layout}"
+
+      - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
+        #footer_main_menu
+          = render 'layouts/main_menu'
+
+      = render 'layouts/footer'
