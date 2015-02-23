@@ -19,18 +19,21 @@
   %body{id: body_id(request.path)}
     = render 'layouts/topbar'
 
-    #page.container
-      = render 'layouts/header'
+    #page_wrapper
+      #page.container
+        #page_header.hidden-print.row
+          = render 'layouts/header'
 
-      - if @site.main_menu_in_page and !@site.main_menu_pages.blank?
-        #main_menu
-          = render 'layouts/main_menu'
+        - if @site.main_menu_in_page and !@site.main_menu_pages.blank?
+          #main_menu.hidden-print.row
+            = render 'layouts/main_menu'
 
-      #main.row
-        = render "layouts/pages/#{@site.layout}"
+        #main.row
+          = render "layouts/pages/#{@site.layout}"
 
-      - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
-        #footer_main_menu
-          = render 'layouts/main_menu'
+        - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
+          #footer_main_menu.hidden-print.row
+            = render 'layouts/main_menu'
 
-      = render 'layouts/footer'
+        #page_footer.hidden-print.row
+          = render 'layouts/footer'

@@ -1,21 +1,20 @@
-.row
-  %footer#page_footer.col-sm-12.hidden-print.text-center
-    %ul.list-unstyled
-      - if @page and @page.persisted?
-        %li#last_update
-          %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
+%footer.col-sm-12.text-center
+  %ul.list-unstyled
+    - if @page and @page.persisted?
+      %li#last_update
+        %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
-      %li#copyright
-        %small= footer_copyright(@site)
+    %li#copyright
+      %small= footer_copyright(@site)
 
-      %li
-        %ul#footer_links.list-inline
+    %li
+      %ul#footer_links.list-inline
+        %li
+          %small= link_to t('sitemaps.show.title'), sitemap_path
+
+        - if user_signed_in?
           %li
-            %small= link_to t('sitemaps.show.title'), sitemap_path
-
-          - if user_signed_in?
-            %li
-              %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
-          - else
-            %li
-              %small= link_to t('devise.sessions.new.title'), new_user_session_path
+            %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
+        - else
+          %li
+            %small= link_to t('devise.sessions.new.title'), new_user_session_path
