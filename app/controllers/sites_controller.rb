@@ -20,8 +20,9 @@ class SitesController < ApplicationController
 
   def site_params
     params.require(:site).permit(
-      :copyright, :css, :google_analytics, :layout, :main_menu_in_footer,
-      :main_menu_in_page, :main_menu_in_topbar, :name, :sub_title
+      :charity_number, :copyright, :css, :google_analytics, :layout,
+      :main_menu_in_footer, :main_menu_in_page, :main_menu_in_topbar, :name,
+      :sub_title
     ).merge(updated_by: current_user)
   end
 end
