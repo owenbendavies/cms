@@ -45,28 +45,27 @@ RSpec.describe '/site', type: :feature do
         expect(find_field('Name').value).to eq site.name
         expect(find_field('Name')['autofocus']).to eq 'autofocus'
         expect(find_field('Sub title').value).to eq site.sub_title
-        expect(find_field('Copyright').value).to eq site.copyright
         expect(find_field('Google Analytics').value).to eq site.google_analytics
-
-        charity_field = find('#site_charity_number')
-        expect(charity_field.value).to eq site.charity_number
-        expect(charity_field['disabled']).to eq 'disabled'
-
         expect(find_field('Layout').value).to eq site.layout
 
         expect(find_field('Display in topbar')).to_not be_checked
         expect(find_field('Display in page')).to be_checked
         expect(find_field('Display in footer')).to_not be_checked
 
+        expect(find_field('Copyright').value).to eq site.copyright
+        expect(find_field('Charity number').value).to eq site.charity_number
+
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
-        fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
         select 'Right sidebar', from: 'Layout'
 
         check 'Display in topbar'
         uncheck 'Display in page'
         check 'Display in footer'
+
+        fill_in 'Copyright', with: " #{new_name} "
+        fill_in 'Charity number', with: " #{new_number} "
 
         click_button 'Update Site'
 
@@ -76,13 +75,16 @@ RSpec.describe '/site', type: :feature do
         site = Site.find_by_host!('localhost')
         expect(site.name).to eq new_company_name
         expect(site.sub_title).to eq new_catch_phrase
-        expect(site.copyright).to eq new_name
         expect(site.google_analytics).to eq new_google_analytics
         expect(site.layout).to eq 'right_sidebar'
         expect(site.updated_by).to eq user
+
         expect(site.main_menu_in_topbar).to eq true
         expect(site.main_menu_in_page).to eq false
         expect(site.main_menu_in_footer).to eq true
+
+        expect(site.copyright).to eq new_name
+        expect(site.charity_number).to eq new_number.to_s
       end
 
       it 'does not store empty copyright' do
