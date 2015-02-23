@@ -1,11 +1,10 @@
-.row
-  %header#page_header.col-sm-12.hidden-print.text-center
-    %h1#site_name
-      = link_to page_path('home') do
-        - if @site.header_image_filename
-          = image_tag(@site.header_image.span12.url, alt: @site.name, class: 'img-center')
-        - else
-          = @site.name
+%header.col-sm-12.text-center
+  %h1#site_name
+    = link_to page_path('home') do
+      - if @site.header_image_filename
+        = image_tag(@site.header_image.span12.url, alt: @site.name, class: 'img-center')
+      - else
+        = @site.name
 
-    - if @site.sub_title
-      %h2#site_sub_title= @site.sub_title
+  - if @site.sub_title
+    %h2#site_sub_title= @site.sub_title

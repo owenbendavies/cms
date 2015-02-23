@@ -1,16 +1,2 @@
-#page.container
-  = render 'layouts/header'
-
-  - if @site.main_menu_in_page and !@site.main_menu_pages.blank?
-    #main_menu
-      = render 'layouts/main_menu'
-
-  #main.row
-    %article#main_article.col-sm-12
-      = render 'layouts/main_article'
-
-  - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
-    #footer_main_menu
-      = render 'layouts/main_menu'
-
-  = render 'layouts/footer'
+%article#main_article.col-sm-12
+  = render 'layouts/main_article'
