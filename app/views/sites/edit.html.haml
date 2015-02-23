@@ -8,14 +8,10 @@
   = form.input :google_analytics
   = form.input :layout, collection: Site::LAYOUTS.map{|i| [i.humanize, i]}, prompt: nil
 
-  %h2= t('.main_menu')
-  = form.input :main_menu_in_topbar
-  = form.input :main_menu_in_page
-  = form.input :main_menu_in_footer
-
   %h2= t('.footer')
   = form.input :copyright
   = form.input :charity_number
+  = form.input :main_menu_in_footer
 
   .form-group
     .col-control-offset

@@ -48,24 +48,18 @@ RSpec.describe '/site', type: :feature do
         expect(find_field('Google Analytics').value).to eq site.google_analytics
         expect(find_field('Layout').value).to eq site.layout
 
-        expect(find_field('Display in topbar')).to_not be_checked
-        expect(find_field('Display in page')).to be_checked
-        expect(find_field('Display in footer')).to_not be_checked
-
         expect(find_field('Copyright').value).to eq site.copyright
         expect(find_field('Charity number').value).to eq site.charity_number
+        expect(find_field('Main menu')).to_not be_checked
 
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
         select 'Right sidebar', from: 'Layout'
 
-        check 'Display in topbar'
-        uncheck 'Display in page'
-        check 'Display in footer'
-
         fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Charity number', with: " #{new_number} "
+        check 'Main menu'
 
         click_button 'Update Site'
 
@@ -79,12 +73,9 @@ RSpec.describe '/site', type: :feature do
         expect(site.layout).to eq 'right_sidebar'
         expect(site.updated_by).to eq user
 
-        expect(site.main_menu_in_topbar).to eq true
-        expect(site.main_menu_in_page).to eq false
-        expect(site.main_menu_in_footer).to eq true
-
         expect(site.copyright).to eq new_name
         expect(site.charity_number).to eq new_number.to_s
+        expect(site.main_menu_in_footer).to eq true
       end
 
       it 'does not store empty copyright' do
