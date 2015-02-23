@@ -13,7 +13,9 @@ RSpec.describe 'main menu', type: :feature do
 
       within '#main_menu' do
         expect(page).to have_link 'Home', href: '/home'
+        expect(page).to have_selector 'a.page_url_home'
         expect(page).to have_link 'Test Page', href: '/test_page'
+        expect(page).to have_selector 'a.page_url_test_page'
       end
 
       expect(page).to_not have_selector '#footer_main_menu'
@@ -30,6 +32,8 @@ RSpec.describe 'main menu', type: :feature do
 
         within '#footer_main_menu' do
           expect(page).to have_link 'Home', href: '/home'
+          expect(page).to have_selector 'a.page_url_home'
+          expect(page).to have_link 'Test Page', href: '/test_page'
           expect(page).to have_link 'Test Page', href: '/test_page'
         end
       end
