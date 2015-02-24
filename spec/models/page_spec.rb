@@ -47,11 +47,11 @@ RSpec.describe Page do
 
   describe 'on save' do
     it 'sets url from name' do
-      page = FactoryGirl.build(:page, name: 'Test Page')
+      page = FactoryGirl.build(:page, name: "Test's Page")
       page.save!
 
-      expect(page.name).to eq 'Test Page'
-      expect(page.url).to eq 'test_page'
+      expect(page.name).to eq "Test's Page"
+      expect(page.url).to eq 'tests_page'
     end
   end
 
