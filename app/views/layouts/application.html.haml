@@ -23,8 +23,9 @@
 
     #page_wrapper
       #page.container
-        #page_header.hidden-print.row
-          = render 'layouts/header'
+        - if @site.separate_header
+          #page_header.hidden-print.row
+            = render 'layouts/header'
 
         - unless @site.main_menu_pages.blank?
           #main_menu.hidden-print.row
@@ -35,7 +36,7 @@
 
         - if @site.main_menu_in_footer and !@site.main_menu_pages.blank?
           #footer_main_menu.hidden-print.row
-            = render 'layouts/main_menu'
+            = render 'layouts/footer_main_menu'
 
         #page_footer.hidden-print.row
           = render 'layouts/footer'
