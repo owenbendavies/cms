@@ -19,6 +19,7 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  main_menu_in_footer   :boolean          default("false"), not null
+#  separate_header       :boolean          default("true"), not null
 #
 
 require 'rails_helper'
