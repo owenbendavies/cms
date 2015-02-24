@@ -1,4 +1,14 @@
 = navbar do
-  = nav do
-    - @site.main_menu_pages.each do |page|
-      = link_to page.name, page_path(page.to_param), class: 'page_url_' + page.to_param
+  = vertical do
+    - unless @site.separate_header
+      = link_to page_path('home') do
+        - if @site.header_image_filename
+          = image_tag(@site.header_image.span1.url, alt: @site.name)
+        - else
+          = @site.name
+
+  = horizontal do
+    - nav_class = 'navbar-right' unless @site.separate_header
+    = nav class: nav_class do
+      - @site.main_menu_pages.each do |page|
+        = link_to page.name, page_path(page.to_param), class: 'page_url_' + page.to_param
