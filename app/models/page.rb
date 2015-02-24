@@ -32,7 +32,7 @@ class Page < ActiveRecord::Base
   validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
 
   def name=(value)
-    self.url = value.parameterize('_') if value
+    self.url = value.gsub("'", '').parameterize('_') if value
     super(value)
   end
 
