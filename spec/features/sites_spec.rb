@@ -47,6 +47,7 @@ RSpec.describe '/site', type: :feature do
         expect(find_field('Sub title').value).to eq site.sub_title
         expect(find_field('Google Analytics').value).to eq site.google_analytics
         expect(find_field('Layout').value).to eq site.layout
+        expect(find_field('Separate header')).to be_checked
 
         expect(find_field('Copyright').value).to eq site.copyright
         expect(find_field('Charity number').value).to eq site.charity_number
@@ -56,6 +57,7 @@ RSpec.describe '/site', type: :feature do
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
         select 'Right sidebar', from: 'Layout'
+        uncheck 'Separate header'
 
         fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Charity number', with: " #{new_number} "
@@ -72,6 +74,7 @@ RSpec.describe '/site', type: :feature do
         expect(site.google_analytics).to eq new_google_analytics
         expect(site.layout).to eq 'right_sidebar'
         expect(site.updated_by).to eq user
+        expect(site.separate_header).to eq false
 
         expect(site.copyright).to eq new_name
         expect(site.charity_number).to eq new_number.to_s

@@ -33,16 +33,6 @@ RSpec.describe 'application layout', type: :feature do
       expect(body).to_not include('&uid')
     end
 
-    it 'has header image' do
-      image = page.find('h1#site_name a[href="/home"] img')
-      expect(image['src']).to eq site.header_image.span12.url
-      expect(image['alt']).to eq site.name
-    end
-
-    it 'has sub title' do
-      expect(find('h2#site_sub_title').text).to eq site.sub_title
-    end
-
     it 'has page last updated in footer' do
       within 'footer' do
         expect(find('#last_update').text)

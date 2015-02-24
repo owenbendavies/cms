@@ -7,6 +7,7 @@
   = form.input :sub_title
   = form.input :google_analytics
   = form.input :layout, collection: Site::LAYOUTS.map{|i| [i.humanize, i]}, prompt: nil
+  = form.input :separate_header
 
   %h2= t('.footer')
   = form.input :copyright
