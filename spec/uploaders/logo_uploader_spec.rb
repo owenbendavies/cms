@@ -38,7 +38,7 @@ RSpec.describe LogoUploader, uploads: true do
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
 
       expect(subject.header).to have_dimensions(940, 705)
-      expect(subject.nav).to have_dimensions(60, 45)
+      expect(subject.nav).to have_dimensions(80, 60)
     end
 
     it 'does not enlarge images' do
