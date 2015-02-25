@@ -5,7 +5,7 @@
 #  id            :integer          not null, primary key
 #  site_id       :integer          not null
 #  name          :string(64)       not null
-#  filename      :string(36)       not null
+#  filename      :string(36)
 #  created_by_id :integer          not null
 #  updated_by_id :integer          not null
 #  created_at    :datetime         not null
@@ -14,10 +14,10 @@
 
 require 'rails_helper'
 
-RSpec.describe Image do
+RSpec.describe Image, uploads: true do
   describe '#site' do
     let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.create(:image, site: site) }
+    subject { FactoryGirl.build(:image, site: site) }
 
     it 'returns images site' do
       expect(subject.site).to eq site
@@ -26,7 +26,7 @@ RSpec.describe Image do
 
   describe '#created_by' do
     let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:image, created_by: user) }
+    subject { FactoryGirl.build(:image, created_by: user) }
 
     it 'returns user' do
       expect(subject.created_by).to eq user
@@ -35,7 +35,7 @@ RSpec.describe Image do
 
   describe '#updated_by' do
     let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:image, updated_by: user) }
+    subject { FactoryGirl.build(:image, updated_by: user) }
 
     it 'returns user' do
       expect(subject.updated_by).to eq user
@@ -55,15 +55,20 @@ RSpec.describe Image do
   end
 
   it 'has a file' do
-    image = FactoryGirl.build(:image)
-    file = image.file
+    image = FactoryGirl.create(
+      :image,
+      file: File.open(Rails.root.join('spec/assets/test_image.jpg'))
+    )
 
-    expect(file.url).to eq File.join(
+    expect(image.file.url).to eq File.join(
       '/',
       Rails.application.secrets.uploads_store_dir,
       image.site.id.to_s,
       image.filename
     )
+
+    expect(uploaded_files)
+      .to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
   end
 
   it 'strips attributes' do
