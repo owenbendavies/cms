@@ -29,7 +29,7 @@ class LogoUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [940, 705]
   end
 
-  version :nav, from_version: :header do
-    process resize_to_limit: [200, 60]
+  version :main_menu, from_version: :header do
+    process resize_to_limit: [200, 50]
   end
 end
