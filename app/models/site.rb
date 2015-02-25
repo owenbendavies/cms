@@ -39,7 +39,7 @@ class Site < ActiveRecord::Base
   serialize :main_menu_page_ids, Array
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
-  mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
+  mount_uploader :header_image, LogoUploader, mount_on: :header_image_filename
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 

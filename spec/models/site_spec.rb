@@ -100,28 +100,37 @@ RSpec.describe Site do
     is_expected.to be_versioned
   end
 
-  it 'has a stylesheet' do
-    site = FactoryGirl.build(:site)
-    stylesheet = site.stylesheet
+  describe '#stylesheet', uploads: true do
+    it 'has a stylesheet' do
+      site = FactoryGirl.build(:site)
+      stylesheet = site.stylesheet
 
-    expect(stylesheet.url).to eq File.join(
-      '/',
-      Rails.application.secrets.uploads_store_dir,
-      site.id.to_s,
-      site.stylesheet_filename
-    )
+      expect(stylesheet.url).to eq File.join(
+        '/',
+        Rails.application.secrets.uploads_store_dir,
+        site.id.to_s,
+        site.stylesheet_filename
+      )
+    end
   end
 
-  it 'has a header image' do
-    site = FactoryGirl.build(:site)
-    header_image = site.header_image
+  describe '#header_image', uploads: true do
+    it 'saves an image' do
+      site = FactoryGirl.create(
+        :site,
+        header_image: File.open(Rails.root.join('spec/assets/test_image.jpg'))
+      )
 
-    expect(header_image.url).to eq File.join(
-      '/',
-      Rails.application.secrets.uploads_store_dir,
-      site.id.to_s,
-      site.header_image_filename
-    )
+      expect(site.header_image.url).to eq File.join(
+        '/',
+        Rails.application.secrets.uploads_store_dir,
+        site.id.to_s,
+        site.header_image_filename
+      )
+
+      expect(uploaded_files)
+        .to include "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+    end
   end
 
   it 'strips attributes' do
