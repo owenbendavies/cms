@@ -1,8 +1,8 @@
 %header.col-sm-12.text-center
   %h1#site_name
     = link_to page_path('home') do
-      - if @site.header_image_filename
-        = image_tag(@site.header_image.header.url, alt: @site.name, class: 'img-center')
+      - if @site.logo_filename
+        = image_tag(@site.logo.header.url, alt: @site.name, class: 'img-center')
       - else
         = @site.name
 

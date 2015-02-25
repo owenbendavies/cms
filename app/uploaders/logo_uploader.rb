@@ -13,10 +13,10 @@ class LogoUploader < CarrierWave::Uploader::Base
     unless version_name
       md5 = Digest::MD5.hexdigest(read)
       extension = file.extension.gsub('jpeg', 'jpg').downcase
-      model.header_image_filename = "#{md5}.#{extension}"
+      model.logo_filename = "#{md5}.#{extension}"
     end
 
-    model.header_image_filename
+    model.logo_filename
   end
 
   def full_filename(for_file)

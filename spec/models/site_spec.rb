@@ -2,24 +2,24 @@
 #
 # Table name: sites
 #
-#  id                    :integer          not null, primary key
-#  host                  :string(64)       not null
-#  name                  :string(64)       not null
-#  sub_title             :string(64)
-#  layout                :string(32)       default("one_column")
-#  main_menu_page_ids    :text
-#  copyright             :string(64)
-#  google_analytics      :string(32)
-#  charity_number        :string(32)
-#  stylesheet_filename   :string(36)
-#  header_image_filename :string(36)
-#  sidebar_html_content  :text
-#  created_by_id         :integer          not null
-#  updated_by_id         :integer          not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  main_menu_in_footer   :boolean          default("false"), not null
-#  separate_header       :boolean          default("true"), not null
+#  id                   :integer          not null, primary key
+#  host                 :string(64)       not null
+#  name                 :string(64)       not null
+#  sub_title            :string(64)
+#  layout               :string(32)       default("one_column")
+#  main_menu_page_ids   :text
+#  copyright            :string(64)
+#  google_analytics     :string(32)
+#  charity_number       :string(32)
+#  stylesheet_filename  :string(36)
+#  logo_filename        :string(36)
+#  sidebar_html_content :text
+#  created_by_id        :integer          not null
+#  updated_by_id        :integer          not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  main_menu_in_footer  :boolean          default("false"), not null
+#  separate_header      :boolean          default("true"), not null
 #
 
 require 'rails_helper'
@@ -114,18 +114,18 @@ RSpec.describe Site do
     end
   end
 
-  describe '#header_image', uploads: true do
+  describe '#logo', uploads: true do
     it 'saves an image' do
       site = FactoryGirl.create(
         :site,
-        header_image: File.open(Rails.root.join('spec/assets/test_image.jpg'))
+        logo: File.open(Rails.root.join('spec/assets/test_image.jpg'))
       )
 
-      expect(site.header_image.url).to eq File.join(
+      expect(site.logo.url).to eq File.join(
         '/',
         Rails.application.secrets.uploads_store_dir,
         site.id.to_s,
-        site.header_image_filename
+        site.logo_filename
       )
 
       expect(uploaded_files)
