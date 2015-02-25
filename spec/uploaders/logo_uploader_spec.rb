@@ -30,7 +30,7 @@ RSpec.describe LogoUploader, uploads: true do
         "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_header.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_nav.jpg"
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_main_menu.jpg"
       ].sort
     end
 
@@ -38,14 +38,14 @@ RSpec.describe LogoUploader, uploads: true do
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
 
       expect(subject.header).to have_dimensions(940, 705)
-      expect(subject.nav).to have_dimensions(80, 60)
+      expect(subject.main_menu).to have_dimensions(67, 50)
     end
 
     it 'does not enlarge images' do
       subject.store! File.open(Rails.root.join('spec/assets/small.jpg'))
 
       expect(subject.header).to have_dimensions(80, 80)
-      expect(subject.nav).to have_dimensions(60, 60)
+      expect(subject.main_menu).to have_dimensions(50, 50)
     end
 
     it 'saves extension as downcase' do
@@ -57,7 +57,7 @@ RSpec.describe LogoUploader, uploads: true do
         "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_header.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_nav.jpg"
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_main_menu.jpg"
       ].sort
     end
 
@@ -70,7 +70,7 @@ RSpec.describe LogoUploader, uploads: true do
         "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_header.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_nav.jpg"
+        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_main_menu.jpg"
       ].sort
     end
   end
