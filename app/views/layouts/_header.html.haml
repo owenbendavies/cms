@@ -2,7 +2,7 @@
   %h1#site_name
     = link_to page_path('home') do
       - if @site.header_image_filename
-        = image_tag(@site.header_image.span12.url, alt: @site.name, class: 'img-center')
+        = image_tag(@site.header_image.header.url, alt: @site.name, class: 'img-center')
       - else
         = @site.name
 
