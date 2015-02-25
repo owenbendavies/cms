@@ -91,7 +91,7 @@ RSpec.describe 'header and main menu', type: :feature do
           site.save!
           visit_page '/home'
           image = page.find('#main_menu a[href="/home"] img')
-          expect(image['src']).to eq site.logo.nav.url
+          expect(image['src']).to eq site.logo.main_menu.url
           expect(image['alt']).to eq site.name
         end
       end
