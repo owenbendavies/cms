@@ -14,7 +14,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Image, uploads: true do
+RSpec.describe Image do
   describe '#site' do
     let(:site) { FactoryGirl.create(:site) }
     subject { FactoryGirl.build(:image, site: site) }
@@ -54,21 +54,23 @@ RSpec.describe Image, uploads: true do
     is_expected.to be_versioned
   end
 
-  it 'has a file' do
-    image = FactoryGirl.create(
-      :image,
-      file: File.open(Rails.root.join('spec/assets/test_image.jpg'))
-    )
+  describe '#file', uploads: true do
+    it 'saves an image' do
+      image = FactoryGirl.create(
+        :image,
+        file: File.open(Rails.root.join('spec/assets/test_image.jpg'))
+      )
 
-    expect(image.file.url).to eq File.join(
-      '/',
-      Rails.application.secrets.uploads_store_dir,
-      image.site.id.to_s,
-      image.filename
-    )
+      expect(image.file.url).to eq File.join(
+        '/',
+        Rails.application.secrets.uploads_store_dir,
+        image.site.id.to_s,
+        image.filename
+      )
 
-    expect(uploaded_files)
-      .to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+      expect(uploaded_files)
+        .to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+    end
   end
 
   it 'strips attributes' do

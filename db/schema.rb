@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225105001) do
+ActiveRecord::Schema.define(version: 20150225141735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,23 +65,23 @@ ActiveRecord::Schema.define(version: 20150225105001) do
   add_index "pages", ["updated_by_id"], name: "index_pages_on_updated_by_id", using: :btree
 
   create_table "sites", force: :cascade do |t|
-    t.string   "host",                  limit: 64,                        null: false
-    t.string   "name",                  limit: 64,                        null: false
-    t.string   "sub_title",             limit: 64
-    t.string   "layout",                limit: 32, default: "one_column"
+    t.string   "host",                 limit: 64,                        null: false
+    t.string   "name",                 limit: 64,                        null: false
+    t.string   "sub_title",            limit: 64
+    t.string   "layout",               limit: 32, default: "one_column"
     t.text     "main_menu_page_ids"
-    t.string   "copyright",             limit: 64
-    t.string   "google_analytics",      limit: 32
-    t.string   "charity_number",        limit: 32
-    t.string   "stylesheet_filename",   limit: 36
-    t.string   "header_image_filename", limit: 36
+    t.string   "copyright",            limit: 64
+    t.string   "google_analytics",     limit: 32
+    t.string   "charity_number",       limit: 32
+    t.string   "stylesheet_filename",  limit: 36
+    t.string   "logo_filename",        limit: 36
     t.text     "sidebar_html_content"
-    t.integer  "created_by_id",                                           null: false
-    t.integer  "updated_by_id",                                           null: false
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
-    t.boolean  "main_menu_in_footer",              default: false,        null: false
-    t.boolean  "separate_header",                  default: true,         null: false
+    t.integer  "created_by_id",                                          null: false
+    t.integer  "updated_by_id",                                          null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
+    t.boolean  "main_menu_in_footer",             default: false,        null: false
+    t.boolean  "separate_header",                 default: true,         null: false
   end
 
   add_index "sites", ["created_by_id"], name: "index_sites_on_created_by_id", using: :btree

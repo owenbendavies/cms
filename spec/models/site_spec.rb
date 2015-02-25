@@ -2,24 +2,24 @@
 #
 # Table name: sites
 #
-#  id                    :integer          not null, primary key
-#  host                  :string(64)       not null
-#  name                  :string(64)       not null
-#  sub_title             :string(64)
-#  layout                :string(32)       default("one_column")
-#  main_menu_page_ids    :text
-#  copyright             :string(64)
-#  google_analytics      :string(32)
-#  charity_number        :string(32)
-#  stylesheet_filename   :string(36)
-#  header_image_filename :string(36)
-#  sidebar_html_content  :text
-#  created_by_id         :integer          not null
-#  updated_by_id         :integer          not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  main_menu_in_footer   :boolean          default("false"), not null
-#  separate_header       :boolean          default("true"), not null
+#  id                   :integer          not null, primary key
+#  host                 :string(64)       not null
+#  name                 :string(64)       not null
+#  sub_title            :string(64)
+#  layout               :string(32)       default("one_column")
+#  main_menu_page_ids   :text
+#  copyright            :string(64)
+#  google_analytics     :string(32)
+#  charity_number       :string(32)
+#  stylesheet_filename  :string(36)
+#  logo_filename        :string(36)
+#  sidebar_html_content :text
+#  created_by_id        :integer          not null
+#  updated_by_id        :integer          not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  main_menu_in_footer  :boolean          default("false"), not null
+#  separate_header      :boolean          default("true"), not null
 #
 
 require 'rails_helper'
@@ -100,28 +100,37 @@ RSpec.describe Site do
     is_expected.to be_versioned
   end
 
-  it 'has a stylesheet' do
-    site = FactoryGirl.build(:site)
-    stylesheet = site.stylesheet
+  describe '#stylesheet', uploads: true do
+    it 'has a stylesheet' do
+      site = FactoryGirl.build(:site)
+      stylesheet = site.stylesheet
 
-    expect(stylesheet.url).to eq File.join(
-      '/',
-      Rails.application.secrets.uploads_store_dir,
-      site.id.to_s,
-      site.stylesheet_filename
-    )
+      expect(stylesheet.url).to eq File.join(
+        '/',
+        Rails.application.secrets.uploads_store_dir,
+        site.id.to_s,
+        site.stylesheet_filename
+      )
+    end
   end
 
-  it 'has a header image' do
-    site = FactoryGirl.build(:site)
-    header_image = site.header_image
+  describe '#logo', uploads: true do
+    it 'saves an image' do
+      site = FactoryGirl.create(
+        :site,
+        logo: File.open(Rails.root.join('spec/assets/test_image.jpg'))
+      )
 
-    expect(header_image.url).to eq File.join(
-      '/',
-      Rails.application.secrets.uploads_store_dir,
-      site.id.to_s,
-      site.header_image_filename
-    )
+      expect(site.logo.url).to eq File.join(
+        '/',
+        Rails.application.secrets.uploads_store_dir,
+        site.id.to_s,
+        site.logo_filename
+      )
+
+      expect(uploaded_files)
+        .to include "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+    end
   end
 
   it 'strips attributes' do

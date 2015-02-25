@@ -2,8 +2,8 @@
   = vertical do
     - unless @site.separate_header
       = link_to page_path('home') do
-        - if @site.header_image_filename
-          = image_tag(@site.header_image.span1.url, alt: @site.name)
+        - if @site.logo_filename
+          = image_tag(@site.logo.nav.url, alt: @site.name)
         - else
           = @site.name
 
