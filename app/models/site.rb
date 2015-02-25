@@ -2,24 +2,24 @@
 #
 # Table name: sites
 #
-#  id                    :integer          not null, primary key
-#  host                  :string(64)       not null
-#  name                  :string(64)       not null
-#  sub_title             :string(64)
-#  layout                :string(32)       default("one_column")
-#  main_menu_page_ids    :text
-#  copyright             :string(64)
-#  google_analytics      :string(32)
-#  charity_number        :string(32)
-#  stylesheet_filename   :string(36)
-#  header_image_filename :string(36)
-#  sidebar_html_content  :text
-#  created_by_id         :integer          not null
-#  updated_by_id         :integer          not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  main_menu_in_footer   :boolean          default("false"), not null
-#  separate_header       :boolean          default("true"), not null
+#  id                   :integer          not null, primary key
+#  host                 :string(64)       not null
+#  name                 :string(64)       not null
+#  sub_title            :string(64)
+#  layout               :string(32)       default("one_column")
+#  main_menu_page_ids   :text
+#  copyright            :string(64)
+#  google_analytics     :string(32)
+#  charity_number       :string(32)
+#  stylesheet_filename  :string(36)
+#  logo_filename        :string(36)
+#  sidebar_html_content :text
+#  created_by_id        :integer          not null
+#  updated_by_id        :integer          not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  main_menu_in_footer  :boolean          default("false"), not null
+#  separate_header      :boolean          default("true"), not null
 #
 
 class Site < ActiveRecord::Base
@@ -39,7 +39,7 @@ class Site < ActiveRecord::Base
   serialize :main_menu_page_ids, Array
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
-  mount_uploader :header_image, ImageUploader, mount_on: :header_image_filename
+  mount_uploader :logo, LogoUploader, mount_on: :logo_filename
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 

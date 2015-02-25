@@ -26,14 +26,14 @@ RSpec.describe 'header and main menu', type: :feature do
           site.save!
           visit_page '/home'
           image = page.find('#page_header #site_name a[href="/home"] img')
-          expect(image['src']).to eq site.header_image.span12.url
+          expect(image['src']).to eq site.logo.header.url
           expect(image['alt']).to eq site.name
         end
       end
 
       context 'site without header image' do
         before do
-          site.header_image_filename = nil
+          site.logo_filename = nil
           site.save!
           visit_page '/home'
         end
@@ -91,14 +91,14 @@ RSpec.describe 'header and main menu', type: :feature do
           site.save!
           visit_page '/home'
           image = page.find('#main_menu a[href="/home"] img')
-          expect(image['src']).to eq site.header_image.span1.url
+          expect(image['src']).to eq site.logo.nav.url
           expect(image['alt']).to eq site.name
         end
       end
 
       context 'site without header image' do
         before do
-          site.header_image_filename = nil
+          site.logo_filename = nil
           site.save!
           visit_page '/home'
         end
