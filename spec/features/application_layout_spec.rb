@@ -14,8 +14,7 @@ RSpec.describe 'application layout', type: :feature do
     end
 
     it 'has title' do
-      expect(find('title', visible: false).native.text)
-        .to eq "#{site.name} | Test Page"
+      expect(page).to have_title "#{site.name} | Test Page"
     end
 
     it 'has site stylesheet' do

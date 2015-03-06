@@ -90,7 +90,7 @@ RSpec.describe 'application', type: :feature do
     visit '/home'
     expect(page.status_code).to eq 404
 
-    expect(find('title', visible: false).native.text).to eq 'Site Not Found'
+    expect(page).to have_title 'Site Not Found'
 
     expect(page).to have_content 'Site Not Found'
     expect(page).to have_content 'Sorry'
