@@ -27,4 +27,4 @@ package {
 
 require rbenv
 rbenv::plugin { 'sstephenson/ruby-build': }
-rbenv::build { '2.2.0': }
+rbenv::build { '2.2.1': }
