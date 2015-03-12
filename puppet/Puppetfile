@@ -3,6 +3,7 @@
 
 forge 'https://forgeapi.puppetlabs.com'
 
+mod 'garethr-docker'
 mod 'jdowning-rbenv'
 mod 'puppetlabs-postgresql'
 mod 'steveydevey-vim'
