@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'shell', inline: <<-SHELL
     apt-get update
-    apt-get install -y ruby1.9.1-dev
+    apt-get install -y ruby-dev
     gem install librarian-puppet --no-rdoc --no-ri
     cd /vagrant/puppet
     librarian-puppet install
