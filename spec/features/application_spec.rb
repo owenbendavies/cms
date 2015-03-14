@@ -86,7 +86,7 @@ RSpec.describe 'application', type: :feature do
   end
 
   it 'renders site not found for unknown site' do
-    site.destroy
+    site.destroy!
     visit '/home'
     expect(page.status_code).to eq 404
 
