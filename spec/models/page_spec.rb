@@ -26,22 +26,8 @@ RSpec.describe Page do
     is_expected.to be_versioned
   end
 
-  it 'strips attributes' do
-    page = FactoryGirl.create(:page, name: "  #{new_name} ")
-
-    expect(page.name).to eq new_name
-  end
-
-  it 'does not strip html_content' do
-    text = "  #{new_message}"
-
-    page = FactoryGirl.create(
-      :page,
-      html_content: text
-    )
-
-    expect(page.html_content).to eq text
-  end
+  it { is_expected.to strip_attribute(:name).collapse_spaces }
+  it { is_expected.to_not strip_attribute(:html_content).collapse_spaces }
 
   describe 'validate' do
     subject { FactoryGirl.build(:page) }
