@@ -31,18 +31,7 @@ RSpec.describe User do
       .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
-  describe '#sites' do
-    subject { FactoryGirl.create(:user) }
-    let!(:site1) { FactoryGirl.create(:site, name: 'a') }
-    let!(:site2) { FactoryGirl.create(:site, name: 'b') }
-
-    it 'returns sites sorted by site name' do
-      subject.sites << site1
-      subject.sites << site2
-
-      expect(subject.sites).to eq [site1, site2]
-    end
-  end
+  it { should have_and_belong_to_many(:sites) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
