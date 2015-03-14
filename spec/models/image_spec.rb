@@ -15,40 +15,11 @@
 require 'rails_helper'
 
 RSpec.describe Image do
-  describe '#site' do
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.build(:image, site: site) }
+  it { should belong_to(:site) }
+  it { should belong_to(:created_by).class_name('User') }
+  it { should belong_to(:updated_by).class_name('User') }
 
-    it 'returns images site' do
-      expect(subject.site).to eq site
-    end
-  end
-
-  describe '#created_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.build(:image, created_by: user) }
-
-    it 'returns user' do
-      expect(subject.created_by).to eq user
-    end
-  end
-
-  describe '#updated_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.build(:image, updated_by: user) }
-
-    it 'returns user' do
-      expect(subject.updated_by).to eq user
-    end
-  end
-
-  describe '#store_dir' do
-    subject { FactoryGirl.build(:image) }
-
-    it 'delegates to site' do
-      expect(subject.store_dir).to eq subject.site.store_dir
-    end
-  end
+  it { should delegate_method(:store_dir).to(:site) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
