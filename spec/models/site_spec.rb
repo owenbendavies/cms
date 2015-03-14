@@ -25,91 +25,16 @@
 require 'rails_helper'
 
 RSpec.describe Site do
-  describe '#created_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:site, created_by: user) }
+  it { should belong_to(:created_by).class_name('User') }
+  it { should belong_to(:updated_by).class_name('User') }
+  it { should have_and_belong_to_many(:users) }
+  it { should have_many(:images).order(:name).dependent(:destroy) }
 
-    it 'returns user' do
-      expect(subject.created_by).to eq user
-    end
+  it do
+    should have_many(:messages).order('created_at desc').dependent(:destroy)
   end
 
-  describe '#updated_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:site, updated_by: user) }
-
-    it 'returns user' do
-      expect(subject.updated_by).to eq user
-    end
-  end
-
-  describe '#users' do
-    let!(:user1) { FactoryGirl.create(:user, email: 'a@example.com') }
-    let!(:user2) { FactoryGirl.create(:user, email: 'b@example.com') }
-
-    subject do
-      FactoryGirl.create(:site, created_by: user1, updated_by: user2)
-    end
-
-    it 'returns users sorted by email' do
-      subject.reload
-
-      expect(subject.users).to eq [user1, user2]
-    end
-  end
-
-  describe '#images' do
-    subject { FactoryGirl.create(:site) }
-    let!(:image1) { FactoryGirl.create(:image, site: subject, name: 'a') }
-    let!(:image2) { FactoryGirl.create(:image, site: subject, name: 'b') }
-
-    it 'returns images sorted by name' do
-      expect(subject.images).to eq [image1, image2]
-    end
-
-    it 'deletes images on site destroy' do
-      subject.destroy!
-      expect(Image.count).to eq 0
-    end
-  end
-
-  describe '#messages' do
-    subject { FactoryGirl.create(:site) }
-
-    let!(:message1) { FactoryGirl.create(:message, site: subject) }
-
-    let!(:message2) do
-      FactoryGirl.create(
-        :message,
-        site: subject,
-        created_at: (Time.now - 1.day)
-      )
-    end
-
-    it 'returns messages sorted by created_at' do
-      expect(subject.messages).to eq [message1, message2]
-    end
-
-    it 'deletes messages on site destroy' do
-      subject.destroy!
-      expect(Message.count).to eq 0
-    end
-  end
-
-  describe '#pages' do
-    subject { FactoryGirl.create(:site) }
-    let!(:page1) { FactoryGirl.create(:page, site: subject, name: 'a') }
-    let!(:page2) { FactoryGirl.create(:page, site: subject, name: 'b') }
-
-    it 'returns pages sorted by name' do
-      expect(subject.pages).to eq [page1, page2]
-    end
-
-    it 'deletes pages on site destroy' do
-      subject.destroy!
-      expect(Page.count).to eq 0
-    end
-  end
+  it { should have_many(:pages).order(:name).dependent(:destroy) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned

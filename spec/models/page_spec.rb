@@ -18,42 +18,9 @@
 require 'rails_helper'
 
 RSpec.describe Page do
-  describe '#site' do
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.create(:page, site: site) }
-
-    it 'returns images site' do
-      expect(subject.site).to eq site
-    end
-  end
-
-  describe '#created_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:page, created_by: user) }
-
-    it 'returns user' do
-      expect(subject.created_by).to eq user
-    end
-  end
-
-  describe '#updated_by' do
-    let(:user) { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:page, updated_by: user) }
-
-    it 'returns user' do
-      expect(subject.updated_by).to eq user
-    end
-  end
-
-  describe 'on save' do
-    it 'sets url from name' do
-      page = FactoryGirl.build(:page, name: "Test's Page")
-      page.save!
-
-      expect(page.name).to eq "Test's Page"
-      expect(page.url).to eq 'tests_page'
-    end
-  end
+  it { should belong_to(:site) }
+  it { should belong_to(:created_by).class_name('User') }
+  it { should belong_to(:updated_by).class_name('User') }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned

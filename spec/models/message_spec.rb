@@ -17,14 +17,7 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-  describe '#site' do
-    let(:site) { FactoryGirl.create(:site) }
-    subject { FactoryGirl.create(:message, site: site) }
-
-    it 'returns images site' do
-      expect(subject.site).to eq site
-    end
-  end
+  it { should belong_to(:site) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
