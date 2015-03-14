@@ -37,10 +37,7 @@ RSpec.describe User do
     is_expected.to be_versioned
   end
 
-  it 'strips attributes' do
-    user = FactoryGirl.create(:user, email: "  #{new_email} ")
-    expect(user.email).to eq new_email
-  end
+  it { is_expected.to strip_attribute(:email).collapse_spaces }
 
   describe 'validate' do
     it { should validate_presence_of(:email) }
