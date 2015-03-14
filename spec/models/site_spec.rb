@@ -66,6 +66,11 @@ RSpec.describe Site do
     it 'returns images sorted by name' do
       expect(subject.images).to eq [image1, image2]
     end
+
+    it 'deletes images on site destroy' do
+      subject.destroy!
+      expect(Image.count).to eq 0
+    end
   end
 
   describe '#messages' do
@@ -84,6 +89,11 @@ RSpec.describe Site do
     it 'returns messages sorted by created_at' do
       expect(subject.messages).to eq [message1, message2]
     end
+
+    it 'deletes messages on site destroy' do
+      subject.destroy!
+      expect(Message.count).to eq 0
+    end
   end
 
   describe '#pages' do
@@ -93,6 +103,11 @@ RSpec.describe Site do
 
     it 'returns pages sorted by name' do
       expect(subject.pages).to eq [page1, page2]
+    end
+
+    it 'deletes pages on site destroy' do
+      subject.destroy!
+      expect(Page.count).to eq 0
     end
   end
 
