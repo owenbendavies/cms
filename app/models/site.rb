@@ -31,7 +31,7 @@ class Site < ActiveRecord::Base
   has_and_belongs_to_many :users, -> { order :email }
 
   has_many :images, -> { order :name }, dependent: :destroy
-  has_many :messages, -> { order created_at: :desc }, dependent: :destroy
+  has_many :messages, -> { order 'created_at desc' }, dependent: :destroy
   has_many :pages, -> { order :name }, dependent: :destroy
 
   has_paper_trail
