@@ -73,15 +73,14 @@ RSpec.describe Site do
     end
   end
 
-  it 'strips attributes' do
-    site = FactoryGirl.create(
-      :site,
-      name: " #{new_company_name} ",
-      copyright: ''
-    )
+  it { is_expected.to strip_attribute(:host).collapse_spaces }
+  it { is_expected.to strip_attribute(:name).collapse_spaces }
+  it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
+  it { is_expected.to strip_attribute(:copyright).collapse_spaces }
+  it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
 
-    expect(site.name).to eq new_company_name
-    expect(site.copyright).to be_nil
+  it do
+    is_expected.to_not strip_attribute(:sidebar_html_content).collapse_spaces
   end
 
   describe 'validate' do

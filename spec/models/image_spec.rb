@@ -44,10 +44,7 @@ RSpec.describe Image do
     end
   end
 
-  it 'strips attributes' do
-    image = FactoryGirl.create(:image, name: "  #{new_name} ")
-    expect(image.name).to eq new_name
-  end
+  it { is_expected.to strip_attribute(:name).collapse_spaces }
 
   describe 'validate' do
     subject { FactoryGirl.build(:image) }

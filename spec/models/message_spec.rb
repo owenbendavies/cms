@@ -23,19 +23,10 @@ RSpec.describe Message do
     is_expected.to be_versioned
   end
 
-  it 'strips attributes' do
-    message = FactoryGirl.create(:message, email: "  #{new_email} ")
-
-    expect(message.email).to eq new_email
-  end
-
-  it 'does not strip message' do
-    text = " #{new_message}  "
-
-    message = FactoryGirl.create(:message, message: text)
-
-    expect(message.message).to eq text
-  end
+  it { is_expected.to strip_attribute(:subject).collapse_spaces }
+  it { is_expected.to strip_attribute(:name).collapse_spaces }
+  it { is_expected.to strip_attribute(:email).collapse_spaces }
+  it { is_expected.to_not strip_attribute(:message) }
 
   describe 'validate' do
     it { should validate_presence_of(:site_id) }
