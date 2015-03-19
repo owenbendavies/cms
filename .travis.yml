@@ -5,14 +5,10 @@ branches:
 
 language: ruby
 
-rvm: 2.2.1
-
 cache: bundler
 
 services:
   - redis-server
-
-bundler_args: --deployment --without production
 
 before_script:
   - cp config/secrets.yml.travis config/secrets.yml
