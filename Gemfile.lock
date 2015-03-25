@@ -55,7 +55,7 @@ GEM
     auto_validate (0.0.4)
       rails
     autogrow-textarea-rails (3.1.0)
-    autoprefixer-rails (5.1.1)
+    autoprefixer-rails (5.1.7.1)
       execjs
       json
     bcrypt (3.1.10)
