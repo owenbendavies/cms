@@ -18,8 +18,8 @@
 #  updated_by_id        :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
-#  main_menu_in_footer  :boolean          default("false"), not null
-#  separate_header      :boolean          default("true"), not null
+#  main_menu_in_footer  :boolean          default(FALSE), not null
+#  separate_header      :boolean          default(TRUE), not null
 #
 
 require 'rails_helper'
