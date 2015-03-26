@@ -72,6 +72,19 @@ end
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
+
+  # Code quality tools
+  gem 'brakeman', require: false
+  gem 'bullet'
+  gem 'cane', require: false
+  gem 'coffeelint'
+  gem 'coveralls', require: false
+  gem 'i18n-tasks', require: false
+  gem 'puppet-lint', require: false
+  gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'simplecov-console', require: false
 end
 
 group :development do
@@ -79,12 +92,10 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'letter_opener_web'
-  gem 'puppet-lint', require: false
   gem 'quiet_assets'
 end
 
 group :test do
-  gem 'bullet'
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
@@ -94,15 +105,4 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'timecop'
   gem 'webmock'
-
-  # Code quality tools
-  gem 'brakeman', require: false
-  gem 'cane', require: false
-  gem 'coffeelint'
-  gem 'coveralls', require: false
-  gem 'i18n-tasks', require: false
-  gem 'rails_best_practices', require: false
-  gem 'rubocop', require: false
-  gem 'rubocop-rspec', require: false
-  gem 'simplecov-console', require: false
 end
