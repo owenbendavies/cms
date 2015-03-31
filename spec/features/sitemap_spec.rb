@@ -31,10 +31,6 @@ RSpec.describe '/sitemap', type: :feature do
 
         expect(current_path).to eq go_to_url
       end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-sitemap'
-      end
     end
 
     it_behaves_like 'logged in user' do
@@ -45,19 +41,7 @@ RSpec.describe '/sitemap', type: :feature do
         end
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'Sitemap'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-sitemap'
-      end
+      include_examples 'page with topbar link', 'Sitemap', 'sitemap'
     end
   end
 

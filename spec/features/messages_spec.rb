@@ -39,23 +39,7 @@ RSpec.describe '/messages', type: :feature do
         )
       end
 
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-envelope'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-envelope'
-      end
-
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'Messages'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
+      include_examples 'page with topbar link', 'Messages', 'envelope'
     end
   end
 
