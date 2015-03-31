@@ -41,23 +41,7 @@ RSpec.describe '/pages', type: :feature do
         it_should_have_form_error 'is reserved'
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'New Page'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-plus'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-plus'
-      end
+      include_examples 'page with topbar link', 'New Page', 'plus'
     end
   end
 
