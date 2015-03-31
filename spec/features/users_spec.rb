@@ -17,23 +17,7 @@ RSpec.describe '/users', type: :feature do
         end
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within '#topbar' do
-          click_link 'Users'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-group'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-group'
-      end
+      include_examples 'page with topbar link', 'Users', 'group'
     end
   end
 
@@ -107,23 +91,7 @@ RSpec.describe '/users', type: :feature do
         it_should_be_on_home_page
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'User Settings'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-user'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-user'
-      end
+      include_examples 'page with topbar link', 'User Settings', 'user'
     end
   end
 
