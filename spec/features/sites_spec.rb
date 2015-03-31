@@ -11,23 +11,7 @@ RSpec.describe '/site', type: :feature do
         expect(page).to have_link 'localhost', href: 'http://localhost'
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'Sites'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-list'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-list'
-      end
+      include_examples 'page with topbar link', 'Sites', 'list'
     end
   end
 
@@ -100,23 +84,7 @@ RSpec.describe '/site', type: :feature do
         it_should_be_on_home_page
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'Site Settings'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-cog'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-cog'
-      end
+      include_examples 'page with topbar link', 'Site Settings', 'cog'
     end
   end
 
@@ -167,21 +135,7 @@ RSpec.describe '/site', type: :feature do
         it_should_be_on_home_page
       end
 
-      it 'has link in topbar' do
-        within('#topbar') do
-          click_link 'CSS'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-file'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-file'
-      end
+      include_examples 'page with topbar link', 'CSS', 'file'
     end
   end
 end

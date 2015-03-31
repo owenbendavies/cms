@@ -65,6 +65,26 @@ module FeatureHelpers
       expect(current_path).to eq '/login'
     end
   end
+
+  RSpec.shared_context 'page with topbar link' do |page_title, page_icon|
+    it 'has link in topbar' do
+      visit_page '/home'
+
+      within('#topbar') do
+        click_link page_title
+      end
+
+      expect(current_path).to eq go_to_url
+    end
+
+    it 'has icon on page' do
+      expect(page).to have_selector "h1 .fa-#{page_icon}"
+    end
+
+    it 'has icon in topbar' do
+      expect(page).to have_selector "#topbar .fa-#{page_icon}"
+    end
+  end
 end
 
 RSpec.configuration.include FeatureHelpers, type: :feature

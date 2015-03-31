@@ -19,23 +19,7 @@ RSpec.describe '/images', type: :feature do
         expect(page).to have_content image.name
       end
 
-      it 'has link in topbar' do
-        visit_page '/home'
-
-        within('#topbar') do
-          click_link 'Images'
-        end
-
-        expect(current_path).to eq go_to_url
-      end
-
-      it 'has icon on page' do
-        expect(page).to have_selector 'h1 .fa-picture-o'
-      end
-
-      it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-picture-o'
-      end
+      include_examples 'page with topbar link', 'Images', 'picture-o'
     end
   end
 end
