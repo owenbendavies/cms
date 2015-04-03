@@ -18,3 +18,26 @@
         - else
           %li
             %small= link_to t('devise.sessions.new.title'), new_user_session_path
+
+    - if @site.social_networks?
+      %li
+        %ul#social_network_links.list-inline
+          - if @site.facebook
+            %li#facebook
+              = link_to "https://www.facebook.com/#{@site.facebook}" do
+                = icon('facebook-official')
+
+          - if @site.twitter
+            %li#twitter
+              = link_to "https://twitter.com/#{@site.twitter}" do
+                = icon('twitter-square')
+
+          - if @site.linkedin
+            %li#linkedin
+              = link_to "https://www.linkedin.com/in/#{@site.linkedin}" do
+                = icon('linkedin-square')
+
+          - if @site.github
+            %li#github
+              = link_to "https://github.com/#{@site.github}" do
+                = icon('github')

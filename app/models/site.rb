@@ -20,6 +20,10 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
+#  facebook             :string(32)
+#  twitter              :string(15)
+#  linkedin             :string(32)
+#  github               :string(32)
 #
 
 class Site < ActiveRecord::Base
@@ -49,6 +53,10 @@ class Site < ActiveRecord::Base
   validates :sub_title, length: { maximum: 64 }
   validates :layout, inclusion: { in: LAYOUTS }
   validates :copyright, length: { maximum: 64 }
+  validates :facebook, length: { maximum: 32 }
+  validates :twitter, length: { maximum: 15 }
+  validates :linkedin, length: { maximum: 32 }
+  validates :github, length: { maximum: 32 }
 
   validates :google_analytics, format: {
     with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
@@ -83,5 +91,9 @@ class Site < ActiveRecord::Base
 
   def store_dir
     [Rails.application.secrets.uploads_store_dir, id].compact.join('/')
+  end
+
+  def social_networks?
+    !(!facebook && !twitter && !linkedin && !github)
   end
 end
