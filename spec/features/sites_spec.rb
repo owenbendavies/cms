@@ -37,6 +37,11 @@ RSpec.describe '/site', type: :feature do
         expect(find_field('Charity number').value).to eq site.charity_number
         expect(find_field('Main menu')).to_not be_checked
 
+        expect(find_field('Facebook').value).to eq site.facebook
+        expect(find_field('Twitter').value).to eq site.twitter
+        expect(find_field('LinkedIn').value).to eq site.linkedin
+        expect(find_field('GitHub').value).to eq site.github
+
         fill_in 'Name', with: "  #{new_company_name} "
         fill_in 'Sub title', with: "  #{new_catch_phrase} "
         fill_in 'Google Analytics', with: "  #{new_google_analytics} "
@@ -46,6 +51,11 @@ RSpec.describe '/site', type: :feature do
         fill_in 'Copyright', with: " #{new_name} "
         fill_in 'Charity number', with: " #{new_number} "
         check 'Main menu'
+
+        fill_in 'Facebook', with: " #{new_facebook} "
+        fill_in 'Twitter', with: " #{new_twitter} "
+        fill_in 'LinkedIn', with: "  #{new_linkedin} "
+        fill_in 'GitHub', with: "  #{new_github} "
 
         click_button 'Update Site'
 
@@ -63,6 +73,11 @@ RSpec.describe '/site', type: :feature do
         expect(site.copyright).to eq new_name
         expect(site.charity_number).to eq new_number.to_s
         expect(site.main_menu_in_footer).to eq true
+
+        expect(site.facebook).to eq new_facebook
+        expect(site.twitter).to eq new_twitter
+        expect(site.linkedin).to eq new_linkedin
+        expect(site.github).to eq new_github
       end
 
       it 'does not store empty copyright' do
