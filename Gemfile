@@ -66,6 +66,7 @@ gem 'syslogger'
 gem 'unicorn-rails'
 
 group :production do
+  gem 'heroku-deflater'
   gem 'sentry-raven'
 end
 
