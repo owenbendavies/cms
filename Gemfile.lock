@@ -253,6 +253,8 @@ GEM
       nokogiri (~> 1.5, >= 1.5.11)
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
+    font_assets (0.1.11)
+      rack
     formatador (0.2.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
@@ -568,6 +570,7 @@ DEPENDENCIES
   faker
   fog
   font-awesome-sass
+  font_assets
   google-analytics-turbolinks
   gravtastic
   haml-rails
