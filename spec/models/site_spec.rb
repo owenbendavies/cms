@@ -20,6 +20,10 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
+#  facebook             :string(32)
+#  twitter              :string(15)
+#  linkedin             :string(32)
+#  github               :string(32)
 #
 
 require 'rails_helper'
@@ -121,6 +125,14 @@ RSpec.describe Site do
     it { should validate_presence_of(:updated_by) }
 
     it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
+
+    it { should validate_length_of(:facebook).is_at_most(32) }
+
+    it { should validate_length_of(:twitter).is_at_most(15) }
+
+    it { should validate_length_of(:linkedin).is_at_most(32) }
+
+    it { should validate_length_of(:github).is_at_most(32) }
   end
 
   describe '#css', uploads: true do
@@ -231,6 +243,34 @@ RSpec.describe Site do
       uploads_store_dir = Rails.application.secrets.uploads_store_dir
 
       expect(subject.store_dir).to eq "#{uploads_store_dir}/#{subject.id}"
+    end
+  end
+
+  describe '#social_networks?' do
+    subject { described_class.new }
+
+    it 'returns true with facebook' do
+      subject.facebook = new_facebook
+      expect(subject.social_networks?).to eq true
+    end
+
+    it 'returns true with twitter' do
+      subject.twitter = new_twitter
+      expect(subject.social_networks?).to eq true
+    end
+
+    it 'returns true with linkedin' do
+      subject.linkedin = new_linkedin
+      expect(subject.social_networks?).to eq true
+    end
+
+    it 'returns true with github' do
+      subject.github = new_github
+      expect(subject.social_networks?).to eq true
+    end
+
+    it 'returns false with no social networks' do
+      expect(subject.social_networks?).to eq false
     end
   end
 end
