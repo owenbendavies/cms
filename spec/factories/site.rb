@@ -9,6 +9,12 @@ FactoryGirl.define do
     stylesheet_filename { "#{Digest::MD5.hexdigest(rand.to_s)}.css" }
     logo_filename { "#{Digest::MD5.hexdigest(rand.to_s)}.png" }
     sidebar_html_content { "<h2>#{ Faker::Lorem.sentence }</h2>" }
+
+    facebook { Faker::Internet.user_name(nil, ['.']) }
+    twitter { Faker::Internet.user_name(nil, ['_'])[0, 15] }
+    linkedin { Faker::Internet.user_name }
+    github { Faker::Internet.user_name }
+
     association :created_by, factory: :user
     association :updated_by, factory: :user
 

@@ -31,34 +31,6 @@ RSpec.describe 'application layout', type: :feature do
     it 'does not have google analytics uid' do
       expect(body).to_not include('&uid')
     end
-
-    it 'has page last updated in footer' do
-      within 'footer' do
-        expect(find('#last_update').text)
-          .to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
-      end
-    end
-
-    it 'last updated should be in words', js: true do
-      Timecop.freeze(Time.now - 1.month - 3.days) do
-        test_page.updated_at = Time.now
-        test_page.save!
-      end
-
-      visit_page '/test_page'
-
-      within 'footer' do
-        expect(find('#last_update').text)
-          .to eq 'Page last updated about a month ago'
-      end
-    end
-
-    it 'has copyright in footer' do
-      within 'footer' do
-        expect(find('#copyright').text)
-          .to include "#{site.copyright} © #{Time.now.year}"
-      end
-    end
   end
 
   it_behaves_like 'logged in user' do

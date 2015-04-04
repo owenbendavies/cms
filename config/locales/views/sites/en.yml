@@ -8,6 +8,7 @@ en:
       title: "Site Settings"
       icon: "cog"
       footer: "Footer"
+      social_network_links: "Social Network Links"
 
     index:
       title: "Sites"
