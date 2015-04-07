@@ -59,8 +59,6 @@ gem 'uglifier'
 
 # Monitoring
 gem 'lograge'
-gem 'newrelic_rpm'
-gem 'syslogger'
 
 # Server
 gem 'unicorn-rails'
@@ -68,6 +66,7 @@ gem 'unicorn-rails'
 group :production do
   gem 'font_assets'
   gem 'heroku-deflater'
+  gem 'newrelic_rpm'
   gem 'sentry-raven'
 end
 
