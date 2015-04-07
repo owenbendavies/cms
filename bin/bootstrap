@@ -5,37 +5,10 @@ cd `dirname $0`/..
 
 ./bin/bundle install
 
-files="
-config/secrets.yml
-config/deploy/production.secrets.yml
-config/deploy/production.rb
-config/deploy/staging.secrets.yml
-config/deploy/staging.rb
-"
-
-for file in $files
-do
-  if [ ! -f $file ]
-  then
-    cp ${file}.example $file
-  fi
-done
-
-rails_secrets="
-config/secrets.yml
-config/deploy/production.secrets.yml
-config/deploy/staging.secrets.yml
-"
-
-for file in $rails_secrets
-do
-  if grep -q "^  secret_key_base: 'xxx'$" $file
-  then
-    echo "Generating secret for $file"
-    secret=`./bin/rake secret`
-    sed -i "s/^  secret_key_base: 'xxx'$/  secret_key_base: '$secret'/" $file
-  fi
-done
+if [ ! -f config/secrets.yml ]
+then
+  cp config/secrets.yml.example config/secrets.yml
+fi
 
 RAILS_ENV=test ./bin/rake db:create
 RAILS_ENV=test ./bin/rake db:migrate
