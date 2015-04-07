@@ -92,8 +92,6 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
   gem 'letter_opener_web'
   gem 'quiet_assets'
 end
