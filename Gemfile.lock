@@ -617,7 +617,6 @@ DEPENDENCIES
   simplecov-console
   spring-commands-rspec
   strip_attributes
-  syslogger
   therubyracer
   timecop
   tinymce-rails

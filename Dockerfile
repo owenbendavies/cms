@@ -22,7 +22,12 @@ RUN chown --recursive rails:rails /home/rails/cms
 # Change user
 USER rails
 WORKDIR /home/rails/cms
+
+# Set environment
+ENV NEW_RELIC_LOG stdout
 ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
+ENV RAILS_ENV production
+ENV WORKER_PROCESSES 3
 
 # Install app
 RUN cp -f config/secrets.yml.production config/secrets.yml
@@ -32,4 +37,4 @@ RUN ./bin/bundle install --without development test --deployment --quiet
 EXPOSE 3000
 
 # Run app
-CMD RAILS_ENV=production ./bin/server
+CMD ./bin/server
