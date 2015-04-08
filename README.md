@@ -11,8 +11,6 @@ working project, it was not created with the intention of being a production
 system. Instead this has been my practice project over the years, used for
 testing new ideas.
 
-For an example, check out my personal website at http://www.obduk.com
-
 Development Setup
 -----------------
 
