@@ -462,6 +462,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    scss-lint (0.36.1)
+      rainbow (~> 2.0)
+      sass (~> 3.4.1)
     secure_headers (2.0.1)
     sentry-raven (0.12.3)
       faraday (>= 0.7.6)
@@ -600,6 +603,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   sass-rails
+  scss-lint
   secure_headers
   sentry-raven
   shoulda-matchers

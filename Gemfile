@@ -86,6 +86,7 @@ group :development, :test do
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'scss-lint', require: false
   gem 'simplecov-console', require: false
 end
 
