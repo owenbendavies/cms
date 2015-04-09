@@ -5,30 +5,30 @@
   = horizontal do
     = nav class: 'navbar-right' do
       %li.dropdown
-        %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+        %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
           = Page.model_name.human
           %b.caret
         %ul.dropdown-menu
-          - if @page and @page.persisted?
+          - if @page && @page.persisted?
             = link_to edit_page_path(@page.to_param) do
               = icon(t('pages.edit.icon'))
               = t('actions.edit')
 
-            = link_to icon(t('pages.delete.icon')) + " " + t('actions.delete'),
+            = link_to icon(t('pages.delete.icon')) + ' ' + t('actions.delete'),
                         page_path(@page.to_param),
                         method: :delete,
-                        data: {confirm: t('pages.delete.text', name: @page.name)},
-                        "data-confirm-title" => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,
-                        "data-confirm-proceed" => "<i class='icon-trash'></i> #{t('actions.delete')}".html_safe,
-                        "data-confirm-cancel" => "<i class='icon-remove'></i> #{t('actions.cancel')}".html_safe,
-                        "data-confirm-proceed-class" => "btn-danger"
+                        data: { confirm: t('pages.delete.text', name: @page.name) },
+                        'data-confirm-title' => "<i class='icon-trash'></i> #{t('pages.delete.title')}".html_safe,
+                        'data-confirm-proceed' => "<i class='icon-trash'></i> #{t('actions.delete')}".html_safe,
+                        'data-confirm-cancel' => "<i class='icon-remove'></i> #{t('actions.cancel')}".html_safe,
+                        'data-confirm-proceed-class' => 'btn-danger'
 
           = link_to new_page_path do
             = icon(t('pages.new.icon'))
             = t('pages.new.title')
 
       %li.dropdown
-        %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+        %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
           = Site.model_name.human
           %b.caret
         %ul.dropdown-menu
@@ -57,7 +57,7 @@
             = t('sitemaps.show.title')
 
       %li.dropdown
-        %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+        %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
           = current_user.email
           %b.caret
         %ul.dropdown-menu

@@ -1,9 +1,9 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%ul#sitemap.list-unstyled
+%ul.list-unstyled#sitemap
   - @pages.each do |page|
-    - next if page.private and !user_signed_in?
+    - next if page.private && !user_signed_in?
     %li
       = link_to(page.name, page_path(page.to_param))
       = icon(t('pages.show.private.icon')) if page.private

@@ -14,6 +14,7 @@ else
   eval './bin/cane --no-doc'
   eval './bin/rails_best_practices --silent --exclude puppet'
   eval './bin/rake coffeelint'
+  eval './bin/haml-lint --exclude-linter LineLength app/views/'
   eval './bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename'
   eval './bin/brakeman --quiet --exit-on-warn'
 fi
