@@ -1,6 +1,6 @@
 table {
-  a { display: block }
-  th { background-color: $table-bg-accent }
+  a { display: block; }
+  th { background-color: $table-bg-accent; }
 }
 
-div.tinymce { height: auto; }
+.tinymce { height: auto; }
