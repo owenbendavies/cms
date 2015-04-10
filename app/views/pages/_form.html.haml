@@ -5,7 +5,7 @@
   = form.input :name, autofocus: true
   = form.input :private, as: :boolean
 
-  .tinymce.form-control{:id => 'page[html_content]'}
+  .tinymce.form-control{ id: 'page[html_content]' }
     = form.object.html_content.to_s.html_safe
 
   = form.input :contact_form, as: :boolean

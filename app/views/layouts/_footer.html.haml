@@ -1,6 +1,6 @@
 %footer.col-sm-12.text-center
   %ul.list-unstyled
-    - if @page and @page.persisted?
+    - if @page && @page.persisted?
       %li#last_update
         %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
@@ -8,7 +8,7 @@
       %small= footer_copyright(@site)
 
     %li
-      %ul#footer_links.list-inline
+      %ul.list-inline#footer_links
         %li
           %small= link_to t('sitemaps.show.title'), sitemap_path
 
@@ -21,7 +21,7 @@
 
     - if @site.social_networks?
       %li
-        %ul#social_network_links.list-inline
+        %ul.list-inline#social_network_links
           - if @site.facebook
             %li#facebook
               = link_to "https://www.facebook.com/#{@site.facebook}" do
