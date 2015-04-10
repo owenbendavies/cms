@@ -8,12 +8,12 @@
 
 @media (min-width: $screen-sm-min) {
   .img-left {
-    float: left !important;
+    float: left;
     margin: 0 20px 20px 0;
   }
 
   .img-right {
-    float: right !important;
+    float: right;
     margin: 0 0 20px 20px;
   }
 }
