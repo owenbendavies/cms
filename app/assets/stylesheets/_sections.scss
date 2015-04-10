@@ -1,7 +1,7 @@
-#topbar .avatar { padding: 5px }
+#topbar .avatar { padding: 5px;  }
 
 #page_header {
-  h1 a { color: inherit }
+  h1 a { color: inherit;  }
 
   h2 {
     color: $headings-small-color;
@@ -10,23 +10,27 @@
   }
 }
 
-#main_menu, #footer_main_menu {
+#main_menu,
+#footer_main_menu {
   .navbar {
     border-radius: 0;
     margin-bottom: 0;
-
-    .nav > li > a:focus,
-    .nav > li > a:hover { background-color: $navbar-default-link-active-bg }
   }
+
+  a:focus,
+  a:hover { background-color: $navbar-default-link-active-bg; }
 }
 
 #main {
-  h1, h2 {
-    padding-bottom: (($line-height-computed / 2) - 1);
+  h1,
+  h2 {
     border-bottom: 1px solid $page-header-border-color;
+    padding-bottom: (($line-height-computed / 2) - 1);
   }
 
-  h1, h2, h3 { @include clearfix }
+  h1,
+  h2,
+  h3 { @include clearfix; }
 }
 
 #main_article {
@@ -36,25 +40,25 @@
 }
 
 #page_footer {
-  ul.list-unstyled { margin-top: 11px }
+  .list-unstyled { margin-top: 11px; }
 
-  li { line-height: 16px }
+  li { line-height: 16px; }
 
   #social_network_links {
-    margin: 10px;
     font-size: 26px;
+    margin: 10px;
   }
 
-  #facebook a { color: #3B5998 }
+  #facebook a { color: #3b5998; }
 
-  #twitter a { color: #55ACEE }
+  #twitter a { color: #55acee; }
 
-  #linkedin a { color: #0976b4 }
+  #linkedin a { color: #0976b4; }
 
-  #github a { color: #333333 }
+  #github a { color: #333; }
 }
 
-pre.css { padding: 0 }
+.css { padding: 0; }
 
 #site_css {
   background-color: inherit;

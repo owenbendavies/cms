@@ -15,6 +15,7 @@ else
   eval './bin/rails_best_practices --silent --exclude puppet'
   eval './bin/rake coffeelint'
   eval './bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename'
+  eval './bin/scss-lint --exclude-linter IdSelector,SelectorFormat,ColorVariable  app/assets/stylesheets/'
   eval './bin/brakeman --quiet --exit-on-warn'
 fi
 
