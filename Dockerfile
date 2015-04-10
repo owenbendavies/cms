@@ -1,19 +1,16 @@
 FROM ubuntu:trusty
 MAINTAINER Owen Ben Davies
 
-# Set default locale
-RUN locale-gen en_US.utf8
-RUN update-locale LANG=en_US.UTF-8
-
 # Install puppet
-RUN apt-get update && apt-get install -y build-essential ruby-dev wget
-RUN gem install puppet librarian-puppet --no-rdoc --no-ri
-
-# Run puppet
 COPY puppet /opt/puppet
 WORKDIR /opt/puppet
-RUN librarian-puppet install
-RUN puppet apply manifests/production.pp --confdir=.
+
+RUN apt-get update && \
+  apt-get install --yes build-essential ruby-dev wget && \
+  gem install puppet librarian-puppet --no-rdoc --no-ri && \
+  librarian-puppet install && \
+  puppet apply manifests/production.pp --confdir=. && \
+  apt-get purge --yes --auto-remove build-essential ruby-dev
 
 # Copy app
 COPY . /home/rails/cms
@@ -30,8 +27,8 @@ ENV RAILS_ENV production
 ENV WORKER_PROCESSES 3
 
 # Install app
-RUN cp -f config/secrets.yml.production config/secrets.yml
-RUN ./bin/bundle install --without development test --deployment --quiet
+RUN cp -f config/secrets.yml.production config/secrets.yml && \
+  ./bin/bundle install --without development test --deployment --quiet
 
 # Set up networking
 EXPOSE 3000
