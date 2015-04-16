@@ -98,12 +98,6 @@ RSpec.describe Site do
 
     it { should validate_length_of(:name).is_at_most(64) }
 
-    it do
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:name).with_message('HTML not allowed')
-    end
-
     it { should validate_length_of(:sub_title).is_at_most(64) }
 
     it { should allow_value('one_column').for(:layout) }
@@ -123,8 +117,6 @@ RSpec.describe Site do
     it { should_not allow_value('AS').for(:google_analytics) }
 
     it { should validate_presence_of(:updated_by) }
-
-    it { should allow_value('<a>html</a>').for(:sidebar_html_content) }
 
     it { should validate_length_of(:facebook).is_at_most(32) }
 
