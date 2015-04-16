@@ -27,7 +27,6 @@ class Page < ActiveRecord::Base
   strip_attributes except: :html_content, collapse_spaces: true
 
   auto_validate
-  validates *(attribute_names - ['html_content']), no_html: true
   validates :url, exclusion: { in: INVALID_URLS }
   validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
 

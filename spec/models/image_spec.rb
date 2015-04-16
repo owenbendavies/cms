@@ -55,12 +55,6 @@ RSpec.describe Image do
 
     it { should validate_uniqueness_of(:name).scoped_to(:site_id) }
 
-    it do
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:name).with_message('HTML not allowed')
-    end
-
     it { should validate_length_of(:name).is_at_most(64) }
 
     it { should validate_uniqueness_of(:filename).scoped_to(:site_id) }
