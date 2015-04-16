@@ -56,17 +56,9 @@ RSpec.describe Page do
 
     it { should validate_uniqueness_of(:name).scoped_to(:site_id) }
 
-    it do
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:name).with_message('HTML not allowed')
-    end
-
     it { should validate_presence_of(:created_by_id) }
 
     it { should validate_presence_of(:updated_by_id) }
-
-    it { should allow_value('<a>html</a>').for(:html_content) }
   end
 
   describe '#name=' do

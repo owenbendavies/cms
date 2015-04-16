@@ -37,12 +37,6 @@ RSpec.describe Message do
 
     it { should validate_length_of(:name).is_at_most(64) }
 
-    it do
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:name).with_message('HTML not allowed')
-    end
-
     it { should validate_presence_of(:email) }
 
     it { should allow_value('someone@example.com').for(:email) }
@@ -53,21 +47,9 @@ RSpec.describe Message do
       ).for(:email).with_message('is not a valid email address')
     }
 
-    it {
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:email).with_message('HTML not allowed')
-    }
-
     it { should validate_presence_of(:message) }
 
     it { should validate_length_of(:message).is_at_most(2048) }
-
-    it {
-      should_not allow_value(
-        '<a>bad</a>'
-      ).for(:message).with_message('HTML not allowed')
-    }
 
     [
       'Get thousands of facebook followers to your site',
