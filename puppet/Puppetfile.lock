@@ -21,11 +21,9 @@ FORGE
     puppetlabs-stdlib (4.5.1)
     puppetlabs-vcsrepo (1.2.0)
     stahnma-epel (1.0.2)
-    steveydevey-vim (0.1.0)
 
 DEPENDENCIES
   garethr-docker (>= 0)
   jdowning-rbenv (>= 0)
   puppetlabs-postgresql (>= 0)
-  steveydevey-vim (>= 0)
 
