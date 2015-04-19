@@ -112,7 +112,7 @@ RSpec.describe 'sessions', type: :feature do
       expect(email.html_part.body).to have_link 'Unlock account', href: link
 
       expect(email.html_part.body)
-        .to have_content "#{site.copyright} © #{Time.now.year}"
+        .to have_content "#{site.copyright} © #{Time.zone.now.year}"
     end
 
     it 'has link in footer' do
@@ -153,7 +153,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       context 'after less than 30 minutes' do
-        before { Timecop.travel Time.now + 29.minutes }
+        before { Timecop.travel Time.zone.now + 29.minutes }
 
         it 'is logged in' do
           visit_page go_to_url
@@ -161,7 +161,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       context 'after less than 2 weeks' do
-        before { Timecop.travel Time.now + 13.days }
+        before { Timecop.travel Time.zone.now + 13.days }
 
         it 'is logged in' do
           visit_page go_to_url
@@ -169,7 +169,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       context 'after 2 weeks' do
-        before { Timecop.travel Time.now + 15.days }
+        before { Timecop.travel Time.zone.now + 15.days }
 
         it_behaves_like 'restricted page'
       end
@@ -184,7 +184,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       context 'after less than 30 minutes' do
-        before { Timecop.travel Time.now + 29.minutes }
+        before { Timecop.travel Time.zone.now + 29.minutes }
 
         it 'is logged in' do
           visit_page go_to_url
@@ -192,7 +192,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       context 'after 30 minutes' do
-        before { Timecop.travel Time.now + 31.minutes }
+        before { Timecop.travel Time.zone.now + 31.minutes }
 
         it_behaves_like 'restricted page'
       end
