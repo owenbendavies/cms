@@ -23,9 +23,8 @@ Rails.application.configure do
   # config.force_ssl = true
 
   config.log_level = :info
-  config.logger = Syslogger.new('cms')
+  config.logger = Logger.new(STDOUT)
   config.lograge.enabled = true
-  config.log_formatter = ::Logger::Formatter.new
 
   config.action_controller.asset_host = Rails.application.secrets.asset_host
 

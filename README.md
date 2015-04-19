@@ -11,12 +11,8 @@ working project, it was not created with the intention of being a production
 system. Instead this has been my practice project over the years, used for
 testing new ideas.
 
-For an example, check out my personal website at http://www.obduk.com
-
-![Screen Shot](screen_shot.png)
-
-Development dependencies
-------------------------
+Development Setup
+-----------------
 
 This project uses [Vagrant](https://www.vagrantup.com/) for development.
 
@@ -25,11 +21,8 @@ vagrant up
 vagrant ssh
 cd /vagrant
 ```
-
-Setup
------
-
-Run the following to setup the project.
+Run the following to setup the project (it is idempotent so can be run multiple
+times).
 
 ```shell
 ./bin/bootstrap
@@ -100,52 +93,32 @@ Run the following to spin up a server locally for development:
 Deployment
 ----------
 
-For deploying to Amazon Web Services (AWS). This is the project I use for
-setting up live servers: https://github.com/obduk/setup_server
-
-### Setup
-
-Setup the deploy servers in the capistrano file:
-
-```
-config/deploy/production.rb
-```
+This project uses uses [Docker](https://www.docker.com/) and
+[Amazon Web Services (AWS)](http://aws.amazon.com/) for deployments.
 
 ### Services
 
-Sign up to the following services (most of them are optional):
+Sign up to the following services (optional):
 
-* [Amazon CloudFront](http://aws.amazon.com/cloudfront/) for caching assets
-* [Amazon ElastiCache](http://aws.amazon.com/elasticache/) for Redis server
-* [Amazon IAM](http://aws.amazon.com/iam/) for S3 and SES users
-* [Amazon RDS](http://aws.amazon.com/rds/) for PostgreSQL database
-* [Amazon S3](http://aws.amazon.com/s3/) for storing images and css files
-* [Amazon SES](http://aws.amazon.com/ses/) for sending emails
 * [New Relic](http://newrelic.com/) for system monitoring
 * [Sentry](https://www.getsentry.com/) for error tracking
 * [loader.io](http://loader.io/) for load testing
 
-Now add their settings to the configuration file:
+### AWS Services
 
-```
-config/deploy/production.secrets.yml
-```
+Set up the following AWS services:
 
-### Setup data
+* [CloudFront](http://aws.amazon.com/cloudfront/) for caching assets
+* [ElastiCache](http://aws.amazon.com/elasticache/) for Redis server
+* [Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/) for deployments
+* [IAM](http://aws.amazon.com/iam/) for S3 and SES users
+* [RDS](http://aws.amazon.com/rds/) for PostgreSQL database
+* [S3](http://aws.amazon.com/s3/) for storing images and css files
+* [SES](http://aws.amazon.com/ses/) for sending emails
 
-Next to set up the data for users and sites run the following:
+### AWS Elastic Beanstalk
 
-```shell
-RAILS_ENV=production ./bin/interactive
-```
+To create Elastic Beanstalk environment:
 
-Now follow the steps in [Setup data](#setup-data).
-
-### Deploy
-
-Use Capistrano to deploy to the servers:
-
-```shell
-./bin/cap production deploy
-```
-
+* Upload `Dockerrun.aws.json`
+* Set all environment variables from `config/secrets.yml.production`

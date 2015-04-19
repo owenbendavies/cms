@@ -1,0 +1,16 @@
+.bundle/
+.git/
+.vagrant/
+config/deploy/*.rb
+config/deploy/*.secrets.yml
+config/secrets.yml
+coverage/
+log/*.log
+public/test_uploads/
+public/uploads/
+puppet/.librarian/
+puppet/.tmp/
+puppet/modules/
+spec/
+tmp/
+vendor/bundle/
