@@ -16,7 +16,7 @@ Development Setup
 
 This project uses [Vagrant](https://www.vagrantup.com/) for development.
 
-```shell
+```
 vagrant up
 vagrant ssh
 cd /vagrant
@@ -24,7 +24,7 @@ cd /vagrant
 Run the following to setup the project (it is idempotent so can be run multiple
 times).
 
-```shell
+```
 ./bin/bootstrap
 ```
 
@@ -33,13 +33,13 @@ Test
 
 To run the tests run the following to make sure the system is set up correctly.
 
-```shell
+```
 ./bin/test
 ```
 
 Or run one test file:
 
-```shell
+```
 ./bin/test spec/some_file.rb
 ```
 
@@ -49,14 +49,14 @@ Setup data
 Currently it is only possible to create sites and users via the command line.
 To set up data run the following:
 
-```shell
+```
 ./bin/interactive
 ```
 
 First create a user to use, replacing email, password and sites with
 appropriate data.
 
-```ruby
+```
 user = User.new
 user.email = 'test@example.com'
 user.password = 'password'
@@ -66,7 +66,7 @@ user.save!
 
 Next create the site, replacing host and name with appropriate data.
 
-```ruby
+```
 site = Site.new
 site.host = 'localhost'
 site.name = 'Test Site'
@@ -77,7 +77,7 @@ site.save!
 
 Next add the site to the user.
 
-```ruby
+```
 user.sites << site
 ```
 
@@ -86,7 +86,7 @@ Development
 
 Run the following to spin up a server locally for development:
 
-```shell
+```
 ./bin/server
 ```
 
