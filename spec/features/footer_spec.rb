@@ -13,8 +13,8 @@ RSpec.describe 'footer', type: :feature do
   it 'last updated should be in words', js: true do
     visit_page '/test_page'
 
-    Timecop.freeze(Time.now - 1.month - 3.days) do
-      test_page.updated_at = Time.now
+    Timecop.freeze(Time.zone.now - 1.month - 3.days) do
+      test_page.updated_at = Time.zone.now
       test_page.save!
     end
 
@@ -31,7 +31,7 @@ RSpec.describe 'footer', type: :feature do
 
     within 'footer' do
       expect(find('#copyright').text)
-        .to include "#{site.copyright} © #{Time.now.year}"
+        .to include "#{site.copyright} © #{Time.zone.now.year}"
     end
   end
 

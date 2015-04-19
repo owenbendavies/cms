@@ -21,10 +21,10 @@ RSpec.describe '/pages', type: :feature do
 
         page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
 
-        expect {
+        expect do
           click_button 'Create Page'
           expect(page).to have_content 'New Page'
-        }.to change(Page, :count).by(1)
+        end.to change(Page, :count).by(1)
 
         new_page = Page.find_by_site_id_and_url!(site, 'new_page')
         expect(new_page.name).to eq 'New Page'
@@ -169,18 +169,17 @@ RSpec.describe '/pages', type: :feature do
         test_page = Page.find_by_site_id_and_url!(site, 'test_page')
         test_page.updated_by = user
         test_page.save!
+        test_page.reload
 
         visit_page '/test_page/edit'
 
-        expect {
-          expect {
-            fill_in 'page[name]', with: test_page.name
-            click_button 'Update Page'
-            expect(current_path).to eq '/test_page'
-          }.to_not change { Site.find_by_host!('localhost').updated_at }
-        }.to_not change {
-          Page.find_by_site_id_and_url!(site, 'test_page').updated_at
-        }
+        fill_in 'page[name]', with: test_page.name
+
+        expect do
+          click_button 'Update Page'
+          expect(current_path).to eq '/test_page'
+          test_page.reload
+        end.to_not change(test_page, :updated_at)
       end
 
       it 'shows errors' do
@@ -214,10 +213,10 @@ RSpec.describe '/pages', type: :feature do
             "Are you sure you want to delete page 'Test Page'?"
           )
 
-          expect {
+          expect do
             click_link 'Delete'
             expect(page.body).to include('Test Page was deleted')
-          }.to change(Page, :count).by(-1)
+          end.to change(Page, :count).by(-1)
         end
 
         it_should_have_error_alert_with 'Test Page was deleted'
@@ -236,10 +235,10 @@ RSpec.describe '/pages', type: :feature do
             "Are you sure you want to delete page 'Test Page'?"
           )
 
-          expect {
+          expect do
             click_link 'Cancel'
             expect(current_path).to eq '/test_page'
-          }.to_not change(Page, :count)
+          end.to_not change(Page, :count)
         end
 
         expect(current_path).to eq '/test_page'

@@ -41,11 +41,11 @@ RSpec.describe Message do
 
     it { should allow_value('someone@example.com').for(:email) }
 
-    it {
+    it do
       should_not allow_value(
         'someone@'
       ).for(:email).with_message('is not a valid email address')
-    }
+    end
 
     it { should validate_presence_of(:message) }
 
@@ -60,18 +60,18 @@ RSpec.describe Message do
       'We can increase rankings of your website in search engines.',
       'superbsocial'
     ].each do |message|
-      it {
+      it do
         should_not allow_value(
           message
         ).for(:message).with_message('Please do not send spam messages.')
-      }
+      end
     end
 
-    it {
+    it do
       should validate_length_of(:do_not_fill_in)
         .is_at_most(0)
         .with_message('do not fill in')
-    }
+    end
   end
 
   describe 'deliver' do

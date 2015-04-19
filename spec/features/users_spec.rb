@@ -140,7 +140,7 @@ RSpec.describe '/users', type: :feature do
       expect(email.html_part.body).to have_link 'Change password', href: link
 
       expect(email.html_part.body)
-        .to have_content "#{site.copyright} © #{Time.now.year}"
+        .to have_content "#{site.copyright} © #{Time.zone.now.year}"
     end
 
     it 'has link on login page' do
