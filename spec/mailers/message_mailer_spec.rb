@@ -44,7 +44,7 @@ RSpec.describe MessageMailer, type: :feature do
 
       it 'has copyright in footer' do
         expect(subject.body)
-          .to have_content "#{site.copyright} © #{Time.now.year}"
+          .to have_content "#{site.copyright} © #{Time.zone.now.year}"
       end
     end
   end

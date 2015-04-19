@@ -5,8 +5,8 @@ RSpec.describe '/messages', type: :feature do
     FactoryGirl.create(
       :message,
       site: site,
-      created_at: Time.now - 1.month - 3.days,
-      updated_at: Time.now - 1.month - 3.days
+      created_at: Time.zone.now - 1.month - 3.days,
+      updated_at: Time.zone.now - 1.month - 3.days
     )
   end
 

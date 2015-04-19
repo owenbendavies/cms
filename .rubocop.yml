@@ -27,9 +27,5 @@ RSpec/DescribeClass:
   Exclude:
     - 'spec/features/*'
 
-Style/Blocks:
-  Exclude:
-    - 'spec/**/*'
-
 Style/Documentation:
   Enabled: false

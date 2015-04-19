@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def footer_copyright(site)
     copyright_name = site.copyright || site.name
-    copyright = "#{copyright_name} © #{Time.now.year}"
+    copyright = "#{copyright_name} © #{Time.zone.now.year}"
     footer = [copyright]
 
     if site.charity_number
