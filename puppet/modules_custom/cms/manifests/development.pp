@@ -1,7 +1,6 @@
 class cms::development {
   include cms::dependencies
   include docker
-  include vim
 
   package {
     [
