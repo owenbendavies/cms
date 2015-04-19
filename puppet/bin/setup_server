@@ -1,0 +1,27 @@
+#!/bin/bash
+set -ev
+
+cd `dirname $0`/..
+
+apt-get update
+
+apt-get install --yes build-essential ruby-dev wget
+
+gem install puppet --version '< 4' --no-rdoc --no-ri
+
+gem install librarian-puppet --no-rdoc --no-ri
+
+librarian-puppet install
+
+puppet apply \
+  --confdir=. \
+  --detailed-exitcodes \
+  --modulepath=modules:modules_custom \
+  manifests/server.pp || \
+  if [ $? -ne 2 ]
+  then
+    echo "Error in puppet apply"
+    exit 1
+  fi
+
+apt-get purge --yes --auto-remove build-essential ruby-dev

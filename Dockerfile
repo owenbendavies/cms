@@ -3,14 +3,7 @@ MAINTAINER Owen Ben Davies
 
 # Install puppet
 COPY puppet /opt/puppet
-WORKDIR /opt/puppet
-
-RUN apt-get update && \
-  apt-get install --yes build-essential ruby-dev wget && \
-  gem install puppet librarian-puppet --no-rdoc --no-ri && \
-  librarian-puppet install && \
-  puppet apply manifests/production.pp --confdir=. && \
-  apt-get purge --yes --auto-remove build-essential ruby-dev
+RUN /opt/puppet/bin/setup_server
 
 # Copy app
 COPY . /home/rails/cms
