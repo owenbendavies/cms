@@ -1,8 +1,4 @@
 #!/bin/bash
-set -e
+set -ev
 
-cd `dirname $0`/..
-
-./bin/rails server --binding=0.0.0.0
-
-echo "server complete"
+./`dirname $0`/rails server --binding=0.0.0.0
