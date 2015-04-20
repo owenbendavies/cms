@@ -1,8 +1,4 @@
 #!/bin/bash
-set -e
+set -ev
 
-cd `dirname $0`/..
-
-./bin/rails console
-
-echo "interactive complete"
+./`dirname $0`/rails console
