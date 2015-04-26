@@ -72,6 +72,9 @@ GEM
     bullet (4.14.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
+    bundler-audit (0.3.1)
+      bundler (~> 1.2)
+      thor (~> 0.18)
     byebug (4.0.5)
       columnize (= 0.9.0)
     cane (2.6.2)
@@ -543,6 +546,7 @@ DEPENDENCIES
   bootstrap-sass
   brakeman
   bullet
+  bundler-audit
   cane
   capybara-webkit
   carrierwave
