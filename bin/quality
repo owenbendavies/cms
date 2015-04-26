@@ -3,6 +3,8 @@ set -ev
 
 cd `dirname $0`/..
 
+./bin/bundle-audit
+
 ./bin/rubocop --format simple
 
 ./bin/cane --no-doc
