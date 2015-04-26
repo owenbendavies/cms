@@ -204,42 +204,27 @@ RSpec.describe '/pages', type: :feature do
     it_behaves_like 'logged in user' do
       it 'deletes a page', js: true do
         click_link 'Page'
-        click_link 'Delete'
 
-        within '.modal' do
-          expect(page).to have_content('Delete page?')
+        expect do
+          message = accept_confirm { click_link 'Delete' }
 
-          expect(find('.modal-body').text).to eq(
+          expect(message).to eq(
             "Are you sure you want to delete page 'Test Page'?"
           )
-
-          expect do
-            click_link 'Delete'
-            expect(page.body).to include('Test Page was deleted')
-          end.to change(Page, :count).by(-1)
-        end
+        end.to change(Page, :count).by(-1)
 
         it_should_have_error_alert_with 'Test Page was deleted'
+
         expect(current_path).to eq '/sitemap'
         expect(Page.find_by_site_id_and_url(site, 'test_page')).to be_nil
       end
 
       it 'does not delete page on cancel', js: true do
         click_link 'Page'
-        click_link 'Delete'
 
-        within '.modal' do
-          expect(page).to have_content('Delete page?')
-
-          expect(find('.modal-body').text).to eq(
-            "Are you sure you want to delete page 'Test Page'?"
-          )
-
-          expect do
-            click_link 'Cancel'
-            expect(current_path).to eq '/test_page'
-          end.to_not change(Page, :count)
-        end
+        expect do
+          dismiss_confirm { click_link 'Delete' }
+        end.to_not change(Page, :count)
 
         expect(current_path).to eq '/test_page'
         expect(Page.find_by_site_id_and_url!(site, 'test_page')).to eq test_page

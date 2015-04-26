@@ -9,7 +9,6 @@ en:
         success: "Thank you for your message"
 
     delete:
-      title: "Delete page?"
       icon: "trash"
       text: "Are you sure you want to delete page '%{name}'?"
 
