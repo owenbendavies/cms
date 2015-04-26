@@ -3,7 +3,6 @@
 //= require jquery.turbolinks
 //= require jquery.autogrowtextarea
 //= require rails-timeago
-//= require twitter/bootstrap/rails/confirm
 //= require turbolinks
 //= require google-analytics-turbolinks
 //= require bootstrap-custom
