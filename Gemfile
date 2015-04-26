@@ -48,13 +48,6 @@ gem 'sass-rails'
 gem 'therubyracer'
 gem 'tinymce-rails'
 gem 'turbolinks'
-
-gem(
-  'twitter-bootstrap-rails-confirm',
-  github: 'obduk/twitter-bootstrap-rails-confirm',
-  branch: 'fix_events'
-)
-
 gem 'uglifier'
 
 # Monitoring

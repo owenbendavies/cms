@@ -7,6 +7,6 @@
 // require bootstrap/tab
 //= require bootstrap/transition
 // require bootstrap/scrollspy
-//= require bootstrap/modal
+// require bootstrap/modal
 // require bootstrap/tooltip
 // require bootstrap/popover
