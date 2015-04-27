@@ -24,6 +24,7 @@
 #  twitter              :string(15)
 #  linkedin             :string(32)
 #  github               :string(32)
+#  youtube              :string(32)
 #
 
 require 'rails_helper'
@@ -121,6 +122,8 @@ RSpec.describe Site do
     it { should validate_length_of(:facebook).is_at_most(32) }
 
     it { should validate_length_of(:twitter).is_at_most(15) }
+
+    it { should validate_length_of(:youtube).is_at_most(32) }
 
     it { should validate_length_of(:linkedin).is_at_most(32) }
 
@@ -248,6 +251,11 @@ RSpec.describe Site do
 
     it 'returns true with twitter' do
       subject.twitter = new_twitter
+      expect(subject.social_networks?).to eq true
+    end
+
+    it 'returns true with youtube' do
+      subject.youtube = new_youtube
       expect(subject.social_networks?).to eq true
     end
 

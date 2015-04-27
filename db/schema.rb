@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403141430) do
+ActiveRecord::Schema.define(version: 20150427123857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150403141430) do
     t.string   "twitter",              limit: 15
     t.string   "linkedin",             limit: 32
     t.string   "github",               limit: 32
+    t.string   "youtube",              limit: 32
   end
 
   add_index "sites", ["created_by_id"], name: "index_sites_on_created_by_id", using: :btree
