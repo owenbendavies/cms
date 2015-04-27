@@ -39,6 +39,7 @@ RSpec.describe '/site', type: :feature do
 
         expect(find_field('Facebook').value).to eq site.facebook
         expect(find_field('Twitter').value).to eq site.twitter
+        expect(find_field('YouTube').value).to eq site.youtube
         expect(find_field('LinkedIn').value).to eq site.linkedin
         expect(find_field('GitHub').value).to eq site.github
 
@@ -54,6 +55,7 @@ RSpec.describe '/site', type: :feature do
 
         fill_in 'Facebook', with: " #{new_facebook} "
         fill_in 'Twitter', with: " #{new_twitter} "
+        fill_in 'YouTube', with: " #{new_youtube} "
         fill_in 'LinkedIn', with: "  #{new_linkedin} "
         fill_in 'GitHub', with: "  #{new_github} "
 
@@ -76,6 +78,7 @@ RSpec.describe '/site', type: :feature do
 
         expect(site.facebook).to eq new_facebook
         expect(site.twitter).to eq new_twitter
+        expect(site.youtube).to eq new_youtube
         expect(site.linkedin).to eq new_linkedin
         expect(site.github).to eq new_github
       end

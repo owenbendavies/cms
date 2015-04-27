@@ -30,7 +30,12 @@
           - if @site.twitter
             %li#twitter
               = link_to "https://twitter.com/#{@site.twitter}" do
-                = icon('twitter-square')
+                = icon('twitter')
+
+          - if @site.youtube
+            %li#youtube
+              = link_to "https://www.youtube.com/#{@site.youtube}" do
+                = icon('youtube-play')
 
           - if @site.linkedin
             %li#linkedin

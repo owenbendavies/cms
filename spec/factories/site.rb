@@ -12,6 +12,7 @@ FactoryGirl.define do
 
     facebook { Faker::Internet.user_name(nil, ['.']) }
     twitter { Faker::Internet.user_name(nil, ['_'])[0, 15] }
+    youtube { Faker::Internet.user_name }
     linkedin { Faker::Internet.user_name }
     github { Faker::Internet.user_name }
 
