@@ -24,6 +24,7 @@
 #  twitter              :string(15)
 #  linkedin             :string(32)
 #  github               :string(32)
+#  youtube              :string(32)
 #
 
 class Site < ActiveRecord::Base
@@ -54,6 +55,7 @@ class Site < ActiveRecord::Base
   validates :copyright, length: { maximum: 64 }
   validates :facebook, length: { maximum: 32 }
   validates :twitter, length: { maximum: 15 }
+  validates :youtube, length: { maximum: 32 }
   validates :linkedin, length: { maximum: 32 }
   validates :github, length: { maximum: 32 }
 
@@ -93,6 +95,6 @@ class Site < ActiveRecord::Base
   end
 
   def social_networks?
-    !(!facebook && !twitter && !linkedin && !github)
+    !(!facebook && !twitter && !youtube && !linkedin && !github)
   end
 end

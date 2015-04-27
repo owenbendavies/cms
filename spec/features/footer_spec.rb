@@ -59,7 +59,7 @@ RSpec.describe 'footer', type: :feature do
     link = "a[href=\"https://twitter.com/#{site.twitter}\"]"
     expect(page).to have_selector "footer #twitter #{link}"
 
-    expect(page).to have_selector 'footer #twitter a .fa-twitter-square'
+    expect(page).to have_selector 'footer #twitter a .fa-twitter'
   end
 
   context 'no twitter' do
@@ -68,6 +68,24 @@ RSpec.describe 'footer', type: :feature do
       site.save!
       visit_page '/test_page'
       expect(page).to_not have_selector 'footer #twitter'
+    end
+  end
+
+  it 'has YouTube link' do
+    visit_page '/test_page'
+
+    link = "a[href=\"https://www.youtube.com/#{site.youtube}\"]"
+    expect(page).to have_selector "footer #youtube #{link}"
+
+    expect(page).to have_selector 'footer #youtube a .fa-youtube-play'
+  end
+
+  context 'no youtube' do
+    it 'does not show YouTube link' do
+      site.youtube = nil
+      site.save!
+      visit_page '/test_page'
+      expect(page).to_not have_selector 'footer #youtube'
     end
   end
 
@@ -110,6 +128,7 @@ RSpec.describe 'footer', type: :feature do
   it 'does not show social networks when none' do
     site.facebook = nil
     site.twitter = nil
+    site.youtube = nil
     site.linkedin = nil
     site.github = nil
     site.save!
