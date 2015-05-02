@@ -20,7 +20,7 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
-#  facebook             :string(32)
+#  facebook             :string(64)
 #  twitter              :string(15)
 #  linkedin             :string(32)
 #  github               :string(32)
@@ -53,7 +53,7 @@ class Site < ActiveRecord::Base
   validates :sub_title, length: { maximum: 64 }
   validates :layout, inclusion: { in: LAYOUTS }
   validates :copyright, length: { maximum: 64 }
-  validates :facebook, length: { maximum: 32 }
+  validates :facebook, length: { maximum: 64 }
   validates :twitter, length: { maximum: 15 }
   validates :youtube, length: { maximum: 32 }
   validates :linkedin, length: { maximum: 32 }

@@ -20,7 +20,7 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
-#  facebook             :string(32)
+#  facebook             :string(64)
 #  twitter              :string(15)
 #  linkedin             :string(32)
 #  github               :string(32)
@@ -119,7 +119,7 @@ RSpec.describe Site do
 
     it { should validate_presence_of(:updated_by) }
 
-    it { should validate_length_of(:facebook).is_at_most(32) }
+    it { should validate_length_of(:facebook).is_at_most(64) }
 
     it { should validate_length_of(:twitter).is_at_most(15) }
 
