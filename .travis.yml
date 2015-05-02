@@ -14,4 +14,7 @@ before_script:
   - cp config/secrets.yml.travis config/secrets.yml
   - ./bin/bootstrap
 
-script: ./bin/test
+script:
+  - ./bin/test
+  - git checkout public/assets/manifest-*
+  - ./bin/changes
