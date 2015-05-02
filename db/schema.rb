@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427123857) do
+ActiveRecord::Schema.define(version: 20150502091224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150427123857) do
     t.datetime "updated_at",                                             null: false
     t.boolean  "main_menu_in_footer",             default: false,        null: false
     t.boolean  "separate_header",                 default: true,         null: false
-    t.string   "facebook",             limit: 32
+    t.string   "facebook",             limit: 64
     t.string   "twitter",              limit: 15
     t.string   "linkedin",             limit: 32
     t.string   "github",               limit: 32
