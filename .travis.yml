@@ -16,5 +16,6 @@ before_script:
 
 script:
   - ./bin/test
-  - git checkout public/assets/manifest-*
+  - git clean --force public/assets/
+  - git checkout public/assets/
   - ./bin/changes
