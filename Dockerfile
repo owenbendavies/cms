@@ -14,7 +14,6 @@ USER rails
 WORKDIR /home/rails/cms
 
 # Set environment
-ENV NEW_RELIC_LOG stdout
 ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
 ENV RAILS_ENV production
 ENV WORKER_PROCESSES 3
