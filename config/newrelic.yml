@@ -55,7 +55,7 @@ common: &default_settings
   # application and reports this data to the New Relic service at
   # newrelic.com. This global switch is normally overridden for each
   # environment below. (formerly called 'enabled')
-  monitor_mode: true
+  monitor_mode: <%= Rails.application.secrets.new_relic_license_key.present? %>
 
   # Developer mode should be off in every environment but
   # development as it has very high overhead in memory.
@@ -70,7 +70,7 @@ common: &default_settings
   # root directory (may be relative or absolute, e.g. 'log/' or
   # '/var/log/') The agent will attempt to create this directory if it
   # does not exist.
-  # log_file_path: 'log'
+  log_file_path: 'STDOUT'
 
   # Optionally set the name of the log file, defaults to 'newrelic_agent.log'
   # log_file_name: 'newrelic_agent.log'
@@ -190,26 +190,9 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  # Turn on communication to New Relic service in development mode
-  monitor_mode: false
-
-  # Rails Only - when running in Developer Mode, the New Relic Agent will
-  # present performance information on the last 100 transactions you have
-  # executed since starting the mongrel.
-  # NOTE: There is substantial overhead when running in developer mode.
-  # Do not use for production or load testing.
-  developer_mode: true
 
 test:
   <<: *default_settings
-  # It almost never makes sense to turn on the agent when running
-  # unit, functional or integration tests or the like.
-  monitor_mode: false
 
-# Turn on the agent in production for 24x7 monitoring. NewRelic
-# testing shows an average performance impact of < 5 ms per
-# transaction, you can leave this on all the time without
-# incurring any user-visible performance degradation.
 production:
   <<: *default_settings
-  monitor_mode: true
