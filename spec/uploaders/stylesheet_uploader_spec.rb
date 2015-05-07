@@ -20,7 +20,7 @@ RSpec.describe StylesheetUploader, uploads: true do
         )
     end
 
-    it 'has filename which is  md5 of content' do
+    it 'has filename which is md5 of content' do
       expect(uploaded_files).to eq []
 
       subject.store! StringUploader.new('stylesheet.css', css)
