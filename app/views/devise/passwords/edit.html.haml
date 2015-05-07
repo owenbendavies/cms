@@ -1,6 +1,6 @@
 - content_for :title, t('.title')
 
-= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put }  do |form|
+= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |form|
   = form.error_notification
 
   = form.input :reset_password_token, as: :hidden
