@@ -21,7 +21,7 @@ RSpec.describe LogoUploader, uploads: true do
         )
     end
 
-    it 'has filename which is  md5 of content' do
+    it 'has filename which is md5 of content' do
       expect(uploaded_files).to eq []
 
       subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
