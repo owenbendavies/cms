@@ -33,6 +33,7 @@ class Message < ActiveRecord::Base
     text = message.to_s.downcase
 
     [
+      ' seo ',
       'facebook followers',
       'facebook likes',
       'facebook page likes',
