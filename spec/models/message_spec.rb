@@ -58,6 +58,7 @@ RSpec.describe Message do
       'We can get you Facebook likes',
       'We can help your website to get on first page of Google',
       'We can increase rankings of your website in search engines.',
+      'We strongly believe that we have excellent SEO services',
       'superbsocial'
     ].each do |message|
       it do
