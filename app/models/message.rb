@@ -33,13 +33,14 @@ class Message < ActiveRecord::Base
     text = message.to_s.downcase
 
     [
+      ' seo ',
       'facebook followers',
       'facebook likes',
       'facebook page likes',
       'facebook visitors',
       'first page of google',
       'search engine',
-      'superbsocial'
+      'superbsocial',
     ].each do |spam_text|
       errors.add(:message, :spam) if text.include? spam_text
     end
