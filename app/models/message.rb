@@ -40,7 +40,7 @@ class Message < ActiveRecord::Base
       'facebook visitors',
       'first page of google',
       'search engine',
-      'superbsocial',
+      'superbsocial'
     ].each do |spam_text|
       errors.add(:message, :spam) if text.include? spam_text
     end
