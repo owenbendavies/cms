@@ -7,14 +7,7 @@ Rails.application.configure do
 
   config.active_support.deprecation = :notify
 
-  config.serve_static_files = true
   config.static_cache_control = 'public, max-age=31536000'
-
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
-
-  config.assets.compile = false
-  config.assets.digest = true
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
