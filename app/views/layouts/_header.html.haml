@@ -1,5 +1,5 @@
 %header.col-sm-12.text-center
-  %h1#site_name
+  %h1#cms-site-name
     = link_to page_path('home') do
       - if @site.logo_filename
         = image_tag(@site.logo.header.url, alt: @site.name, class: 'img-center')
@@ -7,4 +7,4 @@
         = @site.name
 
   - if @site.sub_title
-    %h2#site_sub_title= @site.sub_title
+    %h2#cms-site-sub-title= @site.sub_title

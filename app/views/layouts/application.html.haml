@@ -18,25 +18,25 @@
 
   %body{ id: body_id(request.path) }
     - if user_signed_in?
-      .hidden-print#topbar
+      .hidden-print#cms-topbar
         = render 'layouts/topbar'
 
-    #page_wrapper
-      .container#page
+    #cms-page-wrapper
+      .container#cms-page
         - if @site.separate_header
-          .hidden-print.row#page_header
+          .hidden-print.row#cms-page-header
             = render 'layouts/header'
 
         - unless @site.main_menu_pages.blank?
-          .hidden-print.row#main_menu
+          .hidden-print.row#cms-main-menu
             = render 'layouts/main_menu'
 
-        .row#main
+        .row#cms-main
           = render "layouts/pages/#{@site.layout}"
 
         - if @site.main_menu_in_footer && !@site.main_menu_pages.blank?
-          .hidden-print.row#footer_main_menu
+          .hidden-print.row#cms-footer-main-menu
             = render 'layouts/footer_main_menu'
 
-        .hidden-print.row#page_footer
+        .hidden-print.row#cms-page-footer
           = render 'layouts/footer'

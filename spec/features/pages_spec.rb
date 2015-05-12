@@ -69,7 +69,7 @@ RSpec.describe '/pages', type: :feature do
         end
 
         it 'has link to edit in topbar' do
-          within('#topbar') do
+          within('#cms-topbar') do
             click_link 'Edit'
           end
 
@@ -121,7 +121,7 @@ RSpec.describe '/pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(find('#main_article p').text).to eq new_message
+        expect(find('#cms-main-article p').text).to eq new_message
 
         page = Page.find_by_site_id_and_url!(site, 'test_page')
         expect(page.updated_by).to eq user
@@ -193,7 +193,7 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-pencil'
+        expect(page).to have_selector '#cms-topbar .fa-pencil'
       end
     end
   end
@@ -231,7 +231,7 @@ RSpec.describe '/pages', type: :feature do
       end
 
       it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-trash'
+        expect(page).to have_selector '#cms-topbar .fa-trash'
       end
     end
   end

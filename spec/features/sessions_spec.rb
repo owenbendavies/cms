@@ -118,7 +118,7 @@ RSpec.describe 'sessions', type: :feature do
     it 'has link in footer' do
       visit_page '/home'
 
-      within('#footer_links') do
+      within('#cms-footer-links') do
         click_link 'Login'
       end
 
@@ -206,7 +206,7 @@ RSpec.describe 'sessions', type: :feature do
       it 'logs out from link in topbar' do
         visit_page '/home'
 
-        within('#topbar') do
+        within('#cms-topbar') do
           click_link 'Logout'
         end
 
@@ -215,7 +215,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       it 'logs out from link in footer' do
-        within('#footer_links') do
+        within('#cms-footer-links') do
           click_link 'Logout'
         end
 
@@ -224,7 +224,7 @@ RSpec.describe 'sessions', type: :feature do
       end
 
       it 'has icon in topbar' do
-        expect(page).to have_selector '#topbar .fa-sign-out'
+        expect(page).to have_selector '#cms-topbar .fa-sign-out'
       end
     end
   end

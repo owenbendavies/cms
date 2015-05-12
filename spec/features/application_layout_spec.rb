@@ -10,7 +10,7 @@ RSpec.describe 'application layout', type: :feature do
     end
 
     it 'has no topbar' do
-      expect(page).to have_no_selector '#topbar'
+      expect(page).to have_no_selector '#cms-topbar'
     end
 
     it 'has title' do
@@ -35,14 +35,14 @@ RSpec.describe 'application layout', type: :feature do
 
   it_behaves_like 'logged in user' do
     describe 'topbar' do
-      let(:topbar) { find('#topbar') }
+      let(:topbar) { find('#cms-topbar') }
 
       it 'has link to home' do
         expect(topbar).to have_link site.name, href: '/'
       end
 
       it 'has dropdowns', js: true do
-        within '#topbar' do
+        within '#cms-topbar' do
           expect(page).to_not have_link 'Toggle navigation'
           expect(page).to_not have_link 'Messages'
 
@@ -54,7 +54,7 @@ RSpec.describe 'application layout', type: :feature do
       it 'has mobile dropdowns', js: true do
         windows.first.resize_to 640, 1136
 
-        within '#topbar' do
+        within '#cms-topbar' do
           expect(page).to_not have_link 'Site'
           expect(page).to_not have_link 'Messages'
 
@@ -68,7 +68,7 @@ RSpec.describe 'application layout', type: :feature do
       end
 
       it 'has gravatar image' do
-        within '#topbar' do
+        within '#cms-topbar' do
           image = find('img')
           expect(image['src']).to eq user.gravatar_url
           expect(image['alt']).to eq 'Profile Image'

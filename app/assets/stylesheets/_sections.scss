@@ -1,6 +1,4 @@
-#topbar .avatar { padding: 5px; }
-
-#page_header {
+#cms-page-header {
   h1 a { color: inherit; }
 
   h2 {
@@ -10,8 +8,8 @@
   }
 }
 
-#main_menu,
-#footer_main_menu {
+#cms-main-menu,
+#cms-footer-main-menu {
   .navbar {
     border-radius: 0;
     margin-bottom: 0;
@@ -21,7 +19,7 @@
   a:hover { background-color: $navbar-default-link-active-bg; }
 }
 
-#main {
+#cms-main {
   h1,
   h2 {
     border-bottom: 1px solid $page-header-border-color;
@@ -33,36 +31,29 @@
   h3 { @include clearfix; }
 }
 
-#main_article {
+#cms-main-article {
   background: $body-bg;
   min-height: 200px;
   padding-top: 15px;
 }
 
-#page_footer {
+#cms-page-footer {
   .list-unstyled { margin-top: 11px; }
 
   li { line-height: 16px; }
-
-  #social_network_links {
-    font-size: 26px;
-    margin: 10px;
-  }
-
-  #facebook a { color: #3b5998; }
-
-  #twitter a { color: #55acee; }
-
-  #youtube a { color: #cd201f; }
-
-  #linkedin a { color: #0976b4; }
-
-  #github a { color: #333; }
 }
 
-.css { padding: 0; }
-
-#site_css {
-  background-color: inherit;
-  border: 0;
+#cms-social-network-links {
+  font-size: 26px;
+  margin: 10px;
 }
+
+#cms-facebook a { color: #3b5998; }
+
+#cms-twitter a { color: #55acee; }
+
+#cms-youtube a { color: #cd201f; }
+
+#cms-linkedin a { color: #0976b4; }
+
+#cms-github a { color: #333; }

@@ -10,14 +10,14 @@ RSpec.describe 'header and main menu', type: :feature do
       site.save!
       visit_page '/test_page'
 
-      within '#main_menu' do
+      within '#cms-main-menu' do
         expect(page).to have_link 'Home', href: '/home'
         expect(page).to have_selector 'a.page_url_home'
         expect(page).to have_link 'Test Page', href: '/test_page'
         expect(page).to have_selector 'a.page_url_test_page'
       end
 
-      expect(page).to_not have_selector '#footer_main_menu'
+      expect(page).to_not have_selector '#cms-footer-main-menu'
     end
 
     context 'site with separate header' do
@@ -25,7 +25,7 @@ RSpec.describe 'header and main menu', type: :feature do
         it 'has header image' do
           site.save!
           visit_page '/home'
-          image = page.find('#page_header #site_name a[href="/home"] img')
+          image = page.find('#cms-site-name a[href="/home"] img')
           expect(image['src']).to eq site.logo.header.url
           expect(image['alt']).to eq site.name
         end
@@ -39,11 +39,11 @@ RSpec.describe 'header and main menu', type: :feature do
         end
 
         it 'does not have header image' do
-          expect(page).to_not have_selector '#page_header img'
+          expect(page).to_not have_selector '#cms-page-header img'
         end
 
         it 'has separate header' do
-          within '#page_header #site_name' do
+          within '#cms-page-header #cms-site-name' do
             expect(page).to have_link site.name, href: '/home'
           end
         end
@@ -53,7 +53,7 @@ RSpec.describe 'header and main menu', type: :feature do
         it 'has sub title' do
           site.save!
           visit_page '/home'
-          expect(find('#page_header #site_sub_title').text).to eq site.sub_title
+          expect(find('#cms-site-sub-title').text).to eq site.sub_title
         end
       end
 
@@ -62,22 +62,22 @@ RSpec.describe 'header and main menu', type: :feature do
           site.sub_title = nil
           site.save!
           visit_page '/home'
-          expect(page).to_not have_selector '#page_header #site_sub_title'
+          expect(page).to_not have_selector '#cms-site-sub-title'
         end
       end
 
       it 'does not pull menu to right' do
         site.save!
         visit_page '/home'
-        expect(page).to have_selector '#main_menu .nav'
-        expect(page).to_not have_selector '#main_menu .nav.navbar-right'
+        expect(page).to have_selector '#cms-main-menu .nav'
+        expect(page).to_not have_selector '#cms-main-menu .nav.navbar-right'
       end
 
       it 'does not have title in main menu' do
         site.save!
         visit_page '/home'
 
-        expect(page).to_not have_selector '#main_menu img'
+        expect(page).to_not have_selector '#cms-main-menu img'
       end
     end
 
@@ -90,7 +90,7 @@ RSpec.describe 'header and main menu', type: :feature do
         it 'has header image in main menu' do
           site.save!
           visit_page '/home'
-          image = page.find('#main_menu a[href="/home"] img')
+          image = page.find('#cms-main-menu a[href="/home"] img')
           expect(image['src']).to eq site.logo.main_menu.url
           expect(image['alt']).to eq site.name
         end
@@ -104,11 +104,11 @@ RSpec.describe 'header and main menu', type: :feature do
         end
 
         it 'does not have header image' do
-          expect(page).to_not have_selector '#page_header img'
+          expect(page).to_not have_selector '#cms-page-header img'
         end
 
         it 'has site name in main menu' do
-          within '#main_menu' do
+          within '#cms-main-menu' do
             expect(page).to have_link site.name, href: '/home'
           end
         end
@@ -117,13 +117,13 @@ RSpec.describe 'header and main menu', type: :feature do
       it 'pulls menu to right' do
         site.save!
         visit_page '/home'
-        expect(page).to have_selector '#main_menu .nav.navbar-right'
+        expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
       end
 
       it 'does not have header' do
         site.save!
         visit_page '/home'
-        expect(page).to_not have_selector '#page_header'
+        expect(page).to_not have_selector '#cms-page-header'
       end
     end
 
@@ -136,7 +136,7 @@ RSpec.describe 'header and main menu', type: :feature do
       it 'shows main menu in footer' do
         visit_page '/test_page'
 
-        within '#footer_main_menu' do
+        within '#cms-footer-main-menu' do
           expect(page).to have_link 'Home', href: '/home'
           expect(page).to have_selector 'a.page_url_home'
           expect(page).to have_link 'Test Page', href: '/test_page'
@@ -156,8 +156,8 @@ RSpec.describe 'header and main menu', type: :feature do
 
     it 'has no main menu' do
       expect(page).to_not have_link 'Test Page', href: '/test_page'
-      expect(page).to_not have_selector '#main_menu'
-      expect(page).to_not have_selector '#footer_main_menu'
+      expect(page).to_not have_selector '#cms-main-menu'
+      expect(page).to_not have_selector '#cms-footer-main-menu'
     end
   end
 end
