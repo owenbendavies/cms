@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+cd `dirname $0`/..
+
+changes=$(git status --porcelain)
+
+if [[ $changes != "" ]]
+then
+  echo "Uncommited changes"
+  git status --porcelain
+
+  exit 1
+fi
