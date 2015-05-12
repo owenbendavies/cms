@@ -7,16 +7,8 @@ Rails.application.configure do
 
   config.active_support.deprecation = :stderr
 
-  config.serve_static_files = true
   config.static_cache_control = 'public, max-age=3600'
 
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
-
-  config.assets.compile = false
-  config.assets.digest = true
-
-  # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
   config.action_controller.allow_forgery_protection = false
