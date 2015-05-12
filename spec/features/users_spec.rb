@@ -8,7 +8,7 @@ RSpec.describe '/users', type: :feature do
 
     it_behaves_like 'logged in user' do
       it 'has list of users' do
-        within '#main_article' do
+        within '#cms-main-article' do
           expect(page).to have_content 'Users'
 
           expect(page).to have_content 'Email'

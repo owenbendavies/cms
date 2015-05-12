@@ -1,14 +1,14 @@
 %footer.col-sm-12.text-center
   %ul.list-unstyled
     - if @page && @page.persisted?
-      %li#last_update
+      %li#cms-last-update
         %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
 
-    %li#copyright
+    %li#cms-copyright
       %small= footer_copyright(@site)
 
     %li
-      %ul.list-inline#footer_links
+      %ul.list-inline#cms-footer-links
         %li
           %small= link_to t('sitemaps.show.title'), sitemap_path
 
@@ -21,28 +21,28 @@
 
     - if @site.social_networks?
       %li
-        %ul.list-inline#social_network_links
+        %ul.list-inline#cms-social-network-links
           - if @site.facebook
-            %li#facebook
+            %li#cms-facebook
               = link_to "https://www.facebook.com/#{@site.facebook}" do
                 = icon('facebook-official')
 
           - if @site.twitter
-            %li#twitter
+            %li#cms-twitter
               = link_to "https://twitter.com/#{@site.twitter}" do
                 = icon('twitter')
 
           - if @site.youtube
-            %li#youtube
+            %li#cms-youtube
               = link_to "https://www.youtube.com/#{@site.youtube}" do
                 = icon('youtube-play')
 
           - if @site.linkedin
-            %li#linkedin
+            %li#cms-linkedin
               = link_to "https://www.linkedin.com/in/#{@site.linkedin}" do
                 = icon('linkedin-square')
 
           - if @site.github
-            %li#github
+            %li#cms-github
               = link_to "https://github.com/#{@site.github}" do
                 = icon('github')

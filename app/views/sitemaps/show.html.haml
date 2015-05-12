@@ -1,7 +1,7 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%ul.list-unstyled#sitemap
+%ul.list-unstyled#cms-sitemap
   - @pages.each do |page|
     - next if page.private && !user_signed_in?
     %li
