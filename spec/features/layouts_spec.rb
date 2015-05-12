@@ -8,7 +8,7 @@ RSpec.describe 'layouts', type: :feature do
 
     visit_page '/test_page'
 
-    expect(page).to have_selector '#main_article.col-sm-12 header'
+    expect(page).to have_selector '#cms-main-article.col-sm-12 header'
   end
 
   it 'renders right_sidebar layout' do
@@ -18,8 +18,8 @@ RSpec.describe 'layouts', type: :feature do
 
     visit_page '/test_page'
 
-    expect(page).to have_selector '#main_article.col-sm-8 header'
-    expect(page).to have_selector '#sidebar.col-sm-4 h1'
+    expect(page).to have_selector '#cms-main-article.col-sm-8 header'
+    expect(page).to have_selector '#cms-sidebar.col-sm-4 h1'
   end
 
   it 'renders small_right_sidebar layout' do
@@ -29,7 +29,7 @@ RSpec.describe 'layouts', type: :feature do
 
     visit_page '/test_page'
 
-    expect(page).to have_selector '#main_article.col-sm-9 header'
-    expect(page).to have_selector '#sidebar.col-sm-3 h1'
+    expect(page).to have_selector '#cms-main-article.col-sm-9 header'
+    expect(page).to have_selector '#cms-sidebar.col-sm-3 h1'
   end
 end

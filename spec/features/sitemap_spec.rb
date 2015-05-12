@@ -25,7 +25,7 @@ RSpec.describe '/sitemap', type: :feature do
       it 'has link in footer' do
         visit_page '/home'
 
-        within('#footer_links') do
+        within('#cms-footer-links') do
           click_link 'Sitemap'
         end
 
@@ -35,7 +35,7 @@ RSpec.describe '/sitemap', type: :feature do
 
     it_behaves_like 'logged in user' do
       it 'has lock icon for private pages' do
-        find('ul#sitemap li:nth-child(2)').tap do |item|
+        find('ul#cms-sitemap li:nth-child(2)').tap do |item|
           expect(item).to have_link private_page.name, href: '/private'
           expect(item).to have_selector '.fa-lock'
         end

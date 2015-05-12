@@ -5,7 +5,7 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#last_update').text)
+      expect(find('#cms-last-update').text)
         .to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
     end
   end
@@ -21,7 +21,7 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#last_update').text)
+      expect(find('#cms-last-update').text)
         .to eq 'Page last updated about a month ago'
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#copyright').text)
+      expect(find('#cms-copyright').text)
         .to include "#{site.copyright} © #{Time.zone.now.year}"
     end
   end
@@ -39,9 +39,9 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     link = "a[href=\"https://www.facebook.com/#{site.facebook}\"]"
-    expect(page).to have_selector "footer #facebook #{link}"
+    expect(page).to have_selector "footer #cms-facebook #{link}"
 
-    expect(page).to have_selector 'footer #facebook a .fa-facebook-official'
+    expect(page).to have_selector 'footer #cms-facebook a .fa-facebook-official'
   end
 
   context 'no facebook' do
@@ -49,7 +49,7 @@ RSpec.describe 'footer', type: :feature do
       site.facebook = nil
       site.save!
       visit_page '/test_page'
-      expect(page).to_not have_selector 'footer #facebook'
+      expect(page).to_not have_selector 'footer #cms-facebook'
     end
   end
 
@@ -57,9 +57,9 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     link = "a[href=\"https://twitter.com/#{site.twitter}\"]"
-    expect(page).to have_selector "footer #twitter #{link}"
+    expect(page).to have_selector "footer #cms-twitter #{link}"
 
-    expect(page).to have_selector 'footer #twitter a .fa-twitter'
+    expect(page).to have_selector 'footer #cms-twitter a .fa-twitter'
   end
 
   context 'no twitter' do
@@ -67,7 +67,7 @@ RSpec.describe 'footer', type: :feature do
       site.twitter = nil
       site.save!
       visit_page '/test_page'
-      expect(page).to_not have_selector 'footer #twitter'
+      expect(page).to_not have_selector 'footer #cms-twitter'
     end
   end
 
@@ -75,9 +75,9 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     link = "a[href=\"https://www.youtube.com/#{site.youtube}\"]"
-    expect(page).to have_selector "footer #youtube #{link}"
+    expect(page).to have_selector "footer #cms-youtube #{link}"
 
-    expect(page).to have_selector 'footer #youtube a .fa-youtube-play'
+    expect(page).to have_selector 'footer #cms-youtube a .fa-youtube-play'
   end
 
   context 'no youtube' do
@@ -85,7 +85,7 @@ RSpec.describe 'footer', type: :feature do
       site.youtube = nil
       site.save!
       visit_page '/test_page'
-      expect(page).to_not have_selector 'footer #youtube'
+      expect(page).to_not have_selector 'footer #cms-youtube'
     end
   end
 
@@ -93,9 +93,9 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     link = "a[href=\"https://www.linkedin.com/in/#{site.linkedin}\"]"
-    expect(page).to have_selector "footer #linkedin #{link}"
+    expect(page).to have_selector "footer #cms-linkedin #{link}"
 
-    expect(page).to have_selector 'footer #linkedin a .fa-linkedin-square'
+    expect(page).to have_selector 'footer #cms-linkedin a .fa-linkedin-square'
   end
 
   context 'no linkedin' do
@@ -103,7 +103,7 @@ RSpec.describe 'footer', type: :feature do
       site.linkedin = nil
       site.save!
       visit_page '/test_page'
-      expect(page).to_not have_selector 'footer #linkedin'
+      expect(page).to_not have_selector 'footer #cms-linkedin'
     end
   end
 
@@ -111,9 +111,9 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     link = "a[href=\"https://github.com/#{site.github}\"]"
-    expect(page).to have_selector "footer #github #{link}"
+    expect(page).to have_selector "footer #cms-github #{link}"
 
-    expect(page).to have_selector 'footer #github a .fa-github'
+    expect(page).to have_selector 'footer #cms-github a .fa-github'
   end
 
   context 'no github' do
@@ -121,7 +121,7 @@ RSpec.describe 'footer', type: :feature do
       site.github = nil
       site.save!
       visit_page '/test_page'
-      expect(page).to_not have_selector 'footer #github'
+      expect(page).to_not have_selector 'footer #cms-github'
     end
   end
 
@@ -133,6 +133,6 @@ RSpec.describe 'footer', type: :feature do
     site.github = nil
     site.save!
     visit_page '/test_page'
-    expect(page).to_not have_selector 'footer #social_network_links'
+    expect(page).to_not have_selector 'footer #cms-social-network-links'
   end
 end
