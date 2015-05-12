@@ -9,9 +9,5 @@ Rails.application.configure do
 
   config.active_record.migration_error = :page_load
 
-  config.assets.debug = true
-
-  config.assets.raise_runtime_errors = true
-
   config.action_mailer.delivery_method = :letter_opener_web
 end
