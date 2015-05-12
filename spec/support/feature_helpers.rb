@@ -70,7 +70,7 @@ module FeatureHelpers
     it 'has link in topbar' do
       visit_page '/home'
 
-      within('#topbar') do
+      within('#cms-topbar') do
         click_link page_title
       end
 
@@ -82,7 +82,7 @@ module FeatureHelpers
     end
 
     it 'has icon in topbar' do
-      expect(page).to have_selector "#topbar .fa-#{page_icon}"
+      expect(page).to have_selector "#cms-topbar .fa-#{page_icon}"
     end
   end
 end

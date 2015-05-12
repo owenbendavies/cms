@@ -1,6 +1,6 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%ul#sites
+%ul
   - current_user.sites.each do |site|
     %li= link_to(site.host, "http://#{site.host}")
