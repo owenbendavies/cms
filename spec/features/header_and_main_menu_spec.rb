@@ -12,9 +12,9 @@ RSpec.describe 'header and main menu', type: :feature do
 
       within '#cms-main-menu' do
         expect(page).to have_link 'Home', href: '/home'
-        expect(page).to have_selector 'a.page_url_home'
+        expect(page).to have_selector 'a.cms-page-link-home'
         expect(page).to have_link 'Test Page', href: '/test_page'
-        expect(page).to have_selector 'a.page_url_test_page'
+        expect(page).to have_selector 'a.cms-page-link-test_page'
       end
 
       expect(page).to_not have_selector '#cms-footer-main-menu'
@@ -138,7 +138,7 @@ RSpec.describe 'header and main menu', type: :feature do
 
         within '#cms-footer-main-menu' do
           expect(page).to have_link 'Home', href: '/home'
-          expect(page).to have_selector 'a.page_url_home'
+          expect(page).to have_selector 'a.cms-page-link-home'
           expect(page).to have_link 'Test Page', href: '/test_page'
           expect(page).to have_link 'Test Page', href: '/test_page'
         end
