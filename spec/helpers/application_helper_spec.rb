@@ -4,15 +4,15 @@ require 'rails_helper'
 RSpec.describe ApplicationHelper, type: :helper do
   describe '#body_id' do
     it 'uses path' do
-      expect(body_id('/home')).to eq 'page_url_home'
+      expect(body_id('/home')).to eq 'cms-page-home'
     end
 
-    it 'changes / to _' do
-      expect(body_id('/user/sites')).to eq 'page_url_user_sites'
+    it 'changes / to -' do
+      expect(body_id('/user/sites')).to eq 'cms-page-user-sites'
     end
 
     it 'removes edit' do
-      expect(body_id('/home/edit')).to eq 'page_url_home'
+      expect(body_id('/home/edit')).to eq 'cms-page-home'
     end
   end
 
