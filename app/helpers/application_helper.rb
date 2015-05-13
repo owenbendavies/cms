@@ -2,7 +2,7 @@
 
 module ApplicationHelper
   def body_id(path)
-    'page_url' + path.gsub('/', '_').gsub('_edit', '')
+    'cms-page' + path.gsub('/', '-').gsub('-edit', '')
   end
 
   def page_title(site, content)
