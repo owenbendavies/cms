@@ -39,11 +39,11 @@ RSpec.describe 'header and main menu', type: :feature do
         end
 
         it 'does not have header image' do
-          expect(page).to_not have_selector '#cms-page-header img'
+          expect(page).to_not have_selector '#cms-header img'
         end
 
         it 'has separate header' do
-          within '#cms-page-header #cms-site-name' do
+          within '#cms-header #cms-site-name' do
             expect(page).to have_link site.name, href: '/home'
           end
         end
@@ -104,7 +104,7 @@ RSpec.describe 'header and main menu', type: :feature do
         end
 
         it 'does not have header image' do
-          expect(page).to_not have_selector '#cms-page-header img'
+          expect(page).to_not have_selector '#cms-header img'
         end
 
         it 'has site name in main menu' do
@@ -123,7 +123,7 @@ RSpec.describe 'header and main menu', type: :feature do
       it 'does not have header' do
         site.save!
         visit_page '/home'
-        expect(page).to_not have_selector '#cms-page-header'
+        expect(page).to_not have_selector '#cms-header'
       end
     end
 

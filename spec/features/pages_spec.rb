@@ -121,7 +121,7 @@ RSpec.describe '/pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(find('#cms-main-article p').text).to eq new_message
+        expect(find('#cms-article p').text).to eq new_message
 
         page = Page.find_by_site_id_and_url!(site, 'test_page')
         expect(page.updated_by).to eq user

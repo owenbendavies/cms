@@ -17,7 +17,7 @@ RSpec.describe '/messages', type: :feature do
 
     it_behaves_like 'logged in user' do
       it 'has list of messages', js: true do
-        expect(find('#cms-main-article h1').text).to eq 'Messages'
+        expect(find('#cms-article h1').text).to eq 'Messages'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'Name'
@@ -50,7 +50,7 @@ RSpec.describe '/messages', type: :feature do
 
     it_behaves_like 'logged in user' do
       it 'shows message', js: true do
-        expect(find('#cms-main-article h1').text).to eq 'Message'
+        expect(find('#cms-article h1').text).to eq 'Message'
 
         expect(page).to have_content 'Created at'
         expect(page).to have_content 'about a month ago'
@@ -73,7 +73,7 @@ RSpec.describe '/messages', type: :feature do
         message.save!
 
         visit "/site/messages/#{message.id}"
-        expect(find('#cms-main-article h1').text).to eq 'Message'
+        expect(find('#cms-article h1').text).to eq 'Message'
 
         expect(page).to have_no_content 'Phone'
       end
