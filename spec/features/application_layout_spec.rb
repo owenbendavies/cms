@@ -6,7 +6,7 @@ RSpec.describe 'application layout', type: :feature do
     before { visit_page '/test_page' }
 
     it 'has page url as body id' do
-      expect(find('body')['id']).to eq 'page_url_test_page'
+      expect(find('body')['id']).to eq 'cms-page-test_page'
     end
 
     it 'has no topbar' do
