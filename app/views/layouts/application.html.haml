@@ -21,22 +21,22 @@
       .hidden-print#cms-topbar
         = render 'layouts/topbar'
 
-    #cms-page-wrapper
+    #cms-wrapper
       .container#cms-page
         - if @site.separate_header
-          .hidden-print.row#cms-page-header
+          .hidden-print.row#cms-header
             = render 'layouts/header'
 
         - unless @site.main_menu_pages.blank?
-          .hidden-print.row#cms-main-menu
+          .cms-main-menu.hidden-print.row#cms-main-menu
             = render 'layouts/main_menu'
 
         .row#cms-main
           = render "layouts/pages/#{@site.layout}"
 
         - if @site.main_menu_in_footer && !@site.main_menu_pages.blank?
-          .hidden-print.row#cms-footer-main-menu
+          .cms-main-menu.hidden-print.row#cms-footer-main-menu
             = render 'layouts/footer_main_menu'
 
-        .hidden-print.row#cms-page-footer
+        .hidden-print.row#cms-footer
           = render 'layouts/footer'

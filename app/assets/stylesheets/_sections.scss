@@ -1,15 +1,12 @@
-#cms-page-header {
-  h1 a { color: inherit; }
+#cms-site-name a { color: inherit; }
 
-  h2 {
-    color: $headings-small-color;
-    font-size: $jumbotron-font-size;
-    font-weight: normal;
-  }
+#cms-site-sub-title {
+  color: $headings-small-color;
+  font-size: $jumbotron-font-size;
+  font-weight: normal;
 }
 
-#cms-main-menu,
-#cms-footer-main-menu {
+.cms-main-menu {
   .navbar {
     border-radius: 0;
     margin-bottom: 0;
@@ -31,13 +28,13 @@
   h3 { @include clearfix; }
 }
 
-#cms-main-article {
+#cms-article {
   background: $body-bg;
   min-height: 200px;
   padding-top: 15px;
 }
 
-#cms-page-footer {
+#cms-footer {
   .list-unstyled { margin-top: 11px; }
 
   li { line-height: 16px; }
