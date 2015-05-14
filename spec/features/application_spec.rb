@@ -62,7 +62,7 @@ RSpec.describe 'application', type: :feature do
 
   context 'https' do
     before do
-      page.driver.browser.header('X-Forwarded-Proto', 'https')
+      page.driver.header('X-Forwarded-Proto', 'https')
       visit_page '/home'
     end
 
@@ -103,8 +103,8 @@ RSpec.describe 'application', type: :feature do
   end
 
   it 'protects against attacks' do
-    page.driver.browser.header('X_FORWARDED_FOR', 'x')
-    page.driver.browser.header('CLIENT_IP', 'y')
+    page.driver.header('X_FORWARDED_FOR', 'x')
+    page.driver.header('CLIENT_IP', 'y')
     visit '/home'
     expect(page.status_code).to eq 403
   end
