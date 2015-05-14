@@ -10,8 +10,8 @@ RSpec.describe 'request logging', type: :feature do
       events << ActiveSupport::Notifications::Event.new(*args)
     end
 
-    page.driver.browser.header('User-Agent', new_company_name)
-    page.driver.browser.header('X-Request-Id', new_id)
+    page.driver.header('User-Agent', new_company_name)
+    page.driver.header('X-Request-Id', new_id)
     visit_page '/home'
 
     expect(events.size).to eq 1

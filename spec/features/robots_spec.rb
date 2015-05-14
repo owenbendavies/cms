@@ -20,7 +20,7 @@ EOF
 
     context 'https' do
       it 'has https link to sitemap' do
-        page.driver.browser.header('X-Forwarded-Proto', 'https')
+        page.driver.header('X-Forwarded-Proto', 'https')
 
         visit_page '/robots.txt'
 
