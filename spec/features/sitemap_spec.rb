@@ -71,7 +71,7 @@ RSpec.describe '/sitemap', type: :feature do
 
     context 'https' do
       it 'has https links' do
-        page.driver.browser.header('X-Forwarded-Proto', 'https')
+        page.driver.header('X-Forwarded-Proto', 'https')
         visit_page '/sitemap.xml'
 
         expect(find(:xpath, '//urlset/url[1]/loc').text)
