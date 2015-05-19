@@ -12,7 +12,6 @@
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
 #  stylesheet_filename  :string(36)
-#  logo_filename        :string(36)
 #  sidebar_html_content :text
 #  created_by_id        :integer          not null
 #  updated_by_id        :integer          not null
@@ -44,7 +43,6 @@ class Site < ActiveRecord::Base
   serialize :main_menu_page_ids, Array
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
-  mount_uploader :logo, LogoUploader, mount_on: :logo_filename
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
