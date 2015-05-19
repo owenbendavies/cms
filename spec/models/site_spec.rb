@@ -12,7 +12,6 @@
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
 #  stylesheet_filename  :string(36)
-#  logo_filename        :string(36)
 #  sidebar_html_content :text
 #  created_by_id        :integer          not null
 #  updated_by_id        :integer          not null
@@ -56,25 +55,6 @@ RSpec.describe Site do
         site.id.to_s,
         site.stylesheet_filename
       )
-    end
-  end
-
-  describe '#logo', uploads: true do
-    it 'saves an image' do
-      site = FactoryGirl.create(
-        :site,
-        logo: File.open(Rails.root.join('spec/assets/test_image.jpg'))
-      )
-
-      expect(site.logo.url).to eq File.join(
-        '/',
-        Rails.application.secrets.uploads_store_dir,
-        site.id.to_s,
-        site.logo_filename
-      )
-
-      expect(uploaded_files)
-        .to include "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
     end
   end
 
