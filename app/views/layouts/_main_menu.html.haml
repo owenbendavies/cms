@@ -1,11 +1,7 @@
 = navbar do
   = vertical do
     - unless @site.separate_header
-      = link_to page_path('home') do
-        - if @site.logo_filename
-          = image_tag(@site.logo.main_menu.url, alt: @site.name)
-        - else
-          = @site.name
+      = link_to @site.name, page_path('home')
 
   = horizontal do
     - nav_class = 'navbar-right' unless @site.separate_header
