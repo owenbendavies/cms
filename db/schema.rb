@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502091224) do
+ActiveRecord::Schema.define(version: 20150519115608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 20150502091224) do
     t.string   "google_analytics",     limit: 32
     t.string   "charity_number",       limit: 32
     t.string   "stylesheet_filename",  limit: 36
-    t.string   "logo_filename",        limit: 36
     t.text     "sidebar_html_content"
     t.integer  "created_by_id",                                          null: false
     t.integer  "updated_by_id",                                          null: false

@@ -21,31 +21,12 @@ RSpec.describe 'header and main menu', type: :feature do
     end
 
     context 'site with separate header' do
-      context 'site with header image' do
-        it 'has header image' do
-          site.save!
-          visit_page '/home'
-          image = page.find('#cms-site-name a[href="/home"] img')
-          expect(image['src']).to eq site.logo.header.url
-          expect(image['alt']).to eq site.name
-        end
-      end
+      it 'has separate header' do
+        site.save!
+        visit_page '/home'
 
-      context 'site without header image' do
-        before do
-          site.logo_filename = nil
-          site.save!
-          visit_page '/home'
-        end
-
-        it 'does not have header image' do
-          expect(page).to_not have_selector '#cms-header img'
-        end
-
-        it 'has separate header' do
-          within '#cms-header #cms-site-name' do
-            expect(page).to have_link site.name, href: '/home'
-          end
+        within '#cms-header #cms-site-name' do
+          expect(page).to have_link site.name, href: '/home'
         end
       end
 
@@ -77,7 +58,9 @@ RSpec.describe 'header and main menu', type: :feature do
         site.save!
         visit_page '/home'
 
-        expect(page).to_not have_selector '#cms-main-menu img'
+        within '#cms-main-menu' do
+          expect(page).to_not have_link site.name, href: '/home'
+        end
       end
     end
 
@@ -86,31 +69,12 @@ RSpec.describe 'header and main menu', type: :feature do
         site.separate_header = false
       end
 
-      context 'site with header image' do
-        it 'has header image in main menu' do
-          site.save!
-          visit_page '/home'
-          image = page.find('#cms-main-menu a[href="/home"] img')
-          expect(image['src']).to eq site.logo.main_menu.url
-          expect(image['alt']).to eq site.name
-        end
-      end
+      it 'has site name in main menu' do
+        site.save!
+        visit_page '/home'
 
-      context 'site without header image' do
-        before do
-          site.logo_filename = nil
-          site.save!
-          visit_page '/home'
-        end
-
-        it 'does not have header image' do
-          expect(page).to_not have_selector '#cms-header img'
-        end
-
-        it 'has site name in main menu' do
-          within '#cms-main-menu' do
-            expect(page).to have_link site.name, href: '/home'
-          end
+        within '#cms-main-menu' do
+          expect(page).to have_link site.name, href: '/home'
         end
       end
 
