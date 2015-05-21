@@ -25,24 +25,24 @@
           - if @site.facebook
             %li#cms-facebook
               = link_to "https://www.facebook.com/#{@site.facebook}" do
-                = icon('facebook-official')
+                = content_tag(:i, nil, class: 'fa fa-facebook-official')
 
           - if @site.twitter
             %li#cms-twitter
               = link_to "https://twitter.com/#{@site.twitter}" do
-                = icon('twitter')
+                = content_tag(:i, nil, class: 'fa fa-twitter')
 
           - if @site.youtube
             %li#cms-youtube
               = link_to "https://www.youtube.com/#{@site.youtube}" do
-                = icon('youtube-play')
+                = content_tag(:i, nil, class: 'fa fa-youtube-play')
 
           - if @site.linkedin
             %li#cms-linkedin
               = link_to "https://www.linkedin.com/in/#{@site.linkedin}" do
-                = icon('linkedin-square')
+                = content_tag(:i, nil, class: 'fa fa-linkedin-square')
 
           - if @site.github
             %li#cms-github
               = link_to "https://github.com/#{@site.github}" do
-                = icon('github')
+                = content_tag(:i, nil, class: 'fa fa-github')
