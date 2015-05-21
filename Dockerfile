@@ -20,7 +20,7 @@ ENV WORKER_PROCESSES 3
 
 # Install app
 RUN cp -f config/secrets.yml.production config/secrets.yml && \
-  ./bin/bundle install --without development test --deployment --quiet
+  ./bin/bundle install --without assets development test --deployment --quiet
 
 # Set up networking
 EXPOSE 3000

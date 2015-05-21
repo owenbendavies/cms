@@ -11,16 +11,16 @@
         %ul.dropdown-menu
           - if @page && @page.persisted?
             = link_to edit_page_path(@page.to_param) do
-              = icon(t('pages.edit.icon'))
+              = content_tag(:i, nil, class: "fa fa-#{t('pages.edit.icon')}")
               = t('actions.edit')
 
-            = link_to icon(t('pages.delete.icon')) + ' ' + t('actions.delete'),
+            = link_to content_tag(:i, nil, class: "fa fa-#{t('pages.delete.icon')}") + ' ' + t('actions.delete'),
                       page_path(@page.to_param),
                       method: :delete,
                       data: { confirm: t('pages.delete.text', name: @page.name) }
 
           = link_to new_page_path do
-            = icon(t('pages.new.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('pages.new.icon')}")
             = t('pages.new.title')
 
       %li.dropdown
@@ -29,27 +29,27 @@
           %b.caret
         %ul.dropdown-menu
           = link_to site_messages_path do
-            = icon(t('messages.index.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('messages.index.icon')}")
             = t('messages.index.title')
 
           = link_to site_images_path do
-            = icon(t('images.index.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('images.index.icon')}")
             = t('images.index.title')
 
           = link_to edit_site_path do
-            = icon(t('sites.edit.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('sites.edit.icon')}")
             = t('sites.edit.title')
 
           = link_to site_users_path do
-            = icon(t('users.index.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('users.index.icon')}")
             = t('users.index.title')
 
           = link_to css_site_path do
-            = icon(t('sites.css.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('sites.css.icon')}")
             = t('sites.css.title')
 
           = link_to sitemap_path do
-            = icon(t('sitemaps.show.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('sitemaps.show.icon')}")
             = t('sitemaps.show.title')
 
       %li.dropdown
@@ -58,15 +58,15 @@
           %b.caret
         %ul.dropdown-menu
           = link_to edit_user_registration_path do
-            = icon(t('devise.registrations.edit.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('devise.registrations.edit.icon')}")
             = t('devise.registrations.edit.title')
 
           = link_to sites_path do
-            = icon(t('sites.index.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('sites.index.icon')}")
             = t('sites.index.title')
 
           = link_to destroy_user_session_path do
-            = icon(t('devise.sessions.destroy.icon'))
+            = content_tag(:i, nil, class: "fa fa-#{t('devise.sessions.destroy.icon')}")
             = t('devise.sessions.destroy.title')
 
       %li.avatar= image_tag(current_user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
