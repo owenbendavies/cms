@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   gravtastic default: 'mm', size: 40
 
-  has_and_belongs_to_many :sites, -> { order :name }
+  has_and_belongs_to_many :sites, -> { order :host }
 
   has_paper_trail
 
