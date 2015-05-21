@@ -3,9 +3,6 @@ set -ev
 
 cd `dirname $0`/..
 
-export RAILS_ENV=production
-
-./bin/rake assets:precompile
-./bin/rake assets:clean
+DISABLE_SPRING=true RAILS_ENV=production RAILS_GROUPS=assets ./bin/rake assets:precompile assets:clean
 
 echo "compile complete"

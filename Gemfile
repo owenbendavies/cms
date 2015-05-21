@@ -34,27 +34,28 @@ gem 'xml-sitemap'
 gem 'bh'
 gem 'haml-rails'
 gem 'premailer-rails'
-gem 'simple_form'
-
-# Assets
-gem 'autogrow-textarea-rails'
-gem 'bootstrap-sass'
-gem 'font-awesome-sass'
-gem 'google-analytics-turbolinks'
-gem 'jquery-rails'
-gem 'jquery-turbolinks'
 gem 'rails-timeago'
-gem 'sass-rails'
-gem 'therubyracer'
+gem 'simple_form'
 gem 'tinymce-rails'
-gem 'turbolinks'
-gem 'uglifier'
 
 # Monitoring
 gem 'lograge'
 
 # Server
 gem 'unicorn-rails'
+
+group :assets, :development do
+  gem 'autogrow-textarea-rails'
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass'
+  gem 'google-analytics-turbolinks'
+  gem 'jquery-rails'
+  gem 'jquery-turbolinks'
+  gem 'sass-rails'
+  gem 'therubyracer'
+  gem 'turbolinks'
+  gem 'uglifier'
+end
 
 group :production do
   gem 'font_assets'
