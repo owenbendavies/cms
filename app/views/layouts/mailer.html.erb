@@ -8,11 +8,11 @@
 GLOBAL
 ------------------------------------- */
 * {
-  margin: 0;
-  padding: 0;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -22,8 +22,8 @@ img {
 body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
-  width: 100%!important;
   height: 100%;
+  width: 100%!important;
 }
 
 /* -------------------------------------
@@ -34,90 +34,80 @@ a {
 }
 
 .btn-primary {
-  text-decoration: none;
-  color: #FFF;
   background-color: #348eda;
-  border: solid #348eda;
+  border-radius: 25px;
   border-width: 10px 20px;
-  line-height: 2;
-  font-weight: bold;
-  margin-right: 10px;
-  text-align: center;
+  border: solid #348eda;
+  color: #FFF;
   cursor: pointer;
   display: inline-block;
-  border-radius: 25px;
+  font-weight: bold;
+  line-height: 2;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .btn-secondary {
-  text-decoration: none;
-  color: #FFF;
   background-color: #aaa;
-  border: solid #aaa;
+  border-radius: 25px;
   border-width: 10px 20px;
-  line-height: 2;
-  font-weight: bold;
-  margin-right: 10px;
-  text-align: center;
+  border: solid #aaa;
+  color: #FFF;
   cursor: pointer;
   display: inline-block;
-  border-radius: 25px;
-}
-
-.last {
-  margin-bottom: 0;
-}
-
-.first {
-  margin-top: 0;
-}
-
-.padding {
-  padding: 10px 0;
+  font-weight: bold;
+  line-height: 2;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
 }
 
 /* -------------------------------------
 BODY
 ------------------------------------- */
-table.body-wrap {
-  width: 100%;
-  padding: 20px;
+.body-wrap {
   background-color: #f6f6f6;
+  padding: 10px 0;
+  width: 100%;
 }
 
-table.body-wrap .container {
+.body-wrap .container {
   border: 1px solid #f0f0f0;
+  padding: 10px;
 }
 
 /* -------------------------------------
 FOOTER
 ------------------------------------- */
-table.footer-wrap {
-  width: 100%;
-  clear: both!important;
+.footer-wrap {
   background-color: #f6f6f6;
+  clear: both!important;
+  width: 100%;
 }
 
 .footer-wrap .container p {
-  font-size: 12px;
   color: #666;
-
+  font-size: 12px;
 }
 
-table.footer-wrap a {
+.footer-wrap a {
   color: #999;
 }
 
 /* -------------------------------------
 TYPOGRAPHY
 ------------------------------------- */
-h1, h2, h3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  line-height: 1.1;
-  margin-bottom: 15px;
+h1,
+h2,
+h3 {
   color: #000;
-  margin: 40px 0 10px;
-  line-height: 1.2;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
+  line-height: 1.1;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  margin: 40px 0 10px;
 }
 
 h1 {
@@ -125,49 +115,46 @@ h1 {
   margin-top: 0;
   text-align: center;
 }
+
 h2 {
   font-size: 28px;
 }
+
 h3 {
   font-size: 22px;
 }
 
-p, ul, ol {
-  margin-bottom: 10px;
-  font-weight: normal;
+p,
+ul,
+ol {
   font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 10px;
 }
 
-ul li, ol li {
-  margin-left: 5px;
+ul li,
+ol li {
   list-style-position: inside;
+  margin-left: 5px;
 }
 
 /* ---------------------------------------------------
 RESPONSIVENESS
 ------------------------------------------------------ */
 
-/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
 .container {
-  display: block!important;
-  max-width: 600px!important;
-  margin: 0 auto!important; /* makes it centered */
   clear: both!important;
+  display: block!important;
+  margin: 0 auto!important;
+  max-width: 600px!important;
 }
 
-/* Set the padding on the td rather than the div for Outlook compatibility */
-.body-wrap .container {
-  padding: 20px;
-}
-
-/* This should also be a block element, so that it will fill 100% of the .container */
 .content {
-  max-width: 600px;
-  margin: 0 auto;
   display: block;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
-/* Let's make sure tables in the content area are 100% wide */
 .content table {
   width: 100%;
 }
