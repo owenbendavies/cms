@@ -40,6 +40,7 @@ gem 'tinymce-rails'
 
 # Monitoring
 gem 'lograge'
+gem 'newrelic_rpm'
 
 # Server
 gem 'unicorn-rails'
@@ -60,7 +61,6 @@ end
 group :production do
   gem 'font_assets'
   gem 'heroku-deflater'
-  gem 'newrelic_rpm'
   gem 'sentry-raven'
 end
 
