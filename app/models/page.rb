@@ -26,9 +26,7 @@ class Page < ActiveRecord::Base
 
   strip_attributes except: :html_content, collapse_spaces: true
 
-  auto_validate
   validates :url, exclusion: { in: INVALID_URLS }
-  validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
 
   def name=(value)
     self.url = value.gsub("'", '').parameterize('_') if value

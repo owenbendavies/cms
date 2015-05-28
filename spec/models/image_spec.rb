@@ -49,7 +49,7 @@ RSpec.describe Image do
   describe 'validate' do
     subject { FactoryGirl.build(:image) }
 
-    it { should validate_presence_of(:site_id) }
+    it { should validate_presence_of(:site) }
 
     it { should validate_presence_of(:name) }
 
@@ -59,8 +59,8 @@ RSpec.describe Image do
 
     it { should validate_uniqueness_of(:filename).scoped_to(:site_id) }
 
-    it { should validate_presence_of(:created_by_id) }
+    it { should validate_presence_of(:created_by) }
 
-    it { should validate_presence_of(:updated_by_id) }
+    it { should validate_presence_of(:updated_by) }
   end
 end

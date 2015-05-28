@@ -29,7 +29,7 @@ RSpec.describe Message do
   it { is_expected.to_not strip_attribute(:message) }
 
   describe 'validate' do
-    it { should validate_presence_of(:site_id) }
+    it { should validate_presence_of(:site) }
 
     it { should validate_presence_of(:subject) }
 

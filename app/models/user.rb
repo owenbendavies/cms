@@ -40,5 +40,5 @@ class User < ActiveRecord::Base
 
   strip_attributes only: :email, collapse_spaces: true
 
-  validates :email, length: { maximum: 64 }, email_format: true
+  validates :email, email_format: true
 end
