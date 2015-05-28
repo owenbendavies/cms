@@ -46,24 +46,12 @@ class Site < ActiveRecord::Base
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
-  auto_validate
-  validates :name, length: { maximum: 64 }
-  validates :sub_title, length: { maximum: 64 }
   validates :layout, inclusion: { in: LAYOUTS }
-  validates :copyright, length: { maximum: 64 }
-  validates :facebook, length: { maximum: 64 }
-  validates :twitter, length: { maximum: 15 }
-  validates :youtube, length: { maximum: 32 }
-  validates :linkedin, length: { maximum: 32 }
-  validates :github, length: { maximum: 32 }
 
   validates :google_analytics, format: {
     with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
     allow_blank: true
   }
-
-  validates :created_by, presence: true
-  validates :updated_by, presence: true
 
   def css
     stylesheet.read
