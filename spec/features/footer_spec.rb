@@ -5,8 +5,8 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#cms-last-update').text)
-        .to eq "Page last updated #{test_page.updated_at.to_date.iso8601}"
+      date = test_page.updated_at.to_date.iso8601
+      expect(page).to have_content "Page last updated #{date}"
     end
   end
 
@@ -21,8 +21,7 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#cms-last-update').text)
-        .to eq 'Page last updated about a month ago'
+      expect(page).to have_content 'Page last updated about a month ago'
     end
   end
 
@@ -30,8 +29,7 @@ RSpec.describe 'footer', type: :feature do
     visit_page '/test_page'
 
     within 'footer' do
-      expect(find('#cms-copyright').text)
-        .to include "#{site.copyright} © #{Time.zone.now.year}"
+      expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
     end
   end
 

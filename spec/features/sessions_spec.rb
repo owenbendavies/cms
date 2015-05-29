@@ -13,8 +13,8 @@ RSpec.describe 'sessions', type: :feature do
 
       click_button 'Login'
 
-      it_should_be_on_home_page
-      it_should_have_success_alert_with 'Signed in successfully.'
+      expect(current_path).to eq '/home'
+      expect(page).to have_content 'Signed in successfully.'
     end
 
     it 'accepts spaces in email' do
@@ -23,8 +23,8 @@ RSpec.describe 'sessions', type: :feature do
 
       click_button 'Login'
 
-      it_should_be_on_home_page
-      it_should_have_success_alert_with 'Signed in successfully.'
+      expect(current_path).to eq '/home'
+      expect(page).to have_content 'Signed in successfully.'
     end
 
     it 'ignores case for email 'do
@@ -33,8 +33,8 @@ RSpec.describe 'sessions', type: :feature do
 
       click_button 'Login'
 
-      it_should_be_on_home_page
-      it_should_have_success_alert_with 'Signed in successfully.'
+      expect(current_path).to eq '/home'
+      expect(page).to have_content 'Signed in successfully.'
     end
 
     it 'does not allow invalid email' do
@@ -44,7 +44,7 @@ RSpec.describe 'sessions', type: :feature do
       click_button 'Login'
 
       expect(current_path).to eq '/login'
-      it_should_have_error_alert_with 'Invalid email or password.'
+      expect(page).to have_content 'Invalid email or password.'
     end
 
     it 'does not allow invalid password' do
@@ -54,7 +54,7 @@ RSpec.describe 'sessions', type: :feature do
       click_button 'Login'
 
       expect(current_path).to eq '/login'
-      it_should_have_error_alert_with 'Invalid email or password.'
+      expect(page).to have_content 'Invalid email or password.'
     end
 
     it 'does not allow user from another site' do
@@ -67,7 +67,7 @@ RSpec.describe 'sessions', type: :feature do
 
       expect(current_path).to eq '/login'
       expect(page.status_code).to eq 200
-      it_should_have_error_alert_with 'Invalid email or password.'
+      expect(page).to have_content 'Invalid email or password.'
     end
 
     it 'locks out user after 5 attempts' do
@@ -75,7 +75,7 @@ RSpec.describe 'sessions', type: :feature do
         fill_in 'Email', with: user.email
         fill_in 'Password', with: new_password
         click_button 'Login'
-        it_should_have_error_alert_with 'Invalid email or password.'
+        expect(page).to have_content 'Invalid email or password.'
       end
 
       fill_in 'Email', with: user.email
@@ -87,7 +87,7 @@ RSpec.describe 'sessions', type: :feature do
 
       expect(ActionMailer::Base.deliveries.size).to eq 1
 
-      it_should_have_error_alert_with 'Invalid email or password.'
+      expect(page).to have_content 'Invalid email or password.'
 
       email = ActionMailer::Base.deliveries.last
       expect(email.from).to eq ["noreply@#{site.host}"]
@@ -210,8 +210,8 @@ RSpec.describe 'sessions', type: :feature do
           click_link 'Logout'
         end
 
-        it_should_be_on_home_page
-        it_should_have_success_alert_with 'Signed out successfully.'
+        expect(current_path).to eq '/home'
+        expect(page).to have_content 'Signed out successfully.'
       end
 
       it 'logs out from link in footer' do
@@ -219,8 +219,8 @@ RSpec.describe 'sessions', type: :feature do
           click_link 'Logout'
         end
 
-        it_should_be_on_home_page
-        it_should_have_success_alert_with 'Signed out successfully.'
+        expect(current_path).to eq '/home'
+        expect(page).to have_content 'Signed out successfully.'
       end
 
       it 'has icon in topbar' do

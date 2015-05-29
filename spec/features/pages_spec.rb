@@ -13,7 +13,7 @@ RSpec.describe '/pages', type: :feature do
 
       it 'has cancel link' do
         click_link 'Cancel'
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
       end
 
       it 'creates a page', js: true do
@@ -38,7 +38,7 @@ RSpec.describe '/pages', type: :feature do
         click_button 'Create Page'
 
         expect(current_path).to eq '/'
-        it_should_have_form_error 'is reserved'
+        expect(page).to have_content 'is reserved'
       end
 
       include_examples 'page with topbar link', 'New Page', 'plus'
@@ -121,7 +121,7 @@ RSpec.describe '/pages', type: :feature do
         click_button 'Update Page'
 
         expect(current_path).to eq '/test_page'
-        expect(find('#cms-article p').text).to eq new_message
+        expect(page).to have_content new_message
 
         page = Page.find_by_site_id_and_url!(site, 'test_page')
         expect(page.updated_by).to eq user
@@ -185,7 +185,7 @@ RSpec.describe '/pages', type: :feature do
       it 'shows errors' do
         fill_in 'page[name]', with: 'Site'
         click_button 'Update Page'
-        it_should_have_form_error 'is reserved'
+        expect(page).to have_content 'is reserved'
       end
 
       it 'has icon on page' do
@@ -213,7 +213,7 @@ RSpec.describe '/pages', type: :feature do
           )
         end.to change(Page, :count).by(-1)
 
-        it_should_have_error_alert_with 'Test Page was deleted'
+        expect(page).to have_content 'Test Page was deleted'
 
         expect(current_path).to eq '/sitemap'
         expect(Page.find_by_site_id_and_url(site, 'test_page')).to be_nil
