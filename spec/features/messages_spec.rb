@@ -72,7 +72,7 @@ RSpec.describe '/messages', type: :feature do
         message.phone = nil
         message.save!
 
-        visit "/site/messages/#{message.id}"
+        visit_page "/site/messages/#{message.id}"
         expect(find('#cms-article h1').text).to eq 'Message'
 
         expect(page).to have_no_content 'Phone'

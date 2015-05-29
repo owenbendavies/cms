@@ -22,22 +22,6 @@ module FeatureHelpers
     expect(current_path).to eq url.split('?').first
   end
 
-  def it_should_be_on_home_page
-    expect(current_path).to eq '/home'
-  end
-
-  def it_should_have_success_alert_with(text)
-    expect(find('.alert.alert-success').text).to eq "× Close #{text}"
-  end
-
-  def it_should_have_error_alert_with(text)
-    expect(find('.alert.alert-danger').text).to eq "× Close #{text}"
-  end
-
-  def it_should_have_form_error(text)
-    expect(find('.has-error span.help-block').text).to eq text
-  end
-
   RSpec.shared_context 'logged in user' do
     before do
       login_as user

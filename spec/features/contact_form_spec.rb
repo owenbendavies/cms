@@ -21,7 +21,7 @@ RSpec.describe '/contact_form', type: :feature do
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     expect(current_path).to eq "/#{contact_page.url}"
-    it_should_have_success_alert_with 'Thank you for your message'
+    expect(page).to have_content 'Thank you for your message'
 
     message = site.messages.first
     expect(message.site).to eq site
@@ -49,7 +49,7 @@ RSpec.describe '/contact_form', type: :feature do
     expect(Message.count).to eq 0
     expect(ActionMailer::Base.deliveries.size).to eq 0
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
-    it_should_have_form_error "can't be blank"
+    expect(page).to have_content "can't be blank"
   end
 
   it 'does not send a message with do_not_fill_in field' do
@@ -64,6 +64,6 @@ RSpec.describe '/contact_form', type: :feature do
     expect(Message.count).to eq 0
     expect(ActionMailer::Base.deliveries.size).to eq 0
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
-    it_should_have_form_error 'do not fill in'
+    expect(page).to have_content 'do not fill in'
   end
 end

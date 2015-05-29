@@ -34,16 +34,17 @@ RSpec.describe 'header and main menu', type: :feature do
         it 'has sub title' do
           site.save!
           visit_page '/home'
-          expect(find('#cms-site-sub-title').text).to eq site.sub_title
+          expect(page).to have_content site.sub_title
         end
       end
 
       context 'site without sub title' do
         it 'does not have sub title' do
+          sub_title = site.sub_title
           site.sub_title = nil
           site.save!
           visit_page '/home'
-          expect(page).to_not have_selector '#cms-site-sub-title'
+          expect(page).to_not have_content sub_title
         end
       end
 
