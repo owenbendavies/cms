@@ -24,8 +24,4 @@ class Image < ActiveRecord::Base
   mount_uploader :file, ImageUploader, mount_on: :filename
 
   strip_attributes collapse_spaces: true
-
-  auto_validate
-  validates :name, length: { maximum: 64 }, uniqueness: { scope: :site_id }
-  validates :filename, uniqueness: { scope: :site_id }
 end

@@ -23,8 +23,6 @@ class Message < ActiveRecord::Base
 
   strip_attributes except: :message, collapse_spaces: true
 
-  auto_validate
-  validates :name, length: { maximum: 64 }
   validates :email, email_format: true
   validates :message, length: { maximum: 2048 }
   validates :do_not_fill_in, length: { maximum: 0 }
