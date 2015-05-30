@@ -49,11 +49,9 @@ RSpec.describe '/users', type: :feature do
         fill_in 'Email', with: " #{new_email} "
         click_button 'Update User'
 
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
 
-        it_should_have_success_alert_with(
-          'Your account has been updated successfully.'
-        )
+        expect(page).to have_content 'Your account has been updated'
 
         found_user = User.find(user.id)
         expect(found_user.email).to eq new_email
@@ -66,7 +64,7 @@ RSpec.describe '/users', type: :feature do
 
         click_button 'Login'
 
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
       end
 
       it 'fails when no current password is given' do
@@ -74,7 +72,7 @@ RSpec.describe '/users', type: :feature do
 
         click_button 'Update User'
 
-        it_should_have_form_error "can't be blank"
+        expect(page).to have_content "can't be blank"
       end
 
       it 'fails with invalid data' do
@@ -83,12 +81,12 @@ RSpec.describe '/users', type: :feature do
 
         click_button 'Update User'
 
-        it_should_have_form_error "can't be blank"
+        expect(page).to have_content "can't be blank"
       end
 
       it 'has cancel button' do
         click_link 'Cancel'
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
       end
 
       include_examples 'page with topbar link', 'User Settings', 'user'
@@ -109,10 +107,7 @@ RSpec.describe '/users', type: :feature do
 
       expect(ActionMailer::Base.deliveries.size).to eq 1
 
-      it_should_have_success_alert_with(
-        'If your email address exists in our database, you will receive a ' \
-        'password recovery link at your email address in a few minutes.'
-      )
+      expect(page).to have_content 'If your email address exists'
 
       email = ActionMailer::Base.deliveries.last
       expect(email.from).to eq ["noreply@#{site.host}"]
@@ -165,9 +160,7 @@ RSpec.describe '/users', type: :feature do
       fill_in 'Confirm new password', with: new_password
       click_button 'Change password'
 
-      it_should_have_success_alert_with(
-        'Your password has been changed successfully. You are now signed in.'
-      )
+      expect(page).to have_content 'Your password has been changed'
 
       user.reload
       expect(user.valid_password?(new_password)).to eq true
@@ -192,10 +185,7 @@ RSpec.describe '/users', type: :feature do
 
       expect(ActionMailer::Base.deliveries.size).to eq 1
 
-      it_should_have_success_alert_with(
-        'If your account exists, you will receive an email with instructions ' \
-        'for how to unlock it in a few minutes.'
-      )
+      expect(page).to have_content 'If your account exists'
     end
 
     it 'does not give away if email exist or not' do
@@ -204,10 +194,7 @@ RSpec.describe '/users', type: :feature do
       fill_in 'Email', with: new_email
       click_button 'Resend unlock instructions'
 
-      it_should_have_success_alert_with(
-        'If your account exists, you will receive an email with ' \
-        'instructions for how to unlock it in a few minutes.'
-      )
+      expect(page).to have_content 'If your account exists'
 
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
@@ -219,10 +206,7 @@ RSpec.describe '/users', type: :feature do
 
       visit "/users/unlock?unlock_token=#{token}"
 
-      it_should_have_success_alert_with(
-        'Your account has been unlocked successfully. Please sign in to ' \
-        'continue.'
-      )
+      expect(page).to have_content 'Your account has been unlocked'
     end
   end
 end

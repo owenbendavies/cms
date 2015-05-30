@@ -62,7 +62,7 @@ RSpec.describe '/site', type: :feature do
         click_button 'Update Site'
 
         expect(current_path).to eq '/home'
-        it_should_have_success_alert_with 'Site successfully updated'
+        expect(page).to have_content 'Site successfully updated'
 
         site = Site.find_by_host!('localhost')
         expect(site.name).to eq new_company_name
@@ -94,12 +94,12 @@ RSpec.describe '/site', type: :feature do
       it 'fails with invalid data' do
         fill_in 'Name', with: ''
         click_button 'Update Site'
-        it_should_have_form_error "can't be blank"
+        expect(page).to have_content "can't be blank"
       end
 
       it 'has cancel button' do
         click_link 'Cancel'
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
       end
 
       include_examples 'page with topbar link', 'Site Settings', 'cog'
@@ -131,8 +131,8 @@ RSpec.describe '/site', type: :feature do
 
         expect(site.updated_by).to eq user
 
-        it_should_be_on_home_page
-        it_should_have_success_alert_with 'Site successfully updated'
+        expect(current_path).to eq '/home'
+        expect(page).to have_content 'Site successfully updated'
 
         link = "link[href=\"#{site.stylesheet.url}\"]"
         expect(page).to have_selector link, visible: false
@@ -150,7 +150,7 @@ RSpec.describe '/site', type: :feature do
 
       it 'has cancel button' do
         click_link 'Cancel'
-        it_should_be_on_home_page
+        expect(current_path).to eq '/home'
       end
 
       include_examples 'page with topbar link', 'CSS', 'file'
