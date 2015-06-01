@@ -19,6 +19,6 @@ cd `dirname $0`/..
 
 ./bin/puppet-lint puppet/modules_custom --no-documentation-check --fail-on-warnings --with-filename
 
-./bin/scss-lint --exclude-linter IdSelector,ColorVariable app/assets/stylesheets/
+./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
 ./bin/brakeman --quiet --exit-on-warn

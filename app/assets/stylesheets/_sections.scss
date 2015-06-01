@@ -45,12 +45,8 @@
   margin: 10px;
 }
 
-#cms-facebook a { color: #3b5998; }
-
-#cms-twitter a { color: #55acee; }
-
-#cms-youtube a { color: #cd201f; }
-
-#cms-linkedin a { color: #0976b4; }
-
-#cms-github a { color: #333; }
+#cms-facebook a { color: $facebook; }
+#cms-github a { color: $github; }
+#cms-linkedin a { color: $linkedin; }
+#cms-twitter a { color: $twitter; }
+#cms-youtube a { color: $youtube; }
