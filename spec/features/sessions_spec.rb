@@ -90,29 +90,8 @@ RSpec.describe 'sessions', type: :feature do
       expect(page).to have_content 'Invalid email or password.'
 
       email = ActionMailer::Base.deliveries.last
-      expect(email.from).to eq ["noreply@#{site.host}"]
-
-      addresses = email.header['from'].address_list.addresses
-      expect(addresses.first.display_name).to eq site.name
-
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Unlock instructions'
-
-      token = user.send_unlock_instructions
-
-      email = ActionMailer::Base.deliveries.last
-
-      link = "http://#{site.host}/users/unlock?unlock_token=#{token}"
-
-      expect(email.html_part.body).to have_content site.name
-
-      expect(email.html_part.body)
-        .to have_content 'Your account has been locked'
-
-      expect(email.html_part.body).to have_link 'Unlock account', href: link
-
-      expect(email.html_part.body)
-        .to have_content "#{site.copyright} © #{Time.zone.now.year}"
     end
 
     it 'has link in footer' do
