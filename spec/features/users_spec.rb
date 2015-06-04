@@ -110,32 +110,8 @@ RSpec.describe '/users', type: :feature do
       expect(page).to have_content 'If your email address exists'
 
       email = ActionMailer::Base.deliveries.last
-      expect(email.from).to eq ["noreply@#{site.host}"]
-
-      addresses = email.header['from'].address_list.addresses
-      expect(addresses.first.display_name).to eq site.name
-
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Reset password instructions'
-
-      token = user.send_reset_password_instructions
-
-      email = ActionMailer::Base.deliveries.last
-
-      host = "http://#{site.host}"
-      path = "/users/password/edit?reset_password_token=#{token}"
-      link = "#{host}#{path}"
-
-      expect(email.html_part.body).to have_content site.name
-
-      expect(email.html_part.body).to have_content(
-        'Someone has requested a link to change your password.'
-      )
-
-      expect(email.html_part.body).to have_link 'Change password', href: link
-
-      expect(email.html_part.body)
-        .to have_content "#{site.copyright} © #{Time.zone.now.year}"
     end
 
     it 'has link on login page' do
@@ -186,6 +162,10 @@ RSpec.describe '/users', type: :feature do
       expect(ActionMailer::Base.deliveries.size).to eq 1
 
       expect(page).to have_content 'If your account exists'
+
+      email = ActionMailer::Base.deliveries.last
+      expect(email.to).to eq [user.email]
+      expect(email.subject).to eq 'Unlock instructions'
     end
 
     it 'does not give away if email exist or not' do
