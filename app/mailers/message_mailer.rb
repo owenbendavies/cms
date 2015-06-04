@@ -1,18 +1,13 @@
 class MessageMailer < ActionMailer::Base
-  helper :application
-
-  layout 'mailer'
+  include BaseMailer
 
   def new_message(message)
     @message = message
 
     @site = message.site
 
-    from = Mail::Address.new(@site.email)
-    from.display_name = @site.name
-
     mail(
-      from: from,
+      from: from_site(message.site),
       to: @site.users.map(&:email).sort,
       subject: message.subject
     )
