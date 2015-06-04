@@ -76,7 +76,7 @@ RSpec.describe Message do
     end
   end
 
-  describe 'deliver' do
+  describe '#deliver' do
     subject { FactoryGirl.create(:message) }
 
     it 'sends an email' do
@@ -92,7 +92,7 @@ RSpec.describe Message do
     end
   end
 
-  describe 'phone=' do
+  describe '#phone=' do
     it 'formats phone numbers' do
       subject.phone = '+44 1234 567 890'
       expect(subject.phone).to eq '+441234567890'
