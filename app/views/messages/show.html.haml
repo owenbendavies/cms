@@ -1,22 +1,13 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%dl.dl-horizontal
-  %dt= Message.human_attribute_name(:created_at)
-  %dd= timeago_tag(@message.created_at, force: true)
+%p= timeago_tag(@message.created_at, force: true)
 
-  %dt= Message.human_attribute_name(:name)
-  %dd= @message.name
+%p= @message.name
 
-  %dt= Message.human_attribute_name(:email)
-  %dd= @message.email
+%p= @message.email
 
-  - if @message.phone
-    %dt= Message.human_attribute_name(:phone)
-    %dd= @message.phone
+- if @message.phone
+  %p= @message.phone
 
-  %dt= Message.human_attribute_name(:message)
-  %dd
-    - @message.message.split("\n").each do |line|
-      = line
-      %br
+= simple_format(@message.message)

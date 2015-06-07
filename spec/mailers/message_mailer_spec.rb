@@ -24,10 +24,10 @@ RSpec.describe MessageMailer, type: :feature do
     end
 
     it 'has message in body' do
-      expect(subject.body).to have_content "Name: #{message.name}"
-      expect(subject.body).to have_content "Email: #{message.email}"
-      expect(subject.body).to have_content "Phone: #{message.phone}"
-      expect(subject.body).to have_content "Message: #{message.message}"
+      expect(subject.body).to have_content message.name
+      expect(subject.body).to have_content message.email
+      expect(subject.body).to have_content message.phone
+      expect(subject.body).to have_content message.message
     end
   end
 end
