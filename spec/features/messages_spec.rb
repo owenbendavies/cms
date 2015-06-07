@@ -52,30 +52,11 @@ RSpec.describe '/messages', type: :feature do
       it 'shows message', js: true do
         expect(find('#cms-article h1').text).to eq 'Message'
 
-        expect(page).to have_content 'Created at'
         expect(page).to have_content 'about a month ago'
-
-        expect(page).to have_content 'Name'
         expect(page).to have_content message.name
-
-        expect(page).to have_content 'Email'
         expect(page).to have_content message.email
-
-        expect(page).to have_content 'Phone'
         expect(page).to have_content message.phone
-
-        expect(page).to have_content 'Message'
         expect(page).to have_content message.message
-      end
-
-      it 'does not show phone when blank' do
-        message.phone = nil
-        message.save!
-
-        visit_page "/site/messages/#{message.id}"
-        expect(find('#cms-article h1').text).to eq 'Message'
-
-        expect(page).to have_no_content 'Phone'
       end
 
       it 'renders page not found for unknow message' do
