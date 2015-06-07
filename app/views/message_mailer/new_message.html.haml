@@ -1,9 +1,10 @@
 %p= t('.text', site_name: @site.name)
 
-%p #{Message.human_attribute_name(:name)}: #{@message.name}
+%p= @message.name
 
-%p #{Message.human_attribute_name(:email)}: #{@message.email}
+%p= @message.email
 
-%p #{Message.human_attribute_name(:phone)}: #{@message.phone}
+- if @message.phone
+  %p= @message.phone
 
-%p #{Message.human_attribute_name(:message)}: #{@message.message}
+= simple_format(@message.message)
