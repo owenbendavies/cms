@@ -8,4 +8,5 @@
     ga('create', '#{h(@site.google_analytics)}', 'auto');
     #{ "ga('set', '&uid', '#{current_user.id}');" if current_user }
     ga('require', 'displayfeatures');
+    ga('require', 'linkid', 'linkid.js');
     ga('send', 'pageview');
