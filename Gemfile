@@ -74,7 +74,6 @@ group :development, :test do
   gem 'bundler-audit', require: false
   gem 'cane', require: false
   gem 'coffeelint'
-  gem 'coveralls', require: false
   gem 'haml-lint', require: false
   gem 'i18n-tasks', require: false
   gem 'puppet-lint', require: false

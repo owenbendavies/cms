@@ -1,14 +1,12 @@
 if ENV['COVERAGE']
   require 'simplecov'
   require 'simplecov-console'
-  require 'coveralls'
 
   SimpleCov.minimum_coverage 100
 
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
     SimpleCov::Formatter::Console,
-    Coveralls::SimpleCov::Formatter,
   ]
 
   SimpleCov.start 'rails'
