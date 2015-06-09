@@ -24,7 +24,7 @@ RSpec.describe 'application layout', type: :feature do
 
     it 'has google analytics' do
       expect(body).to include(
-        "ga('create', '#{site.google_analytics}', 'localhost');"
+        "ga('create', '#{site.google_analytics}', 'auto');"
       )
     end
 
