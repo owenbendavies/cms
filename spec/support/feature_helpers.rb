@@ -12,7 +12,13 @@ module FeatureHelpers
     let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
 
     let!(:test_page) do
-      FactoryGirl.create(:page, name: 'Test Page', site: site).reload
+      FactoryGirl.create(
+        :page,
+        name: 'Test Page',
+        site: site,
+        created_at: Time.now,
+        updated_at: Time.now
+      )
     end
   end
 
