@@ -11,6 +11,7 @@ gem 'pg'
 gem 'redis-actionpack'
 
 # Middleware
+gem 'font_assets'
 gem 'rack-protection'
 gem 'rack-timeout'
 
@@ -60,7 +61,6 @@ group :assets, :development do
 end
 
 group :production do
-  gem 'font_assets'
   gem 'heroku-deflater'
 end
 
