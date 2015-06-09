@@ -114,4 +114,16 @@ RSpec.describe 'application', type: :feature do
     expect(response_headers['Set-Cookie'])
       .to match(/^_cms_session=[0-9a-f]{32};.*/)
   end
+
+  it 'serves fonts up with CORS' do
+    font = Dir.glob(Rails.root.join('public/assets/**/*.woff')).first
+
+    expect(font).to_not be_nil
+
+    font.gsub!(Rails.root.join('public').to_s, '')
+
+    visit_page font
+
+    expect(response_headers['Access-Control-Allow-Origin']).to eq '*'
+  end
 end
