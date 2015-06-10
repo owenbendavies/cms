@@ -12,6 +12,7 @@ gem 'redis-actionpack'
 
 # Middleware
 gem 'font_assets'
+gem 'heroku-deflater'
 gem 'rack-protection'
 gem 'rack-timeout'
 
@@ -58,10 +59,6 @@ group :assets, :development do
   gem 'therubyracer'
   gem 'turbolinks'
   gem 'uglifier'
-end
-
-group :production do
-  gem 'heroku-deflater'
 end
 
 group :development, :test do
