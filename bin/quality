@@ -3,6 +3,7 @@ set -ev
 
 cd `dirname $0`/..
 
+./bin/bundle-audit update
 ./bin/bundle-audit
 
 ./bin/rubocop --format simple
