@@ -1,5 +1,3 @@
-# coding: utf-8
-
 module FeatureHelpers
   extend ActiveSupport::Concern
   include Warden::Test::Helpers
