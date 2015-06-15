@@ -1,5 +1,3 @@
-# coding: utf-8
-
 module ApplicationHelper
   def body_id(path)
     'cms-page' + path.gsub('/', '-').gsub('-edit', '')
