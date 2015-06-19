@@ -18,12 +18,17 @@
 #  remember_created_at    :datetime
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #
 
 class User < ActiveRecord::Base
   include Gravtastic
 
-  devise :database_authenticatable,
+  devise :confirmable,
+         :database_authenticatable,
          :lockable,
          :recoverable,
          :rememberable,

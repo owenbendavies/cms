@@ -5,6 +5,32 @@ RSpec.describe AccountMailer, type: :feature do
   let(:user) { site.users.first }
   let(:token) { rand(10_000) }
 
+  describe '.confirmation_instructions' do
+    subject { described_class.confirmation_instructions(user, token) }
+
+    include_examples 'site email'
+
+    it 'is sent to users email' do
+      expect(subject.to).to eq [user.email]
+    end
+
+    it 'has subject' do
+      expect(subject.subject).to eq 'Confirmation instructions'
+    end
+
+    it 'has text in body' do
+      expect(subject.body).to have_content 'Please confirm your email address.'
+    end
+
+    it 'has confirmation link in body' do
+      host = "http://#{site.host}"
+      path = "/users/confirmation?confirmation_token=#{token}"
+      link = "#{host}#{path}"
+
+      expect(subject.body).to have_link 'Confirm Email', href: link
+    end
+  end
+
   describe '.reset_password_instructions' do
     subject { described_class.reset_password_instructions(user, token) }
 
