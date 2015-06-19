@@ -27,12 +27,67 @@ RSpec.describe '/users', type: :feature do
     it_behaves_like 'restricted page'
 
     it_behaves_like 'logged in user' do
-      it 'updates user' do
+      it 'updates user password' do
         expect(find_field('Current password')['autofocus']).to eq 'autofocus'
         expect(find_field('Password').value).to be_nil
         expect(find_field('Confirm password').value).to be_nil
+
+        fill_in 'Current password', with: user.password
+        fill_in 'Password', with: new_password
+        fill_in 'Confirm password', with: new_password
+        click_button 'Update User'
+
+        expect(ActionMailer::Base.deliveries.size).to eq 0
+        expect(current_path).to eq '/home'
+        expect(page).to have_content 'Your account has been updated'
+
+        visit '/logout'
+        visit_page '/login'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: new_password
+        click_button 'Login'
+
+        expect(current_path).to eq '/home'
+      end
+
+      it 'updates users email after confirmation' do
+        old_email = user.email
         expect(find_field('Email').value).to eq user.email
 
+        fill_in 'Current password', with: user.password
+        fill_in 'Email', with: " #{new_email} "
+
+        expect(ActionMailer::Base.deliveries.size).to eq 0
+        click_button 'Update User'
+        expect(ActionMailer::Base.deliveries.size).to eq 1
+
+        expect(current_path).to eq '/home'
+        expect(page).to have_content 'we need to verify your new email address'
+
+        email = ActionMailer::Base.deliveries.last
+        expect(email.to).to eq [new_email]
+        expect(email.subject).to eq 'Confirmation instructions'
+
+        user.reload
+        expect(user.email).to eq old_email
+        expect(user.unconfirmed_email).to eq new_email
+
+        link = email.html_part.body.match(/href="([^"]+)/)[1]
+        expect(link).to_not be_blank
+
+        link.gsub!(/.*#{site.host}/, '')
+
+        visit link
+
+        expect(page).to have_content(
+          'Your email address has been successfully confirmed.'
+        )
+
+        user.reload
+        expect(user.email).to eq new_email
+      end
+
+      it 'has a gravatar image' do
         within 'a[href="https://www.gravatar.com"]' do
           gravatar_image = find('img')
 
@@ -42,29 +97,6 @@ RSpec.describe '/users', type: :feature do
           expect(gravatar_image['width']).to eq '150'
           expect(gravatar_image['height']).to eq '150'
         end
-
-        fill_in 'Current password', with: user.password
-        fill_in 'Password', with: new_password
-        fill_in 'Confirm password', with: new_password
-        fill_in 'Email', with: " #{new_email} "
-        click_button 'Update User'
-
-        expect(current_path).to eq '/home'
-
-        expect(page).to have_content 'Your account has been updated'
-
-        found_user = User.find(user.id)
-        expect(found_user.email).to eq new_email
-
-        visit '/logout'
-        visit_page '/login'
-
-        fill_in 'Email', with: new_email
-        fill_in 'Password', with: new_password
-
-        click_button 'Login'
-
-        expect(current_path).to eq '/home'
       end
 
       it 'fails when no current password is given' do
