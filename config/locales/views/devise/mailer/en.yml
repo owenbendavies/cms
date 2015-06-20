@@ -1,6 +1,9 @@
 en:
   devise:
     mailer:
+      confirmation_instructions:
+        title: "Confirm Email"
+        text: "Please confirm your email address."
       reset_password_instructions:
         text: "Someone has requested a link to change your password."
       unlock_instructions:
