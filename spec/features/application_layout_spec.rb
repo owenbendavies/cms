@@ -16,17 +16,6 @@ RSpec.describe 'application layout', type: :feature do
       expect(page).to have_title "#{site.name} | Test Page"
     end
 
-    it 'has site stylesheet' do
-      link = "link[href=\"#{site.stylesheet.url}\"]"
-      expect(page).to have_selector link, visible: false
-    end
-
-    it 'has google analytics' do
-      expect(body).to include(
-        "ga('create', '#{site.google_analytics}', 'auto');"
-      )
-    end
-
     it 'does not have google analytics uid' do
       expect(body).to_not include('&uid')
     end
@@ -73,10 +62,6 @@ RSpec.describe 'application layout', type: :feature do
           expect(image['alt']).to eq 'Profile Image'
         end
       end
-    end
-
-    it 'has google analytics uid' do
-      expect(body).to include("ga('set', '&uid', '#{user.id}');")
     end
   end
 end

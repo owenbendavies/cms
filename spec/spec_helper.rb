@@ -14,6 +14,4 @@ if bad_files.any?
   fail "The following files should be named _spec.rb #{bad_files}"
 end
 
-RSpec.configure do |config|
-  config.disable_monkey_patching!
-end
+RSpec.configuration.disable_monkey_patching!
