@@ -86,7 +86,7 @@ RSpec.feature 'Editing a page' do
       expect(current_path).to eq '/test_page'
     end
 
-    scenario 'navigating to page via topbar' do
+    scenario 'navigating to the page via topbar' do
       visit_page '/test_page'
 
       expect(page).to have_selector '#cms-topbar .fa-pencil'

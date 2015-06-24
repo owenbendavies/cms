@@ -46,14 +46,18 @@ RSpec.describe Site do
 
   describe '#stylesheet', uploads: true do
     it 'has a stylesheet' do
-      site = FactoryGirl.build(:site)
-      stylesheet = site.stylesheet
+      filename = "#{Digest::MD5.hexdigest(rand.to_s)}.css"
 
-      expect(stylesheet.url).to eq File.join(
+      site = FactoryGirl.build(
+        :site,
+        stylesheet_filename: filename
+      )
+
+      expect(site.stylesheet.url).to eq File.join(
         '/',
         Rails.application.secrets.uploads_store_dir,
         site.id.to_s,
-        site.stylesheet_filename
+        filename
       )
     end
   end

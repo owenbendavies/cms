@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Showing a page' do
-  scenario 'visiting a page' do
+  scenario 'visiting the page' do
     visit_page '/test_page'
 
     within 'article' do
