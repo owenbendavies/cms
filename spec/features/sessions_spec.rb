@@ -70,30 +70,6 @@ RSpec.describe 'sessions', type: :feature do
       expect(page).to have_content 'Invalid email or password.'
     end
 
-    it 'locks out user after 5 attempts' do
-      4.times do
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: new_password
-        click_button 'Login'
-        expect(page).to have_content 'Invalid email or password.'
-      end
-
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: new_password
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-
-      click_button 'Login'
-
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
-      expect(page).to have_content 'Invalid email or password.'
-
-      email = ActionMailer::Base.deliveries.last
-      expect(email.to).to eq [user.email]
-      expect(email.subject).to eq 'Unlock instructions'
-    end
-
     it 'has link in footer' do
       visit_page '/home'
 
