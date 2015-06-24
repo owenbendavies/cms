@@ -6,7 +6,7 @@ RSpec.feature 'Creating a page' do
   it_behaves_like 'restricted page'
 
   it_behaves_like 'logged in user' do
-    scenario 'filling in valid data', js: true do
+    scenario 'with valid data', js: true do
       expect(page).to have_no_content 'last updated'
 
       fill_in 'Name', with: 'New Page'
@@ -25,7 +25,7 @@ RSpec.feature 'Creating a page' do
       expect(new_page.updated_by).to eq user
     end
 
-    scenario 'filling in invalid data' do
+    scenario 'with invalid data' do
       fill_in 'Name', with: 'Site'
       click_button 'Create Page'
 

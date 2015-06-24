@@ -75,7 +75,7 @@ RSpec.feature 'Editing a user' do
       expect(user.email).to eq new_email
     end
 
-    scenario 'not filling in current password' do
+    scenario 'without current password' do
       fill_in 'Email', with: new_email
 
       click_button 'Update User'
@@ -83,7 +83,7 @@ RSpec.feature 'Editing a user' do
       expect(page).to have_content "can't be blank"
     end
 
-    scenario 'filling in invalid data' do
+    scenario 'with invalid data' do
       fill_in 'Current password', with: user.password
       fill_in 'Email', with: ''
 

@@ -6,7 +6,7 @@ RSpec.feature 'Edit the site' do
   it_behaves_like 'restricted page'
 
   it_behaves_like 'logged in user' do
-    scenario 'filling in valid data' do
+    scenario 'with valid data' do
       host_field = find('#site_host')
       expect(host_field.value).to eq 'localhost'
       expect(host_field['disabled']).to eq 'disabled'
@@ -88,7 +88,7 @@ RSpec.feature 'Edit the site' do
       expect(body).to include("ga('set', '&uid', '#{user.id}');")
     end
 
-    scenario 'filling in empty copyright' do
+    scenario 'with empty copyright' do
       fill_in 'Copyright', with: ''
       click_button 'Update Site'
 
@@ -96,7 +96,7 @@ RSpec.feature 'Edit the site' do
       expect(site.copyright).to be_nil
     end
 
-    scenario 'filling in invalid data' do
+    scenario 'with invalid data' do
       fill_in 'Name', with: ''
       click_button 'Update Site'
 

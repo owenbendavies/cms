@@ -75,7 +75,7 @@ RSpec.feature 'Editing a page' do
       end.to_not change(test_page, :updated_at)
     end
 
-    scenario 'filling in invalid data' do
+    scenario 'with invalid data' do
       fill_in 'page[name]', with: 'Site'
       click_button 'Update Page'
       expect(page).to have_content 'is reserved'
