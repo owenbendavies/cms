@@ -1,34 +1,35 @@
 require 'rails_helper'
 
-RSpec.describe '/health', type: :feature do
+RSpec.feature 'Health check' do
   context 'unknown site' do
     before do
       site.destroy!
     end
 
-    it 'renders ok' do
+    scenario 'visiting the page' do
       visit_page '/health.txt'
       expect(page).to have_content 'ok'
       expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
     end
 
-    it 'renders site not found when not txt' do
+    scenario 'with non txt extension' do
       visit '/health.xml'
-      expect(page.status_code).to eq 404
       expect(page).to have_content 'Site Not Found'
+      expect(page.status_code).to eq 404
     end
   end
 
   context 'known site' do
-    it 'renders ok' do
+    scenario 'visiting the page' do
       visit_page '/health.txt'
       expect(page).to have_content 'ok'
+      expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
     end
 
-    it 'renders page not found when not txt' do
+    scenario 'with non txt extension' do
       visit '/health'
-      expect(page.status_code).to eq 404
       expect(page).to have_content 'Page Not Found'
+      expect(page.status_code).to eq 404
     end
   end
 end
