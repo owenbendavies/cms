@@ -17,16 +17,13 @@ module Cms
     config.active_record.raise_in_transactional_callbacks = true
 
     config.lograge.custom_options = lambda do |event|
-      output = {
+      {
         host: event.payload[:host],
         remote_ip: event.payload[:remote_ip],
         request_id: event.payload[:request_id],
-        user_agent: "\"#{event.payload[:user_agent]}\""
+        user_agent: "\"#{event.payload[:user_agent]}\"",
+        user_id: event.payload[:user_id]
       }
-
-      output[:user_id] = event.payload[:user_id] if event.payload[:user_id]
-
-      output
     end
 
     config.middleware.use Rack::Protection
