@@ -11,14 +11,9 @@ RSpec.feature 'Edit the site' do
       expect(host_field.value).to eq 'localhost'
       expect(host_field['disabled']).to eq 'disabled'
 
-      expect(find_field('Name').value).to eq site.name
-      expect(find_field('Name')['autofocus']).to eq 'autofocus'
-      expect(find_field('Sub title').value).to eq site.sub_title
       expect(find_field('Separate header')).to be_checked
       expect(find_field('Main menu')).to_not be_checked
 
-      fill_in 'Name', with: "  #{new_company_name} "
-      fill_in 'Sub title', with: "  #{new_catch_phrase} "
       uncheck 'Separate header'
 
       check 'Main menu'
@@ -29,11 +24,32 @@ RSpec.feature 'Edit the site' do
       expect(current_path).to eq '/home'
 
       site.reload
-      expect(site.name).to eq new_company_name
-      expect(site.sub_title).to eq new_catch_phrase
       expect(site.updated_by).to eq user
       expect(site.separate_header).to eq false
       expect(site.main_menu_in_footer).to eq true
+    end
+
+    scenario 'changing the name' do
+      expect(find_field('Name').value).to eq site.name
+      expect(find_field('Name')['autofocus']).to eq 'autofocus'
+
+      fill_in 'Name', with: "  #{new_company_name} "
+      click_button 'Update Site'
+
+      expect(page).to have_content 'Site successfully updated'
+      expect(page).to have_title new_company_name
+    end
+
+    scenario 'adding a sub title' do
+      fill_in 'Sub title', with: "  #{new_catch_phrase} "
+      click_button 'Update Site'
+
+      expect(page).to have_content 'Site successfully updated'
+      expect(page).to have_content new_catch_phrase
+
+      visit_page go_to_url
+
+      expect(find_field('Sub title').value).to eq new_catch_phrase
     end
 
     scenario 'adding Google Analytics' do
