@@ -8,6 +8,24 @@ RSpec.feature 'Showing a page' do
       expect(page).to have_content 'Test Page'
       expect(body).to include test_page.html_content
     end
+
+    within 'footer' do
+      date = test_page.updated_at.to_date.iso8601
+      expect(page).to have_content "Page last updated #{date}"
+    end
+  end
+
+  scenario 'visiting the page with Javascript' do
+    Timecop.freeze(Time.zone.now - 1.month - 3.days) do
+      test_page.updated_at = Time.zone.now
+      test_page.save!
+    end
+
+    visit_page '/test_page'
+
+    within 'footer' do
+      expect(page).to have_content 'Page last updated about a month ago'
+    end
   end
 
   scenario 'visiting the home page' do
