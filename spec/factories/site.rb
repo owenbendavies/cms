@@ -7,12 +7,6 @@ FactoryGirl.define do
     charity_number { Faker::Number.number(Faker::Number.digit.to_i) }
     sidebar_html_content { "<h2>#{Faker::Lorem.sentence}</h2>" }
 
-    facebook { Faker::Internet.user_name(nil, ['.']) }
-    twitter { Faker::Internet.user_name(nil, ['_'])[0, 15] }
-    youtube { Faker::Internet.user_name }
-    linkedin { Faker::Internet.user_name }
-    github { Faker::Internet.user_name }
-
     association :created_by, factory: :user
     association :updated_by, factory: :user
 
