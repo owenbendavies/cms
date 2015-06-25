@@ -11,14 +11,6 @@ RSpec.describe 'application layout', type: :feature do
     it 'has no topbar' do
       expect(page).to have_no_selector '#cms-topbar'
     end
-
-    it 'has title' do
-      expect(page).to have_title "#{site.name} | Test Page"
-    end
-
-    it 'does not have google analytics uid' do
-      expect(body).to_not include('&uid')
-    end
   end
 
   it_behaves_like 'logged in user' do
