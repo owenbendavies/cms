@@ -17,7 +17,9 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe '#page_title' do
     context 'site with sub title' do
-      let(:site) { FactoryGirl.build(:site) }
+      let(:site) do
+        FactoryGirl.build(:site, sub_title: Faker::Company.catch_phrase)
+      end
 
       context 'with content' do
         it 'shows title and content' do
@@ -39,7 +41,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     context 'site without sub title' do
-      let(:site) { FactoryGirl.build(:site, sub_title: nil) }
+      let(:site) { FactoryGirl.build(:site) }
 
       context 'with content' do
         it 'shows title and content' do
@@ -56,34 +58,50 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe '#footer_copyright' do
-    let(:site) { FactoryGirl.build(:site) }
+    let(:site) do
+      FactoryGirl.build(
+        :site,
+        copyright: Faker::Name.name,
+        charity_number: Faker::Number.number(Faker::Number.digit.to_i)
+      )
+    end
 
     context 'site with copyright and charity' do
       it 'includes copyright and charity number' do
-        expect(footer_copyright(site))
-          .to include "#{site.copyright} © #{Time.zone.now.year}"
-
-        expect(footer_copyright(site)).to include(
+        expect(footer_copyright(site)).to eq(
+          "#{site.copyright} © #{Time.zone.now.year}. " \
           "Registered charity number #{site.charity_number}"
         )
       end
     end
 
     context 'site without copyright' do
-      before { site.copyright = nil }
-
       it 'uses site name for copyright' do
-        expect(footer_copyright(site))
-          .to include "#{site.name} © #{Time.zone.now.year}"
+        site.copyright = nil
+
+        expect(footer_copyright(site)).to eq(
+          "#{site.name} © #{Time.zone.now.year}. " \
+          "Registered charity number #{site.charity_number}"
+        )
       end
     end
 
     context 'site without charity number' do
-      before { site.charity_number = nil }
-
       it 'does not show charity number' do
-        expect(footer_copyright(site))
-          .to eq "#{site.copyright} © #{Time.zone.now.year}"
+        site.charity_number = nil
+        footer = footer_copyright(site)
+
+        expect(footer).to eq "#{site.copyright} © #{Time.zone.now.year}"
+      end
+    end
+
+    context 'site without copyright or charity' do
+      it 'does not show charity number' do
+        site.copyright = nil
+        site.charity_number = nil
+        footer = footer_copyright(site)
+
+        expect(footer).to eq "#{site.name} © #{Time.zone.now.year}"
       end
     end
   end
