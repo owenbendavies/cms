@@ -15,7 +15,7 @@ RSpec.feature 'Showing a page' do
     end
   end
 
-  scenario 'visiting the page with Javascript' do
+  scenario 'visiting the page with Javascript', js: true do
     Timecop.freeze(Time.zone.now - 1.month - 3.days) do
       test_page.updated_at = Time.zone.now
       test_page.save!
