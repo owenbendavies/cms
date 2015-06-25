@@ -24,12 +24,4 @@ RSpec.describe 'footer', type: :feature do
       expect(page).to have_content 'Page last updated about a month ago'
     end
   end
-
-  it 'has copyright' do
-    visit_page '/test_page'
-
-    within 'footer' do
-      expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
-    end
-  end
 end
