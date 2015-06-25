@@ -14,7 +14,6 @@ RSpec.feature 'Edit the site' do
       expect(find_field('Name').value).to eq site.name
       expect(find_field('Name')['autofocus']).to eq 'autofocus'
       expect(find_field('Sub title').value).to eq site.sub_title
-      expect(find_field('Layout').value).to eq site.layout
       expect(find_field('Separate header')).to be_checked
 
       expect(find_field('Copyright').value).to eq site.copyright
@@ -23,7 +22,6 @@ RSpec.feature 'Edit the site' do
 
       fill_in 'Name', with: "  #{new_company_name} "
       fill_in 'Sub title', with: "  #{new_catch_phrase} "
-      select 'Right sidebar', from: 'Layout'
       uncheck 'Separate header'
 
       fill_in 'Copyright', with: " #{new_name} "
@@ -32,13 +30,12 @@ RSpec.feature 'Edit the site' do
 
       click_button 'Update Site'
 
-      expect(current_path).to eq '/home'
       expect(page).to have_content 'Site successfully updated'
+      expect(current_path).to eq '/home'
 
       site.reload
       expect(site.name).to eq new_company_name
       expect(site.sub_title).to eq new_catch_phrase
-      expect(site.layout).to eq 'right_sidebar'
       expect(site.updated_by).to eq user
       expect(site.separate_header).to eq false
 
