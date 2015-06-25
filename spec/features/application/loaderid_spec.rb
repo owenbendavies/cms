@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'LoaderIO' do
-  scenario 'visit the page' do
+  scenario 'visiting the page' do
     visit_page '/loaderio-12345.txt'
 
     expect(page).to have_content 'loaderio-12345'
