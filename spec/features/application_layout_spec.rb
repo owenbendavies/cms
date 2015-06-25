@@ -46,14 +46,6 @@ RSpec.describe 'application layout', type: :feature do
           click_link 'Messages'
         end
       end
-
-      it 'has gravatar image' do
-        within '#cms-topbar' do
-          image = find('img')
-          expect(image['src']).to eq user.gravatar_url
-          expect(image['alt']).to eq 'Profile Image'
-        end
-      end
     end
   end
 end

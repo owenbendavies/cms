@@ -73,6 +73,12 @@ RSpec.feature 'Editing a user' do
 
       user.reload
       expect(user.email).to eq new_email
+
+      within '#cms-topbar' do
+        image = find('img')
+        expect(image['src']).to eq user.gravatar_url
+        expect(image['alt']).to eq 'Profile Image'
+      end
     end
 
     scenario 'without current password' do
