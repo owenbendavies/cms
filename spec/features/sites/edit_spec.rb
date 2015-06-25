@@ -15,17 +15,12 @@ RSpec.feature 'Edit the site' do
       expect(find_field('Name')['autofocus']).to eq 'autofocus'
       expect(find_field('Sub title').value).to eq site.sub_title
       expect(find_field('Separate header')).to be_checked
-
-      expect(find_field('Copyright').value).to eq site.copyright
-      expect(find_field('Charity number').value).to eq site.charity_number
       expect(find_field('Main menu')).to_not be_checked
 
       fill_in 'Name', with: "  #{new_company_name} "
       fill_in 'Sub title', with: "  #{new_catch_phrase} "
       uncheck 'Separate header'
 
-      fill_in 'Copyright', with: " #{new_name} "
-      fill_in 'Charity number', with: " #{new_number} "
       check 'Main menu'
 
       click_button 'Update Site'
@@ -38,9 +33,6 @@ RSpec.feature 'Edit the site' do
       expect(site.sub_title).to eq new_catch_phrase
       expect(site.updated_by).to eq user
       expect(site.separate_header).to eq false
-
-      expect(site.copyright).to eq new_name
-      expect(site.charity_number).to eq new_number.to_s
       expect(site.main_menu_in_footer).to eq true
     end
 
@@ -61,12 +53,28 @@ RSpec.feature 'Edit the site' do
       expect(find_field('Google Analytics').value).to eq new_code
     end
 
-    scenario 'with empty copyright' do
-      fill_in 'Copyright', with: ''
+    scenario 'adding a copyright' do
+      fill_in 'Copyright', with: " #{new_name} "
       click_button 'Update Site'
 
-      site = Site.find_by_host!('localhost')
-      expect(site.copyright).to be_nil
+      expect(page).to have_content 'Site successfully updated'
+      expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
+
+      visit_page go_to_url
+
+      expect(find_field('Copyright').value).to eq new_name
+    end
+
+    scenario 'adding a charity number' do
+      fill_in 'Charity number', with: " #{new_number} "
+      click_button 'Update Site'
+
+      expect(page).to have_content 'Site successfully updated'
+      expect(page).to have_content "Registered charity number #{new_number}"
+
+      visit_page go_to_url
+
+      expect(find_field('Charity number').value).to eq new_number.to_s
     end
 
     scenario 'with invalid data' do
