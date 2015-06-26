@@ -5,5 +5,10 @@ FactoryGirl.define do
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
     association :created_by, factory: :user
     association :updated_by, factory: :user
+
+    factory :private_page do
+      name 'Private'
+      private true
+    end
   end
 end
