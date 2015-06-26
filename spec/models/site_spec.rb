@@ -115,7 +115,7 @@ RSpec.describe Site do
   end
 
   describe '#css', uploads: true do
-    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
+    subject { FactoryGirl.build(:site) }
 
     context 'with css' do
       before do
@@ -136,7 +136,7 @@ RSpec.describe Site do
   end
 
   describe '#css=', uploads: true do
-    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
+    subject { FactoryGirl.build(:site) }
 
     it 'strips end of line whitespace' do
       subject.css = "body {\r\n  padding: 4em; \r\n}"
