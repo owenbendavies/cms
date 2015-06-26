@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'Unknown routes' do
+  scenario 'for urls with .html in' do
+    visit '/home.html'
+
+    expect(page).to have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+  end
+
   scenario 'for unkown format' do
     visit '/home.txt'
 
@@ -34,6 +41,14 @@ RSpec.feature 'Unknown routes' do
     visit '/badroute'
 
     expect(page).to have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
+  end
+
+  scenario 'unknown site' do
+    site.destroy!
+    visit '/home'
+
+    expect(page).to have_title 'Site Not Found'
     expect(page.status_code).to eq 404
   end
 end

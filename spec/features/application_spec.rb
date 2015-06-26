@@ -54,23 +54,6 @@ RSpec.describe 'application', type: :feature do
     end
   end
 
-  it 'renders site not found for unknown site' do
-    site.destroy!
-    visit '/home'
-    expect(page.status_code).to eq 404
-
-    expect(page).to have_title 'Site Not Found'
-
-    expect(page).to have_content 'Site Not Found'
-    expect(page).to have_content 'Sorry'
-  end
-
-  it 'renders page not found for urls with .html in' do
-    visit '/home.html'
-    expect(page.status_code).to eq 404
-    expect(page).to have_content 'Page Not Found'
-  end
-
   it 'protects against attacks' do
     page.driver.header('X_FORWARDED_FOR', 'x')
     page.driver.header('CLIENT_IP', 'y')
