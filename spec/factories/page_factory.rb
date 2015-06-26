@@ -28,25 +28,17 @@
 #  fk_rails_af73c24fa7  (created_by_id => users.id)
 #
 
-class Page < ActiveRecord::Base
-  INVALID_URLS = %w(health login logout new robots site sitemap timeout users)
+FactoryGirl.define do
+  factory :page do
+    site
+    name { Faker::Name.name }
+    html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
+    association :created_by, factory: :user
+    association :updated_by, factory: :user
 
-  belongs_to :site
-  belongs_to :created_by, class_name: 'User'
-  belongs_to :updated_by, class_name: 'User'
-
-  has_paper_trail
-
-  strip_attributes except: :html_content, collapse_spaces: true
-
-  validates :url, exclusion: { in: INVALID_URLS }
-
-  def name=(value)
-    self.url = value.gsub("'", '').parameterize('_') if value
-    super(value)
-  end
-
-  def to_param
-    url_was
+    factory :private_page do
+      name 'Private'
+      private true
+    end
   end
 end

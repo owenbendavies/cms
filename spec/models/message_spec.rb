@@ -13,6 +13,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_messages_on_site_id  (site_id)
+#
+# Foreign Keys
+#
+#  fk_rails_c1eba9fee4  (site_id => sites.id)
+#
 
 require 'rails_helper'
 
