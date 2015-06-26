@@ -6,25 +6,6 @@ RSpec.feature 'Edit the site' do
   it_behaves_like 'restricted page'
 
   it_behaves_like 'logged in user' do
-    scenario 'with valid data' do
-      host_field = find('#site_host')
-      expect(host_field.value).to eq 'localhost'
-      expect(host_field['disabled']).to eq 'disabled'
-
-      expect(find_field('Separate header')).to be_checked
-
-      uncheck 'Separate header'
-
-      click_button 'Update Site'
-
-      expect(page).to have_content 'Site successfully updated'
-      expect(current_path).to eq '/home'
-
-      site.reload
-      expect(site.updated_by).to eq user
-      expect(site.separate_header).to eq false
-    end
-
     scenario 'changing the name' do
       expect(find_field('Name').value).to eq site.name
       expect(find_field('Name')['autofocus']).to eq 'autofocus'
