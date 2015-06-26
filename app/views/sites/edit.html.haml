@@ -2,7 +2,6 @@
 - content_for :page_icon, t('.icon')
 
 = simple_form_for @site do |form|
-  = form.input :host, disabled: true
   = form.input :name, autofocus: true
   = form.input :sub_title
   = form.input :google_analytics
