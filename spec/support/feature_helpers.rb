@@ -49,28 +49,24 @@ module FeatureHelpers
       visit go_to_url
     end
 
-    it 'redirects to login' do
+    scenario 'visiting the page while not logged in' do
       expect(current_path).to eq '/login'
     end
   end
 
   RSpec.shared_context 'page with topbar link' do |page_title, page_icon|
-    it 'has link in topbar' do
+    scenario 'navigating to the page via topbar' do
       visit_page '/home'
+
+      expect(page).to have_selector "#cms-topbar .fa-#{page_icon}"
 
       within('#cms-topbar') do
         click_link page_title
       end
 
       expect(current_path).to eq go_to_url
-    end
 
-    it 'has icon on page' do
       expect(page).to have_selector "h1 .fa-#{page_icon}"
-    end
-
-    it 'has icon in topbar' do
-      expect(page).to have_selector "#cms-topbar .fa-#{page_icon}"
     end
   end
 end

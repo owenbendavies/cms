@@ -46,14 +46,18 @@ RSpec.describe Site do
 
   describe '#stylesheet', uploads: true do
     it 'has a stylesheet' do
-      site = FactoryGirl.build(:site)
-      stylesheet = site.stylesheet
+      filename = "#{Digest::MD5.hexdigest(rand.to_s)}.css"
 
-      expect(stylesheet.url).to eq File.join(
+      site = FactoryGirl.build(
+        :site,
+        stylesheet_filename: filename
+      )
+
+      expect(site.stylesheet.url).to eq File.join(
         '/',
         Rails.application.secrets.uploads_store_dir,
         site.id.to_s,
-        site.stylesheet_filename
+        filename
       )
     end
   end
@@ -111,7 +115,7 @@ RSpec.describe Site do
   end
 
   describe '#css', uploads: true do
-    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
+    subject { FactoryGirl.build(:site) }
 
     context 'with css' do
       before do
@@ -132,7 +136,7 @@ RSpec.describe Site do
   end
 
   describe '#css=', uploads: true do
-    subject { FactoryGirl.build(:site, stylesheet_filename: nil) }
+    subject { FactoryGirl.build(:site) }
 
     it 'strips end of line whitespace' do
       subject.css = "body {\r\n  padding: 4em; \r\n}"

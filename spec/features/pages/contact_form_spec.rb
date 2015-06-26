@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '/contact_form', type: :feature do
+RSpec.feature 'Page with contact form' do
   let!(:contact_page) do
     FactoryGirl.create(:page, site: site, contact_form: true)
   end
@@ -9,7 +9,7 @@ RSpec.describe '/contact_form', type: :feature do
     visit_page "/#{contact_page.url}"
   end
 
-  it 'sends a message' do
+  scenario 'sending a message' do
     fill_in 'Name', with: "  #{new_name} "
     fill_in 'Email', with: "  #{new_email} "
     fill_in 'Phone', with: " #{new_phone} "
@@ -17,11 +17,11 @@ RSpec.describe '/contact_form', type: :feature do
 
     click_button 'Send Message'
 
+    expect(page).to have_content 'Thank you for your message'
+    expect(current_path).to eq "/#{contact_page.url}"
+
     expect(Message.count).to eq 1
     expect(ActionMailer::Base.deliveries.size).to eq 1
-
-    expect(current_path).to eq "/#{contact_page.url}"
-    expect(page).to have_content 'Thank you for your message'
 
     message = site.messages.first
     expect(message.site).to eq site
@@ -40,19 +40,20 @@ RSpec.describe '/contact_form', type: :feature do
     expect(email.html_part.body).to have_content new_message
   end
 
-  it 'does not send a message with invalid data' do
+  scenario 'with invalid data' do
     fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message
 
     click_button 'Send Message'
 
+    expect(page).to have_content "can't be blank"
+    expect(current_path).to eq "/#{contact_page.url}/contact_form"
+
     expect(Message.count).to eq 0
     expect(ActionMailer::Base.deliveries.size).to eq 0
-    expect(current_path).to eq "/#{contact_page.url}/contact_form"
-    expect(page).to have_content "can't be blank"
   end
 
-  it 'does not send a message with do_not_fill_in field' do
+  scenario 'with do_not_fill_in' do
     fill_in 'Name', with: new_name
     fill_in 'Email', with: new_email
     fill_in 'Phone', with: new_phone
@@ -61,9 +62,10 @@ RSpec.describe '/contact_form', type: :feature do
 
     click_button 'Send Message'
 
+    expect(page).to have_content 'do not fill in'
+    expect(current_path).to eq "/#{contact_page.url}/contact_form"
+
     expect(Message.count).to eq 0
     expect(ActionMailer::Base.deliveries.size).to eq 0
-    expect(current_path).to eq "/#{contact_page.url}/contact_form"
-    expect(page).to have_content 'do not fill in'
   end
 end

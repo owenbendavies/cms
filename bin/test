@@ -5,11 +5,11 @@ cd `dirname $0`/..
 
 if [ $# -gt 0 ]; then
   set -v
-  eval "xvfb-run --auto-servernum ./bin/rspec $@"
+  eval "xvfb-run --auto-servernum ./bin/rspec --format documentation $@"
 else
   set -v
   eval './bin/compile'
-  eval 'COVERAGE=on xvfb-run --auto-servernum ./bin/rspec'
+  eval 'COVERAGE=on xvfb-run --auto-servernum ./bin/rspec --order random'
   eval './bin/quality'
 fi
 
