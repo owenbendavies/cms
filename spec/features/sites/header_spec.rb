@@ -1,0 +1,43 @@
+require 'rails_helper'
+
+RSpec.feature 'Site header' do
+  let(:go_to_url) { '/site/edit' }
+
+  before do
+    site.main_menu_page_ids = [home_page.id, test_page.id]
+    site.save!
+  end
+
+  it_behaves_like 'logged in user' do
+    scenario 'removing separate header' do
+      within '#cms-main-menu' do
+        expect(page).to_not have_link site.name, href: '/home'
+      end
+
+      within '#cms-header #cms-site-name' do
+        expect(page).to have_link site.name, href: '/home'
+      end
+
+      expect(page).to_not have_selector '#cms-main-menu .nav.navbar-right'
+
+      expect(find_field('Separate header')).to be_checked
+
+      uncheck 'Separate header'
+      click_button 'Update Site'
+
+      expect(page).to have_content 'Site successfully updated'
+
+      within '#cms-main-menu' do
+        expect(page).to have_link site.name, href: '/home'
+      end
+
+      expect(page).to_not have_selector '#cms-header'
+
+      expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
+
+      visit_page go_to_url
+
+      expect(find_field('Separate header')).to_not be_checked
+    end
+  end
+end
