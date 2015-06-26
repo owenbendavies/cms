@@ -6,20 +6,6 @@ RSpec.describe 'header and main menu', type: :feature do
       site.main_menu_page_ids = [home_page.id, test_page.id]
     end
 
-    it 'shows main menu in page' do
-      site.save!
-      visit_page '/test_page'
-
-      within '#cms-main-menu' do
-        expect(page).to have_link 'Home', href: '/home'
-        expect(page).to have_selector 'a.cms-page-link-home'
-        expect(page).to have_link 'Test Page', href: '/test_page'
-        expect(page).to have_selector 'a.cms-page-link-test_page'
-      end
-
-      expect(page).to_not have_selector '#cms-footer-main-menu'
-    end
-
     context 'site with separate header' do
       it 'has separate header' do
         site.save!
@@ -72,39 +58,6 @@ RSpec.describe 'header and main menu', type: :feature do
         visit_page '/home'
         expect(page).to_not have_selector '#cms-header'
       end
-    end
-
-    context 'site with main menu in footer' do
-      before do
-        site.main_menu_in_footer = true
-        site.save!
-      end
-
-      it 'shows main menu in footer' do
-        visit_page '/test_page'
-
-        within '#cms-footer-main-menu' do
-          expect(page).to have_link 'Home', href: '/home'
-          expect(page).to have_selector 'a.cms-page-link-home'
-          expect(page).to have_link 'Test Page', href: '/test_page'
-          expect(page).to have_link 'Test Page', href: '/test_page'
-        end
-      end
-    end
-  end
-
-  context 'site with no main menu' do
-    before do
-      site.main_menu_in_footer = true
-      site.main_menu_page_ids = []
-      site.save!
-      visit_page '/test_page'
-    end
-
-    it 'has no main menu' do
-      expect(page).to_not have_link 'Test Page', href: '/test_page'
-      expect(page).to_not have_selector '#cms-main-menu'
-      expect(page).to_not have_selector '#cms-footer-main-menu'
     end
   end
 end
