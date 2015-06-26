@@ -12,11 +12,8 @@ RSpec.feature 'Edit the site' do
       expect(host_field['disabled']).to eq 'disabled'
 
       expect(find_field('Separate header')).to be_checked
-      expect(find_field('Main menu')).to_not be_checked
 
       uncheck 'Separate header'
-
-      check 'Main menu'
 
       click_button 'Update Site'
 
@@ -26,7 +23,6 @@ RSpec.feature 'Edit the site' do
       site.reload
       expect(site.updated_by).to eq user
       expect(site.separate_header).to eq false
-      expect(site.main_menu_in_footer).to eq true
     end
 
     scenario 'changing the name' do
