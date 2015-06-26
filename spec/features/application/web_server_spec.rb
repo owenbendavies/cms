@@ -24,4 +24,13 @@ RSpec.feature 'Web server' do
 
     expect(response_headers['Content-Encoding']).to eq 'gzip'
   end
+
+  scenario 'attacking the site' do
+    page.driver.header('X_FORWARDED_FOR', 'x')
+    page.driver.header('CLIENT_IP', 'y')
+
+    visit '/home'
+
+    expect(page.status_code).to eq 403
+  end
 end

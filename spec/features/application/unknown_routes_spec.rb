@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Unknown routes' do
+  scenario 'visiting /' do
+    visit '/'
+    expect(current_path).to eq '/home'
+  end
+
   scenario 'for urls with .html in' do
     visit '/home.html'
 
