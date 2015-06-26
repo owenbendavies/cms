@@ -26,16 +26,12 @@
 #  fk_rails_fc5c9b486e  (site_id => sites.id)
 #
 
-class Image < ActiveRecord::Base
-  belongs_to :site
-  belongs_to :created_by, class_name: 'User'
-  belongs_to :updated_by, class_name: 'User'
-
-  delegate :store_dir, to: :site, allow_nil: true
-
-  has_paper_trail
-
-  mount_uploader :file, ImageUploader, mount_on: :filename
-
-  strip_attributes collapse_spaces: true
+FactoryGirl.define do
+  factory :image do
+    site
+    name { Faker::Name.name.gsub("'", '') }
+    filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
+    association :created_by, factory: :user
+    association :updated_by, factory: :user
+  end
 end

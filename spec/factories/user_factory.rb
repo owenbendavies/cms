@@ -31,26 +31,11 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 
-class User < ActiveRecord::Base
-  include Gravtastic
-
-  devise :confirmable,
-         :database_authenticatable,
-         :lockable,
-         :recoverable,
-         :rememberable,
-         :timeoutable,
-         :trackable,
-         :validatable,
-         :zxcvbnable
-
-  gravtastic default: 'mm', size: 40
-
-  has_and_belongs_to_many :sites, -> { order :host }
-
-  has_paper_trail
-
-  strip_attributes only: :email, collapse_spaces: true
-
-  validates :email, email_format: true
+FactoryGirl.define do
+  factory :user do
+    email { Faker::Internet.email }
+    password { Faker::Internet.password(20, 30) }
+    password_confirmation { password }
+    confirmed_at { Time.zone.now }
+  end
 end
