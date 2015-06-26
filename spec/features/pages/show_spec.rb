@@ -4,6 +4,8 @@ RSpec.feature 'Showing a page' do
   scenario 'visiting the page' do
     visit_page '/test_page'
 
+    expect(find('body')['id']).to eq 'cms-page-test_page'
+
     within 'article' do
       expect(page).to have_content 'Test Page'
       expect(body).to include test_page.html_content
