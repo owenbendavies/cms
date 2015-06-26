@@ -25,6 +25,17 @@
 #  github               :string(32)
 #  youtube              :string(32)
 #
+# Indexes
+#
+#  index_sites_on_created_by_id  (created_by_id)
+#  index_sites_on_host           (host) UNIQUE
+#  index_sites_on_updated_by_id  (updated_by_id)
+#
+# Foreign Keys
+#
+#  fk_rails_8586069d32  (created_by_id => users.id)
+#  fk_rails_a4ba68ad0c  (updated_by_id => users.id)
+#
 
 require 'rails_helper'
 
