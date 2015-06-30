@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery
 
   rescue_from ActionView::MissingTemplate, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
