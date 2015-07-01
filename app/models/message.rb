@@ -15,11 +15,11 @@
 #
 # Indexes
 #
-#  index_messages_on_site_id  (site_id)
+#  fk__messages_site_id  (site_id)
 #
 # Foreign Keys
 #
-#  fk_rails_c1eba9fee4  (site_id => sites.id)
+#  fk_messages_site_id  (site_id => sites.id)
 #
 
 class Message < ActiveRecord::Base
