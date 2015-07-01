@@ -16,16 +16,16 @@
 #
 # Indexes
 #
-#  index_pages_on_created_by_id    (created_by_id)
-#  index_pages_on_site_id          (site_id)
+#  fk__pages_created_by_id         (created_by_id)
+#  fk__pages_site_id               (site_id)
+#  fk__pages_updated_by_id         (updated_by_id)
 #  index_pages_on_site_id_and_url  (site_id,url) UNIQUE
-#  index_pages_on_updated_by_id    (updated_by_id)
 #
 # Foreign Keys
 #
-#  fk_rails_06bf42f87e  (updated_by_id => users.id)
-#  fk_rails_a8ad97ecff  (site_id => sites.id)
-#  fk_rails_af73c24fa7  (created_by_id => users.id)
+#  fk_pages_created_by_id  (created_by_id => users.id)
+#  fk_pages_site_id        (site_id => sites.id)
+#  fk_pages_updated_by_id  (updated_by_id => users.id)
 #
 
 FactoryGirl.define do
