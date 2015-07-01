@@ -16,73 +16,6 @@ ActiveRecord::Schema.define(version: 20150617124704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "site_id",       null: false, index: {name: "index_images_on_site_id", using: :btree}
-    t.string   "name",          limit: 64, null: false
-    t.string   "filename",      limit: 36
-    t.integer  "created_by_id", null: false, index: {name: "index_images_on_created_by_id", using: :btree}
-    t.integer  "updated_by_id", null: false, index: {name: "index_images_on_updated_by_id", using: :btree}
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-  add_index "images", ["site_id", "filename"], name: "index_images_on_site_id_and_filename", unique: true, using: :btree
-  add_index "images", ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true, using: :btree
-
-  create_table "messages", force: :cascade do |t|
-    t.integer  "site_id",    null: false, index: {name: "index_messages_on_site_id", using: :btree}
-    t.string   "subject",    limit: 64,                 null: false
-    t.string   "name",       limit: 64,                 null: false
-    t.string   "email",      limit: 64,                 null: false
-    t.string   "phone",      limit: 32
-    t.boolean  "delivered",  default: false, null: false
-    t.text     "message",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.integer  "site_id",       null: false, index: {name: "index_pages_on_site_id", using: :btree}
-    t.string   "url",           limit: 64,                 null: false
-    t.string   "name",          limit: 64,                 null: false
-    t.boolean  "private",       default: false, null: false
-    t.boolean  "contact_form",  default: false, null: false
-    t.text     "html_content"
-    t.integer  "created_by_id", null: false, index: {name: "index_pages_on_created_by_id", using: :btree}
-    t.integer  "updated_by_id", null: false, index: {name: "index_pages_on_updated_by_id", using: :btree}
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-  add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
-
-  create_table "sites", force: :cascade do |t|
-    t.string   "host",                 limit: 64,                        null: false, index: {name: "index_sites_on_host", unique: true, using: :btree}
-    t.string   "name",                 limit: 64,                        null: false
-    t.string   "sub_title",            limit: 64
-    t.string   "layout",               limit: 32, default: "one_column"
-    t.text     "main_menu_page_ids"
-    t.string   "copyright",            limit: 64
-    t.string   "google_analytics",     limit: 32
-    t.string   "charity_number",       limit: 32
-    t.string   "stylesheet_filename",  limit: 36
-    t.text     "sidebar_html_content"
-    t.integer  "created_by_id",        null: false, index: {name: "index_sites_on_created_by_id", using: :btree}
-    t.integer  "updated_by_id",        null: false, index: {name: "index_sites_on_updated_by_id", using: :btree}
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.boolean  "main_menu_in_footer",  default: false,        null: false
-    t.boolean  "separate_header",      default: true,         null: false
-    t.string   "facebook",             limit: 64
-    t.string   "twitter",              limit: 15
-    t.string   "linkedin",             limit: 32
-    t.string   "github",               limit: 32
-    t.string   "youtube",              limit: 32
-  end
-
-  create_table "sites_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false, index: {name: "index_sites_users_on_user_id", using: :btree}
-    t.integer "site_id", null: false, index: {name: "index_sites_users_on_site_id", using: :btree}
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 64,             null: false, index: {name: "index_users_on_email", unique: true, using: :btree}
     t.string   "encrypted_password",     limit: 64,             null: false
@@ -105,6 +38,73 @@ ActiveRecord::Schema.define(version: 20150617124704) do
     t.string   "unconfirmed_email"
   end
 
+  create_table "sites", force: :cascade do |t|
+    t.string   "host",                 limit: 64,                        null: false, index: {name: "index_sites_on_host", unique: true, using: :btree}
+    t.string   "name",                 limit: 64,                        null: false
+    t.string   "sub_title",            limit: 64
+    t.string   "layout",               limit: 32, default: "one_column"
+    t.text     "main_menu_page_ids"
+    t.string   "copyright",            limit: 64
+    t.string   "google_analytics",     limit: 32
+    t.string   "charity_number",       limit: 32
+    t.string   "stylesheet_filename",  limit: 36
+    t.text     "sidebar_html_content"
+    t.integer  "created_by_id",        null: false, foreign_key: {references: "users", name: "fk_sites_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_created_by_id", using: :btree}
+    t.integer  "updated_by_id",        null: false, foreign_key: {references: "users", name: "fk_sites_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_updated_by_id", using: :btree}
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.boolean  "main_menu_in_footer",  default: false,        null: false
+    t.boolean  "separate_header",      default: true,         null: false
+    t.string   "facebook",             limit: 64
+    t.string   "twitter",              limit: 15
+    t.string   "linkedin",             limit: 32
+    t.string   "github",               limit: 32
+    t.string   "youtube",              limit: 32
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "site_id",       null: false, foreign_key: {references: "sites", name: "fk_images_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_site_id", using: :btree}
+    t.string   "name",          limit: 64, null: false
+    t.string   "filename",      limit: 36
+    t.integer  "created_by_id", null: false, foreign_key: {references: "users", name: "fk_images_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_created_by_id", using: :btree}
+    t.integer  "updated_by_id", null: false, foreign_key: {references: "users", name: "fk_images_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_updated_by_id", using: :btree}
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+  add_index "images", ["site_id", "filename"], name: "index_images_on_site_id_and_filename", unique: true, using: :btree
+  add_index "images", ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true, using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "site_id",    null: false, foreign_key: {references: "sites", name: "fk_messages_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__messages_site_id", using: :btree}
+    t.string   "subject",    limit: 64,                 null: false
+    t.string   "name",       limit: 64,                 null: false
+    t.string   "email",      limit: 64,                 null: false
+    t.string   "phone",      limit: 32
+    t.boolean  "delivered",  default: false, null: false
+    t.text     "message",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.integer  "site_id",       null: false, foreign_key: {references: "sites", name: "fk_pages_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__pages_site_id", using: :btree}
+    t.string   "url",           limit: 64,                 null: false
+    t.string   "name",          limit: 64,                 null: false
+    t.boolean  "private",       default: false, null: false
+    t.boolean  "contact_form",  default: false, null: false
+    t.text     "html_content"
+    t.integer  "created_by_id", null: false, foreign_key: {references: "users", name: "fk_pages_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__pages_created_by_id", using: :btree}
+    t.integer  "updated_by_id", null: false, foreign_key: {references: "users", name: "fk_pages_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__pages_updated_by_id", using: :btree}
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+  add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
+
+  create_table "sites_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false, foreign_key: {references: "users", name: "fk_sites_users_account_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_users_account_id", using: :btree}
+    t.integer "site_id", null: false, foreign_key: {references: "sites", name: "fk_sites_users_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_users_site_id", using: :btree}
+  end
+
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  null: false, index: {name: "index_versions_on_item_type_and_item_id", with: ["item_id"], using: :btree}
     t.integer  "item_id",    null: false
@@ -114,15 +114,4 @@ ActiveRecord::Schema.define(version: 20150617124704) do
     t.datetime "created_at"
   end
 
-  add_foreign_key "images", "sites"
-  add_foreign_key "images", "users", column: "created_by_id"
-  add_foreign_key "images", "users", column: "updated_by_id"
-  add_foreign_key "messages", "sites"
-  add_foreign_key "pages", "sites"
-  add_foreign_key "pages", "users", column: "created_by_id"
-  add_foreign_key "pages", "users", column: "updated_by_id"
-  add_foreign_key "sites", "users", column: "created_by_id"
-  add_foreign_key "sites", "users", column: "updated_by_id"
-  add_foreign_key "sites_users", "sites"
-  add_foreign_key "sites_users", "users"
 end

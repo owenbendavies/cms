@@ -1,7 +1,7 @@
 class AddPages < ActiveRecord::Migration
   def change
     create_table :pages do |table|
-      table.belongs_to :site, null: false, index: true
+      table.belongs_to :site, null: false
 
       table.string :url, null: false, limit: 64
       table.string :name, null: false, limit: 64
@@ -9,12 +9,11 @@ class AddPages < ActiveRecord::Migration
       table.boolean :contact_form, default: false, null: false
       table.text :html_content
 
-      table.belongs_to :created_by, null: false
-      table.belongs_to :updated_by, null: false
+      table.belongs_to :created_by, null: false, references: :accounts
+      table.belongs_to :updated_by, null: false, references: :accounts
 
       table.timestamps null: false
     end
-
     add_index :pages, [:site_id, :url], unique: true
   end
 end

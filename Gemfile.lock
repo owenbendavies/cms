@@ -449,6 +449,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    schema_auto_foreign_keys (0.1.0)
+      schema_plus_foreign_keys (~> 0.1)
+      schema_plus_indexes (~> 0.2)
     schema_monkey (2.1.0)
       activerecord (~> 4.2)
       its-it
@@ -459,6 +462,10 @@ GEM
     schema_plus_core (0.5.0)
       activerecord (~> 4.2)
       schema_monkey (~> 2.1)
+    schema_plus_foreign_keys (0.1.2)
+      activerecord (~> 4.2)
+      schema_plus_core (~> 0.5)
+      valuable
     schema_plus_indexes (0.2.0)
       activerecord (~> 4.2)
       schema_plus_core (~> 0.1)
@@ -599,6 +606,7 @@ DEPENDENCIES
   rubocop
   rubocop-rspec
   sass-rails
+  schema_auto_foreign_keys
   schema_validations
   scss-lint
   secure_headers
@@ -618,3 +626,6 @@ DEPENDENCIES
   validates_email_format_of
   webmock
   xml-sitemap
+
+BUNDLED WITH
+   1.10.5
