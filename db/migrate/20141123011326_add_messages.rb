@@ -1,7 +1,7 @@
 class AddMessages < ActiveRecord::Migration
   def change
     create_table :messages do |table|
-      table.belongs_to :site, null: false, index: true
+      table.belongs_to :site, null: false
 
       table.string :subject, null: false
       table.string :name, null: false, limit: 64

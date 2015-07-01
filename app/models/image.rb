@@ -13,17 +13,17 @@
 #
 # Indexes
 #
-#  index_images_on_created_by_id         (created_by_id)
-#  index_images_on_site_id               (site_id)
+#  fk__images_created_by_id              (created_by_id)
+#  fk__images_site_id                    (site_id)
+#  fk__images_updated_by_id              (updated_by_id)
 #  index_images_on_site_id_and_filename  (site_id,filename) UNIQUE
 #  index_images_on_site_id_and_name      (site_id,name) UNIQUE
-#  index_images_on_updated_by_id         (updated_by_id)
 #
 # Foreign Keys
 #
-#  fk_rails_920d946580  (created_by_id => users.id)
-#  fk_rails_df28ee77dc  (updated_by_id => users.id)
-#  fk_rails_fc5c9b486e  (site_id => sites.id)
+#  fk_images_created_by_id  (created_by_id => users.id)
+#  fk_images_site_id        (site_id => sites.id)
+#  fk_images_updated_by_id  (updated_by_id => users.id)
 #
 
 class Image < ActiveRecord::Base
