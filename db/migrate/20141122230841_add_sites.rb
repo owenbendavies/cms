@@ -15,8 +15,8 @@ class AddSites < ActiveRecord::Migration
       table.string :header_image_filename, limit: 36
       table.text :sidebar_html_content
 
-      table.belongs_to :created_by, null: false, references: :accounts
-      table.belongs_to :updated_by, null: false, references: :accounts
+      table.belongs_to :created_by, null: false, references: :users
+      table.belongs_to :updated_by, null: false, references: :users
 
       table.timestamps null: false
     end
