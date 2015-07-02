@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 # Frameworks
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.3'
 gem 'devise'
 gem 'devise_zxcvbn'
 
