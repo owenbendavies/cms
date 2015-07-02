@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150617124704) do
   add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
 
   create_table "sites_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false, foreign_key: {references: "users", name: "fk_sites_users_account_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_users_account_id", using: :btree}
+    t.integer "user_id", null: false, foreign_key: {references: "users", name: "fk_sites_users_user_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_users_user_id", using: :btree}
     t.integer "site_id", null: false, foreign_key: {references: "sites", name: "fk_sites_users_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__sites_users_site_id", using: :btree}
   end
 

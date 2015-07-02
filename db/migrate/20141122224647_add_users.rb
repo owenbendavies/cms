@@ -1,12 +1,12 @@
-class AddAccounts < ActiveRecord::Migration
+class AddUsers < ActiveRecord::Migration
   def change
-    create_table :accounts do |table|
+    create_table :users do |table|
       table.string :email, null: false, limit: 64
       table.string :password_digest, null: false, limit: 64
 
       table.timestamps null: false
     end
 
-    add_index :accounts, :email, unique: true
+    add_index :users, :email, unique: true
   end
 end
