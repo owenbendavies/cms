@@ -58,6 +58,7 @@ appropriate data.
 ```
 user = User.new
 user.email = 'test@example.com'
+user.skip_confirmation!
 user.password = 'password'
 user.password_confirmation = 'password'
 user.save!
