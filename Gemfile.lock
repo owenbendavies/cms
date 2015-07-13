@@ -410,6 +410,7 @@ GEM
     redis-store (1.1.5)
       redis (>= 2.2)
     ref (1.0.5)
+    request_store (1.1.0)
     require_all (1.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -607,6 +608,7 @@ DEPENDENCIES
   rails-timeago
   rails_best_practices
   redis-actionpack
+  request_store
   rspec-rails
   rubocop
   rubocop-rspec

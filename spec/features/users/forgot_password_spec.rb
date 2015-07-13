@@ -22,8 +22,7 @@ RSpec.feature 'User forgot password' do
     expect(email.subject).to eq 'Reset password instructions'
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
-    link.gsub!(/.*#{site.host}/, '')
-    expect(link).to_not be_blank
+    expect(link).to include site.host
 
     visit link
 

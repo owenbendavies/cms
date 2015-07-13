@@ -15,6 +15,7 @@ gem 'font_assets'
 gem 'heroku-deflater'
 gem 'rack-protection'
 gem 'rack-timeout'
+gem 'request_store'
 
 # Model Gems
 gem 'fog'
