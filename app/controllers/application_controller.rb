@@ -56,6 +56,7 @@ class ApplicationController < ActionController::Base
 
   def find_site
     @site = Site.find_by_host(request.host)
+    RequestStore.store[:site] = @site
   end
 
   def render_site_not_found
