@@ -3,11 +3,26 @@ module FeatureHelpers
   include Warden::Test::Helpers
 
   included do
-    let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
+    let!(:user) { FactoryGirl.create(:user) }
 
-    let!(:user) { site.users.first }
+    let!(:site) do
+      FactoryGirl.create(
+        :site,
+        host: 'localhost',
+        created_by: user,
+        updated_at: user
+      )
+    end
 
-    let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
+    let!(:home_page) do
+      FactoryGirl.create(
+        :page,
+        name: 'Home',
+        site: site,
+        created_by: user,
+        updated_at: user
+      )
+    end
 
     let!(:test_page) do
       FactoryGirl.create(
@@ -15,7 +30,9 @@ module FeatureHelpers
         name: 'Test Page',
         site: site,
         created_at: Time.zone.now,
-        updated_at: Time.zone.now
+        updated_at: Time.zone.now,
+        created_by: user,
+        updated_at: user
       )
     end
   end

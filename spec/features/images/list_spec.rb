@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature 'List images' do
-  let!(:image) { FactoryGirl.create(:image, site: site) }
+  let!(:image) do
+    FactoryGirl.create(
+      :image,
+      site: site,
+      created_by: user,
+      updated_by: user
+    )
+  end
+
   let(:go_to_url) { '/site/images' }
 
   it_behaves_like 'restricted page'

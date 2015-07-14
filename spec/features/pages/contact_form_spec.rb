@@ -2,7 +2,13 @@ require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
   let!(:contact_page) do
-    FactoryGirl.create(:page, site: site, contact_form: true)
+    FactoryGirl.create(
+      :page,
+      site: site,
+      contact_form: true,
+      created_by: user,
+      updated_by: user
+    )
   end
 
   before do

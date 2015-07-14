@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature 'HTML sitemap' do
-  let!(:private_page) { FactoryGirl.create(:private_page, site: site) }
+  let!(:private_page) do
+    FactoryGirl.create(
+      :private_page,
+      site: site,
+      created_by: user,
+      updated_by: user
+    )
+  end
 
   let(:go_to_url) { '/sitemap' }
 
