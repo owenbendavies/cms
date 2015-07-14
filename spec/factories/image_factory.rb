@@ -32,6 +32,6 @@ FactoryGirl.define do
     name { Faker::Name.name.gsub("'", '') }
     filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
     association :created_by, factory: :user
-    association :updated_by, factory: :user
+    updated_by { created_by }
   end
 end
