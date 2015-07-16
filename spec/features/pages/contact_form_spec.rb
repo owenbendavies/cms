@@ -6,8 +6,8 @@ RSpec.feature 'Page with contact form' do
       :page,
       site: site,
       contact_form: true,
-      created_by: user,
-      updated_by: user
+      created_by: admin,
+      updated_by: admin
     )
   end
 
@@ -38,7 +38,7 @@ RSpec.feature 'Page with contact form' do
 
     email = ActionMailer::Base.deliveries.last
     expect(email.from).to eq ["noreply@#{site.host}"]
-    expect(email.to).to eq site.users.map(&:email).sort
+    expect(email.to).to eq [admin.email]
     expect(email.subject).to eq contact_page.name
     expect(email.html_part.body).to have_content new_name
     expect(email.html_part.body).to have_content new_email

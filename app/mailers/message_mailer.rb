@@ -8,7 +8,7 @@ class MessageMailer < ActionMailer::Base
 
     mail(
       from: from_site(message.site),
-      to: @site.users.map(&:email).sort,
+      to: @site.all_users.map(&:email).sort,
       subject: message.subject
     )
   end

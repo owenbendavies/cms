@@ -52,11 +52,11 @@ To set up data run the following:
 ./bin/interactive
 ```
 
-First create a user to use, replacing email, password and sites with
-appropriate data.
+First create a user to use, replacing email and password with appropriate data.
 
 ```
 user = User.new
+user.admin = true
 user.email = 'test@example.com'
 user.skip_confirmation!
 user.password = 'password'
@@ -73,12 +73,6 @@ site.name = 'Test Site'
 site.created_by = user
 site.updated_by = user
 site.save!
-```
-
-Next add the site to the user.
-
-```
-user.sites << site
 ```
 
 Development

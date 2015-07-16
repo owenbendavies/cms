@@ -33,7 +33,7 @@ FactoryGirl.define do
     site
     name { Faker::Name.name }
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
-    association :created_by, factory: :user
+    association :created_by, factory: :admin
     updated_by { created_by }
 
     factory :private_page do
