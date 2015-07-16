@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe AccountMailer, type: :feature do
+  let(:user) { FactoryGirl.create(:user) }
   let(:site) { FactoryGirl.create(:site) }
-  let(:user) { site.users.first }
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do

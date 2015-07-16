@@ -42,11 +42,7 @@ FactoryGirl.define do
     host { Faker::Internet.domain_name }
     name { Faker::Company.name.gsub("'", '') }
 
-    association :created_by, factory: :user
+    association :created_by, factory: :admin
     updated_by { created_by }
-
-    after(:create) do |site|
-      site.users += [site.created_by]
-    end
   end
 end
