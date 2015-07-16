@@ -22,6 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  admin                  :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -48,6 +49,15 @@ RSpec.describe User do
     is_expected.to be_versioned
   end
 
+  describe '.admin' do
+    it 'returns all admins' do
+      admin = FactoryGirl.create(:admin)
+      FactoryGirl.create(:user)
+
+      expect(described_class.admin).to eq [admin]
+    end
+  end
+
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
   describe 'validate', secure_password: true  do
@@ -70,5 +80,31 @@ RSpec.describe User do
     it { should allow_value('apel203pd0pa').for(:password) }
 
     it { should_not allow_value('password').for(:password) }
+  end
+
+  describe '#all_sites' do
+    it 'returns all sites for admin' do
+      admin = FactoryGirl.create(:admin)
+
+      site = FactoryGirl.create(
+        :site,
+        created_by: admin,
+        updated_by: admin
+      )
+
+      expect(admin.all_sites).to eq [site]
+    end
+
+    it 'returns users sites' do
+      user = FactoryGirl.create(:user)
+
+      site = FactoryGirl.create(:site)
+
+      FactoryGirl.create(:site)
+
+      site.users << user
+
+      expect(user.all_sites).to eq [site]
+    end
   end
 end

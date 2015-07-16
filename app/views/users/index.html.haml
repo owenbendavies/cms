@@ -7,6 +7,6 @@
       %th= User.human_attribute_name(:email)
 
   %tbody
-    - @site.users.each do |user|
+    - @site.all_users.each do |user|
       %tr
         %td= user.email

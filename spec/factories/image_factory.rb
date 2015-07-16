@@ -31,7 +31,7 @@ FactoryGirl.define do
     site
     name { Faker::Name.name.gsub("'", '') }
     filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
-    association :created_by, factory: :user
+    association :created_by, factory: :admin
     updated_by { created_by }
   end
 end

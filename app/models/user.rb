@@ -22,6 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  admin                  :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -50,7 +51,17 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
+  scope :admin, -> { where(admin: true) }
+
   strip_attributes only: :email, collapse_spaces: true
 
   validates :email, email_format: true
+
+  def all_sites
+    if admin
+      Site.all
+    else
+      sites
+    end
+  end
 end

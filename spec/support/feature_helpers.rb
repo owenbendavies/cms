@@ -3,15 +3,21 @@ module FeatureHelpers
   include Warden::Test::Helpers
 
   included do
-    let!(:user) { FactoryGirl.create(:user) }
+    let!(:admin) { FactoryGirl.create(:admin) }
 
     let!(:site) do
       FactoryGirl.create(
         :site,
         host: 'localhost',
-        created_by: user,
-        updated_at: user
+        created_by: admin,
+        updated_at: admin
       )
+    end
+
+    let(:user) do
+      user = FactoryGirl.create(:user)
+      site.users << user
+      user
     end
 
     let!(:home_page) do
@@ -19,8 +25,8 @@ module FeatureHelpers
         :page,
         name: 'Home',
         site: site,
-        created_by: user,
-        updated_at: user
+        created_by: admin,
+        updated_at: admin
       )
     end
 
@@ -31,8 +37,8 @@ module FeatureHelpers
         site: site,
         created_at: Time.zone.now,
         updated_at: Time.zone.now,
-        created_by: user,
-        updated_at: user
+        created_by: admin,
+        updated_at: admin
       )
     end
   end
@@ -41,6 +47,18 @@ module FeatureHelpers
     visit url
     expect(page.status_code).to eq 200
     expect(current_path).to eq url.split('?').first
+  end
+
+  RSpec.shared_context 'logged in admin' do
+    before do
+      login_as admin
+
+      if defined? go_to_url
+        visit_page go_to_url
+      else
+        visit_page '/home'
+      end
+    end
   end
 
   RSpec.shared_context 'logged in user' do
@@ -55,7 +73,7 @@ module FeatureHelpers
     end
   end
 
-  RSpec.shared_context 'non logged in user' do
+  RSpec.shared_context 'not logged in' do
     before do
       visit_page go_to_url if defined? go_to_url
     end
