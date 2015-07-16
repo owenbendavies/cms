@@ -64,6 +64,10 @@ class Site < ActiveRecord::Base
     allow_blank: true
   }
 
+  def all_users
+    User.admin + users
+  end
+
   def css
     stylesheet.read
   end

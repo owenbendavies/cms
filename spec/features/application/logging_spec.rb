@@ -20,7 +20,7 @@ RSpec.feature 'Logging' do
     Rails.application.config.lograge.custom_options.call(events.first)
   end
 
-  it_behaves_like 'non logged in user' do
+  it_behaves_like 'not logged in' do
     scenario 'visiting a page' do
       expect(events.size).to eq 1
 

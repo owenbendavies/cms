@@ -5,8 +5,8 @@ RSpec.feature 'List images' do
     FactoryGirl.create(
       :image,
       site: site,
-      created_by: user,
-      updated_by: user
+      created_by: admin,
+      updated_by: admin
     )
   end
 

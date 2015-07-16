@@ -22,6 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
+#  admin                  :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -37,5 +38,9 @@ FactoryGirl.define do
     password { Faker::Internet.password(20, 30) }
     password_confirmation { password }
     confirmed_at { Time.zone.now }
+
+    factory :admin do
+      admin true
+    end
   end
 end

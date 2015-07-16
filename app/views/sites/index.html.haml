@@ -2,5 +2,5 @@
 - content_for :page_icon, t('.icon')
 
 %ul
-  - current_user.sites.each do |site|
+  - current_user.all_sites.each do |site|
     %li= link_to(site.host, "http://#{site.host}")
