@@ -51,7 +51,7 @@ class PagesController < ApplicationController
   private
 
   def find_page
-    @page = Page.find_by_site_id_and_url!(@site, params[:id])
+    @page = @site.pages.find_by_url!(params[:id])
   end
 
   def page_params

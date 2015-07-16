@@ -4,6 +4,6 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find_by_site_id_and_id!(@site, params[:id])
+    @message = @site.messages.find_by_id!(params[:id])
   end
 end
