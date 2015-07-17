@@ -48,6 +48,7 @@ RSpec.describe Page do
     it { should validate_presence_of(:site) }
 
     it { should validate_presence_of(:url) }
+    it { should validate_uniqueness_of(:url).scoped_to(:site_id) }
 
     %w(
       health
@@ -64,13 +65,9 @@ RSpec.describe Page do
     end
 
     it { should validate_presence_of(:name) }
-
     it { should validate_length_of(:name).is_at_most(64) }
 
-    it { should validate_uniqueness_of(:url).scoped_to(:site_id) }
-
     it { should validate_presence_of(:created_by) }
-
     it { should validate_presence_of(:updated_by) }
   end
 
