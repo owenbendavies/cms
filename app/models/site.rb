@@ -57,6 +57,8 @@ class Site < ActiveRecord::Base
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
+  validates :name, length: { minimum: 3 }
+  validates :sub_title, length: { allow_nil: true, minimum: 3 }
   validates :layout, inclusion: { in: LAYOUTS }
 
   validates :google_analytics, format: {
