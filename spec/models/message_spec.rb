@@ -42,11 +42,9 @@ RSpec.describe Message do
     it { should validate_presence_of(:subject) }
 
     it { should validate_presence_of(:name) }
-
-    it { should validate_length_of(:name).is_at_most(64) }
+    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
     it { should validate_presence_of(:email) }
-
     it { should allow_value('someone@example.com').for(:email) }
 
     it do
@@ -56,7 +54,6 @@ RSpec.describe Message do
     end
 
     it { should validate_presence_of(:message) }
-
     it { should validate_length_of(:message).is_at_most(2048) }
 
     [

@@ -52,7 +52,7 @@ RSpec.feature 'Page with contact form' do
 
     click_button 'Send Message'
 
-    expect(page).to have_content "can't be blank"
+    expect(page).to have_content 'is too short'
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
 
     expect(Message.count).to eq 0

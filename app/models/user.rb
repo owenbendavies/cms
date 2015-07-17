@@ -23,7 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
-#  name                   :string(64)
+#  name                   :string(64)       not null
 #
 # Indexes
 #
@@ -57,6 +57,8 @@ class User < ActiveRecord::Base
   strip_attributes collapse_spaces: true
 
   validates :email, email_format: true
+
+  validates :name, length: { minimum: 3 }
 
   def all_sites
     if admin

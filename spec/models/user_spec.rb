@@ -23,7 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
-#  name                   :string(64)
+#  name                   :string(64)       not null
 #
 # Indexes
 #
@@ -64,9 +64,7 @@ RSpec.describe User do
 
   describe 'validate', secure_password: true  do
     it { should validate_presence_of(:email) }
-
     it { should validate_length_of(:email).is_at_most(64) }
-
     it { should allow_value('someone@example.com').for(:email) }
 
     it do
@@ -76,12 +74,12 @@ RSpec.describe User do
     end
 
     it { should validate_confirmation_of(:password) }
-
     it { should validate_length_of(:password).is_at_least(8).is_at_most(64) }
-
     it { should allow_value('apel203pd0pa').for(:password) }
-
     it { should_not allow_value('password').for(:password) }
+
+    it { should validate_presence_of(:name) }
+    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
   end
 
   describe '#all_sites' do

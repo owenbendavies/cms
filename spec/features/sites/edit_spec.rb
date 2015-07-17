@@ -74,7 +74,7 @@ RSpec.feature 'Edit the site' do
       fill_in 'Name', with: ''
       click_button 'Update Site'
 
-      expect(page).to have_content "can't be blank"
+      expect(page).to have_content 'is too short'
     end
 
     scenario 'clicking Cancel' do

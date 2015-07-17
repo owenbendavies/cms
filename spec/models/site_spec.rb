@@ -87,14 +87,12 @@ RSpec.describe Site do
     subject { FactoryGirl.build(:site) }
 
     it { should validate_presence_of(:host) }
-
     it { should validate_uniqueness_of(:host) }
 
     it { should validate_presence_of(:name) }
+    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
-    it { should validate_length_of(:name).is_at_most(64) }
-
-    it { should validate_length_of(:sub_title).is_at_most(64) }
+    it { should validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
 
     it { should allow_value('one_column').for(:layout) }
     it { should allow_value('right_sidebar').for(:layout) }
@@ -112,17 +110,14 @@ RSpec.describe Site do
     it { should_not allow_value('UA123').for(:google_analytics) }
     it { should_not allow_value('AS').for(:google_analytics) }
 
-    it { should validate_presence_of(:updated_by) }
-
     it { should validate_length_of(:facebook).is_at_most(64) }
-
     it { should validate_length_of(:twitter).is_at_most(15) }
-
     it { should validate_length_of(:youtube).is_at_most(32) }
-
     it { should validate_length_of(:linkedin).is_at_most(32) }
-
     it { should validate_length_of(:github).is_at_most(32) }
+
+    it { should validate_presence_of(:created_by) }
+    it { should validate_presence_of(:updated_by) }
   end
 
   describe '#all_users' do
