@@ -23,6 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
+#  name                   :string(64)
 #
 # Indexes
 #
@@ -34,6 +35,7 @@
 
 FactoryGirl.define do
   factory :user do
+    name { Faker::Name.name }
     email { Faker::Internet.email }
     password { Faker::Internet.password(20, 30) }
     password_confirmation { password }
