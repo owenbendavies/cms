@@ -23,7 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
-#  name                   :string(64)
+#  name                   :string(64)       not null
 #
 # Indexes
 #
@@ -82,6 +82,8 @@ RSpec.describe User do
     it { should allow_value('apel203pd0pa').for(:password) }
 
     it { should_not allow_value('password').for(:password) }
+
+    it { should validate_presence_of(:name) }
   end
 
   describe '#all_sites' do

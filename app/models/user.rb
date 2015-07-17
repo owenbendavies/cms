@@ -23,7 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
-#  name                   :string(64)
+#  name                   :string(64)       not null
 #
 # Indexes
 #
