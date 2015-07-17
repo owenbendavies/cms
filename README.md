@@ -52,21 +52,18 @@ To set up data run the following:
 ./bin/interactive
 ```
 
-First create a user to use, replacing email and password with appropriate data.
+Now input the following, replacing the relevant data:
 
 ```
 user = User.new
 user.admin = true
+user.name = 'Your Name'
 user.email = 'test@example.com'
 user.skip_confirmation!
 user.password = 'password'
 user.password_confirmation = 'password'
 user.save!
-```
 
-Next create the site, replacing host and name with appropriate data.
-
-```
 site = Site.new
 site.host = 'localhost'
 site.name = 'Test Site'
