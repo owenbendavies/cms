@@ -58,6 +58,8 @@ class User < ActiveRecord::Base
 
   validates :email, email_format: true
 
+  validates :name, length: { minimum: 3 }
+
   def all_sites
     if admin
       Site.all
