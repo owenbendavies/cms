@@ -18,6 +18,10 @@ RSpec.describe AccountMailer, type: :feature do
       expect(subject.subject).to eq 'Confirmation instructions'
     end
 
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{user.name}"
+    end
+
     it 'has text in body' do
       expect(subject.body).to have_content 'Please confirm your email address.'
     end
@@ -42,6 +46,10 @@ RSpec.describe AccountMailer, type: :feature do
 
     it 'has subject' do
       expect(subject.subject).to eq 'Reset password instructions'
+    end
+
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{user.name}"
     end
 
     it 'has text in body' do
@@ -70,6 +78,10 @@ RSpec.describe AccountMailer, type: :feature do
 
     it 'has subject' do
       expect(subject.subject).to eq 'Unlock instructions'
+    end
+
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{user.name}"
     end
 
     it 'has text in body' do
