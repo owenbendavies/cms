@@ -29,6 +29,21 @@ RSpec.feature 'Editing a user' do
       expect(page).to have_content 'Signed in successfully.'
     end
 
+    scenario 'changing the name' do
+      expect(find_field('Name').value).to eq user.name
+
+      fill_in 'Current password', with: user.password
+      fill_in 'Name', with: " #{new_name} "
+      click_button 'Update User'
+
+      expect(current_path).to eq '/home'
+      expect(page).to have_content 'Your account has been updated'
+
+      visit_page go_to_url
+
+      expect(find_field('Name').value).to eq new_name
+    end
+
     scenario 'changing the email' do
       within 'a[href="https://www.gravatar.com"]' do
         gravatar_image = find('img')

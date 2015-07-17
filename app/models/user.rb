@@ -23,6 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
+#  name                   :string(64)
 #
 # Indexes
 #
@@ -53,7 +54,7 @@ class User < ActiveRecord::Base
 
   scope :admin, -> { where(admin: true) }
 
-  strip_attributes only: :email, collapse_spaces: true
+  strip_attributes collapse_spaces: true
 
   validates :email, email_format: true
 

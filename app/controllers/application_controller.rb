@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   before_action :check_user_site
   before_action :check_format_is_not_html
   before_action :authenticate_user!, except: [:home, :page_not_found]
+  before_action :configure_devise_parameters, if: :devise_controller?
 
   def home
     redirect_to page_path('home')
@@ -26,6 +27,12 @@ class ApplicationController < ActionController::Base
 
       render template: 'errors/site_not_found', formats: ['html'], status: 404
     end
+  end
+
+  protected
+
+  def configure_devise_parameters
+    devise_parameter_sanitizer.for(:account_update) << :name
   end
 
   private
