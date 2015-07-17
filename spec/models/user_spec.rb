@@ -23,6 +23,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
+#  name                   :string(64)
 #
 # Indexes
 #
@@ -58,6 +59,7 @@ RSpec.describe User do
     end
   end
 
+  it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
   describe 'validate', secure_password: true  do
