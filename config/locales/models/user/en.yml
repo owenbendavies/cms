@@ -7,4 +7,5 @@ en:
       user:
         password: "Password"
         password_confirmation: "Confirm password"
+        name: "Name"
         email: "Email"
