@@ -171,6 +171,10 @@ RESPONSIVENESS
                 <td>
                   <h1><%= @site.name %></h1>
 
+                  <%- if @resource %>
+                    <p> Hi <%= @resource.name %></p>
+                  <%- end %>
+
                   <%= yield %>
                 </td>
               </tr>
