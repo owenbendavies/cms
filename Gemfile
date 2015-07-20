@@ -3,6 +3,7 @@ ruby '2.2.2'
 
 # Frameworks
 gem 'rails', '4.2.3'
+gem 'cancancan'
 gem 'devise'
 gem 'devise_zxcvbn'
 
