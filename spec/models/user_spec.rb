@@ -44,7 +44,8 @@ RSpec.describe User do
       .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
-  it { should have_and_belong_to_many(:sites) }
+  it { should have_many(:site_settings) }
+  it { should have_many(:sites) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned

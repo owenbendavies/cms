@@ -8,9 +8,6 @@ AllCops:
     - 'puppet/**/*'
     - 'vendor/bundle/**/*'
 
-HasAndBelongsToMany:
-  Enabled: false
-
 Lint/AmbiguousOperator:
   Enabled: false
 
