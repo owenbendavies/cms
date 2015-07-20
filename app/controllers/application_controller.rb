@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
   def check_user_site
     return unless current_user
     return if current_user.admin
-    return if current_user.sites.find_by_id(@site.id)
+    return if current_user.site_settings.find_by_site_id(@site.id)
     sign_out
   end
 
