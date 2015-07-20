@@ -42,7 +42,8 @@ require 'rails_helper'
 RSpec.describe Site do
   it { should belong_to(:created_by).class_name('User') }
   it { should belong_to(:updated_by).class_name('User') }
-  it { should have_and_belong_to_many(:users) }
+  it { should have_many(:site_settings) }
+  it { should have_many(:users) }
   it { should have_many(:images).order(:name).dependent(:destroy) }
 
   it do
