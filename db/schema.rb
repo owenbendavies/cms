@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721134516) do
+ActiveRecord::Schema.define(version: 20150721152651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150721134516) do
     t.string   "host",                 limit: 64,                        null: false, index: {name: "index_sites_on_host", unique: true, using: :btree}
     t.string   "name",                 limit: 64,                        null: false
     t.string   "sub_title",            limit: 64
-    t.string   "layout",               limit: 32, default: "one_column"
+    t.string   "layout",               limit: 32, default: "one_column", null: false
     t.text     "main_menu_page_ids"
     t.string   "copyright",            limit: 64
     t.string   "google_analytics",     limit: 32
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150721134516) do
   create_table "images", force: :cascade do |t|
     t.integer  "site_id",       null: false, foreign_key: {references: "sites", name: "fk_images_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_site_id", using: :btree}
     t.string   "name",          limit: 64, null: false
-    t.string   "filename",      limit: 36
+    t.string   "filename",      limit: 36, null: false
     t.integer  "created_by_id", null: false, foreign_key: {references: "users", name: "fk_images_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_created_by_id", using: :btree}
     t.integer  "updated_by_id", null: false, foreign_key: {references: "users", name: "fk_images_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_updated_by_id", using: :btree}
     t.datetime "created_at",    null: false
@@ -105,10 +105,10 @@ ActiveRecord::Schema.define(version: 20150721134516) do
   create_table "site_settings", force: :cascade do |t|
     t.integer  "user_id",       null: false, foreign_key: {references: "users", name: "fk_site_settings_user_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_user_id", using: :btree}
     t.integer  "site_id",       null: false, foreign_key: {references: "sites", name: "fk_site_settings_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_site_id", using: :btree}
-    t.integer  "created_by_id", foreign_key: {references: "users", name: "fk_site_settings_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_created_by_id", using: :btree}
-    t.integer  "updated_by_id", foreign_key: {references: "users", name: "fk_site_settings_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_updated_by_id", using: :btree}
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "created_by_id", null: false, foreign_key: {references: "users", name: "fk_site_settings_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_created_by_id", using: :btree}
+    t.integer  "updated_by_id", null: false, foreign_key: {references: "users", name: "fk_site_settings_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_updated_by_id", using: :btree}
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "versions", force: :cascade do |t|
