@@ -5,10 +5,10 @@
 #  user_id       :integer          not null
 #  site_id       :integer          not null
 #  id            :integer          not null, primary key
-#  created_by_id :integer
-#  updated_by_id :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  created_by_id :integer          not null
+#  updated_by_id :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 # Indexes
 #
