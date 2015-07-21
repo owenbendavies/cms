@@ -25,9 +25,11 @@
 #  fk_site_settings_user_id        (user_id => users.id)
 #
 
-class SiteSetting < ActiveRecord::Base
-  belongs_to :site
-  belongs_to :user
-  belongs_to :created_by, class_name: 'User'
-  belongs_to :updated_by, class_name: 'User'
+require 'rails_helper'
+
+RSpec.describe SiteSetting do
+  it { should belong_to(:site) }
+  it { should belong_to(:user) }
+  it { should belong_to(:created_by).class_name('User') }
+  it { should belong_to(:updated_by).class_name('User') }
 end
