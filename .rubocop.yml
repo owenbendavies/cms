@@ -8,9 +8,6 @@ AllCops:
     - 'puppet/**/*'
     - 'vendor/bundle/**/*'
 
-Lint/AmbiguousOperator:
-  Enabled: false
-
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/20141122230841_add_sites.rb'
