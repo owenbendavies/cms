@@ -103,7 +103,12 @@ RSpec.describe User do
 
       FactoryGirl.create(:site)
 
-      site.users << user
+      SiteSetting.create(
+        user: user,
+        site: site,
+        created_by: user,
+        updated_by: user
+      )
 
       expect(user.all_sites).to eq [site]
     end

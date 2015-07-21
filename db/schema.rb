@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720124501) do
+ActiveRecord::Schema.define(version: 20150721134516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,12 @@ ActiveRecord::Schema.define(version: 20150720124501) do
   add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
 
   create_table "site_settings", force: :cascade do |t|
-    t.integer "user_id", null: false, foreign_key: {references: "users", name: "fk_site_settings_user_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_user_id", using: :btree}
-    t.integer "site_id", null: false, foreign_key: {references: "sites", name: "fk_site_settings_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_site_id", using: :btree}
+    t.integer  "user_id",       null: false, foreign_key: {references: "users", name: "fk_site_settings_user_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_user_id", using: :btree}
+    t.integer  "site_id",       null: false, foreign_key: {references: "sites", name: "fk_site_settings_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_site_id", using: :btree}
+    t.integer  "created_by_id", foreign_key: {references: "users", name: "fk_site_settings_created_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_created_by_id", using: :btree}
+    t.integer  "updated_by_id", foreign_key: {references: "users", name: "fk_site_settings_updated_by_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__site_settings_updated_by_id", using: :btree}
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "versions", force: :cascade do |t|
