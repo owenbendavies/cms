@@ -133,7 +133,12 @@ RSpec.describe Site do
         updated_by: admin
       )
 
-      site.users << user
+      SiteSetting.create(
+        user: user,
+        site: site,
+        created_by: user,
+        updated_by: user
+      )
 
       expect(site.all_users).to eq [admin, user]
     end
