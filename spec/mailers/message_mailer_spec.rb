@@ -15,7 +15,12 @@ RSpec.describe MessageMailer, type: :feature do
     let(:user) { FactoryGirl.create(:user) }
 
     before do
-      site.users << user
+      SiteSetting.create(
+        user: user,
+        site: site,
+        created_by: admin,
+        updated_by: admin
+      )
     end
 
     let(:message) { FactoryGirl.create(:message, site: site) }
