@@ -28,6 +28,6 @@ module ApplicationHelper
   end
 
   def tick(css_class, boolean)
-    content_tag(:i, nil, class: "#{css_class} green fa fa-check") if boolean
+    content_tag(:i, nil, class: "#{css_class} fa fa-check") if boolean
   end
 end
