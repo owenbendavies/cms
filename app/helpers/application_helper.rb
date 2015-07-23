@@ -26,4 +26,8 @@ module ApplicationHelper
 
     footer.join('. ')
   end
+
+  def tick(css_class, boolean)
+    content_tag(:i, nil, class: "#{css_class} fa fa-check") if boolean
+  end
 end
