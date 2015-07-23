@@ -1,12 +1,20 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
-%table.table.table-bordered
+%table.table
   %thead
     %tr
+      %th= User.human_attribute_name(:name)
       %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:confirmed)
+      %th= User.human_attribute_name(:locked)
+      %th= User.human_attribute_name(:admin)
 
   %tbody
     - @site.all_users.each do |user|
       %tr
+        %td= user.name
         %td= user.email
+        %td= tick('confirmed', user.confirmed?)
+        %td= tick('locked', user.access_locked?)
+        %td= tick('admin', user.admin?)
