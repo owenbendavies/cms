@@ -44,5 +44,17 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
+
+    factory :unconfirmed_user do
+      confirmed_at nil
+
+      after :build do |user|
+        user.skip_confirmation_notification!
+      end
+    end
+
+    factory :locked_user do
+      locked_at { Time.zone.now }
+    end
   end
 end

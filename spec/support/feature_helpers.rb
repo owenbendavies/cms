@@ -17,7 +17,7 @@ module FeatureHelpers
     let(:user) do
       user = FactoryGirl.create(:user)
 
-      SiteSetting.create(
+      SiteSetting.create!(
         user: user,
         site: site,
         created_by: admin,
