@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   let(:go_to_url) { '/new' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'with valid data', js: true do
       expect(page).to have_no_content 'last updated'
 
@@ -21,8 +21,8 @@ RSpec.feature 'Creating a page' do
       new_page = Page.find_by_site_id_and_url!(site, 'new_page')
       expect(new_page.name).to eq 'New Page'
       expect(new_page.html_content).to eq "<p>#{new_message}</p>"
-      expect(new_page.created_by).to eq user
-      expect(new_page.updated_by).to eq user
+      expect(new_page.created_by).to eq site_user
+      expect(new_page.updated_by).to eq site_user
     end
 
     scenario 'with invalid data' do

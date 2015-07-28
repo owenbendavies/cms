@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Editing a page' do
   let(:go_to_url) { '/test_page/edit' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'editing the content', js: true do
       expect(body).to include test_page.html_content
 
@@ -17,7 +17,7 @@ RSpec.feature 'Editing a page' do
       expect(page).to have_content new_message
 
       page = Page.find_by_site_id_and_url!(site, 'test_page')
-      expect(page.updated_by).to eq user
+      expect(page.updated_by).to eq site_user
     end
 
     scenario 'making the page private' do
@@ -60,7 +60,7 @@ RSpec.feature 'Editing a page' do
 
     scenario 'saving without edits' do
       test_page = Page.find_by_site_id_and_url!(site, 'test_page')
-      test_page.updated_by = user
+      test_page.updated_by = site_user
       test_page.save!
       test_page.reload
 
