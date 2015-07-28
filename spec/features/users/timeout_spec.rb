@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'User timeout' do
-  let(:go_to_url) { '/home/edit' }
+  let(:go_to_url) { '/users/edit' }
   after { Timecop.return }
 
-  context 'logged in user with remember me' do
+  context 'logged in site user with remember me' do
     before do
       visit_page '/login'
       fill_in 'Email', with: user.email
@@ -24,11 +24,11 @@ RSpec.feature 'User timeout' do
     context 'after 2 weeks' do
       before { Timecop.travel Time.zone.now + 15.days }
 
-      it_behaves_like 'restricted page'
+      include_examples 'authenticated page'
     end
   end
 
-  context 'logged in user without remember me' do
+  context 'logged in site user without remember me' do
     before do
       visit_page '/login'
       fill_in 'Email', with: user.email
@@ -47,7 +47,7 @@ RSpec.feature 'User timeout' do
     context 'after 30 minutes' do
       before { Timecop.travel Time.zone.now + 31.minutes }
 
-      it_behaves_like 'restricted page'
+      include_examples 'authenticated page'
     end
   end
 end

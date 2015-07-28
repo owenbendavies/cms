@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Editing a user' do
   let(:go_to_url) { '/users/edit' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'authenticated page'
 
   it_behaves_like 'logged in user' do
     scenario 'changing the password' do

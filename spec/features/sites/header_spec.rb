@@ -8,7 +8,7 @@ RSpec.feature 'Site header' do
     site.save!
   end
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'removing separate header' do
       within '#cms-main-menu' do
         expect(page).to_not have_link site.name, href: '/home'

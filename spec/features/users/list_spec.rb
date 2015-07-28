@@ -7,9 +7,9 @@ RSpec.feature 'List users' do
   let(:confirmed_selector) { '.confirmed.fa-check' }
   let(:locked_selector) { '.locked.fa-check' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'visiting the page' do
       within 'thead' do
         expect(page).to have_content 'Name'
@@ -28,8 +28,8 @@ RSpec.feature 'List users' do
       end
 
       within 'tbody tr:nth-child(2)' do
-        expect(page).to have_content user.name
-        expect(page).to have_content user.email
+        expect(page).to have_content site_user.name
+        expect(page).to have_content site_user.email
         expect(page).to have_selector confirmed_selector
         expect(page).to_not have_selector locked_selector
         expect(page).to_not have_selector admin_selector

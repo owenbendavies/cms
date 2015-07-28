@@ -20,18 +20,18 @@ RSpec.feature 'Logging' do
     Rails.application.config.lograge.custom_options.call(events.first)
   end
 
-  it_behaves_like 'not logged in' do
-    scenario 'visiting a page' do
-      expect(events.size).to eq 1
+  scenario 'visiting a page' do
+    visit go_to_url
 
-      expect(result).to eq(
-        host: 'localhost',
-        remote_ip: '127.0.0.1',
-        request_id: new_id,
-        user_agent: "\"#{new_company_name}\"",
-        user_id: nil
-      )
-    end
+    expect(events.size).to eq 1
+
+    expect(result).to eq(
+      host: 'localhost',
+      remote_ip: '127.0.0.1',
+      request_id: new_id,
+      user_agent: "\"#{new_company_name}\"",
+      user_id: nil
+    )
   end
 
   it_behaves_like 'logged in user' do

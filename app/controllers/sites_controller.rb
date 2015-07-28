@@ -1,11 +1,15 @@
 class SitesController < ApplicationController
   def index
+    authorize! :index, Site
   end
 
   def edit
+    authorize! :edit, @site
   end
 
   def update
+    authorize! :update, @site
+
     if @site.update_attributes site_params
       flash.notice = t('flash.updated', name: Site.model_name.human)
       redirect_to page_path('home')
