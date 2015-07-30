@@ -60,10 +60,7 @@ RSpec.describe Site do
     it 'has a stylesheet' do
       filename = "#{Digest::MD5.hexdigest(rand.to_s)}.css"
 
-      site = FactoryGirl.build(
-        :site,
-        stylesheet_filename: filename
-      )
+      site = FactoryGirl.build(:site, stylesheet_filename: filename)
 
       expect(site.stylesheet.url).to eq File.join(
         '/',
@@ -127,11 +124,7 @@ RSpec.describe Site do
       user = FactoryGirl.create(:user)
       FactoryGirl.create(:user)
 
-      site = FactoryGirl.create(
-        :site,
-        created_by: admin,
-        updated_by: admin
-      )
+      site = FactoryGirl.create(:site)
 
       SiteSetting.create(
         user: user,
@@ -147,11 +140,7 @@ RSpec.describe Site do
       admin = FactoryGirl.create(:admin)
       FactoryGirl.create(:user)
 
-      site = FactoryGirl.create(
-        :site,
-        created_by: admin,
-        updated_by: admin
-      )
+      site = FactoryGirl.create(:site)
 
       expect(site.all_users).to eq [admin]
     end

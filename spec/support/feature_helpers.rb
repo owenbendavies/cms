@@ -5,14 +5,7 @@ module FeatureHelpers
   included do
     let!(:admin) { FactoryGirl.create(:admin) }
 
-    let!(:site) do
-      FactoryGirl.create(
-        :site,
-        host: 'localhost',
-        created_by: admin,
-        updated_at: admin
-      )
-    end
+    let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
     let(:user) do
       user = FactoryGirl.create(:user)
@@ -27,25 +20,14 @@ module FeatureHelpers
       user
     end
 
-    let!(:home_page) do
-      FactoryGirl.create(
-        :page,
-        name: 'Home',
-        site: site,
-        created_by: admin,
-        updated_at: admin
-      )
-    end
+    let!(:home_page) { FactoryGirl.create(:page, name: 'Home') }
 
     let!(:test_page) do
       FactoryGirl.create(
         :page,
         name: 'Test Page',
-        site: site,
         created_at: Time.zone.now,
-        updated_at: Time.zone.now,
-        created_by: admin,
-        updated_at: admin
+        updated_at: Time.zone.now
       )
     end
   end
