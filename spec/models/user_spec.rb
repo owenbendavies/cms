@@ -87,11 +87,7 @@ RSpec.describe User do
     it 'returns all sites for admin' do
       admin = FactoryGirl.create(:admin)
 
-      site = FactoryGirl.create(
-        :site,
-        created_by: admin,
-        updated_by: admin
-      )
+      site = FactoryGirl.create(:site)
 
       expect(admin.all_sites).to eq [site]
     end

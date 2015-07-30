@@ -28,10 +28,12 @@
 
 FactoryGirl.define do
   factory :image do
-    site
+    site { Site.first || FactoryGirl.create(:site) }
+
     name { Faker::Name.name.gsub("'", '') }
     filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
-    association :created_by, factory: :admin
-    updated_by { created_by }
+
+    created_by { User.first || FactoryGirl.create(:admin) }
+    updated_by { User.first || FactoryGirl.create(:admin) }
   end
 end
