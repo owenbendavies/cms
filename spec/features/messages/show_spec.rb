@@ -26,7 +26,7 @@ RSpec.feature 'Showing a message' do
     end
 
     scenario 'message from another site' do
-      message = FactoryGirl.create(:message)
+      message = FactoryGirl.create(:message, site: FactoryGirl.create(:site))
 
       visit "/site/messages/#{message.id}"
       expect(page).to have_content 'Page Not Found'

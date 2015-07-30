@@ -50,7 +50,7 @@ RSpec.feature 'Showing a page' do
   end
 
   scenario 'page from another site' do
-    subject = FactoryGirl.create(:page)
+    subject = FactoryGirl.create(:page, site: FactoryGirl.create(:site))
 
     visit "/#{subject.url}"
     expect(page).to have_content 'Page Not Found'
