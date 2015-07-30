@@ -30,11 +30,13 @@
 
 FactoryGirl.define do
   factory :page do
-    site
+    site { Site.first || FactoryGirl.create(:site) }
+
     name { Faker::Name.name }
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
-    association :created_by, factory: :admin
-    updated_by { created_by }
+
+    created_by { User.first || FactoryGirl.create(:admin) }
+    updated_by { User.first || FactoryGirl.create(:admin) }
 
     factory :private_page do
       name 'Private'

@@ -24,7 +24,8 @@
 
 FactoryGirl.define do
   factory :message do
-    site
+    site { Site.first || FactoryGirl.create(:site) }
+
     subject { Faker::Name.name }
     name { Faker::Name.name }
     email { Faker::Internet.email }

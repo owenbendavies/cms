@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'XML sitemap' do
-  let!(:private_page) do
-    FactoryGirl.create(
-      :private_page,
-      site: site,
-      created_by: admin,
-      updated_by: admin
-    )
-  end
+  let!(:private_page) { FactoryGirl.create(:private_page) }
 
   let(:go_to_url) { '/sitemap.xml' }
 
