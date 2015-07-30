@@ -4,7 +4,6 @@ RSpec.feature 'List messages' do
   let!(:message) do
     FactoryGirl.create(
       :message,
-      site: site,
       created_at: Time.zone.now - 1.month - 3.days,
       updated_at: Time.zone.now - 1.month - 3.days
     )

@@ -4,13 +4,7 @@ RSpec.describe MessageMailer, type: :feature do
   describe '.new_message' do
     let(:admin) { FactoryGirl.create(:admin) }
 
-    let(:site) do
-      FactoryGirl.create(
-        :site,
-        created_by: admin,
-        updated_by: admin
-      )
-    end
+    let(:site) { FactoryGirl.create(:site) }
 
     let(:user) { FactoryGirl.create(:user) }
 
