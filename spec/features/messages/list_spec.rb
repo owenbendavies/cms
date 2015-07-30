@@ -9,7 +9,9 @@ RSpec.feature 'List messages' do
     )
   end
 
-  let!(:other_site_message) { FactoryGirl.create(:message) }
+  let!(:other_site_message) do
+    FactoryGirl.create(:message, site: FactoryGirl.create(:site))
+  end
 
   let(:go_to_url) { '/site/messages' }
 
