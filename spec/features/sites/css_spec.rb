@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Site CSS' do
   let(:go_to_url) { '/site/css' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'adding custom CSS' do
       expect(find('pre textarea')['autofocus']).to eq 'autofocus'
 
@@ -20,7 +20,7 @@ RSpec.feature 'Site CSS' do
       expect(site.stylesheet_filename)
         .to eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
-      expect(site.updated_by).to eq user
+      expect(site.updated_by).to eq site_user
 
       link = "link[href=\"#{site.stylesheet.url}\"]"
       expect(page).to have_selector link, visible: false

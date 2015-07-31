@@ -8,7 +8,7 @@ RSpec.feature 'Site layouts' do
     site.save!
   end
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'changing to one_column' do
       expect(find_field('Layout').value).to eq site.layout
 

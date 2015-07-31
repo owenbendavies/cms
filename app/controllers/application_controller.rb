@@ -4,15 +4,18 @@ class ApplicationController < ActionController::Base
   rescue_from ActionView::MissingTemplate, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+  rescue_from CanCan::AccessDenied, with: :page_not_found
 
   before_action :set_secure_session
   before_action :set_secure_headers
   before_action :find_site
   before_action :render_site_not_found
-  before_action :check_user_site
   before_action :check_format_is_not_html
   before_action :authenticate_user!, except: [:home, :page_not_found]
   before_action :configure_devise_parameters, if: :devise_controller?
+
+  check_authorization unless: :devise_controller?
+  skip_authorization_check only: [:home, :page_not_found]
 
   def home
     redirect_to page_path('home')
@@ -68,13 +71,6 @@ class ApplicationController < ActionController::Base
 
   def render_site_not_found
     page_not_found unless @site
-  end
-
-  def check_user_site
-    return unless current_user
-    return if current_user.admin
-    return if current_user.site_settings.find_by_site_id(@site.id)
-    sign_out
   end
 
   def check_format_is_not_html

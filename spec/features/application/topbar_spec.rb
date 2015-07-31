@@ -3,13 +3,12 @@ require 'rails_helper'
 RSpec.feature 'Topbar' do
   let(:go_to_url) { '/test_page' }
 
-  it_behaves_like 'not logged in' do
-    scenario 'cannot use topbar' do
-      expect(page).to have_no_selector '#cms-topbar'
-    end
+  scenario 'cannot use topbar' do
+    visit go_to_url
+    expect(page).to have_no_selector '#cms-topbar'
   end
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'navigating to home' do
       within '#cms-topbar' do
         click_link site.name
