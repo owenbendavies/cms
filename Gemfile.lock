@@ -244,6 +244,7 @@ GEM
     font_assets (0.1.11)
       rack
     formatador (0.2.5)
+    get_process_mem (0.2.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-analytics-turbolinks (0.0.4)
@@ -583,6 +584,7 @@ DEPENDENCIES
   fog
   font-awesome-sass
   font_assets
+  get_process_mem
   google-analytics-turbolinks
   gravtastic
   haml-lint
