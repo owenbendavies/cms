@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Edit the site' do
   let(:go_to_url) { '/site/edit' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'changing the name' do
       expect(find_field('Name').value).to eq site.name
       expect(find_field('Name')['autofocus']).to eq 'autofocus'
@@ -39,7 +39,7 @@ RSpec.feature 'Edit the site' do
 
       expect(page).to have_content 'Site successfully updated'
       expect(body).to include "ga('create', '#{new_code}', 'auto');"
-      expect(body).to include "ga('set', '&uid', '#{user.id}');"
+      expect(body).to include "ga('set', '&uid', '#{site_user.id}');"
 
       visit_page go_to_url
 

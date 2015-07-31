@@ -24,6 +24,12 @@ RSpec.feature 'HTML sitemap' do
 
   it_behaves_like 'logged in user' do
     scenario 'with a private page' do
+      expect(page).to have_no_link private_page.name
+    end
+  end
+
+  it_behaves_like 'logged in site user' do
+    scenario 'with a private page' do
       find('ul#cms-sitemap li:nth-child(2)').tap do |item|
         expect(item).to have_link private_page.name, href: '/private'
         expect(item).to have_selector '.fa-lock'

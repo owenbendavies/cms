@@ -9,11 +9,15 @@ RSpec.feature 'List messages' do
     )
   end
 
+  let!(:other_site_message) do
+    FactoryGirl.create(:message, site: FactoryGirl.create(:site))
+  end
+
   let(:go_to_url) { '/site/messages' }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'visiting the page', js: true do
       expect(find('#cms-article h1').text).to eq 'Messages'
 
@@ -35,6 +39,8 @@ RSpec.feature 'List messages' do
         message.email,
         href: "/site/messages/#{message.id}"
       )
+
+      expect(page).to_not have_content other_site_message.name
     end
 
     include_examples 'page with topbar link', 'Messages', 'envelope'

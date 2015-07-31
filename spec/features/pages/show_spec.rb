@@ -40,12 +40,20 @@ RSpec.feature 'Showing a page' do
 
     let(:go_to_url) { '/private' }
 
-    it_behaves_like 'restricted page'
+    include_examples 'restricted page'
 
-    it_behaves_like 'logged in user' do
+    it_behaves_like 'logged in site user' do
       scenario 'visiting a private page' do
         expect(page).to have_selector 'h1 .fa-lock'
       end
     end
+  end
+
+  scenario 'page from another site' do
+    subject = FactoryGirl.create(:page, site: FactoryGirl.create(:site))
+
+    visit "/#{subject.url}"
+    expect(page).to have_content 'Page Not Found'
+    expect(page.status_code).to eq 404
   end
 end

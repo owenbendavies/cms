@@ -1,14 +1,15 @@
 class PagesController < ApplicationController
-  before_action :find_page, except: [:new, :create]
+  load_resource find_by: :url, through: :site
+
   skip_before_action :authenticate_user!, only: [:show, :contact_form]
+  before_action :authenticate_page, only: [:show, :contact_form]
+
+  authorize_resource
 
   def new
-    @page = Page.new
   end
 
   def create
-    @page = Page.new(site: @site)
-
     if @page.update_attributes(page_params.merge(created_by: current_user))
       redirect_to page_path(@page.to_param)
     else
@@ -17,7 +18,6 @@ class PagesController < ApplicationController
   end
 
   def show
-    authenticate_user! if @page.private
   end
 
   def contact_form
@@ -50,8 +50,8 @@ class PagesController < ApplicationController
 
   private
 
-  def find_page
-    @page = @site.pages.find_by_url!(params[:id])
+  def authenticate_page
+    authenticate_user! if @page.private
   end
 
   def page_params

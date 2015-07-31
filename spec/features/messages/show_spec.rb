@@ -11,9 +11,9 @@ RSpec.feature 'Showing a message' do
 
   let(:go_to_url) { "/site/messages/#{message.id}" }
 
-  it_behaves_like 'restricted page'
+  include_examples 'restricted page'
 
-  it_behaves_like 'logged in user' do
+  it_behaves_like 'logged in site user' do
     scenario 'visiting the page', js: true do
       expect(find('#cms-article h1').text).to eq 'Message'
       expect(page).to have_selector 'h1 .fa-envelope'
@@ -23,6 +23,14 @@ RSpec.feature 'Showing a message' do
       expect(page).to have_content message.email
       expect(page).to have_content message.phone
       expect(page).to have_content message.message
+    end
+
+    scenario 'message from another site' do
+      message = FactoryGirl.create(:message, site: FactoryGirl.create(:site))
+
+      visit "/site/messages/#{message.id}"
+      expect(page).to have_content 'Page Not Found'
+      expect(page.status_code).to eq 404
     end
 
     scenario 'unknown message' do

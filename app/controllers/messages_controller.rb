@@ -1,9 +1,10 @@
 class MessagesController < ApplicationController
+  authorize_resource :site
+  load_and_authorize_resource through: :site
+
   def index
-    @messages = @site.messages
   end
 
   def show
-    @message = @site.messages.find_by_id!(params[:id])
   end
 end
