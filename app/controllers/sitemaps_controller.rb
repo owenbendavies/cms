@@ -2,8 +2,6 @@ class SitemapsController < ApplicationController
   skip_before_action :authenticate_user!
   skip_authorization_check
 
-  load_resource :page
-
   def show
     @pages = @site.pages
 
