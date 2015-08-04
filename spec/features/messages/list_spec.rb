@@ -15,7 +15,7 @@ RSpec.feature 'List messages' do
 
   let(:go_to_url) { '/site/messages' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'Messages'
 
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page', js: true do

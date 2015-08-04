@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Site CSS' do
   let(:go_to_url) { '/site/css' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'CSS'
 
   it_behaves_like 'logged in site user' do
     scenario 'adding custom CSS' do
