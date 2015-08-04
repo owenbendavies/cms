@@ -4,53 +4,55 @@
 
   = horizontal do
     = nav class: 'navbar-right' do
-      %li.dropdown
-        %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-          = Page.model_name.human
-          %b.caret
-        %ul.dropdown-menu
-          - if @page && @page.persisted?
-            = link_to edit_page_path(@page.to_param) do
-              = content_tag(:i, nil, class: "fa fa-#{t('pages.edit.icon')}")
-              = t('actions.edit')
+      - if can? :update, @site
+        %li.dropdown
+          %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
+            = Page.model_name.human
+            %b.caret
+          %ul.dropdown-menu
+            - if @page && @page.persisted?
+              = link_to edit_page_path(@page.to_param) do
+                = content_tag(:i, nil, class: "fa fa-#{t('pages.edit.icon')}")
+                = t('actions.edit')
 
-            = link_to content_tag(:i, nil, class: "fa fa-#{t('pages.delete.icon')}") + ' ' + t('actions.delete'),
-                      page_path(@page.to_param),
-                      method: :delete,
-                      data: { confirm: t('pages.delete.text', name: @page.name) }
+              = link_to content_tag(:i, nil, class: "fa fa-#{t('pages.delete.icon')}") + ' ' + t('actions.delete'),
+                        page_path(@page.to_param),
+                        method: :delete,
+                        data: { confirm: t('pages.delete.text', name: @page.name) }
 
-          = link_to new_page_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('pages.new.icon')}")
-            = t('pages.new.title')
+            = link_to new_page_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('pages.new.icon')}")
+              = t('pages.new.title')
 
-      %li.dropdown
-        %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-          = Site.model_name.human
-          %b.caret
-        %ul.dropdown-menu
-          = link_to site_messages_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('messages.index.icon')}")
-            = t('messages.index.title')
+      - if can? :update, @site
+        %li.dropdown
+          %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
+            = Site.model_name.human
+            %b.caret
+          %ul.dropdown-menu
+            = link_to site_messages_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('messages.index.icon')}")
+              = t('messages.index.title')
 
-          = link_to site_images_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('images.index.icon')}")
-            = t('images.index.title')
+            = link_to site_images_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('images.index.icon')}")
+              = t('images.index.title')
 
-          = link_to edit_site_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('sites.edit.icon')}")
-            = t('sites.edit.title')
+            = link_to edit_site_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('sites.edit.icon')}")
+              = t('sites.edit.title')
 
-          = link_to site_users_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('users.index.icon')}")
-            = t('users.index.title')
+            = link_to site_users_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('users.index.icon')}")
+              = t('users.index.title')
 
-          = link_to css_site_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('sites.css.icon')}")
-            = t('sites.css.title')
+            = link_to css_site_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('sites.css.icon')}")
+              = t('sites.css.title')
 
-          = link_to sitemap_path do
-            = content_tag(:i, nil, class: "fa fa-#{t('sitemaps.show.icon')}")
-            = t('sitemaps.show.title')
+            = link_to sitemap_path do
+              = content_tag(:i, nil, class: "fa fa-#{t('sitemaps.show.icon')}")
+              = t('sitemaps.show.title')
 
       %li.dropdown
         %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }

@@ -7,7 +7,7 @@ RSpec.feature 'List users' do
   let(:confirmed_selector) { '.confirmed.fa-check' }
   let(:locked_selector) { '.locked.fa-check' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'Users'
 
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page' do
