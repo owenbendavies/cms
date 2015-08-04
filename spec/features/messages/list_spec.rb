@@ -19,8 +19,6 @@ RSpec.feature 'List messages' do
 
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page', js: true do
-      expect(find('#cms-article h1').text).to eq 'Messages'
-
       expect(page).to have_content 'Created at'
       expect(page).to have_content 'Name'
       expect(page).to have_content 'Email'
