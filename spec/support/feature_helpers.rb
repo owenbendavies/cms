@@ -84,12 +84,15 @@ RSpec.shared_context 'page with topbar link' do |page_title, page_icon|
 
     expect(page).to have_selector "#cms-topbar .fa-#{page_icon}"
 
-    within('#cms-topbar') do
+    within '#cms-topbar' do
       click_link page_title
     end
 
     expect(current_path).to eq go_to_url
 
-    expect(page).to have_selector "h1 .fa-#{page_icon}"
+    within '#cms-article-header' do
+      expect(page).to have_selector ".fa-#{page_icon}"
+      expect(page).to have_content page_title
+    end
   end
 end

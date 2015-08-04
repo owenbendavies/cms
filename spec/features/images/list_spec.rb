@@ -13,8 +13,6 @@ RSpec.feature 'List images' do
 
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page' do
-      expect(find('#cms-article h1').text).to eq 'Images'
-
       image_tag = find("#cms-article a[href='#{image.file.url}'] img")
       expect(image_tag['src']).to eq image.file.span3.url
       expect(image_tag['alt']).to eq image.name

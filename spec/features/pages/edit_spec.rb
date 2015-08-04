@@ -98,6 +98,10 @@ RSpec.feature 'Editing a page' do
       expect(current_path).to eq go_to_url
 
       expect(page).to have_selector 'h1 .fa-pencil'
+      within '#cms-article-header' do
+        expect(page).to have_selector '.fa-pencil'
+        expect(page).to have_content 'Editing Test Page'
+      end
     end
   end
 end
