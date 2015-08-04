@@ -65,6 +65,19 @@ RSpec.shared_context 'restricted page' do
   end
 end
 
+RSpec.shared_context 'restricted page with topbar link' do |page_title|
+  include_examples 'restricted page'
+
+  scenario 'does not have topbar link for unauthorized user' do
+    login_as user
+    visit_page '/home'
+
+    within('#cms-topbar') do
+      expect(page).to_not have_link page_title
+    end
+  end
+end
+
 RSpec.shared_context 'page with topbar link' do |page_title, page_icon|
   scenario 'navigating to the page via topbar' do
     visit_page '/home'

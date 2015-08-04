@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   let(:go_to_url) { '/new' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'New Page'
 
   it_behaves_like 'logged in site user' do
     scenario 'with valid data', js: true do

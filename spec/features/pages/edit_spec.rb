@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Editing a page' do
   let(:go_to_url) { '/test_page/edit' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'Edit'
 
   it_behaves_like 'logged in site user' do
     scenario 'editing the content', js: true do

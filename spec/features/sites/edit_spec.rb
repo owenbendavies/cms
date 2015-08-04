@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Edit the site' do
   let(:go_to_url) { '/site/edit' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'Site Settings'
 
   it_behaves_like 'logged in site user' do
     scenario 'changing the name' do
