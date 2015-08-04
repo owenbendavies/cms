@@ -9,7 +9,7 @@ RSpec.feature 'List images' do
 
   let(:go_to_url) { '/site/images' }
 
-  include_examples 'restricted page'
+  include_examples 'restricted page with topbar link', 'Images'
 
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page' do
