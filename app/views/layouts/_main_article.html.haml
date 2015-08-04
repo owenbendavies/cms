@@ -1,5 +1,5 @@
 - if content_for?(:title)
-  %header
+  %header#cms-article-header
     %h1
       = content_tag(:i, nil, class: "fa fa-#{content_for(:page_icon)}") if content_for(:page_icon)
       = content_for(:title)
