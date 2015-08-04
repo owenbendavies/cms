@@ -1,5 +1,5 @@
 preload_app true
-timeout 5
+timeout Rails.application.secrets + 2 || 5
 worker_processes Integer(ENV['WORKER_PROCESSES'] || 1)
 
 before_fork do |_server, _worker|
