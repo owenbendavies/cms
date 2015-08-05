@@ -1,14 +1,12 @@
-module FeatureHelpers
-  include Warden::Test::Helpers
+RSpec.configuration.include Warden::Test::Helpers, type: :feature
 
+RSpec.shared_context 'feature helpers', type: :feature do
   def visit_page(url)
     visit url
     expect(page.status_code).to eq 200
     expect(current_path).to eq url.split('?').first
   end
 end
-
-RSpec.configuration.include FeatureHelpers, type: :feature
 
 RSpec.shared_context 'logged in admin' do
   before do
