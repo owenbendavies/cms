@@ -39,7 +39,7 @@ RSpec.describe Image do
     is_expected.to be_versioned
   end
 
-  describe '#file', uploads: true do
+  describe '#file' do
     it 'saves an image' do
       image = nil
 
