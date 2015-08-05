@@ -1,3 +1,7 @@
+RSpec.configuration.before :each do
+  ActionMailer::Base.deliveries = []
+end
+
 RSpec.shared_context 'site email' do
   before do
     RequestStore.store[:site] = site
