@@ -1,10 +1,8 @@
-RSpec.configure do |config|
-  config.before :each, uploads: true do
-    FileUtils.rm_rf File.join(
-      CarrierWave.root,
-      Rails.application.secrets.uploads_store_dir
-    )
-  end
+RSpec.configuration.before :each do
+  FileUtils.rm_rf File.join(
+    CarrierWave.root,
+    Rails.application.secrets.uploads_store_dir
+  )
 end
 
 module CarrierWaveHelpers
@@ -22,4 +20,4 @@ module CarrierWaveHelpers
   end
 end
 
-RSpec.configuration.include CarrierWaveHelpers, uploads: true
+RSpec.configuration.include CarrierWaveHelpers

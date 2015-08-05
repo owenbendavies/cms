@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ImageUploader, uploads: true do
+RSpec.describe ImageUploader do
   include CarrierWave::Test::Matchers
 
   let(:site) { FactoryGirl.create(:site) }
@@ -25,7 +25,9 @@ RSpec.describe ImageUploader, uploads: true do
     it 'has filename which is md5 of content' do
       expect(uploaded_files).to eq []
 
-      subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        subject.store! file
+      end
 
       expect(uploaded_files).to eq [
         "#{site.id}",
@@ -41,7 +43,9 @@ RSpec.describe ImageUploader, uploads: true do
     end
 
     it 'creates multiple sized images at same aspect ratio' do
-      subject.store! File.open(Rails.root.join('spec/assets/test_image.jpg'))
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        subject.store! file
+      end
 
       expect(subject.span1).to have_dimensions(60, 60)
       expect(subject.span2).to have_dimensions(140, 140)
@@ -53,7 +57,9 @@ RSpec.describe ImageUploader, uploads: true do
     end
 
     it 'does not enlarge images' do
-      subject.store! File.open(Rails.root.join('spec/assets/small.jpg'))
+      File.open(Rails.root.join('spec/assets/small.jpg')) do |file|
+        subject.store! file
+      end
 
       expect(subject.span1).to have_dimensions(60, 60)
       expect(subject.span2).to have_dimensions(140, 140)
@@ -67,7 +73,9 @@ RSpec.describe ImageUploader, uploads: true do
     it 'saves extension as downcase' do
       expect(uploaded_files).to eq []
 
-      subject.store! File.open(Rails.root.join('spec/assets/test_image.JPG'))
+      File.open(Rails.root.join('spec/assets/test_image.JPG')) do |file|
+        subject.store! file
+      end
 
       expect(uploaded_files).to eq [
         "#{site.id}",
@@ -85,7 +93,9 @@ RSpec.describe ImageUploader, uploads: true do
     it 'saves .jpeg as jpg' do
       expect(uploaded_files).to eq []
 
-      subject.store! File.open(Rails.root.join('spec/assets/test_image.jpeg'))
+      File.open(Rails.root.join('spec/assets/test_image.jpeg')) do |file|
+        subject.store! file
+      end
 
       expect(uploaded_files).to eq [
         "#{site.id}",

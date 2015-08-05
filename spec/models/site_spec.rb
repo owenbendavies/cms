@@ -56,7 +56,7 @@ RSpec.describe Site do
     is_expected.to be_versioned
   end
 
-  describe '#stylesheet', uploads: true do
+  describe '#stylesheet' do
     it 'has a stylesheet' do
       filename = "#{Digest::MD5.hexdigest(rand.to_s)}.css"
 
@@ -146,7 +146,7 @@ RSpec.describe Site do
     end
   end
 
-  describe '#css', uploads: true do
+  describe '#css' do
     subject { FactoryGirl.build(:site) }
 
     context 'with css' do
@@ -167,7 +167,7 @@ RSpec.describe Site do
     end
   end
 
-  describe '#css=', uploads: true do
+  describe '#css=' do
     subject { FactoryGirl.build(:site) }
 
     it 'strips end of line whitespace' do
