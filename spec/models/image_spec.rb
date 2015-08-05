@@ -41,10 +41,14 @@ RSpec.describe Image do
 
   describe '#file', uploads: true do
     it 'saves an image' do
-      image = FactoryGirl.create(
-        :image,
-        file: File.open(Rails.root.join('spec/assets/test_image.jpg'))
-      )
+      image = nil
+
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        image = FactoryGirl.create(
+          :image,
+          file: file
+        )
+      end
 
       expect(image.file.url).to eq File.join(
         '/',
