@@ -80,5 +80,5 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   # ==> zxcvbn
-  config.min_password_score = 3
+  config.min_password_score = 2
 end
