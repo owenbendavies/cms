@@ -3,8 +3,8 @@ class AddDeviseRecoverableToUsers < ActiveRecord::Migration
     change_table :users do |table|
       table.string :reset_password_token
       table.datetime :reset_password_sent_at
-    end
 
-    add_index :users, :reset_password_token, unique: true
+      table.index :reset_password_token, unique: true
+    end
   end
 end

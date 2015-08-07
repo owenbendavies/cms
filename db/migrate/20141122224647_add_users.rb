@@ -5,8 +5,8 @@ class AddUsers < ActiveRecord::Migration
       table.string :password_digest, null: false, limit: 64
 
       table.timestamps null: false
-    end
 
-    add_index :users, :email, unique: true
+      table.index :email, unique: true
+    end
   end
 end

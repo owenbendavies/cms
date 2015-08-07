@@ -13,7 +13,8 @@ class AddPages < ActiveRecord::Migration
       table.belongs_to :updated_by, null: false, references: :users
 
       table.timestamps null: false
+
+      table.index [:site_id, :url], unique: true
     end
-    add_index :pages, [:site_id, :url], unique: true
   end
 end
