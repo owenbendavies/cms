@@ -10,6 +10,9 @@ class AddImages < ActiveRecord::Migration
       table.belongs_to :updated_by, null: false, references: :users
 
       table.timestamps null: false
+
+      table.index [:site_id, :name], unique: true
+      table.index [:site_id, :filename], unique: true
     end
   end
 end
