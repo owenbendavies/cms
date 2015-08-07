@@ -5,9 +5,9 @@ class AddDeviseConfirmableToUsers < ActiveRecord::Migration
       table.datetime :confirmed_at
       table.datetime :confirmation_sent_at
       table.string :unconfirmed_email
-    end
 
-    add_index :users, :confirmation_token, unique: true
+      table.index :confirmation_token, unique: true
+    end
 
     execute('UPDATE users SET confirmed_at = NOW()')
   end

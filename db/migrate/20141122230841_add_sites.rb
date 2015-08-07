@@ -19,8 +19,8 @@ class AddSites < ActiveRecord::Migration
       table.belongs_to :updated_by, null: false, references: :users
 
       table.timestamps null: false
-    end
 
-    add_index :sites, :host, unique: true
+      table.index :host, unique: true
+    end
   end
 end

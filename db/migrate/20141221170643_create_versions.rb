@@ -1,14 +1,14 @@
 class CreateVersions < ActiveRecord::Migration
   def change
-    create_table :versions do |t|
-      t.string :item_type, null: false
-      t.integer :item_id, null: false, foreign_key: false
-      t.string :event, null: false
-      t.string :whodunnit
-      t.text :object
-      t.datetime :created_at
-    end
+    create_table :versions do |table|
+      table.string :item_type, null: false
+      table.integer :item_id, null: false, foreign_key: false
+      table.string :event, null: false
+      table.string :whodunnit
+      table.text :object
+      table.datetime :created_at
 
-    add_index :versions, [:item_type, :item_id]
+      table.index [:item_type, :item_id]
+    end
   end
 end
