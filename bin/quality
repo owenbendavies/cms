@@ -3,22 +3,21 @@ set -ev
 
 cd `dirname $0`/..
 
+# Update bundle-audit first
 ./bin/bundle-audit update
-./bin/bundle-audit
 
+# Code quality
+./bin/bundle-audit
+./bin/cane --no-doc
+./bin/rails_best_practices --silent --exclude puppet
+./bin/rake immigrant:check_keys
 ./bin/rubocop --format simple
 
-./bin/cane --no-doc
-
-./bin/rails_best_practices --silent --exclude puppet
-
-./bin/rake coffeelint
-
+# Linters
 ./bin/haml-lint --exclude-linter LineLength app/views/
-
-./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
-
 ./bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename
 ./bin/puppet-lint puppet/modules_custom --no-documentation-check --fail-on-warnings --with-filename
+./bin/rake coffeelint
+./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
 ./bin/brakeman --quiet --exit-on-warn
