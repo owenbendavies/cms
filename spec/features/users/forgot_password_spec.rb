@@ -24,7 +24,7 @@ RSpec.feature 'User forgot password' do
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
 
-    visit link
+    visit_page link
 
     expect(page).to have_content 'Change password'
 
