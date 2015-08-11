@@ -280,6 +280,8 @@ GEM
       i18n
       term-ansicolor
       terminal-table (>= 1.5.1)
+    immigrant (0.3.4)
+      activerecord (>= 3.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
     its-it (1.1.1)
@@ -591,6 +593,7 @@ DEPENDENCIES
   haml-rails
   heroku-deflater
   i18n-tasks
+  immigrant
   jquery-rails
   jquery-turbolinks
   letter_opener_web

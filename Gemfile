@@ -76,6 +76,7 @@ group :development, :test do
   gem 'coffeelint'
   gem 'haml-lint', require: false
   gem 'i18n-tasks', require: false
+  gem 'immigrant'
   gem 'puppet-lint', require: false
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
