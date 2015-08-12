@@ -92,4 +92,37 @@ RSpec.describe CustomDeviseMailer, type: :feature do
       expect(subject.body).to have_link 'Unlock account', href: link
     end
   end
+
+  describe '.invitation_instructions' do
+    let(:invited_user) { FactoryGirl.create(:user, invited_by: user) }
+    subject { described_class.invitation_instructions(invited_user, token) }
+
+    include_examples 'site email'
+
+    it 'is sent to users email' do
+      expect(subject.to).to eq [invited_user.email]
+    end
+
+    it 'has subject' do
+      expect(subject.subject).to eq 'Invitation instructions'
+    end
+
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{invited_user.name}"
+    end
+
+    it 'has text in body' do
+      expect(subject.body).to have_content(
+        "You have been added to #{site.name} site by #{user.name}."
+      )
+    end
+
+    it 'has invite link in body' do
+      host = "http://#{site.host}"
+      path = "/users/invitation/accept?invitation_token=#{token}"
+      link = "#{host}#{path}"
+
+      expect(subject.body).to have_link 'Confirm your account', href: link
+    end
+  end
 end

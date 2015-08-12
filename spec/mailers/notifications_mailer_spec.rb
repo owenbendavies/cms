@@ -33,4 +33,28 @@ RSpec.describe NotificationsMailer, type: :feature do
       expect(subject.body).to have_content message.message
     end
   end
+
+  describe '.user_added_to_site' do
+    subject { described_class.user_added_to_site(user, site, admin) }
+
+    include_examples 'site email'
+
+    it 'is sent to users email' do
+      expect(subject.to).to eq [user.email]
+    end
+
+    it 'has subject' do
+      expect(subject.subject).to eq 'Added to site'
+    end
+
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{user.name}"
+    end
+
+    it 'has text in body' do
+      expect(subject.body).to have_content(
+        "You have been added to #{site.name} site by #{admin.name}."
+      )
+    end
+  end
 end

@@ -1,0 +1,10 @@
+- content_for :title, t('.title')
+- content_for :page_icon, t('.icon')
+
+= simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |form|
+  = form.input :name
+  = form.input :email
+
+  .form-group
+    .col-control-offset
+      = form.button :submit, t('.title')

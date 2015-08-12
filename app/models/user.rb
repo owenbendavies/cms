@@ -73,6 +73,24 @@ class User < ActiveRecord::Base
 
   validates :name, length: { minimum: 3 }
 
+  def self.invite_or_add_to_site(params, site, inviter)
+    user = User.find_by_email(params[:email])
+
+    if !user || user.admin? || user.site_ids.include?(site.id)
+      user = invite!(params, inviter)
+    else
+      NotificationsMailer.user_added_to_site(user, site, inviter).deliver_now
+    end
+
+    user.add_to_site(site, inviter) if user.errors.empty?
+
+    user
+  end
+
+  def add_to_site(site, inviter)
+    site_settings.create!(site: site, created_by: inviter, updated_by: inviter)
+  end
+
   def all_sites
     if admin
       Site.all
