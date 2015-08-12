@@ -12,10 +12,11 @@
 #
 # Indexes
 #
-#  fk__site_settings_created_by_id  (created_by_id)
-#  fk__site_settings_site_id        (site_id)
-#  fk__site_settings_updated_by_id  (updated_by_id)
-#  fk__site_settings_user_id        (user_id)
+#  fk__site_settings_created_by_id             (created_by_id)
+#  fk__site_settings_site_id                   (site_id)
+#  fk__site_settings_updated_by_id             (updated_by_id)
+#  fk__site_settings_user_id                   (user_id)
+#  index_site_settings_on_user_id_and_site_id  (user_id,site_id) UNIQUE
 #
 # Foreign Keys
 #
