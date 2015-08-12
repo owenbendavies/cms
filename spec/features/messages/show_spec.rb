@@ -16,8 +16,8 @@ RSpec.feature 'Showing a message' do
   it_behaves_like 'logged in site user' do
     scenario 'visiting the page', js: true do
       within '#cms-article-header' do
-        expect(page).to have_selector '.fa-envelope'
         expect(page).to have_content 'Message'
+        expect(page).to have_selector '.fa-envelope'
       end
 
       expect(page).to have_content 'about a month ago'

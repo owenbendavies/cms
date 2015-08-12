@@ -27,9 +27,9 @@ Devise.setup do |config|
   # config.invite_for = 2.weeks
   # config.invitation_limit = 5
   # config.invite_key = {:email => /\A[^@]+@[^@]+\z/, :username => nil}
-  # config.validate_on_invite = true
+  config.validate_on_invite = true
   # config.resend_invitation = false
-  # config.invited_by_class_name = 'User'
+  config.invited_by_class_name = 'User'
   # config.invited_by_counter_cache = :invitations_count
   # config.allow_insecure_sign_in_after_accept = true
 
