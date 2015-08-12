@@ -68,4 +68,8 @@ class User < ActiveRecord::Base
       sites
     end
   end
+
+  def site_ids
+    site_settings.pluck(:site_id)
+  end
 end
