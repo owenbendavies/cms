@@ -109,4 +109,21 @@ RSpec.describe User do
       expect(user.all_sites).to eq [site]
     end
   end
+
+  describe '#site_ids' do
+    it 'returns all site ids for a user' do
+      user = FactoryGirl.create(:user)
+
+      site = FactoryGirl.create(:site)
+
+      SiteSetting.create(
+        user: user,
+        site: site,
+        created_by: user,
+        updated_by: user
+      )
+
+      expect(user.site_ids).to eq [site.id]
+    end
+  end
 end
