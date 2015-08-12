@@ -1,4 +1,0 @@
-en:
-  message_mailer:
-    new_message:
-      text: "A new message has been posted on %{site_name}:"
