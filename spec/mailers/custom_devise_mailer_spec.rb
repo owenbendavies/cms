@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AccountMailer, type: :feature do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:site) { FactoryGirl.create(:site) }
+RSpec.describe CustomDeviseMailer, type: :feature do
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do

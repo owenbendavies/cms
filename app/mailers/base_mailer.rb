@@ -1,19 +1,15 @@
-module BaseMailer
-  extend ActiveSupport::Concern
+class BaseMailer < ActionMailer::Base
+  default template_path: 'mailers'
+  helper :application
+  layout 'mailer'
 
-  included do
-    helper :application
+  protected
 
-    layout 'mailer'
+  def from_site(site)
+    default_url_options[:host] = site.host
 
-    private
-
-    def from_site(site)
-      default_url_options[:host] = site.host
-
-      from = Mail::Address.new(site.email)
-      from.display_name = site.name
-      from
-    end
+    from = Mail::Address.new(site.email)
+    from.display_name = site.name
+    from
   end
 end

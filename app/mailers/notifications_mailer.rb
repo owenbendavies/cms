@@ -1,6 +1,4 @@
-class MessageMailer < ActionMailer::Base
-  include BaseMailer
-
+class NotificationsMailer < BaseMailer
   def new_message(message)
     @message = message
 
