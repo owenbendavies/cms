@@ -1,20 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe MessageMailer, type: :feature do
+RSpec.describe NotificationsMailer, type: :feature do
   describe '.new_message' do
-    let(:admin) { FactoryGirl.create(:admin) }
-
-    let(:site) { FactoryGirl.create(:site) }
-
-    let(:user) { FactoryGirl.create(:user) }
-
     before do
-      SiteSetting.create(
-        user: user,
-        site: site,
-        created_by: admin,
-        updated_by: admin
-      )
+      site_user
+      user
     end
 
     let(:message) { FactoryGirl.create(:message, site: site) }
@@ -24,7 +14,7 @@ RSpec.describe MessageMailer, type: :feature do
     include_examples 'site email'
 
     it 'is sent to admins and sites user email' do
-      expect(subject.to).to eq [admin.email, user.email].sort
+      expect(subject.to).to eq [admin.email, site_user.email].sort
     end
 
     it 'includes message subject' do

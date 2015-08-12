@@ -1,7 +1,8 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # config.mailer_sender = ''
-  config.mailer = 'AccountMailer'
+  config.mailer = 'CustomDeviseMailer'
+  config.parent_mailer = 'BaseMailer'
 
   # ==> ORM configuration
   require 'devise/orm/active_record'
