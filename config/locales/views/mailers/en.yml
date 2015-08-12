@@ -1,0 +1,14 @@
+en:
+  mailers:
+    confirmation_instructions:
+      title: "Confirm Email"
+      text: "Please confirm your email address."
+
+    new_message:
+      text: "A new message has been posted on %{site_name}:"
+
+    reset_password_instructions:
+      text: "Someone has requested a link to change your password."
+
+    unlock_instructions:
+      text: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
