@@ -23,6 +23,16 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   config.stretches = Rails.env.test? ? 1 : 10
 
+  # ==> Configuration for :invitable
+  # config.invite_for = 2.weeks
+  # config.invitation_limit = 5
+  # config.invite_key = {:email => /\A[^@]+@[^@]+\z/, :username => nil}
+  config.validate_on_invite = true
+  # config.resend_invitation = false
+  config.invited_by_class_name = 'User'
+  # config.invited_by_counter_cache = :invitations_count
+  # config.allow_insecure_sign_in_after_accept = true
+
   # ==> Configuration for :confirmable
   config.allow_unconfirmed_access_for = 0.days
   # config.confirm_within = 3.days

@@ -70,7 +70,7 @@ RSpec.feature 'User locking' do
     expect(email.subject).to eq 'Unlock instructions'
   end
 
-  scenario 'non user unlocking account' do
+  scenario 'non user' do
     visit_page '/users/unlock/new'
 
     fill_in 'Email', with: new_email

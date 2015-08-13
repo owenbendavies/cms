@@ -1,0 +1,8 @@
+en:
+  devise:
+    invitations:
+      new:
+        title: "Add User"
+        icon: "user-plus"
+      edit:
+        title: "Set Password"

@@ -35,7 +35,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_parameters
-    devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update).concat [:name]
+    devise_parameter_sanitizer.for(:invite).concat [:name]
   end
 
   private

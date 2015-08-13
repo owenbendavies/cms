@@ -4,7 +4,7 @@
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(64)       not null
-#  encrypted_password     :string(64)       not null
+#  encrypted_password     :string(64)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  sign_in_count          :integer          default(0), not null
@@ -24,13 +24,24 @@
 #  unconfirmed_email      :string
 #  admin                  :boolean          default(FALSE), not null
 #  name                   :string(64)       not null
+#  invitation_token       :string
+#  invitation_created_at  :datetime
+#  invitation_sent_at     :datetime
+#  invitation_accepted_at :datetime
+#  invited_by_id          :integer
 #
 # Indexes
 #
+#  fk__users_invited_by_id              (invited_by_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_invitation_token      (invitation_token) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_users_invited_by_id  (invited_by_id => users.id)
 #
 
 require 'rails_helper'

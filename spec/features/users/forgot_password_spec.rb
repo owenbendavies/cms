@@ -29,7 +29,7 @@ RSpec.feature 'User forgot password' do
     expect(page).to have_content 'Change password'
 
     fill_in 'New password', with: new_password
-    fill_in 'Confirm new password', with: new_password
+    fill_in 'Confirm password', with: new_password
     click_button 'Change password'
 
     expect(page).to have_content 'Your password has been changed'
@@ -43,5 +43,16 @@ RSpec.feature 'User forgot password' do
     click_button 'Login'
 
     expect(page).to have_content 'Signed in successfully.'
+  end
+
+  scenario 'non user' do
+    visit_page '/login'
+    click_link 'Forgot your password?'
+    fill_in 'Email', with: new_email
+    click_button 'Send reset password instructions'
+
+    expect(page).to have_content 'If your email address exists'
+
+    expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end
