@@ -22,7 +22,7 @@ ProtectMassAssignmentCheck: { }
 RemoveEmptyHelpersCheck: { }
 RemoveTabCheck: { }
 RemoveTrailingWhitespaceCheck: { }
-RemoveUnusedMethodsInControllersCheck: { except_methods: ['ApplicationController#append_info_to_payload'] }
+RemoveUnusedMethodsInControllersCheck: { except_methods: ['ApplicationController#append_info_to_payload', 'InvitationsController#invite_resource', 'InvitationsController#after_invite_path_for'] }
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 RemoveUnusedMethodsInModelsCheck: { except_methods: ['Site#css', 'Site#store_dir'] }
 ReplaceComplexCreationWithFactoryMethodCheck: { attribute_assignment_count: 2 }

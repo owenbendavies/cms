@@ -89,8 +89,8 @@ RSpec.shared_context 'page with topbar link' do |page_title, page_icon|
     expect(current_path).to eq go_to_url
 
     within '#cms-article-header' do
-      expect(page).to have_selector ".fa-#{page_icon}"
       expect(page).to have_content page_title
+      expect(page).to have_selector ".fa-#{page_icon}"
     end
   end
 end

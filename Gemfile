@@ -5,6 +5,7 @@ ruby '2.2.2'
 gem 'rails', '4.2.3'
 gem 'cancancan'
 gem 'devise'
+gem 'devise_invitable'
 gem 'devise_zxcvbn'
 
 # Databases

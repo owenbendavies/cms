@@ -1,7 +1,7 @@
 - content_for :title, t('.title')
 
-= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |form|
-  = form.input :reset_password_token, as: :hidden
+= simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |form|
+  = form.hidden_field :invitation_token
 
   = form.input :password, label: 'New password', required: true, autofocus: true
   = form.input :password_confirmation, label: 'Confirm password', required: true
@@ -9,3 +9,4 @@
   .form-group
     .col-control-offset
       = form.button :submit, t('.title')
+
