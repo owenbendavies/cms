@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'User timeout' do
-  let(:go_to_url) { '/users/edit' }
+  let(:go_to_url) { '/user/edit' }
   after { Timecop.return }
 
   context 'logged in site user with remember me' do

@@ -29,7 +29,7 @@
 #
 
 class Page < ActiveRecord::Base
-  INVALID_URLS = %w(health login logout new robots site sitemap timeout users)
+  INVALID_URLS = %w(health login logout new robots site sitemap timeout user)
 
   belongs_to :site
   belongs_to :created_by, class_name: 'User'

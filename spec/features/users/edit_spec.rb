@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Editing a user' do
-  let(:go_to_url) { '/users/edit' }
+  let(:go_to_url) { '/user/edit' }
 
   include_examples 'authenticated page'
 

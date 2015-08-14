@@ -4,35 +4,29 @@ Rails.application.routes.draw do
     mount PgHero::Engine, at: '/database'
   end
 
-  root 'application#home'
-
-  devise_for :users, skip: [:sessions], controllers: {
-    invitations: 'invitations'
-  }
-
-  devise_scope :user do
-    get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
-
-    get(
-      'users/edit',
-      to: 'devise/registrations#edit',
-      as: 'edit_user_registration'
-    )
-
-    patch 'users', to: 'devise/registrations#update', as: 'user_registration'
-  end
+  root 'systems#home'
 
   if Rails.application.secrets.loaderio_token
-    get Rails.application.secrets.loaderio_token, to: 'loaderios#show'
+    get Rails.application.secrets.loaderio_token, to: 'systems#loader_io'
   end
 
-  get 'timeout', to: 'test_routes#timeout'
+  get '/health', to: 'systems#health'
+  get '/robots', to: 'systems#robots'
+  get '/sitemap', to: 'systems#sitemap'
+  get '/timeout', to: 'systems#timeout'
 
-  resource :health, only: [:show]
+  devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
 
-  resource :robots, only: [:show]
+  get '/user/sites', to: 'sites#index'
+
+  devise_scope :user do
+    get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    patch '/user', to: 'devise/registrations#update', as: 'user_registration'
+
+    get '/login', to: 'devise/sessions#new', as: :new_user_session
+    post '/login', to: 'devise/sessions#create', as: :user_session
+    get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
 
   resource :site, only: [:edit, :update] do
     match :css, via: [:get, :patch]
@@ -41,10 +35,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :show]
     resources :users, only: [:index]
   end
-
-  resources :sites, only: [:index]
-
-  resource :sitemap, only: [:show]
 
   resources :pages, path: '', only: [:new, :create, :show, :edit, :update, :destroy] do
     member do
