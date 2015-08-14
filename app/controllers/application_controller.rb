@@ -11,15 +11,11 @@ class ApplicationController < ActionController::Base
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
-  before_action :authenticate_user!, except: [:home, :page_not_found]
+  before_action :authenticate_user!, except: [:page_not_found]
   before_action :configure_devise_parameters, if: :devise_controller?
 
   check_authorization unless: :devise_controller?
-  skip_authorization_check only: [:home, :page_not_found]
-
-  def home
-    redirect_to page_path('home')
-  end
+  skip_authorization_check only: [:page_not_found]
 
   def page_not_found
     if @site

@@ -4,11 +4,17 @@ Rails.application.routes.draw do
     mount PgHero::Engine, at: '/database'
   end
 
-  root 'application#home'
+  root 'systems#home'
 
-  devise_for :user, skip: [:sessions], controllers: {
-    invitations: 'invitations'
-  }
+  if Rails.application.secrets.loaderio_token
+    get Rails.application.secrets.loaderio_token, to: 'systems#loader_io'
+  end
+
+  get '/health', to: 'systems#health'
+  get '/robots', to: 'systems#robots'
+  get '/timeout', to: 'systems#timeout'
+
+  devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
 
   devise_scope :user do
     get '/login', to: 'devise/sessions#new', as: :new_user_session
@@ -18,16 +24,6 @@ Rails.application.routes.draw do
     get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
     patch '/user', to: 'devise/registrations#update', as: 'user_registration'
   end
-
-  if Rails.application.secrets.loaderio_token
-    get Rails.application.secrets.loaderio_token, to: 'loaderios#show'
-  end
-
-  get '/timeout', to: 'test_routes#timeout'
-
-  resource :health, only: [:show]
-
-  resource :robots, only: [:show]
 
   resource :site, only: [:edit, :update] do
     match :css, via: [:get, :patch]
