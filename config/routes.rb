@@ -6,29 +6,24 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
-  devise_for :users, skip: [:sessions], controllers: {
+  devise_for :user, skip: [:sessions], controllers: {
     invitations: 'invitations'
   }
 
   devise_scope :user do
-    get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    get 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get '/login', to: 'devise/sessions#new', as: :new_user_session
+    post '/login', to: 'devise/sessions#create', as: :user_session
+    get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
 
-    get(
-      'users/edit',
-      to: 'devise/registrations#edit',
-      as: 'edit_user_registration'
-    )
-
-    patch 'users', to: 'devise/registrations#update', as: 'user_registration'
+    get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    patch '/user', to: 'devise/registrations#update', as: 'user_registration'
   end
 
   if Rails.application.secrets.loaderio_token
     get Rails.application.secrets.loaderio_token, to: 'loaderios#show'
   end
 
-  get 'timeout', to: 'test_routes#timeout'
+  get '/timeout', to: 'test_routes#timeout'
 
   resource :health, only: [:show]
 

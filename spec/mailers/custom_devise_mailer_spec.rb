@@ -26,7 +26,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
 
     it 'has confirmation link in body' do
       host = "http://#{site.host}"
-      path = "/users/confirmation?confirmation_token=#{token}"
+      path = "/user/confirmation?confirmation_token=#{token}"
       link = "#{host}#{path}"
 
       expect(subject.body).to have_link 'Confirm Email', href: link
@@ -51,14 +51,12 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content(
-        'Someone has requested a link to change your password.'
-      )
+      expect(subject.body).to have_content 'Someone has requested a link to change your password.'
     end
 
     it 'has reset password link in body' do
       host = "http://#{site.host}"
-      path = "/users/password/edit?reset_password_token=#{token}"
+      path = "/user/password/edit?reset_password_token=#{token}"
       link = "#{host}#{path}"
 
       expect(subject.body).to have_link 'Change password', href: link
@@ -87,7 +85,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has reset password link in body' do
-      link = "http://#{site.host}/users/unlock?unlock_token=#{token}"
+      link = "http://#{site.host}/user/unlock?unlock_token=#{token}"
 
       expect(subject.body).to have_link 'Unlock account', href: link
     end
@@ -119,7 +117,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
 
     it 'has invite link in body' do
       host = "http://#{site.host}"
-      path = "/users/invitation/accept?invitation_token=#{token}"
+      path = "/user/invitation/accept?invitation_token=#{token}"
       link = "#{host}#{path}"
 
       expect(subject.body).to have_link 'Confirm your account', href: link
