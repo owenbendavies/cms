@@ -13,9 +13,7 @@ RSpec.feature 'Inviting a user' do
       expect(ActionMailer::Base.deliveries.size).to eq 0
       click_button 'Add User'
 
-      expect(page).to have_content(
-        "An invitation email has been sent to #{new_email}."
-      )
+      expect(page).to have_content "An invitation email has been sent to #{new_email}."
 
       expect(current_path).to eq '/site/users'
 

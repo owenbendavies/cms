@@ -15,10 +15,7 @@ RSpec.feature 'XML sitemap' do
 
     expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq updated_at
 
-    expect(page).to have_no_xpath(
-      '//loc',
-      text: "http://localhost/#{private_page.url}"
-    )
+    expect(page).to have_no_xpath('//loc', text: "http://localhost/#{private_page.url}")
   end
 
   scenario 'visiting with https' do

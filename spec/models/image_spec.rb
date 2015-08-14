@@ -44,10 +44,7 @@ RSpec.describe Image do
       image = nil
 
       File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
-        image = FactoryGirl.create(
-          :image,
-          file: file
-        )
+        image = FactoryGirl.create(:image, file: file)
       end
 
       expect(image.file.url).to eq File.join(

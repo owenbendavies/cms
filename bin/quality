@@ -8,7 +8,7 @@ cd `dirname $0`/..
 
 # Code quality
 ./bin/bundle-audit
-./bin/cane --no-doc
+./bin/cane --no-doc --style-measure 100
 ./bin/rails_best_practices --silent --exclude puppet
 ./bin/rake immigrant:check_keys
 ./bin/rubocop --format simple
