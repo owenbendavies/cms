@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/health', to: 'systems#health'
   get '/robots', to: 'systems#robots'
+  get '/sitemap', to: 'systems#sitemap'
   get '/timeout', to: 'systems#timeout'
 
   devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
@@ -34,8 +35,6 @@ Rails.application.routes.draw do
   end
 
   resources :sites, only: [:index]
-
-  resource :sitemap, only: [:show]
 
   resources :pages, path: '', only: [:new, :create, :show, :edit, :update, :destroy] do
     member do
