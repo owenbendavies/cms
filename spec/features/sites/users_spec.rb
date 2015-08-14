@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'List users' do
+RSpec.feature 'Site users' do
   let(:go_to_url) { '/site/users' }
 
   let(:admin_selector) { '.admin.fa-check' }

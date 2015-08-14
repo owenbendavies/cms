@@ -51,7 +51,7 @@ RSpec.feature 'User locking' do
 
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
-    visit_page '/users/unlock/new'
+    visit_page '/user/unlock/new'
 
     expect(page).to have_content 'Unlock account'
 
@@ -71,7 +71,7 @@ RSpec.feature 'User locking' do
   end
 
   scenario 'non user' do
-    visit_page '/users/unlock/new'
+    visit_page '/user/unlock/new'
 
     fill_in 'Email', with: new_email
     click_button 'Resend unlock instructions'

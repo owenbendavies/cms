@@ -1,6 +1,6 @@
 - content_for :title, t('.title')
 
-= simple_form_for resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post } do |form|
+= simple_form_for resource, as: resource_name, url: unlock_path(resource_name) do |form|
   = form.input :email, required: true, autofocus: true
 
   .form-group

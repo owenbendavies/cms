@@ -1,6 +1,6 @@
 en:
-  sitemaps:
-    show:
+  systems:
+    sitemap:
       title: "Sitemap"
       icon: "sitemap"
 

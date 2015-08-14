@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Inviting a user' do
-  let(:go_to_url) { '/users/invitation/new' }
+  let(:go_to_url) { '/user/invitation/new' }
 
   include_examples 'restricted page'
 
