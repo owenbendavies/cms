@@ -11,9 +11,7 @@ RSpec.feature 'Social network links' do
       click_button 'Update Site'
 
       expect(page).to have_content 'Site successfully updated'
-      expect(page).to have_selector(
-        'footer #cms-facebook a .fa-facebook-official'
-      )
+      expect(page).to have_selector 'footer #cms-facebook a .fa-facebook-official'
 
       link = "a[href=\"https://www.facebook.com/#{new_facebook}\"]"
       expect(page).to have_selector "footer #cms-facebook #{link}"

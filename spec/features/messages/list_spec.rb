@@ -23,20 +23,9 @@ RSpec.feature 'List messages' do
       expect(page).to have_content 'Name'
       expect(page).to have_content 'Email'
 
-      expect(page).to have_link(
-        'about a month ago',
-        href: "/site/messages/#{message.id}"
-      )
-
-      expect(page).to have_link(
-        message.name,
-        href: "/site/messages/#{message.id}"
-      )
-
-      expect(page).to have_link(
-        message.email,
-        href: "/site/messages/#{message.id}"
-      )
+      expect(page).to have_link('about a month ago', href: "/site/messages/#{message.id}")
+      expect(page).to have_link(message.name, href: "/site/messages/#{message.id}")
+      expect(page).to have_link(message.email, href: "/site/messages/#{message.id}")
 
       expect(page).to_not have_content other_site_message.name
     end

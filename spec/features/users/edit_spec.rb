@@ -81,9 +81,7 @@ RSpec.feature 'Editing a user' do
 
       visit link
 
-      expect(page).to have_content(
-        'Your email address has been successfully confirmed.'
-      )
+      expect(page).to have_content 'Your email address has been successfully confirmed.'
 
       user.reload
       expect(user.email).to eq new_email
