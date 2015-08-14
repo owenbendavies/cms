@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Logging' do
   before do
-    ActiveSupport::Notifications.subscribe(
-      'process_action.action_controller'
-    ) do |*args|
+    ActiveSupport::Notifications.subscribe('process_action.action_controller') do |*args|
       events << ActiveSupport::Notifications::Event.new(*args)
     end
 

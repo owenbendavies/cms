@@ -12,6 +12,9 @@ Metrics/AbcSize:
   Exclude:
     - 'db/migrate/20141122230841_add_sites.rb'
 
+Metrics/LineLength:
+  Max: 100
+
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/20141122230841_add_sites.rb'

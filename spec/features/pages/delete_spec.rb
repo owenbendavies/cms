@@ -11,10 +11,7 @@ RSpec.feature 'Deleting a page' do
 
       expect do
         message = accept_confirm { click_link 'Delete' }
-
-        expect(message).to eq(
-          "Are you sure you want to delete page 'Test Page'?"
-        )
+        expect(message).to eq("Are you sure you want to delete page 'Test Page'?")
       end.to change(Page, :count).by(-1)
 
       expect(page).to have_content 'Test Page was deleted'
