@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'List sites' do
-  let(:go_to_url) { '/sites' }
+RSpec.feature 'User sites' do
+  let(:go_to_url) { '/user/sites' }
 
   include_examples 'authenticated page'
 

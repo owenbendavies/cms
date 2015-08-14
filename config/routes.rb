@@ -17,13 +17,15 @@ Rails.application.routes.draw do
 
   devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
 
+  get '/user/sites', to: 'sites#index'
+
   devise_scope :user do
+    get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
+    patch '/user', to: 'devise/registrations#update', as: 'user_registration'
+
     get '/login', to: 'devise/sessions#new', as: :new_user_session
     post '/login', to: 'devise/sessions#create', as: :user_session
     get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
-
-    get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
-    patch '/user', to: 'devise/registrations#update', as: 'user_registration'
   end
 
   resource :site, only: [:edit, :update] do
@@ -33,8 +35,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :show]
     resources :users, only: [:index]
   end
-
-  resources :sites, only: [:index]
 
   resources :pages, path: '', only: [:new, :create, :show, :edit, :update, :destroy] do
     member do
