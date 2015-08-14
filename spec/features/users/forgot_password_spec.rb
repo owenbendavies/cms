@@ -6,7 +6,7 @@ RSpec.feature 'User forgot password' do
     click_link 'Forgot your password?'
 
     expect(page).to have_content 'Forgot your password?'
-    expect(current_path).to eq '/users/password/new'
+    expect(current_path).to eq '/user/password/new'
 
     fill_in 'Email', with: user.email
 
