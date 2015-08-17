@@ -6,4 +6,4 @@
     - if can? :read, page
       %li
         = link_to(page.name, page_path(page.to_param))
-        = content_tag(:i, nil, class: "fa fa-#{t('pages.show.private.icon')}") if page.private
+        = icon_tag(t('pages.show.private.icon')) if page.private
