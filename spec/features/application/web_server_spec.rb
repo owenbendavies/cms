@@ -7,7 +7,7 @@ RSpec.feature 'Web server' do
 
     expect(font_path).to_not be_blank
 
-    visit_page font_path
+    visit_200_page font_path
 
     expect(response_headers['Access-Control-Allow-Origin']).to eq '*'
   end
@@ -20,7 +20,7 @@ RSpec.feature 'Web server' do
     expect(asset_file_path).to_not be_blank
 
     page.driver.header('ACCEPT_ENCODING', 'gzip, deflate')
-    visit_page asset_file_path
+    visit_200_page asset_file_path
 
     expect(response_headers['Content-Encoding']).to eq 'gzip'
   end
@@ -29,7 +29,7 @@ RSpec.feature 'Web server' do
     page.driver.header('X_FORWARDED_FOR', 'x')
     page.driver.header('CLIENT_IP', 'y')
 
-    visit '/home'
+    visit_page '/home'
 
     expect(page.status_code).to eq 403
   end

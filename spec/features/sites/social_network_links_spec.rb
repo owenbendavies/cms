@@ -16,7 +16,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.facebook.com/#{new_facebook}\"]"
       expect(page).to have_selector "footer #cms-facebook #{link}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Facebook').value).to eq new_facebook
     end
@@ -33,7 +33,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://twitter.com/#{new_twitter}\"]"
       expect(page).to have_selector "footer #cms-twitter #{link}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Twitter').value).to eq new_twitter
     end
@@ -50,7 +50,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.youtube.com/#{new_youtube}\"]"
       expect(page).to have_selector "footer #cms-youtube #{link}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('YouTube').value).to eq new_youtube
     end
@@ -67,7 +67,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.linkedin.com/in/#{new_linkedin}\"]"
       expect(page).to have_selector "footer #cms-linkedin #{link}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('LinkedIn').value).to eq new_linkedin
     end
@@ -84,7 +84,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://github.com/#{new_github}\"]"
       expect(page).to have_selector "footer #cms-github #{link}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('GitHub').value).to eq new_github
     end

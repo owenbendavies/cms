@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'List images' do
   let!(:image) { FactoryGirl.create(:image) }
-
-  let!(:other_site_image) do
-    FactoryGirl.create(:image, site: FactoryGirl.create(:site))
-  end
+  let!(:other_site_image) { FactoryGirl.create(:image, site: FactoryGirl.create(:site)) }
 
   let(:go_to_url) { '/site/images' }
 

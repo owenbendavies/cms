@@ -4,7 +4,7 @@ RSpec.feature 'Topbar' do
   let(:go_to_url) { '/test_page' }
 
   scenario 'cannot use topbar' do
-    visit_page go_to_url
+    visit_200_page go_to_url
     expect(page).to have_no_selector '#cms-topbar'
   end
 

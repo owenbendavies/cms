@@ -30,15 +30,11 @@ RSpec.feature 'Showing a message' do
     scenario 'message from another site' do
       message = FactoryGirl.create(:message, site: FactoryGirl.create(:site))
 
-      visit "/site/messages/#{message.id}"
-      expect(page).to have_content 'Page Not Found'
-      expect(page.status_code).to eq 404
+      visit_404_page "/site/messages/#{message.id}"
     end
 
     scenario 'unknown message' do
-      visit '/site/messages/bad'
-      expect(page).to have_content 'Page Not Found'
-      expect(page.status_code).to eq 404
+      visit_404_page '/site/messages/bad'
     end
   end
 end

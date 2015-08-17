@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User forgot password' do
   scenario 'resetting password' do
-    visit_page '/login'
+    visit_200_page '/login'
     click_link 'Forgot your password?'
 
     expect(page).to have_content 'Forgot your password?'
@@ -24,7 +24,7 @@ RSpec.feature 'User forgot password' do
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
 
-    visit_page link
+    visit_200_page link
 
     expect(page).to have_content 'Change password'
 
@@ -36,8 +36,8 @@ RSpec.feature 'User forgot password' do
 
     user.reload
 
-    visit '/logout'
-    visit_page '/login'
+    visit_page '/logout'
+    visit_200_page '/login'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: new_password
     click_button 'Login'
@@ -46,7 +46,7 @@ RSpec.feature 'User forgot password' do
   end
 
   scenario 'non user' do
-    visit_page '/login'
+    visit_200_page '/login'
     click_link 'Forgot your password?'
     fill_in 'Email', with: new_email
     click_button 'Send reset password instructions'

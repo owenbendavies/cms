@@ -7,14 +7,14 @@ RSpec.feature 'Sitemap' do
     let(:go_to_url) { '/sitemap' }
 
     scenario 'visiting the page' do
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(page).to have_link 'Home', href: '/home'
       expect(page).to have_no_link private_page.name
     end
 
     scenario 'navigating to the page via footer' do
-      visit_page '/home'
+      visit_200_page '/home'
 
       within('#cms-footer-links') do
         click_link 'Sitemap'
@@ -45,7 +45,7 @@ RSpec.feature 'Sitemap' do
     let(:go_to_url) { '/sitemap.xml' }
 
     scenario 'visiting the page' do
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       home_path = 'http://localhost/home'
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq home_path
@@ -59,7 +59,7 @@ RSpec.feature 'Sitemap' do
 
     scenario 'visiting with https' do
       page.driver.header('X-Forwarded-Proto', 'https')
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       home_path = 'https://localhost/home'
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq home_path

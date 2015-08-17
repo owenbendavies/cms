@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User login' do
   before do
-    visit_page '/home'
+    visit_200_page '/home'
     click_link 'Login'
 
     expect(current_path).to eq '/login'
