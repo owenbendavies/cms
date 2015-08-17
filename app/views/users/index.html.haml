@@ -20,5 +20,5 @@
         %td= tick('admin', user.admin?)
 
 = link_to new_user_invitation_path, class: 'btn btn-primary' do
-  = content_tag(:i, nil, class: "fa fa-#{t('devise.invitations.new.icon')}")
+  = icon_tag(t('devise.invitations.new.icon'))
   = t('devise.invitations.new.title')
