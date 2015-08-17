@@ -35,7 +35,7 @@ RSpec.feature 'Site header' do
 
       expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Separate header')).to_not be_checked
     end

@@ -20,8 +20,8 @@ RSpec.feature 'Editing a user' do
       expect(current_path).to eq '/home'
       expect(page).to have_content 'Your account has been updated'
 
-      visit '/logout'
-      visit_page '/login'
+      visit_page '/logout'
+      visit_200_page '/login'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
@@ -39,7 +39,7 @@ RSpec.feature 'Editing a user' do
       expect(current_path).to eq '/home'
       expect(page).to have_content 'Your account has been updated'
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Name').value).to eq new_name
     end
@@ -79,7 +79,7 @@ RSpec.feature 'Editing a user' do
       link = email.html_part.body.match(/href="([^"]+)/)[1]
       expect(link).to include site.host
 
-      visit link
+      visit_page link
 
       expect(page).to have_content 'Your email address has been successfully confirmed.'
 

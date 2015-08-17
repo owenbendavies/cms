@@ -19,7 +19,7 @@ RSpec.feature 'Logging' do
   end
 
   scenario 'visiting a page' do
-    visit_page go_to_url
+    visit_200_page go_to_url
 
     expect(events.size).to eq 1
 
