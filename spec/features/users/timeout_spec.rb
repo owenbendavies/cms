@@ -6,7 +6,7 @@ RSpec.feature 'User timeout' do
 
   context 'logged in site user with remember me' do
     before do
-      visit_page '/login'
+      visit_200_page '/login'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       check 'Remember me'
@@ -17,7 +17,7 @@ RSpec.feature 'User timeout' do
       before { Timecop.travel Time.zone.now + 13.days }
 
       scenario 'visiting the page' do
-        visit_page go_to_url
+        visit_200_page go_to_url
       end
     end
 
@@ -30,7 +30,7 @@ RSpec.feature 'User timeout' do
 
   context 'logged in site user without remember me' do
     before do
-      visit_page '/login'
+      visit_200_page '/login'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Login'
@@ -40,7 +40,7 @@ RSpec.feature 'User timeout' do
       before { Timecop.travel Time.zone.now + 29.minutes }
 
       scenario 'visiting the page' do
-        visit_page go_to_url
+        visit_200_page go_to_url
       end
     end
 

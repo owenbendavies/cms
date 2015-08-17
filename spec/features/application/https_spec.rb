@@ -7,7 +7,7 @@ RSpec.feature 'HTTPS' do
 
   scenario 'visiting a page' do
     page.driver.header('X-Forwarded-Proto', 'https')
-    visit_page '/home'
+    visit_200_page '/home'
 
     expect(cookie).to include 'secure'
 
@@ -22,7 +22,7 @@ RSpec.feature 'HTTPS' do
   end
 
   scenario 'visiting a page without' do
-    visit_page '/home'
+    visit_200_page '/home'
 
     expect(cookie).to_not include 'secure'
 

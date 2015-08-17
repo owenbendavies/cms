@@ -4,7 +4,7 @@ RSpec.feature 'Page with contact form' do
   let!(:contact_page) { FactoryGirl.create(:page, contact_form: true) }
 
   before do
-    visit_page "/#{contact_page.url}"
+    visit_200_page "/#{contact_page.url}"
   end
 
   scenario 'sending a message' do

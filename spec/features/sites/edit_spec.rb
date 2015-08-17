@@ -24,7 +24,7 @@ RSpec.feature 'Edit the site' do
       expect(page).to have_content 'Site successfully updated'
       expect(page).to have_content new_catch_phrase
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Sub title').value).to eq new_catch_phrase
     end
@@ -41,7 +41,7 @@ RSpec.feature 'Edit the site' do
       expect(body).to include "ga('create', '#{new_code}', 'auto');"
       expect(body).to include "ga('set', '&uid', '#{site_user.id}');"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Google Analytics').value).to eq new_code
     end
@@ -53,7 +53,7 @@ RSpec.feature 'Edit the site' do
       expect(page).to have_content 'Site successfully updated'
       expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Copyright').value).to eq new_name
     end
@@ -65,7 +65,7 @@ RSpec.feature 'Edit the site' do
       expect(page).to have_content 'Site successfully updated'
       expect(page).to have_content "Registered charity number #{new_number}"
 
-      visit_page go_to_url
+      visit_200_page go_to_url
 
       expect(find_field('Charity number').value).to eq new_number.to_s
     end

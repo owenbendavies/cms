@@ -31,7 +31,7 @@ RSpec.feature 'Inviting a user' do
       link = email.html_part.body.match(/href="([^"]+)/)[1]
       expect(link).to include site.host
 
-      visit_page link
+      visit_200_page link
 
       expect(page).to have_content 'Set Password'
 
@@ -44,13 +44,13 @@ RSpec.feature 'Inviting a user' do
 
       logout
 
-      visit_page '/login'
+      visit_200_page '/login'
       fill_in 'Email', with: new_email
       fill_in 'Password', with: new_password
       click_button 'Login'
       expect(page).to have_content 'Signed in successfully.'
 
-      visit_page '/site/users'
+      visit_200_page '/site/users'
     end
 
     scenario 'for an existing user' do
@@ -72,13 +72,13 @@ RSpec.feature 'Inviting a user' do
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Added to site'
 
-      visit_page '/login'
+      visit_200_page '/login'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Login'
       expect(page).to have_content 'Signed in successfully.'
 
-      visit_page '/site/users'
+      visit_200_page '/site/users'
     end
 
     scenario 'for an existing site user' do
@@ -118,7 +118,7 @@ RSpec.feature 'Inviting a user' do
     end
 
     scenario 'visiting the page via link' do
-      visit_page '/site/users'
+      visit_200_page '/site/users'
 
       expect(page).to have_selector '.fa-user-plus'
 

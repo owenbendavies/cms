@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Showing a page' do
   scenario 'visiting the page' do
-    visit_page '/test_page'
+    visit_200_page '/test_page'
 
     expect(find('body')['id']).to eq 'cms-page-test_page'
 
@@ -23,7 +23,7 @@ RSpec.feature 'Showing a page' do
       test_page.save!
     end
 
-    visit_page '/test_page'
+    visit_200_page '/test_page'
 
     within 'footer' do
       expect(page).to have_content 'Page last updated about a month ago'
@@ -31,7 +31,7 @@ RSpec.feature 'Showing a page' do
   end
 
   scenario 'visiting the home page' do
-    visit_page '/home'
+    visit_200_page '/home'
     expect(page).to have_no_selector 'article header h1'
   end
 
@@ -52,8 +52,6 @@ RSpec.feature 'Showing a page' do
   scenario 'page from another site' do
     subject = FactoryGirl.create(:page, site: FactoryGirl.create(:site))
 
-    visit "/#{subject.url}"
-    expect(page).to have_content 'Page Not Found'
-    expect(page.status_code).to eq 404
+    visit_404_page "/#{subject.url}"
   end
 end
