@@ -25,7 +25,7 @@ RSpec.feature 'Site CSS' do
       link = "link[href=\"#{site.stylesheet.url}\"]"
       expect(page).to have_selector link, visible: false
 
-      visit_page '/site/css'
+      visit_200_page '/site/css'
 
       expect(find('pre textarea').text).to eq 'body{background-color: red}'
     end

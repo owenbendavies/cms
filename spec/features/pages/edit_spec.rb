@@ -64,7 +64,7 @@ RSpec.feature 'Editing a page' do
       test_page.save!
       test_page.reload
 
-      visit_page '/test_page/edit'
+      visit_200_page '/test_page/edit'
 
       fill_in 'page[name]', with: test_page.name
 
@@ -87,7 +87,7 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'navigating to the page via topbar' do
-      visit_page '/test_page'
+      visit_200_page '/test_page'
 
       expect(page).to have_selector '#cms-topbar .fa-pencil'
 
