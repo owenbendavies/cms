@@ -30,4 +30,8 @@ module ApplicationHelper
   def tick(css_class, boolean)
     content_tag(:i, nil, class: "#{css_class} fa fa-check") if boolean
   end
+
+  def icon_tag(icon)
+    content_tag(:i, nil, class: "fa fa-#{icon}")
+  end
 end
