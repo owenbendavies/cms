@@ -15,8 +15,7 @@ WORKDIR /home/rails/cms
 
 # Set environment
 ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
-ENV RAILS_ENV production
-ENV WORKER_PROCESSES 3
+ENV RACK_ENV production
 
 # Install app
 RUN cp -f config/secrets.yml.production config/secrets.yml && \
@@ -26,4 +25,4 @@ RUN cp -f config/secrets.yml.production config/secrets.yml && \
 EXPOSE 3000
 
 # Run app
-CMD ./bin/server
+CMD ./bin/puma --config config/puma.rb

@@ -50,7 +50,7 @@ gem 'newrelic_rpm'
 gem 'sentry-raven'
 
 # Server
-gem 'unicorn-rails'
+gem 'puma'
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
