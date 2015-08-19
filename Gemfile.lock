@@ -246,6 +246,8 @@ GEM
       sass (~> 3.2)
     font_assets (0.1.11)
       rack
+    foreman (0.78.0)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     get_process_mem (0.2.0)
     globalid (0.3.5)
@@ -582,6 +584,7 @@ DEPENDENCIES
   fog
   font-awesome-sass
   font_assets
+  foreman
   get_process_mem
   google-analytics-turbolinks
   gravtastic
@@ -638,4 +641,4 @@ DEPENDENCIES
   xml-sitemap
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
