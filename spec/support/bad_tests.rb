@@ -27,7 +27,7 @@ RSpec.configure do |config|
       duration = Time.zone.now - config.start_time
       average = duration / examples
 
-      if duration > 2.minutes || average > 0.25
+      if duration > 2.minutes || average > 0.26
         fail "Tests took too long: total=#{duration.to_i}s average=#{average.round(5)}s"
       end
     end
