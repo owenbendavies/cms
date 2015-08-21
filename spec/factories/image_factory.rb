@@ -30,7 +30,7 @@ FactoryGirl.define do
   factory :image do
     site { Site.first || FactoryGirl.create(:site) }
 
-    name { Faker::Name.name.gsub("'", '') }
+    name { Faker::Name.name.delete("'") }
     filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
 
     created_by { User.first || FactoryGirl.create(:admin) }

@@ -40,7 +40,7 @@
 FactoryGirl.define do
   factory :site do
     host { Faker::Internet.domain_name }
-    name { Faker::Company.name.gsub("'", '') }
+    name { Faker::Company.name.delete("'") }
 
     created_by { User.first || FactoryGirl.create(:admin) }
     updated_by { User.first || FactoryGirl.create(:admin) }
