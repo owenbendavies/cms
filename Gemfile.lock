@@ -41,12 +41,12 @@ GEM
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
-    arel (6.0.0)
-    ast (2.0.0)
-    astrolabe (1.3.0)
-      parser (>= 2.2.0.pre.3, < 3.0)
+    arel (6.0.3)
+    ast (2.1.0)
+    astrolabe (1.3.1)
+      parser (~> 2.2)
     autogrow-textarea-rails (3.1.0)
-    autoprefixer-rails (5.2.1)
+    autoprefixer-rails (5.2.1.2)
       execjs
       json
     bcrypt (3.1.10)
@@ -73,7 +73,7 @@ GEM
     bundler-audit (0.4.0)
       bundler (~> 1.2)
       thor (~> 0.18)
-    byebug (4.0.5)
+    byebug (5.0.0)
       columnize (= 0.9.0)
     cancancan (1.12.0)
     cane (2.6.2)
@@ -92,6 +92,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    certifi (2015.08.10)
     code_analyzer (0.4.5)
       sexp_processor
     coderay (1.1.0)
@@ -102,7 +103,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
-    coffeelint (1.10.0)
+    coffeelint (1.11.0)
       coffee-script
       execjs
       json
@@ -114,14 +115,14 @@ GEM
     css_parser (1.3.6)
       addressable
     database_cleaner (1.4.1)
-    devise (3.5.1)
+    devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_invitable (1.5.1)
+    devise_invitable (1.5.2)
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
     devise_zxcvbn (1.1.1)
@@ -134,26 +135,27 @@ GEM
       thread
       thread_safe
     erubis (2.7.0)
-    excon (0.45.3)
-    execjs (2.5.2)
+    excon (0.45.4)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faker (1.4.3)
+    faker (1.5.0)
       i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.31.0)
+    fog (1.33.0)
       fog-atmos
-      fog-aws (~> 0.0)
+      fog-aws (>= 0.6.0)
       fog-brightbox (~> 0.4)
-      fog-core (~> 1.30)
-      fog-ecloud
+      fog-core (~> 1.32)
+      fog-dynect
+      fog-ecloud (= 0.1.1)
       fog-google (>= 0.0.2)
       fog-json
       fog-local
@@ -174,26 +176,30 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.6.0)
+    fog-aws (0.7.4)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-brightbox (0.7.2)
+    fog-brightbox (0.9.0)
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.31.1)
+    fog-core (1.32.1)
       builder
       excon (~> 0.45)
       formatador (~> 0.2)
       mime-types
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
-    fog-ecloud (0.3.0)
+    fog-dynect (0.0.1)
+      fog-core
+      fog-json
+      fog-xml
+    fog-ecloud (0.1.1)
       fog-core
       fog-xml
-    fog-google (0.0.6)
+    fog-google (0.0.7)
       fog-core
       fog-json
       fog-xml
@@ -206,7 +212,7 @@ GEM
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
-    fog-profitbricks (0.0.3)
+    fog-profitbricks (0.0.5)
       fog-core
       fog-xml
       nokogiri
@@ -242,19 +248,19 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
-    font-awesome-sass (4.3.2.1)
-      sass (~> 3.2)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
     font_assets (0.1.11)
       rack
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
     get_process_mem (0.2.0)
-    globalid (0.3.5)
+    globalid (0.3.6)
       activesupport (>= 4.1.0)
     google-analytics-turbolinks (0.0.4)
     gravtastic (3.2.6)
-    haml (4.0.6)
+    haml (4.0.7)
       tilt
     haml-lint (0.13.0)
       haml (~> 4.0)
@@ -275,9 +281,9 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
-    htmlentities (4.3.3)
+    htmlentities (4.3.4)
     i18n (0.7.0)
-    i18n-tasks (0.8.5)
+    i18n-tasks (0.8.6)
       activesupport
       easy_translate (>= 0.5.0)
       erubis
@@ -308,39 +314,39 @@ GEM
       letter_opener (~> 1.0)
       railties (>= 3.2)
     libv8 (3.16.14.11)
-    lograge (0.3.3)
+    lograge (0.3.4)
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
-    loofah (2.0.2)
+    loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.6.1)
-    mini_magick (4.2.7)
+    mini_magick (4.2.10)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     modware (0.1.2)
       its-it
       key_struct (~> 0.4)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    newrelic_rpm (3.12.1.298)
+    newrelic_rpm (3.13.0.299)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paper_trail (3.0.8)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
-    parallel (1.6.0)
+    parallel (1.6.1)
     parser (2.2.2.6)
       ast (>= 1.1, < 3.0)
     pg (0.18.2)
-    pghero (1.1.0)
+    pghero (1.1.1)
       activerecord
     phone (1.2.3)
     powerpack (0.1.1)
@@ -354,8 +360,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.1.0)
-      byebug (~> 4.0)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
@@ -382,7 +388,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -415,22 +421,22 @@ GEM
     redis-rack (1.5.0)
       rack (~> 1.5)
       redis-store (~> 1.1.0)
-    redis-store (1.1.5)
+    redis-store (1.1.6)
       redis (>= 2.2)
-    ref (1.0.5)
-    request_store (1.1.0)
+    ref (2.0.0)
+    request_store (1.2.0)
     require_all (1.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rspec-core (3.3.1)
+    rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
-    rspec-expectations (3.3.0)
+    rspec-expectations (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
-    rspec-mocks (3.3.1)
+    rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
-    rspec-rails (3.3.2)
+    rspec-rails (3.3.3)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -439,7 +445,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rubocop (0.32.1)
+    rubocop (0.33.0)
       astrolabe (~> 1.3)
       parser (>= 2.2.2.5, < 3.0)
       powerpack (~> 0.1)
@@ -450,10 +456,10 @@ GEM
     ruby2ruby (2.1.4)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
-    ruby_parser (3.7.0)
+    ruby_parser (3.7.1)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
-    sass (3.4.15)
+    sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -463,14 +469,14 @@ GEM
     schema_auto_foreign_keys (0.1.0)
       schema_plus_foreign_keys (~> 0.1)
       schema_plus_indexes (~> 0.2)
-    schema_monkey (2.1.0)
+    schema_monkey (2.1.1)
       activerecord (~> 4.2)
       its-it
       modware (~> 0.1)
     schema_plus_columns (0.1.0)
       activerecord (~> 4.2)
       schema_plus_indexes (~> 0.1)
-    schema_plus_core (0.5.0)
+    schema_plus_core (0.6.0)
       activerecord (~> 4.2)
       schema_monkey (~> 2.1)
     schema_plus_foreign_keys (0.1.2)
@@ -480,16 +486,17 @@ GEM
     schema_plus_indexes (0.2.0)
       activerecord (~> 4.2)
       schema_plus_core (~> 0.1)
-    schema_validations (1.2.0)
+    schema_validations (1.3.0)
       activerecord (~> 4.2, >= 4.2.1)
       schema_plus_columns
       valuable
     scss-lint (0.38.0)
       rainbow (~> 2.0)
       sass (~> 3.4.1)
-    secure_headers (2.2.1)
+    secure_headers (2.2.3)
       user_agent_parser
-    sentry-raven (0.13.3)
+    sentry-raven (0.14.0)
+      certifi
       faraday (>= 0.7.6)
     sexp_processor (4.6.0)
     shoulda-matchers (2.8.0)
@@ -510,7 +517,7 @@ GEM
     spring (1.3.6)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.2.0)
+    sprockets (3.3.2)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
@@ -526,12 +533,12 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
-    thread (0.2.0)
+    thread (0.2.2)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    timecop (0.7.4)
-    tins (1.5.4)
-    tinymce-rails (4.1.6)
+    timecop (0.8.0)
+    tins (1.6.0)
+    tinymce-rails (4.2.3)
       railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
@@ -545,7 +552,7 @@ GEM
     unf_ext (0.0.7.1)
     uniform_notifier (1.9.0)
     user_agent_parser (2.2.0)
-    validates_email_format_of (1.6.2)
+    validates_email_format_of (1.6.3)
       i18n
     valuable (0.9.9)
     warden (1.2.3)
@@ -599,7 +606,7 @@ DEPENDENCIES
   lograge
   mini_magick
   newrelic_rpm
-  paper_trail
+  paper_trail (< 4.0.0)
   pg
   pghero
   phone
