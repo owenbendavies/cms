@@ -42,7 +42,7 @@ class Page < ActiveRecord::Base
   validates :url, exclusion: { in: INVALID_URLS }
 
   def name=(value)
-    self.url = value.gsub("'", '').parameterize('_') if value
+    self.url = value.delete("'").parameterize('_') if value
     super(value)
   end
 

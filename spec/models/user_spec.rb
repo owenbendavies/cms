@@ -74,7 +74,7 @@ RSpec.describe User do
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
-  describe 'validate', secure_password: true  do
+  describe 'validate', secure_password: true do
     it { should validate_presence_of(:email) }
     it { should validate_length_of(:email).is_at_most(64) }
     it { should allow_value('someone@example.com').for(:email) }
