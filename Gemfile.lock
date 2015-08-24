@@ -572,6 +572,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   autogrow-textarea-rails
+  autoprefixer-rails
   bh
   bootstrap-sass
   brakeman
@@ -581,6 +582,7 @@ DEPENDENCIES
   cane
   capybara-webkit
   carrierwave
+  coffee-rails
   coffeelint
   database_cleaner
   devise

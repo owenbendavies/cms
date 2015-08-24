@@ -1,6 +1,9 @@
 - if content_for?(:title)
   %header#cms-article-header
     %h1
+      - if content_for(:header_links)
+        .pull-right= content_for(:header_links)
+
       = icon_tag(content_for(:page_icon)) if content_for(:page_icon)
       = content_for(:title)
 
