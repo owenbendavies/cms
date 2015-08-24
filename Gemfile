@@ -54,7 +54,9 @@ gem 'puma'
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
+  gem 'autoprefixer-rails'
   gem 'bootstrap-sass'
+  gem 'coffee-rails'
   gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
   gem 'jquery-rails'

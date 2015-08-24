@@ -1,6 +1,11 @@
 - content_for :title, t('.title')
 - content_for :page_icon, t('.icon')
 
+- content_for :header_links do
+  = link_to new_user_invitation_path, class: 'btn btn-primary' do
+    = icon_tag(t('devise.invitations.new.icon'))
+    = t('devise.invitations.new.title')
+
 %table.table
   %thead
     %tr
@@ -18,7 +23,3 @@
         %td= tick('confirmed', user.confirmed?)
         %td= tick('locked', user.access_locked?)
         %td= tick('admin', user.admin?)
-
-= link_to new_user_invitation_path, class: 'btn btn-primary' do
-  = icon_tag(t('devise.invitations.new.icon'))
-  = t('devise.invitations.new.title')
