@@ -17,10 +17,7 @@ RSpec.feature 'Site CSS' do
 
       site.reload
 
-      expect(site.stylesheet_filename)
-        .to eq 'b1192d422b8c8999043c2abd1b47b750.css'
-
-      expect(site.updated_by).to eq site_user
+      expect(site.stylesheet_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
       link = "link[href=\"#{site.stylesheet.url}\"]"
       expect(page).to have_selector link, visible: false

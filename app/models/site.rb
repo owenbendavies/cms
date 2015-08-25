@@ -13,8 +13,6 @@
 #  charity_number       :string(32)
 #  stylesheet_filename  :string(36)
 #  sidebar_html_content :text
-#  created_by_id        :integer          not null
-#  updated_by_id        :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
@@ -27,21 +25,12 @@
 #
 # Indexes
 #
-#  fk__sites_created_by_id  (created_by_id)
-#  fk__sites_updated_by_id  (updated_by_id)
-#  index_sites_on_host      (host) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_sites_created_by_id  (created_by_id => users.id)
-#  fk_sites_updated_by_id  (updated_by_id => users.id)
+#  index_sites_on_host  (host) UNIQUE
 #
 
 class Site < ActiveRecord::Base
   LAYOUTS = %w(one_column right_sidebar small_right_sidebar)
 
-  belongs_to :created_by, class_name: 'User'
-  belongs_to :updated_by, class_name: 'User'
   has_many :images, -> { order :name }, dependent: :destroy
   has_many :messages, -> { order 'created_at desc' }, dependent: :destroy
   has_many :pages, -> { order :name }, dependent: :destroy

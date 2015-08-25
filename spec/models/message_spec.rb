@@ -85,6 +85,7 @@ RSpec.describe Message do
     subject { FactoryGirl.create(:message) }
 
     it 'sends an email' do
+      FactoryGirl.create(:admin)
       expect(subject.delivered).to eq false
 
       subject.deliver

@@ -82,13 +82,9 @@ class User < ActiveRecord::Base
       NotificationsMailer.user_added_to_site(user, site, inviter).deliver_now
     end
 
-    user.add_to_site(site, inviter) if user.errors.empty?
+    user.site_settings.create!(site: site) if user.errors.empty?
 
     user
-  end
-
-  def add_to_site(site, inviter)
-    site_settings.create!(site: site, created_by: inviter, updated_by: inviter)
   end
 
   def all_sites
