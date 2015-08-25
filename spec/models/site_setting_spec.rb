@@ -33,4 +33,13 @@ RSpec.describe SiteSetting do
   it { should belong_to(:user) }
   it { should belong_to(:created_by).class_name('User') }
   it { should belong_to(:updated_by).class_name('User') }
+
+  it 'is versioned', versioning: true do
+    is_expected.to be_versioned
+  end
+
+  describe 'validate' do
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:site) }
+  end
 end
