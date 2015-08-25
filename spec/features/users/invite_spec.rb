@@ -84,12 +84,7 @@ RSpec.feature 'Inviting a user' do
     scenario 'for an existing site user' do
       user = FactoryGirl.create(:user)
 
-      SiteSetting.create!(
-        user: user,
-        site: site,
-        created_by: admin,
-        updated_by: admin
-      )
+      user.site_settings.create!(site: site)
 
       fill_in 'Name', with: new_name
       fill_in 'Email', with: user.email

@@ -57,8 +57,6 @@ Now input the following, replacing the relevant data:
     site = Site.new
     site.host = 'localhost'
     site.name = 'Test Site'
-    site.created_by = user
-    site.updated_by = user
     site.save!
 
 Development

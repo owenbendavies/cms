@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
   gravtastic default: 'mm', size: 40
 
-  has_many :site_settings
+  has_many :site_settings, dependent: :destroy
   has_many :sites, -> { order :host }, through: :site_settings
 
   has_paper_trail
@@ -82,13 +82,9 @@ class User < ActiveRecord::Base
       NotificationsMailer.user_added_to_site(user, site, inviter).deliver_now
     end
 
-    user.add_to_site(site, inviter) if user.errors.empty?
+    user.site_settings.create!(site: site) if user.errors.empty?
 
     user
-  end
-
-  def add_to_site(site, inviter)
-    site_settings.create!(site: site, created_by: inviter, updated_by: inviter)
   end
 
   def all_sites

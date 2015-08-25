@@ -25,6 +25,6 @@ class SitesController < ApplicationController
       :charity_number, :copyright, :css, :facebook, :github, :google_analytics,
       :layout, :linkedin, :main_menu_in_footer, :name, :separate_header,
       :sub_title, :twitter, :youtube
-    ).merge(updated_by: current_user)
+    )
   end
 end

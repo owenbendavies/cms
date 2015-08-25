@@ -51,12 +51,11 @@ RSpec.describe User do
     user = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
 
-    expect(user.gravatar_url)
-      .to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
+    expect(user.gravatar_url).to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
-  it { should have_many(:site_settings) }
-  it { should have_many(:sites) }
+  it { should have_many(:site_settings).dependent(:destroy) }
+  it { should have_many(:sites).order(:host) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
@@ -110,12 +109,7 @@ RSpec.describe User do
 
       FactoryGirl.create(:site)
 
-      SiteSetting.create(
-        user: user,
-        site: site,
-        created_by: user,
-        updated_by: user
-      )
+      user.site_settings.create(site: site)
 
       expect(user.all_sites).to eq [site]
     end
@@ -127,12 +121,7 @@ RSpec.describe User do
 
       site = FactoryGirl.create(:site)
 
-      SiteSetting.create(
-        user: user,
-        site: site,
-        created_by: user,
-        updated_by: user
-      )
+      user.site_settings.create(site: site)
 
       expect(user.site_ids).to eq [site.id]
     end
