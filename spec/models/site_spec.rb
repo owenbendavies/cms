@@ -42,15 +42,11 @@ require 'rails_helper'
 RSpec.describe Site do
   it { should belong_to(:created_by).class_name('User') }
   it { should belong_to(:updated_by).class_name('User') }
-  it { should have_many(:site_settings) }
-  it { should have_many(:users) }
   it { should have_many(:images).order(:name).dependent(:destroy) }
-
-  it do
-    should have_many(:messages).order('created_at desc').dependent(:destroy)
-  end
-
+  it { should have_many(:messages).order('created_at desc').dependent(:destroy) }
   it { should have_many(:pages).order(:name).dependent(:destroy) }
+  it { should have_many(:site_settings).dependent(:destroy) }
+  it { should have_many(:users) }
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned

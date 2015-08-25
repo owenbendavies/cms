@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
   gravtastic default: 'mm', size: 40
 
-  has_many :site_settings
+  has_many :site_settings, dependent: :destroy
   has_many :sites, -> { order :host }, through: :site_settings
 
   has_paper_trail

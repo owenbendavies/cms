@@ -42,13 +42,11 @@ class Site < ActiveRecord::Base
 
   belongs_to :created_by, class_name: 'User'
   belongs_to :updated_by, class_name: 'User'
-
-  has_many :site_settings
-  has_many :users, -> { order :email }, through: :site_settings
-
   has_many :images, -> { order :name }, dependent: :destroy
   has_many :messages, -> { order 'created_at desc' }, dependent: :destroy
   has_many :pages, -> { order :name }, dependent: :destroy
+  has_many :site_settings, dependent: :destroy
+  has_many :users, -> { order :email }, through: :site_settings
 
   has_paper_trail
 
