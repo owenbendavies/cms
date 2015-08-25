@@ -13,8 +13,6 @@
 #  charity_number       :string(32)
 #  stylesheet_filename  :string(36)
 #  sidebar_html_content :text
-#  created_by_id        :integer          not null
-#  updated_by_id        :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
@@ -27,22 +25,12 @@
 #
 # Indexes
 #
-#  fk__sites_created_by_id  (created_by_id)
-#  fk__sites_updated_by_id  (updated_by_id)
-#  index_sites_on_host      (host) UNIQUE
-#
-# Foreign Keys
-#
-#  fk_sites_created_by_id  (created_by_id => users.id)
-#  fk_sites_updated_by_id  (updated_by_id => users.id)
+#  index_sites_on_host  (host) UNIQUE
 #
 
 FactoryGirl.define do
   factory :site do
     host { Faker::Internet.domain_name }
     name { Faker::Company.name.delete("'") }
-
-    created_by { User.first || FactoryGirl.create(:admin) }
-    updated_by { User.first || FactoryGirl.create(:admin) }
   end
 end
