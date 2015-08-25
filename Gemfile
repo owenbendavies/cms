@@ -43,6 +43,7 @@ gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
 gem 'tinymce-rails'
+gem 'will_paginate-bootstrap'
 
 # Monitoring
 gem 'lograge'
