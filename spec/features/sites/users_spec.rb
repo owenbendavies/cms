@@ -42,14 +42,7 @@ RSpec.feature 'Site users' do
   context 'with unconfirmed user' do
     let(:unconfirmed_user) { FactoryGirl.create(:unconfirmed_user) }
 
-    before do
-      SiteSetting.create!(
-        user: unconfirmed_user,
-        site: site,
-        created_by: admin,
-        updated_by: admin
-      )
-    end
+    before { unconfirmed_user.site_settings.create!(site: site) }
 
     it_behaves_like 'logged in admin' do
       scenario 'visiting the page' do
@@ -65,14 +58,7 @@ RSpec.feature 'Site users' do
   context 'with locked user' do
     let(:locked_user) { FactoryGirl.create(:locked_user) }
 
-    before do
-      SiteSetting.create!(
-        user: locked_user,
-        site: site,
-        created_by: admin,
-        updated_by: admin
-      )
-    end
+    before { locked_user.site_settings.create!(site: site) }
 
     it_behaves_like 'logged in admin' do
       scenario 'visiting the page' do

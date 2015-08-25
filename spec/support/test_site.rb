@@ -7,14 +7,7 @@ RSpec.shared_context 'test site', type: :feature do
 
   let(:site_user) do
     user = FactoryGirl.create(:user)
-
-    SiteSetting.create!(
-      user: user,
-      site: site,
-      created_by: admin,
-      updated_by: admin
-    )
-
+    user.site_settings.create!(site: site)
     user
   end
 

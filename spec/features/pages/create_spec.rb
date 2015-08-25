@@ -21,8 +21,6 @@ RSpec.feature 'Creating a page' do
       new_page = Page.find_by_site_id_and_url!(site, 'new_page')
       expect(new_page.name).to eq 'New Page'
       expect(new_page.html_content).to eq "<p>#{new_message}</p>"
-      expect(new_page.created_by).to eq site_user
-      expect(new_page.updated_by).to eq site_user
     end
 
     scenario 'with invalid data' do

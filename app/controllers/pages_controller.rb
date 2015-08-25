@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def create
-    if @page.update_attributes(page_params.merge(created_by: current_user))
+    if @page.update_attributes(page_params)
       redirect_to page_path(@page.to_param)
     else
       render :new
@@ -60,7 +60,7 @@ class PagesController < ApplicationController
       :contact_form,
       :private,
       :html_content
-    ).merge(updated_by: current_user)
+    )
   end
 
   def message_params

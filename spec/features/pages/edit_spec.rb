@@ -15,9 +15,6 @@ RSpec.feature 'Editing a page' do
 
       expect(current_path).to eq '/test_page'
       expect(page).to have_content new_message
-
-      page = Page.find_by_site_id_and_url!(site, 'test_page')
-      expect(page.updated_by).to eq site_user
     end
 
     scenario 'making the page private' do
@@ -59,9 +56,6 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'saving without edits' do
-      test_page = Page.find_by_site_id_and_url!(site, 'test_page')
-      test_page.updated_by = site_user
-      test_page.save!
       test_page.reload
 
       visit_200_page '/test_page/edit'
