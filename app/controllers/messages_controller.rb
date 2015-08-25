@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   load_and_authorize_resource through: :site
 
   def index
+    @messages = @messages.paginate(page: params[:page])
   end
 
   def show
