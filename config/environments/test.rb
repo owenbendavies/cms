@@ -34,10 +34,7 @@ Rails.application.configure do
     Bullet.enable = true
     Bullet.raise = true
 
-    Bullet.add_whitelist(
-      type: :n_plus_one_query,
-      class_name: 'Site',
-      association: :users
-    )
+    Bullet.add_whitelist(type: :n_plus_one_query, class_name: 'Site', association: :main_menu_pages)
+    Bullet.add_whitelist(type: :n_plus_one_query, class_name: 'Site', association: :users)
   end
 end

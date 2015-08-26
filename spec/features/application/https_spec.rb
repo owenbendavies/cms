@@ -26,7 +26,7 @@ RSpec.feature 'HTTPS' do
 
     expect(cookie).to_not include 'secure'
 
-    expect(hsts_header).to eq nil
+    expect(hsts_header).to be_nil
 
     expect(csp_header).to eq [
       'default-src *',
