@@ -4,8 +4,8 @@ RSpec.feature 'Site header' do
   let(:go_to_url) { '/site/edit' }
 
   before do
-    site.main_menu_page_ids = [home_page.id, test_page.id]
-    site.save!
+    home_page.insert_at(1)
+    test_page.insert_at(1)
   end
 
   it_behaves_like 'logged in site user' do

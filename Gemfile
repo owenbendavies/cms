@@ -19,8 +19,11 @@ gem 'rack-protection'
 gem 'rack-timeout'
 gem 'request_store'
 
-# Model Gems
+# Required for carrierwave to be loaded before
 gem 'fog'
+
+# Model Gems
+gem 'acts_as_list'
 gem 'carrierwave'
 gem 'gravtastic'
 gem 'mini_magick'

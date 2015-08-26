@@ -36,6 +36,7 @@ class Site < ActiveRecord::Base
   has_many :pages, -> { order :name }, dependent: :destroy
   has_many :site_settings, dependent: :destroy
   has_many :users, -> { order :email }, through: :site_settings
+  has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page'
 
   has_paper_trail
 
@@ -71,14 +72,6 @@ class Site < ActiveRecord::Base
 
   def email
     "noreply@#{host.gsub(/^www\./, '')}"
-  end
-
-  def main_menu_pages
-    pages = Page.find(main_menu_page_ids)
-
-    main_menu_page_ids.map do |id|
-      pages.find { |page| page.id == id }
-    end
   end
 
   def store_dir
