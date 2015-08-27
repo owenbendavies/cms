@@ -176,7 +176,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.7.5)
+    fog-aws (0.7.6)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -493,7 +493,7 @@ GEM
     scss-lint (0.38.0)
       rainbow (~> 2.0)
       sass (~> 3.4.1)
-    secure_headers (2.2.3)
+    secure_headers (2.2.4)
       user_agent_parser
     sentry-raven (0.14.0)
       certifi
@@ -544,7 +544,7 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.7.1)
+    uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
