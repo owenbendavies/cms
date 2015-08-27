@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825143224) do
+ActiveRecord::Schema.define(version: 20150826145807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,15 +61,17 @@ ActiveRecord::Schema.define(version: 20150825143224) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.integer  "site_id",      null: false, foreign_key: {references: "sites", name: "fk_pages_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__pages_site_id", using: :btree}
-    t.string   "url",          limit: 64,                 null: false
-    t.string   "name",         limit: 64,                 null: false
-    t.boolean  "private",      default: false, null: false
-    t.boolean  "contact_form", default: false, null: false
+    t.integer  "site_id",            null: false, foreign_key: {references: "sites", name: "fk_pages_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__pages_site_id", using: :btree}
+    t.string   "url",                limit: 64,                 null: false
+    t.string   "name",               limit: 64,                 null: false
+    t.boolean  "private",            default: false, null: false
+    t.boolean  "contact_form",       default: false, null: false
     t.text     "html_content"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "main_menu_position"
   end
+  add_index "pages", ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true, using: :btree
   add_index "pages", ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
