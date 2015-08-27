@@ -8,9 +8,6 @@ class AddSiteSettings < ActiveRecord::Migration
     change_table :site_settings do |table|
       table.column :id, :primary_key
 
-      table.belongs_to :created_by, null: false, references: :users
-      table.belongs_to :updated_by, null: false, references: :users
-
       table.timestamps null: false
     end
   end
