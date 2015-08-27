@@ -217,8 +217,11 @@ RSpec.describe Site do
 
     it 'returns pages when page ids' do
       page1 = FactoryGirl.create(:page, site: subject)
+      page1.insert_at(1)
       page2 = FactoryGirl.create(:page, site: subject)
-      subject.main_menu_page_ids = [page2.id, page1.id]
+      page2.insert_at(1)
+
+      FactoryGirl.create(:page, site: subject)
 
       expect(subject.main_menu_pages).to eq [page2, page1]
     end

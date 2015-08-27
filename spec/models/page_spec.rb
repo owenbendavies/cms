@@ -2,20 +2,22 @@
 #
 # Table name: pages
 #
-#  id           :integer          not null, primary key
-#  site_id      :integer          not null
-#  url          :string(64)       not null
-#  name         :string(64)       not null
-#  private      :boolean          default(FALSE), not null
-#  contact_form :boolean          default(FALSE), not null
-#  html_content :text
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                 :integer          not null, primary key
+#  site_id            :integer          not null
+#  url                :string(64)       not null
+#  name               :string(64)       not null
+#  private            :boolean          default(FALSE), not null
+#  contact_form       :boolean          default(FALSE), not null
+#  html_content       :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  main_menu_position :integer
 #
 # Indexes
 #
-#  fk__pages_site_id               (site_id)
-#  index_pages_on_site_id_and_url  (site_id,url) UNIQUE
+#  fk__pages_site_id                              (site_id)
+#  index_pages_on_site_id_and_main_menu_position  (site_id,main_menu_position) UNIQUE
+#  index_pages_on_site_id_and_url                 (site_id,url) UNIQUE
 #
 # Foreign Keys
 #
@@ -25,6 +27,14 @@
 require 'rails_helper'
 
 RSpec.describe Page do
+  describe 'acts_as_list' do
+    subject { FactoryGirl.create(:page) }
+
+    it 'is not added to list by default' do
+      expect(subject).to_not be_in_list
+    end
+  end
+
   it { should belong_to(:site) }
 
   it 'is versioned', versioning: true do
@@ -63,7 +73,7 @@ RSpec.describe Page do
 
     it 'works when name is nil' do
       subject.name = nil
-      expect(subject.url).to eq nil
+      expect(subject.url).to be_nil
     end
   end
 
