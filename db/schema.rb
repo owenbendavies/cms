@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826145807) do
+ActiveRecord::Schema.define(version: 20150827144007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150826145807) do
     t.string   "name",                 limit: 64,                        null: false
     t.string   "sub_title",            limit: 64
     t.string   "layout",               limit: 32, default: "one_column", null: false
-    t.text     "main_menu_page_ids"
     t.string   "copyright",            limit: 64
     t.string   "google_analytics",     limit: 32
     t.string   "charity_number",       limit: 32
