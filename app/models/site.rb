@@ -7,7 +7,6 @@
 #  name                 :string(64)       not null
 #  sub_title            :string(64)
 #  layout               :string(32)       default("one_column"), not null
-#  main_menu_page_ids   :text
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
@@ -39,8 +38,6 @@ class Site < ActiveRecord::Base
   has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page'
 
   has_paper_trail
-
-  serialize :main_menu_page_ids, Array
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
