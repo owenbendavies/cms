@@ -59,9 +59,7 @@ FactoryGirl.define do
     factory :unconfirmed_user do
       confirmed_at nil
 
-      after :build do |user|
-        user.skip_confirmation_notification!
-      end
+      after :build, &:skip_confirmation_notification!
     end
 
     factory :locked_user do
