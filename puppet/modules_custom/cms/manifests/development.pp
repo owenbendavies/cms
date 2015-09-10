@@ -23,4 +23,14 @@ class cms::development {
     createdb      => true,
     password_hash => postgresql_password('cms_test', 'password'),
   }
+
+  apt::source { 'heroku':
+    include_src => false,
+    key         => '0F1B0520',
+    key_source  => 'https://toolbelt.heroku.com/apt/release.key',
+    location    => 'http://toolbelt.heroku.com/ubuntu',
+    release     => '',
+    repos       => './',
+  } ->
+  package { 'heroku-toolbelt': ensure => present }
 }
