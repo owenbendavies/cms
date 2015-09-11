@@ -1,8 +1,11 @@
 #!/bin/bash
 set -ev
 
-cd `dirname $0`/..
+export DISABLE_SPRING='true'
+export RAILS_ENV='production'
+export RAILS_GROUPS='assets'
+export SECRET_KEY_BASE='xxxxxxxxxxxxxxxxxxxx'
 
-DISABLE_SPRING=true RAILS_ENV=production RAILS_GROUPS=assets ./bin/rake assets:precompile assets:clean
+./`dirname $0`/rake assets:precompile assets:clean
 
-echo "compile complete"
+# "compile complete"

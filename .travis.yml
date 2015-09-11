@@ -10,8 +10,10 @@ cache: bundler
 services:
   - redis-server
 
+env:
+  - DATABASE_URL=postgres://postgres@localhost/cms
+
 before_script:
-  - cp config/secrets.yml.travis config/secrets.yml
   - ./bin/bootstrap
 
 script:
