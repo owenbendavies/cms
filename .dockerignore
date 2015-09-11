@@ -1,9 +1,7 @@
 .bundle/
 .git/
 .vagrant/
-config/deploy/*.rb
-config/deploy/*.secrets.yml
-config/secrets.yml
+config/deploy/
 coverage/
 log/*.log
 public/test_uploads/
