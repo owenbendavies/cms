@@ -12,7 +12,7 @@ RSpec.configure do |config|
   config.after :each do
     memory = GetProcessMem.new.mb.to_i
 
-    fail "Memory is too high: #{memory} MB" if memory > 320
+    fail "Memory is too high: #{memory} MB" if memory > 350
   end
 
   config.after :suite do
@@ -23,12 +23,10 @@ RSpec.configure do |config|
 
   if ENV['COVERAGE']
     config.after :suite do
-      examples = config.reporter.examples.count
       duration = Time.zone.now - config.start_time
-      average = duration / examples
 
-      if duration > 2.minutes || average > 0.28
-        fail "Tests took too long: total=#{duration.to_i}s average=#{average.round(5)}s"
+      if duration > 2.minutes
+        fail "Tests took too long: total=#{duration.to_i}s"
       end
     end
   end
