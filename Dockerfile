@@ -18,8 +18,7 @@ ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
 ENV RACK_ENV production
 
 # Install app
-RUN cp -f config/secrets.yml.production config/secrets.yml && \
-  ./bin/bundle install --without assets development test --deployment --quiet
+RUN ./bin/bundle install --without assets development test --deployment --quiet
 
 # Set up networking
 EXPOSE 3000
