@@ -1,4 +1,6 @@
 #!/bin/bash
-set -ev
+set -e
+
+echo 'Starting server'
 
 ./`dirname $0`/rails server --binding=0.0.0.0
