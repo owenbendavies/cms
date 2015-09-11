@@ -13,4 +13,4 @@ else
   eval './bin/quality'
 fi
 
-echo 'test complete'
+# 'test complete'
