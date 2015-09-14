@@ -1,9 +1,9 @@
-Raven.configure do |config|
-  if Rails.application.secrets.sentry_dsn
+if defined?(Raven) && Rails.application.secrets.sentry_dsn
+  Raven.configure do |config|
     config.dsn = Rails.application.secrets.sentry_dsn
+
+    config.excluded_exceptions = []
+
+    config.ssl_verification = true
   end
-
-  config.excluded_exceptions = []
-
-  config.ssl_verification = true
 end
