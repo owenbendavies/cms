@@ -1,7 +1,6 @@
 .bundle/
 .git/
 .vagrant/
-config/deploy/
 coverage/
 log/*.log
 public/test_uploads/
