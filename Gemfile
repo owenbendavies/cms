@@ -51,10 +51,13 @@ gem 'will_paginate-bootstrap'
 # Monitoring
 gem 'lograge'
 gem 'newrelic_rpm'
-gem 'sentry-raven'
 
 # Server
 gem 'puma'
+
+group :production do
+  gem 'sentry-raven'
+end
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
