@@ -1,14 +1,12 @@
 CarrierWave.configure do |config|
-  uploads_storage = Rails.application.secrets.uploads_storage
+  s3_bucket = Rails.application.secrets.s3_bucket
 
-  config.storage = uploads_storage.to_sym if uploads_storage
+  if s3_bucket
+    config.storage = :fog
 
-  if uploads_storage == 'fog'
     config.asset_host = Rails.application.secrets.s3_host
 
-    config.fog_attributes = {
-      'Cache-Control' => "public, max-age=#{365.day.to_i}"
-    }
+    config.fog_attributes = { 'Cache-Control' => "public, max-age=#{365.day.to_i}" }
 
     config.fog_credentials = {
       provider: 'AWS',
@@ -17,7 +15,9 @@ CarrierWave.configure do |config|
       region: Rails.application.secrets.s3_region
     }
 
-    config.fog_directory = Rails.application.secrets.s3_bucket
+    config.fog_directory = s3_bucket
+  else
+    config.storage = :file
   end
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
