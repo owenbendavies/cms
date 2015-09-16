@@ -107,7 +107,7 @@ following [IAM](https://aws.amazon.com/iam/) user:
   * [SendGrid](https://elements.heroku.com/addons/sendgrid) for sending emails (or alternative)
   * [Sentry](https://elements.heroku.com/addons/sentry) for error tracking (optional)
   * [loader.io](https://elements.heroku.com/addons/loaderio) for load testing (optional)
-1. Set remaining "conifg vars" from production `config/secrets.yml`
+1. Set remaining "conifg vars" from production [config/secrets.yml](config/secrets.yml)
 1. Connect to Github and enable automatic deploys
 1. Migrate the database (note this will need to be run manually each deploy with migrations):
    `heroku run rake db:migrate --app YOUR-APP-NAME`
@@ -124,5 +124,5 @@ following [IAM](https://aws.amazon.com/iam/) user:
   * [RDS](https://aws.amazon.com/rds/) for PostgreSQL database
   * [SES](https://aws.amazon.com/ses/) for sending emails
 1. Create an [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) application with
-   `Dockerrun.aws.json`
-1. Set all "Environment Properties" from production `config/secrets.yml`
+   [Dockerrun.aws.json](Dockerrun.aws.json)
+1. Set all "Environment Properties" from production [config/secrets.yml](config/secrets.yml)
