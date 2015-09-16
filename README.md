@@ -104,6 +104,7 @@ following [IAM](https://aws.amazon.com/iam/) user:
   * [Heroku Redis](https://elements.heroku.com/addons/heroku-redis) for storing user sessions
   * [Logentries](https://elements.heroku.com/addons/logentries) for storing logs (optional)
   * [New Relic](https://elements.heroku.com/addons/newrelic) for system monitoring (optional)
+  * [Pingdom](https://elements.heroku.com/addons/pingdom) for uptime monitoring (optional)
   * [SendGrid](https://elements.heroku.com/addons/sendgrid) for sending emails (or alternative)
   * [Sentry](https://elements.heroku.com/addons/sentry) for error tracking (optional)
   * [loader.io](https://elements.heroku.com/addons/loaderio) for load testing (optional)
@@ -117,6 +118,7 @@ following [IAM](https://aws.amazon.com/iam/) user:
 
 1. Sign up to the following services:
   * [New Relic](https://newrelic.com/) for system monitoring (optional)
+  * [Pingdom](https://www.pingdom.com/) for uptime monitoring (optional)
   * [Sentry](https://www.getsentry.com/) for error tracking (optional)
   * [loader.io](https://loader.io/) for load testing (optional)
 1. Set up the following AWS services:
