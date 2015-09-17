@@ -21,6 +21,6 @@ cd `dirname $0`/..
 ./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
 # Run brakeman last as large output
-./bin/brakeman --quiet --exit-on-warn
+./bin/brakeman --quiet --exit-on-warn --except CheckForgerySetting
 
 # Code quality passed
