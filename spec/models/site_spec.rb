@@ -163,8 +163,7 @@ RSpec.describe Site do
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      expect(subject.stylesheet_filename)
-        .to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
+      expect(subject.stylesheet_filename).to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
 
       expect(uploaded_files).to eq [
         "#{subject.id}",

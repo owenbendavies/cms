@@ -79,9 +79,7 @@ RSpec.describe User do
     it { should allow_value('someone@example.com').for(:email) }
 
     it do
-      should_not allow_value(
-        'someone@'
-      ).for(:email).with_message('is not a valid email address')
+      should_not allow_value('someone@').for(:email).with_message('is not a valid email address')
     end
 
     it { should validate_confirmation_of(:password) }

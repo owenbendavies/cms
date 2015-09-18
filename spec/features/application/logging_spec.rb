@@ -13,10 +13,7 @@ RSpec.feature 'Logging' do
   let(:go_to_url) { '/home' }
   let(:events) { [] }
   let(:new_id) { Digest::MD5.hexdigest(rand.to_s) }
-
-  let(:result) do
-    Rails.application.config.lograge.custom_options.call(events.first)
-  end
+  let(:result) { Rails.application.config.lograge.custom_options.call(events.first) }
 
   scenario 'visiting a page' do
     visit_200_page go_to_url

@@ -19,8 +19,7 @@ RSpec.feature 'Site CSS' do
 
       expect(site.stylesheet_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
 
-      link = "link[href=\"#{site.stylesheet.url}\"]"
-      expect(page).to have_selector link, visible: false
+      expect(page).to have_selector "link[href=\"#{site.stylesheet.url}\"]", visible: false
 
       visit_200_page '/site/css'
 

@@ -10,8 +10,6 @@ good_files = Dir[
 
 bad_files = all_files - good_files
 
-if bad_files.any?
-  fail "The following files should be named _spec.rb #{bad_files}"
-end
+fail "The following files should be named _spec.rb #{bad_files}" if bad_files.any?
 
 RSpec.configuration.disable_monkey_patching!
