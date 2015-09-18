@@ -46,8 +46,7 @@ RSpec.describe Image do
         image.filename
       )
 
-      expect(uploaded_files)
-        .to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+      expect(uploaded_files).to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
     end
   end
 
