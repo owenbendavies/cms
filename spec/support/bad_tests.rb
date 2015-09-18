@@ -25,9 +25,7 @@ RSpec.configure do |config|
     config.after :suite do
       duration = Time.zone.now - config.start_time
 
-      if duration > 2.minutes
-        fail "Tests took too long: total=#{duration.to_i}s"
-      end
+      fail "Tests took too long: total=#{duration.to_i}s" if duration > 2.minutes
     end
   end
 end

@@ -70,7 +70,6 @@ class User < ActiveRecord::Base
   strip_attributes collapse_spaces: true
 
   validates :email, email_format: true
-
   validates :name, length: { minimum: 3 }
 
   def self.invite_or_add_to_site(params, site, inviter)
