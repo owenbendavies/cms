@@ -48,9 +48,7 @@ RSpec.describe Message do
     it { should allow_value('someone@example.com').for(:email) }
 
     it do
-      should_not allow_value(
-        'someone@'
-      ).for(:email).with_message('is not a valid email address')
+      should_not allow_value('someone@').for(:email).with_message('is not a valid email address')
     end
 
     it { should validate_presence_of(:message) }
@@ -74,11 +72,7 @@ RSpec.describe Message do
       end
     end
 
-    it do
-      should validate_length_of(:do_not_fill_in)
-        .is_at_most(0)
-        .with_message('do not fill in')
-    end
+    it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
   end
 
   describe '#deliver' do

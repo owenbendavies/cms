@@ -46,11 +46,7 @@ class Site < ActiveRecord::Base
   validates :name, length: { minimum: 3 }
   validates :sub_title, length: { allow_nil: true, minimum: 3 }
   validates :layout, inclusion: { in: LAYOUTS }
-
-  validates :google_analytics, format: {
-    with: /\AUA-[0-9]+-[0-9]{1,2}\z/,
-    allow_blank: true
-  }
+  validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
 
   def all_users
     User.admin + users
