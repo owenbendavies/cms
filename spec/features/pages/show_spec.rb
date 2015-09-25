@@ -42,7 +42,7 @@ RSpec.feature 'Showing a page' do
 
     include_examples 'restricted page'
 
-    it_behaves_like 'logged in site user' do
+    as_a 'logged in site user' do
       scenario 'visiting a private page' do
         expect(page).to have_selector 'h1 .fa-lock'
       end

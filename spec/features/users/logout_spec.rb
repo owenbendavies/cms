@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User logout' do
   let(:go_to_url) { '/home' }
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'clicking topbar link' do
       expect(page).to have_selector '#cms-topbar .fa-sign-out'
 

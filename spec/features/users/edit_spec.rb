@@ -5,7 +5,7 @@ RSpec.feature 'Editing a user' do
 
   include_examples 'authenticated page'
 
-  it_behaves_like 'logged in user' do
+  as_a 'logged in user' do
     scenario 'changing the password' do
       expect(find_field('Current password')['autofocus']).to eq 'autofocus'
       expect(find_field('Password').value).to be_nil

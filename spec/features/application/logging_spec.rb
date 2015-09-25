@@ -29,7 +29,7 @@ RSpec.feature 'Logging' do
     )
   end
 
-  it_behaves_like 'logged in user' do
+  as_a 'logged in user' do
     scenario 'visiting a page' do
       expect(events.size).to eq 1
 
