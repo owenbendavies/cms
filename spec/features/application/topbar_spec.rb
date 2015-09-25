@@ -8,7 +8,7 @@ RSpec.feature 'Topbar' do
     expect(page).to have_no_selector '#cms-topbar'
   end
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'navigating to home' do
       within '#cms-topbar' do
         click_link site.name

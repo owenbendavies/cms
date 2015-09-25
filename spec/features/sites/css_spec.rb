@@ -5,7 +5,7 @@ RSpec.feature 'Site CSS' do
 
   include_examples 'restricted page with topbar link', 'CSS'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'adding custom CSS' do
       expect(find('pre textarea')['autofocus']).to eq 'autofocus'
 

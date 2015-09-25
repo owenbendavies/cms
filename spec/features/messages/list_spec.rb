@@ -19,7 +19,7 @@ RSpec.feature 'List messages' do
 
   include_examples 'restricted page with topbar link', 'Messages'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'visiting the page', js: true do
       expect(page).to have_content 'Created at'
       expect(page).to have_content 'Name'
