@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Social network links' do
   let(:go_to_url) { '/site/edit' }
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'adding Facebook link' do
       expect(page).to_not have_selector 'footer #cms-facebook'
 

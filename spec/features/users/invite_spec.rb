@@ -5,7 +5,7 @@ RSpec.feature 'Inviting a user' do
 
   include_examples 'restricted page'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'for a new user' do
       fill_in 'Name', with: new_name
       fill_in 'Email', with: new_email

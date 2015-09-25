@@ -29,6 +29,8 @@ RSpec.shared_context 'feature helpers', type: :feature do
   end
 end
 
+RSpec.configuration.alias_it_should_behave_like_to :as_a, 'as a'
+
 RSpec.shared_context 'logged in admin' do
   before do
     safe_login_as admin

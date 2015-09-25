@@ -9,7 +9,7 @@ RSpec.feature 'Site users' do
 
   include_examples 'restricted page with topbar link', 'Users'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'visiting the page' do
       within 'thead' do
         expect(page).to have_content 'Name'
@@ -44,7 +44,7 @@ RSpec.feature 'Site users' do
 
     before { unconfirmed_user.site_settings.create!(site: site) }
 
-    it_behaves_like 'logged in admin' do
+    as_a 'logged in admin' do
       scenario 'visiting the page' do
         within 'tbody tr:nth-child(2)' do
           expect(page).to have_content unconfirmed_user.name
@@ -60,7 +60,7 @@ RSpec.feature 'Site users' do
 
     before { locked_user.site_settings.create!(site: site) }
 
-    it_behaves_like 'logged in admin' do
+    as_a 'logged in admin' do
       scenario 'visiting the page' do
         within 'tbody tr:nth-child(2)' do
           expect(page).to have_content locked_user.name

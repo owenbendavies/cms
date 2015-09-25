@@ -13,7 +13,7 @@ RSpec.feature 'Showing a message' do
 
   include_examples 'restricted page'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'visiting the page', js: true do
       within '#cms-article-header' do
         expect(page).to have_content 'Message'
