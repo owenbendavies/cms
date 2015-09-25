@@ -4,6 +4,7 @@ ruby '2.2.3'
 # Frameworks
 gem 'rails', '4.2.4'
 gem 'cancancan'
+gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise_invitable'
 gem 'devise_zxcvbn'
