@@ -5,7 +5,7 @@ RSpec.feature 'Creating a page' do
 
   include_examples 'restricted page with topbar link', 'New Page'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'with valid data', js: true do
       expect(page).to have_no_content 'last updated'
 

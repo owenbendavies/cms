@@ -5,7 +5,7 @@ RSpec.feature 'Editing a page' do
 
   include_examples 'restricted page with topbar link', 'Edit'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'editing the content', js: true do
       expect(body).to include test_page.html_content
 

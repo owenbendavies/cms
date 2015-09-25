@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Deleting a page' do
   let(:go_to_url) { '/test_page' }
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'clicking yes', js: true do
       click_link 'Page'
 

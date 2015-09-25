@@ -5,13 +5,13 @@ RSpec.feature 'User sites' do
 
   include_examples 'authenticated page'
 
-  it_behaves_like 'logged in user' do
+  as_a 'logged in user' do
     scenario 'visiting the page' do
       expect(page).to_not have_link 'localhost', href: 'http://localhost'
     end
   end
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'visiting the page' do
       expect(page).to have_link 'localhost', href: 'http://localhost'
     end
@@ -19,7 +19,7 @@ RSpec.feature 'User sites' do
     include_examples 'page with topbar link', 'Sites', 'list'
   end
 
-  it_behaves_like 'logged in admin' do
+  as_a 'logged in admin' do
     scenario 'visiting the page' do
       expect(page).to have_link 'localhost', href: 'http://localhost'
     end

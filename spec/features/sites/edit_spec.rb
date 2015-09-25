@@ -5,7 +5,7 @@ RSpec.feature 'Edit the site' do
 
   include_examples 'restricted page with topbar link', 'Site Settings'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'changing the name' do
       expect(find_field('Name').value).to eq site.name
       expect(find_field('Name')['autofocus']).to eq 'autofocus'

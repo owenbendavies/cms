@@ -8,7 +8,7 @@ RSpec.feature 'List images' do
 
   include_examples 'restricted page with topbar link', 'Images'
 
-  it_behaves_like 'logged in site user' do
+  as_a 'logged in site user' do
     scenario 'visiting the page' do
       image_tag = find("#cms-article a[href='#{image.file.url}'] img")
       expect(image_tag['src']).to eq image.file.span3.url
