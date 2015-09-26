@@ -56,12 +56,12 @@ RSpec.feature 'Inviting a user' do
     scenario 'for an existing user' do
       fill_in 'Name', with: new_name
       fill_in 'Email', with: user.email
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       click_button 'Add User'
 
       expect(current_path).to eq '/site/users'
 
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
       expect(ActionMailer::Base.deliveries.size).to eq 1
 
       logout

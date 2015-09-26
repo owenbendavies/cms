@@ -19,6 +19,9 @@ RSpec.feature 'Page with contact form' do
     expect(current_path).to eq "/#{contact_page.url}"
 
     expect(Message.count).to eq 1
+
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     message = site.messages.first
@@ -48,6 +51,9 @@ RSpec.feature 'Page with contact form' do
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
 
     expect(Message.count).to eq 0
+
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 
@@ -64,6 +70,9 @@ RSpec.feature 'Page with contact form' do
     expect(current_path).to eq "/#{contact_page.url}/contact_form"
 
     expect(Message.count).to eq 0
+
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end

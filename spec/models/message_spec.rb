@@ -84,7 +84,10 @@ RSpec.describe Message do
 
       subject.deliver
 
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
       expect(ActionMailer::Base.deliveries.size).to eq 1
+
       expect(subject.delivered).to eq true
 
       email = ActionMailer::Base.deliveries.last

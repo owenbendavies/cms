@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
     if !user || user.admin? || user.site_ids.include?(site.id)
       user = invite!(params, inviter)
     else
-      NotificationsMailer.user_added_to_site(user, site, inviter).deliver_now
+      NotificationsMailer.user_added_to_site(user, site, inviter).deliver_later
     end
 
     user.site_settings.create!(site: site) if user.errors.empty?
