@@ -9,37 +9,21 @@ working project, it was not created with the intention of being a production
 system. Instead this has been my practice project over the years, used for
 testing new ideas.
 
-## Development Setup
+## Development
 
-This project uses [Vagrant](https://www.vagrantup.com/) for development.
-
-    vagrant up
-    vagrant ssh
-    cd /vagrant
-
-Run the following to setup the project (it is idempotent so can be run multiple
-times).
-
-    ./bin/bootstrap
-
-## Test
-
-To run the tests run the following to make sure the system is set up correctly.
-
-    ./bin/test
-
-Or run one test file:
-
-    ./bin/test spec/some_file.rb
+1. Download [Vagrant](https://www.vagrantup.com/)
+1. `vagrant up` to start a virtual machine
+1. `vagrant ssh` to log onto the virtual machine
+1. `./bin/bootstrap` to setup the project (can be run multiple times)
+1. `./bin/test` to run all tests
+1. `./bin/test spec/some_file.rb` to run one test or folder
+1. `./bin/interactive` to setup data
+1. `./bin/server` to spin up a development web server
 
 ## Setup data
 
 Currently it is only possible to create sites and users via the command line.
-To set up data run the following:
-
-    ./bin/interactive
-
-Now input the following, replacing the relevant data:
+Input the following, replacing the relevant data:
 
     user = User.new
     user.admin = true
@@ -51,12 +35,6 @@ Now input the following, replacing the relevant data:
     user.save!
 
     Site.create!(host: 'localhost', name: 'Test Site')
-
-## Development
-
-Run the following to spin up a server locally for development:
-
-    ./bin/server
 
 ## Deployment
 
