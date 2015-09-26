@@ -55,7 +55,7 @@ class Message < ActiveRecord::Base
   end
 
   def deliver
-    NotificationsMailer.new_message(self).deliver_now
+    NotificationsMailer.new_message(self).deliver_later
     self.delivered = true
     self.save!
   end
