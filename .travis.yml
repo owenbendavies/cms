@@ -10,11 +10,7 @@ cache: bundler
 services:
   - redis-server
 
-env:
-  - DATABASE_URL=postgres://postgres@localhost/cms
-
-before_script:
-  - ./bin/bootstrap
+before_script: ./bin/bootstrap
 
 script:
   - ./bin/test

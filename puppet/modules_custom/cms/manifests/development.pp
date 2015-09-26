@@ -13,13 +13,12 @@ class cms::development {
   include postgresql::client
   include postgresql::server
 
-  postgresql::server::role { 'cms_development':
-    createdb      => true,
-    password_hash => postgresql_password('cms_development', 'password'),
-  }
-
-  postgresql::server::role { 'cms_test':
-    createdb      => true,
-    password_hash => postgresql_password('cms_test', 'password'),
+  postgresql::server::pg_hba_rule { 'trust localhost TCP access to all users':
+    type        => 'host',
+    database    => 'all',
+    user        => 'all',
+    address     => '127.0.0.1/32',
+    auth_method => 'trust',
+    order       => '002',
   }
 }
