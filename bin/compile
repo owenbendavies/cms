@@ -7,7 +7,6 @@ export DISABLE_SPRING='true'
 export RAILS_ENV='production'
 export RAILS_GROUPS='assets'
 export SECRET_KEY_BASE='xxxxxxxxxxxxxxxxxxxx'
-export UPLOADS_STORAGE='file'
 
 ./`dirname $0`/rake assets:precompile assets:clean
 
