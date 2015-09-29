@@ -14,6 +14,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/20141122230841_add_sites.rb'
+    - 'db/migrate/20150926172242_create_delayed_jobs.rb'
 
 Style/Documentation:
   Enabled: false

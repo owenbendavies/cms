@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827144007) do
+ActiveRecord::Schema.define(version: 20150926172242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false, index: {name: "delayed_jobs_priority", with: ["run_at"], using: :btree}
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",    null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue",      null: false
+  end
 
   create_table "sites", force: :cascade do |t|
     t.string   "host",                 limit: 64,                        null: false, index: {name: "index_sites_on_host", unique: true, using: :btree}
