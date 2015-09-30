@@ -4,7 +4,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do
-    subject { described_class.confirmation_instructions(user, token) }
+    subject { described_class.confirmation_instructions(user, token, site: site) }
 
     include_examples 'site email'
 
@@ -34,7 +34,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.reset_password_instructions' do
-    subject { described_class.reset_password_instructions(user, token) }
+    subject { described_class.reset_password_instructions(user, token, site: site) }
 
     include_examples 'site email'
 
@@ -64,7 +64,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.unlock_instructions' do
-    subject { described_class.unlock_instructions(user, token) }
+    subject { described_class.unlock_instructions(user, token, site: site) }
 
     include_examples 'site email'
 
@@ -93,7 +93,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
 
   describe '.invitation_instructions' do
     let(:invited_user) { FactoryGirl.create(:user, invited_by: user) }
-    subject { described_class.invitation_instructions(invited_user, token) }
+    subject { described_class.invitation_instructions(invited_user, token, site: site) }
 
     include_examples 'site email'
 

@@ -10,11 +10,11 @@ RSpec.feature 'User forgot password' do
 
     fill_in 'Email', with: user.email
 
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-
     click_button 'Send reset password instructions'
     expect(page).to have_content 'If your email address exists'
 
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     email = ActionMailer::Base.deliveries.last
@@ -53,6 +53,8 @@ RSpec.feature 'User forgot password' do
 
     expect(page).to have_content 'If your email address exists'
 
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end
