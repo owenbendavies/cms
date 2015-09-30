@@ -77,14 +77,12 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
 
-    output = payload.merge!(
+    payload.merge!(
       host: request.host,
-      remote_ip: request.remote_ip,
       request_id: request.uuid,
+      fwd: request.remote_ip,
+      user_id: current_user.try(:id),
       user_agent: request.user_agent
     )
-
-    output[:user_id] = current_user.id if current_user
-    output
   end
 end
