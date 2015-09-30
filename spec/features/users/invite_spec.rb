@@ -10,19 +10,19 @@ RSpec.feature 'Inviting a user' do
       fill_in 'Name', with: new_name
       fill_in 'Email', with: new_email
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       click_button 'Add User'
 
       expect(page).to have_content "An invitation email has been sent to #{new_email}."
-
       expect(current_path).to eq '/site/users'
-
-      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       logout
 
       user = User.find_by_email! new_email
       expect(user.sites).to eq [site]
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       email = ActionMailer::Base.deliveries.last
       expect(email.to).to eq [new_email]
@@ -60,13 +60,13 @@ RSpec.feature 'Inviting a user' do
 
       expect(current_path).to eq '/site/users'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
       logout
 
       expect(user.sites).to eq [site]
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       email = ActionMailer::Base.deliveries.last
       expect(email.to).to eq [user.email]
@@ -90,8 +90,11 @@ RSpec.feature 'Inviting a user' do
       fill_in 'Email', with: user.email
       click_button 'Add User'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       expect(page).to have_content 'has already been taken'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     scenario 'for an admin' do
@@ -99,8 +102,11 @@ RSpec.feature 'Inviting a user' do
       fill_in 'Email', with: admin.email
       click_button 'Add User'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       expect(page).to have_content 'has already been taken'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     scenario 'with invalid data' do
@@ -108,8 +114,11 @@ RSpec.feature 'Inviting a user' do
       fill_in 'Email', with: new_email
       click_button 'Add User'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       expect(page).to have_content 'is too short'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     scenario 'visiting the page via link' do

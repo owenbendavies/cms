@@ -14,11 +14,11 @@ RSpec.feature 'User locking' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: new_password
 
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-
     click_button 'Login'
     expect(page).to have_content 'Invalid email or password.'
 
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     email = ActionMailer::Base.deliveries.last
@@ -49,6 +49,8 @@ RSpec.feature 'User locking' do
       expect(page).to have_content 'Invalid email or password.'
     end
 
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     visit_200_page '/user/unlock/new'
@@ -56,13 +58,12 @@ RSpec.feature 'User locking' do
     expect(page).to have_content 'Unlock account'
 
     fill_in 'Email', with: user.email
-
-    expect(ActionMailer::Base.deliveries.size).to eq 1
-
     click_button 'Resend unlock instructions'
 
     expect(page).to have_content 'If your account exists'
 
+    expect(ActionMailer::Base.deliveries.size).to eq 1
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 2
 
     email = ActionMailer::Base.deliveries.last
@@ -78,6 +79,8 @@ RSpec.feature 'User locking' do
 
     expect(page).to have_content 'If your account exists'
 
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end

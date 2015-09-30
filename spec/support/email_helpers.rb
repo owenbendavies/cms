@@ -3,10 +3,6 @@ RSpec.configuration.before :each do
 end
 
 RSpec.shared_context 'site email' do
-  before do
-    RequestStore.store[:site] = site
-  end
-
   it 'has from address as site email' do
     expect(subject.from).to eq [site.email]
   end
