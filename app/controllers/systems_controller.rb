@@ -1,5 +1,5 @@
 class SystemsController < ApplicationController
-  PUBLIC_PAGES = [:health, :home, :loader_io, :robots, :sitemap, :timeout]
+  PUBLIC_PAGES = [:health, :home, :loader_io, :robots, :sitemap]
 
   skip_before_action :render_site_not_found, only: [:health]
   skip_before_action :authenticate_user!, only: PUBLIC_PAGES
@@ -34,6 +34,7 @@ class SystemsController < ApplicationController
   end
 
   def timeout
+    authorize! :manage, :system
     sleep params[:seconds].to_f
     render text: 'ok'
   end
