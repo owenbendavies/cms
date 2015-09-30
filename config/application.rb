@@ -40,10 +40,10 @@ module Cms
     config.lograge.custom_options = lambda do |event|
       {
         host: event.payload[:host],
-        remote_ip: event.payload[:remote_ip],
         request_id: event.payload[:request_id],
-        user_agent: "\"#{event.payload[:user_agent]}\"",
-        user_id: event.payload[:user_id]
+        fwd: event.payload[:fwd],
+        user_id: event.payload[:user_id],
+        user_agent: event.payload[:user_agent].inspect
       }
     end
 

@@ -59,6 +59,6 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.logger.formatter = proc do |severity, _time, _progname, message|
-    "#{severity}: #{message}\n"
+    "at=#{severity.downcase} #{message}\n"
   end
 end
