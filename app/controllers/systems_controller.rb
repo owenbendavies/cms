@@ -4,6 +4,21 @@ class SystemsController < ApplicationController
   skip_before_action :render_site_not_found, only: [:health]
   skip_before_action :authenticate_user!, only: PUBLIC_PAGES
   skip_authorization_check only: PUBLIC_PAGES
+  before_action :authorize_system_user, except: PUBLIC_PAGES
+
+  def error_500
+    fail 'Test 500 error'
+  end
+
+  def error_delayed
+    Kernel.delay(queue: 'default').fail('Test delayed error')
+    render text: 'Delayed error sent'
+  end
+
+  def error_timeout
+    sleep params[:seconds].to_f
+    render text: 'ok'
+  end
 
   def health
     respond_to do |format|
@@ -33,13 +48,11 @@ class SystemsController < ApplicationController
     end
   end
 
-  def timeout
-    authorize! :manage, :system
-    sleep params[:seconds].to_f
-    render text: 'ok'
-  end
-
   private
+
+  def authorize_system_user
+    authorize! :manage, :system
+  end
 
   def xml_sitemap
     XmlSitemap::Map.new(@site.host, home: false, secure: request.ssl?) do |map|
