@@ -75,7 +75,7 @@ RSpec.describe Page do
     it { should validate_presence_of(:url) }
     it { should validate_uniqueness_of(:url).scoped_to(:site_id) }
 
-    %w(health login logout new robots site sitemap system user).each do |value|
+    %w(login logout new robots site sitemap system user).each do |value|
       it { should_not allow_value(value).for(:url) }
     end
 
