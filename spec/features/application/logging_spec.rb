@@ -22,10 +22,10 @@ RSpec.feature 'Logging' do
 
     expect(result).to eq(
       host: 'localhost',
-      remote_ip: '127.0.0.1',
       request_id: new_id,
-      user_agent: "\"#{new_company_name}\"",
-      user_id: nil
+      fwd: '127.0.0.1',
+      user_id: nil,
+      user_agent: "\"#{new_company_name}\""
     )
   end
 
@@ -35,10 +35,10 @@ RSpec.feature 'Logging' do
 
       expect(result).to eq(
         host: 'localhost',
-        remote_ip: '127.0.0.1',
         request_id: new_id,
-        user_agent: "\"#{new_company_name}\"",
-        user_id: user.id
+        fwd: '127.0.0.1',
+        user_id: user.id,
+        user_agent: "\"#{new_company_name}\""
       )
     end
   end
