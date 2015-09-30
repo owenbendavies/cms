@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/health', to: 'systems#health'
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'systems#sitemap'
-  get '/timeout', to: 'systems#timeout'
+
+  get '/system/timeout', to: 'systems#timeout'
 
   devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
 
