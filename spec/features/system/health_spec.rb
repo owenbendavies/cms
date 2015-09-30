@@ -17,6 +17,12 @@ RSpec.feature 'Health check' do
       expect(page).to have_content 'Site Not Found'
       expect(page.status_code).to eq 404
     end
+
+    scenario 'visiting new url' do
+      visit_200_page '/system/health.txt'
+      expect(page).to have_content 'ok'
+      expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
+    end
   end
 
   context 'known site' do
