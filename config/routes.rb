@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'systems#sitemap'
 
+  get '/system/error_500', to: 'systems#error_500'
+  get '/system/error_delayed', to: 'systems#error_delayed'
+  get '/system/error_timeout', to: 'systems#error_timeout'
   get '/system/health', to: 'systems#health'
-  get '/system/timeout', to: 'systems#timeout'
 
   devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
 
