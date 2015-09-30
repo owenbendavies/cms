@@ -97,4 +97,11 @@ class User < ActiveRecord::Base
   def site_ids
     site_settings.pluck(:site_id)
   end
+
+  protected
+
+  def send_devise_notification(notification, token, options = {})
+    new_options = options.merge(site: RequestStore.store[:site])
+    devise_mailer.send(notification, self, token, new_options).deliver_later
+  end
 end
