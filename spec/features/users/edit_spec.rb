@@ -16,9 +16,12 @@ RSpec.feature 'Editing a user' do
       fill_in 'Confirm password', with: new_password
       click_button 'Update User'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       expect(current_path).to eq '/home'
       expect(page).to have_content 'Your account has been updated'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 0
 
       visit_page '/logout'
       visit_200_page '/login'
@@ -60,13 +63,14 @@ RSpec.feature 'Editing a user' do
 
       fill_in 'Current password', with: user.password
       fill_in 'Email', with: " #{new_email} "
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
       click_button 'Update User'
-      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       expect(page).to have_content 'we need to verify your new email address'
       expect(current_path).to eq '/home'
+
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 1
 
       email = ActionMailer::Base.deliveries.last
       expect(email.to).to eq [new_email]

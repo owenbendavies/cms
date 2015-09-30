@@ -20,16 +20,16 @@ RSpec.feature 'Page with contact form' do
 
     expect(Message.count).to eq 1
 
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-    Delayed::Worker.new.work_off
-    expect(ActionMailer::Base.deliveries.size).to eq 1
-
     message = site.messages.first
     expect(message.site).to eq site
     expect(message.name).to eq new_name
     expect(message.email).to eq new_email
     expect(message.phone).to eq new_phone
     expect(message.message).to eq new_message
+
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
+    expect(ActionMailer::Base.deliveries.size).to eq 1
 
     email = ActionMailer::Base.deliveries.last
     expect(email.from).to eq ["noreply@#{site.host}"]
