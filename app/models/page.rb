@@ -25,7 +25,7 @@
 #
 
 class Page < ActiveRecord::Base
-  INVALID_URLS = %w(health login logout new robots site sitemap system user)
+  INVALID_URLS = %w(login logout new robots site sitemap system user)
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 
