@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     get Rails.application.secrets.loaderio_token, to: 'systems#loader_io'
   end
 
-  get '/health', to: 'systems#health'
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'systems#sitemap'
 
