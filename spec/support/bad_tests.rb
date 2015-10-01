@@ -9,23 +9,23 @@ RSpec.configure do |config|
     end
   end
 
-  config.after :each do
-    memory = GetProcessMem.new.mb.to_i
-
-    fail "Memory is too high: #{memory} MB" if memory > 350
-  end
-
   config.after :suite do
+    limit = 350
     memory = GetProcessMem.new.mb.to_i
 
-    puts "Test memory is #{memory} MB"
+    if memory > limit
+      fail "FAIL: Tests too too much memory: total=#{memory} MB limit=#{limit} MB"
+    else
+      puts "INFO: Total test memory is #{memory} MB"
+    end
   end
 
   if ENV['COVERAGE']
     config.after :suite do
+      limit = 1.minutes + 30.seconds
       duration = Time.zone.now - config.start_time
 
-      fail "Tests took too long: total=#{duration.to_i}s" if duration > 2.minutes
+      fail "FAIL: Tests took too long: total=#{duration.to_i}s limit=#{limit}s" if duration > limit
     end
   end
 end
