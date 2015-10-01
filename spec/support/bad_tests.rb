@@ -22,7 +22,7 @@ RSpec.configure do |config|
 
   if ENV['COVERAGE']
     config.after :suite do
-      limit = 1.minutes + 30.seconds
+      limit = 2.minutes
       duration = Time.zone.now - config.start_time
 
       fail "FAIL: Tests took too long: total=#{duration.to_i}s limit=#{limit}s" if duration > limit
