@@ -111,7 +111,7 @@ group :test do
   gem 'faker'
   gem 'get_process_mem'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '< 3.0.0', require: false
   gem 'spring-commands-rspec'
   gem 'timecop'
   gem 'webmock'
