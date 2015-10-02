@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
       default_src: origins,
       disable_fill_missing: true,
       enforce: true,
-      script_src: "#{origins} inline",
-      style_src: "#{origins} inline"
+      script_src: "#{origins} 'unsafe-inline'",
+      style_src: "#{origins} 'unsafe-inline'"
     }
   end
 
