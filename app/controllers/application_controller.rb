@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  ensure_security_headers
+
   protect_from_forgery with: :reset_session
 
   rescue_from ActionView::MissingTemplate, with: :page_not_found
@@ -7,7 +9,6 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied, with: :page_not_found
 
   before_action :set_secure_session
-  before_action :set_secure_headers
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
@@ -39,26 +40,6 @@ class ApplicationController < ActionController::Base
 
   def set_secure_session
     session.options[:secure] = true if request.ssl?
-  end
-
-  def csp_options
-    origins = request.ssl? ? 'https:' : '*'
-
-    {
-      default_src: origins,
-      disable_fill_missing: true,
-      enforce: true,
-      script_src: "#{origins} 'unsafe-inline'",
-      style_src: "#{origins} 'unsafe-inline'"
-    }
-  end
-
-  def set_secure_headers
-    set_security_headers(
-      hsts: { max_age: 1.month.to_i },
-      x_xss_protection: { value: 1, mode: 'block' },
-      csp: csp_options
-    )
   end
 
   def find_site
