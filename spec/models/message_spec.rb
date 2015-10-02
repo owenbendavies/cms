@@ -55,6 +55,7 @@ RSpec.describe Message do
     it { should validate_length_of(:message).is_at_most(2048) }
 
     [
+      'Cheap ray bans',
       'Do you want to promote your profile and get more twitter followers.',
       'Get thousands of facebook followers to your site',
       'How about 100k facebook visitors!',
