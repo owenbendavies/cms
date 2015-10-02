@@ -46,6 +46,7 @@ class Message < ActiveRecord::Base
       'facebook page likes',
       'facebook visitors',
       'first page of google',
+      'ray ban',
       'search engine',
       'superbsocial',
       'twitter followers'
