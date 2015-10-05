@@ -79,6 +79,7 @@ following [IAM](https://aws.amazon.com/iam/) user:
 
 1. Create a new app in Herkou
 1. Add the following add-ons:
+  * [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql) for PostgreSQL database
   * [Heroku Redis](https://elements.heroku.com/addons/heroku-redis) for storing user sessions
   * [Logentries](https://elements.heroku.com/addons/logentries) for storing logs (optional)
   * [New Relic](https://elements.heroku.com/addons/newrelic) for system monitoring (optional)
