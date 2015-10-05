@@ -1,0 +1,19 @@
+{
+  "scripts": {},
+  "env": {
+    "DATABASE_URL": { },
+    "LANG": { },
+    "RACK_ENV": { },
+    "RAILS_ENV": { },
+    "RAILS_SERVE_STATIC_FILES": { },
+    "REDIS_URL": { },
+    "S3_BUCKET": { },
+    "S3_HOST": { },
+    "S3_KEY": { },
+    "S3_REGION": { },
+    "S3_SECRET": { },
+    "SECRET_KEY_BASE": { "generator": "secret" },
+    "SENTRY_DSN": { }
+  },
+  "addons": []
+}
