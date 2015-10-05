@@ -4,8 +4,11 @@ SecureHeaders::Configuration.configure do |config|
   config.x_xss_protection = { value: 1, mode: 'block' }
 
   config.csp = {
-    default_src: "'self' https:",
     enforce: true,
+    default_src: "'none'",
+    connect_src: "'self'",
+    font_src: "'self' https:",
+    img_src: "'self' https: data:",
     script_src: "'self' https: 'unsafe-inline'",
     style_src: "'self' https: 'unsafe-inline'"
   }
