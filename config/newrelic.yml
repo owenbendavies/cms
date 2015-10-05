@@ -18,6 +18,9 @@ common: &default_settings
 
   log_file_path: 'STDOUT'
 
+  browser_monitoring:
+    auto_instrument: false
+
 development:
   <<: *default_settings
 
