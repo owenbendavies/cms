@@ -78,17 +78,11 @@ following [IAM](https://aws.amazon.com/iam/) user:
 ### Heroku Deployment
 
 1. Create a new app in Herkou
-1. Add the following add-ons:
-  * [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql) for PostgreSQL database
-  * [Heroku Redis](https://elements.heroku.com/addons/heroku-redis) for storing user sessions
-  * [Logentries](https://elements.heroku.com/addons/logentries) for storing logs (optional)
-  * [New Relic](https://elements.heroku.com/addons/newrelic) for system monitoring (optional)
-  * [Pingdom](https://elements.heroku.com/addons/pingdom) for uptime monitoring (optional)
-  * [SendGrid](https://elements.heroku.com/addons/sendgrid) for sending emails (or alternative)
-  * [Sentry](https://elements.heroku.com/addons/sentry) for error tracking (optional)
-  * [loader.io](https://elements.heroku.com/addons/loaderio) for load testing (optional)
-1. Set remaining "conifg vars" from production [config/secrets.yml](config/secrets.yml)
-1. Connect to Github and enable automatic deploys
+1. In "Resources" add the "Add-ons" from [app.json](app.json)
+1. In "Settings" set "Conifg Variables" from [app.json](app.json)
+1. In "Deploy" connect this GitHub repository
+1. Enable "Automatic deploys" (optional)
+1. Do a "Manual deploy"
 1. Migrate the database (note this will need to be run manually each deploy with migrations):
    `heroku run rake db:migrate --app YOUR-APP-NAME`
 1. Set up data using `heroku run ./bin/interactive --app YOUR-APP-NAME`
