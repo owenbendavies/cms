@@ -18,6 +18,7 @@ CarrierWave.configure do |config|
     config.fog_directory = s3_bucket
   else
     config.storage = :file
+    config.root = Rails.root.join('public', 'uploads')
   end
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"

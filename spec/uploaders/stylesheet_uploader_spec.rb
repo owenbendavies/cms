@@ -25,10 +25,7 @@ RSpec.describe StylesheetUploader do
 
       subject.store! StringUploader.new('stylesheet.css', css)
 
-      expect(uploaded_files).to eq [
-        "#{site.id}",
-        "#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css"
-      ]
+      expect(uploaded_files).to eq ["#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
     end
   end
 end
