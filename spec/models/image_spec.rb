@@ -33,15 +33,12 @@ RSpec.describe Image do
 
   describe '#file' do
     it 'saves an image' do
-      image = nil
-
-      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
-        image = FactoryGirl.create(:image, file: file)
+      image = File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        FactoryGirl.create(:image, file: file)
       end
 
       expect(image.file.url).to eq File.join(
-        '/',
-        Rails.application.secrets.uploads_store_dir,
+        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
         image.site.id.to_s,
         image.filename
       )
