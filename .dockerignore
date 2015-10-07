@@ -3,7 +3,6 @@
 .vagrant/
 coverage/
 log/*.log
-public/test_uploads/
 public/uploads/
 puppet/.librarian/
 puppet/.tmp/

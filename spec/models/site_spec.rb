@@ -35,6 +35,26 @@ RSpec.describe Site do
   it { should have_many(:pages).order(:name).dependent(:destroy) }
   it { should have_many(:site_settings).dependent(:destroy) }
   it { should have_many(:users) }
+  it { should have_many(:main_menu_pages) }
+
+  describe '#main_menu_pages' do
+    subject { FactoryGirl.create(:site) }
+
+    it 'returns empty array when no pages' do
+      expect(subject.main_menu_pages).to eq []
+    end
+
+    it 'returns pages when page ids' do
+      page1 = FactoryGirl.create(:page, site: subject)
+      page1.insert_at(1)
+      page2 = FactoryGirl.create(:page, site: subject)
+      page2.insert_at(1)
+
+      FactoryGirl.create(:page, site: subject)
+
+      expect(subject.main_menu_pages).to eq [page2, page1]
+    end
+  end
 
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
@@ -42,16 +62,17 @@ RSpec.describe Site do
 
   describe '#stylesheet' do
     it 'has a stylesheet' do
-      filename = "#{Digest::MD5.hexdigest(rand.to_s)}.css"
-
-      site = FactoryGirl.build(:site, stylesheet_filename: filename)
+      css = "body {\r\n  padding: 4em;\r\n}"
+      file = StringUploader.new('stylesheet.css', css)
+      site = FactoryGirl.create(:site, stylesheet: file)
 
       expect(site.stylesheet.url).to eq File.join(
-        '/',
-        Rails.application.secrets.uploads_store_dir,
+        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
         site.id.to_s,
-        filename
+        site.stylesheet_filename
       )
+
+      expect(uploaded_files).to eq ["#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
     end
   end
 
@@ -60,10 +81,7 @@ RSpec.describe Site do
   it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
   it { is_expected.to strip_attribute(:copyright).collapse_spaces }
   it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
-
-  it do
-    is_expected.to_not strip_attribute(:sidebar_html_content).collapse_spaces
-  end
+  it { is_expected.to_not strip_attribute(:sidebar_html_content).collapse_spaces }
 
   describe 'validate' do
     subject { FactoryGirl.build(:site) }
@@ -125,21 +143,15 @@ RSpec.describe Site do
   describe '#css' do
     subject { FactoryGirl.build(:site) }
 
-    context 'with css' do
-      before do
-        subject.css = "body {\r\n  padding: 4em;\r\n}"
-        subject.save!
-      end
-
-      it 'returns css' do
-        expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
-      end
+    it 'returns returns css' do
+      subject.css = "body {\r\n  padding: 4em;\r\n}"
+      subject.save!
+      subject.stylesheet.file.send(:file).reload
+      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
-    context 'when empty' do
-      it 'returns nil' do
-        expect(subject.css).to be_nil
-      end
+    it 'returns nil when empty' do
+      expect(subject.css).to be_nil
     end
   end
 
@@ -148,7 +160,6 @@ RSpec.describe Site do
 
     it 'strips end of line whitespace' do
       subject.css = "body {\r\n  padding: 4em; \r\n}"
-      subject.save!
       expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
@@ -162,13 +173,11 @@ RSpec.describe Site do
 
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
+      subject.stylesheet.file.send(:file).reload
 
       expect(subject.stylesheet_filename).to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
 
-      expect(uploaded_files).to eq [
-        "#{subject.id}",
-        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"
-      ]
+      expect(uploaded_files).to eq ["#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
     end
 
     it 'deletes old version' do
@@ -176,21 +185,13 @@ RSpec.describe Site do
 
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
-      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
 
-      expect(uploaded_files).to eq [
-        "#{subject.id}",
-        "#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"
-      ]
+      expect(uploaded_files).to eq ["#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
 
       subject.css = 'body{background-color: red}'
       subject.save!
-      expect(subject.css).to eq 'body{background-color: red}'
 
-      expect(uploaded_files).to eq [
-        "#{subject.id}",
-        "#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css"
-      ]
+      expect(uploaded_files).to eq ["#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css"]
     end
   end
 
@@ -206,32 +207,11 @@ RSpec.describe Site do
     end
   end
 
-  describe '#main_menu_pages' do
-    subject { FactoryGirl.create(:site) }
-
-    it 'returns empty array when no pages' do
-      expect(subject.main_menu_pages).to eq []
-    end
-
-    it 'returns pages when page ids' do
-      page1 = FactoryGirl.create(:page, site: subject)
-      page1.insert_at(1)
-      page2 = FactoryGirl.create(:page, site: subject)
-      page2.insert_at(1)
-
-      FactoryGirl.create(:page, site: subject)
-
-      expect(subject.main_menu_pages).to eq [page2, page1]
-    end
-  end
-
   describe '#store_dir' do
     subject { FactoryGirl.create(:site) }
 
-    it 'includes site id' do
-      uploads_store_dir = Rails.application.secrets.uploads_store_dir
-
-      expect(subject.store_dir).to eq "#{uploads_store_dir}/#{subject.id}"
+    it 'is site id' do
+      expect(subject.store_dir).to eq subject.id.to_s
     end
   end
 

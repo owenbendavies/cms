@@ -68,7 +68,7 @@ class Site < ActiveRecord::Base
   end
 
   def store_dir
-    [Rails.application.secrets.uploads_store_dir, id].compact.join('/')
+    id.to_s
   end
 
   def social_networks?
