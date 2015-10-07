@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ImageUploader do
-  include CarrierWave::Test::Matchers
-
   let(:site) { FactoryGirl.create(:site) }
   let(:image) { FactoryGirl.build(:image, site: site) }
   subject { described_class.new(image) }
@@ -30,7 +28,6 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
@@ -47,13 +44,33 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      expect(subject.span1).to have_dimensions(60, 60)
-      expect(subject.span2).to have_dimensions(140, 140)
-      expect(subject.span3).to have_dimensions(220, 165)
-      expect(subject.span4).to have_dimensions(300, 225)
-      expect(subject.span8).to have_dimensions(620, 465)
-      expect(subject.span10).to have_dimensions(780, 585)
-      expect(subject.span12).to have_dimensions(940, 705)
+      image = remote_image(subject.span1)
+      expect(image[:width]).to eq 60
+      expect(image[:height]).to eq 60
+
+      image = remote_image(subject.span2)
+      expect(image[:width]).to eq 140
+      expect(image[:height]).to eq 140
+
+      image = remote_image(subject.span3)
+      expect(image[:width]).to eq 220
+      expect(image[:height]).to eq 165
+
+      image = remote_image(subject.span4)
+      expect(image[:width]).to eq 300
+      expect(image[:height]).to eq 225
+
+      image = remote_image(subject.span8)
+      expect(image[:width]).to eq 620
+      expect(image[:height]).to eq 465
+
+      image = remote_image(subject.span10)
+      expect(image[:width]).to eq 780
+      expect(image[:height]).to eq 585
+
+      image = remote_image(subject.span12)
+      expect(image[:width]).to eq 940
+      expect(image[:height]).to eq 705
     end
 
     it 'does not enlarge images' do
@@ -61,13 +78,33 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      expect(subject.span1).to have_dimensions(60, 60)
-      expect(subject.span2).to have_dimensions(140, 140)
-      expect(subject.span3).to have_dimensions(80, 80)
-      expect(subject.span4).to have_dimensions(80, 80)
-      expect(subject.span8).to have_dimensions(80, 80)
-      expect(subject.span10).to have_dimensions(80, 80)
-      expect(subject.span12).to have_dimensions(80, 80)
+      image = remote_image(subject.span1)
+      expect(image[:width]).to eq 60
+      expect(image[:height]).to eq 60
+
+      image = remote_image(subject.span2)
+      expect(image[:width]).to eq 140
+      expect(image[:height]).to eq 140
+
+      image = remote_image(subject.span3)
+      expect(image[:width]).to eq 80
+      expect(image[:height]).to eq 80
+
+      image = remote_image(subject.span4)
+      expect(image[:width]).to eq 80
+      expect(image[:height]).to eq 80
+
+      image = remote_image(subject.span8)
+      expect(image[:width]).to eq 80
+      expect(image[:height]).to eq 80
+
+      image = remote_image(subject.span10)
+      expect(image[:width]).to eq 80
+      expect(image[:height]).to eq 80
+
+      image = remote_image(subject.span12)
+      expect(image[:width]).to eq 80
+      expect(image[:height]).to eq 80
     end
 
     it 'saves extension as downcase' do
@@ -78,7 +115,6 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
@@ -98,7 +134,6 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
         "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
