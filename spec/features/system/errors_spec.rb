@@ -30,18 +30,18 @@ RSpec.feature 'Errors' do
   end
 
   context 'error_timeout' do
-    let(:go_to_url) { '/system/error_timeout?seconds=1' }
+    let(:go_to_url) { '/system/error_timeout?seconds=0.5' }
 
     include_examples 'restricted page'
 
     as_a 'logged in admin' do
       scenario 'visiting a quick page' do
-        visit_200_page '/system/error_timeout?seconds=1'
+        visit_200_page '/system/error_timeout?seconds=0.5'
         expect(page).to have_content 'ok'
       end
 
       scenario 'visiting a slow page' do
-        expect { visit_page '/system/error_timeout?seconds=3.5' }
+        expect { visit_page '/system/error_timeout?seconds=2.5' }
           .to raise_error Rack::Timeout::RequestTimeoutError
       end
     end
