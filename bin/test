@@ -3,13 +3,15 @@ set -e
 
 cd `dirname $0`/..
 
+rspec='xvfb-run --auto-servernum ./bin/rspec --color'
+
 if [ $# -gt 0 ]; then
   set -v
-  eval "xvfb-run --auto-servernum ./bin/rspec --format documentation $@"
+  eval "$rspec --format documentation $@"
 else
   set -v
   eval './bin/compile'
-  eval 'COVERAGE=on xvfb-run --auto-servernum ./bin/rspec --order random'
+  eval "COVERAGE=on $rspec --order random"
   eval './bin/quality'
 fi
 
