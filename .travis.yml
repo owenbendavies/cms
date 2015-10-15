@@ -10,7 +10,7 @@ services:
 
 before_install:
   - sudo apt-get update --assume-yes
-  - sudo apt-get install --assume-yes xvfb
+  - sudo apt-get install --assume-yes libqt5webkit5-dev qt5-default xvfb
 
 before_script: ./bin/bootstrap
 
