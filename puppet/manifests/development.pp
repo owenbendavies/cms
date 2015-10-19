@@ -1,5 +1,4 @@
 include cms::development
-include docker
 
 apt::source { 'heroku':
   include_src => false,
