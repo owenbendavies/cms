@@ -13,6 +13,7 @@ testing new ideas.
 
 1. Download [Vagrant](https://www.vagrantup.com/)
 1. `vagrant plugin install landrush` to install Vagrant DNS plugin
+1. `vagrant plugin install vagrant-timezone` to install Vagrant timezone plugin
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
 1. `./bin/bootstrap` to setup the project (can be run multiple times)
