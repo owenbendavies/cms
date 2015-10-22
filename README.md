@@ -12,6 +12,7 @@ testing new ideas.
 ## Development
 
 1. Download [Vagrant](https://www.vagrantup.com/)
+1. `vagrant plugin install landrush` to install Vagrant DNS plugin
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
 1. `./bin/bootstrap` to setup the project (can be run multiple times)
@@ -19,6 +20,7 @@ testing new ideas.
 1. `./bin/test spec/some_file.rb` to run one test or folder
 1. `./bin/interactive` to setup data
 1. `./bin/server` to spin up a development web server
+1. Visit `http://cms.vagrant.dev:3000/` to access the site
 
 ## Setup data
 
@@ -34,7 +36,7 @@ Input the following, replacing the relevant data:
     user.password_confirmation = 'password'
     user.save!
 
-    Site.create!(host: 'localhost', name: 'Test Site')
+    Site.create!(host: 'cms.vagrant.dev', name: 'Test Site')
 
 ## Deployment
 
