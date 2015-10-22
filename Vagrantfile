@@ -1,15 +1,9 @@
 Vagrant.configure(2) do |config|
-  if Vagrant.has_plugin? 'landrush'
-    config.landrush.enabled = true
-  else
-    raise "Run 'vagrant plugin install landrush'"
-  end
+  fail "Run 'vagrant plugin install landrush'" unless Vagrant.has_plugin? 'landrush'
+  config.landrush.enabled = true
 
-  if Vagrant.has_plugin? 'vagrant-timezone'
-    config.timezone.value = :host
-  else
-    raise "Run 'vagrant plugin install vagrant-timezone'"
-  end
+  fail "Run 'vagrant plugin install vagrant-timezone'" unless Vagrant.has_plugin? 'vagrant-timezone'
+  config.timezone.value = :host
 
   config.ssh.forward_agent = true
   config.vm.box = 'ubuntu/trusty64'
