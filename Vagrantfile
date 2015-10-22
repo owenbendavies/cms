@@ -1,8 +1,13 @@
 Vagrant.configure(2) do |config|
-  config.ssh.forward_agent = true
+  fail "Run 'vagrant plugin install landrush'" unless Vagrant.has_plugin? 'landrush'
+  config.landrush.enabled = true
 
+  fail "Run 'vagrant plugin install vagrant-timezone'" unless Vagrant.has_plugin? 'vagrant-timezone'
+  config.timezone.value = :host
+
+  config.ssh.forward_agent = true
   config.vm.box = 'ubuntu/trusty64'
-  config.vm.hostname = 'cms'
+  config.vm.hostname = 'cms.vagrant.dev'
   config.vm.network 'private_network', type: 'dhcp'
   config.vm.synced_folder '.', '/vagrant', nfs: true
 
