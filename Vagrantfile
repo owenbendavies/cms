@@ -1,11 +1,17 @@
+unless Vagrant.has_plugin? 'landrush'
+  puts "Run 'vagrant plugin install landrush'"
+  exit 1
+end
+
+unless Vagrant.has_plugin? 'vagrant-timezone'
+  puts "Run 'vagrant plugin install vagrant-timezone'"
+  exit 1
+end
+
 Vagrant.configure(2) do |config|
-  fail "Run 'vagrant plugin install landrush'" unless Vagrant.has_plugin? 'landrush'
   config.landrush.enabled = true
-
-  fail "Run 'vagrant plugin install vagrant-timezone'" unless Vagrant.has_plugin? 'vagrant-timezone'
-  config.timezone.value = :host
-
   config.ssh.forward_agent = true
+  config.timezone.value = :host
   config.vm.box = 'ubuntu/trusty64'
   config.vm.hostname = 'cms.vagrant.dev'
   config.vm.network 'private_network', type: 'dhcp'
