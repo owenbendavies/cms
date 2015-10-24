@@ -10,10 +10,11 @@ end
 
 Vagrant.configure(2) do |config|
   config.landrush.enabled = true
+  config.landrush.tld = 'dev'
   config.ssh.forward_agent = true
   config.timezone.value = :host
   config.vm.box = 'ubuntu/trusty64'
-  config.vm.hostname = 'cms.vagrant.dev'
+  config.vm.hostname = 'cms.dev'
   config.vm.network 'private_network', type: 'dhcp'
   config.vm.synced_folder '.', '/vagrant', nfs: true
 
