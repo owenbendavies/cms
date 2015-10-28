@@ -78,12 +78,8 @@ following [IAM](https://aws.amazon.com/iam/) user:
 
 ### Heroku Deployment
 
-1. Create a new app in Herkou
-1. In "Resources" add the "Add-ons" from [app.json](app.json)
-1. In "Settings" set "Conifg Variables" from [app.json](app.json)
-1. In "Deploy" connect this GitHub repository
-1. Enable "Automatic deploys" (optional)
-1. Do a "Manual deploy"
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 1. Migrate the database (note this will need to be run manually each deploy with migrations):
    `heroku run rake db:migrate --app YOUR-APP-NAME`
 1. Set up data using `heroku run ./bin/interactive --app YOUR-APP-NAME`
