@@ -1,4 +1,7 @@
 {
+  "name": "obduk C.M.S.",
+  "description": "A Content Management System (CMS) written with Ruby on Rails",
+  "repository": "https://github.com/obduk/cms",
   "addons": [
     "heroku-postgresql",
     "heroku-redis",
@@ -8,16 +11,40 @@
     "sendgrid"
   ],
   "env": {
-    "ASSET_HOST": { "required": false },
-    "LOADERIO_TOKEN": { "required": false },
-    "NEW_RELIC_APP_NAME": { },
-    "S3_BUCKET": { },
-    "S3_HOST": { },
-    "S3_KEY": { },
-    "S3_REGION": { },
-    "S3_SECRET": { },
-    "SECRET_KEY_BASE": { "generator": "secret" },
-    "SENTRY_DSN": { "required": false }
+    "ASSET_HOST": {
+      "description": "Sets the rails asset host",
+      "required": false
+    },
+    "LOADERIO_TOKEN": {
+      "description": "Loader.io verification token",
+      "required": false
+    },
+    "NEW_RELIC_APP_NAME": {
+      "description": "The name for the app in New Relic"
+    },
+    "S3_BUCKET": {
+      "description": "The name of the Amazon S3 bucket"
+    },
+    "S3_HOST": {
+      "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket"
+    },
+    "S3_KEY": {
+      "description": "The Amazon IAM user key"
+    },
+    "S3_REGION": {
+      "description": "The region of the Amazon S3 bucket"
+    },
+    "S3_SECRET": {
+      "description": "The Amazon IAM user secret"
+    },
+    "SECRET_KEY_BASE": {
+      "description": "A randomly generated secret to verify sessions",
+      "generator": "secret"
+    },
+    "SENTRY_DSN": {
+      "description": "The DSN for sentry (or used payed Heroku Addon)",
+      "required": false
+    }
   },
   "scripts": {
     "postdeploy": "./bin/rake db:migrate"
