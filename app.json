@@ -11,6 +11,24 @@
     "sendgrid"
   ],
   "env": {
+    "NEW_RELIC_APP_NAME": {
+      "description": "The name for the app in New Relic"
+    },
+    "IAM_KEY": {
+      "description": "The Amazon IAM user key"
+    },
+    "IAM_SECRET": {
+      "description": "The Amazon IAM user secret"
+    },
+    "S3_BUCKET": {
+      "description": "The name of the Amazon S3 bucket"
+    },
+    "S3_HOST": {
+      "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket"
+    },
+    "S3_REGION": {
+      "description": "The region of the Amazon S3 bucket"
+    },
     "ASSET_HOST": {
       "description": "Sets the rails asset host",
       "required": false
@@ -19,31 +37,13 @@
       "description": "Loader.io verification token",
       "required": false
     },
-    "NEW_RELIC_APP_NAME": {
-      "description": "The name for the app in New Relic"
-    },
-    "S3_BUCKET": {
-      "description": "The name of the Amazon S3 bucket"
-    },
-    "S3_HOST": {
-      "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket"
-    },
-    "S3_KEY": {
-      "description": "The Amazon IAM user key"
-    },
-    "S3_REGION": {
-      "description": "The region of the Amazon S3 bucket"
-    },
-    "S3_SECRET": {
-      "description": "The Amazon IAM user secret"
+    "SENTRY_DSN": {
+      "description": "The DSN for sentry (or used payed Heroku Addon)",
+      "required": false
     },
     "SECRET_KEY_BASE": {
       "description": "A randomly generated secret to verify sessions",
       "generator": "secret"
-    },
-    "SENTRY_DSN": {
-      "description": "The DSN for sentry (or used payed Heroku Addon)",
-      "required": false
     }
   },
   "scripts": {
