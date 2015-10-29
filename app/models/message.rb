@@ -54,10 +54,6 @@ class Message < ActiveRecord::Base
     end
   end
 
-  def deliver
-    NotificationsMailer.new_message(self).deliver_later
-  end
-
   def phone=(value)
     super(Phoner::Phone.parse(value, country_code: '44'))
   end

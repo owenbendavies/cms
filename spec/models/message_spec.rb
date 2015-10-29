@@ -75,22 +75,6 @@ RSpec.describe Message do
     it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
   end
 
-  describe '#deliver' do
-    subject { FactoryGirl.create(:message) }
-
-    it 'sends an email' do
-      FactoryGirl.create(:admin)
-      subject.deliver
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
-      email = ActionMailer::Base.deliveries.last
-      expect(email.subject).to eq subject.subject
-    end
-  end
-
   describe '#phone=' do
     it 'formats phone numbers' do
       subject.phone = '+44 1234 567 890'
