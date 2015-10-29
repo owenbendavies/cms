@@ -24,7 +24,7 @@ class PagesController < ApplicationController
     @message = Message.new
 
     if @message.update_attributes(message_params)
-      @message.deliver
+      NotificationsMailer.new_message(@message).deliver_later
       flash.notice = t('pages.contact_form.flash.success')
       redirect_to page_path(@page.to_param)
     else
