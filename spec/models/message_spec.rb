@@ -8,7 +8,6 @@
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
-#  delivered  :boolean          default(FALSE), not null
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -81,11 +80,7 @@ RSpec.describe Message do
 
     it 'sends an email' do
       FactoryGirl.create(:admin)
-      expect(subject.delivered).to eq false
-
       subject.deliver
-
-      expect(subject.delivered).to eq true
 
       expect(ActionMailer::Base.deliveries.size).to eq 0
       Delayed::Worker.new.work_off

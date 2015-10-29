@@ -8,7 +8,6 @@
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
-#  delivered  :boolean          default(FALSE), not null
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -57,8 +56,6 @@ class Message < ActiveRecord::Base
 
   def deliver
     NotificationsMailer.new_message(self).deliver_later
-    self.delivered = true
-    self.save!
   end
 
   def phone=(value)
