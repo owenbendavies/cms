@@ -35,7 +35,6 @@ Rails.application.configure do
     Bullet.raise = true
 
     Bullet.add_whitelist(type: :n_plus_one_query, class_name: 'Site', association: :main_menu_pages)
-    Bullet.add_whitelist(type: :n_plus_one_query, class_name: 'Site', association: :users)
   end
 
   config.middleware.insert_before Rack::Runtime, Rack::Timeout
