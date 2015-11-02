@@ -15,7 +15,7 @@ gem 'redis-actionpack'
 
 # Middleware
 gem 'font_assets'
-gem 'heroku-deflater'
+gem 'heroku-deflater', '< 0.6.0'
 gem 'rack-protection'
 gem 'rack-timeout'
 gem 'request_store'
