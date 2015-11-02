@@ -58,7 +58,7 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
-    brakeman (3.1.1)
+    brakeman (3.1.2)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
       haml (>= 3.0, < 5.0)
@@ -66,6 +66,7 @@ GEM
       multi_json (~> 1.2)
       ruby2ruby (>= 2.1.1, < 2.3.0)
       ruby_parser (~> 3.7.0)
+      safe_yaml
       sass (~> 3.0)
       slim (>= 1.3.6, < 4.0)
       terminal-table (~> 1.4)
@@ -244,7 +245,7 @@ GEM
     fog-serverlove (0.1.2)
       fog-core
       fog-json
-    fog-softlayer (1.0.0)
+    fog-softlayer (1.0.2)
       fog-core
       fog-json
     fog-storm_on_demand (0.1.1)
@@ -301,12 +302,14 @@ GEM
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
     i18n (0.7.0)
-    i18n-tasks (0.8.7)
-      activesupport (>= 2.3.18)
+    i18n-tasks (0.9.1)
+      activesupport (>= 4.0.2)
+      ast (>= 2.1.0)
       easy_translate (>= 0.5.0)
       erubis
       highline (>= 1.7.3)
       i18n
+      parser (>= 2.2.3.0)
       term-ansicolor (>= 1.3.2)
       terminal-table (>= 1.5.1)
     immigrant (0.3.4)
@@ -344,7 +347,7 @@ GEM
     mime-types (2.6.2)
     mini_magick (4.3.6)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     modware (0.1.2)
       its-it
       key_struct (~> 0.4)
@@ -412,7 +415,7 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails-timeago (2.12.0)
+    rails-timeago (2.13.0)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
     rails_best_practices (1.15.7)
@@ -439,11 +442,11 @@ GEM
     redis-rack (1.5.0)
       rack (~> 1.5)
       redis-store (~> 1.1.0)
-    redis-store (1.1.6)
+    redis-store (1.1.7)
       redis (>= 2.2)
     ref (2.0.0)
     request_store (1.2.0)
-    require_all (1.3.2)
+    require_all (1.3.3)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec-core (3.3.2)
@@ -474,7 +477,7 @@ GEM
     ruby2ruby (2.2.0)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
-    ruby_parser (3.7.1)
+    ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.19)
@@ -504,7 +507,7 @@ GEM
     schema_plus_indexes (0.2.0)
       activerecord (~> 4.2)
       schema_plus_core (~> 0.1)
-    schema_validations (1.3.1)
+    schema_validations (1.4.0)
       activerecord (~> 4.2, >= 4.2.1)
       schema_plus_columns
       valuable
@@ -559,7 +562,7 @@ GEM
     tilt (2.0.1)
     timecop (0.8.0)
     tins (1.6.0)
-    tinymce-rails (4.2.6)
+    tinymce-rails (4.2.7)
       railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
@@ -578,7 +581,7 @@ GEM
     valuable (0.9.9)
     warden (1.2.3)
       rack (>= 1.0)
-    webmock (1.22.1)
+    webmock (1.22.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -627,7 +630,7 @@ DEPENDENCIES
   gravtastic
   haml-lint
   haml-rails
-  heroku-deflater
+  heroku-deflater (< 0.6.0)
   i18n-tasks
   immigrant
   jquery-rails
