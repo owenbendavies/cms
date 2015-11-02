@@ -32,13 +32,14 @@ Rails.application.configure do
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :info
-  config.lograge.enabled = true
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different logger for distributed setups.
   config.logger = Logger.new(STDOUT)
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Raw.new
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -59,6 +60,11 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.logger.formatter = proc do |severity, _time, _progname, message|
-    "at=#{severity.downcase} #{message}\n"
+    if message.class == Hash
+      fields = message.map { |key, value| "#{key}=#{value.inspect}" }.join(' ')
+      "at=#{severity.downcase} #{fields}\n"
+    else
+      "at=#{severity.downcase} message=#{message.inspect}\n"
+    end
   end
 end
