@@ -61,15 +61,6 @@ RSpec.describe User do
     is_expected.to be_versioned
   end
 
-  describe '.admin' do
-    it 'returns all admins' do
-      admin = FactoryGirl.create(:admin)
-      FactoryGirl.create(:user)
-
-      expect(described_class.admin).to eq [admin]
-    end
-  end
-
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
@@ -89,28 +80,6 @@ RSpec.describe User do
 
     it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
-  end
-
-  describe '#all_sites' do
-    it 'returns all sites for admin' do
-      admin = FactoryGirl.create(:admin)
-
-      site = FactoryGirl.create(:site)
-
-      expect(admin.all_sites).to eq [site]
-    end
-
-    it 'returns users sites' do
-      user = FactoryGirl.create(:user)
-
-      site = FactoryGirl.create(:site)
-
-      FactoryGirl.create(:site)
-
-      user.site_settings.create(site: site)
-
-      expect(user.all_sites).to eq [site]
-    end
   end
 
   describe '#site_ids' do

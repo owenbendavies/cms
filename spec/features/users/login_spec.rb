@@ -58,13 +58,4 @@ RSpec.feature 'User login' do
     expect(page).to have_content 'Invalid email or password.'
     expect(current_path).to eq '/login'
   end
-
-  scenario 'with admin' do
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-
-    click_button 'Login'
-
-    expect(page).to have_content 'Signed in successfully.'
-  end
 end

@@ -97,18 +97,6 @@ RSpec.feature 'Inviting a user' do
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
-    scenario 'for an admin' do
-      fill_in 'Name', with: new_name
-      fill_in 'Email', with: admin.email
-      click_button 'Add User'
-
-      expect(page).to have_content 'has already been taken'
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-    end
-
     scenario 'with invalid data' do
       fill_in 'Name', with: 'a'
       fill_in 'Email', with: new_email
