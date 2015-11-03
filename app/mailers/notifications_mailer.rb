@@ -6,7 +6,7 @@ class NotificationsMailer < BaseMailer
 
     mail(
       from: from_site(message.site),
-      to: @site.all_users.map(&:email).sort,
+      to: @site.users.map(&:email),
       subject: message.subject
     )
   end

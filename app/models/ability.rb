@@ -9,13 +9,16 @@ class Ability
   def initialize(user)
     alias_action :create, :read, :update, :destroy, to: :crud
 
-    if user && user.admin?
-      can :manage, :all
-    else
-      user_abilities(user) if user
-
-      all_abilities
+    if user
+      admin_abilities if user.admin
+      user_abilities(user)
     end
+
+    all_abilities
+  end
+
+  def admin_abilities
+    can [:error_500, :error_delayed, :error_timeout], :system
   end
 
   def user_abilities(user)

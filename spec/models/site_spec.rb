@@ -117,29 +117,6 @@ RSpec.describe Site do
     it { should validate_length_of(:github).is_at_most(32) }
   end
 
-  describe '#all_users' do
-    it 'returns admins and users' do
-      admin = FactoryGirl.create(:admin)
-      user = FactoryGirl.create(:user)
-      FactoryGirl.create(:user)
-
-      site = FactoryGirl.create(:site)
-
-      user.site_settings.create(site: site)
-
-      expect(site.all_users).to eq [admin, user]
-    end
-
-    it 'returns just admins when no users' do
-      admin = FactoryGirl.create(:admin)
-      FactoryGirl.create(:user)
-
-      site = FactoryGirl.create(:site)
-
-      expect(site.all_users).to eq [admin]
-    end
-  end
-
   describe '#css' do
     subject { FactoryGirl.build(:site) }
 
