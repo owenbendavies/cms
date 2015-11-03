@@ -13,8 +13,8 @@ RSpec.describe NotificationsMailer, type: :feature do
 
     include_examples 'site email'
 
-    it 'is sent to admins and sites user email' do
-      expect(subject.to).to eq [admin.email, site_user.email].sort
+    it 'is sent to sites users email' do
+      expect(subject.to).to eq [site_user.email]
     end
 
     it 'includes message subject' do
@@ -35,7 +35,7 @@ RSpec.describe NotificationsMailer, type: :feature do
   end
 
   describe '.user_added_to_site' do
-    subject { described_class.user_added_to_site(user, site, admin) }
+    subject { described_class.user_added_to_site(user, site, site_user) }
 
     include_examples 'site email'
 
@@ -53,7 +53,7 @@ RSpec.describe NotificationsMailer, type: :feature do
 
     it 'has text in body' do
       expect(subject.body).to have_content(
-        "You have been added to #{site.name} site by #{admin.name}."
+        "You have been added to #{site.name} site by #{site_user.name}."
       )
     end
   end

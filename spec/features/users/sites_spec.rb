@@ -18,10 +18,4 @@ RSpec.feature 'User sites' do
 
     include_examples 'page with topbar link', 'Sites', 'list'
   end
-
-  as_a 'logged in admin' do
-    scenario 'visiting the page' do
-      expect(page).to have_link 'localhost', href: 'http://localhost'
-    end
-  end
 end

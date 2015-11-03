@@ -35,7 +35,9 @@ Input the following, replacing the relevant data:
     user.password_confirmation = 'password'
     user.save!
 
-    Site.create!(host: 'cms.dev', name: 'Test Site')
+    site = Site.create!(host: 'cms.dev', name: 'Test Site')
+
+    user.site_settings.create!(site: site)
 
 ## Deployment
 

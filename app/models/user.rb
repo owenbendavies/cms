@@ -65,8 +65,6 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
-  scope :admin, -> { where(admin: true) }
-
   strip_attributes collapse_spaces: true
 
   validates :email, email_format: true
@@ -75,7 +73,7 @@ class User < ActiveRecord::Base
   def self.invite_or_add_to_site(params, site, inviter)
     user = User.find_by_email(params[:email])
 
-    if !user || user.admin? || user.site_ids.include?(site.id)
+    if !user || user.site_ids.include?(site.id)
       user = invite!(params, inviter)
     else
       NotificationsMailer.user_added_to_site(user, site, inviter).deliver_later
@@ -84,14 +82,6 @@ class User < ActiveRecord::Base
     user.site_settings.create!(site: site) if user.errors.empty?
 
     user
-  end
-
-  def all_sites
-    if admin
-      Site.all
-    else
-      sites
-    end
   end
 
   def site_ids
