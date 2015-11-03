@@ -48,10 +48,6 @@ class Site < ActiveRecord::Base
   validates :layout, inclusion: { in: LAYOUTS }
   validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
 
-  def all_users
-    User.admin + users
-  end
-
   def css
     stylesheet.read
   end

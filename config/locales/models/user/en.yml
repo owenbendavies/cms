@@ -9,6 +9,5 @@ en:
         password_confirmation: "Confirm password"
         name: "Name"
         email: "Email"
-        admin: "Admin"
         confirmed: "Confirmed"
         locked: "Locked"
