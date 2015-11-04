@@ -17,33 +17,14 @@ testing new ideas.
 1. `./bin/bootstrap` to setup the project (can be run multiple times)
 1. `./bin/test` to run all tests
 1. `./bin/test spec/some_file.rb` to run one test or folder
-1. `./bin/interactive` to setup data
 1. `./bin/server` to spin up a development web server
 1. Visit `http://cms.dev:3000/` to access the site
-
-## Setup data
-
-Currently it is only possible to create sites and users via the command line.
-Input the following, replacing the relevant data:
-
-    user = User.new
-    user.admin = true
-    user.name = 'Your Name'
-    user.email = 'test@example.com'
-    user.skip_confirmation!
-    user.password = 'password'
-    user.password_confirmation = 'password'
-    user.save!
-
-    site = Site.create!(host: 'cms.dev', name: 'Test Site')
-
-    user.site_settings.create!(site: site)
+1. Visit `http://cms.dev:3000/emails` to check development emails (e.g. forgot password emails)
 
 ## Deployment
 
-This project can be deployed using [Heroku](https://www.heroku.com/),
-[Amazon Web Services (AWS)](https://aws.amazon.com/) or
-[Docker](https://www.docker.com/).
+This project can be deployed to [Heroku](https://www.heroku.com/) (also undocumented
+[AWS](https://aws.amazon.com/) and [Docker](https://www.docker.com/)).
 
 1. Create an [AWS S3](https://aws.amazon.com/s3/) bucket for storing uploaded
    files
@@ -57,23 +38,4 @@ This project can be deployed using [Heroku](https://www.heroku.com/),
   * [Pingdom](https://www.pingdom.com/) for uptime monitoring (optional)
   * [Sentry](https://www.getsentry.com/) for error tracking (optional)
 
-### Heroku Deployment
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-1. Migrate the database (note this will need to be run manually each deploy with migrations):
-   `heroku run rake db:migrate --app YOUR-APP-NAME`
-1. Set up data using `heroku run ./bin/interactive --app YOUR-APP-NAME`
-
-### AWS Deployment
-
-1. `./bin/rake secret` to generate a session secret
-1. Sign up to the following services:
-  * [AWS ElastiCache](https://aws.amazon.com/elasticache/) for storing user sessions
-  * [AWS RDS](https://aws.amazon.com/rds/) for PostgreSQL database
-  * [AWS SES](https://aws.amazon.com/ses/) for sending emails
-  * [New Relic](https://newrelic.com/) for system monitoring (optional)
-  * [loader.io](https://loader.io/) for load testing (optional)
-1. Create an [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) application with
-   [Dockerrun.aws.json](Dockerrun.aws.json)
-1. Set all "Environment Properties" from production [config/secrets.yml](config/secrets.yml)
