@@ -100,7 +100,6 @@ group :development do
   gem 'annotate'
   gem 'foreman'
   gem 'letter_opener_web'
-  gem 'pghero'
   gem 'quiet_assets'
 end
 

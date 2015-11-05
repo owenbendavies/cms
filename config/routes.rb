@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/emails'
-    mount PgHero::Engine, at: '/database'
-  end
+  mount LetterOpenerWeb::Engine, at: '/emails' if Rails.env.development?
 
   root 'systems#home'
 
