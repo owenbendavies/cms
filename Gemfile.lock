@@ -289,8 +289,6 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     hashdiff (0.2.3)
-    heroku-deflater (0.6.2)
-      rack (>= 1.4.5)
     highline (1.7.8)
     hirb (0.7.3)
     html2haml (2.0.0)
@@ -626,7 +624,6 @@ DEPENDENCIES
   gravtastic
   haml-lint
   haml-rails
-  heroku-deflater
   i18n-tasks
   immigrant
   jquery-rails
