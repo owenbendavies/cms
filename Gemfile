@@ -51,7 +51,7 @@ gem 'will_paginate-bootstrap'
 
 # Server
 gem 'font_assets'
-gem 'heroku-deflater', '< 0.6.0'
+gem 'heroku-deflater'
 gem 'puma'
 
 # Monitoring
@@ -113,7 +113,7 @@ group :test do
   gem 'faker'
   gem 'get_process_mem'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '< 3.0.0', require: false
+  gem 'shoulda-matchers'
   gem 'spring-commands-rspec'
   gem 'timecop'
   gem 'webmock'
