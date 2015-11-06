@@ -3,22 +3,21 @@ ruby '2.2.3'
 
 # Frameworks
 gem 'rails', '4.2.4'
-gem 'cancancan'
 gem 'delayed_job_active_record'
-gem 'devise'
-gem 'devise_invitable'
-gem 'devise_zxcvbn'
 
 # Databases
 gem 'pg'
 gem 'redis-actionpack'
 
-# Middleware
-gem 'font_assets'
-gem 'heroku-deflater', '< 0.6.0'
+# Rack middleware
 gem 'rack-protection'
 gem 'rack-timeout'
-gem 'request_store'
+
+# Authentication and authorization
+gem 'cancancan'
+gem 'devise'
+gem 'devise_invitable'
+gem 'devise_zxcvbn'
 
 # Required for carrierwave to be loaded before
 gem 'fog'
@@ -37,6 +36,7 @@ gem 'unf'
 gem 'validates_email_format_of'
 
 # Controller Gems
+gem 'request_store'
 gem 'secure_headers'
 gem 'xml-sitemap'
 
@@ -49,12 +49,14 @@ gem 'simple_form'
 gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
+# Server
+gem 'font_assets'
+gem 'heroku-deflater', '< 0.6.0'
+gem 'puma'
+
 # Monitoring
 gem 'lograge'
 gem 'newrelic_rpm'
-
-# Server
-gem 'puma'
 
 group :production do
   gem 'sentry-raven'
@@ -78,6 +80,7 @@ end
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'spring'
 
   # Code quality tools
   gem 'brakeman', require: false
