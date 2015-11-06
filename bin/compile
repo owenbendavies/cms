@@ -1,13 +1,14 @@
 #!/bin/bash
 set -e
-
-echo 'Compiling assets'
+cd `dirname $0`/..
 
 export DISABLE_SPRING='true'
 export RAILS_ENV='production'
 export RAILS_GROUPS='assets'
 export SECRET_KEY_BASE='xxxxxxxxxxxxxxxxxxxx'
 
-./`dirname $0`/rake assets:precompile assets:clean
+set -v
 
-echo 'Compile complete'
+./bin/rake assets:precompile assets:clean[0]
+
+# 'Compile complete'

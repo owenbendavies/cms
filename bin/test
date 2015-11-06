@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 cd `dirname $0`/..
 
 rspec='xvfb-run --auto-servernum ./bin/rspec --color'
