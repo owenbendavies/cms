@@ -29,7 +29,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Site do
+RSpec.describe Site, type: :model do
   it { should have_many(:images).order(:name).dependent(:destroy) }
   it { should have_many(:messages).order('created_at desc').dependent(:destroy) }
   it { should have_many(:pages).order(:name).dependent(:destroy) }
