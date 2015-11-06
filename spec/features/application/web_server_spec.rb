@@ -13,11 +13,8 @@ RSpec.feature 'Web server' do
   end
 
   scenario 'visiting an asset with gzip' do
-    asset_file_path = Dir.glob(Rails.root.join('public/assets/*.gz')).first
+    asset_file_path = Dir.glob(Rails.root.join('public/assets/application*.css')).first
     asset_file_path.gsub!(Rails.root.join('public').to_s, '')
-    asset_file_path.gsub!(/\.gz$/, '')
-
-    expect(asset_file_path).to_not be_blank
 
     page.driver.header('ACCEPT_ENCODING', 'gzip, deflate')
     visit_200_page asset_file_path
