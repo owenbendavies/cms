@@ -22,7 +22,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Image do
+RSpec.describe Image, type: :model do
   it { should belong_to(:site) }
 
   it { should delegate_method(:store_dir).to(:site) }

@@ -46,7 +46,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User do
+RSpec.describe User, type: :model do
   it 'has a gravatar_url' do
     user = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
