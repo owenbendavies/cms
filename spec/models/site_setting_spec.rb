@@ -22,7 +22,7 @@
 
 require 'rails_helper'
 
-RSpec.describe SiteSetting do
+RSpec.describe SiteSetting, type: :model do
   it { should belong_to(:site) }
   it { should belong_to(:user) }
 
