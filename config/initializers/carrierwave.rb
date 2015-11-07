@@ -6,7 +6,9 @@ CarrierWave.configure do |config|
 
     config.asset_host = Rails.application.secrets.s3_host
 
-    config.fog_attributes = { 'Cache-Control' => "public, max-age=#{365.day.to_i}" }
+    config.fog_attributes = {
+      'Cache-Control' => Rails.application.config.static_cache_control
+    }
 
     config.fog_credentials = {
       provider: 'AWS',
