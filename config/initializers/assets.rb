@@ -33,5 +33,5 @@ else
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   Rails.application.config.assets.compile = false
 
-  Rails.application.config.static_cache_control = 'public, max-age=31536000'
+  Rails.application.config.static_cache_control = "public, max-age=#{1.year.to_i}"
 end
