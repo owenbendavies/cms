@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 # Frameworks
-gem 'rails', '4.2.4'
+gem 'rails'
 gem 'delayed_job_active_record'
 
 # Databases
@@ -21,6 +21,7 @@ gem 'devise_zxcvbn'
 
 # Required for carrierwave to be loaded before
 gem 'fog'
+gem 'net-ssh'
 
 # Model Gems
 gem 'acts_as_list'
@@ -46,7 +47,7 @@ gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
-gem 'tinymce-rails'
+gem 'tinymce-rails', '4.2.7'
 gem 'will_paginate-bootstrap'
 
 # Server
@@ -65,6 +66,7 @@ group :assets, :development do
   gem 'autogrow-textarea-rails'
   gem 'autoprefixer-rails'
   gem 'bootstrap-sass'
+  gem 'coffee-script-source', '1.9.1.1'
   gem 'coffee-rails'
   gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
