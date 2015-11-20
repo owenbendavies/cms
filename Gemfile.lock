@@ -553,7 +553,7 @@ GEM
     tilt (2.0.1)
     timecop (0.8.0)
     tins (1.6.0)
-    tinymce-rails (4.2.7)
+    tinymce-rails (4.2.8)
       railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
@@ -664,7 +664,7 @@ DEPENDENCIES
   strip_attributes
   therubyracer
   timecop
-  tinymce-rails (= 4.2.7)
+  tinymce-rails
   turbolinks
   uglifier
   unf

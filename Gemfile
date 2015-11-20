@@ -47,7 +47,7 @@ gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
-gem 'tinymce-rails', '4.2.7'
+gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
 # Server
