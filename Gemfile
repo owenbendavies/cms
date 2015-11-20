@@ -47,7 +47,7 @@ gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
-gem 'tinymce-rails', '4.2.7'
+gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
 # Server
@@ -66,7 +66,6 @@ group :assets, :development do
   gem 'autogrow-textarea-rails'
   gem 'autoprefixer-rails'
   gem 'bootstrap-sass'
-  gem 'coffee-script-source', '1.9.1.1'
   gem 'coffee-rails'
   gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
