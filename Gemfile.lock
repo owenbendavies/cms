@@ -104,7 +104,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1.1)
+    coffee-script-source (1.10.0)
     coffeelint (1.11.0)
       coffee-script
       execjs
@@ -604,7 +604,6 @@ DEPENDENCIES
   capybara-webkit
   carrierwave
   coffee-rails
-  coffee-script-source (= 1.9.1.1)
   coffeelint
   database_cleaner
   delayed_job_active_record
