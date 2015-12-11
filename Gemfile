@@ -64,10 +64,10 @@ end
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
-  gem 'autoprefixer-rails'
-  gem 'bootstrap-sass'
+  gem 'autoprefixer-rails', '6.1.1'
+  gem 'bootstrap-sass', '3.3.5.1'
   gem 'coffee-rails'
-  gem 'font-awesome-sass'
+  gem 'font-awesome-sass', '4.4.0'
   gem 'google-analytics-turbolinks'
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
@@ -96,6 +96,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'scss-lint', require: false
+  gem 'simplecov', '0.10.0'
   gem 'simplecov-console', require: false
 end
 
