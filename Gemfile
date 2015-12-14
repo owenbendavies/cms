@@ -52,6 +52,7 @@ gem 'will_paginate-bootstrap'
 
 # Server
 gem 'font_assets'
+gem 'heroku-deflater'
 gem 'puma'
 
 # Monitoring
