@@ -1,8 +1,11 @@
 class cms::server {
-  include cms::dependencies
+  $user = 'rails'
 
-  user { 'rails':
+  user { $user:
     ensure     => present,
     managehome => true,
+  } ->
+  class { 'cms::dependencies':
+    user => $user,
   }
 }
