@@ -1,5 +1,7 @@
 class cms::development {
-  include cms::dependencies
+  class { 'cms::dependencies':
+    user => 'vagrant',
+  }
 
   package {
     [
