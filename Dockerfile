@@ -14,7 +14,7 @@ USER rails
 WORKDIR /home/rails/cms
 
 # Set environment
-ENV PATH /usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH
+ENV PATH /home/rails/.rbenv/shims:/home/rails/.rbenv/bin:$PATH
 ENV RACK_ENV production
 
 # Install app
