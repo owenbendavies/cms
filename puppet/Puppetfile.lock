@@ -1,23 +1,18 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
-    jdowning-rbenv (1.4.1)
-      puppetlabs-git (< 1.0.0, >= 0.0.3)
-      puppetlabs-stdlib (< 5.0.0, >= 4.1.0)
+    alup-rbenv (1.2.0)
     puppetlabs-apt (1.7.0)
       puppetlabs-stdlib (>= 2.2.1)
     puppetlabs-concat (1.2.0)
       puppetlabs-stdlib (< 5.0.0, >= 3.2.0)
-    puppetlabs-git (0.3.0)
-      puppetlabs-vcsrepo (>= 0.1.0)
     puppetlabs-postgresql (4.1.0)
       puppetlabs-apt (< 2.0.0, >= 1.1.0)
       puppetlabs-concat (< 2.0.0, >= 1.1.0)
       puppetlabs-stdlib (~> 4.0)
     puppetlabs-stdlib (4.5.1)
-    puppetlabs-vcsrepo (1.2.0)
 
 DEPENDENCIES
-  jdowning-rbenv (>= 0)
+  alup-rbenv (>= 0)
   puppetlabs-postgresql (>= 0)
 

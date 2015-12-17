@@ -3,5 +3,5 @@
 
 forge 'https://forgeapi.puppetlabs.com'
 
-mod 'jdowning-rbenv'
+mod 'alup-rbenv'
 mod 'puppetlabs-postgresql'
