@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe StylesheetUploader do
+  let(:uuid) { SecureRandom.uuid }
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
   let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(site) }
+
+  before { allow(SecureRandom).to receive(:uuid).and_return(uuid) }
 
   describe '#store_dir' do
     it 'delegates to site' do
@@ -20,12 +23,12 @@ RSpec.describe StylesheetUploader do
         )
     end
 
-    it 'has filename which is md5 of content' do
+    it 'has filename which is uuid' do
       expect(uploaded_files).to eq []
 
       subject.store! StringUploader.new('stylesheet.css', css)
 
-      expect(uploaded_files).to eq ["#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
+      expect(uploaded_files).to eq ["#{site.id}/#{uuid}.css"]
     end
   end
 end

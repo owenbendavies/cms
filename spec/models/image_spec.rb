@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
 #  name       :string(64)       not null
-#  filename   :string(36)       not null
+#  filename   :string(40)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -33,6 +33,9 @@ RSpec.describe Image, type: :model do
 
   describe '#file' do
     it 'saves an image' do
+      uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(uuid)
+
       image = File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
         FactoryGirl.create(:image, file: file)
       end
@@ -43,7 +46,7 @@ RSpec.describe Image, type: :model do
         image.filename
       )
 
-      expect(uploaded_files).to include "#{image.site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg"
+      expect(uploaded_files).to include "#{image.site.id}/#{uuid}.jpg"
     end
   end
 

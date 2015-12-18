@@ -6,6 +6,6 @@ class StylesheetUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{Digest::MD5.hexdigest(read)}.#{file.extension}" if original_filename
+    "#{SecureRandom.uuid}.#{file.extension}" if original_filename
   end
 end

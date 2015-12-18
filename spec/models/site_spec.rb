@@ -10,7 +10,7 @@
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
-#  stylesheet_filename  :string(36)
+#  stylesheet_filename  :string(40)
 #  sidebar_html_content :text
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
@@ -62,6 +62,8 @@ RSpec.describe Site, type: :model do
 
   describe '#stylesheet' do
     it 'has a stylesheet' do
+      uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(uuid)
       css = "body {\r\n  padding: 4em;\r\n}"
       file = StringUploader.new('stylesheet.css', css)
       site = FactoryGirl.create(:site, stylesheet: file)
@@ -72,7 +74,7 @@ RSpec.describe Site, type: :model do
         site.stylesheet_filename
       )
 
-      expect(uploaded_files).to eq ["#{site.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
+      expect(uploaded_files).to eq ["#{site.id}/#{uuid}.css"]
     end
   end
 
@@ -148,27 +150,36 @@ RSpec.describe Site, type: :model do
     it 'saves a file' do
       expect(uploaded_files).to eq []
 
+      uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(uuid)
+
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
       subject.stylesheet.file.send(:file).reload
 
-      expect(subject.stylesheet_filename).to eq 'e6df26f541ebad8e8fed26a84e202a7c.css'
+      expect(subject.stylesheet_filename).to eq "#{uuid}.css"
 
-      expect(uploaded_files).to eq ["#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
+      expect(uploaded_files).to eq ["#{subject.id}/#{uuid}.css"]
     end
 
     it 'deletes old version' do
       expect(uploaded_files).to eq []
 
+      uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(uuid)
+
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      expect(uploaded_files).to eq ["#{subject.id}/e6df26f541ebad8e8fed26a84e202a7c.css"]
+      expect(uploaded_files).to eq ["#{subject.id}/#{uuid}.css"]
+
+      new_uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(new_uuid)
 
       subject.css = 'body{background-color: red}'
       subject.save!
 
-      expect(uploaded_files).to eq ["#{subject.id}/b1192d422b8c8999043c2abd1b47b750.css"]
+      expect(uploaded_files).to eq ["#{subject.id}/#{new_uuid}.css"]
     end
   end
 

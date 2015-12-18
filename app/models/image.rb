@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
 #  name       :string(64)       not null
-#  filename   :string(36)       not null
+#  filename   :string(40)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ImageUploader do
+  let(:uuid) { SecureRandom.uuid }
   let(:site) { FactoryGirl.create(:site) }
-  let(:image) { FactoryGirl.build(:image, site: site) }
-  subject { described_class.new(image) }
+  subject { described_class.new(Image.new(site: site)) }
+
+  before { allow(SecureRandom).to receive(:uuid).and_return(uuid) }
 
   describe '#store_dir' do
     it 'delegates to site' do
@@ -20,7 +22,7 @@ RSpec.describe ImageUploader do
         )
     end
 
-    it 'has filename which is md5 of content' do
+    it 'has filename which is uuid' do
       expect(uploaded_files).to eq []
 
       File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
@@ -28,14 +30,14 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
+        "#{site.id}/#{uuid}.jpg",
+        "#{site.id}/#{uuid}_span1.jpg",
+        "#{site.id}/#{uuid}_span2.jpg",
+        "#{site.id}/#{uuid}_span3.jpg",
+        "#{site.id}/#{uuid}_span4.jpg",
+        "#{site.id}/#{uuid}_span8.jpg",
+        "#{site.id}/#{uuid}_span10.jpg",
+        "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
 
@@ -115,14 +117,14 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
+        "#{site.id}/#{uuid}.jpg",
+        "#{site.id}/#{uuid}_span1.jpg",
+        "#{site.id}/#{uuid}_span2.jpg",
+        "#{site.id}/#{uuid}_span3.jpg",
+        "#{site.id}/#{uuid}_span4.jpg",
+        "#{site.id}/#{uuid}_span8.jpg",
+        "#{site.id}/#{uuid}_span10.jpg",
+        "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
 
@@ -134,14 +136,14 @@ RSpec.describe ImageUploader do
       end
 
       expect(uploaded_files).to eq [
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span1.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span2.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span3.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span4.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span8.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span10.jpg",
-        "#{site.id}/a7a78bb78134027c41d2eedc6efd4edb_span12.jpg"
+        "#{site.id}/#{uuid}.jpg",
+        "#{site.id}/#{uuid}_span1.jpg",
+        "#{site.id}/#{uuid}_span2.jpg",
+        "#{site.id}/#{uuid}_span3.jpg",
+        "#{site.id}/#{uuid}_span4.jpg",
+        "#{site.id}/#{uuid}_span8.jpg",
+        "#{site.id}/#{uuid}_span10.jpg",
+        "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
   end
