@@ -7,6 +7,9 @@ RSpec.feature 'Site CSS' do
 
   as_a 'logged in site user' do
     scenario 'adding custom CSS' do
+      uuid = SecureRandom.uuid
+      allow(SecureRandom).to receive(:uuid).and_return(uuid)
+
       expect(find('pre textarea')['autofocus']).to eq 'autofocus'
 
       fill_in 'site_css', with: 'body{background-color: red}'
@@ -17,7 +20,7 @@ RSpec.feature 'Site CSS' do
 
       site.reload
 
-      expect(site.stylesheet_filename).to eq 'b1192d422b8c8999043c2abd1b47b750.css'
+      expect(site.stylesheet_filename).to eq "#{uuid}.css"
 
       expect(page).to have_selector "link[href=\"#{site.stylesheet.url}\"]", visible: false
 
