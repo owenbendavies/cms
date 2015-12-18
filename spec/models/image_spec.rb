@@ -36,9 +36,15 @@ RSpec.describe Image, type: :model do
       uuid = SecureRandom.uuid
       allow(SecureRandom).to receive(:uuid).and_return(uuid)
 
-      image = File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
-        FactoryGirl.create(:image, file: file)
+      image = described_class.new
+      image.site = FactoryGirl.create(:site)
+      image.name = Faker::Name.name.delete("'")
+
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        image.file = file
       end
+
+      image.save!
 
       expect(image.file.url).to eq File.join(
         'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
@@ -60,7 +66,5 @@ RSpec.describe Image, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name).scoped_to(:site_id) }
     it { should validate_length_of(:name).is_at_most(64) }
-
-    it { should validate_uniqueness_of(:filename).scoped_to(:site_id) }
   end
 end
