@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
 #  name       :string(64)       not null
-#  filename   :string(36)       not null
+#  filename   :string(40)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -28,6 +28,8 @@ class Image < ActiveRecord::Base
   has_paper_trail
 
   mount_uploader :file, ImageUploader, mount_on: :filename
+
+  schema_validations except: [:created_at, :updated_at, :filename]
 
   strip_attributes collapse_spaces: true
 end

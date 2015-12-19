@@ -10,7 +10,7 @@
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
-#  stylesheet_filename  :string(36)
+#  stylesheet_filename  :string(40)
 #  sidebar_html_content :text
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
