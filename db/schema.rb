@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029154555) do
+ActiveRecord::Schema.define(version: 20151218153646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20151029154555) do
     t.string   "copyright",            limit: 64
     t.string   "google_analytics",     limit: 32
     t.string   "charity_number",       limit: 32
-    t.string   "stylesheet_filename",  limit: 36
+    t.string   "stylesheet_filename",  limit: 40
     t.text     "sidebar_html_content"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20151029154555) do
   create_table "images", force: :cascade do |t|
     t.integer  "site_id",    null: false, foreign_key: {references: "sites", name: "fk_images_site_id", on_update: :no_action, on_delete: :no_action}, index: {name: "fk__images_site_id", using: :btree}
     t.string   "name",       limit: 64, null: false
-    t.string   "filename",   limit: 36, null: false
+    t.string   "filename",   limit: 40, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

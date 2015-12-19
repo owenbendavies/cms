@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
 #  name       :string(64)       not null
-#  filename   :string(36)       not null
+#  filename   :string(40)       not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -25,6 +25,6 @@ FactoryGirl.define do
     site { Site.first || FactoryGirl.create(:site) }
 
     name { Faker::Name.name.delete("'") }
-    filename { "#{Digest::MD5.hexdigest(rand.to_s)}.jpg" }
+    filename { "#{SecureRandom.uuid}.jpg" }
   end
 end
