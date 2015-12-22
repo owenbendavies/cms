@@ -47,7 +47,7 @@ gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
-gem 'tinymce-rails', '4.2.8'
+gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
 # Server
@@ -65,10 +65,10 @@ end
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
-  gem 'autoprefixer-rails', '6.1.1'
-  gem 'bootstrap-sass', '3.3.5.1'
+  gem 'autoprefixer-rails'
+  gem 'bootstrap-sass'
   gem 'coffee-rails'
-  gem 'font-awesome-sass', '4.4.0'
+  gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
@@ -81,7 +81,7 @@ end
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring'
+  gem 'spring', '1.5.0'
 
   # Code quality tools
   gem 'brakeman', require: false
@@ -97,7 +97,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'scss-lint', require: false
-  gem 'simplecov', '0.10.0'
+  gem 'simplecov'
   gem 'simplecov-console', require: false
 end
 
