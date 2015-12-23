@@ -5,7 +5,7 @@ class cms::dependencies($user) {
 
   rbenv::install { $user: }
 
-  rbenv::compile { '2.2.3':
+  rbenv::compile { '2.2.4':
     user => $user,
   }
 }
