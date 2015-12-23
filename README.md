@@ -14,8 +14,7 @@ testing new ideas.
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
 1. `./bin/bootstrap` to setup the project (can be run multiple times)
-1. `./bin/test` to run all tests
-1. `./bin/test spec/some_file.rb` to run one test or folder
+1. `./bin/test` to run all tests or `./bin/test spec/some_file.rb` to run one test or folder
 1. `./bin/server` to spin up a development web server
 1. Visit `http://cms.dev:3000/` to access the site
 1. Visit `http://cms.dev:3000/emails` to check development emails (e.g. forgot password emails)
@@ -34,7 +33,6 @@ This project can be deployed to [Heroku](https://www.heroku.com/) (also undocume
 1. Create an [AWS CloudFront](https://aws.amazon.com/cloudfront/) distribution
    for caching assets to make the site load faster (optional)
 1. Sign up to the following services (or use paid for Heroku Addons):
-  * [Pingdom](https://www.pingdom.com/) for uptime monitoring (optional)
   * [Sentry](https://www.getsentry.com/) for error tracking (optional)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
