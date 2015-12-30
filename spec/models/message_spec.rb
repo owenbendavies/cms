@@ -11,6 +11,8 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_agent :text
+#  ip_address :string(45)
 #
 # Indexes
 #
@@ -71,6 +73,8 @@ RSpec.describe Message, type: :model do
         ).for(:message).with_message('Please do not send spam messages.')
       end
     end
+
+    it { should validate_length_of(:ip_address).is_at_most(45) }
 
     it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
   end

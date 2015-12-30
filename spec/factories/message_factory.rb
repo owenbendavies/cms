@@ -11,6 +11,8 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_agent :text
+#  ip_address :string(45)
 #
 # Indexes
 #
