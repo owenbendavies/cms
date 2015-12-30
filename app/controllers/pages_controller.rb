@@ -55,21 +55,15 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(
-      :name,
-      :contact_form,
-      :private,
-      :html_content
-    )
+    params.require(:page).permit(:name, :contact_form, :private, :html_content)
   end
 
   def message_params
-    params.require(:message).permit(
-      :name,
-      :email,
-      :phone,
-      :message,
-      :do_not_fill_in
-    ).merge(site: @site, subject: @page.name)
+    params.require(:message).permit(:name, :email, :phone, :message, :do_not_fill_in).merge(
+      site: @site,
+      subject: @page.name,
+      user_agent: request.user_agent,
+      ip_address: request.remote_ip
+    )
   end
 end

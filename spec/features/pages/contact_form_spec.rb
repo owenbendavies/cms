@@ -4,6 +4,7 @@ RSpec.feature 'Page with contact form' do
   let!(:contact_page) { FactoryGirl.create(:page, contact_form: true) }
 
   before do
+    page.driver.header('User-Agent', new_company_name)
     visit_200_page "/#{contact_page.url}"
   end
 
@@ -26,6 +27,8 @@ RSpec.feature 'Page with contact form' do
     expect(message.email).to eq new_email
     expect(message.phone).to eq new_phone
     expect(message.message).to eq new_message
+    expect(message.user_agent).to eq new_company_name
+    expect(message.ip_address).to eq '127.0.0.1'
 
     expect(ActionMailer::Base.deliveries.size).to eq 0
     Delayed::Worker.new.work_off
