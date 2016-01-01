@@ -10,6 +10,7 @@ class CreateDelayedJobs < ActiveRecord::Migration
       table.datetime :failed_at
       table.string :locked_by
       table.string :queue, null: false
+      table.timestamps null: false
     end
 
     add_index :delayed_jobs, [:priority, :run_at], name: 'delayed_jobs_priority'

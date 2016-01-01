@@ -1,4 +1,4 @@
-class AddSiteSocialNetworks < ActiveRecord::Migration
+class AddSocialNetworksToSites < ActiveRecord::Migration
   def change
     change_table :sites do |table|
       table.string :facebook, limit: 64

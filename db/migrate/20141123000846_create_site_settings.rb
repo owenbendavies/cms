@@ -1,4 +1,4 @@
-class AddSiteSettings < ActiveRecord::Migration
+class CreateSiteSettings < ActiveRecord::Migration
   def change
     create_table :site_settings, id: false do |table|
       table.references :user, null: false
