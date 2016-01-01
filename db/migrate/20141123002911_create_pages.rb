@@ -1,4 +1,4 @@
-class AddPages < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |table|
       table.belongs_to :site, null: false
