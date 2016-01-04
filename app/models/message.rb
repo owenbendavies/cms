@@ -37,25 +37,6 @@ class Message < ActiveRecord::Base
   validates :message, length: { maximum: 2048 }
   validates :do_not_fill_in, length: { maximum: 0 }
 
-  validate do
-    text = message.to_s.downcase
-
-    [
-      ' seo ',
-      'facebook followers',
-      'facebook likes',
-      'facebook page likes',
-      'facebook visitors',
-      'first page of google',
-      'ray ban',
-      'search engine',
-      'superbsocial',
-      'twitter followers'
-    ].each do |spam_text|
-      errors.add(:message, :spam) if text.include? spam_text
-    end
-  end
-
   def phone=(value)
     super(Phoner::Phone.parse(value, country_code: '44'))
   end

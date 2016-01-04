@@ -55,25 +55,6 @@ RSpec.describe Message, type: :model do
     it { should validate_presence_of(:message) }
     it { should validate_length_of(:message).is_at_most(2048) }
 
-    [
-      'Cheap ray bans',
-      'Do you want to promote your profile and get more twitter followers.',
-      'Get thousands of facebook followers to your site',
-      'How about 100k facebook visitors!',
-      'Millions of Facebook page likes',
-      'We can get you Facebook likes',
-      'We can help your website to get on first page of Google',
-      'We can increase rankings of your website in search engines.',
-      'We strongly believe that we have excellent SEO services',
-      'superbsocial'
-    ].each do |message|
-      it do
-        should_not allow_value(
-          message
-        ).for(:message).with_message('Please do not send spam messages.')
-      end
-    end
-
     it { should validate_length_of(:ip_address).is_at_most(45) }
 
     it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
