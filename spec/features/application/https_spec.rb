@@ -9,7 +9,7 @@ RSpec.feature 'HTTPS' do
     visit_200_page '/home'
 
     expect(cookie).to include 'secure'
-    expect(hsts_header).to eq 'max-age=2592000'
+    expect(hsts_header).to be_nil
   end
 
   scenario 'visiting a page without' do
