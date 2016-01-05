@@ -73,6 +73,7 @@ group :assets, :development do
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
+  gem 'sprockets-rails', '< 3.0.0'
   gem 'therubyracer'
   gem 'turbolinks'
   gem 'uglifier'
@@ -97,7 +98,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'scss-lint', require: false
-  gem 'simplecov'
+  gem 'simplecov', '< 0.11.0'
   gem 'simplecov-console', require: false
 end
 
