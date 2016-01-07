@@ -32,7 +32,5 @@ This project can be deployed to [Heroku](https://www.heroku.com/) (also undocume
    distribution for caching the S3 bucket (optional)
 1. Create an [AWS CloudFront](https://aws.amazon.com/cloudfront/) distribution
    for caching assets to make the site load faster (optional)
-1. Sign up to the following services (or use paid for Heroku Addons):
-  * [Sentry](https://www.getsentry.com/) for error tracking (optional)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
