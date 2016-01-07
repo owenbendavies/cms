@@ -59,10 +59,6 @@ gem 'puma'
 gem 'lograge'
 gem 'newrelic_rpm'
 
-group :production do
-  gem 'sentry-raven'
-end
-
 group :assets, :development do
   gem 'autogrow-textarea-rails'
   gem 'autoprefixer-rails'
