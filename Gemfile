@@ -58,6 +58,7 @@ gem 'puma'
 # Monitoring
 gem 'lograge'
 gem 'newrelic_rpm'
+gem 'raygun4ruby'
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
