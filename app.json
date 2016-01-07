@@ -44,10 +44,6 @@
       "description": "The name for the app on New Relic (defaults to HEROKU_APP_NAME)",
       "required": false
     },
-    "SENTRY_DSN": {
-      "description": "The DSN for sentry (or used payed Heroku Addon)",
-      "required": false
-    },
     "SECRET_KEY_BASE": {
       "description": "A randomly generated secret to verify sessions",
       "generator": "secret"
