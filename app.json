@@ -8,6 +8,7 @@
     "loaderio",
     "logentries",
     "newrelic",
+    "rollbar",
     "sendgrid"
   ],
   "env": {
@@ -42,10 +43,6 @@
     },
     "NEW_RELIC_APP_NAME": {
       "description": "The name for the app on New Relic (defaults to HEROKU_APP_NAME)",
-      "required": false
-    },
-    "SENTRY_DSN": {
-      "description": "The DSN for sentry (or used payed Heroku Addon)",
       "required": false
     },
     "SECRET_KEY_BASE": {
