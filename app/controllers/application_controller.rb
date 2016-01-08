@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   before_action :set_secure_session
   before_action :find_site
   before_action :render_site_not_found
-  before_action :check_format_is_not_html
   before_action :authenticate_user!, except: [:page_not_found]
   before_action :configure_devise_parameters, if: :devise_controller?
 
@@ -49,10 +48,6 @@ class ApplicationController < ActionController::Base
 
   def render_site_not_found
     page_not_found unless @site
-  end
-
-  def check_format_is_not_html
-    page_not_found if params[:format] == 'html'
   end
 
   def append_info_to_payload(payload)
