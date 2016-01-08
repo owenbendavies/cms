@@ -23,5 +23,20 @@ RSpec.feature 'User logout' do
       expect(page).to have_content 'Signed out successfully.'
       expect(current_path).to eq '/home'
     end
+
+    scenario 'trying to replay the session' do
+      session = response_headers['Set-Cookie']
+
+      within('#cms-topbar') do
+        click_link 'Logout'
+      end
+
+      expect(page).to have_content 'Signed out successfully.'
+
+      page.driver.header('Cookie', session)
+
+      visit_page '/user/edit'
+      expect(current_path).to eq '/login'
+    end
   end
 end
