@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   root 'systems#home'
 
-  if Rails.application.secrets.loaderio_token
-    get Rails.application.secrets.loaderio_token, to: 'systems#loader_io'
-  end
-
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'systems#sitemap'
 
