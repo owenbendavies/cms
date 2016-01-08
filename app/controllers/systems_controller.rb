@@ -1,5 +1,5 @@
 class SystemsController < ApplicationController
-  PUBLIC_PAGES = [:health, :home, :loader_io, :robots, :sitemap]
+  PUBLIC_PAGES = [:health, :home, :robots, :sitemap]
 
   skip_before_action :render_site_not_found, only: [:health]
   skip_before_action :authenticate_user!, only: PUBLIC_PAGES
@@ -30,12 +30,6 @@ class SystemsController < ApplicationController
 
   def home
     redirect_to page_path('home')
-  end
-
-  def loader_io
-    respond_to do |format|
-      format.text { render text: Rails.application.secrets.loaderio_token }
-    end
   end
 
   def robots
