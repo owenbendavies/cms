@@ -5,7 +5,6 @@
   "addons": [
     "heroku-postgresql",
     "heroku-redis",
-    "loaderio",
     "logentries",
     "newrelic",
     "rollbar",
