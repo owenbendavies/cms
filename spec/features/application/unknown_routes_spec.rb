@@ -6,10 +6,6 @@ RSpec.feature 'Unknown routes' do
     expect(current_path).to eq '/home'
   end
 
-  scenario 'for urls with .html in' do
-    visit_404_page '/home.html'
-  end
-
   scenario 'for unkown format' do
     visit_404_page '/home.txt'
   end
