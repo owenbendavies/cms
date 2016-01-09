@@ -31,9 +31,10 @@ Vagrant.configure(2) do |config|
   SHELL
 
   config.vm.provision 'puppet' do |puppet|
-    puppet.manifest_file = 'development.pp'
     puppet.manifests_path = 'puppet/manifests'
-    puppet.module_path = ['puppet/modules', 'puppet/modules_custom']
+    puppet.module_path = 'puppet/modules'
     puppet.synced_folder_type = 'nfs'
   end
+
+  config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/bootstrap'
 end

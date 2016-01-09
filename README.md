@@ -13,7 +13,6 @@ testing new ideas.
 1. Download [Vagrant](https://www.vagrantup.com/)
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
-1. `./bin/bootstrap` to setup the project (can be run multiple times)
 1. `./bin/test` to run all tests or `./bin/test spec/some_file.rb` to run one test or folder
 1. `./bin/server` to spin up a development web server
 1. Visit `http://cms.dev:3000/` to access the site
@@ -21,11 +20,9 @@ testing new ideas.
 
 ## Deployment
 
-This project can be deployed to [Heroku](https://www.heroku.com/) (also undocumented
-[AWS](https://aws.amazon.com/) and [Docker](https://www.docker.com/)).
-
-1. Create an [AWS S3](https://aws.amazon.com/s3/) bucket for storing uploaded
-   files
+1. Sign up to [Heroku](https://www.heroku.com/)
+1. Create an [AWS S3](https://aws.amazon.com/s3/) bucket for storing uploaded files. It is
+   recommended to enable versioning and lifecycle to delete old versions.
 1. Create an [IAM](https://aws.amazon.com/iam/) user with a
    [policy](doc/iam_policy.json) to access the S3 bucket.
 1. Create an [AWS CloudFront](https://aws.amazon.com/cloudfront/)
