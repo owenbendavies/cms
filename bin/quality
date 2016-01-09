@@ -16,7 +16,6 @@ set -v
 # Linters
 ./bin/haml-lint --exclude-linter LineLength app/views/
 ./bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename
-./bin/puppet-lint puppet/modules_custom --no-documentation-check --fail-on-warnings --with-filename
 ./bin/rake coffeelint
 ./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
