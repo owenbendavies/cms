@@ -20,14 +20,10 @@ testing new ideas.
 
 ## Deployment
 
-1. Sign up to [Heroku](https://www.heroku.com/)
-1. Create an [AWS S3](https://aws.amazon.com/s3/) bucket for storing uploaded files. It is
-   recommended to enable versioning and lifecycle to delete old versions.
-1. Create an [IAM](https://aws.amazon.com/iam/) user with a
-   [policy](doc/iam_policy.json) to access the S3 bucket.
-1. Create an [AWS CloudFront](https://aws.amazon.com/cloudfront/)
-   distribution for caching the S3 bucket (optional)
-1. Create an [AWS CloudFront](https://aws.amazon.com/cloudfront/) distribution
-   for caching assets to make the site load faster (optional)
+Sign up to [Amazon Web Services](https://aws.amazon.com/)
+
+1. Create an S3 bucket for storing uploaded files
+1. Create an IAM user with a [policy](doc/iam_policy.json) to access the S3 bucket.
+1. Follow optional steps in [doc/aws.md](doc/aws.md)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
