@@ -1,15 +1,13 @@
-SecureHeaders::Configuration.configure do |config|
+SecureHeaders::Configuration.default do |config|
   config.hsts = false
-
-  config.x_xss_protection = { value: 1, mode: 'block' }
 
   config.csp = {
     enforce: true,
-    default_src: "'none'",
-    connect_src: "'self'",
-    font_src: "'self' https:",
-    img_src: "'self' https: data:",
-    script_src: "'self' https: 'unsafe-inline'",
-    style_src: "'self' https: 'unsafe-inline'"
+    default_src: %w('none'),
+    connect_src: %w('self'),
+    font_src: %w('self' https:),
+    img_src: %w('self' https: data:),
+    script_src: %w('self' https: 'unsafe-inline'),
+    style_src: %w('self' https: 'unsafe-inline')
   }
 end
