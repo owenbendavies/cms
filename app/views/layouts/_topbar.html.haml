@@ -56,7 +56,7 @@
 
       %li.dropdown
         %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
-          = current_user.email
+          = current_user.name
           %b.caret
         %ul.dropdown-menu
           = link_to edit_user_registration_path do
