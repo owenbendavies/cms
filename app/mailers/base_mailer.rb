@@ -7,6 +7,7 @@ class BaseMailer < ActionMailer::Base
 
   def from_site(site)
     default_url_options[:host] = site.host
+    default_url_options[:protocol] = 'https'
 
     from = Mail::Address.new(site.email)
     from.display_name = site.name

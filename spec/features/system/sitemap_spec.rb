@@ -47,22 +47,13 @@ RSpec.feature 'Sitemap' do
     scenario 'visiting the page' do
       visit_200_page go_to_url
 
-      home_path = 'http://localhost/home'
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq home_path
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
 
       updated_at = test_page.updated_at.iso8601
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq updated_at
 
-      expect(page).to have_no_xpath('//loc', text: "http://localhost/#{private_page.url}")
-    end
-
-    scenario 'visiting with https' do
-      page.driver.header('X-Forwarded-Proto', 'https')
-      visit_200_page go_to_url
-
-      home_path = 'https://localhost/home'
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq home_path
+      expect(page).to have_no_xpath('//loc', text: "https://localhost/#{private_page.url}")
     end
   end
 end
