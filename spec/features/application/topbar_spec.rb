@@ -9,6 +9,12 @@ RSpec.feature 'Topbar' do
   end
 
   as_a 'logged in site user' do
+    scenario 'while logged in' do
+      within '#cms-topbar' do
+        expect(page).to have_content site_user.name
+      end
+    end
+
     scenario 'navigating to home' do
       within '#cms-topbar' do
         click_link site.name
