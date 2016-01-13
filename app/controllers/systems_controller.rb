@@ -47,7 +47,7 @@ class SystemsController < ApplicationController
   private
 
   def xml_sitemap
-    XmlSitemap::Map.new(@site.host, home: false, secure: request.ssl?) do |map|
+    XmlSitemap::Map.new(@site.host, home: false, secure: true) do |map|
       @pages.each do |page|
         next if page.private?
         map.add page_path(page.to_param), updated: page.updated_at

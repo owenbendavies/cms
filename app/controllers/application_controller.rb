@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from CanCan::AccessDenied, with: :page_not_found
 
-  before_action :set_secure_session
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
@@ -37,10 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def set_secure_session
-    session.options[:secure] = true if request.ssl?
-  end
 
   def find_site
     @site = Site.find_by_host(request.host)
