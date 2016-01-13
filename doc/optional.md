@@ -1,6 +1,10 @@
-# Amazon Web Services
+# Optional Steps
 
-Optional services to add to Amazon Web Services account:
+## Heroku Add-ons
+
+* loader.io
+
+## Amazon Web Servcies
 
 * Billing invoice emails
 * CloudFront distribution for caching S3 buckets
@@ -10,3 +14,7 @@ Optional services to add to Amazon Web Services account:
 * SES for sending emails
 * Security credentials multi factor authentication
 * Trusted Advisor email notifications
+
+## Services
+
+* CloudFlare
