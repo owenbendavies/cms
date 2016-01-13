@@ -20,10 +20,8 @@ testing new ideas.
 
 ## Deployment
 
-Sign up to [Amazon Web Services](https://aws.amazon.com/)
-
-1. Create an S3 bucket for storing uploaded files
-1. Create an IAM user with a [policy](doc/iam_policy.json) to access the S3 bucket.
-1. Follow optional steps in [doc/aws.md](doc/aws.md)
+1. Create an [Amazon Web Services S3](https://aws.amazon.com/s3/) bucket for storing uploaded files
+1. Create an [Amazon Web Services IAM](https://aws.amazon.com/documentation/iam/) user with a [policy](doc/iam_policy.json) to access the S3 bucket.
+1. [Optional steps](doc/optional.md)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
