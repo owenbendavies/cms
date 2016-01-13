@@ -80,7 +80,7 @@ end
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring', '1.5.0'
+  gem 'spring'
 
   # Code quality tools
   gem 'brakeman', require: false
