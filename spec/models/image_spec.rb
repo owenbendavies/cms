@@ -33,9 +33,6 @@ RSpec.describe Image, type: :model do
 
   describe '#file' do
     it 'saves an image' do
-      uuid = SecureRandom.uuid
-      allow(SecureRandom).to receive(:uuid).and_return(uuid)
-
       image = described_class.new
       image.site = FactoryGirl.create(:site)
       image.name = Faker::Name.name.delete("'")
@@ -46,13 +43,15 @@ RSpec.describe Image, type: :model do
 
       image.save!
 
+      expect(image.filename).to match(/\A[0-9a-f-]+\.jpg/)
+
       expect(image.file.url).to eq File.join(
         'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
         image.site.id.to_s,
         image.filename
       )
 
-      expect(uploaded_files).to include "#{image.site.id}/#{uuid}.jpg"
+      expect(uploaded_files).to include "#{image.site.id}/#{image.filename}"
     end
   end
 
