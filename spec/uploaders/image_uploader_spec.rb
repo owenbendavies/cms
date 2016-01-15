@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ImageUploader do
-  let(:uuid) { SecureRandom.uuid }
   let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(Image.new(site: site)) }
-
-  before { allow(SecureRandom).to receive(:uuid).and_return(uuid) }
 
   describe '#store_dir' do
     it 'delegates to site' do
@@ -28,6 +25,8 @@ RSpec.describe ImageUploader do
       File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
         subject.store! file
       end
+
+      uuid = File.basename(uploaded_files.first, '.jpg')
 
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
@@ -116,6 +115,8 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
+      uuid = File.basename(uploaded_files.first, '.jpg')
+
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
         "#{site.id}/#{uuid}_span1.jpg",
@@ -134,6 +135,8 @@ RSpec.describe ImageUploader do
       File.open(Rails.root.join('spec/assets/test_image.jpeg')) do |file|
         subject.store! file
       end
+
+      uuid = File.basename(uploaded_files.first, '.jpg')
 
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
