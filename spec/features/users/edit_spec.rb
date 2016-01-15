@@ -8,8 +8,11 @@ RSpec.feature 'Editing a user' do
   as_a 'logged in user' do
     scenario 'changing the password' do
       expect(find_field('Current password')['autofocus']).to eq 'autofocus'
+      expect(find_field('Current password')['autocomplete']).to eq 'off'
       expect(find_field('Password').value).to be_nil
+      expect(find_field('Password')['autocomplete']).to eq 'off'
       expect(find_field('Confirm password').value).to be_nil
+      expect(find_field('Confirm password')['autocomplete']).to eq 'off'
 
       fill_in 'Current password', with: user.password
       fill_in 'Password', with: new_password

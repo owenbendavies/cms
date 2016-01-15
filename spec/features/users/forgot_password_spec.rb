@@ -28,6 +28,9 @@ RSpec.feature 'User forgot password' do
 
     expect(page).to have_content 'Change password'
 
+    expect(find_field('New password')['autocomplete']).to eq 'off'
+    expect(find_field('Confirm password')['autocomplete']).to eq 'off'
+
     fill_in 'New password', with: new_password
     fill_in 'Confirm password', with: new_password
     click_button 'Change password'
