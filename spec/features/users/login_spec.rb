@@ -11,6 +11,7 @@ RSpec.feature 'User login' do
   scenario 'with valid username and password' do
     expect(find_field('Email')['autofocus']).to eq 'autofocus'
     fill_in 'Email', with: user.email
+    expect(find_field('Password')['autocomplete']).to eq 'off'
     fill_in 'Password', with: user.password
 
     click_button 'Login'
