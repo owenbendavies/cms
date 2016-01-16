@@ -35,6 +35,9 @@ RSpec.feature 'Inviting a user' do
 
       expect(page).to have_content 'Set Password'
 
+      expect(find_field('New password')['autocomplete']).to eq 'off'
+      expect(find_field('Confirm password')['autocomplete']).to eq 'off'
+
       fill_in 'New password', with: new_password
       fill_in 'Confirm password', with: new_password
 
