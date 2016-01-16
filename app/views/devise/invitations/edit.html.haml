@@ -3,8 +3,8 @@
 = simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |form|
   = form.hidden_field :invitation_token
 
-  = form.input :password, label: 'New password', required: true, autofocus: true
-  = form.input :password_confirmation, label: 'Confirm password', required: true
+  = form.input :password, label: 'New password', required: true, autofocus: true, input_html: { autocomplete: 'off' }
+  = form.input :password_confirmation, label: 'Confirm password', required: true, input_html: { autocomplete: 'off' }
 
   .form-group
     .col-control-offset

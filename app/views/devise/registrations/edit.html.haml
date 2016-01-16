@@ -2,10 +2,10 @@
 - content_for :page_icon, t('.icon')
 
 = simple_form_for resource, as: resource, url: user_registration_path do |form|
-  = form.input :current_password, autofocus: true, hint: t('.current_password_hint'), required: true
+  = form.input :current_password, autofocus: true, hint: t('.current_password_hint'), required: true, input_html: { autocomplete: 'off' }
 
-  = form.input :password, hint: t('.password_hint')
-  = form.input :password_confirmation
+  = form.input :password, hint: t('.password_hint'), input_html: { autocomplete: 'off' }
+  = form.input :password_confirmation, input_html: { autocomplete: 'off' }
 
   = form.input :name
 
