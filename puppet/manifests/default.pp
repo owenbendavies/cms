@@ -24,7 +24,3 @@ postgresql::server::pg_hba_rule { 'trust localhost TCP access to all users':
   auth_method => 'trust',
   order       => '002',
 }
-
-file { '/etc/profile.d/vagrant.sh':
-  content => 'if [ -n "$BASH_VERSION" ]; then cd /vagrant; fi'
-}
