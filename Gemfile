@@ -69,7 +69,6 @@ group :assets, :development do
   gem 'google-analytics-turbolinks'
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
-  gem 'sass', '3.4.20'
   gem 'sass-rails'
   gem 'sprockets-rails', '< 3.0.0'
   gem 'therubyracer'
@@ -78,6 +77,7 @@ group :assets, :development do
 end
 
 group :development, :test do
+  gem 'parser', '2.2.3.0'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
