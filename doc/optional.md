@@ -15,11 +15,13 @@
 * CloudFront
   * Distribution for caching S3 bucket
   * Distribution for caching application assets
+  * Enable logging
 * RDS
   * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=config/amazon-rds-ca-cert.pem`
 * CloudWatch
   * Billing > Total Estimated Charge
 * CloudTrail
+* Config
 * Trusted Advisor
   * Preferences > Email notifications
 * SES
