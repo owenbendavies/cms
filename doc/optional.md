@@ -29,6 +29,7 @@
 ## Heroku Add-ons
 
 * loader.io
+* logentries
 
 ## Services
 
