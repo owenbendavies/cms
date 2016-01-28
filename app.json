@@ -5,7 +5,6 @@
   "addons": [
     "heroku-postgresql",
     "heroku-redis",
-    "logentries",
     "newrelic",
     "rollbar",
     "sendgrid"
@@ -38,10 +37,6 @@
     },
     "HOST": {
       "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
-      "required": false
-    },
-    "NEW_RELIC_APP_NAME": {
-      "description": "The name for the app on New Relic (defaults to HEROKU_APP_NAME)",
       "required": false
     },
     "SECRET_KEY_BASE": {
