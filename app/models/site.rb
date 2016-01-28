@@ -28,7 +28,7 @@
 #
 
 class Site < ActiveRecord::Base
-  LAYOUTS = %w(one_column right_sidebar small_right_sidebar)
+  LAYOUTS = %w(one_column right_sidebar small_right_sidebar).freeze
 
   has_many :images, -> { order :name }, dependent: :destroy
   has_many :messages, -> { order 'created_at desc' }, dependent: :destroy

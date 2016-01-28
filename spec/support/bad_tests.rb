@@ -13,11 +13,8 @@ RSpec.configure do |config|
     limit = 350
     memory = GetProcessMem.new.mb.to_i
 
-    if memory > limit
-      fail "FAIL: Tests too too much memory: total=#{memory} MB limit=#{limit} MB"
-    else
-      puts "INFO: Total test memory is #{memory} MB"
-    end
+    puts "INFO: Total test memory is #{memory} MB"
+    fail "FAIL: Memory above limit of #{limit} MB" if memory > limit
   end
 
   if ENV['COVERAGE']

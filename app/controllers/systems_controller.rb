@@ -1,5 +1,5 @@
 class SystemsController < ApplicationController
-  PUBLIC_PAGES = [:health, :home, :robots, :sitemap]
+  PUBLIC_PAGES = [:health, :home, :robots, :sitemap].freeze
 
   skip_before_action :render_site_not_found, only: [:health]
   skip_before_action :authenticate_user!, only: PUBLIC_PAGES

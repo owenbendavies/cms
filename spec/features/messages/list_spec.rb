@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'List messages' do
   let!(:messages) do
-    12.times.map do |i|
+    (0..11).map do |i|
       FactoryGirl.create(
         :message,
         created_at: Time.zone.now - 1.month - 3.days - i.minutes,
