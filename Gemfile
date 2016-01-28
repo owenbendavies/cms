@@ -88,7 +88,7 @@ group :development, :test do
   gem 'bundler-audit', require: false
   gem 'cane', require: false
   gem 'coffeelint'
-  gem 'haml-lint', require: false
+  gem 'haml_lint', require: false
   gem 'i18n-tasks', require: false
   gem 'immigrant'
   gem 'puppet-lint', require: false

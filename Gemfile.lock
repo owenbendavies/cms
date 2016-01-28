@@ -59,7 +59,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    brakeman (3.1.4)
+    brakeman (3.1.5)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
       haml (>= 3.0, < 5.0)
@@ -82,7 +82,7 @@ GEM
     cancancan (1.13.1)
     cane (2.6.2)
       parallel
-    capybara (2.6.0)
+    capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -278,16 +278,16 @@ GEM
     gravtastic (3.2.6)
     haml (4.0.7)
       tilt
-    haml-lint (0.13.0)
-      haml (~> 4.0)
-      rubocop (>= 0.25.0)
-      sysexits (~> 1.1)
     haml-rails (0.9.0)
       actionpack (>= 4.0.1)
       activesupport (>= 4.0.1)
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
+    haml_lint (0.15.2)
+      haml (~> 4.0)
+      rubocop (>= 0.25.0)
+      sysexits (~> 1.1)
     hashdiff (0.2.3)
     heroku-deflater (0.6.2)
       rack (>= 1.4.5)
@@ -379,7 +379,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (2.15.3)
+    puma (2.16.0)
     puppet-lint (1.1.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -448,7 +448,7 @@ GEM
       railties (>= 4.2.0, < 5.1)
     rollbar (2.7.1)
       multi_json
-    rspec-core (3.4.1)
+    rspec-core (3.4.2)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -456,7 +456,7 @@ GEM
     rspec-mocks (3.4.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
-    rspec-rails (3.4.0)
+    rspec-rails (3.4.1)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -517,7 +517,7 @@ GEM
     secure_headers (2.5.1)
       user_agent_parser
     sexp_processor (4.6.1)
-    shoulda-matchers (3.1.0)
+    shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
@@ -628,8 +628,8 @@ DEPENDENCIES
   get_process_mem
   google-analytics-turbolinks
   gravtastic
-  haml-lint
   haml-rails
+  haml_lint
   heroku-deflater
   i18n-tasks
   immigrant
