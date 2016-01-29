@@ -25,12 +25,18 @@
 * Trusted Advisor
   * Preferences > Email notifications
 * SES
+  * Use DKIM
 
 ## Heroku Add-ons
 
 * loader.io
-* logentries
+  * Schedule regular check
+* newrelic
+  * Add Synthetics
+* papertrail
+  * Archive to S3
 
 ## Services
 
 * CloudFlare
+  * Enable Full SSL
