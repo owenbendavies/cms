@@ -62,11 +62,11 @@ RSpec.describe Site, type: :model do
 
   describe '#stylesheet' do
     it 'has a stylesheet' do
-      uuid = SecureRandom.uuid
-      allow(SecureRandom).to receive(:uuid).and_return(uuid)
       css = "body {\r\n  padding: 4em;\r\n}"
       file = StringUploader.new('stylesheet.css', css)
       site = FactoryGirl.create(:site, stylesheet: file)
+
+      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
 
       expect(site.stylesheet.url).to eq File.join(
         'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
@@ -74,7 +74,7 @@ RSpec.describe Site, type: :model do
         site.stylesheet_filename
       )
 
-      expect(uploaded_files).to eq ["#{site.id}/#{uuid}.css"]
+      expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
     end
   end
 
@@ -150,36 +150,27 @@ RSpec.describe Site, type: :model do
     it 'saves a file' do
       expect(uploaded_files).to eq []
 
-      uuid = SecureRandom.uuid
-      allow(SecureRandom).to receive(:uuid).and_return(uuid)
-
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
       subject.stylesheet.file.send(:file).reload
 
-      expect(subject.stylesheet_filename).to eq "#{uuid}.css"
-
-      expect(uploaded_files).to eq ["#{subject.id}/#{uuid}.css"]
+      expect(uploaded_files).to eq ["#{subject.id}/#{subject.stylesheet_filename}"]
     end
 
     it 'deletes old version' do
       expect(uploaded_files).to eq []
 
-      uuid = SecureRandom.uuid
-      allow(SecureRandom).to receive(:uuid).and_return(uuid)
-
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      expect(uploaded_files).to eq ["#{subject.id}/#{uuid}.css"]
+      expect(uploaded_files).to eq ["#{subject.id}/#{subject.stylesheet_filename}"]
 
-      new_uuid = SecureRandom.uuid
-      allow(SecureRandom).to receive(:uuid).and_return(new_uuid)
+      site = described_class.find_by_id(subject.id)
+      site.css = 'body{background-color: red}'
+      site.save!
 
-      subject.css = 'body{background-color: red}'
-      subject.save!
-
-      expect(uploaded_files).to eq ["#{subject.id}/#{new_uuid}.css"]
+      expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
+      expect(site.stylesheet_filename).to_not eq subject.stylesheet_filename
     end
   end
 

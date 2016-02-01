@@ -7,13 +7,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
   end
 
+  def uuid
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
   def filename
-    if model.filename
-      model.filename
-    else
-      extension = file.extension.gsub('jpeg', 'jpg').downcase
-      model.filename = "#{SecureRandom.uuid}.#{extension}"
-    end
+    return unless original_filename
+    return model.read_attribute(mounted_as) if model.read_attribute(mounted_as)
+    extension = file.extension.gsub('jpeg', 'jpg').downcase
+    "#{uuid}.#{extension}"
   end
 
   def full_filename(for_file)
@@ -26,27 +29,27 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [940, 705]
   end
 
-  version :span10, from_version: :span12 do
+  version :span10 do
     process resize_to_limit: [780, 585]
   end
 
-  version :span8, from_version: :span10 do
+  version :span8 do
     process resize_to_limit: [620, 465]
   end
 
-  version :span4, from_version: :span8 do
+  version :span4 do
     process resize_to_limit: [300, 450]
   end
 
-  version :span3, from_version: :span4 do
+  version :span3 do
     process resize_to_limit: [220, 330]
   end
 
-  version :span2, from_version: :span3 do
+  version :span2 do
     process resize_to_fill: [140, 140]
   end
 
-  version :span1, from_version: :span2 do
+  version :span1 do
     process resize_to_fill: [60, 60]
   end
 end
