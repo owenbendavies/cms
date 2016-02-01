@@ -35,8 +35,12 @@
   * Add Synthetics
 * papertrail
   * Archive to S3
+  * Heroku alerts
+  * Profile > Time Zone
+* tinfoilsecurity
 
 ## Services
 
 * CloudFlare
   * Enable Full SSL
+* DMARC Analyzer
