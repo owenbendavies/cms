@@ -2,12 +2,8 @@
 
 ## Amazon Web Servcies
 
-* My Account
-  * Alternate Contacts
 * Billing & Cost Management
   * Preferences > Receive PDF Invoice By Email
-* Security credentials
-  * Enable multi factor authentication
 * S3
   * Enable versioning
   * Add lifecycle to delete old versions
@@ -23,7 +19,9 @@
 * CloudTrail
 * Config
 * Trusted Advisor
-  * Preferences > Email notifications
+  * Fix any issues
+* Identity and Access Management
+  * Fix any bad security status
 * SES
   * Use DKIM
 
