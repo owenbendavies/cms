@@ -2,6 +2,8 @@
 
 ## Amazon Web Servcies
 
+* My Account
+  * Alternate Contacts
 * Billing & Cost Management
   * Preferences > Receive PDF Invoice By Email
 * S3
@@ -20,6 +22,7 @@
 * Config
 * Trusted Advisor
   * Fix any issues
+  * Preferences > Email notifications
 * Identity and Access Management
   * Fix any bad security status
 * SES
