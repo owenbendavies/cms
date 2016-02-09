@@ -34,10 +34,12 @@
   * Schedule regular check
 * newrelic
   * Add Synthetics
+  * Add Alerts
 * papertrail
   * Archive to S3
   * Heroku alerts
   * Profile > Time Zone
+* rollbar
 * tinfoilsecurity
 
 ## Services
@@ -45,3 +47,5 @@
 * CloudFlare
   * Enable Full SSL
 * DMARC Analyzer
+  * Add DNS record for each domain with email
+  * Send reports
