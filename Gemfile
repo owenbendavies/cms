@@ -15,7 +15,6 @@ gem 'rack-timeout'
 
 # Authentication and authorization
 gem 'cancancan'
-gem 'devise'
 gem 'devise_invitable'
 gem 'devise_zxcvbn'
 
@@ -47,7 +46,7 @@ gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
 gem 'simple_form'
-gem 'tinymce-rails', '4.3.2'
+gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
 # Server
@@ -62,7 +61,6 @@ gem 'rollbar'
 
 group :assets, :development do
   gem 'autogrow-textarea-rails'
-  gem 'autoprefixer-rails'
   gem 'bootstrap-sass'
   gem 'coffee-rails'
   gem 'font-awesome-sass'
@@ -70,7 +68,6 @@ group :assets, :development do
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
-  gem 'sprockets-rails', '< 3.0.0'
   gem 'therubyracer'
   gem 'turbolinks'
   gem 'uglifier'
