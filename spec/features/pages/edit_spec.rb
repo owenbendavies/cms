@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Editing a page' do
   let(:go_to_url) { '/test_page/edit' }
 
-  include_examples 'restricted page with topbar link', 'Edit'
-
-  as_a 'logged in site user' do
+  authenticated_page do
     scenario 'editing the content', js: true do
+      visit_200_page
+
       expect(body).to include test_page.html_content
 
       page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
@@ -18,6 +18,8 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'making the page private' do
+      visit_200_page
+
       expect(find_field('Private')).not_to be_checked
       check 'Private'
       click_button 'Update Page'
@@ -30,6 +32,8 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'adding a contact form' do
+      visit_200_page
+
       expect(find_field('page[contact_form]')).not_to be_checked
       check 'Contact Form'
       click_button 'Update Page'
@@ -42,6 +46,8 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'renaming a page' do
+      visit_200_page
+
       url_field = find('#page_url')
       expect(url_field['disabled']).to eq 'disabled'
       expect(url_field.value).to eq test_page.url
@@ -57,9 +63,7 @@ RSpec.feature 'Editing a page' do
 
     scenario 'saving without edits' do
       test_page.reload
-
-      visit_200_page '/test_page/edit'
-
+      visit_200_page
       fill_in 'page[name]', with: test_page.name
 
       expect do
@@ -70,12 +74,14 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'with invalid data' do
+      visit_200_page
       fill_in 'page[name]', with: 'Site'
       click_button 'Update Page'
       expect(page).to have_content 'is reserved'
     end
 
     scenario 'clicking Cancel' do
+      visit_200_page
       click_link 'Cancel'
       expect(current_path).to eq '/test_page'
     end

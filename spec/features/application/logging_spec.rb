@@ -16,7 +16,7 @@ RSpec.feature 'Logging' do
   let(:result) { Rails.application.config.lograge.custom_options.call(events.first) }
 
   scenario 'visiting a page' do
-    visit_200_page go_to_url
+    visit_200_page
 
     expect(events.size).to eq 1
 
@@ -29,15 +29,17 @@ RSpec.feature 'Logging' do
     )
   end
 
-  as_a 'logged in user' do
+  as_a 'authorized user' do
     scenario 'visiting a page' do
+      visit_200_page
+
       expect(events.size).to eq 1
 
       expect(result).to eq(
         host: 'localhost',
         request_id: new_id,
         fwd: '127.0.0.1',
-        user_id: user.id,
+        user_id: site_user.id,
         user_agent: "\"#{new_company_name}\""
       )
     end

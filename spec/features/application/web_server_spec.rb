@@ -13,7 +13,7 @@ RSpec.feature 'Web server' do
     page.driver.header('X_FORWARDED_FOR', 'x')
     page.driver.header('CLIENT_IP', 'y')
 
-    visit_page '/home'
+    unchecked_visit '/home'
 
     expect(page.status_code).to eq 403
   end

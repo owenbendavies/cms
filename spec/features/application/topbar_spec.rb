@@ -4,18 +4,22 @@ RSpec.feature 'Topbar' do
   let(:go_to_url) { '/test_page' }
 
   scenario 'cannot use topbar' do
-    visit_200_page go_to_url
+    visit_200_page
     expect(page).to have_no_selector '#cms-topbar'
   end
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'while logged in' do
+      visit_200_page
+
       within '#cms-topbar' do
         expect(page).to have_content site_user.name
       end
     end
 
     scenario 'navigating to home' do
+      visit_200_page
+
       within '#cms-topbar' do
         click_link site.name
       end
@@ -24,6 +28,8 @@ RSpec.feature 'Topbar' do
     end
 
     scenario 'navigating to page via dropdowns', js: true do
+      visit_200_page
+
       within '#cms-topbar' do
         expect(page).to_not have_link 'Toggle navigation'
         expect(page).to_not have_link 'Messages'
@@ -37,6 +43,8 @@ RSpec.feature 'Topbar' do
     end
 
     scenario 'navigating to page via dropdowns on mobile', js: true do
+      visit_200_page
+
       windows.first.resize_to 640, 1136
 
       within '#cms-topbar' do

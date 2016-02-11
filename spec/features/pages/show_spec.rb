@@ -40,10 +40,10 @@ RSpec.feature 'Showing a page' do
 
     let(:go_to_url) { '/private' }
 
-    include_examples 'restricted page'
-
-    as_a 'logged in site user' do
+    authenticated_page do
       scenario 'visiting a private page' do
+        visit_200_page
+
         expect(page).to have_selector 'h1 .fa-lock'
       end
     end

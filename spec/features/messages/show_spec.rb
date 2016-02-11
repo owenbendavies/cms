@@ -11,10 +11,10 @@ RSpec.feature 'Showing a message' do
 
   let(:go_to_url) { "/site/messages/#{message.id}" }
 
-  include_examples 'restricted page'
-
-  as_a 'logged in site user' do
+  authenticated_page do
     scenario 'visiting the page', js: true do
+      visit_200_page
+
       within '#cms-article-header' do
         expect(page).to have_content 'Message'
         expect(page).to have_selector '.fa-envelope'

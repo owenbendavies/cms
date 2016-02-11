@@ -39,7 +39,7 @@ RSpec.feature 'User forgot password' do
 
     user.reload
 
-    visit_page '/logout'
+    unchecked_visit '/logout'
     visit_200_page '/login'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: new_password

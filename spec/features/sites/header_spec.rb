@@ -8,8 +8,10 @@ RSpec.feature 'Site header' do
     test_page.insert_at(1)
   end
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'removing separate header' do
+      visit_200_page
+
       within '#cms-main-menu' do
         expect(page).to_not have_link site.name, href: '/home'
       end
@@ -35,7 +37,7 @@ RSpec.feature 'Site header' do
 
       expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('Separate header')).to_not be_checked
     end

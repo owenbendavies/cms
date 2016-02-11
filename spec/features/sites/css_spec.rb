@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Site CSS' do
   let(:go_to_url) { '/site/css' }
 
-  include_examples 'restricted page with topbar link', 'CSS'
-
-  as_a 'logged in site user' do
+  authenticated_page topbar_link: 'CSS', page_icon: 'file' do
     scenario 'adding custom CSS' do
+      visit_200_page
+
       expect(find('pre textarea')['autofocus']).to eq 'autofocus'
 
       fill_in 'site_css', with: 'body{background-color: red}'
@@ -21,16 +21,15 @@ RSpec.feature 'Site CSS' do
 
       expect(page).to have_selector "link[href=\"#{site.stylesheet.url}\"]", visible: false
 
-      visit_200_page '/site/css'
+      visit_200_page
 
       expect(find('pre textarea').text).to eq 'body{background-color: red}'
     end
 
     scenario 'clicking Cancel' do
+      visit_200_page
       click_link 'Cancel'
       expect(current_path).to eq '/home'
     end
-
-    include_examples 'page with topbar link', 'CSS', 'file'
   end
 end

@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Social network links' do
   let(:go_to_url) { '/site/edit' }
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'adding Facebook link' do
+      visit_200_page
+
       expect(page).to_not have_selector 'footer #cms-facebook'
 
       fill_in 'Facebook', with: " #{new_facebook} "
@@ -16,12 +18,14 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.facebook.com/#{new_facebook}\"]"
       expect(page).to have_selector "footer #cms-facebook #{link}"
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('Facebook').value).to eq new_facebook
     end
 
     scenario 'adding Twitter link' do
+      visit_200_page
+
       expect(page).to_not have_selector 'footer #cms-twitter'
 
       fill_in 'Twitter', with: " #{new_twitter} "
@@ -33,12 +37,14 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://twitter.com/#{new_twitter}\"]"
       expect(page).to have_selector "footer #cms-twitter #{link}"
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('Twitter').value).to eq new_twitter
     end
 
     scenario 'adding YouTube link' do
+      visit_200_page
+
       expect(page).to_not have_selector 'footer #cms-youtube'
 
       fill_in 'YouTube', with: " #{new_youtube} "
@@ -50,12 +56,14 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.youtube.com/#{new_youtube}\"]"
       expect(page).to have_selector "footer #cms-youtube #{link}"
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('YouTube').value).to eq new_youtube
     end
 
     scenario 'adding LinkedIn link' do
+      visit_200_page
+
       expect(page).to_not have_selector 'footer #cms-linkedin'
 
       fill_in 'LinkedIn', with: "  #{new_linkedin} "
@@ -67,12 +75,14 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://www.linkedin.com/in/#{new_linkedin}\"]"
       expect(page).to have_selector "footer #cms-linkedin #{link}"
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('LinkedIn').value).to eq new_linkedin
     end
 
     scenario 'adding GitHub link' do
+      visit_200_page
+
       expect(page).to_not have_selector 'footer #cms-github'
 
       fill_in 'GitHub', with: "  #{new_github} "
@@ -84,7 +94,7 @@ RSpec.feature 'Social network links' do
       link = "a[href=\"https://github.com/#{new_github}\"]"
       expect(page).to have_selector "footer #cms-github #{link}"
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('GitHub').value).to eq new_github
     end
