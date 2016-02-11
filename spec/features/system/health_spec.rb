@@ -13,7 +13,7 @@ RSpec.feature 'Health check' do
     end
 
     scenario 'with non txt extension' do
-      visit_page '/system/health.xml'
+      unchecked_visit '/system/health.xml'
       expect(page).to have_content 'Site Not Found'
       expect(page.status_code).to eq 404
     end

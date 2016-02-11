@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Editing a user' do
   let(:go_to_url) { '/user/edit' }
 
-  include_examples 'authenticated page'
-
-  as_a 'logged in user' do
+  authenticated_page login_user: :user, topbar_link: 'User Settings', page_icon: 'user' do
     scenario 'changing the password' do
+      visit_200_page
+
       expect(find_field('Current password')['autofocus']).to eq 'autofocus'
       expect(find_field('Current password')['autocomplete']).to eq 'off'
       expect(find_field('Password').value).to be_nil
@@ -26,7 +26,7 @@ RSpec.feature 'Editing a user' do
       Delayed::Worker.new.work_off
       expect(ActionMailer::Base.deliveries.size).to eq 0
 
-      visit_page '/logout'
+      unchecked_visit '/logout'
       visit_200_page '/login'
       fill_in 'Email', with: user.email
       fill_in 'Password', with: new_password
@@ -36,6 +36,8 @@ RSpec.feature 'Editing a user' do
     end
 
     scenario 'changing the name' do
+      visit_200_page
+
       expect(find_field('Name').value).to eq user.name
 
       fill_in 'Current password', with: user.password
@@ -45,12 +47,14 @@ RSpec.feature 'Editing a user' do
       expect(current_path).to eq '/home'
       expect(page).to have_content 'Your account has been updated'
 
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find_field('Name').value).to eq new_name
     end
 
     scenario 'changing the email' do
+      visit_200_page
+
       within 'a[href="https://www.gravatar.com"]' do
         gravatar_image = find('img')
 
@@ -86,7 +90,7 @@ RSpec.feature 'Editing a user' do
       link = email.html_part.body.match(/href="([^"]+)/)[1]
       expect(link).to include site.host
 
-      visit_page link
+      unchecked_visit link
 
       expect(page).to have_content 'Your email address has been successfully confirmed.'
 
@@ -101,27 +105,26 @@ RSpec.feature 'Editing a user' do
     end
 
     scenario 'without current password' do
+      visit_200_page
       fill_in 'Email', with: new_email
-
       click_button 'Update User'
 
       expect(page).to have_content "can't be blank"
     end
 
     scenario 'with invalid data' do
+      visit_200_page
       fill_in 'Current password', with: user.password
       fill_in 'Email', with: ''
-
       click_button 'Update User'
 
       expect(page).to have_content "can't be blank"
     end
 
     scenario 'clicking Cancel' do
+      visit_200_page
       click_link 'Cancel'
       expect(current_path).to eq '/home'
     end
-
-    include_examples 'page with topbar link', 'User Settings', 'user'
   end
 end

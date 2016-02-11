@@ -7,7 +7,7 @@ RSpec.feature 'Sitemap' do
     let(:go_to_url) { '/sitemap' }
 
     scenario 'visiting the page' do
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(page).to have_link 'Home', href: '/home'
       expect(page).to have_no_link private_page.name
@@ -23,21 +23,23 @@ RSpec.feature 'Sitemap' do
       expect(current_path).to eq go_to_url
     end
 
-    as_a 'logged in user' do
+    as_a 'authorized user', :user do
       scenario 'with a private page' do
+        visit_200_page
+
         expect(page).to have_no_link private_page.name
       end
     end
 
-    as_a 'logged in site user' do
+    as_a 'authorized user', :site_user do
       scenario 'with a private page' do
+        visit_200_page
+
         find('ul#cms-sitemap li:nth-child(2)').tap do |item|
           expect(item).to have_link private_page.name, href: '/private'
           expect(item).to have_selector '.fa-lock'
         end
       end
-
-      include_examples 'page with topbar link', 'Sitemap', 'sitemap'
     end
   end
 
@@ -45,7 +47,7 @@ RSpec.feature 'Sitemap' do
     let(:go_to_url) { '/sitemap.xml' }
 
     scenario 'visiting the page' do
-      visit_200_page go_to_url
+      visit_200_page
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
 
