@@ -8,8 +8,10 @@ RSpec.feature 'Site layouts' do
     site.save!
   end
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'changing to one_column' do
+      visit_200_page
+
       expect(find_field('Layout').value).to eq site.layout
 
       select 'One column', from: 'Layout'
@@ -20,6 +22,8 @@ RSpec.feature 'Site layouts' do
     end
 
     scenario 'changing to right_sidebar' do
+      visit_200_page
+
       expect(find_field('Layout').value).to eq site.layout
 
       select 'Right sidebar', from: 'Layout'
@@ -31,6 +35,8 @@ RSpec.feature 'Site layouts' do
     end
 
     scenario 'changing to small_right_sidebar' do
+      visit_200_page
+
       expect(find_field('Layout').value).to eq site.layout
 
       select 'Small right sidebar', from: 'Layout'

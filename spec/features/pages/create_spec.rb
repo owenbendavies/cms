@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   let(:go_to_url) { '/new' }
 
-  include_examples 'restricted page with topbar link', 'New Page'
-
-  as_a 'logged in site user' do
+  authenticated_page topbar_link: 'New Page', page_icon: 'plus' do
     scenario 'with valid data', js: true do
+      visit_200_page
+
       expect(page).to have_no_content 'last updated'
 
       fill_in 'Name', with: 'New Page'
@@ -24,6 +24,7 @@ RSpec.feature 'Creating a page' do
     end
 
     scenario 'with invalid data' do
+      visit_200_page
       fill_in 'Name', with: 'Site'
       click_button 'Create Page'
 
@@ -32,10 +33,9 @@ RSpec.feature 'Creating a page' do
     end
 
     scenario 'clicking Cancel' do
+      visit_200_page
       click_link 'Cancel'
       expect(current_path).to eq '/home'
     end
-
-    include_examples 'page with topbar link', 'New Page', 'plus'
   end
 end

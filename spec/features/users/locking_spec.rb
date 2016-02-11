@@ -28,7 +28,7 @@ RSpec.feature 'User locking' do
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
 
-    visit_page link
+    unchecked_visit link
 
     expect(page).to have_content 'Your account has been unlocked'
 

@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Inviting a user' do
   let(:go_to_url) { '/user/invitation/new' }
 
-  include_examples 'restricted page'
-
-  as_a 'logged in site user' do
+  authenticated_page do
     scenario 'for a new user' do
+      visit_200_page
       fill_in 'Name', with: new_name
       fill_in 'Email', with: new_email
 
@@ -57,6 +56,7 @@ RSpec.feature 'Inviting a user' do
     end
 
     scenario 'for an existing user' do
+      visit_200_page
       fill_in 'Name', with: new_name
       fill_in 'Email', with: user.email
       click_button 'Add User'
@@ -89,6 +89,7 @@ RSpec.feature 'Inviting a user' do
 
       user.site_settings.create!(site: site)
 
+      visit_200_page
       fill_in 'Name', with: new_name
       fill_in 'Email', with: user.email
       click_button 'Add User'
@@ -101,6 +102,7 @@ RSpec.feature 'Inviting a user' do
     end
 
     scenario 'with invalid data' do
+      visit_200_page
       fill_in 'Name', with: 'a'
       fill_in 'Email', with: new_email
       click_button 'Add User'

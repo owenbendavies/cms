@@ -6,10 +6,10 @@ RSpec.feature 'Site users' do
   let(:confirmed_selector) { '.confirmed.fa-check' }
   let(:locked_selector) { '.locked.fa-check' }
 
-  include_examples 'restricted page with topbar link', 'Users'
-
-  as_a 'logged in site user' do
+  authenticated_page topbar_link: 'Users', page_icon: 'group' do
     scenario 'visiting the page' do
+      visit_200_page
+
       within 'thead' do
         expect(page).to have_content 'Name'
         expect(page).to have_content 'Email'
@@ -28,7 +28,7 @@ RSpec.feature 'Site users' do
     scenario 'with unconfirmed user' do
       unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
       unconfirmed_user.site_settings.create!(site: site)
-      visit_200_page go_to_url
+      visit_200_page
       index = site.users.find_index(unconfirmed_user)
 
       within "tbody tr:nth-child(#{index + 1})" do
@@ -41,7 +41,7 @@ RSpec.feature 'Site users' do
     scenario 'with locked user' do
       locked_user = FactoryGirl.create(:locked_user)
       locked_user.site_settings.create!(site: site)
-      visit_200_page go_to_url
+      visit_200_page
       index = site.users.find_index(locked_user)
 
       within "tbody tr:nth-child(#{index + 1})" do
@@ -50,7 +50,5 @@ RSpec.feature 'Site users' do
         expect(page).to have_selector locked_selector
       end
     end
-
-    include_examples 'page with topbar link', 'Users', 'group'
   end
 end
