@@ -24,8 +24,10 @@ RSpec.feature 'Site main menu' do
       expect(current_path).to eq '/test_page'
     end
 
-    as_a 'logged in site user' do
+    as_a 'authorized user' do
       scenario 'adding main menu to footer' do
+        visit_200_page
+
         expect(page).to_not have_selector '#cms-footer-main-menu'
         expect(find_field('Main menu')).to_not be_checked
 
@@ -41,7 +43,7 @@ RSpec.feature 'Site main menu' do
           expect(page).to have_link 'Test Page', href: '/test_page'
         end
 
-        visit_200_page go_to_url
+        visit_200_page
 
         expect(find_field('Main menu')).to be_checked
       end

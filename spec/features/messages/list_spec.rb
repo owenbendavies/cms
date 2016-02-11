@@ -17,10 +17,10 @@ RSpec.feature 'List messages' do
 
   let(:go_to_url) { '/site/messages' }
 
-  include_examples 'restricted page with topbar link', 'Messages'
-
-  as_a 'logged in site user' do
+  authenticated_page topbar_link: 'Messages', page_icon: 'envelope' do
     scenario 'visiting the page', js: true do
+      visit_200_page
+
       expect(page).to have_content 'Created at'
       expect(page).to have_content 'Name'
       expect(page).to have_content 'Email'
@@ -33,6 +33,8 @@ RSpec.feature 'List messages' do
     end
 
     scenario 'pagination' do
+      visit_200_page
+
       expect(page).to have_content messages.first.name
       expect(page).to_not have_content messages.last.name
 
@@ -41,7 +43,5 @@ RSpec.feature 'List messages' do
       expect(page).to_not have_content messages.first.name
       expect(page).to have_content messages.last.name
     end
-
-    include_examples 'page with topbar link', 'Messages', 'envelope'
   end
 end

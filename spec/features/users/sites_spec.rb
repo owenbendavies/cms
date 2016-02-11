@@ -5,19 +5,18 @@ RSpec.feature 'User sites' do
   let(:link_title) { 'localhost' }
   let(:link_href) { 'https://localhost' }
 
-  include_examples 'authenticated page'
-
-  as_a 'logged in user' do
+  authenticated_page login_user: :user, topbar_link: 'Sites', page_icon: 'list' do
     scenario 'visiting the page' do
+      visit_200_page
       expect(page).to_not have_link link_title, href: link_href
     end
   end
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'visiting the page' do
+      visit_200_page
+
       expect(page).to have_link link_title, href: link_href
     end
-
-    include_examples 'page with topbar link', 'Sites', 'list'
   end
 end

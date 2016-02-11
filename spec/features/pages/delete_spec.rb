@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.feature 'Deleting a page' do
   let(:go_to_url) { '/test_page' }
 
-  as_a 'logged in site user' do
+  as_a 'authorized user' do
     scenario 'clicking yes', js: true do
+      visit_200_page
+
       click_link 'Page'
 
       expect(page).to have_selector '#cms-topbar .fa-trash'
@@ -21,6 +23,7 @@ RSpec.feature 'Deleting a page' do
     end
 
     scenario 'clicking no', js: true do
+      visit_200_page
       click_link 'Page'
 
       expect do
