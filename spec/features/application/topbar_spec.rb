@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Topbar' do
-  let(:go_to_url) { '/test_page' }
+  let(:go_to_url) { '/home' }
 
   scenario 'cannot use topbar' do
     visit_200_page

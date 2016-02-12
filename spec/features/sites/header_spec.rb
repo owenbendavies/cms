@@ -5,7 +5,6 @@ RSpec.feature 'Site header' do
 
   before do
     home_page.insert_at(1)
-    test_page.insert_at(1)
   end
 
   as_a 'authorized user' do
