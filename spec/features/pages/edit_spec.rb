@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 RSpec.feature 'Editing a page' do
-  let(:go_to_url) { '/test_page/edit' }
+  let(:go_to_url) { '/home/edit' }
 
   authenticated_page do
     scenario 'editing the content', js: true do
       visit_200_page
 
-      expect(body).to include test_page.html_content
+      expect(body).to include home_page.html_content
 
       page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
 
       click_button 'Update Page'
 
-      expect(current_path).to eq '/test_page'
+      expect(current_path).to eq '/home'
       expect(page).to have_content new_message
     end
 
@@ -24,7 +24,7 @@ RSpec.feature 'Editing a page' do
       check 'Private'
       click_button 'Update Page'
 
-      expect(current_path).to eq '/test_page'
+      expect(current_path).to eq '/home'
       expect(page).to have_selector 'h1 .fa-lock'
 
       click_link 'Edit'
@@ -38,7 +38,7 @@ RSpec.feature 'Editing a page' do
       check 'Contact Form'
       click_button 'Update Page'
 
-      expect(current_path).to eq '/test_page'
+      expect(current_path).to eq '/home'
       expect(page).to have_content 'Name'
 
       click_link 'Edit'
@@ -50,9 +50,9 @@ RSpec.feature 'Editing a page' do
 
       url_field = find('#page_url')
       expect(url_field['disabled']).to eq 'disabled'
-      expect(url_field.value).to eq test_page.url
+      expect(url_field.value).to eq home_page.url
 
-      expect(find_field('Name').value).to eq test_page.name
+      expect(find_field('Name').value).to eq home_page.name
       expect(find_field('Name')['autofocus']).to eq 'autofocus'
 
       fill_in 'Name', with: 'New Page Name'
@@ -62,15 +62,15 @@ RSpec.feature 'Editing a page' do
     end
 
     scenario 'saving without edits' do
-      test_page.reload
+      home_page.reload
       visit_200_page
-      fill_in 'page[name]', with: test_page.name
+      fill_in 'page[name]', with: home_page.name
 
       expect do
         click_button 'Update Page'
-        expect(current_path).to eq '/test_page'
-        test_page.reload
-      end.to_not change(test_page, :updated_at)
+        expect(current_path).to eq '/home'
+        home_page.reload
+      end.to_not change(home_page, :updated_at)
     end
 
     scenario 'with invalid data' do
@@ -83,11 +83,11 @@ RSpec.feature 'Editing a page' do
     scenario 'clicking Cancel' do
       visit_200_page
       click_link 'Cancel'
-      expect(current_path).to eq '/test_page'
+      expect(current_path).to eq '/home'
     end
 
     scenario 'navigating to the page via topbar' do
-      visit_200_page '/test_page'
+      visit_200_page '/home'
 
       expect(page).to have_selector '#cms-topbar .fa-pencil'
 
@@ -100,7 +100,7 @@ RSpec.feature 'Editing a page' do
       expect(page).to have_selector 'h1 .fa-pencil'
       within '#cms-article-header' do
         expect(page).to have_selector '.fa-pencil'
-        expect(page).to have_content 'Editing Test Page'
+        expect(page).to have_content 'Editing Home'
       end
     end
   end

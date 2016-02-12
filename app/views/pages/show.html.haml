@@ -1,4 +1,4 @@
-- content_for :title, @page.name unless @page.url == 'home'
+- content_for :title, @page.name
 - content_for :page_icon, t('.private.icon') if @page.private
 
 = @page.html_content.html_safe if @page.html_content

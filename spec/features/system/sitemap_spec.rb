@@ -51,7 +51,7 @@ RSpec.feature 'Sitemap' do
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
 
-      updated_at = test_page.updated_at.iso8601
+      updated_at = home_page.updated_at.iso8601
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq updated_at
 
