@@ -18,8 +18,7 @@ class SystemsController < ApplicationController
 
   def error_timeout
     authorize! :error_timeout, :system
-    sleep params[:seconds].to_f
-    render text: 'ok'
+    sleep Integer(Rails.application.secrets.timeout) + 1
   end
 
   def health
