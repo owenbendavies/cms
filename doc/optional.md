@@ -49,3 +49,16 @@
 * DMARC Analyzer
   * Add DNS record for each domain with email
   * Send reports
+* Google Analytics
+  * Property
+    * Settings
+      * Enable Demographics
+      * Use enhanced link attribution
+    * Tracking Info
+      * Enable User-ID
+  * View
+    * Settings
+      * Exclude all hits from known bots and spiders
+    * Filters
+      * Include traffic only to the hostname (to stop referral spam)
+
