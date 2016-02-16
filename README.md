@@ -21,7 +21,7 @@ testing new ideas.
 ## Deployment
 
 1. Create an [AWS S3](https://aws.amazon.com/s3/) bucket for storing uploaded files
-1. Create an [AWS IAM](https://aws.amazon.com/documentation/iam/) user with a [policy](doc/iam_policy.json) to access the S3 bucket.
+1. Create an [AWS IAM](https://aws.amazon.com/documentation/iam/) user with a [policy](doc/iam_s3_policy.json) to access the S3 bucket.
 1. [Optional steps](doc/optional.md)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)

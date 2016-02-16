@@ -14,6 +14,10 @@
     "HEROKU_APP_NAME": {
       "description": "Set to same as the Heroku App name (set automatically for review apps)"
     },
+    "AWS_REGION": {
+      "description": "The AWS region used for S3 and optionally SES",
+      "value": "us-east-1"
+    },
     "IAM_KEY": {
       "description": "The Amazon IAM user key"
     },
@@ -25,9 +29,6 @@
     },
     "S3_HOST": {
       "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket"
-    },
-    "S3_REGION": {
-      "description": "The region of the Amazon S3 bucket"
     },
     "ASSET_HOST": {
       "description": "Sets the rails asset host",
