@@ -6,7 +6,7 @@ when 'aws'
     address: "email-smtp.#{ENV['AWS_REGION']}.amazonaws.com",
     port: 587,
     user_name: ENV['IAM_KEY'],
-    password: Base64.encode64(2.chr + signature)
+    password: Base64.encode64(2.chr + signature).strip
   }
 when 'sendgrid'
   ActionMailer::Base.smtp_settings = {
