@@ -1,6 +1,6 @@
 case Rails.application.secrets.email_provider
 when 'aws'
-  signature = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['IAM_KEY'], 'SendRawEmail')
+  signature = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['IAM_SECRET'], 'SendRawEmail')
 
   ActionMailer::Base.smtp_settings = {
     address: "email-smtp.#{ENV['AWS_REGION']}.amazonaws.com",
