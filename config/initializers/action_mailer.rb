@@ -1,7 +1,23 @@
-ActionMailer::Base.smtp_settings = {
-  address: Rails.application.secrets.smtp_address,
-  port: Rails.application.secrets.smtp_port,
-  authentication: :plain,
-  user_name: Rails.application.secrets.smtp_username,
-  password: Rails.application.secrets.smtp_password
-}
+case Rails.application.secrets.email_provider
+when 'aws'
+  signature = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), ENV['IAM_KEY'], 'SendRawEmail')
+
+  ActionMailer::Base.smtp_settings = {
+    address: "email-smtp.#{ENV['AWS_REGION']}.amazonaws.com",
+    port: 587,
+    user_name: ENV['IAM_KEY'],
+    password: Base64.encode64(2.chr + signature)
+  }
+when 'sendgrid'
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
+  }
+when 'letter_opener'
+  ActionMailer::Base.smtp_settings = {
+    address: 'localhost',
+    port: 1025
+  }
+end
