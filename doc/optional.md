@@ -26,6 +26,7 @@
 * Identity and Access Management
   * Fix any bad security status
 * SES
+  * Add [policy](iam_ses_policy.json) to IAM user
   * Use DKIM
 
 ## Heroku Add-ons
