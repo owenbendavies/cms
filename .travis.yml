@@ -13,6 +13,8 @@ services:
   - redis-server
 
 before_install:
+  - sudo apt-get update --assume-yes
+  - sudo apt-get install --assume-yes libqt5webkit5-dev qt5-default xvfb
   - gem install bundler
 
 before_script: ./bin/bootstrap
