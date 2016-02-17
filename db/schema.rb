@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230111143) do
+ActiveRecord::Schema.define(version: 20160217121043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20151230111143) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.boolean  "admin",                  default: false, null: false
+    t.boolean  "sysadmin",               default: false, null: false
     t.string   "name",                   limit: 64,                 null: false
     t.string   "invitation_token",       index: {name: "index_users_on_invitation_token", unique: true, using: :btree}
     t.datetime "invitation_created_at"

@@ -8,8 +8,8 @@
     "sendgrid"
   ],
   "env": {
-    "ADMIN_EMAIL": {
-      "description": "The email address for the first admin account"
+    "SYSADMIN_EMAIL": {
+      "description": "The email address for the first system administrator account"
     },
     "HEROKU_APP_NAME": {
       "description": "Set to same as the Heroku App name (set automatically for review apps)"
