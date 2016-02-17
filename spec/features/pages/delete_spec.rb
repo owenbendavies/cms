@@ -28,7 +28,7 @@ RSpec.feature 'Deleting a page' do
 
       expect do
         dismiss_confirm { click_link 'Delete' }
-      end.to_not change(Page, :count)
+      end.not_to change(Page, :count)
 
       expect(current_path).to eq '/test_page'
       expect(Page.find_by_site_id_and_url!(site, 'test_page')).to eq test_page

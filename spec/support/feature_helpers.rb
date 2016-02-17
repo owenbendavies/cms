@@ -5,11 +5,11 @@ RSpec.shared_context 'feature helpers', type: :feature do
   alias_method :unchecked_visit, :visit
 
   def login_as(*_)
-    fail 'Please use methods from spec/support/feature_helpers.rb'
+    raise 'Please use methods from spec/support/feature_helpers.rb'
   end
 
   def visit(*_)
-    fail 'Please use methods from spec/support/feature_helpers.rb'
+    raise 'Please use methods from spec/support/feature_helpers.rb'
   end
 
   def visit_non_redirect(url = go_to_url)
@@ -50,7 +50,7 @@ RSpec.shared_context 'unauthorized user' do |topbar_link|
       visit_200_page '/home'
 
       within('#cms-topbar') do
-        expect(page).to_not have_link topbar_link
+        expect(page).not_to have_link topbar_link
       end
     end
   end

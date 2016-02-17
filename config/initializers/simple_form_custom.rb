@@ -8,7 +8,7 @@ SimpleForm.setup do |config|
     tag: 'div',
     class: 'form-group',
     error_class: 'has-error'
-  )do |b|
+  ) do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength

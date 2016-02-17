@@ -16,7 +16,7 @@ gem 'rack-timeout'
 # Authentication and authorization
 gem 'cancancan'
 gem 'devise_invitable'
-gem 'devise_zxcvbn'
+gem 'devise_zxcvbn', '< 2.0.0'
 
 # Required for carrierwave to be loaded before
 gem 'fog'
@@ -74,7 +74,6 @@ group :assets, :development do
 end
 
 group :development, :test do
-  gem 'parser', '2.2.3.0'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'

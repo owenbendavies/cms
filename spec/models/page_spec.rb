@@ -29,7 +29,7 @@ require 'rails_helper'
 RSpec.describe Page, type: :model do
   describe 'acts_as_list' do
     it 'is not added to list by default' do
-      expect(FactoryGirl.create(:page)).to_not be_in_list
+      expect(FactoryGirl.create(:page)).not_to be_in_list
     end
 
     it 'is scoped by site' do
@@ -65,7 +65,7 @@ RSpec.describe Page, type: :model do
   end
 
   it { is_expected.to strip_attribute(:name).collapse_spaces }
-  it { is_expected.to_not strip_attribute(:html_content).collapse_spaces }
+  it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
 
   describe 'validate' do
     subject { FactoryGirl.build(:page) }
