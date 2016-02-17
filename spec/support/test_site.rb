@@ -9,7 +9,7 @@ RSpec.shared_context 'test site', type: :feature do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  let(:admin) { FactoryGirl.create(:admin) }
+  let(:sysadmin) { FactoryGirl.create(:sysadmin) }
 
   let!(:home_page) { FactoryGirl.create(:page, name: 'Home') }
 

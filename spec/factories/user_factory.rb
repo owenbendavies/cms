@@ -22,7 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
-#  admin                  :boolean          default(FALSE), not null
+#  sysadmin               :boolean          default(FALSE), not null
 #  name                   :string(64)       not null
 #  invitation_token       :string
 #  invitation_created_at  :datetime
@@ -52,8 +52,8 @@ FactoryGirl.define do
     password_confirmation { password }
     confirmed_at { Time.zone.now }
 
-    factory :admin do
-      admin true
+    factory :sysadmin do
+      sysadmin true
     end
 
     factory :unconfirmed_user do
