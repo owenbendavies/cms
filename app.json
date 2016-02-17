@@ -28,7 +28,8 @@
       "description": "The name of the Amazon S3 bucket"
     },
     "S3_HOST": {
-      "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket"
+      "description": "The host of the Amazon S3 bucket or CloudFront endpoint for the bucket (defaults to https://S3_HOST.s3-AWS_REGION.amazonaws.com)",
+      "required": false
     },
     "ASSET_HOST": {
       "description": "Sets the rails asset host",
