@@ -83,7 +83,7 @@ RSpec.describe Site, type: :model do
   it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
   it { is_expected.to strip_attribute(:copyright).collapse_spaces }
   it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
-  it { is_expected.to_not strip_attribute(:sidebar_html_content).collapse_spaces }
+  it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
 
   describe 'validate' do
     subject { FactoryGirl.build(:site) }
@@ -170,7 +170,7 @@ RSpec.describe Site, type: :model do
       site.save!
 
       expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
-      expect(site.stylesheet_filename).to_not eq subject.stylesheet_filename
+      expect(site.stylesheet_filename).not_to eq subject.stylesheet_filename
     end
   end
 

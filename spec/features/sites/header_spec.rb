@@ -12,14 +12,14 @@ RSpec.feature 'Site header' do
       visit_200_page
 
       within '#cms-main-menu' do
-        expect(page).to_not have_link site.name, href: '/home'
+        expect(page).not_to have_link site.name, href: '/home'
       end
 
       within '#cms-header #cms-site-name' do
         expect(page).to have_link site.name, href: '/home'
       end
 
-      expect(page).to_not have_selector '#cms-main-menu .nav.navbar-right'
+      expect(page).not_to have_selector '#cms-main-menu .nav.navbar-right'
 
       expect(find_field('Separate header')).to be_checked
 
@@ -32,13 +32,13 @@ RSpec.feature 'Site header' do
         expect(page).to have_link site.name, href: '/home'
       end
 
-      expect(page).to_not have_selector '#cms-header'
+      expect(page).not_to have_selector '#cms-header'
 
       expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
 
       visit_200_page
 
-      expect(find_field('Separate header')).to_not be_checked
+      expect(find_field('Separate header')).not_to be_checked
     end
   end
 end

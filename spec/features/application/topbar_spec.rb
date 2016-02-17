@@ -31,8 +31,8 @@ RSpec.feature 'Topbar' do
       visit_200_page
 
       within '#cms-topbar' do
-        expect(page).to_not have_link 'Toggle navigation'
-        expect(page).to_not have_link 'Messages'
+        expect(page).not_to have_link 'Toggle navigation'
+        expect(page).not_to have_link 'Messages'
 
         click_link 'Site'
         click_link 'Messages'
@@ -48,12 +48,12 @@ RSpec.feature 'Topbar' do
       windows.first.resize_to 640, 1136
 
       within '#cms-topbar' do
-        expect(page).to_not have_link 'Site'
-        expect(page).to_not have_link 'Messages'
+        expect(page).not_to have_link 'Site'
+        expect(page).not_to have_link 'Messages'
 
         click_button 'Toggle navigation'
 
-        expect(page).to_not have_link 'Messages'
+        expect(page).not_to have_link 'Messages'
 
         click_link 'Site'
         click_link 'Messages'

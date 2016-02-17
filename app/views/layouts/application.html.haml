@@ -23,14 +23,14 @@
           .hidden-print.row#cms-header
             = render 'layouts/header'
 
-        - if @site.main_menu_pages.length > 0
+        - unless @site.main_menu_pages.empty?
           .cms-main-menu.hidden-print.row#cms-main-menu
             = render 'layouts/main_menu'
 
         .row#cms-main
           = render "layouts/pages/#{@site.layout}"
 
-        - if @site.main_menu_in_footer && @site.main_menu_pages.length > 0
+        - if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
           .cms-main-menu.hidden-print.row#cms-footer-main-menu
             = render 'layouts/footer_main_menu'
 

@@ -8,7 +8,7 @@ RSpec.feature 'User sites' do
   authenticated_page login_user: :user, topbar_link: 'Sites', page_icon: 'list' do
     scenario 'visiting the page' do
       visit_200_page
-      expect(page).to_not have_link link_title, href: link_href
+      expect(page).not_to have_link link_title, href: link_href
     end
   end
 

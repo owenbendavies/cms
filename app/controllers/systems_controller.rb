@@ -7,7 +7,7 @@ class SystemsController < ApplicationController
   before_action :authorize_action, except: PUBLIC_PAGES
 
   def error_500
-    fail 'Test 500 error'
+    raise 'Test 500 error'
   end
 
   def error_delayed

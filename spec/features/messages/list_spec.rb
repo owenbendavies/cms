@@ -29,18 +29,18 @@ RSpec.feature 'List messages' do
       expect(page).to have_link(messages.first.name, href: "/site/messages/#{messages.first.id}")
       expect(page).to have_link(messages.first.email, href: "/site/messages/#{messages.first.id}")
 
-      expect(page).to_not have_content other_site_message.name
+      expect(page).not_to have_content other_site_message.name
     end
 
     scenario 'pagination' do
       visit_200_page
 
       expect(page).to have_content messages.first.name
-      expect(page).to_not have_content messages.last.name
+      expect(page).not_to have_content messages.last.name
 
       click_link 2
 
-      expect(page).to_not have_content messages.first.name
+      expect(page).not_to have_content messages.first.name
       expect(page).to have_content messages.last.name
     end
   end

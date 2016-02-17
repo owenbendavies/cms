@@ -70,7 +70,7 @@ RSpec.feature 'Editing a page' do
         click_button 'Update Page'
         expect(current_path).to eq '/home'
         home_page.reload
-      end.to_not change(home_page, :updated_at)
+      end.not_to change(home_page, :updated_at)
     end
 
     scenario 'with invalid data' do
