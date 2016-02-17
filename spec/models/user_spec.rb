@@ -22,7 +22,7 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
-#  admin                  :boolean          default(FALSE), not null
+#  sysadmin               :boolean          default(FALSE), not null
 #  name                   :string(64)       not null
 #  invitation_token       :string
 #  invitation_created_at  :datetime

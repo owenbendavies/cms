@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def authorize_action
+    authorize! action_name.to_sym, controller_name.to_sym
+  end
+
   def find_site
     @site = Site.find_by_host(request.host)
     RequestStore.store[:site] = @site

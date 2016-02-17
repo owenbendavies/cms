@@ -4,7 +4,7 @@ RSpec.feature 'Errors' do
   context 'error_500' do
     let(:go_to_url) { '/system/error_500' }
 
-    authenticated_page login_user: :admin do
+    authenticated_page login_user: :sysadmin do
       scenario 'visiting the page' do
         expect { unchecked_visit go_to_url }.to raise_error(RuntimeError, 'Test 500 error')
       end
@@ -14,7 +14,7 @@ RSpec.feature 'Errors' do
   context 'error_delayed' do
     let(:go_to_url) { '/system/error_delayed' }
 
-    authenticated_page login_user: :admin do
+    authenticated_page login_user: :sysadmin do
       scenario 'visiting the page' do
         visit_200_page
 
@@ -31,7 +31,7 @@ RSpec.feature 'Errors' do
   context 'error_timeout' do
     let(:go_to_url) { '/system/error_timeout' }
 
-    authenticated_page login_user: :admin do
+    authenticated_page login_user: :sysadmin do
       scenario 'visiting the page' do
         expect { unchecked_visit '/system/error_timeout?seconds=2.5' }
           .to raise_error Rack::Timeout::RequestTimeoutError
