@@ -10,15 +10,15 @@ class Ability
     alias_action :create, :read, :update, :destroy, to: :crud
 
     if user
-      admin_abilities if user.admin
+      sysadmin_abilities if user.sysadmin
       user_abilities(user)
     end
 
     all_abilities
   end
 
-  def admin_abilities
-    can [:error_500, :error_delayed, :error_timeout], :system
+  def sysadmin_abilities
+    can [:error_500, :error_delayed, :error_timeout], :systems
   end
 
   def user_abilities(user)
