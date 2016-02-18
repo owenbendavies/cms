@@ -45,7 +45,7 @@ class SitesController < ApplicationController
     end
   end
 
-  alias_method :css, :edit
+  alias css edit
 
   private
 

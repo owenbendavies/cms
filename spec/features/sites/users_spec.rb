@@ -21,7 +21,7 @@ RSpec.feature 'Site users' do
         expect(page).to have_content site_user.name
         expect(page).to have_content site_user.email
         expect(page).to have_selector confirmed_selector
-        expect(page).to_not have_selector locked_selector
+        expect(page).not_to have_selector locked_selector
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.feature 'Site users' do
       within "tbody tr:nth-child(#{index + 1})" do
         expect(page).to have_content unconfirmed_user.name
         expect(page).to have_content unconfirmed_user.email
-        expect(page).to_not have_selector confirmed_selector
+        expect(page).not_to have_selector confirmed_selector
       end
     end
 

@@ -7,7 +7,7 @@ RSpec.feature 'Social network links' do
     scenario 'adding Facebook link' do
       visit_200_page
 
-      expect(page).to_not have_selector 'footer #cms-facebook'
+      expect(page).not_to have_selector 'footer #cms-facebook'
 
       fill_in 'Facebook', with: " #{new_facebook} "
       click_button 'Update Site'
@@ -26,7 +26,7 @@ RSpec.feature 'Social network links' do
     scenario 'adding Twitter link' do
       visit_200_page
 
-      expect(page).to_not have_selector 'footer #cms-twitter'
+      expect(page).not_to have_selector 'footer #cms-twitter'
 
       fill_in 'Twitter', with: " #{new_twitter} "
       click_button 'Update Site'
@@ -45,7 +45,7 @@ RSpec.feature 'Social network links' do
     scenario 'adding YouTube link' do
       visit_200_page
 
-      expect(page).to_not have_selector 'footer #cms-youtube'
+      expect(page).not_to have_selector 'footer #cms-youtube'
 
       fill_in 'YouTube', with: " #{new_youtube} "
       click_button 'Update Site'
@@ -64,7 +64,7 @@ RSpec.feature 'Social network links' do
     scenario 'adding LinkedIn link' do
       visit_200_page
 
-      expect(page).to_not have_selector 'footer #cms-linkedin'
+      expect(page).not_to have_selector 'footer #cms-linkedin'
 
       fill_in 'LinkedIn', with: "  #{new_linkedin} "
       click_button 'Update Site'
@@ -83,7 +83,7 @@ RSpec.feature 'Social network links' do
     scenario 'adding GitHub link' do
       visit_200_page
 
-      expect(page).to_not have_selector 'footer #cms-github'
+      expect(page).not_to have_selector 'footer #cms-github'
 
       fill_in 'GitHub', with: "  #{new_github} "
       click_button 'Update Site'

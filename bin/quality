@@ -3,20 +3,22 @@ set -e
 cd `dirname $0`/..
 set -v
 
-# Update bundle-audit first
-./bin/bundle-audit update
+./bin/bundle-audit update && ./bin/bundle-audit
 
-# Code quality
-./bin/bundle-audit
 ./bin/cane --no-doc --style-measure 100
+
+./bin/haml-lint --exclude-linter LineLength app/views/
+
+./bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename
+
 ./bin/rails_best_practices --silent --exclude puppet
+
+./bin/rake coffeelint
+
 ./bin/rake immigrant:check_keys
+
 ./bin/rubocop --format simple
 
-# Linters
-./bin/haml-lint --exclude-linter LineLength app/views/
-./bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename
-./bin/rake coffeelint
 ./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
 # Run brakeman last as large output
