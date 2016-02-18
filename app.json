@@ -11,6 +11,9 @@
     "SYSADMIN_EMAIL": {
       "description": "The email address for the first system administrator account"
     },
+    "EMAIL_FROM_ADDRESS": {
+      "description": "Email address to use for messages"
+    },
     "HEROKU_APP_NAME": {
       "description": "Set to same as the Heroku App name (set automatically for review apps)"
     },
