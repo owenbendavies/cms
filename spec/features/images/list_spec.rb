@@ -16,7 +16,7 @@ RSpec.feature 'List images' do
 
       expect(page).to have_content image.name
 
-      expect(page).to_not have_content other_site_image.name
+      expect(page).not_to have_content other_site_image.name
     end
   end
 end

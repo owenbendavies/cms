@@ -28,8 +28,8 @@ RSpec.feature 'Site main menu' do
       scenario 'adding main menu to footer' do
         visit_200_page
 
-        expect(page).to_not have_selector '#cms-footer-main-menu'
-        expect(find_field('Main menu')).to_not be_checked
+        expect(page).not_to have_selector '#cms-footer-main-menu'
+        expect(find_field('Main menu')).not_to be_checked
 
         check 'Main menu'
         click_button 'Update Site'
@@ -55,8 +55,8 @@ RSpec.feature 'Site main menu' do
     site.save!
     visit_200_page '/test_page'
 
-    expect(page).to_not have_link 'Test Page', href: '/test_page'
-    expect(page).to_not have_selector '#cms-main-menu'
-    expect(page).to_not have_selector '#cms-footer-main-menu'
+    expect(page).not_to have_link 'Test Page', href: '/test_page'
+    expect(page).not_to have_selector '#cms-main-menu'
+    expect(page).not_to have_selector '#cms-footer-main-menu'
   end
 end

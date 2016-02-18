@@ -33,7 +33,7 @@ RSpec.feature 'Edit the site' do
     scenario 'adding Google Analytics' do
       visit_200_page
 
-      expect(body).to_not include "ga('create',"
+      expect(body).not_to include "ga('create',"
 
       new_code = "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
 

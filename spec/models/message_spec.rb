@@ -35,7 +35,7 @@ RSpec.describe Message, type: :model do
   it { is_expected.to strip_attribute(:subject).collapse_spaces }
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
-  it { is_expected.to_not strip_attribute(:message) }
+  it { is_expected.not_to strip_attribute(:message) }
 
   describe 'validate' do
     it { should validate_presence_of(:site) }

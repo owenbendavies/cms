@@ -1,7 +1,7 @@
 require: rubocop-rspec
 
 AllCops:
-  RunRailsCops: true
+  TargetRubyVersion: 2.3
   Exclude:
     - 'bin/*'
     - 'db/schema.rb'
@@ -16,5 +16,11 @@ Metrics/MethodLength:
     - 'db/migrate/20141122230841_create_sites.rb'
     - 'db/migrate/20150926172242_create_delayed_jobs.rb'
 
+Rails:
+  Enabled: true
+
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
