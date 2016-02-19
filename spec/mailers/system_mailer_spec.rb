@@ -1,0 +1,26 @@
+require 'rails_helper'
+
+RSpec.describe SystemMailer do
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
+
+  describe '.error' do
+    subject { described_class.error('Something went wrong') }
+
+    it 'is sent to sysadmins' do
+      expect(subject.to).to eq [sysadmin.email]
+    end
+
+    it 'has from address' do
+      expect(subject.from).to eq ['noreply@example.com']
+    end
+
+    it 'has subject' do
+      expect(subject.subject).to eq 'ERROR on CMS'
+    end
+
+    it 'has text in body' do
+      expect(subject.body).to eq 'Something went wrong'
+    end
+  end
+end
