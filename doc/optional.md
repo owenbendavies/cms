@@ -57,9 +57,3 @@
       * Use enhanced link attribution
     * Tracking Info
       * Enable User-ID
-  * View
-    * Settings
-      * Exclude all hits from known bots and spiders
-    * Filters
-      * Include traffic only to the hostname (to stop referral spam)
-
