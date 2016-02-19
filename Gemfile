@@ -81,7 +81,6 @@ group :development, :test do
   # Code quality tools
   gem 'brakeman', require: false
   gem 'bullet'
-  gem 'bundler-audit', require: false
   gem 'cane', require: false
   gem 'coffeelint'
   gem 'haml_lint', require: false
