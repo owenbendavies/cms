@@ -19,6 +19,10 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/tasks/**/*'
+
 Style/Documentation:
   Enabled: false
 
