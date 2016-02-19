@@ -41,6 +41,8 @@
   * Heroku alerts
   * Profile > Time Zone
 * rollbar
+* scheduler
+  * Add `./bin/rake cms:validate_data` daily
 * tinfoilsecurity
 
 ## Services
