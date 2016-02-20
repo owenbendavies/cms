@@ -16,7 +16,7 @@ RSpec.describe SystemMailer do
     end
 
     it 'has subject' do
-      expect(subject.subject).to eq 'ERROR on CMS'
+      expect(subject.subject).to eq 'ERROR on cms-test'
     end
 
     it 'has text in body' do
