@@ -29,7 +29,7 @@ RSpec.describe 'cms:validate_data', type: :rake do
 
     email = ActionMailer::Base.deliveries.last
     expect(email.to).to eq [sysadmin.email]
-    expect(email.subject).to eq 'ERROR on CMS'
+    expect(email.subject).to eq 'ERROR on cms-test'
 
     expect(email.body.to_s).to eq <<EOF
 The following models had errors
