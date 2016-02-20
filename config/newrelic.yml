@@ -10,7 +10,7 @@
 common: &default_settings
   license_key: '<%= Rails.application.secrets.new_relic_license_key %>'
 
-  app_name: <%= Rails.application.secrets.new_relic_app_name %>
+  app_name: <%= Rails.application.secrets.app_name %>
 
   agent_enabled: <%= Rails.application.secrets.new_relic_license_key.present? %>
 
