@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+
+Dir.chdir APP_ROOT do
+  puts '== Installing dependencies =='
+  system 'gem install bundler --conservative'
+  system './bin/bundle check || ./bin/bundle install'
+
+  puts "\n== Preparing database =="
+  system './bin/rake db:create db:migrate db:seed'
+
+  puts "\n== Annotating the models =="
+  system './bin/annotate --show-foreign-keys --show-indexes'
+end
