@@ -41,8 +41,7 @@ RSpec.feature 'User logout' do
 
       page.driver.header('Cookie', session)
 
-      unchecked_visit '/user/edit'
-      expect(current_path).to eq '/login'
+      visit_404_page '/user/edit'
     end
   end
 end
