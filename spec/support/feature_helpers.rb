@@ -30,9 +30,8 @@ RSpec.shared_context 'feature helpers', type: :feature do
 end
 
 RSpec.shared_context 'unauthenticated user' do
-  scenario 'goes to login' do
-    unchecked_visit go_to_url
-    expect(current_path).to eq '/login'
+  scenario 'displays 404' do
+    visit_404_page
   end
 end
 
