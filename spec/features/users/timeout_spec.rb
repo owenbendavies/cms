@@ -24,10 +24,7 @@ RSpec.feature 'User timeout' do
     context 'after 2 weeks' do
       before { Timecop.travel Time.zone.now + 15.days }
 
-      scenario 'goes to login when not logged in' do
-        unchecked_visit go_to_url
-        expect(current_path).to eq '/login'
-      end
+      include_examples 'unauthenticated user'
     end
   end
 
@@ -50,10 +47,7 @@ RSpec.feature 'User timeout' do
     context 'after 30 minutes' do
       before { Timecop.travel Time.zone.now + 31.minutes }
 
-      scenario 'goes to login when not logged in' do
-        unchecked_visit go_to_url
-        expect(current_path).to eq '/login'
-      end
+      include_examples 'unauthenticated user'
     end
   end
 end
