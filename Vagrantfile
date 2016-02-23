@@ -36,5 +36,5 @@ Vagrant.configure(2) do |config|
     puppet.synced_folder_type = 'nfs'
   end
 
-  config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/bootstrap'
+  config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/setup'
 end
