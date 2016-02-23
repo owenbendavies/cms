@@ -99,7 +99,6 @@ group :development do
   gem 'annotate'
   gem 'foreman'
   gem 'letter_opener_web'
-  gem 'quiet_assets'
 end
 
 group :test do

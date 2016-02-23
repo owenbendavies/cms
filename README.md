@@ -14,7 +14,7 @@ testing new ideas.
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
 1. `./bin/test` to run all tests or `./bin/test spec/some_file.rb` to run one test or folder
-1. `./bin/server` to spin up a development web server
+1. `./bin/run` to spin up a development web server
 1. Visit `http://cms.dev:3000/` to access the site
 1. Visit `http://cms.dev:3000/emails` to check development emails (e.g. forgot password emails)
 
