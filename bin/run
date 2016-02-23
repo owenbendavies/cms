@@ -3,4 +3,4 @@ set -e
 cd `dirname $0`/..
 set -v
 
-./bin/rails server --binding=0.0.0.0
+./bin/foreman start --port=3000
