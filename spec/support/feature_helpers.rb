@@ -29,29 +29,27 @@ RSpec.shared_context 'feature helpers', type: :feature do
   end
 end
 
-RSpec.shared_context 'unauthenticated user' do
-  scenario 'displays 404' do
-    visit_404_page
+def unauthorized_topbar(topbar_link)
+  scenario 'does not have topbar link' do
+    visit_200_page '/home'
+
+    within('#cms-topbar') do
+      expect(page).not_to have_link topbar_link
+    end
   end
 end
 
-RSpec.shared_context 'unauthorized user' do |topbar_link|
-  before do
-    unchecked_login_as user
-  end
-
-  scenario 'displays 404' do
-    visit_404_page
-  end
-
-  if topbar_link
-    scenario 'does not have topbar link' do
-      visit_200_page '/home'
-
-      within('#cms-topbar') do
-        expect(page).not_to have_link topbar_link
-      end
+def unauthorized(login_user, topbar_link: nil)
+  context "as a #{login_user}" do
+    before do
+      unchecked_login_as send(login_user)
     end
+
+    scenario 'displays 404' do
+      visit_404_page
+    end
+
+    unauthorized_topbar(topbar_link) if topbar_link
   end
 end
 
@@ -83,9 +81,15 @@ end
 RSpec.configuration.alias_it_should_behave_like_to :as_a, 'as a'
 
 def authenticated_page(login_user: :site_user, topbar_link: nil, page_icon: nil, &block)
-  as_a 'unauthenticated user'
+  context 'as a unauthenticated user' do
+    scenario 'displays 404' do
+      visit_404_page
+    end
+  end
 
-  as_a 'unauthorized user', topbar_link unless login_user == :user
+  unauthorized(:user, topbar_link: topbar_link) unless login_user == :user
+
+  unauthorized(:site_user, topbar_link: topbar_link) if login_user == :sysadmin
 
   as_a 'authorized user', login_user, topbar_link, page_icon, &block
 end
