@@ -16,7 +16,7 @@ RSpec.feature 'User timeout' do
     context 'after less than 2 weeks' do
       before { Timecop.travel Time.zone.now + 13.days }
 
-      scenario 'visiting the page' do
+      scenario 'displays the page' do
         visit_200_page
       end
     end
@@ -24,7 +24,9 @@ RSpec.feature 'User timeout' do
     context 'after 2 weeks' do
       before { Timecop.travel Time.zone.now + 15.days }
 
-      include_examples 'unauthenticated user'
+      scenario 'displays 404' do
+        visit_404_page
+      end
     end
   end
 
@@ -39,7 +41,7 @@ RSpec.feature 'User timeout' do
     context 'after less than 30 minutes' do
       before { Timecop.travel Time.zone.now + 29.minutes }
 
-      scenario 'visiting the page' do
+      scenario 'displays the page' do
         visit_200_page
       end
     end
@@ -47,7 +49,9 @@ RSpec.feature 'User timeout' do
     context 'after 30 minutes' do
       before { Timecop.travel Time.zone.now + 31.minutes }
 
-      include_examples 'unauthenticated user'
+      scenario 'displays 404' do
+        visit_404_page
+      end
     end
   end
 end

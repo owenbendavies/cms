@@ -10,12 +10,7 @@ module CarrierWaveHelpers
 
   included do
     let(:fog_connection) do
-      Fog::Storage.new(
-        provider: 'AWS',
-        aws_access_key_id: Rails.application.secrets.iam_key,
-        aws_secret_access_key: Rails.application.secrets.iam_secret,
-        region: Rails.application.secrets.aws_region
-      )
+      Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials)
     end
 
     let(:fog_directories) do
