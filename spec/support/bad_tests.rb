@@ -17,12 +17,10 @@ RSpec.configure do |config|
     raise "ERROR: Memory above limit of #{limit} MB" if memory > limit
   end
 
-  if ENV['COVERAGE']
-    config.after :suite do
-      limit = 2.minutes
-      duration = Time.zone.now - config.start_time
+  config.after :suite do
+    limit = 2.minutes
+    duration = Time.zone.now - config.start_time
 
-      raise "ERROR: Duration above limit of #{limit}s" if duration > limit
-    end
+    raise "ERROR: Duration above limit of #{limit}s" if duration > limit
   end
 end
