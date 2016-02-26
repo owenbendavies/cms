@@ -89,7 +89,9 @@ def authenticated_page(login_user: :site_user, topbar_link: nil, page_icon: nil,
 
   unauthorized(:user, topbar_link: topbar_link) unless login_user == :user
 
-  unauthorized(:site_user, topbar_link: topbar_link) if login_user == :sysadmin
+  unauthorized(:site_user, topbar_link: topbar_link) if [:site_admin, :sysadmin].include? login_user
+
+  unauthorized(:site_admin, topbar_link: topbar_link) if login_user == :sysadmin
 
   as_a 'authorized user', login_user, topbar_link, page_icon, &block
 end

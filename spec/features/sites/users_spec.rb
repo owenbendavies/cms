@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Site users' do
   let(:go_to_url) { '/site/users' }
 
+  let(:site_admin_selector) { '.admin.fa-check' }
   let(:confirmed_selector) { '.confirmed.fa-check' }
   let(:locked_selector) { '.locked.fa-check' }
 
@@ -13,6 +14,7 @@ RSpec.feature 'Site users' do
       within 'thead' do
         expect(page).to have_content 'Name'
         expect(page).to have_content 'Email'
+        expect(page).to have_content 'Admin'
         expect(page).to have_content 'Confirmed'
         expect(page).to have_content 'Locked'
       end
@@ -20,6 +22,7 @@ RSpec.feature 'Site users' do
       within 'tbody tr:nth-child(1)' do
         expect(page).to have_content site_user.name
         expect(page).to have_content site_user.email
+        expect(page).not_to have_selector site_admin_selector
         expect(page).to have_selector confirmed_selector
         expect(page).not_to have_selector locked_selector
       end
@@ -48,6 +51,17 @@ RSpec.feature 'Site users' do
         expect(page).to have_content locked_user.name
         expect(page).to have_content locked_user.email
         expect(page).to have_selector locked_selector
+      end
+    end
+
+    scenario 'with site admin' do
+      index = site.users.find_index(site_admin)
+      visit_200_page
+
+      within "tbody tr:nth-child(#{index + 1})" do
+        expect(page).to have_content site_admin.name
+        expect(page).to have_content site_admin.email
+        expect(page).to have_selector site_admin_selector
       end
     end
   end

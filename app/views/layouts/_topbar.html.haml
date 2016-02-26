@@ -46,9 +46,10 @@
               = icon_tag(t('users.index.icon'))
               = t('users.index.title')
 
-            = link_to css_site_path do
-              = icon_tag(t('sites.css.icon'))
-              = t('sites.css.title')
+            - if can? :css, @site
+              = link_to css_site_path do
+                = icon_tag(t('sites.css.icon'))
+                = t('sites.css.title')
 
             = link_to sitemap_path do
               = icon_tag(t('systems.sitemap.icon'))

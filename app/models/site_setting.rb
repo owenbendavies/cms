@@ -2,11 +2,12 @@
 #
 # Table name: site_settings
 #
+#  id         :integer          not null, primary key
 #  user_id    :integer          not null
 #  site_id    :integer          not null
-#  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  admin      :boolean          default(FALSE), not null
 #
 # Indexes
 #
@@ -25,4 +26,6 @@ class SiteSetting < ActiveRecord::Base
   belongs_to :user
 
   has_paper_trail
+
+  scope :admin, -> { where(admin: true) }
 end
