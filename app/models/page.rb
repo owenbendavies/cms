@@ -29,8 +29,6 @@ class Page < ActiveRecord::Base
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 
-  belongs_to :site
-
   has_paper_trail
 
   strip_attributes except: :html_content, collapse_spaces: true

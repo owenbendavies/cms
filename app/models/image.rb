@@ -21,8 +21,6 @@
 #
 
 class Image < ActiveRecord::Base
-  belongs_to :site
-
   delegate :store_dir, to: :site, allow_nil: true
 
   has_paper_trail
