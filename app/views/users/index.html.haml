@@ -11,6 +11,7 @@
     %tr
       %th= User.human_attribute_name(:name)
       %th= User.human_attribute_name(:email)
+      %th= SiteSetting.human_attribute_name(:admin)
       %th= User.human_attribute_name(:confirmed)
       %th= User.human_attribute_name(:locked)
 
@@ -19,5 +20,6 @@
       %tr
         %td= user.name
         %td= user.email
+        %td= tick('admin', user.admin_for_site?(@site))
         %td= tick('confirmed', user.confirmed?)
         %td= tick('locked', user.access_locked?)

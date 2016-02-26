@@ -57,6 +57,19 @@ RSpec.describe User, type: :model do
   it { should have_many(:site_settings).dependent(:destroy) }
   it { should have_many(:sites).order(:host) }
 
+  describe '#admin_sites' do
+    it 'returns admin site settings' do
+      user = FactoryGirl.create(:user)
+      site1 = FactoryGirl.create(:site)
+      site2 = FactoryGirl.create(:site)
+
+      user.site_settings.create!(site: site1, admin: true)
+      user.site_settings.create!(site: site2)
+
+      expect(user.admin_sites).to eq [site1]
+    end
+  end
+
   it 'is versioned', versioning: true do
     is_expected.to be_versioned
   end
@@ -80,6 +93,41 @@ RSpec.describe User, type: :model do
 
     it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
+  end
+
+  describe '#admin_for_site?' do
+    it 'returns true when admin of site' do
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+      user.site_settings.create(site: site, admin: true)
+
+      expect(user.admin_for_site?(site)).to eq true
+    end
+
+    it 'returns false when admin of another site' do
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+      another_site = FactoryGirl.create(:site)
+      user.site_settings.create(site: site)
+      user.site_settings.create(site: another_site, admin: true)
+
+      expect(user.admin_for_site?(site)).to eq false
+    end
+
+    it 'returns false when admin of no sites' do
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+      user.site_settings.create(site: site)
+
+      expect(user.admin_for_site?(site)).to eq false
+    end
+
+    it 'returns false when no sites' do
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+
+      expect(user.admin_for_site?(site)).to eq false
+    end
   end
 
   describe '#site_ids' do
