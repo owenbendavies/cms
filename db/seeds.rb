@@ -13,4 +13,6 @@ user = User.where(email: email).first_or_create! do |new_user|
   new_user.skip_confirmation!
 end
 
-user.site_settings.where(site: site).first_or_create!
+user.site_settings.where(site: site).first_or_create! do |site_setting|
+  site_setting.admin = true
+end

@@ -2,9 +2,15 @@ RSpec.shared_context 'test site', type: :feature do
   let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
   let!(:site_user) do
-    user = FactoryGirl.create(:user)
-    user.site_settings.create!(site: site)
-    user
+    FactoryGirl.create(:user).tap do |user|
+      user.site_settings.create!(site: site)
+    end
+  end
+
+  let(:site_admin) do
+    FactoryGirl.create(:user).tap do |user|
+      user.site_settings.create!(site: site, admin: true)
+    end
   end
 
   let(:user) { FactoryGirl.create(:user) }

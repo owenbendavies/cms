@@ -25,7 +25,8 @@ class Ability
     can [:read], Image, site_id: user.site_ids
     can [:read], Message, site_id: user.site_ids
     can [:crud], Page, site_id: user.site_ids
-    can [:read, :update, :css], Site, id: user.site_ids
+    can [:read, :update], Site, id: user.site_ids
+    can [:css], Site, id: user.admin_site_ids
     can [:index], Site
   end
 

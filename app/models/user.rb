@@ -62,6 +62,7 @@ class User < ActiveRecord::Base
 
   has_many :site_settings, dependent: :destroy
   has_many :sites, -> { order :host }, through: :site_settings
+  has_many :admin_sites, -> { SiteSetting.admin }, through: :site_settings, source: :site
 
   has_paper_trail
 
@@ -82,6 +83,11 @@ class User < ActiveRecord::Base
     user.site_settings.create!(site: site) if user.errors.empty?
 
     user
+  end
+
+  def admin_for_site?(site)
+    site_setting = site_settings.find_by(site: site)
+    site_setting.present? && site_setting.admin?
   end
 
   def site_ids

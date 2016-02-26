@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Site CSS' do
   let(:go_to_url) { '/site/css' }
 
-  authenticated_page topbar_link: 'CSS', page_icon: 'file' do
+  authenticated_page login_user: :site_admin, topbar_link: 'CSS', page_icon: 'file' do
     scenario 'adding custom CSS' do
       visit_200_page
 
