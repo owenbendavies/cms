@@ -28,10 +28,6 @@ require 'rails_helper'
 RSpec.describe Message, type: :model do
   it { should belong_to(:site) }
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   it { is_expected.to strip_attribute(:subject).collapse_spaces }
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }

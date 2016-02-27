@@ -31,6 +31,8 @@ class Page < ActiveRecord::Base
 
   has_paper_trail
 
+  schema_validations
+
   strip_attributes except: :html_content, collapse_spaces: true
 
   validates :url, exclusion: { in: INVALID_URLS }

@@ -56,10 +56,6 @@ RSpec.describe Site, type: :model do
     end
   end
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   describe '#stylesheet' do
     it 'has a stylesheet' do
       css = "body {\r\n  padding: 4em;\r\n}"

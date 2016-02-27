@@ -70,10 +70,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
