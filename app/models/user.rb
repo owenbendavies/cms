@@ -66,6 +66,8 @@ class User < ActiveRecord::Base
 
   has_paper_trail
 
+  schema_validations
+
   strip_attributes collapse_spaces: true
 
   validates :email, email_format: true
