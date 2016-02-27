@@ -27,10 +27,6 @@ RSpec.describe Image, type: :model do
 
   it { should delegate_method(:store_dir).to(:site) }
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   describe '#file' do
     it 'saves an image' do
       image = described_class.new

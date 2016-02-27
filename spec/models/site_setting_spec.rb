@@ -27,10 +27,6 @@ RSpec.describe SiteSetting, type: :model do
   it { should belong_to(:site) }
   it { should belong_to(:user) }
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   describe 'validate' do
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:site) }
