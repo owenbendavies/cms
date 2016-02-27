@@ -22,9 +22,6 @@
 #
 
 class SiteSetting < ActiveRecord::Base
-  belongs_to :site
-  belongs_to :user
-
   has_paper_trail
 
   scope :admin, -> { where(admin: true) }

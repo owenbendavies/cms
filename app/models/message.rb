@@ -26,8 +26,6 @@
 class Message < ActiveRecord::Base
   attr_accessor :do_not_fill_in
 
-  belongs_to :site
-
   has_paper_trail
 
   strip_attributes except: :message, collapse_spaces: true
