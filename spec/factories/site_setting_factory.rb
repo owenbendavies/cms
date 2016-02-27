@@ -21,10 +21,9 @@
 #  fk_site_settings_user_id  (user_id => users.id)
 #
 
-class SiteSetting < ActiveRecord::Base
-  has_paper_trail
-
-  schema_validations
-
-  scope :admin, -> { where(admin: true) }
+FactoryGirl.define do
+  factory :site_setting do
+    site { Site.first || FactoryGirl.create(:site) }
+    user { User.first || FactoryGirl.create(:user) }
+  end
 end

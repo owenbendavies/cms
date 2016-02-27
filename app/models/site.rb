@@ -41,6 +41,8 @@ class Site < ActiveRecord::Base
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
+  schema_validations
+
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 
   validates :name, length: { minimum: 3 }

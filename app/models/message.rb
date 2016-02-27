@@ -28,6 +28,8 @@ class Message < ActiveRecord::Base
 
   has_paper_trail
 
+  schema_validations
+
   strip_attributes except: :message, collapse_spaces: true
 
   validates :name, length: { minimum: 3 }

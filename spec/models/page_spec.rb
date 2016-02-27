@@ -60,10 +60,6 @@ RSpec.describe Page, type: :model do
 
   it { should belong_to(:site) }
 
-  it 'is versioned', versioning: true do
-    is_expected.to be_versioned
-  end
-
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
 

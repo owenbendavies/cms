@@ -21,6 +21,7 @@ Rails:
 
 RSpec/DescribeClass:
   Exclude:
+    - 'spec/support/**/*'
     - 'spec/tasks/**/*'
 
 Style/Documentation:
