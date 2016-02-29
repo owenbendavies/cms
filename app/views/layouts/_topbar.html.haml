@@ -4,7 +4,7 @@
 
   = horizontal do
     = nav class: 'navbar-right' do
-      - if can? :update, @site
+      - if policy(@site).update?
         %li.dropdown
           %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
             = Page.model_name.human
@@ -24,7 +24,7 @@
               = icon_tag(t('pages.new.icon'))
               = t('pages.new.title')
 
-      - if can? :update, @site
+      - if policy(@site).update?
         %li.dropdown
           %a.dropdown-toggle{ 'data-toggle' => 'dropdown', href: '#' }
             = Site.model_name.human
@@ -46,7 +46,7 @@
               = icon_tag(t('users.index.icon'))
               = t('users.index.title')
 
-            - if can? :css, @site
+            - if policy(@site).css?
               = link_to css_site_path do
                 = icon_tag(t('sites.css.icon'))
                 = t('sites.css.title')

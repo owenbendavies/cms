@@ -33,6 +33,8 @@ class Page < ActiveRecord::Base
 
   schema_validations
 
+  scope :non_private, -> { where(private: false) }
+
   strip_attributes except: :html_content, collapse_spaces: true
 
   validates :url, exclusion: { in: INVALID_URLS }

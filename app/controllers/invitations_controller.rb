@@ -1,5 +1,9 @@
 class InvitationsController < Devise::InvitationsController
-  authorize_resource :site, except: [:edit, :update]
+  before_action :authorize_user, except: [:edit, :update]
+
+  def authorize_user
+    authorize User
+  end
 
   def invite_resource
     User.invite_or_add_to_site(invite_params, @site, current_user)

@@ -16,7 +16,7 @@
       %th= User.human_attribute_name(:locked)
 
   %tbody
-    - @site.users.each do |user|
+    - @users.each do |user|
       %tr
         %td= user.name
         %td= user.email
