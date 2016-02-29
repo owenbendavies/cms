@@ -60,6 +60,16 @@ RSpec.describe Page, type: :model do
 
   it { should belong_to(:site) }
 
+  describe '.non_private' do
+    it 'returns non private pages' do
+      public_page_1 = FactoryGirl.create(:page)
+      public_page_2 = FactoryGirl.create(:page)
+      FactoryGirl.create(:private_page)
+
+      expect(described_class.non_private).to eq [public_page_1, public_page_2]
+    end
+  end
+
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
 
