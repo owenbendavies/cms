@@ -25,6 +25,4 @@ class SiteSetting < ActiveRecord::Base
   has_paper_trail
 
   schema_validations
-
-  scope :admin, -> { where(admin: true) }
 end

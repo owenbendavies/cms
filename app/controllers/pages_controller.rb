@@ -25,12 +25,10 @@
 #
 
 class PagesController < ApplicationController
-  load_resource find_by: :url, through: :site
-
+  before_action :new_page, only: [:new, :create]
+  before_action :find_page, except: [:new, :create]
   skip_before_action :authenticate_user!, only: [:show, :contact_form]
   before_action :authenticate_page, only: [:show, :contact_form]
-
-  authorize_resource
 
   def new
   end
@@ -75,6 +73,16 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def new_page
+    @page = @site.pages.new
+    authorize @page
+  end
+
+  def find_page
+    @page = @site.pages.find_by_url!(params[:id])
+    authorize @page
+  end
 
   def authenticate_page
     authenticate_user! if @page.private

@@ -3,8 +3,8 @@ class SystemsController < ApplicationController
 
   skip_before_action :render_site_not_found, only: [:health]
   skip_before_action :authenticate_user!, only: PUBLIC_PAGES
-  skip_authorization_check only: PUBLIC_PAGES
-  before_action :authorize_action, except: PUBLIC_PAGES
+  skip_after_action :verify_authorized, only: PUBLIC_PAGES
+  before_action :authorize_user, except: PUBLIC_PAGES
 
   def error_500
     raise 'Test 500 error'
@@ -43,10 +43,13 @@ class SystemsController < ApplicationController
 
   private
 
+  def authorize_user
+    authorize :system
+  end
+
   def xml_sitemap
     XmlSitemap::Map.new(@site.host, home: false, secure: true) do |map|
-      @pages.each do |page|
-        next if page.private?
+      @pages.non_private.each do |page|
         map.add page_path(page.to_param), updated: page.updated_at
       end
     end

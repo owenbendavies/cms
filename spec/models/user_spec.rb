@@ -57,19 +57,6 @@ RSpec.describe User, type: :model do
   it { should have_many(:site_settings).dependent(:destroy) }
   it { should have_many(:sites).order(:host) }
 
-  describe '#admin_sites' do
-    it 'returns admin site settings' do
-      user = FactoryGirl.create(:user)
-      site1 = FactoryGirl.create(:site)
-      site2 = FactoryGirl.create(:site)
-
-      user.site_settings.create!(site: site1, admin: true)
-      user.site_settings.create!(site: site2)
-
-      expect(user.admin_sites).to eq [site1]
-    end
-  end
-
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 

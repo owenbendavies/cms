@@ -14,9 +14,9 @@ gem 'rack-protection'
 gem 'rack-timeout'
 
 # Authentication and authorization
-gem 'cancancan'
 gem 'devise_invitable'
 gem 'devise_zxcvbn', '< 2.0.0'
+gem 'pundit'
 
 # Required for carrierwave to be loaded before
 gem 'fog'

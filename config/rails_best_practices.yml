@@ -26,6 +26,7 @@ RemoveTrailingWhitespaceCheck: { }
 RemoveUnusedMethodsInControllersCheck: {
   except_methods: [
     'ApplicationController#append_info_to_payload',
+    'ApplicationController#pundit_user',
     'InvitationsController#after_invite_path_for',
     'InvitationsController#invite_resource',
   ]

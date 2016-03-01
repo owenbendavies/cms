@@ -24,13 +24,13 @@
 #
 
 class MessagesController < ApplicationController
-  authorize_resource :site
-  load_and_authorize_resource through: :site
-
   def index
-    @messages = @messages.paginate(page: params[:page])
+    @messages = @site.messages.paginate(page: params[:page])
+    authorize Message
   end
 
   def show
+    @message = @site.messages.find(params[:id])
+    authorize @message
   end
 end

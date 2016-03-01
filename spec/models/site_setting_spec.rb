@@ -31,17 +31,4 @@ RSpec.describe SiteSetting, type: :model do
     it { should validate_presence_of(:user) }
     it { should validate_presence_of(:site) }
   end
-
-  describe '.admin' do
-    it 'returns admin site settings' do
-      user = FactoryGirl.create(:user)
-      site1 = FactoryGirl.create(:site)
-      site2 = FactoryGirl.create(:site)
-
-      admin_site_setting = user.site_settings.create!(site: site1, admin: true)
-      user.site_settings.create!(site: site2)
-
-      expect(described_class.admin).to eq [admin_site_setting]
-    end
-  end
 end

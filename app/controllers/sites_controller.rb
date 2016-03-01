@@ -28,15 +28,18 @@
 #
 
 class SitesController < ApplicationController
-  authorize_resource :site, singleton: true
-
   def index
+    authorize Site
+    @sites = current_user.sites
   end
 
   def edit
+    authorize @site
   end
 
   def update
+    authorize @site
+
     if @site.update_attributes site_params
       flash.notice = t('flash.updated', name: Site.model_name.human)
       redirect_to page_path('home')
