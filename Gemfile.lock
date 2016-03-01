@@ -71,7 +71,6 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
-    cancancan (1.13.1)
     cane (2.6.2)
       parallel
     capybara (2.6.2)
@@ -371,6 +370,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.0.2)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     puppet-lint (1.1.0)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -596,7 +597,6 @@ DEPENDENCIES
   bootstrap-sass
   brakeman
   bullet
-  cancancan
   cane
   capybara-webkit
   carrierwave
@@ -634,6 +634,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  pundit
   puppet-lint
   rack-protection
   rack-timeout

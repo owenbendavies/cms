@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   ensure_security_headers
 
   protect_from_forgery with: :reset_session
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionView::MissingTemplate, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
-  rescue_from CanCan::AccessDenied, with: :page_not_found
+  rescue_from Pundit::NotAuthorizedError, with: :page_not_found
 
   before_action :find_site
   before_action :render_site_not_found
@@ -14,10 +16,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:page_not_found]
   before_action :configure_devise_parameters, if: :devise_controller?
 
-  check_authorization unless: :devise_controller?
-  skip_authorization_check only: [:page_not_found]
+  after_action :verify_authorized, unless: :devise_controller?
 
   def page_not_found
+    skip_authorization
+
     if @site
       render template: 'errors/page_not_found', formats: ['html'], status: 404
     else
@@ -36,10 +39,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def authorize_action
-    authorize! action_name.to_sym, controller_name.to_sym
-  end
 
   def find_site
     @site = Site.find_by_host(request.host)
@@ -64,5 +63,9 @@ class ApplicationController < ActionController::Base
       user_id: current_user.try(:id),
       user_agent: request.user_agent
     )
+  end
+
+  def pundit_user
+    { user: current_user, site: @site }
   end
 end

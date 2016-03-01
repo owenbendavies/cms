@@ -45,8 +45,8 @@
 #
 
 class UsersController < ApplicationController
-  authorize_resource :site
-
   def index
+    @users = @site.users
+    authorize User
   end
 end
