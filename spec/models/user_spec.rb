@@ -60,21 +60,18 @@ RSpec.describe User, type: :model do
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
-  describe 'validate', secure_password: true do
-    it { should validate_presence_of(:email) }
-    it { should validate_length_of(:email).is_at_most(64) }
-    it { should allow_value('someone@example.com').for(:email) }
-
-    it do
-      should_not allow_value('someone@').for(:email).with_message('is not a valid email address')
+  describe '#valid?', secure_password: true do
+    it 'validates database schema' do
+      should validate_presence_of(:name)
     end
 
-    it { should validate_confirmation_of(:password) }
+    it { should allow_value('someone@example.com').for(:email) }
+    it { should_not allow_value('test@').for(:email).with_message('is not a valid email address') }
+
     it { should validate_length_of(:password).is_at_least(8).is_at_most(64) }
     it { should allow_value('apel203pd0pa').for(:password) }
     it { should_not allow_value('password').for(:password) }
 
-    it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
   end
 

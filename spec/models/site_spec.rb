@@ -81,22 +81,16 @@ RSpec.describe Site, type: :model do
   it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
   it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
 
-  describe 'validate' do
-    subject { FactoryGirl.build(:site) }
+  describe '#valid?' do
+    it 'validates database schema' do
+      should validate_presence_of(:name)
+    end
 
-    it { should validate_presence_of(:host) }
-    it { should validate_uniqueness_of(:host) }
-
-    it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
     it { should validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
 
     it { should allow_value('one_column').for(:layout) }
-    it { should allow_value('right_sidebar').for(:layout) }
-    it { should allow_value('small_right_sidebar').for(:layout) }
-
-    it { should validate_length_of(:copyright).is_at_most(64) }
 
     it { should allow_value('').for(:google_analytics) }
     it { should allow_value('UA-1234-1').for(:google_analytics) }
@@ -107,12 +101,6 @@ RSpec.describe Site, type: :model do
     it { should_not allow_value('UA-1234').for(:google_analytics) }
     it { should_not allow_value('UA123').for(:google_analytics) }
     it { should_not allow_value('AS').for(:google_analytics) }
-
-    it { should validate_length_of(:facebook).is_at_most(64) }
-    it { should validate_length_of(:twitter).is_at_most(15) }
-    it { should validate_length_of(:youtube).is_at_most(32) }
-    it { should validate_length_of(:linkedin).is_at_most(32) }
-    it { should validate_length_of(:github).is_at_most(32) }
   end
 
   describe '#css' do
