@@ -23,8 +23,6 @@
 require 'rails_helper'
 
 RSpec.describe Image, type: :model do
-  it { should belong_to(:site) }
-
   it { should delegate_method(:store_dir).to(:site) }
 
   describe '#file' do
@@ -53,13 +51,9 @@ RSpec.describe Image, type: :model do
 
   it { is_expected.to strip_attribute(:name).collapse_spaces }
 
-  describe 'validate' do
-    subject { FactoryGirl.build(:image) }
-
-    it { should validate_presence_of(:site) }
-
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name).scoped_to(:site_id) }
-    it { should validate_length_of(:name).is_at_most(64) }
+  describe '#valid?' do
+    it 'validates database schema' do
+      should validate_presence_of(:name)
+    end
   end
 end
