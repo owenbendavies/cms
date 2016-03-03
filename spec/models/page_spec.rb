@@ -58,8 +58,6 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  it { should belong_to(:site) }
-
   describe '.non_private' do
     it 'returns non private pages' do
       public_page_1 = FactoryGirl.create(:page)
@@ -73,20 +71,12 @@ RSpec.describe Page, type: :model do
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
 
-  describe 'validate' do
-    subject { FactoryGirl.build(:page) }
-
-    it { should validate_presence_of(:site) }
-
-    it { should validate_presence_of(:url) }
-    it { should validate_uniqueness_of(:url).scoped_to(:site_id) }
-
-    %w(login logout new robots site sitemap system user).each do |value|
-      it { should_not allow_value(value).for(:url) }
+  describe '#valid?' do
+    it 'validates database schema' do
+      should validate_presence_of(:name)
     end
 
-    it { should validate_presence_of(:name) }
-    it { should validate_length_of(:name).is_at_most(64) }
+    it { should_not allow_value('login').for(:url) }
   end
 
   describe '#name=' do

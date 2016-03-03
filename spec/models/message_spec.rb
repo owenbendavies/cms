@@ -26,32 +26,22 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  it { should belong_to(:site) }
-
   it { is_expected.to strip_attribute(:subject).collapse_spaces }
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
   it { is_expected.not_to strip_attribute(:message) }
 
-  describe 'validate' do
-    it { should validate_presence_of(:site) }
-
-    it { should validate_presence_of(:subject) }
-
-    it { should validate_presence_of(:name) }
-    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
-
-    it { should validate_presence_of(:email) }
-    it { should allow_value('someone@example.com').for(:email) }
-
-    it do
-      should_not allow_value('someone@').for(:email).with_message('is not a valid email address')
+  describe '#valid?' do
+    it 'validates database schema' do
+      should validate_presence_of(:name)
     end
 
-    it { should validate_presence_of(:message) }
-    it { should validate_length_of(:message).is_at_most(2048) }
+    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
-    it { should validate_length_of(:ip_address).is_at_most(45) }
+    it { should allow_value('someone@example.com').for(:email) }
+    it { should_not allow_value('test@').for(:email).with_message('is not a valid email address') }
+
+    it { should validate_length_of(:message).is_at_most(2048) }
 
     it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
   end
