@@ -24,11 +24,9 @@
 require 'rails_helper'
 
 RSpec.describe SiteSetting, type: :model do
-  it { should belong_to(:site) }
-  it { should belong_to(:user) }
-
-  describe 'validate' do
-    it { should validate_presence_of(:user) }
-    it { should validate_presence_of(:site) }
+  describe '#valid?' do
+    it 'validates database schema' do
+      should validate_presence_of(:user)
+    end
   end
 end
