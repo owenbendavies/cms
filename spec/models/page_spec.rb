@@ -68,6 +68,16 @@ RSpec.describe Page, type: :model do
     end
   end
 
+  describe '.ordered' do
+    it 'returns ordered by name' do
+      page_c = FactoryGirl.create(:page, name: 'Page C')
+      page_a = FactoryGirl.create(:page, name: 'Page A')
+      page_b = FactoryGirl.create(:page, name: 'Page B')
+
+      expect(described_class.ordered).to eq [page_a, page_b, page_c]
+    end
+  end
+
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
 

@@ -27,6 +27,9 @@ RSpec.shared_context 'feature helpers', type: :feature do
     expect(page.status_code).to eq 404
     expect(page).to have_content 'Page Not Found'
   end
+
+  let(:table_header_text) { all('table thead th').map(&:text) }
+  let(:table_rows) { all('table tbody tr').map { |row| row.all('td') } }
 end
 
 def unauthorized_topbar(topbar_link)

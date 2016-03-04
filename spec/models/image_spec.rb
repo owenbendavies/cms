@@ -49,6 +49,16 @@ RSpec.describe Image, type: :model do
     end
   end
 
+  describe '.ordered' do
+    it 'returns ordered by name' do
+      image_c = FactoryGirl.create(:image, name: 'image C')
+      image_a = FactoryGirl.create(:image, name: 'image A')
+      image_b = FactoryGirl.create(:image, name: 'image B')
+
+      expect(described_class.ordered).to eq [image_a, image_b, image_c]
+    end
+  end
+
   it { is_expected.to strip_attribute(:name).collapse_spaces }
 
   describe '#valid?' do

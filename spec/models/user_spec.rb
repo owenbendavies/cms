@@ -54,8 +54,15 @@ RSpec.describe User, type: :model do
     expect(user.gravatar_url).to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
-  it { should have_many(:site_settings).dependent(:destroy) }
-  it { should have_many(:sites).order(:host) }
+  describe '.ordered' do
+    it 'returns ordered by email' do
+      user3 = FactoryGirl.create(:user, email: 'user3@example.com')
+      user1 = FactoryGirl.create(:user, email: 'user1@example.com')
+      user2 = FactoryGirl.create(:user, email: 'user2@example.com')
+
+      expect(described_class.ordered).to eq [user1, user2, user3]
+    end
+  end
 
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }

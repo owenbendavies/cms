@@ -3,66 +3,53 @@ require 'rails_helper'
 RSpec.feature 'Site users' do
   let(:go_to_url) { '/site/users' }
 
-  let(:site_admin_selector) { '.admin.fa-check' }
-  let(:confirmed_selector) { '.confirmed.fa-check' }
-  let(:locked_selector) { '.locked.fa-check' }
+  let(:tick) { '.fa-check' }
 
   authenticated_page topbar_link: 'Users', page_icon: 'group' do
     scenario 'visiting the page' do
+      FactoryGirl.create(:user).tap do |user|
+        user.site_settings.create!(site: site)
+      end
+
       visit_200_page
 
-      within 'thead' do
-        expect(page).to have_content 'Name'
-        expect(page).to have_content 'Email'
-        expect(page).to have_content 'Admin'
-        expect(page).to have_content 'Confirmed'
-        expect(page).to have_content 'Locked'
-      end
+      index = site.users.ordered.find_index(site_user)
 
-      within 'tbody tr:nth-child(1)' do
-        expect(page).to have_content site_user.name
-        expect(page).to have_content site_user.email
-        expect(page).not_to have_selector site_admin_selector
-        expect(page).to have_selector confirmed_selector
-        expect(page).not_to have_selector locked_selector
-      end
+      expect(table_header_text).to eq %w(Name Email Admin Confirmed Locked)
+      expect(table_rows.count).to eq site.users.count
+      expect(table_rows[index][0].text).to eq site_user.name
+      expect(table_rows[index][1].text).to eq site_user.email
+      expect(table_rows[index][2]).not_to have_selector tick
+      expect(table_rows[index][3]).to have_selector tick
+      expect(table_rows[index][4]).not_to have_selector tick
+    end
+
+    scenario 'with site admin' do
+      index = site.users.ordered.find_index(site_admin)
+
+      visit_200_page
+
+      expect(table_rows[index][2]).to have_selector tick
     end
 
     scenario 'with unconfirmed user' do
       unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
       unconfirmed_user.site_settings.create!(site: site)
       visit_200_page
-      index = site.users.find_index(unconfirmed_user)
 
-      within "tbody tr:nth-child(#{index + 1})" do
-        expect(page).to have_content unconfirmed_user.name
-        expect(page).to have_content unconfirmed_user.email
-        expect(page).not_to have_selector confirmed_selector
-      end
+      index = site.users.ordered.find_index(unconfirmed_user)
+
+      expect(table_rows[index][3]).not_to have_selector tick
     end
 
     scenario 'with locked user' do
       locked_user = FactoryGirl.create(:locked_user)
       locked_user.site_settings.create!(site: site)
       visit_200_page
-      index = site.users.find_index(locked_user)
 
-      within "tbody tr:nth-child(#{index + 1})" do
-        expect(page).to have_content locked_user.name
-        expect(page).to have_content locked_user.email
-        expect(page).to have_selector locked_selector
-      end
-    end
+      index = site.users.ordered.find_index(locked_user)
 
-    scenario 'with site admin' do
-      index = site.users.find_index(site_admin)
-      visit_200_page
-
-      within "tbody tr:nth-child(#{index + 1})" do
-        expect(page).to have_content site_admin.name
-        expect(page).to have_content site_admin.email
-        expect(page).to have_selector site_admin_selector
-      end
+      expect(table_rows[index][4]).to have_selector tick
     end
   end
 end
