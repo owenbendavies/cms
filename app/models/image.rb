@@ -27,6 +27,8 @@ class Image < ActiveRecord::Base
 
   mount_uploader :file, ImageUploader, mount_on: :filename
 
+  scope :ordered, -> { order(:name) }
+
   schema_validations except: [:created_at, :updated_at, :filename]
 
   strip_attributes collapse_spaces: true

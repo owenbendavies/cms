@@ -30,13 +30,6 @@
 require 'rails_helper'
 
 RSpec.describe Site, type: :model do
-  it { should have_many(:images).order(:name).dependent(:destroy) }
-  it { should have_many(:messages).order('created_at desc').dependent(:destroy) }
-  it { should have_many(:pages).order(:name).dependent(:destroy) }
-  it { should have_many(:site_settings).dependent(:destroy) }
-  it { should have_many(:users) }
-  it { should have_many(:main_menu_pages) }
-
   describe '#main_menu_pages' do
     subject { FactoryGirl.create(:site) }
 
@@ -71,6 +64,16 @@ RSpec.describe Site, type: :model do
       )
 
       expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
+    end
+  end
+
+  describe '.ordered' do
+    it 'returns ordered by host' do
+      site_c = FactoryGirl.create(:site, host: 'sitec')
+      site_a = FactoryGirl.create(:site, host: 'sitea')
+      site_b = FactoryGirl.create(:site, host: 'siteb')
+
+      expect(described_class.ordered).to eq [site_a, site_b, site_c]
     end
   end
 

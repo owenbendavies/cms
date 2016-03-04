@@ -60,12 +60,13 @@ class User < ActiveRecord::Base
 
   gravtastic default: 'mm', size: 40
 
-  has_many :site_settings, dependent: :destroy
-  has_many :sites, -> { order :host }, through: :site_settings
+  has_many :sites, through: :site_settings
 
   has_paper_trail
 
   schema_validations
+
+  scope :ordered, -> { order(:email) }
 
   strip_attributes collapse_spaces: true
 

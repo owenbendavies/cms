@@ -30,6 +30,8 @@ class Message < ActiveRecord::Base
 
   schema_validations
 
+  scope :ordered, -> { order(created_at: :desc) }
+
   strip_attributes except: :message, collapse_spaces: true
 
   validates :name, length: { minimum: 3 }
