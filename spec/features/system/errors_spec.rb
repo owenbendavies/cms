@@ -33,8 +33,7 @@ RSpec.feature 'Errors' do
 
     authenticated_page login_user: :sysadmin do
       scenario 'visiting the page' do
-        expect { unchecked_visit '/system/error_timeout?seconds=2.5' }
-          .to raise_error Rack::Timeout::RequestTimeoutError
+        expect { unchecked_visit go_to_url }.to raise_error Rack::Timeout::RequestTimeoutError
       end
     end
   end
