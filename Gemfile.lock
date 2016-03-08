@@ -49,7 +49,7 @@ GEM
     autogrow-textarea-rails (3.1.0)
     autoprefixer-rails (6.3.3.1)
       execjs
-    bcrypt (3.1.10)
+    bcrypt (3.1.11)
     bh (1.3.5)
       actionpack
       activesupport
@@ -133,7 +133,7 @@ GEM
       thread
       thread_safe
     erubis (2.7.0)
-    excon (0.47.0)
+    excon (0.48.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -178,7 +178,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.8.1)
+    fog-aws (0.9.1)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -205,7 +205,7 @@ GEM
     fog-json (1.0.2)
       fog-core (~> 1.0)
       multi_json (~> 1.10)
-    fog-local (0.2.1)
+    fog-local (0.3.0)
       fog-core (~> 1.27)
     fog-powerdns (0.1.1)
       fog-core (~> 1.27)
@@ -244,7 +244,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.6.0)
+    fog-vsphere (0.6.3)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -290,7 +290,7 @@ GEM
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
     i18n (0.7.0)
-    i18n-tasks (0.9.4)
+    i18n-tasks (0.9.5)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       easy_translate (>= 0.5.0)
@@ -369,7 +369,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (3.0.2)
+    puma (3.1.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     puppet-lint (1.1.0)
@@ -435,7 +435,7 @@ GEM
     require_all (1.3.3)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.8.0)
+    rollbar (2.8.2)
       multi_json
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
@@ -531,7 +531,7 @@ GEM
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.0.3)
+    sprockets-rails (3.0.4)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -572,7 +572,7 @@ GEM
     valuable (0.9.10)
     warden (1.2.6)
       rack (>= 1.0)
-    webmock (1.24.1)
+    webmock (1.24.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
