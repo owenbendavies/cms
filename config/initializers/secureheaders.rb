@@ -1,8 +1,7 @@
 SecureHeaders::Configuration.default do |config|
-  config.hsts = false
+  config.hsts = :opt_out_of_protection
 
   config.csp = {
-    enforce: true,
     default_src: %w('none'),
     connect_src: %w('self'),
     font_src: %w('self' https:),

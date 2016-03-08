@@ -18,19 +18,6 @@ RSpec.feature 'Web server' do
     expect(page.status_code).to eq 403
   end
 
-  scenario 'content security policy' do
-    visit_200_page '/home'
-
-    expect(response_headers['Content-Security-Policy']).to eq [
-      "default-src 'none'",
-      "connect-src 'self'",
-      "font-src 'self' https:",
-      "img-src 'self' https: data:",
-      "script-src 'self' https: 'unsafe-inline'",
-      "style-src 'self' https: 'unsafe-inline'"
-    ].join('; ') + ';'
-  end
-
   context 'with gzip' do
     before do
       page.driver.header('ACCEPT_ENCODING', 'gzip, deflate')
