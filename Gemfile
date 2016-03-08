@@ -38,7 +38,7 @@ gem 'validates_email_format_of'
 
 # Controller Gems
 gem 'request_store'
-gem 'secure_headers', '< 3.0.0'
+gem 'secure_headers'
 gem 'xml-sitemap'
 
 # View Gems

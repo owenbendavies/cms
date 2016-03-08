@@ -504,8 +504,8 @@ GEM
     scss-lint (0.38.0)
       rainbow (~> 2.0)
       sass (~> 3.4.1)
-    secure_headers (2.5.2)
-      user_agent_parser
+    secure_headers (3.0.3)
+      useragent
     sexp_processor (4.7.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
@@ -566,7 +566,7 @@ GEM
     unf_ext (0.0.7.2)
     unicode-display_width (0.3.1)
     uniform_notifier (1.9.0)
-    user_agent_parser (2.3.0)
+    useragent (0.16.5)
     validates_email_format_of (1.6.3)
       i18n
     valuable (0.9.10)
@@ -652,7 +652,7 @@ DEPENDENCIES
   schema_auto_foreign_keys
   schema_validations
   scss-lint
-  secure_headers (< 3.0.0)
+  secure_headers
   shoulda-matchers
   simple_form
   simplecov (< 0.11.0)

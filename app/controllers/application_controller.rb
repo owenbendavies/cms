@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
-  ensure_security_headers
-
   protect_from_forgery with: :reset_session
 
   rescue_from ActionView::MissingTemplate, with: :page_not_found
