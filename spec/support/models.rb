@@ -1,5 +1,5 @@
 RSpec.shared_context 'models', type: :model do
-  describe '#versions', versioning: true do
+  context '#versions', versioning: true do
     subject { FactoryGirl.create(described_class.to_s.underscore) }
 
     it 'records creates' do
