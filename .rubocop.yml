@@ -3,10 +3,15 @@ require: rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.3
   Exclude:
-    - 'bin/*'
     - 'db/schema.rb'
     - 'puppet/**/*'
     - 'vendor/bundle/**/*'
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/rails'
+    - 'bin/rake'
+    - 'bin/rspec'
 
 Metrics/LineLength:
   Max: 100
@@ -21,8 +26,7 @@ Rails:
 
 RSpec/DescribeClass:
   Exclude:
-    - 'spec/support/**/*'
-    - 'spec/tasks/**/*'
+    - 'spec/tasks/*_spec.rb'
 
 Style/Documentation:
   Enabled: false
