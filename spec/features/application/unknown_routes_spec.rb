@@ -28,8 +28,7 @@ RSpec.feature 'Unknown routes' do
   end
 
   scenario 'unknown site' do
-    site.destroy!
-    unchecked_visit '/home'
+    unchecked_visit 'http://unknown.example.com/home'
 
     expect(page).to have_title 'Site Not Found'
     expect(page.status_code).to eq 404

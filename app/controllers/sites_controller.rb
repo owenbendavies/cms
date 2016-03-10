@@ -30,7 +30,7 @@
 class SitesController < ApplicationController
   def index
     authorize Site
-    @sites = current_user.sites
+    @sites = current_user.sites.ordered
   end
 
   def edit

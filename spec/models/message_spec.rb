@@ -26,6 +26,16 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
+  describe '.ordered' do
+    it 'returns ordered by created descending' do
+      message1 = FactoryGirl.create(:message, created_at: Time.zone.now - 1.minute)
+      message3 = FactoryGirl.create(:message, created_at: Time.zone.now - 3.minutes)
+      message2 = FactoryGirl.create(:message, created_at: Time.zone.now - 2.minutes)
+
+      expect(described_class.ordered).to eq [message1, message2, message3]
+    end
+  end
+
   it { is_expected.to strip_attribute(:subject).collapse_spaces }
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }

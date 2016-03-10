@@ -30,11 +30,7 @@
 class Site < ActiveRecord::Base
   LAYOUTS = %w(one_column right_sidebar small_right_sidebar).freeze
 
-  has_many :images, -> { order :name }, dependent: :destroy
-  has_many :messages, -> { order 'created_at desc' }, dependent: :destroy
-  has_many :pages, -> { order :name }, dependent: :destroy
-  has_many :site_settings, dependent: :destroy
-  has_many :users, -> { order :email }, through: :site_settings
+  has_many :users, through: :settings
   has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page'
 
   has_paper_trail
@@ -42,6 +38,8 @@ class Site < ActiveRecord::Base
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
   schema_validations
+
+  scope :ordered, -> { order(:host) }
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true
 

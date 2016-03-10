@@ -46,7 +46,7 @@
 
 class UsersController < ApplicationController
   def index
-    @users = @site.users
+    @users = @site.users.ordered
     authorize User
   end
 end

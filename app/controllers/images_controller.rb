@@ -22,7 +22,7 @@
 
 class ImagesController < ApplicationController
   def index
-    @images = @site.images
+    @images = @site.images.ordered
     authorize Image
   end
 end
