@@ -33,7 +33,7 @@ class SystemsController < ApplicationController
   end
 
   def sitemap
-    @pages = @site.pages
+    @pages = @site.pages.ordered
 
     respond_to do |format|
       format.html

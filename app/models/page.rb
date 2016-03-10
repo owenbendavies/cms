@@ -34,6 +34,7 @@ class Page < ActiveRecord::Base
   schema_validations
 
   scope :non_private, -> { where(private: false) }
+  scope :ordered, -> { order(:name) }
 
   strip_attributes except: :html_content, collapse_spaces: true
 

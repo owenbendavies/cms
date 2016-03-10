@@ -20,6 +20,6 @@
       %tr
         %td= user.name
         %td= user.email
-        %td= tick('admin', user.admin_for_site?(@site))
-        %td= tick('confirmed', user.confirmed?)
-        %td= tick('locked', user.access_locked?)
+        %td= tick(user.admin_for_site?(@site))
+        %td= tick(user.confirmed?)
+        %td= tick(user.access_locked?)

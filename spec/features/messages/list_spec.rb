@@ -21,15 +21,19 @@ RSpec.feature 'List messages' do
     scenario 'visiting the page', js: true do
       visit_200_page
 
-      expect(page).to have_content 'Created at'
-      expect(page).to have_content 'Name'
-      expect(page).to have_content 'Email'
+      expect(table_header_text).to eq ['Created at', 'Name', 'Email']
+      expect(table_rows.count).to eq 10
 
-      expect(page).to have_link('about a month ago', href: "/site/messages/#{messages.first.id}")
-      expect(page).to have_link(messages.first.name, href: "/site/messages/#{messages.first.id}")
-      expect(page).to have_link(messages.first.email, href: "/site/messages/#{messages.first.id}")
+      expect(table_rows[0].map(&:text)).to eq [
+        'about a month ago',
+        messages.first.name,
+        messages.first.email
+      ]
 
-      expect(page).not_to have_content other_site_message.name
+      links = table_rows[0].map { |cell| cell.find('a') }
+      expect(links.count).to eq 3
+      link_locations = links.map { |link| link['href'] }.uniq
+      expect(link_locations).to eq ["/site/messages/#{messages.first.id}"]
     end
 
     scenario 'pagination' do
