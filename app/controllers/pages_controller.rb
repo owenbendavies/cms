@@ -95,9 +95,7 @@ class PagesController < ApplicationController
   def message_params
     params.require(:message).permit(:name, :email, :phone, :message, :do_not_fill_in).merge(
       site: @site,
-      subject: @page.name,
-      user_agent: request.user_agent,
-      ip_address: request.remote_ip
+      subject: @page.name
     )
   end
 end
