@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'List images' do
+RSpec.feature 'Index images' do
   let!(:image_b) { FactoryGirl.create(:image, name: 'Image B') }
   let!(:image_c) { FactoryGirl.create(:image, name: 'Image C') }
   let!(:image_a) { FactoryGirl.create(:image, name: 'Image A') }

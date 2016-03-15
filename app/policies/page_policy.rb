@@ -1,4 +1,8 @@
 class PagePolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
   def show?
     !@record.private? || user_record?
   end
