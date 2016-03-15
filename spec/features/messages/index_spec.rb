@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'List messages' do
+RSpec.feature 'Index messages' do
   let!(:messages) do
     (0..11).map do |i|
       FactoryGirl.create(
