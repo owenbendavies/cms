@@ -26,9 +26,20 @@
 
 class PagesController < ApplicationController
   before_action :new_page, only: [:new, :create]
-  before_action :find_page, except: [:new, :create]
-  skip_before_action :authenticate_user!, only: [:show, :contact_form]
+  before_action :find_page, except: [:index, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show, :contact_form]
   before_action :authenticate_page, only: [:show, :contact_form]
+
+  def index
+    authorize Page
+
+    @pages = @site.pages.ordered
+
+    respond_to do |format|
+      format.html
+      format.xml { render xml: xml_sitemap.render }
+    end
+  end
 
   def new
   end
@@ -97,5 +108,13 @@ class PagesController < ApplicationController
       site: @site,
       subject: @page.name
     )
+  end
+
+  def xml_sitemap
+    XmlSitemap::Map.new(@site.host, home: false, secure: true) do |map|
+      @pages.non_private.each do |page|
+        map.add page_path(page.to_param), updated: page.updated_at
+      end
+    end
   end
 end
