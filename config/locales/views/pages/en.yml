@@ -1,5 +1,9 @@
 en:
   pages:
+    index:
+      title: "Sitemap"
+      icon: "sitemap"
+
     new:
       title: "New Page"
       icon: "plus"

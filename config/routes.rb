@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'systems#home'
 
   get '/robots', to: 'systems#robots'
-  get '/sitemap', to: 'systems#sitemap'
+  get '/sitemap', to: 'pages#index'
 
   get '/system/error_500', to: 'systems#error_500'
   get '/system/error_delayed', to: 'systems#error_delayed'

@@ -23,8 +23,8 @@
 
 class MessagesController < ApplicationController
   def index
-    @messages = @site.messages.ordered.paginate(page: params[:page])
     authorize Message
+    @messages = @site.messages.ordered.paginate(page: params[:page])
   end
 
   def show
