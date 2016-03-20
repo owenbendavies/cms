@@ -10,4 +10,11 @@ do
   s3cmd sync --skip-existing --delete-after $bucket/ $destination
 done
 
+for app in $(heroku apps | grep cms | awk '{print $1}')
+do
+  echo $app
+  destination=$HOME/Backups/AWS/$app.dump
+  heroku run --app $app 'pg_dump $DATABASE_URL' > $destination
+done
+
 echo Backup complete
