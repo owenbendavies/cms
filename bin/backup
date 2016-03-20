@@ -7,9 +7,6 @@ do
   name=$(echo $bucket | sed 's/s3:\/\///')
   destination=$HOME/Backups/AWS/s3/$name/
   mkdir -p $destination
-  s3cmd sync --skip-existing --delete-after --dry-run $bucket/ $destination
-  echo 'Enter to continue'
-  read
   s3cmd sync --skip-existing --delete-after $bucket/ $destination
 done
 
