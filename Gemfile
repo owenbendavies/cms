@@ -15,7 +15,7 @@ gem 'rack-timeout'
 
 # Authentication and authorization
 gem 'devise_invitable'
-gem 'devise_zxcvbn', '< 2.0.0'
+gem 'devise_zxcvbn'
 gem 'pundit'
 
 # Required for carrierwave to be loaded before
@@ -66,7 +66,7 @@ group :assets, :development do
   gem 'coffee-rails'
   gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
-  gem 'jquery-rails'
+  gem 'jquery-rails', '4.1.0'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
   gem 'therubyracer'
@@ -89,7 +89,7 @@ group :development, :test do
   gem 'immigrant'
   gem 'puppet-lint', require: false
   gem 'rails_best_practices', require: false
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.37.2', require: false
   gem 'rubocop-rspec', require: false
   gem 'scss-lint', require: false
   gem 'simplecov', '< 0.11.0'
