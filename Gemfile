@@ -42,11 +42,11 @@ gem 'secure_headers'
 gem 'xml-sitemap'
 
 # View Gems
+gem 'simple_form' # Require before bh
 gem 'bh'
 gem 'haml-rails'
 gem 'premailer-rails'
 gem 'rails-timeago'
-gem 'simple_form'
 gem 'tinymce-rails'
 gem 'will_paginate-bootstrap'
 
