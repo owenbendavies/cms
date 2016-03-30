@@ -1,8 +1,10 @@
-RSpec.configuration.before :each do
-  Fog.mock!
-  Fog::Mock.reset
+RSpec.configure do |config|
+  config.before :each do
+    Fog.mock!
+    Fog::Mock.reset
 
-  fog_directories.create(key: Rails.application.secrets.s3_bucket)
+    fog_directories.create(key: Rails.application.secrets.s3_bucket)
+  end
 end
 
 module CarrierWaveHelpers
