@@ -2,34 +2,10 @@ RSpec.configuration.include Warden::Test::Helpers, type: :feature
 
 RSpec.shared_context 'feature helpers', type: :feature do
   alias_method :unchecked_login_as, :login_as
-  alias_method :unchecked_visit, :visit
 
   def login_as(*_)
     raise 'Please use methods from spec/support/feature_helpers.rb'
   end
-
-  def visit(*_)
-    raise 'Please use methods from spec/support/feature_helpers.rb'
-  end
-
-  def visit_non_redirect(url = go_to_url)
-    unchecked_visit url
-    expect(current_path).to eq URI.parse(url).path
-  end
-
-  def visit_200_page(url = go_to_url)
-    visit_non_redirect url
-    expect(page.status_code).to eq 200
-  end
-
-  def visit_404_page(url = go_to_url)
-    visit_non_redirect url
-    expect(page.status_code).to eq 404
-    expect(page).to have_content 'Page Not Found'
-  end
-
-  let(:table_header_text) { all('table thead th').map(&:text) }
-  let(:table_rows) { all('table tbody tr').map { |row| row.all('td') } }
 end
 
 def unauthorized_topbar(topbar_link)

@@ -1,5 +1,7 @@
-RSpec.configuration.before :each do
-  ActionMailer::Base.deliveries = []
+RSpec.configure do |config|
+  config.before :each do
+    ActionMailer::Base.deliveries = []
+  end
 end
 
 RSpec.shared_context 'site email' do

@@ -1,5 +1,7 @@
-RSpec.configuration.before :all, type: :rake do
-  Rails.application.load_tasks
+RSpec.configure do |config|
+  config.before :all, type: :rake do
+    Rails.application.load_tasks
+  end
 end
 
 RSpec.shared_context 'rake helpers', type: :rake do
