@@ -3,7 +3,7 @@ RSpec.configure do |config|
     Fog.mock!
     Fog::Mock.reset
 
-    fog_directories.create(key: Rails.application.secrets.s3_bucket)
+    fog_directories.create(key: CarrierWave::Uploader::Base.fog_directory)
   end
 end
 
@@ -11,16 +11,12 @@ module CarrierWaveHelpers
   extend ActiveSupport::Concern
 
   included do
-    let(:fog_connection) do
-      Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials)
-    end
-
-    let(:fog_directories) do
-      fog_connection.directories
+    def fog_directories
+      Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials).directories
     end
 
     def uploaded_files
-      fog_directories.get(Rails.application.secrets.s3_bucket).files.map(&:key)
+      fog_directories.get(CarrierWave::Uploader::Base.fog_directory).files.map(&:key)
     end
 
     def remote_image(remote_file)
