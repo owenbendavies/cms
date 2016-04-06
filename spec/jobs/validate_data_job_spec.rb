@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'cms:validate_data', type: :rake do
+RSpec.describe ValidateDataJob do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
 
   it 'does not send an email with valid data' do
     FactoryGirl.create(:site)
 
-    subject.execute
+    described_class.perform_now
 
     expect(ActionMailer::Base.deliveries.size).to eq 0
     Delayed::Worker.new.work_off
@@ -21,7 +21,7 @@ RSpec.describe 'cms:validate_data', type: :rake do
     message = FactoryGirl.create(:message)
     message.update_attribute(:name, 'y')
 
-    subject.execute
+    described_class.perform_now
 
     expect(ActionMailer::Base.deliveries.size).to eq 0
     Delayed::Worker.new.work_off

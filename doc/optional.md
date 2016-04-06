@@ -44,7 +44,7 @@
   * Profile > Time Zone
 * rollbar
 * scheduler
-  * Add `./bin/rake cms:validate_data` daily
+  * Add `./bin/rails runner 'ValidateDataJob.perform_later'` daily
 * tinfoilsecurity
 
 ## Services
