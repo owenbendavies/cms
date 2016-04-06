@@ -24,10 +24,6 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
-RSpec/DescribeClass:
-  Exclude:
-    - 'spec/tasks/*_spec.rb'
-
 Style/Documentation:
   Enabled: false
 
