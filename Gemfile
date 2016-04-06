@@ -19,7 +19,7 @@ gem 'devise_zxcvbn'
 gem 'pundit'
 
 # Required for carrierwave to be loaded before
-gem 'fog'
+gem 'fog', '1.37.0'
 gem 'net-ssh'
 
 # Model Gems
@@ -66,7 +66,7 @@ group :assets, :development do
   gem 'coffee-rails'
   gem 'font-awesome-sass'
   gem 'google-analytics-turbolinks'
-  gem 'jquery-rails', '4.1.0'
+  gem 'jquery-rails'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
   gem 'therubyracer'
@@ -89,7 +89,6 @@ group :development, :test do
   gem 'immigrant'
   gem 'puppet-lint', require: false
   gem 'rails_best_practices', require: false
-  gem 'rubocop', '0.37.2', require: false
   gem 'rubocop-rspec', require: false
   gem 'scss-lint', require: false
   gem 'simplecov', '< 0.11.0'
