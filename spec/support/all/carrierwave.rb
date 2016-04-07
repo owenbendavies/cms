@@ -15,8 +15,12 @@ module CarrierWaveHelpers
       Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials).directories
     end
 
+    def fog_directory
+      fog_directories.get(CarrierWave::Uploader::Base.fog_directory)
+    end
+
     def uploaded_files
-      fog_directories.get(CarrierWave::Uploader::Base.fog_directory).files.map(&:key)
+      fog_directory.files.map(&:key)
     end
 
     def remote_image(remote_file)

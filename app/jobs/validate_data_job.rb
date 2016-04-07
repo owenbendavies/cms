@@ -1,16 +1,15 @@
 class ValidateDataJob < ActiveJob::Base
-  queue_as :default
-
+  ERROR_MESSAGE = 'The following models had errors'.freeze
   NON_MODEL_TABLES = %w(delayed_jobs schema_migrations versions).freeze
 
+  queue_as :default
+
   def perform
-    error_messages = model_errors
+    errors = model_errors
 
-    return unless error_messages.any?
+    return unless errors.any?
 
-    message = "The following models had errors\n\n" + error_messages.join("\n") + "\n"
-
-    SystemMailer.error(message).deliver_later
+    SystemMailer.error(ERROR_MESSAGE, errors).deliver_later
   end
 
   private

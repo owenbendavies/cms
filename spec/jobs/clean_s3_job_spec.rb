@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe ValidateDataJob do
-  context 'with no data' do
+RSpec.describe CleanS3Job do
+  let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
+
+  context 'with no files' do
     it 'does not send an email' do
       described_class.perform_now
 
@@ -11,9 +13,15 @@ RSpec.describe ValidateDataJob do
     end
   end
 
-  context 'with valid data' do
-    let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
-    let!(:site) { FactoryGirl.create(:site) }
+  context 'with valid files' do
+    before do
+      Rails.root.join('spec/assets/test_image.jpg').open do |file|
+        FactoryGirl.create(:image, file: file)
+      end
+
+      css_file = StringUploader.new('stylesheet.css', 'body {padding: 4em}')
+      FactoryGirl.create(:site, stylesheet: css_file)
+    end
 
     it 'does not send an email' do
       described_class.perform_now
@@ -23,17 +31,9 @@ RSpec.describe ValidateDataJob do
       expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
-    context 'with invalid data' do
-      let!(:page) do
-        FactoryGirl.create(:page).tap do |page|
-          page.update_attribute(:url, 'login')
-        end
-      end
-
-      let!(:message) do
-        FactoryGirl.create(:message).tap do |message|
-          message.update_attribute(:name, 'y')
-        end
+    context 'with invalid files' do
+      before do
+        fog_directory.files.create(key: 'bad.jpg')
       end
 
       it 'sends an email' do
@@ -44,10 +44,9 @@ RSpec.describe ValidateDataJob do
         expect(ActionMailer::Base.deliveries.size).to eq 1
 
         expect(ActionMailer::Base.deliveries.last.body.to_s).to eq <<EOF
-The following models had errors
+The following S3 files are not needed
 
-Message##{message.id}: Name is too short (minimum is 3 characters)
-Page##{page.id}: Url is reserved
+bad.jpg
 EOF
       end
     end
