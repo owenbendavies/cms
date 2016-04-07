@@ -5,7 +5,7 @@ RSpec.describe SystemMailer do
   let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
 
   describe '.error' do
-    subject { described_class.error('Something went wrong') }
+    subject { described_class.error('Something went wrong', ['error 1', 'error 2']) }
 
     it 'is sent to sysadmins' do
       expect(subject.to).to eq [sysadmin.email]
@@ -20,7 +20,12 @@ RSpec.describe SystemMailer do
     end
 
     it 'has text in body' do
-      expect(subject.body).to eq 'Something went wrong'
+      expect(subject.body).to eq <<EOF
+Something went wrong
+
+error 1
+error 2
+EOF
     end
   end
 end
