@@ -45,6 +45,7 @@
 * rollbar
 * scheduler
   * Add `./bin/rails runner 'ValidateDataJob.perform_later'` daily
+  * Add `./bin/rails runner 'CleanS3Job.perform_later'` daily
 * tinfoilsecurity
 
 ## Services
