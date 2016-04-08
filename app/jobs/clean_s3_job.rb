@@ -1,5 +1,5 @@
 class CleanS3Job < ActiveJob::Base
-  ERROR_MESSAGE = 'The following S3 files are not needed'.freeze
+  ERROR_MESSAGE = 'The following S3 files where deleted'.freeze
 
   queue_as :default
 
@@ -45,6 +45,7 @@ class CleanS3Job < ActiveJob::Base
       next if good_files.include? file.key
 
       bad_files << file.key
+      file.destroy
     end
 
     bad_files
