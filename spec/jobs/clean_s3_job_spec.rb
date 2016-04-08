@@ -23,8 +23,12 @@ RSpec.describe CleanS3Job do
       FactoryGirl.create(:site, stylesheet: css_file)
     end
 
+    let!(:good_files) { uploaded_files }
+
     it 'does not send an email' do
       described_class.perform_now
+
+      expect(uploaded_files).to eq good_files
 
       expect(ActionMailer::Base.deliveries.size).to eq 0
       Delayed::Worker.new.work_off
@@ -37,14 +41,19 @@ RSpec.describe CleanS3Job do
       end
 
       it 'sends an email' do
+        expect(uploaded_files).to include 'bad.jpg'
+
         described_class.perform_now
+
+        expect(uploaded_files).not_to include 'bad.jpg'
+        expect(uploaded_files).to eq good_files
 
         expect(ActionMailer::Base.deliveries.size).to eq 0
         Delayed::Worker.new.work_off
         expect(ActionMailer::Base.deliveries.size).to eq 1
 
         expect(ActionMailer::Base.deliveries.last.body.to_s).to eq <<EOF
-The following S3 files are not needed
+The following S3 files where deleted
 
 bad.jpg
 EOF
