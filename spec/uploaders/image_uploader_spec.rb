@@ -30,12 +30,9 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span1.jpg",
-        "#{site.id}/#{uuid}_span2.jpg",
         "#{site.id}/#{uuid}_span3.jpg",
         "#{site.id}/#{uuid}_span4.jpg",
         "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span10.jpg",
         "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
@@ -44,14 +41,6 @@ RSpec.describe ImageUploader do
       File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
         subject.store! file
       end
-
-      image = remote_image(subject.span1)
-      expect(image[:width]).to eq 60
-      expect(image[:height]).to eq 60
-
-      image = remote_image(subject.span2)
-      expect(image[:width]).to eq 140
-      expect(image[:height]).to eq 140
 
       image = remote_image(subject.span3)
       expect(image[:width]).to eq 220
@@ -65,10 +54,6 @@ RSpec.describe ImageUploader do
       expect(image[:width]).to eq 620
       expect(image[:height]).to eq 465
 
-      image = remote_image(subject.span10)
-      expect(image[:width]).to eq 780
-      expect(image[:height]).to eq 585
-
       image = remote_image(subject.span12)
       expect(image[:width]).to eq 940
       expect(image[:height]).to eq 705
@@ -79,14 +64,6 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      image = remote_image(subject.span1)
-      expect(image[:width]).to eq 60
-      expect(image[:height]).to eq 60
-
-      image = remote_image(subject.span2)
-      expect(image[:width]).to eq 140
-      expect(image[:height]).to eq 140
-
       image = remote_image(subject.span3)
       expect(image[:width]).to eq 80
       expect(image[:height]).to eq 80
@@ -96,10 +73,6 @@ RSpec.describe ImageUploader do
       expect(image[:height]).to eq 80
 
       image = remote_image(subject.span8)
-      expect(image[:width]).to eq 80
-      expect(image[:height]).to eq 80
-
-      image = remote_image(subject.span10)
       expect(image[:width]).to eq 80
       expect(image[:height]).to eq 80
 
@@ -119,12 +92,9 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span1.jpg",
-        "#{site.id}/#{uuid}_span2.jpg",
         "#{site.id}/#{uuid}_span3.jpg",
         "#{site.id}/#{uuid}_span4.jpg",
         "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span10.jpg",
         "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
@@ -140,12 +110,9 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span1.jpg",
-        "#{site.id}/#{uuid}_span2.jpg",
         "#{site.id}/#{uuid}_span3.jpg",
         "#{site.id}/#{uuid}_span4.jpg",
         "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span10.jpg",
         "#{site.id}/#{uuid}_span12.jpg"
       ].sort
     end
