@@ -24,7 +24,8 @@
 #
 # Indexes
 #
-#  index_sites_on_host  (host) UNIQUE
+#  index_sites_on_host                 (host) UNIQUE
+#  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
 #
 
 require 'rails_helper'
@@ -57,13 +58,16 @@ RSpec.describe Site, type: :model do
 
       expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
 
+      uuid = File.basename(site.stylesheet_filename, '.css')
+
       expect(site.stylesheet.url).to eq File.join(
         'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
-        site.id.to_s,
-        site.stylesheet_filename
+        'stylesheets',
+        uuid,
+        'original.css'
       )
 
-      expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
+      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
     end
   end
 
@@ -141,7 +145,8 @@ RSpec.describe Site, type: :model do
       subject.save!
       subject.stylesheet.file.send(:file).reload
 
-      expect(uploaded_files).to eq ["#{subject.id}/#{subject.stylesheet_filename}"]
+      uuid = File.basename(subject.stylesheet_filename, '.css')
+      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
     end
 
     it 'deletes old version' do
@@ -150,13 +155,15 @@ RSpec.describe Site, type: :model do
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
 
-      expect(uploaded_files).to eq ["#{subject.id}/#{subject.stylesheet_filename}"]
+      uuid = File.basename(subject.stylesheet_filename, '.css')
+      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
 
       site = described_class.find_by_id(subject.id)
       site.css = 'body{background-color: red}'
       site.save!
 
-      expect(uploaded_files).to eq ["#{site.id}/#{site.stylesheet_filename}"]
+      uuid = File.basename(site.stylesheet_filename, '.css')
+      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
       expect(site.stylesheet_filename).not_to eq subject.stylesheet_filename
     end
   end
@@ -170,14 +177,6 @@ RSpec.describe Site, type: :model do
     it 'returns host without www' do
       site = FactoryGirl.create(:site, host: 'www.example.com')
       expect(site.email).to eq 'noreply@example.com'
-    end
-  end
-
-  describe '#store_dir' do
-    subject { FactoryGirl.create(:site) }
-
-    it 'is site id' do
-      expect(subject.store_dir).to eq subject.id.to_s
     end
   end
 

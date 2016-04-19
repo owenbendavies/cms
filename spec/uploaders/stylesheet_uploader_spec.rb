@@ -5,12 +5,6 @@ RSpec.describe StylesheetUploader do
   let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(site) }
 
-  describe '#store_dir' do
-    it 'delegates to site' do
-      expect(subject.store_dir).to eq site.store_dir
-    end
-  end
-
   describe '.store!' do
     it 'must be css' do
       expect { subject.store! StringUploader.new('stylesheet.exe', css) }
@@ -25,8 +19,9 @@ RSpec.describe StylesheetUploader do
 
       subject.store! StringUploader.new('stylesheet.css', css)
 
-      uuid = File.basename(uploaded_files.first, '.css')
-      expect(uploaded_files).to eq ["#{site.id}/#{uuid}.css"]
+      expect(subject.uuid).to match(/\A[0-9a-f-]+\z/)
+
+      expect(uploaded_files).to eq ["stylesheets/#{subject.uuid}/original.css"]
     end
   end
 end

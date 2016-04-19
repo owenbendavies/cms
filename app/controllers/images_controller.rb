@@ -11,9 +11,9 @@
 #
 # Indexes
 #
-#  fk__images_site_id                    (site_id)
-#  index_images_on_site_id_and_filename  (site_id,filename) UNIQUE
-#  index_images_on_site_id_and_name      (site_id,name) UNIQUE
+#  fk__images_site_id                (site_id)
+#  index_images_on_filename          (filename) UNIQUE
+#  index_images_on_site_id_and_name  (site_id,name) UNIQUE
 #
 # Foreign Keys
 #

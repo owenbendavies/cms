@@ -24,7 +24,8 @@
 #
 # Indexes
 #
-#  index_sites_on_host  (host) UNIQUE
+#  index_sites_on_host                 (host) UNIQUE
+#  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
 #
 
 class Site < ActiveRecord::Base
@@ -61,10 +62,6 @@ class Site < ActiveRecord::Base
 
   def email
     "noreply@#{host.gsub(/^www\./, '')}"
-  end
-
-  def store_dir
-    id.to_s
   end
 
   def social_networks?
