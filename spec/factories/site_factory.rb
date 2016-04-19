@@ -24,7 +24,8 @@
 #
 # Indexes
 #
-#  index_sites_on_host  (host) UNIQUE
+#  index_sites_on_host                 (host) UNIQUE
+#  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
 #
 
 FactoryGirl.define do

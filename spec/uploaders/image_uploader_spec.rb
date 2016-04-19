@@ -4,12 +4,6 @@ RSpec.describe ImageUploader do
   let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(Image.new(site: site)) }
 
-  describe '#store_dir' do
-    it 'delegates to site' do
-      expect(subject.store_dir).to eq site.store_dir
-    end
-  end
-
   describe '.store!' do
     it 'must be an image' do
       expect { subject.store! StringUploader.new('stylesheet.exe', 'asd') }
@@ -26,14 +20,14 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      uuid = File.basename(uploaded_files.first, '.jpg')
+      expect(subject.uuid).to match(/\A[0-9a-f-]+\z/)
 
       expect(uploaded_files).to eq [
-        "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span3.jpg",
-        "#{site.id}/#{uuid}_span4.jpg",
-        "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span12.jpg"
+        "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/span3.jpg",
+        "images/#{subject.uuid}/span4.jpg",
+        "images/#{subject.uuid}/span8.jpg",
+        "images/#{subject.uuid}/span12.jpg"
       ].sort
     end
 
@@ -88,14 +82,12 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      uuid = File.basename(uploaded_files.first, '.jpg')
-
       expect(uploaded_files).to eq [
-        "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span3.jpg",
-        "#{site.id}/#{uuid}_span4.jpg",
-        "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span12.jpg"
+        "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/span3.jpg",
+        "images/#{subject.uuid}/span4.jpg",
+        "images/#{subject.uuid}/span8.jpg",
+        "images/#{subject.uuid}/span12.jpg"
       ].sort
     end
 
@@ -106,14 +98,12 @@ RSpec.describe ImageUploader do
         subject.store! file
       end
 
-      uuid = File.basename(uploaded_files.first, '.jpg')
-
       expect(uploaded_files).to eq [
-        "#{site.id}/#{uuid}.jpg",
-        "#{site.id}/#{uuid}_span3.jpg",
-        "#{site.id}/#{uuid}_span4.jpg",
-        "#{site.id}/#{uuid}_span8.jpg",
-        "#{site.id}/#{uuid}_span12.jpg"
+        "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/span3.jpg",
+        "images/#{subject.uuid}/span4.jpg",
+        "images/#{subject.uuid}/span8.jpg",
+        "images/#{subject.uuid}/span12.jpg"
       ].sort
     end
   end

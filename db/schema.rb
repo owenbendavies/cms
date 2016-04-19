@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313121934) do
+ActiveRecord::Schema.define(version: 20160418162621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160313121934) do
     t.string   "copyright",            :limit=>64
     t.string   "google_analytics",     :limit=>32
     t.string   "charity_number",       :limit=>32
-    t.string   "stylesheet_filename",  :limit=>40
+    t.string   "stylesheet_filename",  :limit=>40, :index=>{:name=>"index_sites_on_stylesheet_filename", :unique=>true, :using=>:btree}
     t.text     "sidebar_html_content"
     t.datetime "created_at",           :null=>false
     t.datetime "updated_at",           :null=>false
@@ -54,11 +54,10 @@ ActiveRecord::Schema.define(version: 20160313121934) do
   create_table "images", force: :cascade do |t|
     t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_images_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__images_site_id", :using=>:btree}
     t.string   "name",       :limit=>64, :null=>false
-    t.string   "filename",   :limit=>40, :null=>false
+    t.string   "filename",   :limit=>40, :null=>false, :index=>{:name=>"index_images_on_filename", :unique=>true, :using=>:btree}
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
   end
-  add_index "images", ["site_id", "filename"], :name=>"index_images_on_site_id_and_filename", :unique=>true, :using=>:btree
   add_index "images", ["site_id", "name"], :name=>"index_images_on_site_id_and_name", :unique=>true, :using=>:btree
 
   create_table "messages", force: :cascade do |t|
