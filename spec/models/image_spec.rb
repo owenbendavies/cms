@@ -11,9 +11,9 @@
 #
 # Indexes
 #
-#  fk__images_site_id                    (site_id)
-#  index_images_on_site_id_and_filename  (site_id,filename) UNIQUE
-#  index_images_on_site_id_and_name      (site_id,name) UNIQUE
+#  fk__images_site_id                (site_id)
+#  index_images_on_filename          (filename) UNIQUE
+#  index_images_on_site_id_and_name  (site_id,name) UNIQUE
 #
 # Foreign Keys
 #
@@ -23,8 +23,6 @@
 require 'rails_helper'
 
 RSpec.describe Image, type: :model do
-  it { should delegate_method(:store_dir).to(:site) }
-
   describe '#file' do
     it 'saves an image' do
       image = described_class.new
@@ -39,13 +37,16 @@ RSpec.describe Image, type: :model do
 
       expect(image.filename).to match(/\A[0-9a-f-]+\.jpg/)
 
+      uuid = File.basename(image.filename, '.jpg')
+
       expect(image.file.url).to eq File.join(
         'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
-        image.site.id.to_s,
-        image.filename
+        'images',
+        uuid,
+        'original.jpg'
       )
 
-      expect(uploaded_files).to include "#{image.site.id}/#{image.filename}"
+      expect(uploaded_files).to include "images/#{uuid}/original.jpg"
     end
   end
 
