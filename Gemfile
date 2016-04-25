@@ -18,13 +18,10 @@ gem 'devise_invitable'
 gem 'devise_zxcvbn'
 gem 'pundit'
 
-# Required for carrierwave to be loaded before
-gem 'fog', '1.37.0'
-gem 'net-ssh'
-
 # Model Gems
 gem 'acts_as_list'
 gem 'carrierwave'
+gem 'fog'
 gem 'gravtastic'
 gem 'mini_magick'
 gem 'paper_trail', '< 4.0.0'
@@ -33,7 +30,6 @@ gem 'schema_associations'
 gem 'schema_auto_foreign_keys'
 gem 'schema_validations'
 gem 'strip_attributes'
-gem 'unf'
 gem 'validates_email_format_of'
 
 # Controller Gems

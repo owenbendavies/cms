@@ -107,21 +107,20 @@ GEM
       safe_yaml (~> 1.0.0)
     css_parser (1.4.1)
       addressable
-    database_cleaner (1.5.1)
+    database_cleaner (1.5.3)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.1.0)
       activerecord (>= 3.0, < 5)
       delayed_job (>= 3.0, < 5)
-    devise (3.5.6)
+    devise (4.0.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.1)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_invitable (1.5.5)
-      actionmailer (>= 3.2.6, < 5)
+    devise_invitable (1.6.0)
+      actionmailer (>= 3.2.6)
       devise (>= 3.2.0)
     devise_zxcvbn (2.1.1)
       devise
@@ -144,19 +143,22 @@ GEM
       i18n (~> 0.5)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
-    fog (1.37.0)
+    fog (1.38.0)
       fog-aliyun (>= 0.1.0)
       fog-atmos
       fog-aws (>= 0.6.0)
       fog-brightbox (~> 0.4)
+      fog-cloudatcost (~> 0.1.0)
       fog-core (~> 1.32)
       fog-dynect (~> 0.0.2)
       fog-ecloud (~> 0.1)
       fog-google (<= 0.1.0)
       fog-json
       fog-local
+      fog-openstack
       fog-powerdns (>= 0.1.1)
       fog-profitbricks
+      fog-rackspace
       fog-radosgw (>= 0.0.2)
       fog-riakcs
       fog-sakuracloud (>= 0.0.4)
@@ -187,9 +189,14 @@ GEM
       fog-core (~> 1.22)
       fog-json
       inflecto (~> 0.0.2)
-    fog-core (1.37.0)
+    fog-cloudatcost (0.1.2)
+      fog-core (~> 1.36)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-core (1.38.0)
       builder
-      excon (~> 0.45)
+      excon (~> 0.49)
       formatador (~> 0.2)
     fog-dynect (0.0.3)
       fog-core
@@ -207,6 +214,11 @@ GEM
       multi_json (~> 1.10)
     fog-local (0.3.0)
       fog-core (~> 1.27)
+    fog-openstack (0.1.3)
+      fog-core (>= 1.37)
+      fog-json (>= 1.0)
+      fog-xml (>= 0.1)
+      ipaddress (>= 0.8)
     fog-powerdns (0.1.1)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
@@ -215,6 +227,11 @@ GEM
       fog-core
       fog-xml
       nokogiri
+    fog-rackspace (0.1.1)
+      fog-core (>= 1.35)
+      fog-json (>= 1.0)
+      fog-xml (>= 0.1)
+      ipaddress (>= 0.8)
     fog-radosgw (0.0.5)
       fog-core (>= 1.21.0)
       fog-json
@@ -244,7 +261,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.6.3)
+    fog-vsphere (0.6.4)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -257,7 +274,7 @@ GEM
       sass (>= 3.2)
     font_assets (0.1.12)
       rack
-    foreman (0.78.0)
+    foreman (0.80.2)
       thor (~> 0.19.1)
     formatador (0.2.5)
     get_process_mem (0.2.0)
@@ -341,8 +358,7 @@ GEM
     modware (0.1.2)
       its-it
       key_struct (~> 0.4)
-    multi_json (1.11.2)
-    net-ssh (3.1.1)
+    multi_json (1.11.3)
     newrelic_rpm (3.15.1.316)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -422,7 +438,7 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
-    redis (3.2.2)
+    redis (3.3.0)
     redis-actionpack (4.0.1)
       actionpack (~> 4)
       redis-rack (~> 1.5.0)
@@ -437,7 +453,7 @@ GEM
     require_all (1.3.3)
     responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.9.1)
+    rollbar (2.10.0)
       multi_json
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
@@ -464,7 +480,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-rspec (1.4.1)
       rubocop (= 0.39.0)
-    ruby-progressbar (1.7.5)
+    ruby-progressbar (1.8.0)
     ruby2ruby (2.3.0)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -483,8 +499,8 @@ GEM
     schema_auto_foreign_keys (0.1.0)
       schema_plus_foreign_keys (~> 0.1)
       schema_plus_indexes (~> 0.2)
-    schema_monkey (2.1.3)
-      activerecord (~> 4.2)
+    schema_monkey (2.1.4)
+      activerecord (>= 4.2)
       its-it
       modware (~> 0.1)
     schema_plus_columns (0.1.0)
@@ -507,7 +523,7 @@ GEM
     scss-lint (0.38.0)
       rainbow (~> 2.0)
       sass (~> 3.4.1)
-    secure_headers (3.1.2)
+    secure_headers (3.2.0)
       useragent
     sexp_processor (4.7.0)
     shoulda-matchers (3.1.1)
@@ -563,18 +579,15 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.2)
     unicode-display_width (1.0.3)
     uniform_notifier (1.9.0)
     useragent (0.16.7)
     validates_email_format_of (1.6.3)
       i18n
-    valuable (0.9.11)
+    valuable (0.9.12)
     warden (1.2.6)
       rack (>= 1.0)
-    webmock (1.24.3)
+    webmock (1.24.6)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
@@ -611,7 +624,7 @@ DEPENDENCIES
   devise_zxcvbn
   factory_girl_rails
   faker
-  fog (= 1.37.0)
+  fog
   font-awesome-sass
   font_assets
   foreman
@@ -628,7 +641,6 @@ DEPENDENCIES
   letter_opener_web
   lograge
   mini_magick
-  net-ssh
   newrelic_rpm
   paper_trail (< 4.0.0)
   pg
@@ -667,7 +679,6 @@ DEPENDENCIES
   tinymce-rails
   turbolinks
   uglifier
-  unf
   validates_email_format_of
   webmock
   will_paginate-bootstrap
