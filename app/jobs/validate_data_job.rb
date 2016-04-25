@@ -7,9 +7,7 @@ class ValidateDataJob < ActiveJob::Base
   def perform
     errors = model_errors
 
-    return unless errors.any?
-
-    SystemMailer.error(ERROR_MESSAGE, errors).deliver_later
+    SystemMailer.error(ERROR_MESSAGE, errors).deliver_later if errors.any?
   end
 
   private
