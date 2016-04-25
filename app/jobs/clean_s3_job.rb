@@ -1,14 +1,15 @@
 class CleanS3Job < ActiveJob::Base
-  ERROR_MESSAGE = 'The following S3 files where deleted'.freeze
+  DELETED_ERROR_MESSAGE = 'The following S3 files where deleted'.freeze
+  MISSING_ERROR_MESSAGE = 'The following S3 files where missing'.freeze
 
   queue_as :default
 
   def perform
-    errors = cleaned_files
+    deleted_files, missing_files = cleaned_files
 
-    return unless errors.any?
+    SystemMailer.error(DELETED_ERROR_MESSAGE, deleted_files).deliver_later if deleted_files.any?
 
-    SystemMailer.error(ERROR_MESSAGE, errors).deliver_later
+    SystemMailer.error(MISSING_ERROR_MESSAGE, missing_files).deliver_later if missing_files.any?
   end
 
   private
@@ -38,16 +39,16 @@ class CleanS3Job < ActiveJob::Base
   end
 
   def cleaned_files
-    bad_files = []
-    good_files = valid_files
+    deleted_files = []
+    missing_files = valid_files
 
     all_files.each do |file|
-      next if good_files.include? file.key
+      next if missing_files.delete file.key
 
-      bad_files << file.key
+      deleted_files << file.key
       file.destroy
     end
 
-    bad_files
+    [deleted_files, missing_files]
   end
 end
