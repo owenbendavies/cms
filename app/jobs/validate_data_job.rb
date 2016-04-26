@@ -19,16 +19,10 @@ class ValidateDataJob < ActiveJob::Base
   end
 
   def model_errors
-    error_messages = []
-
     models.map do |model|
-      model.find_each do |record|
-        next if record.valid?
-
-        error_messages << "#{model}##{record.id}: " + record.errors.full_messages.join(', ')
+      model.find_each.reject(&:valid?).map do |record|
+        "#{model}##{record.id}: " + record.errors.full_messages.join(', ')
       end
-    end
-
-    error_messages
+    end.flatten
   end
 end
