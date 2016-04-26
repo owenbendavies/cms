@@ -75,7 +75,7 @@ RSpec.describe User, type: :model do
     it { should allow_value('someone@example.com').for(:email) }
     it { should_not allow_value('test@').for(:email).with_message('is not a valid email address') }
 
-    it { should validate_length_of(:password).is_at_least(8).is_at_most(64) }
+    it { should validate_length_of(:password).is_at_least(6).is_at_most(128) }
     it { should allow_value('apel203pd0pa').for(:password) }
     it { should_not allow_value('password').for(:password) }
 
