@@ -44,8 +44,7 @@
   * Profile > Time Zone
 * rollbar
 * scheduler
-  * Add `./bin/rails runner 'ValidateDataJob.perform_later'` daily
-  * Add `./bin/rails runner 'CleanS3Job.perform_later'` daily
+  * Add `./bin/rails runner 'DailyJob.perform_now'`
 * tinfoilsecurity
 
 ## Services
