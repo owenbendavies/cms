@@ -31,8 +31,10 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
+    echo 'if [ -n "$BASH_VERSION" ]; then cd /vagrant; fi' > /etc/profile.d/vagrant.sh
     apt-get update
-    apt-get install --yes ruby-dev
+    apt-get install --yes ruby-dev vim-nox htop
+    update-alternatives --set editor /usr/bin/vim.nox
     gem install librarian-puppet --no-rdoc --no-ri
     cd /vagrant/puppet
     librarian-puppet install
