@@ -9,7 +9,7 @@ package {
 }
 
 rbenv::install { 'vagrant': }
-rbenv::compile { '2.3.0': user => 'vagrant' }
+rbenv::compile { '2.3.1': user => 'vagrant' }
 
 include postgresql::client
 include postgresql::server
