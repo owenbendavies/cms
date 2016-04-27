@@ -20,6 +20,14 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :virtualbox do |virtualbox|
     virtualbox.memory = 1024
+
+    virtualbox.customize [
+      'guestproperty',
+      'set',
+      :id,
+      '/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold',
+      10_000
+    ]
   end
 
   config.vm.provision 'shell', inline: <<-SHELL
