@@ -1,7 +1,7 @@
 # CMS
 
-[![Build Status](https://travis-ci.org/obduk/cms.png?branch=master)](https://travis-ci.org/obduk/cms)
-[![Dependency Status](https://gemnasium.com/obduk/cms.png)](https://gemnasium.com/obduk/cms)
+[![Build Status](https://travis-ci.org/obduk/cms.svg?branch=master)](https://travis-ci.org/obduk/cms)
+[![Dependency Status](https://gemnasium.com/badges/github.com/obduk/cms.svg)](https://gemnasium.com/github.com/obduk/cms)
 
 A Content Management System (CMS) written with Ruby on Rails. Although it is a
 working project, it was not created with the intention of being a production
@@ -13,7 +13,6 @@ testing new ideas.
 1. Download [Vagrant](https://www.vagrantup.com/)
 1. `vagrant up` to start a virtual machine
 1. `vagrant ssh` to log onto the virtual machine
-1. `cd /vagrant` to go to the repository
 1. `./bin/test` to run all tests or `./bin/test spec/some_file.rb` to run one test or folder
 1. `./bin/run` to spin up a development web server
 1. Visit `http://cms.dev:3000/` to access the site
