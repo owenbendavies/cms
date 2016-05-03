@@ -1,12 +1,11 @@
-unless Vagrant.has_plugin? 'landrush'
-  puts "Run 'vagrant plugin install landrush'"
-  exit 1
+['landrush', 'vagrant-berkshelf', 'vagrant-timezone'].each do |plugin|
+  unless Vagrant.has_plugin? plugin
+    puts "Run 'vagrant plugin install #{plugin}'"
+    exit 1
+  end
 end
 
-unless Vagrant.has_plugin? 'vagrant-timezone'
-  puts "Run 'vagrant plugin install vagrant-timezone'"
-  exit 1
-end
+PROJECT_RUBY_VERSION = File.read('.ruby-version').strip
 
 Vagrant.configure(2) do |config|
   config.landrush.enabled = true
@@ -30,20 +29,43 @@ Vagrant.configure(2) do |config|
     ]
   end
 
-  config.vm.provision 'shell', inline: <<-SHELL
-    echo 'if [ -n "$BASH_VERSION" ]; then cd /vagrant; fi' > /etc/profile.d/vagrant.sh
-    apt-get update
-    apt-get install --yes ruby-dev vim-nox htop
-    update-alternatives --set editor /usr/bin/vim.nox
-    gem install librarian-puppet --no-rdoc --no-ri
-    cd /vagrant/puppet
-    librarian-puppet install
-  SHELL
+  config.vm.provision 'chef_apply' do |chef|
+    chef.recipe = File.read('chef/vagrant.rb')
+  end
 
-  config.vm.provision 'puppet' do |puppet|
-    puppet.manifests_path = 'puppet/manifests'
-    puppet.module_path = 'puppet/modules'
-    puppet.synced_folder_type = 'nfs'
+  config.vm.provision 'chef_solo' do |chef|
+    chef.version = '12.10.40'
+
+    chef.add_recipe 'postgresql::server'
+    chef.add_recipe 'ruby_build'
+    chef.add_recipe 'ruby_rbenv::user'
+
+    chef.json = {
+      postgresql: {
+        password: {
+          postgres: 'password'
+        },
+        pg_hba: [{
+          type: 'host',
+          db: 'all',
+          user: 'all',
+          addr: '127.0.0.1/32',
+          method: 'trust'
+        }]
+      },
+      rbenv: {
+        user_installs: [{
+          user: 'vagrant',
+          rubies: [PROJECT_RUBY_VERSION],
+          global: PROJECT_RUBY_VERSION,
+          gems: {
+            PROJECT_RUBY_VERSION => [
+              { name: 'bundler' }
+            ]
+          }
+        }]
+      }
+    }
   end
 
   config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/setup'

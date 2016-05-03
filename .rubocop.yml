@@ -4,7 +4,6 @@ AllCops:
   TargetRubyVersion: 2.3
   Exclude:
     - 'db/schema.rb'
-    - 'puppet/**/*'
     - 'vendor/bundle/**/*'
 
 Metrics/LineLength:
