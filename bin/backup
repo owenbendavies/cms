@@ -1,19 +1,29 @@
 #!/bin/bash
 set -e
 
-for bucket in $(s3cmd ls | awk '{print $3}')
+app_name=cms
+backup_location=$HOME/Backups/AWS
+
+for bucket in $(s3cmd ls | awk '{print $3}' | grep $app_name )
 do
   echo $bucket
+
   name=$(echo $bucket | sed 's/s3:\/\///')
-  destination=$HOME/Backups/AWS/s3/$name/
+  destination=$backup_location/s3/$name
+
   mkdir -p $destination
-  s3cmd sync --skip-existing --delete-after $bucket/ $destination
+
+  s3cmd sync --skip-existing --delete-removed $bucket/ $destination/
+
+  find $destination -type d -empty -delete
 done
 
-for app in $(heroku apps | grep cms | awk '{print $1}')
+for app in $(heroku apps | grep $app_name | awk '{print $1}')
 do
   echo $app
-  destination=$HOME/Backups/AWS/$app.dump
+
+  destination=$backup_location/$app.dump
+
   heroku run --app $app 'pg_dump $DATABASE_URL' > $destination
 done
 
