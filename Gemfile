@@ -12,6 +12,7 @@ gem 'redis-actionpack'
 # Rack middleware
 gem 'rack-protection'
 gem 'rack-timeout'
+gem 'secure_headers'
 
 # Authentication and authorization
 gem 'devise_invitable'
@@ -34,7 +35,6 @@ gem 'validates_email_format_of'
 
 # Controller Gems
 gem 'request_store'
-gem 'secure_headers'
 gem 'xml-sitemap'
 
 # View Gems
