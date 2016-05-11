@@ -7,12 +7,6 @@ AllCops:
     - 'puppet/**/*'
     - 'vendor/bundle/**/*'
 
-Lint/HandleExceptions:
-  Exclude:
-    - 'bin/rails'
-    - 'bin/rake'
-    - 'bin/rspec'
-
 Metrics/LineLength:
   Max: 100
 
