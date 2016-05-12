@@ -46,7 +46,7 @@ RSpec.feature 'User login' do
 
     click_button 'Login'
 
-    expect(page).to have_content 'Invalid email or password.'
+    expect(page).to have_content 'Invalid Email or password.'
     expect(current_path).to eq '/login'
   end
 
@@ -56,7 +56,7 @@ RSpec.feature 'User login' do
 
     click_button 'Login'
 
-    expect(page).to have_content 'Invalid email or password.'
+    expect(page).to have_content 'Invalid Email or password.'
     expect(current_path).to eq '/login'
   end
 end
