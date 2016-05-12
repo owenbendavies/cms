@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_images_site_id  (site_id => sites.id)
+#  fk_images_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
 FactoryGirl.define do
