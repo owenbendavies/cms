@@ -8,14 +8,14 @@ RSpec.feature 'User locking' do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
-      expect(page).to have_content 'Invalid email or password.'
+      expect(page).to have_content 'Invalid Email or password.'
     end
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: new_password
 
     click_button 'Login'
-    expect(page).to have_content 'Invalid email or password.'
+    expect(page).to have_content 'Invalid Email or password.'
 
     expect(ActionMailer::Base.deliveries.size).to eq 0
     Delayed::Worker.new.work_off
@@ -46,7 +46,7 @@ RSpec.feature 'User locking' do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
-      expect(page).to have_content 'Invalid email or password.'
+      expect(page).to have_content 'Invalid Email or password.'
     end
 
     expect(ActionMailer::Base.deliveries.size).to eq 0

@@ -21,7 +21,7 @@ gem 'pundit'
 
 # Model Gems
 gem 'acts_as_list'
-gem 'carrierwave'
+gem 'carrierwave', '0.11.0'
 gem 'fog'
 gem 'gravtastic'
 gem 'mini_magick'
