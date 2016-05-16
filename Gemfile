@@ -7,7 +7,6 @@ gem 'delayed_job_active_record'
 
 # Databases
 gem 'pg'
-gem 'redis-actionpack'
 
 # Rack middleware
 gem 'rack-protection'

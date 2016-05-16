@@ -7,9 +7,6 @@ branches:
 
 language: ruby
 
-services:
-  - redis-server
-
 addons:
   apt:
     packages:
