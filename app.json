@@ -4,7 +4,6 @@
   "repository": "https://github.com/obduk/cms",
   "addons": [
     "heroku-postgresql",
-    "heroku-redis",
     "sendgrid"
   ],
   "env": {

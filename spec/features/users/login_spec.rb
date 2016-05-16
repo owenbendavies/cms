@@ -17,9 +17,6 @@ RSpec.feature 'User login' do
     click_button 'Login'
 
     expect(page).to have_content 'Signed in successfully.'
-
-    cookie = response_headers['Set-Cookie']
-    expect(cookie).to match(/\A_cms_session=[0-9a-f]{32};.*/)
   end
 
   scenario 'with email with spaces' do
