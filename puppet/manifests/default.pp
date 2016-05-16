@@ -3,7 +3,6 @@ package {
     'imagemagick',
     'libqt5webkit5-dev',
     'qt5-default',
-    'redis-server',
     'xvfb',
   ]:
 }
