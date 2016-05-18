@@ -3,8 +3,5 @@
 /coverage/
 /log/*.log
 /public/uploads/
-/puppet/.librarian/
-/puppet/.tmp/
-/puppet/modules/
 /tmp/
 /vendor/bundle/

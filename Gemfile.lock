@@ -381,7 +381,6 @@ GEM
     puma (3.4.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    puppet-lint (1.1.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -624,7 +623,6 @@ DEPENDENCIES
   pry-rails
   puma
   pundit
-  puppet-lint
   rack-protection
   rack-timeout
   rails
