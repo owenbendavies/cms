@@ -7,9 +7,7 @@ set -v
 
 ./bin/haml-lint --exclude-linter LineLength app/views/
 
-./bin/puppet-lint puppet/manifests --fail-on-warnings --with-filename
-
-./bin/rails_best_practices --silent --exclude puppet
+./bin/rails_best_practices --silent
 
 ./bin/rake coffeelint
 
