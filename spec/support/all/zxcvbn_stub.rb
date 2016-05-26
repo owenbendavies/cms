@@ -1,7 +1,7 @@
 RSpec.configure do |config|
   config.before :each do |test|
     unless test.metadata[:secure_password]
-      score = double('score')
+      score = instance_double('score')
 
       allow(score).to receive(:score).and_return(4)
 
