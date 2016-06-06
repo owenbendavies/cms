@@ -1,0 +1,7 @@
+---
+:exit_on_warn: true
+:quiet: true
+:safe_methods:
+- :html_content
+:skip_checks:
+- CheckForgerySetting
