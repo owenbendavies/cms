@@ -48,6 +48,24 @@ RSpec.describe Image, type: :model do
 
       expect(uploaded_files).to include "images/#{uuid}/original.jpg"
     end
+
+    it 'recreates versions' do
+      image = described_class.new
+      image.site = FactoryGirl.create(:site)
+      image.name = Faker::Name.name.delete("'")
+
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        image.file = file
+      end
+
+      image.save!
+
+      files = uploaded_files
+
+      described_class.find(image.id).file.recreate_versions!
+
+      expect(uploaded_files).to eq files
+    end
   end
 
   describe '.ordered' do

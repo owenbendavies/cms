@@ -6,7 +6,8 @@ class BaseUploader < CarrierWave::Uploader::Base
 
   def filename
     return unless original_filename
-    return model.read_attribute(mounted_as) if model.read_attribute(mounted_as)
+    return model.read_attribute(:filename) if model.read_attribute(:filename)
+
     extension = file.extension.downcase.gsub('jpeg', 'jpg')
     "#{uuid}.#{extension}"
   end
