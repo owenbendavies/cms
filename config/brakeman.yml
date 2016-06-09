@@ -3,5 +3,6 @@
 :quiet: true
 :safe_methods:
 - :html_content
+- :custom_html
 :skip_checks:
 - CheckForgerySetting

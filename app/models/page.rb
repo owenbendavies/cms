@@ -12,6 +12,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  main_menu_position :integer
+#  custom_html        :text
 #
 # Indexes
 #
@@ -36,7 +37,7 @@ class Page < ActiveRecord::Base
   scope :non_private, -> { where(private: false) }
   scope :ordered, -> { order(:name) }
 
-  strip_attributes except: :html_content, collapse_spaces: true
+  strip_attributes except: [:html_content, :custom_html], collapse_spaces: true
 
   validates :url, exclusion: { in: INVALID_URLS }
 

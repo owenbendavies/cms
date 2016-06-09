@@ -12,6 +12,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  main_menu_position :integer
+#  custom_html        :text
 #
 # Indexes
 #
@@ -80,6 +81,7 @@ RSpec.describe Page, type: :model do
 
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
+  it { is_expected.not_to strip_attribute(:custom_html).collapse_spaces }
 
   describe '#valid?' do
     it 'validates database schema' do
