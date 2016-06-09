@@ -1,4 +1,4 @@
-block_formats: 'Main Header=h2;Sub Header=h3;Paragraph=p;Code=pre'
+block_formats: 'Main Header=h2;Sub Header=h3;Paragraph=p'
 browser_spellcheck: true
 inline: true
 menubar: false
@@ -6,8 +6,7 @@ plugins:
   - autolink
   - link
   - code
-  - table
   - paste
 selector: 'div.tinymce'
-toolbar: 'formatselect bold italic strikethrough subscript superscript | bullist numlist | link | table | code'
+toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link | code'
 visual_table_class: 'table table-bordered'
