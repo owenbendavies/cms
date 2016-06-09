@@ -12,6 +12,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  main_menu_position :integer
+#  custom_html        :text
 #
 # Indexes
 #
@@ -30,6 +31,7 @@ FactoryGirl.define do
 
     name { Faker::Name.name }
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
+    custom_html { "<p>#{Faker::Lorem.paragraph}</p>" }
 
     factory :private_page do
       name 'Private'

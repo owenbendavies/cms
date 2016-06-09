@@ -9,6 +9,7 @@ RSpec.feature 'Showing a page' do
     within 'article' do
       expect(page).to have_content 'Home'
       expect(body).to include home_page.html_content
+      expect(body).to include home_page.custom_html
     end
 
     within 'footer' do
