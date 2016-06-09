@@ -3,4 +3,6 @@
 
 = @page.html_content.html_safe if @page.html_content
 
+= @page.custom_html.html_safe if @page.custom_html
+
 = render 'pages/contact_form' if @page.contact_form
