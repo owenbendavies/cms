@@ -24,11 +24,26 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/processed.jpg",
         "images/#{subject.uuid}/span3.jpg",
         "images/#{subject.uuid}/span4.jpg",
         "images/#{subject.uuid}/span8.jpg",
         "images/#{subject.uuid}/span12.jpg"
       ].sort
+    end
+
+    it 'removes exif data' do
+      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+        subject.store! file
+      end
+
+      expect(remote_image(subject).exif['GPSLatitude']).to eq '51/1, 30/1, 1220028377/53512833'
+
+      expect(remote_image(subject.processed).exif.keys).to eq []
+      expect(remote_image(subject.span3).exif.keys).to eq []
+      expect(remote_image(subject.span4).exif.keys).to eq []
+      expect(remote_image(subject.span8).exif.keys).to eq []
+      expect(remote_image(subject.span12).exif.keys).to eq []
     end
 
     it 'creates multiple sized images at same aspect ratio' do
@@ -38,19 +53,19 @@ RSpec.describe ImageUploader do
 
       image = remote_image(subject.span3)
       expect(image[:width]).to eq 220
-      expect(image[:height]).to eq 165
+      expect(image[:height]).to eq 164
 
       image = remote_image(subject.span4)
       expect(image[:width]).to eq 300
-      expect(image[:height]).to eq 225
+      expect(image[:height]).to eq 224
 
       image = remote_image(subject.span8)
       expect(image[:width]).to eq 620
-      expect(image[:height]).to eq 465
+      expect(image[:height]).to eq 463
 
       image = remote_image(subject.span12)
       expect(image[:width]).to eq 940
-      expect(image[:height]).to eq 705
+      expect(image[:height]).to eq 702
     end
 
     it 'does not enlarge images' do
@@ -84,6 +99,7 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/processed.jpg",
         "images/#{subject.uuid}/span3.jpg",
         "images/#{subject.uuid}/span4.jpg",
         "images/#{subject.uuid}/span8.jpg",
@@ -100,6 +116,7 @@ RSpec.describe ImageUploader do
 
       expect(uploaded_files).to eq [
         "images/#{subject.uuid}/original.jpg",
+        "images/#{subject.uuid}/processed.jpg",
         "images/#{subject.uuid}/span3.jpg",
         "images/#{subject.uuid}/span4.jpg",
         "images/#{subject.uuid}/span8.jpg",
