@@ -93,7 +93,7 @@ RSpec.describe ImageUploader do
     it 'saves extension as downcase' do
       expect(uploaded_files).to eq []
 
-      File.open(Rails.root.join('spec/assets/test_image.JPG')) do |file|
+      File.open(Rails.root.join('spec/assets/test_image_capital.JPG')) do |file|
         subject.store! file
       end
 
