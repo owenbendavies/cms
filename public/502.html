@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content="20">
-    <title>502 Bad Gateway</title>
+    <title>Under maintenance</title>
     <style type="text/css">
 body, div, h1, html, p {
   border: 0;
@@ -16,8 +16,12 @@ body, div, h1, html, p {
 }
 
 body {
-  background: white;
-  color: black;
+  background-attachment: fixed;
+  background-color: black;
+  background-image: url('/images/502.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   height: 100%;
@@ -25,6 +29,7 @@ body {
 }
 
 .error_box {
+  background: white;
   border: 1px solid #C0C0C0;
   margin: 100px auto;
   padding: 50px;
@@ -32,19 +37,20 @@ body {
 }
 
 .error_box h1, .error_box h2, .error_box p {
-  text-align: center
+  text-align: center;
 }
 
 .error_box h1 {
-  font-size: 28px;
   color: red;
+  font-size: 28px;
 }
     </style>
   </head>
   <body>
     <div class="error_box">
-      <h1>502 Bad Gateway</h1>
-      <p>Sorry, something unexpected has gone wrong.</p>
+      <h1>Under maintenance</h1>
+      <p>Sorry, we are currently updating our site.</p>
+      <p>Please try again soon.</p>
     </div>
   </body>
 </html>
