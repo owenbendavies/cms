@@ -97,8 +97,9 @@ class User < ActiveRecord::Base
 
   protected
 
-  def send_devise_notification(notification, token, options = {})
-    new_options = options.merge(site: RequestStore.store[:site])
-    devise_mailer.send(notification, self, token, new_options).deliver_later
+  def send_devise_notification(notification, *args)
+    args << {} unless args.last.is_a? Hash
+    args.last[:site] = RequestStore.store[:site]
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 end

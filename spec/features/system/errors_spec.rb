@@ -24,6 +24,8 @@ RSpec.feature 'Errors' do
         expect(delayed_jobs.count).to eq 1
 
         expect { delayed_jobs.last.invoke_job }.to raise_error(RuntimeError, 'Test delayed error')
+
+        Delayed::Job.last.destroy!
       end
     end
   end
