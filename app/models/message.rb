@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
 
   scope :ordered, -> { order(created_at: :desc) }
 
-  strip_attributes except: :message, collapse_spaces: true
+  strip_attributes except: :message, collapse_spaces: true, replace_newlines: true
 
   validates :name, length: { minimum: 3 }
   validates :email, email_format: true

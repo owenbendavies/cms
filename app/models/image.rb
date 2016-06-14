@@ -29,5 +29,5 @@ class Image < ActiveRecord::Base
 
   schema_validations except: [:created_at, :updated_at, :filename]
 
-  strip_attributes collapse_spaces: true
+  strip_attributes collapse_spaces: true, replace_newlines: true
 end
