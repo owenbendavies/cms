@@ -11,6 +11,9 @@ en:
     new_message:
       text: "A new message has been posted on %{site_name}:"
 
+    password_change:
+      text: "Your password has been changed"
+
     reset_password_instructions:
       text: "Someone has requested a link to change your password."
 

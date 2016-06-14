@@ -11,18 +11,15 @@ RSpec.configure do |config|
     end
   end
 
-  config.after :suite do
-    limit = 350
-    memory = GetProcessMem.new.mb.to_i
-
-    puts "\nTotal test memory is #{memory} MB"
-    raise "ERROR: Memory above limit of #{limit} MB" if memory > limit
+  config.after :each do
+    expect(Delayed::Job.count).to eq 0
   end
 
   config.after :suite do
-    limit = 2.minutes
-    duration = Time.zone.now - config.start_time
+    expect(GetProcessMem.new.mb.to_i).to be < 350
+  end
 
-    raise "ERROR: Duration above limit of #{limit}s" if duration > limit
+  config.after :suite do
+    expect(Time.zone.now - config.start_time).to be < 2.minutes
   end
 end
