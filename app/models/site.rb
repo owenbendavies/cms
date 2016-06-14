@@ -42,7 +42,7 @@ class Site < ActiveRecord::Base
 
   scope :ordered, -> { order(:host) }
 
-  strip_attributes except: :sidebar_html_content, collapse_spaces: true
+  strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
 
   validates :name, length: { minimum: 3 }
   validates :sub_title, length: { allow_nil: true, minimum: 3 }
