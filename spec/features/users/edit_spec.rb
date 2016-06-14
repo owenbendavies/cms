@@ -24,7 +24,11 @@ RSpec.feature 'Editing a user' do
 
       expect(ActionMailer::Base.deliveries.size).to eq 0
       Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+
+      email = ActionMailer::Base.deliveries.last
+      expect(email.to).to eq [user.email]
+      expect(email.subject).to eq 'Password Changed'
 
       unchecked_visit '/logout'
       visit_200_page '/login'

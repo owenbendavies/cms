@@ -31,6 +31,28 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
   end
 
+  describe '.password_change' do
+    subject { described_class.password_change(user, site: site) }
+
+    include_examples 'site email'
+
+    it 'is sent to users email' do
+      expect(subject.to).to eq [user.email]
+    end
+
+    it 'has subject' do
+      expect(subject.subject).to eq 'Password Changed'
+    end
+
+    it 'has users name' do
+      expect(subject.body).to have_content "Hi #{user.name}"
+    end
+
+    it 'has text in body' do
+      expect(subject.body).to have_content 'Your password has been changed'
+    end
+  end
+
   describe '.reset_password_instructions' do
     subject { described_class.reset_password_instructions(user, token, site: site) }
 

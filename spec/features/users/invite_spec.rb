@@ -44,6 +44,13 @@ RSpec.feature 'Inviting a user' do
 
       expect(page).to have_content 'Your password was set successfully'
 
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq 2
+
+      email = ActionMailer::Base.deliveries.last
+      expect(email.to).to eq [new_email]
+      expect(email.subject).to eq 'Password Changed'
       logout
 
       visit_200_page '/login'
