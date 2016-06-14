@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
 
   scope :ordered, -> { order(:email) }
 
-  strip_attributes collapse_spaces: true
+  strip_attributes collapse_spaces: true, replace_newlines: true
 
   validates :email, email_format: true
   validates :name, length: { minimum: 3 }
