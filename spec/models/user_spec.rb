@@ -67,7 +67,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
 
-  describe '#valid?', secure_password: true do
+  describe '#valid?' do
     it 'validates database schema' do
       should validate_presence_of(:name)
     end
