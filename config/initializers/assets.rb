@@ -18,7 +18,7 @@ Rails.application.config.serve_static_files = true
 
 if Rails.application.secrets.asset_host
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = Rails.application.secrets.asset_host
+  Rails.application.config.action_controller.asset_host = Rails.application.secrets.asset_host
 end
 
 if Rails.application.secrets.dev_assets
