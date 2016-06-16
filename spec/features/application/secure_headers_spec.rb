@@ -9,13 +9,15 @@ RSpec.feature 'Secure Headers' do
   end
 
   scenario 'Content-Security-Policy' do
+    defaul_src = "'self' 'unsafe-inline' https://assets.example.com"
+
     expect(header).to eq [
       "default-src 'none'",
       "connect-src 'self'",
       "font-src 'self' https:",
       "img-src 'self' https: data:",
-      "script-src 'self' https: 'unsafe-inline'",
-      "style-src 'self' https: 'unsafe-inline'"
+      "script-src #{defaul_src} https://www.google-analytics.com",
+      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-west-1.amazonaws.com"
     ].join('; ')
   end
 
