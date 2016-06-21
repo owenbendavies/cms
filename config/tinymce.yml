@@ -1,12 +1,12 @@
 block_formats: 'Main Header=h2;Sub Header=h3;Paragraph=p'
 browser_spellcheck: true
+element_format: 'html'
+entity_encoding: 'raw'
 inline: true
 menubar: false
 plugins:
   - autolink
   - link
-  - code
   - paste
 selector: 'div.tinymce'
-toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link | code'
-visual_table_class: 'table table-bordered'
+toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link'
