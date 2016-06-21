@@ -26,9 +26,15 @@
 #
 
 class Page < ActiveRecord::Base
+  include ActionView::Helpers::SanitizeHelper
+  HTML_TAGS = %w(h2 h3 p strong em sub sup ul li ol a img br).freeze
+  HTML_ATTRIBUTES = %w(href target class src alt).freeze
+
   INVALID_URLS = %w(login logout new robots site sitemap system user).freeze
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
+
+  before_validation :clean_html_content
 
   has_paper_trail
 
@@ -44,6 +50,10 @@ class Page < ActiveRecord::Base
   )
 
   validates :url, exclusion: { in: INVALID_URLS }
+
+  def clean_html_content
+    self.html_content = sanitize(html_content, tags: HTML_TAGS, attributes: HTML_ATTRIBUTES)
+  end
 
   def name=(value)
     self.url = value.delete("'").parameterize('_') if value
