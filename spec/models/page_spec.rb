@@ -59,6 +59,15 @@ RSpec.describe Page, type: :model do
     end
   end
 
+  describe '.valid?' do
+    it 'strips html tags' do
+      subject = described_class.new
+      subject.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'
+      subject.valid?
+      expect(subject.html_content).to eq '<a href="url" class="link">a link</a>tag'
+    end
+  end
+
   describe '.non_private' do
     it 'returns non private pages' do
       public_page_1 = FactoryGirl.create(:page)
