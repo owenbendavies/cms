@@ -16,6 +16,7 @@ gem 'secure_headers'
 # Authentication and authorization
 gem 'devise_invitable'
 gem 'devise_zxcvbn'
+gem 'omniauth-google-oauth2'
 gem 'pundit'
 
 # Model Gems

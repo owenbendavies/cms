@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   get '/system/error_timeout', to: 'systems#error_timeout'
   get '/system/health', to: 'systems#health'
 
-  devise_for :user, skip: [:sessions], controllers: { invitations: 'invitations' }
-
   get '/user/sites', to: 'sites#index'
+
+  devise_for :user, skip: [:sessions], controllers: {
+    invitations: 'invitations',
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
 
   devise_scope :user do
     get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'

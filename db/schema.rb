@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609090557) do
+ActiveRecord::Schema.define(version: 20160627145130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160609090557) do
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invited_by_id",          :foreign_key=>{:references=>"users", :name=>"fk_users_invited_by_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__users_invited_by_id", :using=>:btree}
+    t.string   "google_uid"
   end
 
   create_table "site_settings", force: :cascade do |t|
