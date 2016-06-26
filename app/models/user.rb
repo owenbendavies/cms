@@ -29,6 +29,7 @@
 #  invitation_sent_at     :datetime
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
+#  google_uid             :string
 #
 # Indexes
 #
@@ -51,6 +52,7 @@ class User < ActiveRecord::Base
          :database_authenticatable,
          :invitable,
          :lockable,
+         :omniauthable,
          :recoverable,
          :rememberable,
          :timeoutable,
@@ -72,6 +74,14 @@ class User < ActiveRecord::Base
 
   validates :email, email_format: true
   validates :name, length: { minimum: 3 }
+
+  def self.find_for_google(uid, email)
+    user = User.find_by_google_uid(uid) || User.find_by_email(email)
+
+    user.update!(google_uid: uid) if user && !user.google_uid
+
+    user
+  end
 
   def self.invite_or_add_to_site(params, site, inviter)
     user = User.find_by_email(params[:email])

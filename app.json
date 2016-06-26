@@ -41,6 +41,14 @@
       "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
       "required": false
     },
+    "GOOGLE_CLIENT_ID": {
+      "description": "Google client ID for oauth login",
+      "required": false
+    },
+    "GOOGLE_CLIENT_SECRET": {
+      "description": "Google client secret for oauth login",
+      "required": false
+    },
     "SECRET_KEY_BASE": {
       "description": "A randomly generated secret to verify sessions",
       "generator": "secret"
