@@ -10,3 +10,9 @@
       = form.button :submit, value: t('.title')
 
 = link_to t('devise.passwords.new.title'), new_password_path(resource_name)
+
+- if Rails.application.secrets.google_client_id
+  %h2= t('.accounts')
+
+  = link_to user_google_omniauth_authorize_path do
+    = image_tag 'login_google.png', alt: t('.google')
