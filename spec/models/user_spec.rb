@@ -29,6 +29,7 @@
 #  invitation_sent_at     :datetime
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
+#  google_uid             :string
 #
 # Indexes
 #

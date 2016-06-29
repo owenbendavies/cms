@@ -3,6 +3,8 @@ en:
     sessions:
       new:
         title: "Login"
+        accounts: "Login with account"
+        google: "Sign in with Google"
 
       destroy:
         title: "Logout"
