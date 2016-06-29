@@ -4,12 +4,12 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do
-    subject { described_class.confirmation_instructions(user, token, site: site) }
+    subject { described_class.confirmation_instructions(site_user, token) }
 
     include_examples 'site email'
 
     it 'is sent to users email' do
-      expect(subject.to).to eq [user.email]
+      expect(subject.to).to eq [site_user.email]
     end
 
     it 'has subject' do
@@ -17,7 +17,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has users name' do
-      expect(subject.body).to have_content "Hi #{user.name}"
+      expect(subject.body).to have_content "Hi #{site_user.name}"
     end
 
     it 'has text in body' do
@@ -32,12 +32,12 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.password_change' do
-    subject { described_class.password_change(user, site: site) }
+    subject { described_class.password_change(site_user) }
 
     include_examples 'site email'
 
     it 'is sent to users email' do
-      expect(subject.to).to eq [user.email]
+      expect(subject.to).to eq [site_user.email]
     end
 
     it 'has subject' do
@@ -45,7 +45,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has users name' do
-      expect(subject.body).to have_content "Hi #{user.name}"
+      expect(subject.body).to have_content "Hi #{site_user.name}"
     end
 
     it 'has text in body' do
@@ -54,12 +54,12 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.reset_password_instructions' do
-    subject { described_class.reset_password_instructions(user, token, site: site) }
+    subject { described_class.reset_password_instructions(site_user, token) }
 
     include_examples 'site email'
 
     it 'is sent to users email' do
-      expect(subject.to).to eq [user.email]
+      expect(subject.to).to eq [site_user.email]
     end
 
     it 'has subject' do
@@ -67,7 +67,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has users name' do
-      expect(subject.body).to have_content "Hi #{user.name}"
+      expect(subject.body).to have_content "Hi #{site_user.name}"
     end
 
     it 'has text in body' do
@@ -82,12 +82,12 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.unlock_instructions' do
-    subject { described_class.unlock_instructions(user, token, site: site) }
+    subject { described_class.unlock_instructions(site_user, token) }
 
     include_examples 'site email'
 
     it 'is sent to users email' do
-      expect(subject.to).to eq [user.email]
+      expect(subject.to).to eq [site_user.email]
     end
 
     it 'has subject' do
@@ -95,7 +95,7 @@ RSpec.describe CustomDeviseMailer, type: :feature do
     end
 
     it 'has users name' do
-      expect(subject.body).to have_content "Hi #{user.name}"
+      expect(subject.body).to have_content "Hi #{site_user.name}"
     end
 
     it 'has text in body' do
@@ -110,8 +110,13 @@ RSpec.describe CustomDeviseMailer, type: :feature do
   end
 
   describe '.invitation_instructions' do
-    let(:invited_user) { FactoryGirl.create(:user, invited_by: user) }
-    subject { described_class.invitation_instructions(invited_user, token, site: site) }
+    let(:invited_user) do
+      FactoryGirl.create(:user, invited_by: user) do |user|
+        user.site_settings.create!(site: site, admin: true)
+      end
+    end
+
+    subject { described_class.invitation_instructions(invited_user, token) }
 
     include_examples 'site email'
 

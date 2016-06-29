@@ -5,13 +5,13 @@ RSpec.feature 'User locking' do
     visit_200_page '/login'
 
     4.times do
-      fill_in 'Email', with: user.email
+      fill_in 'Email', with: site_user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
       expect(page).to have_content 'Invalid Email or password.'
     end
 
-    fill_in 'Email', with: user.email
+    fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password
 
     click_button 'Login'
@@ -22,7 +22,7 @@ RSpec.feature 'User locking' do
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     email = ActionMailer::Base.deliveries.last
-    expect(email.to).to eq [user.email]
+    expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Unlock instructions'
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
@@ -32,8 +32,8 @@ RSpec.feature 'User locking' do
 
     expect(page).to have_content 'Your account has been unlocked'
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: site_user.email
+    fill_in 'Password', with: site_user.password
     click_button 'Login'
 
     expect(page).to have_content 'Signed in successfully.'
@@ -43,7 +43,7 @@ RSpec.feature 'User locking' do
     visit_200_page '/login'
 
     5.times do
-      fill_in 'Email', with: user.email
+      fill_in 'Email', with: site_user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
       expect(page).to have_content 'Invalid Email or password.'
@@ -57,7 +57,7 @@ RSpec.feature 'User locking' do
 
     expect(page).to have_content 'Unlock account'
 
-    fill_in 'Email', with: user.email
+    fill_in 'Email', with: site_user.email
     click_button 'Resend unlock instructions'
 
     expect(page).to have_content 'If your account exists'
@@ -67,7 +67,7 @@ RSpec.feature 'User locking' do
     expect(ActionMailer::Base.deliveries.size).to eq 2
 
     email = ActionMailer::Base.deliveries.last
-    expect(email.to).to eq [user.email]
+    expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Unlock instructions'
   end
 
