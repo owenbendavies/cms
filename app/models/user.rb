@@ -83,16 +83,27 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.invite_or_add_to_site(params, site, inviter)
+  def self.invite_or_add_to_site!(params, site, inviter)
     user = User.find_by_email(params[:email])
 
-    if !user || user.site_ids.include?(site.id)
-      user = invite!(params, inviter)
-    else
+    if user && !user.site_ids.include?(site.id)
+      user.site_settings.create!(site: site)
       NotificationsMailer.user_added_to_site(user, site, inviter).deliver_later
+      user
+    else
+      invite_and_add_to_site!(params, site, inviter)
+    end
+  end
+
+  def self.invite_and_add_to_site!(params, site, inviter)
+    user = invite!(params, inviter) do |invitable|
+      invitable.skip_invitation = true
     end
 
-    user.site_settings.create!(site: site) if user.errors.empty?
+    if user.errors.empty?
+      user.site_settings.create!(site: site)
+      user.deliver_invitation(params)
+    end
 
     user
   end
@@ -108,8 +119,6 @@ class User < ActiveRecord::Base
   protected
 
   def send_devise_notification(notification, *args)
-    args << {} unless args.last.is_a? Hash
-    args.last[:site] = RequestStore.store[:site]
     devise_mailer.send(notification, self, *args).deliver_later
   end
 end

@@ -6,7 +6,7 @@ class InvitationsController < Devise::InvitationsController
   end
 
   def invite_resource
-    User.invite_or_add_to_site(invite_params, @site, current_user)
+    User.invite_or_add_to_site!(invite_params, @site, current_user)
   end
 
   def after_invite_path_for(_resource)
