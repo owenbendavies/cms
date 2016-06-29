@@ -25,7 +25,7 @@ gem 'carrierwave', '0.11.0'
 gem 'fog'
 gem 'gravtastic'
 gem 'mini_magick'
-gem 'paper_trail', '< 4.0.0'
+gem 'paper_trail', '< 5.0.0'
 gem 'phone'
 gem 'schema_associations'
 gem 'schema_auto_foreign_keys'
@@ -34,7 +34,6 @@ gem 'strip_attributes'
 gem 'validates_email_format_of'
 
 # Controller Gems
-gem 'request_store'
 gem 'xml-sitemap'
 
 # View Gems

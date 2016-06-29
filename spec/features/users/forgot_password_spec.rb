@@ -8,7 +8,7 @@ RSpec.feature 'User forgot password' do
     expect(page).to have_content 'Forgot your password?'
     expect(current_path).to eq '/user/password/new'
 
-    fill_in 'Email', with: user.email
+    fill_in 'Email', with: site_user.email
 
     click_button 'Send reset password instructions'
     expect(page).to have_content 'If your email address exists'
@@ -18,7 +18,7 @@ RSpec.feature 'User forgot password' do
     expect(ActionMailer::Base.deliveries.size).to eq 1
 
     email = ActionMailer::Base.deliveries.last
-    expect(email.to).to eq [user.email]
+    expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Reset password instructions'
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
@@ -42,13 +42,13 @@ RSpec.feature 'User forgot password' do
     expect(ActionMailer::Base.deliveries.size).to eq 2
 
     email = ActionMailer::Base.deliveries.last
-    expect(email.to).to eq [user.email]
+    expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Password Changed'
-    user.reload
+    site_user.reload
 
     unchecked_visit '/logout'
     visit_200_page '/login'
-    fill_in 'Email', with: user.email
+    fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password
     click_button 'Login'
 
