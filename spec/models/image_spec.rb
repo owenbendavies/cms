@@ -40,7 +40,7 @@ RSpec.describe Image, type: :model do
       uuid = File.basename(image.filename, '.jpg')
 
       expect(image.file.url).to eq File.join(
-        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
+        'https://obduk-cms-test.s3-eu-east-1.amazonaws.com',
         'images',
         uuid,
         'original.jpg'

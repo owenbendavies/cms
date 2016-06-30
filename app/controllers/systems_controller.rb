@@ -16,7 +16,7 @@ class SystemsController < ApplicationController
   end
 
   def error_timeout
-    sleep Integer(Rails.application.secrets.timeout) + 1
+    sleep Rack::Timeout.service_timeout + 1
   end
 
   def health

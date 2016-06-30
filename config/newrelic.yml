@@ -8,11 +8,11 @@
 # https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
 
 common: &default_settings
-  license_key: '<%= Rails.application.secrets.new_relic_license_key %>'
+  license_key: '<%= ENV['NEW_RELIC_LICENSE_KEY'] %>'
 
-  app_name: <%= Rails.application.secrets.app_name %>
+  app_name: <%= ENV['HEROKU_APP_NAME'] %>
 
-  agent_enabled: <%= Rails.application.secrets.new_relic_license_key.present? %>
+  agent_enabled: <%= ENV['NEW_RELIC_LICENSE_KEY'].present? %>
 
   log_level: warn
 

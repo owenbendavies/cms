@@ -18,7 +18,7 @@ RSpec.feature 'Secure Headers' do
       "frame-src 'self'",
       "img-src 'self' https: data:",
       "script-src #{defaul_src} https://www.google-analytics.com",
-      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-west-1.amazonaws.com"
+      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-east-1.amazonaws.com"
     ].join('; ')
   end
 

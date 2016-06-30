@@ -71,6 +71,7 @@ group :assets, :development do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
@@ -98,6 +99,7 @@ end
 
 group :test do
   gem 'capybara-webkit'
+  gem 'climate_control'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
