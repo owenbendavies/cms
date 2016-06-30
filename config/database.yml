@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV['MAX_THREADS'] || 5 %>
-  url: <%= Rails.application.secrets.database_url %>
+  url: <%= ENV['DATABASE_URL'] %>
 
 development:
   <<: *default

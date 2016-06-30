@@ -61,7 +61,7 @@ RSpec.describe Site, type: :model do
       uuid = File.basename(site.stylesheet_filename, '.css')
 
       expect(site.stylesheet.url).to eq File.join(
-        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
+        'https://obduk-cms-test.s3-eu-east-1.amazonaws.com',
         'stylesheets',
         uuid,
         'original.css'

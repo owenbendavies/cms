@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-app_name=cms
+app=cms
 backup_location=$HOME/Backups/AWS
 
-for bucket in $(s3cmd ls | awk '{print $3}' | grep $app_name )
+for bucket in $(s3cmd ls | awk '{print $3}' | grep $app )
 do
   echo $bucket
 
@@ -18,7 +18,7 @@ do
   find $destination -type d -empty -delete
 done
 
-for app in $(heroku apps | grep $app_name | awk '{print $1}')
+for app in $(heroku apps | grep $app | awk '{print $1}')
 do
   echo $app
 
