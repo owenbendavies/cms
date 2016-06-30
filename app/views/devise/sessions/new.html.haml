@@ -11,7 +11,7 @@
 
 = link_to t('devise.passwords.new.title'), new_password_path(resource_name)
 
-- if Rails.application.secrets.google_client_id
+- if ENV['GOOGLE_CLIENT_ID'] && ENV['GOOGLE_CLIENT_SECRET']
   %h2= t('.accounts')
 
   = link_to user_google_omniauth_authorize_path do

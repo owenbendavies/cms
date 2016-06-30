@@ -1,7 +1,8 @@
-host = Rails.application.secrets.host
+host = ENV['HOST'] || "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
+
 site = Site.where(host: host).first_or_create!(name: 'New Site')
 
-email = Rails.application.secrets.sysadmin_email
+email = ENV['SYSADMIN_EMAIL']
 
 user = User.where(email: email).first_or_create! do |new_user|
   password = SecureRandom.hex(16)

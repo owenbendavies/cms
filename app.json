@@ -11,7 +11,7 @@
       "description": "The email address for the first system administrator account"
     },
     "EMAIL_FROM_ADDRESS": {
-      "description": "Email address to use for messages"
+      "description": "Email from address to use for system messages"
     },
     "HEROKU_APP_NAME": {
       "description": "Set to same as the Heroku App name (set automatically for review apps)"
@@ -21,10 +21,10 @@
       "value": "us-east-1"
     },
     "IAM_KEY": {
-      "description": "The Amazon IAM user key"
+      "description": "The Amazon IAM user key for S3 and optionally SES"
     },
     "IAM_SECRET": {
-      "description": "The Amazon IAM user secret"
+      "description": "The Amazon IAM user secret for S3 and optionally SES"
     },
     "S3_BUCKET": {
       "description": "The name of the Amazon S3 bucket"
