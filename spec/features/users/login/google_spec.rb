@@ -4,12 +4,17 @@ RSpec.feature 'User login via Google' do
   let(:link_name) { 'Sign in with Google' }
 
   context 'when enabled' do
+    around do |example|
+      ClimateControl.modify(
+        GOOGLE_CLIENT_ID: Faker::Internet.password,
+        GOOGLE_CLIENT_SECRET: Faker::Internet.password
+      ) do
+        example.run
+      end
+    end
+
     before do
       OmniAuth.config.test_mode = true
-
-      secrets = Rails.application.secrets
-      allow(secrets).to receive(:google_client_id).and_return(Faker::Internet.password)
-      allow(secrets).to receive(:google_client_secret).and_return(Faker::Internet.password)
 
       visit_200_page '/login'
     end
