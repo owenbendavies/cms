@@ -8,6 +8,7 @@ SecureHeaders::Configuration.default do |config|
     default_src: %w('none'),
     connect_src: %w('self'),
     font_src: %w('self' https:),
+    frame_src: %w('self'),
     img_src: %w('self' https: data:),
     script_src: default_src + ['https://www.google-analytics.com'],
     style_src: default_src + [Rails.application.secrets.s3_host]
