@@ -1,8 +1,8 @@
-host = ENV['HOST'] || "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
+host = ENV['SEED_SITE_HOST'] || "#{ENV['HEROKU_APP_NAME']}.herokuapp.com"
 
 site = Site.where(host: host).first_or_create!(name: 'New Site')
 
-email = ENV['SYSADMIN_EMAIL']
+email = ENV['SEED_USER_EMAIL']
 
 user = User.where(email: email).first_or_create! do |new_user|
   password = SecureRandom.hex(16)

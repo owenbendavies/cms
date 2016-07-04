@@ -15,7 +15,7 @@
   * Distribution for caching application assets
   * Enable logging
 * RDS
-  * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=config/amazon-rds-ca-cert.pem`
+  * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=db/amazon-rds-ca-cert.pem`
   * Parameter Groups
     * rds.force_ssl = 1
 * CloudWatch
