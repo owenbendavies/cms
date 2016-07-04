@@ -36,6 +36,11 @@ module Cms
     config.action_view.raise_on_missing_translations = true
     config.i18n.enforce_available_locales = true
 
+    if ENV['ASSET_HOST']
+      # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+      config.action_controller.asset_host = ENV['ASSET_HOST']
+    end
+
     # Lograge options
     config.lograge.custom_options = lambda do |event|
       {
