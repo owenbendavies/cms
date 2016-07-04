@@ -16,11 +16,6 @@ Rails.application.config.assets.digest = true
 
 Rails.application.config.serve_static_files = true
 
-if ENV['ASSET_HOST']
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  Rails.application.config.action_controller.asset_host = ENV['ASSET_HOST']
-end
-
 if ENV['DEV_ASSETS']
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

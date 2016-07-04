@@ -9,7 +9,7 @@ RSpec.feature 'Secure Headers' do
   end
 
   scenario 'Content-Security-Policy' do
-    defaul_src = "'self' 'unsafe-inline' https://assets.example.com"
+    defaul_src = "'self' 'unsafe-inline' http://localhost:37511"
 
     expect(header).to eq [
       "default-src 'none'",
