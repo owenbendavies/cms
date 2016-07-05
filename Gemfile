@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # Frameworks
-gem 'rails'
+gem 'rails', '4.2.6'
 gem 'delayed_job_active_record'
 
 # Databases
@@ -64,7 +64,6 @@ group :assets, :development do
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
-  gem 'sprockets', '3.6.0'
   gem 'therubyracer'
   gem 'turbolinks'
   gem 'uglifier'
