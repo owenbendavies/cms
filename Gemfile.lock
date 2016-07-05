@@ -580,9 +580,8 @@ GEM
     tinymce-rails (4.4.0)
       railties (>= 3.1.1)
     trollop (2.1.2)
-    turbolinks (5.0.0)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
+    turbolinks (2.5.3)
+      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -685,7 +684,7 @@ DEPENDENCIES
   therubyracer
   timecop
   tinymce-rails
-  turbolinks
+  turbolinks (< 5.0.0)
   uglifier
   validates_email_format_of
   webmock
