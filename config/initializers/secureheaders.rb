@@ -5,11 +5,11 @@ SecureHeaders::Configuration.default do |config|
 
   config.csp = {
     preserve_schemes: true,
-    default_src: %w('none'),
-    connect_src: %w('self'),
-    font_src: %w('self' https:),
-    frame_src: %w('self'),
-    img_src: %w('self' https: data:),
+    default_src: ["'none'"],
+    connect_src: ["'self'"],
+    font_src: ["'self'", 'https:'],
+    frame_src: ["'self'"],
+    img_src: ["'self'", 'https:', 'data:'],
     script_src: default_src + ['https://www.google-analytics.com'],
     style_src: default_src + [CarrierWave::Uploader::Base.asset_host]
   }
