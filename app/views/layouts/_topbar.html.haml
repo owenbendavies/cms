@@ -72,4 +72,4 @@
             = icon_tag(t('devise.sessions.destroy.icon'))
             = t('devise.sessions.destroy.title')
 
-      %li.avatar= image_tag(current_user.gravatar_url, alt: 'Profile Image', class: 'profile_image img-circle')
+      %li.avatar= image_tag(current_user.gravatar_url, alt: User.human_attribute_name(:profile_image), class: 'profile_image img-circle')

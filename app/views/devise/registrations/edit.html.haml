@@ -13,7 +13,7 @@
 
   .form-group
     .col-control-offset
-      = link_to(image_tag(current_user.gravatar_url(size: 150), alt: 'Profile Image', class: 'img-circle', size: '150x150'), 'https://www.gravatar.com')
+      = link_to(image_tag(current_user.gravatar_url(size: 150), alt: User.human_attribute_name(:profile_image), class: 'img-circle', size: '150x150'), 'https://www.gravatar.com')
 
   .form-group
     .col-control-offset
