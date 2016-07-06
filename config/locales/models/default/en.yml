@@ -2,5 +2,4 @@ en:
   activerecord:
     errors:
       messages:
-        no_html: "HTML not allowed"
         invalid_email_address: "is not a valid email address"
