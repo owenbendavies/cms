@@ -7,7 +7,7 @@ branches:
 
 language: ruby
 
-cache: bundle
+cache: bundler
 
 addons:
   apt:
