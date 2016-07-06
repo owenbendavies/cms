@@ -15,8 +15,6 @@ addons:
     - libqt5webkit5-dev
     - qt5-default
 
-before_install: gem install bundler
-
 before_script: ./bin/setup
 
 script:
