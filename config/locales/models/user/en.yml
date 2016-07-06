@@ -11,3 +11,4 @@ en:
         email: "Email"
         confirmed: "Confirmed"
         locked: "Locked"
+        profile_image: "Profile Image"

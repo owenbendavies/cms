@@ -7,3 +7,4 @@ en:
 
       edit:
         title: "Change password"
+        new_password: "New password"
