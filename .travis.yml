@@ -7,13 +7,13 @@ branches:
 
 language: ruby
 
+cache: bundle
+
 addons:
   apt:
     packages:
     - libqt5webkit5-dev
     - qt5-default
-
-before_install: gem install bundler
 
 before_script: ./bin/setup
 
