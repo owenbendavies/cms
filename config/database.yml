@@ -3,6 +3,8 @@ default: &default
   encoding: unicode
   pool: <%= ENV['MAX_THREADS'] || 5 %>
   url: <%= ENV['DATABASE_URL'] %>
+  variables:
+    statement_timeout: 1000
 
 development:
   <<: *default
