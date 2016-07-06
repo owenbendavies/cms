@@ -64,7 +64,6 @@ group :assets, :development do
   gem 'jquery-rails'
   gem 'jquery-turbolinks'
   gem 'sass-rails'
-  gem 'therubyracer'
   gem 'turbolinks', '< 5.0.0'
   gem 'uglifier'
 end

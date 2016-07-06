@@ -10,6 +10,7 @@ end
 package 'htop'
 package 'imagemagick'
 package 'libqt5webkit5-dev'
+package 'nodejs'
 package 'qt5-default'
 package 'vim-nox'
 package 'xvfb'
