@@ -2,7 +2,9 @@
   %ul.list-unstyled
     - if @page && @page.persisted?
       %li#cms-last-update
-        %small= t('.last_updated', updated_at: timeago_tag(@page.updated_at, force: true)).html_safe
+        %small
+          = t('.last_updated')
+          = timeago_tag(@page.updated_at, force: true)
 
     %li#cms-copyright
       %small= footer_copyright(@site)

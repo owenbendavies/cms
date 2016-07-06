@@ -6,3 +6,4 @@ en:
         icon: "user-plus"
       edit:
         title: "Set Password"
+        new_password: "New password"
