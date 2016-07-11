@@ -1,5 +1,7 @@
 default: &default
   adapter: postgresql
+  checkout_timeout: 1
+  connect_timeout: 1
   encoding: unicode
   pool: <%= ENV['MAX_THREADS'] || 5 %>
   url: <%= ENV['DATABASE_URL'] %>
