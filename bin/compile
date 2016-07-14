@@ -2,6 +2,7 @@
 set -e
 cd `dirname $0`/..
 
+export DATABASE_URL='postgres://postgres@localhost/cms_development'
 export DISABLE_SPRING='true'
 export RAILS_ENV='production'
 export RAILS_GROUPS='assets'
