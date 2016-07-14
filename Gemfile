@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # Frameworks
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.7'
 gem 'delayed_job_active_record' # Background jobs
 
 # Databases
@@ -25,7 +25,7 @@ gem 'carrierwave', '0.11.0' # File upload
 gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
-gem 'paper_trail', '< 5.0.0' # Database audit
+gem 'paper_trail' # Database audit
 gem 'phone' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
