@@ -62,10 +62,9 @@ group :assets, :development do
   gem 'font-awesome-sass' # Icons
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'jquery-rails' # Add jQuery
-  gem 'jquery-turbolinks' # Make jQuery work for TurboLinks
   gem 'sass-rails' # Sass for stylesheets
   gem 'therubyracer' # JavaScript compilation
-  gem 'turbolinks', '< 5.0.0' # JavaScript switching between pages
+  gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
 end
 
