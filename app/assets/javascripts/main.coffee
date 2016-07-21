@@ -1,4 +1,2 @@
-Turbolinks.enableProgressBar()
-
-$ ->
+$(document).on 'turbolinks:load', ->
   $('textarea.autogrow').autoGrow()
