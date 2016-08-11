@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # Frameworks
-gem 'rails', '4.2.7'
+gem 'rails', '4.2.7.1' # LOCKED as recent version has dependency conflicts
 gem 'delayed_job_active_record' # Background jobs
 
 # Databases
@@ -21,11 +21,11 @@ gem 'pundit' # Authorization
 
 # Model Gems
 gem 'acts_as_list' # ActiveRecord lists
-gem 'carrierwave', '0.11.0' # File upload
+gem 'carrierwave', '0.11.0' # File upload (LOCKED as recent versions leak files)
 gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
-gem 'paper_trail', '< 5.0.0' # Database audit
+gem 'paper_trail', '< 5.0.0' # Database audit (LOCKED as recent versions broken)
 gem 'phone' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
@@ -63,6 +63,7 @@ group :assets, :development do
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'jquery-rails' # Add jQuery
   gem 'sass-rails' # Sass for stylesheets
+  gem 'sprockets', '3.6.3' # LOCKED as recent versions broken
   gem 'therubyracer' # JavaScript compilation
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
@@ -83,9 +84,9 @@ group :development, :test do
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'immigrant' # Detects missing database foreign keys
   gem 'rails_best_practices', require: false # Rails code quality
-  gem 'rubocop-rspec', require: false # RSpect code quality
+  gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
   gem 'scss-lint', require: false # Sass code quality
-  gem 'simplecov', '< 0.11.0' # Code coverage
+  gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as recent version broken)
 end
 
 group :development do
