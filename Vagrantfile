@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder '.', '/vagrant', nfs: true
 
   config.vm.provider :virtualbox do |virtualbox|
-    virtualbox.memory = 1024
+    virtualbox.memory = 2048
 
     virtualbox.customize [
       'guestproperty',
@@ -34,9 +34,6 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision 'chef_solo' do |chef|
-    chef.channel = 'stable'
-    chef.version = '12.10.24'
-
     chef.add_recipe 'postgresql::server'
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'ruby_rbenv::user'
