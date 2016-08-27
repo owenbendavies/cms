@@ -21,11 +21,11 @@ gem 'pundit' # Authorization
 
 # Model Gems
 gem 'acts_as_list' # ActiveRecord lists
-gem 'carrierwave', '0.11.0' # File upload (LOCKED as recent versions leak files)
+gem 'carrierwave', '0.11.0' # File upload (LOCKED as 0.11.2 leaks files)
 gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
-gem 'paper_trail', '< 5.0.0' # Database audit (LOCKED as recent versions broken)
+gem 'paper_trail', '< 5.0.0' # Database audit (LOCKED as 5.2.0 is broken)
 gem 'phone' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
@@ -63,7 +63,6 @@ group :assets, :development do
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'jquery-rails' # Add jQuery
   gem 'sass-rails' # Sass for stylesheets
-  gem 'sprockets', '3.6.3' # LOCKED as recent versions broken
   gem 'therubyracer' # JavaScript compilation
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
@@ -77,7 +76,7 @@ group :development, :test do
 
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
-  gem 'bullet' # Detect n+1 database queries
+  gem 'bullet', '5.2.0' # Detect bad database queries (LOCKED as requires changes)
   gem 'cane', require: false # Ruby code quality
   gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
@@ -86,7 +85,7 @@ group :development, :test do
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
   gem 'scss-lint', require: false # Sass code quality
-  gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as recent version broken)
+  gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as 0.12.0 is broken)
 end
 
 group :development do
