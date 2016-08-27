@@ -24,7 +24,7 @@ do
 
   destination=$backup_location/$app.dump
 
-  heroku run --app $app 'pg_dump $DATABASE_URL' > $destination
+  heroku run --app $app 'pg_dump --no-owner --inserts $DATABASE_URL' > $destination
 done
 
 echo Backup complete
