@@ -5,8 +5,6 @@
   end
 end
 
-PROJECT_RUBY_VERSION = File.read('.ruby-version').strip
-
 Vagrant.configure(2) do |config|
   config.landrush.enabled = true
   config.landrush.tld = 'dev'
@@ -34,36 +32,9 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision 'chef_solo' do |chef|
-    chef.add_recipe 'postgresql::server'
-    chef.add_recipe 'ruby_build'
-    chef.add_recipe 'ruby_rbenv::user'
+    chef.roles_path = 'chef/roles'
 
-    chef.json = {
-      postgresql: {
-        password: {
-          postgres: 'password'
-        },
-        pg_hba: [{
-          type: 'host',
-          db: 'all',
-          user: 'all',
-          addr: '127.0.0.1/32',
-          method: 'trust'
-        }]
-      },
-      rbenv: {
-        user_installs: [{
-          user: 'vagrant',
-          rubies: [PROJECT_RUBY_VERSION],
-          global: PROJECT_RUBY_VERSION,
-          gems: {
-            PROJECT_RUBY_VERSION => [
-              { name: 'bundler' }
-            ]
-          }
-        }]
-      }
-    }
+    chef.add_role 'development'
   end
 
   config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/setup'
