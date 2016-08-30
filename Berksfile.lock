@@ -1,7 +1,9 @@
 DEPENDENCIES
+  imagemagick
   postgresql
   ruby_build
   ruby_rbenv
+  xvfb
 
 GRAPH
   apt (3.0.0)
@@ -11,6 +13,7 @@ GRAPH
   chef-sugar (3.3.0)
   chef_handler (1.4.0)
   compat_resource (12.9.1)
+  imagemagick (0.2.3)
   java (1.39.0)
     apt (>= 0.0.0)
   mingw (1.0.0)
@@ -30,3 +33,7 @@ GRAPH
     windows (>= 1.2.2)
   windows (1.41.0)
     chef_handler (>= 0.0.0)
+  xvfb (2.1.1)
+    apt (>= 0.0.0)
+    yum (>= 0.0.0)
+  yum (3.12.0)
