@@ -63,7 +63,6 @@ group :assets, :development do
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'jquery-rails' # Add jQuery
   gem 'sass-rails' # Sass for stylesheets
-  gem 'therubyracer' # JavaScript compilation
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
 end
