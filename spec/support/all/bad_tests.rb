@@ -20,6 +20,6 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    expect(Time.zone.now - config.start_time).to be < 2.minutes
+    expect(Time.zone.now - config.start_time).to be < 150
   end
 end
