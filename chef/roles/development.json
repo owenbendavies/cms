@@ -33,6 +33,7 @@
   "chef_type": "role",
   "run_list": [
     "recipe[imagemagick]",
+    "recipe[nodejs]",
     "recipe[postgresql::server]",
     "recipe[ruby_build]",
     "recipe[ruby_rbenv::user]",

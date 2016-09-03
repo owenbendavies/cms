@@ -1,5 +1,6 @@
 DEPENDENCIES
   imagemagick
+  nodejs
   postgresql
   ruby_build
   ruby_rbenv
@@ -7,18 +8,30 @@ DEPENDENCIES
 
 GRAPH
   apt (3.0.0)
+  ark (1.2.0)
+    build-essential (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+    windows (>= 0.0.0)
   build-essential (4.0.0)
     mingw (>= 0.0.0)
     seven_zip (>= 0.0.0)
   chef-sugar (3.3.0)
   chef_handler (1.4.0)
   compat_resource (12.9.1)
+  homebrew (2.1.0)
+    build-essential (>= 2.1.2)
   imagemagick (0.2.3)
   java (1.39.0)
     apt (>= 0.0.0)
   mingw (1.0.0)
     compat_resource (>= 0.0.0)
     seven_zip (>= 0.0.0)
+  nodejs (2.4.4)
+    apt (>= 0.0.0)
+    ark (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    homebrew (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   openssl (4.4.0)
     chef-sugar (>= 3.1.1)
   postgresql (4.0.6)
@@ -37,3 +50,5 @@ GRAPH
     apt (>= 0.0.0)
     yum (>= 0.0.0)
   yum (3.12.0)
+  yum-epel (0.7.1)
+    yum (>= 3.6.3)
