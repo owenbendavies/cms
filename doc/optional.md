@@ -6,28 +6,28 @@
   * Alternate Contacts
 * Billing & Cost Management
   * Preferences > Receive PDF Invoice By Email
-* S3
+* S3 (for storing files)
   * Enable versioning
-  * Add lifecycle to delete old versions
+  * Add lifecycle to delete old versions (if concerned about cost or sensitivity)
   * Enable logging
-* CloudFront
+* CloudFront (for caching files)
   * Distribution for caching S3 bucket
   * Distribution for caching application assets
   * Enable logging
-* RDS
+* RDS (Database alternative to heroku-postgresql)
   * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=db/amazon-rds-ca-cert.pem`
   * Parameter Groups
     * rds.force_ssl = 1
-* CloudWatch
+* CloudWatch (notifications)
   * Billing > Total Estimated Charge
-* CloudTrail
-* Config
-* Trusted Advisor
+* CloudTrail (account logging)
+* Config (account versioning)
+* Trusted Advisor (security suggestions)
   * Fix any issues
   * Preferences > Email notifications
-* Identity and Access Management
+* Identity and Access Management (user accounts)
   * Fix any bad security status
-* SES
+* SES (Email alternative to sendgrid)
   * Add [policy](iam_ses_policy.json) to IAM user
   * Use DKIM
 
