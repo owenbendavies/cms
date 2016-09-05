@@ -33,28 +33,28 @@
 
 ## Heroku Add-ons
 
-* loader.io
+* loader.io (load testing)
   * Schedule regular check
-* newrelic
+* newrelic (system metrics)
   * Add Synthetics
   * Add Alerts
-* papertrail
+* papertrail (logging)
   * Archive to S3
   * Heroku alerts
   * Profile > Time Zone
-* rollbar
-* scheduler
+* rollbar (error notifications)
+* scheduler (job runner)
   * Add `./bin/rails runner 'DailyJob.perform_now'`
-* tinfoilsecurity
+* tinfoilsecurity (security scanner)
 
 ## Services
 
-* CloudFlare
+* CloudFlare (firewall)
   * Enable Full SSL
-* DMARC Analyzer
+* DMARC Analyzer (email checker)
   * Add DNS record for each domain with email
   * Send reports
-* Google Analytics
+* Google Analytics (visitor statistics)
   * Property
     * Settings
       * Enable Demographics
