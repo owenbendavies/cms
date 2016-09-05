@@ -1,7 +1,9 @@
 ['landrush', 'vagrant-berkshelf', 'vagrant-timezone'].each do |plugin|
+  plugin_manager = Vagrant::Plugin::Manager.instance
+
   unless Vagrant.has_plugin? plugin
-    puts "Run 'vagrant plugin install #{plugin}'"
-    exit 1
+    puts "Installing plugin #{plugin}"
+    plugin_manager.install_plugin(plugin)
   end
 end
 
