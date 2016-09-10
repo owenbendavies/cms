@@ -15,7 +15,7 @@ gem 'secure_headers' # Adds security headers to requests
 
 # Authentication and authorization
 gem 'devise_invitable' # Inviting of users
-gem 'devise_zxcvbn' # Strong passwords for users
+gem 'devise_zxcvbn', '2.1.1' # Strong passwords for users (LOCKED as 2.1.2 is broken)
 gem 'omniauth-google-oauth2' # Google login
 gem 'pundit' # Authorization
 
@@ -62,6 +62,7 @@ group :assets, :development do
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'jquery-rails' # Add jQuery
   gem 'sass-rails' # Sass for stylesheets
+  gem 'sprockets-rails', '3.1.1' # Manages asset files (LOCKED as 3.2.0 is broken)
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
 end
