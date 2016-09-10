@@ -1,5 +1,7 @@
-= navbar do
-  = nav do
-    - @site.main_menu_pages.each do |page|
-      = link_to page_path(page.to_param), class: 'cms-page-link-' + page.to_param do
-        %span= page.name
+%nav.navbar.navbar-default
+  .container
+    %ul.nav.navbar-nav
+      - @site.main_menu_pages.each do |page|
+        %li
+          = link_to page_path(page.to_param), class: 'cms-page-link-' + page.to_param do
+            %span= page.name
