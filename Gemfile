@@ -37,11 +37,10 @@ gem 'validates_email_format_of' # Email validation
 gem 'xml-sitemap' # Generates XML site map
 
 # View Gems
-gem 'simple_form' # Easier forms (require before bh)
-gem 'bh' # Bootstrap helpers
 gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'rails-timeago' # Nice time tags
+gem 'simple_form' # Easier forms
 gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 

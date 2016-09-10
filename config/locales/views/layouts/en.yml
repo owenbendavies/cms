@@ -4,3 +4,9 @@ en:
       charity: "Registered charity number %{number}"
       last_updated: "Page last updated"
 
+    main_menu:
+      toggle_button: "Main menu"
+
+    topbar:
+      toggle_button: "Account menu"
+
