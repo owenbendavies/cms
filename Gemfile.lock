@@ -522,9 +522,9 @@ GEM
       activerecord (~> 4.2, >= 4.2.1)
       schema_plus_columns
       valuable
-    scss-lint (0.38.0)
-      rainbow (~> 2.0)
-      sass (~> 3.4.1)
+    scss_lint (0.50.2)
+      rake (>= 0.9, < 12)
+      sass (~> 3.4.20)
     secure_headers (3.4.1)
       useragent
     sexp_processor (4.7.0)
@@ -656,7 +656,7 @@ DEPENDENCIES
   schema_associations
   schema_auto_foreign_keys
   schema_validations
-  scss-lint
+  scss_lint
   secure_headers
   shoulda-matchers
   simple_form
