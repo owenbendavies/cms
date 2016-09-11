@@ -69,6 +69,7 @@ end
 
 group :development, :test do
   gem 'dotenv-rails' # Easy environment configuration
+  gem 'guard' # Automatic test runner
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'spring' # Quick boot
@@ -100,6 +101,7 @@ group :test do
   gem 'factory_girl_rails' # Generates test models
   gem 'faker' # Generates test data
   gem 'get_process_mem' # Gets process memory
+  gem 'guard-rspec' # RSpec additions to guard
   gem 'rspec-rails' # RSpec test framework
   gem 'shoulda-matchers' # Model test helpers
   gem 'spring-commands-rspec' # Quick boot for RSpec
