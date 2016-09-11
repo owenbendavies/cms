@@ -83,7 +83,7 @@ group :development, :test do
   gem 'immigrant' # Detects missing database foreign keys
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
-  gem 'scss-lint', require: false # Sass code quality
+  gem 'scss_lint', require: false # Sass code quality
   gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as 0.12.0 is broken)
 end
 
