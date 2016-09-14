@@ -2,7 +2,7 @@
 set -e
 cd `dirname $0`/..
 
-rspec='xvfb-run --auto-servernum ./bin/rspec --color'
+rspec='xvfb-run --auto-servernum ./bin/rspec'
 
 export RAILS_ENV='test'
 
@@ -13,13 +13,13 @@ if [ $# -gt 0 ]; then
 
   set -v
 
-  eval "$rspec --format documentation $@"
+  eval "$rspec $@"
 else
   set -v
 
   eval './bin/rake db:test:prepare'
   eval './bin/compile'
-  eval "COVERAGE=on $rspec --order random"
+  eval "COVERAGE=on $rspec --format progress --order random"
   eval './bin/quality'
 fi
 
