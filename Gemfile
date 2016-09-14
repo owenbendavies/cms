@@ -69,6 +69,8 @@ end
 
 group :development, :test do
   gem 'dotenv-rails' # Easy environment configuration
+  gem 'guard' # Automatic test runner
+  gem 'guard-rspec', require: false # RSpec additions to guard
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'spring' # Quick boot
