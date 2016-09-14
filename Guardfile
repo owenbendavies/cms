@@ -1,4 +1,4 @@
-guard :rspec, cmd: 'xvfb-run --auto-servernum ./bin/rspec --color --format documentation' do
+guard :rspec, cmd: 'xvfb-run --auto-servernum ./bin/rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
