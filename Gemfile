@@ -56,11 +56,10 @@ gem 'rollbar' # Error notifications
 
 group :assets, :development do
   gem 'autogrow-textarea-rails' # JavaScript expanding textarea
-  gem 'bootstrap-sass' # Bootstrap
+  gem 'bower-rails' # Manage asset dependencies
   gem 'coffee-rails' # CoffeeScript for JavaScript
   gem 'font-awesome-sass' # Icons
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
-  gem 'jquery-rails' # Add jQuery
   gem 'sass-rails' # Sass for stylesheets
   gem 'sprockets-rails', '3.1.1' # Manages asset files (LOCKED as 3.2.0 is broken)
   gem 'turbolinks' # JavaScript switching between pages

@@ -5,6 +5,14 @@
   "default_attributes": {
   },
   "override_attributes": {
+    "nodejs": {
+      "npm_packages": [
+        {
+          "name": "bower",
+          "version": "1.7.9"
+        }
+      ]
+    },
     "postgresql": {
       "password": {
         "postgres": "password"
