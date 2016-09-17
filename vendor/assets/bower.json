@@ -1,7 +1,0 @@
-{
-  "name": "dsl-generated-dependencies",
-  "dependencies": {
-    "bootstrap-sass": "latest",
-    "jquery-ujs": "latest"
-  }
-}
