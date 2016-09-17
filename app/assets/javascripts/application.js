@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //= require jquery.autogrowtextarea
 //= require rails-timeago
 //= require turbolinks
