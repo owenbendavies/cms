@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require jquery.autogrowtextarea
+//= require autogrow-textarea
 //= require rails-timeago
 //= require turbolinks
 //= require google-analytics-turbolinks

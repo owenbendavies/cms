@@ -2,6 +2,7 @@
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
+      "autogrow-textarea": "89a8697ed9",
       "bootstrap-sass": "3.3.7",
       "jquery": "3.1.0",
       "jquery-ujs": "1.2.2"
