@@ -55,7 +55,6 @@ gem 'newrelic_rpm' # Performance monitoring
 gem 'rollbar' # Error notifications
 
 group :assets, :development do
-  gem 'autogrow-textarea-rails' # JavaScript expanding textarea
   gem 'bower-rails' # Manage asset dependencies
   gem 'coffee-rails' # CoffeeScript for JavaScript
   gem 'font-awesome-sass' # Icons
