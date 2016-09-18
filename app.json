@@ -58,6 +58,14 @@
       "description": "The email address for the first system administrator user"
     }
   },
+  "formation": {
+    "web": {
+      "quantity": 1
+    },
+    "worker": {
+      "quantity": 1
+    }
+  },
   "scripts": {
     "postdeploy": "./bin/rake db:migrate db:seed"
   }
