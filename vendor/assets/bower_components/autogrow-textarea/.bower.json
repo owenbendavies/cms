@@ -5,12 +5,12 @@
     "jquery": ">=1.8"
   },
   "homepage": "https://github.com/jevin/Autogrow-Textarea",
-  "_release": "89a8697ed9",
+  "_release": "89a86",
   "_resolution": {
     "type": "commit",
-    "commit": "89a8697ed9"
+    "commit": "89a86"
   },
   "_source": "https://github.com/jevin/Autogrow-Textarea.git",
-  "_target": "89a8697ed9",
+  "_target": "89a86",
   "_originalSource": "autogrow-textarea"
 }
