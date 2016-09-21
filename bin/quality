@@ -7,6 +7,8 @@ set -v
 
 ./bin/haml-lint --exclude-linter LineLength app/views/
 
+./bin/i18n-tasks health
+
 ./bin/rails_best_practices --silent
 
 ./bin/rake coffeelint
