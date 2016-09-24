@@ -17,7 +17,7 @@
               = Page.model_name.human
               %b.caret
             %ul.dropdown-menu
-              - if @page && @page.persisted?
+              - if @page&.persisted?
                 %li
                   = link_to edit_page_path(@page.to_param) do
                     = icon_tag t('pages.edit.icon')
