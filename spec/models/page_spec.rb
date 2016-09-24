@@ -34,28 +34,28 @@ RSpec.describe Page, type: :model do
     end
 
     it 'is scoped by site' do
-      site_1 = FactoryGirl.create(:site)
-      site_2 = FactoryGirl.create(:site)
+      site1 = FactoryGirl.create(:site)
+      site2 = FactoryGirl.create(:site)
 
-      site_1_page_1 = FactoryGirl.create(:page, site: site_1)
-      site_1_page_2 = FactoryGirl.create(:page, site: site_1)
-      site_2_page_1 = FactoryGirl.create(:page, site: site_2)
-      site_2_page_2 = FactoryGirl.create(:page, site: site_2)
+      site1page1 = FactoryGirl.create(:page, site: site1)
+      site1page2 = FactoryGirl.create(:page, site: site1)
+      site2page1 = FactoryGirl.create(:page, site: site2)
+      site2page2 = FactoryGirl.create(:page, site: site2)
 
-      site_1_page_1.insert_at(1)
-      site_1_page_2.insert_at(2)
-      site_2_page_1.insert_at(1)
-      site_2_page_2.insert_at(2)
+      site1page1.insert_at(1)
+      site1page2.insert_at(2)
+      site2page1.insert_at(1)
+      site2page2.insert_at(2)
 
-      site_1_page_1.reload
-      site_1_page_2.reload
-      site_2_page_1.reload
-      site_2_page_2.reload
+      site1page1.reload
+      site1page2.reload
+      site2page1.reload
+      site2page2.reload
 
-      expect(site_1_page_1.main_menu_position).to eq 1
-      expect(site_1_page_2.main_menu_position).to eq 2
-      expect(site_2_page_1.main_menu_position).to eq 1
-      expect(site_2_page_2.main_menu_position).to eq 2
+      expect(site1page1.main_menu_position).to eq 1
+      expect(site1page2.main_menu_position).to eq 2
+      expect(site2page1.main_menu_position).to eq 1
+      expect(site2page2.main_menu_position).to eq 2
     end
   end
 
@@ -70,11 +70,11 @@ RSpec.describe Page, type: :model do
 
   describe '.non_private' do
     it 'returns non private pages' do
-      public_page_1 = FactoryGirl.create(:page)
-      public_page_2 = FactoryGirl.create(:page)
+      page1 = FactoryGirl.create(:page)
+      page2 = FactoryGirl.create(:page)
       FactoryGirl.create(:private_page)
 
-      expect(described_class.non_private).to eq [public_page_1, public_page_2]
+      expect(described_class.non_private).to eq [page1, page2]
     end
   end
 
