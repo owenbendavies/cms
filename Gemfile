@@ -25,7 +25,7 @@ gem 'carrierwave', '0.11.0' # File upload (LOCKED as 0.11.2 leaks files)
 gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
-gem 'paper_trail', '< 5.0.0' # Database audit (LOCKED as 5.2.0 is broken)
+gem 'paper_trail', '< 5.0.0' # Database audit (LOCKED as 5.2.2 is broken)
 gem 'phone' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations

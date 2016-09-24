@@ -1,6 +1,6 @@
 %footer.col-sm-12.text-center
   %ul.list-unstyled
-    - if @page && @page.persisted?
+    - if @page&.persisted?
       %li#cms-last-update
         %small
           = t('.last_updated')
