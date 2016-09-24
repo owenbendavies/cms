@@ -1,0 +1,5 @@
+platform:
+  Bower:
+    autogrow-textarea:
+      tests:
+        unlicensed: skip
