@@ -651,7 +651,6 @@ DEPENDENCIES
   get_process_mem
   google-analytics-turbolinks
   gravtastic
-  guard
   guard-rspec
   haml-rails
   haml_lint

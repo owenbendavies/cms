@@ -66,16 +66,14 @@ group :assets, :development do
 end
 
 group :development, :test do
+  gem 'bullet', '5.2.0' # Detect bad database queries (LOCKED as requires changes)
   gem 'dotenv-rails' # Easy environment configuration
-  gem 'guard' # Automatic test runner
-  gem 'guard-rspec', require: false # RSpec additions to guard
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'spring' # Quick boot
 
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
-  gem 'bullet', '5.2.0' # Detect bad database queries (LOCKED as requires changes)
   gem 'cane', require: false # Ruby code quality
   gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
@@ -84,12 +82,12 @@ group :development, :test do
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
   gem 'scss_lint', require: false # Sass code quality
-  gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as 0.12.0 is broken)
 end
 
 group :development do
   gem 'annotate' # Adds comments of database schema to code
   gem 'foreman' # Starts multiple processes
+  gem 'guard-rspec', require: false # RSpec additions to guard
   gem 'letter_opener_web' # Email client
 end
 
@@ -102,6 +100,7 @@ group :test do
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
   gem 'shoulda-matchers' # Model test helpers
+  gem 'simplecov', '< 0.11.0' # Code coverage (LOCKED as 0.12.0 is broken)
   gem 'spring-commands-rspec' # Quick boot for RSpec
   gem 'timecop' # Change time in tests
   gem 'webmock' # Mock external web requests
