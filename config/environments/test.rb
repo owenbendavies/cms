@@ -30,12 +30,5 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.raise = true
-
-    Bullet.add_whitelist(type: :n_plus_one_query, class_name: 'Site', association: :main_menu_pages)
-  end
-
   config.middleware.insert_before Rack::Runtime, Rack::Timeout
 end
