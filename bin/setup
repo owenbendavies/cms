@@ -1,16 +1,20 @@
-#!/usr/bin/env ruby
-require 'pathname'
+#!/bin/bash
+set -ev
+cd `dirname $0`/..
 
-APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+./bin/bundle check || ./bin/bundle install
 
-Dir.chdir APP_ROOT do
-  puts '== Installing dependencies =='
-  system 'gem install bundler --conservative'
-  system './bin/bundle check || ./bin/bundle install'
+./bin/rake db:create db:migrate db:seed
 
-  puts "\n== Preparing database =="
-  system './bin/rake db:create db:migrate db:seed'
+./bin/annotate --show-foreign-keys --show-indexes
 
-  puts "\n== Annotating the models =="
-  system './bin/annotate --show-foreign-keys --show-indexes'
-end
+database_version=$(./bin/rake db:version | awk '{print $3}')
+
+if [ -f doc/.database_schema.version ]; then
+  old_version=$(cat doc/.database_schema.version)
+fi
+
+if [ "$database_version" != "$old_version" ]; then
+  ./bin/erd --filename=doc/database_schema
+  echo $database_version > doc/.database_schema.version
+fi
