@@ -1,2 +1,2 @@
 $(document).on 'turbolinks:load', ->
-  $('textarea.autogrow').autoGrow()
+  autosize($('textarea.autogrow'))
