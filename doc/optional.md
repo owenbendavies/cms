@@ -19,7 +19,7 @@
   * Parameter Groups
     * rds.force_ssl = 1
 * CloudWatch (notifications)
-  * Billing > Total Estimated Charge
+  * Add Alarms (e.g. Billing, RDS)
 * CloudTrail (account logging)
 * Config (account versioning)
 * Trusted Advisor (security suggestions)
