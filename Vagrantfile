@@ -1,10 +1,9 @@
-['landrush', 'vagrant-berkshelf', 'vagrant-timezone'].each do |plugin|
-  plugin_manager = Vagrant::Plugin::Manager.instance
+plugins = ['landrush', 'vagrant-berkshelf', 'vagrant-timezone']
+missing_plugins = plugins.reject { |plugin| Vagrant.has_plugin? plugin }
 
-  unless Vagrant.has_plugin? plugin
-    puts "Installing plugin #{plugin}"
-    plugin_manager.install_plugin(plugin)
-  end
+if missing_plugins.any?
+  system 'vagrant', 'plugin', 'install', *missing_plugins
+  exec 'vagrant', *ARGV
 end
 
 Vagrant.configure(2) do |config|
