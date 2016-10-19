@@ -11,8 +11,6 @@ set -v
 
 ./bin/rake coffeelint
 
-./bin/rake immigrant:check_keys
-
 ./bin/rubocop --format simple
 
 ./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
