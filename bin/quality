@@ -3,8 +3,6 @@ set -e
 cd `dirname $0`/..
 set -v
 
-./bin/cane --no-doc --style-measure 100
-
 ./bin/haml-lint --exclude-linter LineLength app/views/
 
 ./bin/i18n-tasks health

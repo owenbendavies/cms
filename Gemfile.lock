@@ -53,8 +53,6 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
-    cane (3.0.0)
-      parallel
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
@@ -392,7 +390,6 @@ GEM
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
-    parallel (1.9.0)
     parser (2.3.1.4)
       ast (~> 2.2)
     pg (0.19.0)
@@ -638,7 +635,6 @@ DEPENDENCIES
   bower-rails
   brakeman
   bullet (= 5.2.0)
-  cane
   capybara-webkit
   carrierwave (= 0.11.0)
   climate_control
