@@ -77,7 +77,6 @@ group :development, :test do
   gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
-  gem 'immigrant' # Detects missing database foreign keys
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
   gem 'scss_lint', require: false # Sass code quality

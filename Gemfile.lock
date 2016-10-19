@@ -319,8 +319,6 @@ GEM
       parser (>= 2.2.3.0)
       term-ansicolor (>= 1.3.2)
       terminal-table (>= 1.5.1)
-    immigrant (0.3.5)
-      activerecord (>= 3.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     its-it (1.3.0)
@@ -659,7 +657,6 @@ DEPENDENCIES
   haml_lint
   heroku-deflater
   i18n-tasks
-  immigrant
   letter_opener_web
   lograge
   mini_magick
