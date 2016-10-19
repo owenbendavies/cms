@@ -74,7 +74,6 @@ group :development, :test do
 
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
-  gem 'cane', require: false # Ruby code quality
   gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
