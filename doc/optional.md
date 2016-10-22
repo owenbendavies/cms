@@ -6,6 +6,7 @@
   * Alternate Contacts
 * Billing & Cost Management
   * Preferences > Receive PDF Invoice By Email
+  * Budgets > Create budget to limit total spend
 * S3 (for storing files)
   * Enable versioning
   * Add lifecycle to delete old versions (if concerned about cost or sensitivity)
@@ -19,7 +20,7 @@
   * Parameter Groups
     * rds.force_ssl = 1
 * CloudWatch (notifications)
-  * Add Alarms (e.g. Billing, RDS)
+  * Add Alarms (e.g. RDS)
 * CloudTrail (account logging)
 * Config (account versioning)
 * Trusted Advisor (security suggestions)
