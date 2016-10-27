@@ -45,7 +45,7 @@
 #  fk_users_invited_by_id  (invited_by_id => users.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Gravtastic
 
   devise :confirmable,
@@ -63,8 +63,6 @@ class User < ActiveRecord::Base
   gravtastic default: 'mm', size: 40
 
   has_many :sites, through: :site_settings
-
-  has_paper_trail
 
   schema_validations
 

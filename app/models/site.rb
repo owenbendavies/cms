@@ -28,13 +28,11 @@
 #  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
 #
 
-class Site < ActiveRecord::Base
+class Site < ApplicationRecord
   LAYOUTS = %w(one_column right_sidebar small_right_sidebar).freeze
 
   has_many :users, through: :settings
   has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page'
-
-  has_paper_trail
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
