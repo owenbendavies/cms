@@ -1,4 +1,4 @@
-class BaseMailer < ActionMailer::Base
+class ApplicationMailer < ActionMailer::Base
   default template_path: 'mailers'
   helper :application
   layout 'mailer'

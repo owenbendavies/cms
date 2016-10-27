@@ -1,4 +1,4 @@
-class StylesheetUploader < BaseUploader
+class StylesheetUploader < ApplicationUploader
   def extension_white_list
     %w(css)
   end

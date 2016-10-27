@@ -1,4 +1,4 @@
-class CleanS3Job < BaseJob
+class CleanS3Job < ApplicationJob
   def perform
     clean_files.each do |file|
       error("The following file is missing: #{file}")

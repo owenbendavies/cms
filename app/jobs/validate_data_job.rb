@@ -1,4 +1,4 @@
-class ValidateDataJob < BaseJob
+class ValidateDataJob < ApplicationJob
   NON_MODEL_TABLES = %w(delayed_jobs schema_migrations versions).freeze
 
   def perform
