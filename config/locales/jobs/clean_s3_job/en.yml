@@ -1,5 +1,0 @@
-en:
-  jobs:
-    clean_s3_job:
-      deleted: "The following S3 files where deleted"
-      missing: "The following S3 files where missing"

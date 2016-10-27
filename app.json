@@ -32,9 +32,6 @@
       "description": "Don't install asset gems on Heroku",
       "value": "development:test:assets"
     },
-    "EMAIL_FROM_ADDRESS": {
-      "description": "Email from address for system messages"
-    },
     "GOOGLE_CLIENT_ID": {
       "description": "Google client ID for OAuth login",
       "required": false
