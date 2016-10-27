@@ -7,14 +7,3 @@ cd `dirname $0`/..
 ./bin/rake db:create db:migrate db:seed
 
 ./bin/annotate --show-foreign-keys --show-indexes
-
-database_version=$(./bin/rake db:version | awk '{print $3}')
-
-if [ -f doc/.database_schema.version ]; then
-  old_version=$(cat doc/.database_schema.version)
-fi
-
-if [ "$database_version" != "$old_version" ]; then
-  ./bin/erd --filename=doc/database_schema
-  echo $database_version > doc/.database_schema.version
-fi
