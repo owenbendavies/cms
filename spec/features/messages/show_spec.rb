@@ -4,6 +4,7 @@ RSpec.feature 'Showing a message' do
   let!(:message) do
     FactoryGirl.create(
       :message,
+      site: site,
       created_at: Time.zone.now - 1.month - 3.days,
       updated_at: Time.zone.now - 1.month - 3.days
     )
@@ -28,7 +29,7 @@ RSpec.feature 'Showing a message' do
     end
 
     scenario 'message from another site' do
-      message = FactoryGirl.create(:message, site: FactoryGirl.create(:site))
+      message = FactoryGirl.create(:message)
 
       visit_404_page "/site/messages/#{message.id}"
     end

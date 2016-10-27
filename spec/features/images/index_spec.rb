@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Index images' do
-  let!(:image_b) { FactoryGirl.create(:image, name: 'Image B') }
-  let!(:image_c) { FactoryGirl.create(:image, name: 'Image C') }
-  let!(:image_a) { FactoryGirl.create(:image, name: 'Image A') }
-  let!(:other_site_image) { FactoryGirl.create(:image, site: FactoryGirl.create(:site)) }
+  let!(:image_b) { FactoryGirl.create(:image, name: 'Image B', site: site) }
+  let!(:image_c) { FactoryGirl.create(:image, name: 'Image C', site: site) }
+  let!(:image_a) { FactoryGirl.create(:image, name: 'Image A', site: site) }
+  let!(:other_site_image) { FactoryGirl.create(:image) }
 
   let(:go_to_url) { '/site/images' }
 
