@@ -1,9 +1,8 @@
 class CleanS3Job < BaseJob
   def perform
-    deleted_files, missing_files = cleaned_files
-
-    error(I18n.t('jobs.clean_s3_job.deleted'), deleted_files) if deleted_files.any?
-    error(I18n.t('jobs.clean_s3_job.missing'), missing_files) if missing_files.any?
+    clean_files.each do |file|
+      error("The following file is missing: #{file}")
+    end
   end
 
   private
@@ -32,17 +31,16 @@ class CleanS3Job < BaseJob
     (site_files + image_files).flatten
   end
 
-  def cleaned_files
-    deleted_files = []
+  def clean_files
     missing_files = valid_files
 
     all_files.each do |file|
       next if missing_files.delete file.key
 
-      deleted_files << file.key
       file.destroy
+      error("Deleted the following file: #{file.key}")
     end
 
-    [deleted_files, missing_files]
+    missing_files
   end
 end
