@@ -1,6 +1,4 @@
-class BaseJob < ActiveJob::Base
-  queue_as :default
-
+class ApplicationJob < ActiveJob::Base
   protected
 
   def error(message)

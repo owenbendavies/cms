@@ -1,4 +1,4 @@
-class DailyJob < BaseJob
+class DailyJob < ApplicationJob
   def perform
     CleanS3Job.perform_later
     ValidateDataJob.perform_later

@@ -20,9 +20,7 @@
 #  fk_images_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-class Image < ActiveRecord::Base
-  has_paper_trail
-
+class Image < ApplicationRecord
   mount_uploader :file, ImageUploader, mount_on: :filename
 
   scope :ordered, -> { order(:name) }

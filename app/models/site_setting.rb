@@ -21,8 +21,6 @@
 #  fk_site_settings_user_id  (user_id => users.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-class SiteSetting < ActiveRecord::Base
-  has_paper_trail
-
+class SiteSetting < ApplicationRecord
   schema_validations
 end
