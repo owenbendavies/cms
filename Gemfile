@@ -60,7 +60,7 @@ group :assets, :development do
   gem 'font-awesome-sass' # Icons
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
   gem 'sass-rails' # Sass for stylesheets
-  gem 'sprockets-rails', '3.1.1' # Manages asset files (LOCKED as 3.2.0 is broken)
+  gem 'sprockets-rails', '3.1.1' # LOCKED as 3.2.0 is broken
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
 end
@@ -78,6 +78,7 @@ group :development, :test do
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'rails_best_practices', require: false # Rails code quality
+  gem 'rubocop', '0.43.0', require: false # LOCKED as requires changes
   gem 'rubocop-rspec', '1.5.1', require: false # RSpect code quality (LOCKED as requires changes)
   gem 'scss_lint', require: false # Sass code quality
 end
