@@ -87,7 +87,6 @@ group :development do
   gem 'annotate', require: false # Adds comments of database schema to code
   gem 'foreman', require: false # Starts multiple processes
   gem 'letter_opener_web' # Email client
-  gem 'rails-erd', require: false # Generate database model diagram
 end
 
 group :test do
