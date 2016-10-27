@@ -32,7 +32,7 @@ RSpec.feature 'Showing a page' do
   end
 
   context 'private page' do
-    let!(:private_page) { FactoryGirl.create(:private_page) }
+    let!(:private_page) { FactoryGirl.create(:private_page, site: site) }
 
     let(:go_to_url) { '/private' }
 
@@ -46,7 +46,7 @@ RSpec.feature 'Showing a page' do
   end
 
   scenario 'page from another site' do
-    subject = FactoryGirl.create(:page, site: FactoryGirl.create(:site))
+    subject = FactoryGirl.create(:page)
 
     visit_404_page "/#{subject.url}"
   end
