@@ -2,12 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ValidateDataJob do
   context 'with no data' do
-    it 'does not send an email' do
+    it 'does not send any errors to Rollbar' do
+      expect(Rollbar).not_to receive(:error)
       described_class.perform_now
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
   end
 
@@ -15,12 +12,9 @@ RSpec.describe ValidateDataJob do
     let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
     let!(:site) { FactoryGirl.create(:site) }
 
-    it 'does not send an email' do
+    it 'does not send any errors to Rollbar' do
+      expect(Rollbar).not_to receive(:error)
       described_class.perform_now
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     context 'with invalid data' do
@@ -30,25 +24,10 @@ RSpec.describe ValidateDataJob do
         end
       end
 
-      let!(:message) do
-        FactoryGirl.create(:message).tap do |message|
-          message.update_attribute(:name, 'y')
-        end
-      end
-
-      it 'sends an email' do
+      it 'sends error to Rollbar' do
+        error = "Page##{page.id}: Url is reserved"
+        expect(Rollbar).to receive(:error).with(error).and_call_original
         described_class.perform_now
-
-        expect(ActionMailer::Base.deliveries.size).to eq 0
-        Delayed::Worker.new.work_off
-        expect(ActionMailer::Base.deliveries.size).to eq 1
-
-        expect(ActionMailer::Base.deliveries.last.body.to_s).to eq <<EOF
-The following models had errors
-
-Message##{message.id}: Name is too short (minimum is 3 characters)
-Page##{page.id}: Url is reserved
-EOF
       end
     end
   end

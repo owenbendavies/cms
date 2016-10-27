@@ -3,7 +3,7 @@ class BaseJob < ActiveJob::Base
 
   protected
 
-  def error(message, errors)
-    SystemMailer.error(message, errors).deliver_later
+  def error(message)
+    Rollbar.error(message)
   end
 end
