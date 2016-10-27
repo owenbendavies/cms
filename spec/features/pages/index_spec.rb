@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Pages index' do
-  let!(:private_page) { FactoryGirl.create(:private_page) }
+  let!(:private_page) { FactoryGirl.create(:private_page, site: site) }
 
   context 'html' do
     let(:go_to_url) { '/sitemap' }

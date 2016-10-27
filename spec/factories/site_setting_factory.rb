@@ -23,7 +23,7 @@
 
 FactoryGirl.define do
   factory :site_setting do
-    site { Site.first || FactoryGirl.create(:site) }
-    user { User.first || FactoryGirl.create(:user) }
+    site
+    user
   end
 end

@@ -8,5 +8,11 @@ if defined? Bullet
       class_name: 'Site',
       association: :main_menu_pages
     )
+
+    Bullet.add_whitelist(
+      type: :counter_cache,
+      class_name: 'Site',
+      association: :main_menu_pages
+    )
   end
 end

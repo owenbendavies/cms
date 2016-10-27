@@ -17,12 +17,13 @@ RSpec.shared_context 'test site', type: :feature do
 
   let(:sysadmin) { FactoryGirl.create(:sysadmin) }
 
-  let!(:home_page) { FactoryGirl.create(:page, name: 'Home') }
+  let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
 
   let!(:test_page) do
     FactoryGirl.create(
       :page,
       name: 'Test Page',
+      site: site,
       created_at: Time.zone.now,
       updated_at: Time.zone.now
     )

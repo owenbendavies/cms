@@ -22,8 +22,7 @@
 
 FactoryGirl.define do
   factory :image do
-    site { Site.first || FactoryGirl.create(:site) }
-
+    site
     name { Faker::Name.name.delete("'") }
     filename { "#{SecureRandom.uuid}.jpg" }
   end
