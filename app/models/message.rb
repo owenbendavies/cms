@@ -21,10 +21,8 @@
 #  fk_messages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-class Message < ActiveRecord::Base
+class Message < ApplicationRecord
   attr_accessor :do_not_fill_in
-
-  has_paper_trail
 
   schema_validations
 

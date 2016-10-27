@@ -1,4 +1,4 @@
-class NotificationsMailer < BaseMailer
+class NotificationsMailer < ApplicationMailer
   def new_message(message)
     @message = message
 

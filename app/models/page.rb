@@ -25,7 +25,7 @@
 #  fk_pages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
   HTML_TAGS = %w(h2 h3 p strong em sub sup ul li ol a img br).freeze
   HTML_ATTRIBUTES = %w(href target class src alt).freeze
@@ -35,8 +35,6 @@ class Page < ActiveRecord::Base
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 
   before_validation :clean_html_content
-
-  has_paper_trail
 
   schema_validations
 
