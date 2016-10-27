@@ -5,6 +5,7 @@ RSpec.feature 'Index messages' do
     (0..11).map do |i|
       FactoryGirl.create(
         :message,
+        site: site,
         created_at: Time.zone.now - 1.month - 3.days - i.minutes,
         updated_at: Time.zone.now - 1.month - 3.days - i.minutes
       )
@@ -12,7 +13,7 @@ RSpec.feature 'Index messages' do
   end
 
   let!(:other_site_message) do
-    FactoryGirl.create(:message, site: FactoryGirl.create(:site))
+    FactoryGirl.create(:message)
   end
 
   let(:go_to_url) { '/site/messages' }

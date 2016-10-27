@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
-  let!(:contact_page) { FactoryGirl.create(:page, contact_form: true) }
+  let!(:contact_page) { FactoryGirl.create(:page, contact_form: true, site: site) }
 
   before do
     page.driver.header('User-Agent', new_company_name)
