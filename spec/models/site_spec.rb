@@ -34,40 +34,51 @@ RSpec.describe Site, type: :model do
   describe '#main_menu_pages' do
     subject { FactoryGirl.create(:site) }
 
-    it 'returns empty array when no pages' do
-      expect(subject.main_menu_pages).to eq []
+    context 'when no pages' do
+      it 'returns empty array' do
+        expect(subject.main_menu_pages).to eq []
+      end
     end
 
-    it 'returns pages when page ids' do
-      page1 = FactoryGirl.create(:page, site: subject)
-      page1.insert_at(1)
-      page2 = FactoryGirl.create(:page, site: subject)
-      page2.insert_at(1)
+    context 'with pages' do
+      let!(:page1) do
+        FactoryGirl.create(:page, site: subject).tap do |page|
+          page.insert_at(1)
+        end
+      end
 
-      FactoryGirl.create(:page, site: subject)
+      let!(:page2) do
+        FactoryGirl.create(:page, site: subject).tap do |page|
+          page.insert_at(1)
+        end
+      end
 
-      expect(subject.main_menu_pages).to eq [page2, page1]
+      let!(:other_page) { FactoryGirl.create(:page, site: subject) }
+
+      it 'returns pages when page ids' do
+        expect(subject.main_menu_pages).to eq [page2, page1]
+      end
     end
   end
 
   describe '#stylesheet' do
-    it 'has a stylesheet' do
-      css = "body {\r\n  padding: 4em;\r\n}"
-      file = StringUploader.new('stylesheet.css', css)
-      site = FactoryGirl.create(:site, stylesheet: file)
+    let(:css) { "body {\r\n  padding: 4em;\r\n}" }
+    let(:file) { StringUploader.new('stylesheet.css', css) }
+    let!(:site) { FactoryGirl.create(:site, stylesheet: file) }
+    let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
 
-      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
-
-      uuid = File.basename(site.stylesheet_filename, '.css')
-
-      expect(site.stylesheet.url).to eq File.join(
-        'https://obduk-cms-test.s3-eu-east-1.amazonaws.com',
-        'stylesheets',
-        uuid,
-        'original.css'
-      )
-
+    it 'saves the stylesheet' do
       expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
+    end
+
+    it 'uses a uuid as the filename' do
+      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
+    end
+
+    it 'is saved in the stylesheets directory on s3' do
+      expect(site.stylesheet.url).to eq File.join(
+        'https://obduk-cms-test.s3-eu-east-1.amazonaws.com', 'stylesheets', uuid, 'original.css'
+      )
     end
   end
 
@@ -139,8 +150,6 @@ RSpec.describe Site, type: :model do
     end
 
     it 'saves a file' do
-      expect(uploaded_files).to eq []
-
       subject.css = "body {\r\n  padding: 4em;\r\n}"
       subject.save!
       subject.stylesheet.file.send(:file).reload
@@ -149,22 +158,22 @@ RSpec.describe Site, type: :model do
       expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
     end
 
-    it 'deletes old version' do
-      expect(uploaded_files).to eq []
+    context 'with an exiting file' do
+      let(:site) { described_class.find_by_id(subject.id) }
+      let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
 
-      subject.css = "body {\r\n  padding: 4em;\r\n}"
-      subject.save!
+      before do
+        subject.css = "body {\r\n  padding: 4em;\r\n}"
+        subject.save!
+      end
 
-      uuid = File.basename(subject.stylesheet_filename, '.css')
-      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
+      it 'deletes old version' do
+        site.css = 'body{background-color: red}'
+        site.save!
 
-      site = described_class.find_by_id(subject.id)
-      site.css = 'body{background-color: red}'
-      site.save!
-
-      uuid = File.basename(site.stylesheet_filename, '.css')
-      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-      expect(site.stylesheet_filename).not_to eq subject.stylesheet_filename
+        expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
+        expect(site.stylesheet_filename).not_to eq subject.stylesheet_filename
+      end
     end
   end
 
