@@ -30,25 +30,34 @@ RSpec.describe CleanS3Job do
       expect(uploaded_files).to eq good_files
     end
 
-    it 'sends an error to Rollbar with invalid files' do
-      fog_directory.files.create(key: 'bad.jpg')
-      expect(uploaded_files).to include 'bad.jpg'
+    context 'with invalid file' do
+      before do
+        fog_directory.files.create(key: 'bad.jpg')
+      end
 
-      error = 'Deleted the following file: bad.jpg'
-      expect(Rollbar).to receive(:error).with(error).and_call_original
+      it 'sends an error to Rollbar' do
+        expect(uploaded_files).to include 'bad.jpg'
 
-      described_class.perform_now
+        error = 'Deleted the following file: bad.jpg'
+        expect(Rollbar).to receive(:error).with(error).and_call_original
 
-      expect(uploaded_files).not_to include 'bad.jpg'
-      expect(uploaded_files).to eq good_files
+        described_class.perform_now
+
+        expect(uploaded_files).to eq good_files
+      end
     end
 
-    it 'sends an error to Rollbar with missing files' do
-      error = "The following file is missing: #{image.file.span3.path}"
-      expect(Rollbar).to receive(:error).with(error).and_call_original
+    context 'with missing files' do
+      before do
+        fog_directory.files.destroy image.file.span3.path
+      end
 
-      fog_directory.files.destroy image.file.span3.path
-      described_class.perform_now
+      it 'sends an error to Rollbar' do
+        error = "The following file is missing: #{image.file.span3.path}"
+        expect(Rollbar).to receive(:error).with(error).and_call_original
+
+        described_class.perform_now
+      end
     end
   end
 end

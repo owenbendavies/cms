@@ -33,29 +33,44 @@ RSpec.describe Page, type: :model do
       expect(FactoryGirl.create(:page)).not_to be_in_list
     end
 
-    it 'is scoped by site' do
-      site1 = FactoryGirl.create(:site)
-      site2 = FactoryGirl.create(:site)
+    context 'with multiple sites' do
+      let(:site1) { FactoryGirl.create(:site) }
+      let(:site2) { FactoryGirl.create(:site) }
 
-      site1page1 = FactoryGirl.create(:page, site: site1)
-      site1page2 = FactoryGirl.create(:page, site: site1)
-      site2page1 = FactoryGirl.create(:page, site: site2)
-      site2page2 = FactoryGirl.create(:page, site: site2)
+      let(:site1page1) do
+        FactoryGirl.create(:page, site: site1).tap do |page|
+          page.insert_at(1)
+          page.reload
+        end
+      end
 
-      site1page1.insert_at(1)
-      site1page2.insert_at(2)
-      site2page1.insert_at(1)
-      site2page2.insert_at(2)
+      let(:site1page2) do
+        FactoryGirl.create(:page, site: site1).tap do |page|
+          page.insert_at(2)
+          page.reload
+        end
+      end
 
-      site1page1.reload
-      site1page2.reload
-      site2page1.reload
-      site2page2.reload
+      let(:site2page1) do
+        FactoryGirl.create(:page, site: site2).tap do |page|
+          page.insert_at(1)
+          page.reload
+        end
+      end
 
-      expect(site1page1.main_menu_position).to eq 1
-      expect(site1page2.main_menu_position).to eq 2
-      expect(site2page1.main_menu_position).to eq 1
-      expect(site2page2.main_menu_position).to eq 2
+      let(:site2page2) do
+        FactoryGirl.create(:page, site: site2).tap do |page|
+          page.insert_at(2)
+          page.reload
+        end
+      end
+
+      it 'is scoped by site' do
+        expect(site1page1.main_menu_position).to eq 1
+        expect(site1page2.main_menu_position).to eq 2
+        expect(site2page1.main_menu_position).to eq 1
+        expect(site2page2.main_menu_position).to eq 2
+      end
     end
   end
 

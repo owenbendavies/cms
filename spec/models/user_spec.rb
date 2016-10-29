@@ -84,37 +84,50 @@ RSpec.describe User, type: :model do
   end
 
   describe '#admin_for_site?' do
-    it 'returns true when admin of site' do
-      user = FactoryGirl.create(:user)
-      site = FactoryGirl.create(:site)
-      user.site_settings.create(site: site, admin: true)
+    context 'when admin of site' do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:site) { FactoryGirl.create(:site) }
 
-      expect(user.admin_for_site?(site)).to eq true
+      before { user.site_settings.create(site: site, admin: true) }
+
+      it 'returns true' do
+        expect(user.admin_for_site?(site)).to eq true
+      end
     end
 
-    it 'returns false when admin of another site' do
-      user = FactoryGirl.create(:user)
-      site = FactoryGirl.create(:site)
-      another_site = FactoryGirl.create(:site)
-      user.site_settings.create(site: site)
-      user.site_settings.create(site: another_site, admin: true)
+    context 'when admin of another site' do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:site) { FactoryGirl.create(:site) }
+      let(:another_site) { FactoryGirl.create(:site) }
 
-      expect(user.admin_for_site?(site)).to eq false
+      before do
+        user.site_settings.create(site: site)
+        user.site_settings.create(site: another_site, admin: true)
+      end
+
+      it 'returns false' do
+        expect(user.admin_for_site?(site)).to eq false
+      end
     end
 
-    it 'returns false when admin of no sites' do
-      user = FactoryGirl.create(:user)
-      site = FactoryGirl.create(:site)
-      user.site_settings.create(site: site)
+    context 'when admin of no sites' do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:site) { FactoryGirl.create(:site) }
 
-      expect(user.admin_for_site?(site)).to eq false
+      before { user.site_settings.create(site: site) }
+
+      it 'returns false' do
+        expect(user.admin_for_site?(site)).to eq false
+      end
     end
 
-    it 'returns false when no sites' do
-      user = FactoryGirl.create(:user)
-      site = FactoryGirl.create(:site)
+    context 'when no sites' do
+      let(:user) { FactoryGirl.create(:user) }
+      let(:site) { FactoryGirl.create(:site) }
 
-      expect(user.admin_for_site?(site)).to eq false
+      it 'returns false' do
+        expect(user.admin_for_site?(site)).to eq false
+      end
     end
   end
 
