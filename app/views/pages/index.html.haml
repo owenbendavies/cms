@@ -3,7 +3,7 @@
 
 %ul.list-unstyled#cms-sitemap
   - @pages.each do |page|
-    - if policy(page).show?
-      %li
-        = link_to(page.name, page_path(page.to_param))
-        = icon_tag(t('pages.show.private.icon')) if page.private
+    %li
+      = link_to(page.name, page_path(page.to_param))
+      = icon_tag(t('pages.show.hidden.icon')) if page.hidden?
+      = icon_tag(t('pages.show.private.icon')) if page.private?

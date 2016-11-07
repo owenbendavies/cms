@@ -3,12 +3,13 @@
 = simple_form_for @page do |form|
   = form.input :url, disabled: true
   = form.input :name, autofocus: true
-  = form.input :private, as: :boolean
+  = form.input :hidden
+  = form.input :private
 
   .tinymce.form-control{ id: 'page[html_content]' }
     = form.object.html_content.to_s.html_safe
 
-  = form.input :contact_form, as: :boolean
+  = form.input :contact_form
 
   .form-group
     .col-control-offset

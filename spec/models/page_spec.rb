@@ -84,16 +84,6 @@ RSpec.describe Page, type: :model do
     end
   end
 
-  describe '.non_private' do
-    it 'returns non private pages' do
-      page1 = FactoryGirl.create(:page)
-      page2 = FactoryGirl.create(:page)
-      FactoryGirl.create(:private_page)
-
-      expect(described_class.non_private).to eq [page1, page2]
-    end
-  end
-
   describe '.ordered' do
     it 'returns ordered by name' do
       page_c = FactoryGirl.create(:page, name: 'Page C')
@@ -101,6 +91,17 @@ RSpec.describe Page, type: :model do
       page_b = FactoryGirl.create(:page, name: 'Page B')
 
       expect(described_class.ordered).to eq [page_a, page_b, page_c]
+    end
+  end
+
+  describe '.visible' do
+    it 'returns non hidden or private pages' do
+      page1 = FactoryGirl.create(:page)
+      page2 = FactoryGirl.create(:page)
+      FactoryGirl.create(:hidden_page)
+      FactoryGirl.create(:private_page)
+
+      expect(described_class.visible).to eq [page1, page2]
     end
   end
 
