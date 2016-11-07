@@ -33,7 +33,7 @@ class PagesController < ApplicationController
   def index
     authorize Page
 
-    @pages = @site.pages.ordered
+    @pages = find_pages
 
     respond_to do |format|
       format.html
@@ -95,12 +95,20 @@ class PagesController < ApplicationController
     authorize @page
   end
 
+  def find_pages
+    if current_user && current_user.site_settings.find_by_site_id(@site.id)
+      @site.pages.ordered
+    else
+      @site.pages.visible.ordered
+    end
+  end
+
   def authenticate_page
     authenticate_user! if @page.private
   end
 
   def page_params
-    params.require(:page).permit(:name, :contact_form, :private, :html_content)
+    params.require(:page).permit(:name, :contact_form, :private, :hidden, :html_content)
   end
 
   def message_params
@@ -112,7 +120,7 @@ class PagesController < ApplicationController
 
   def xml_sitemap
     XmlSitemap::Map.new(@site.host, home: false, secure: true) do |map|
-      @pages.non_private.each do |page|
+      @pages.each do |page|
         map.add page_path(page.to_param), updated: page.updated_at
       end
     end

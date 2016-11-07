@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.feature 'Pages index' do
-  let!(:private_page) { FactoryGirl.create(:private_page, site: site) }
-
   context 'html' do
     let(:go_to_url) { '/sitemap' }
 
     scenario 'visiting the page' do
+      hidden_page = FactoryGirl.create(:hidden_page, site: site)
+      private_page = FactoryGirl.create(:private_page, site: site)
+
       visit_200_page
 
       expect(page).to have_link 'Home', href: '/home'
+      expect(page).to have_no_link hidden_page.name
       expect(page).to have_no_link private_page.name
     end
 
@@ -24,7 +26,17 @@ RSpec.feature 'Pages index' do
     end
 
     as_a 'authorized user', :user do
+      scenario 'with a hidden page' do
+        hidden_page = FactoryGirl.create(:hidden_page, site: site)
+
+        visit_200_page
+
+        expect(page).to have_no_link hidden_page.name
+      end
+
       scenario 'with a private page' do
+        private_page = FactoryGirl.create(:private_page, site: site)
+
         visit_200_page
 
         expect(page).to have_no_link private_page.name
@@ -32,7 +44,20 @@ RSpec.feature 'Pages index' do
     end
 
     as_a 'authorized user', :site_user do
+      scenario 'with a hidden page' do
+        hidden_page = FactoryGirl.create(:hidden_page, site: site)
+
+        visit_200_page
+
+        find('ul#cms-sitemap li:nth-child(1)').tap do |item|
+          expect(item).to have_link hidden_page.name, href: '/hidden'
+          expect(item).to have_selector '.fa-eye-slash'
+        end
+      end
+
       scenario 'with a private page' do
+        private_page = FactoryGirl.create(:private_page, site: site)
+
         visit_200_page
 
         find('ul#cms-sitemap li:nth-child(2)').tap do |item|
@@ -47,6 +72,9 @@ RSpec.feature 'Pages index' do
     let(:go_to_url) { '/sitemap.xml' }
 
     scenario 'visiting the page' do
+      hidden_page = FactoryGirl.create(:hidden_page, site: site)
+      private_page = FactoryGirl.create(:private_page, site: site)
+
       visit_200_page
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
@@ -55,6 +83,7 @@ RSpec.feature 'Pages index' do
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq updated_at
 
+      expect(page).to have_no_xpath('//loc', text: "https://localhost/#{hidden_page.url}")
       expect(page).to have_no_xpath('//loc', text: "https://localhost/#{private_page.url}")
     end
   end
