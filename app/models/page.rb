@@ -39,8 +39,8 @@ class Page < ApplicationRecord
 
   schema_validations
 
-  scope :non_private, -> { where(private: false) }
   scope :ordered, -> { order(:name) }
+  scope :visible, -> { where(hidden: false).where(private: false) }
 
   strip_attributes(
     except: [:html_content, :custom_html],

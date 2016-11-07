@@ -17,6 +17,19 @@ RSpec.feature 'Editing a page' do
       expect(page).to have_content new_message
     end
 
+    scenario 'making the page hidden' do
+      visit_200_page
+
+      expect(find_field('Hidden')).not_to be_checked
+      check 'Hidden'
+      click_button 'Update Page'
+
+      expect(current_path).to eq '/home'
+
+      click_link 'Edit'
+      expect(find_field('Hidden')).to be_checked
+    end
+
     scenario 'making the page private' do
       visit_200_page
 
