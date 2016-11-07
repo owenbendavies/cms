@@ -13,6 +13,7 @@
 #  updated_at         :datetime         not null
 #  main_menu_position :integer
 #  custom_html        :text
+#  hidden             :boolean          default(FALSE), not null
 #
 # Indexes
 #
