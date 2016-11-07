@@ -17,6 +17,8 @@ en:
       text: "Are you sure you want to delete page '%{name}'?"
 
     show:
+      hidden:
+        icon: "eye-slash"
       private:
         icon: "lock"
 
