@@ -39,7 +39,8 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.8.2)
       activerecord (>= 3.0)
-    addressable (2.4.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
@@ -47,7 +48,7 @@ GEM
     ast (2.3.0)
     bcrypt (3.1.11)
     bower-rails (0.11.0)
-    brakeman (3.4.0)
+    brakeman (3.4.1)
     builder (3.2.2)
     bullet (5.2.0)
       activesupport (>= 3.0.0)
@@ -210,10 +211,10 @@ GEM
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
-    fog-profitbricks (2.0.1)
+    fog-profitbricks (3.0.0)
       fog-core (~> 1.42)
       fog-json (~> 1.0)
-    fog-rackspace (0.1.1)
+    fog-rackspace (0.1.2)
       fog-core (>= 1.35)
       fog-json (>= 1.0)
       fog-xml (>= 0.1)
@@ -247,7 +248,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (1.5.0)
+    fog-vsphere (1.5.1)
       fog-core
       rbvmomi (~> 1.9)
     fog-xenserver (0.2.3)
@@ -276,7 +277,7 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
-    haml_lint (0.18.3)
+    haml_lint (0.18.4)
       haml (~> 4.0)
       rake (>= 10, < 12)
       rubocop (>= 0.36.0)
@@ -293,7 +294,7 @@ GEM
       ruby_parser (~> 3.5)
     htmlentities (4.3.4)
     i18n (0.7.0)
-    i18n-tasks (0.9.5)
+    i18n-tasks (0.9.6)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       easy_translate (>= 0.5.0)
@@ -337,7 +338,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    newrelic_rpm (3.17.0.325)
+    newrelic_rpm (3.17.1.326)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     oauth2 (1.2.0)
@@ -382,6 +383,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (2.0.4)
     puma (3.6.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -510,7 +512,7 @@ GEM
       activerecord (~> 4.2, >= 4.2.1)
       schema_plus_columns
       valuable
-    scss_lint (0.50.2)
+    scss_lint (0.50.3)
       rake (>= 0.9, < 12)
       sass (~> 3.4.20)
     secure_headers (3.5.0)
@@ -534,7 +536,7 @@ GEM
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.1.1)
+    sprockets-rails (3.2.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -649,7 +651,6 @@ DEPENDENCIES
   simplecov (< 0.11.0)
   spring
   spring-commands-rspec
-  sprockets-rails (= 3.1.1)
   strip_attributes
   timecop
   tinymce-rails
@@ -664,4 +665,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
