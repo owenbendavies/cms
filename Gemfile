@@ -25,7 +25,7 @@ gem 'carrierwave', '0.11.0' # TODO: Upgrade when 0.11.2 is fixed - File upload
 gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
-gem 'paper_trail', '< 5.0.0' # TODO: Upgrade when 5.2.2 is fixed - Database audit
+gem 'paper_trail' # Database audit
 gem 'phone' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations

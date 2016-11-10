@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from Pundit::NotAuthorizedError, with: :page_not_found
 
+  before_action :set_paper_trail_whodunnit
   before_action :find_site
   before_action :render_site_not_found
   before_action :check_format_is_not_html
