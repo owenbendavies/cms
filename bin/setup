@@ -1,9 +1,23 @@
-#!/bin/bash
-set -ev
-cd `dirname $0`/..
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+include FileUtils
 
-./bin/bundle check || ./bin/bundle install
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
 
-./bin/rake db:create db:migrate db:seed
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
 
-./bin/annotate --show-foreign-keys --show-indexes
+chdir APP_ROOT do
+  puts '== Installing dependencies =='
+  system! 'gem install bundler --conservative'
+  system('bundle check') || system!('bundle install')
+
+  puts "\n== Preparing database =="
+  system! 'bin/rake db:create db:migrate db:seed'
+
+  puts "\n== Update documention =="
+  system! 'bin/annotate --show-foreign-keys --show-indexes'
+end
