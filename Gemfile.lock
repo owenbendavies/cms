@@ -359,9 +359,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    paper_trail (4.2.0)
+    paper_trail (5.2.2)
       activerecord (>= 3.0, < 6.0)
-      activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
     parser (2.3.1.4)
       ast (~> 2.2)
@@ -387,7 +386,7 @@ GEM
     puma (3.6.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (1.6.4)
+    rack (1.6.5)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -623,7 +622,7 @@ DEPENDENCIES
   mini_magick
   newrelic_rpm
   omniauth-google-oauth2
-  paper_trail (< 5.0.0)
+  paper_trail
   pg
   phone
   premailer-rails
