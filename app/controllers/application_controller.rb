@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   private
 
   def find_site
-    @site = Site.find_by_host(request.host)
+    @site = Site.find_by(host: request.host)
   end
 
   def render_site_not_found

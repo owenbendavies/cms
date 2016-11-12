@@ -16,7 +16,7 @@ RSpec.feature 'Inviting a user' do
 
       logout
 
-      user = User.find_by_email! new_email
+      user = User.find_by!(email: new_email)
       expect(user.sites).to eq [site]
 
       expect(ActionMailer::Base.deliveries.size).to eq 0

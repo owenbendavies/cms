@@ -91,12 +91,12 @@ class PagesController < ApplicationController
   end
 
   def find_page
-    @page = @site.pages.find_by_url!(params[:id])
+    @page = @site.pages.find_by!(url: params[:id])
     authorize @page
   end
 
   def find_pages
-    if current_user && current_user.site_settings.find_by_site_id(@site.id)
+    if current_user && current_user.site_settings.find_by(site_id: @site.id)
       @site.pages.ordered
     else
       @site.pages.visible.ordered

@@ -159,7 +159,7 @@ RSpec.describe Site, type: :model do
     end
 
     context 'with an exiting file' do
-      let(:site) { described_class.find_by_id(subject.id) }
+      let(:site) { described_class.find_by(id: subject.id) }
       let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
 
       before do
