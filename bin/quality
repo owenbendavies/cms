@@ -9,7 +9,7 @@ set -v
 
 ./bin/rails_best_practices --silent
 
-./bin/rake coffeelint
+./bin/rake jshint
 
 ./bin/rubocop --format simple
 
