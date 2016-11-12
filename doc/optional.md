@@ -1,5 +1,7 @@
 # Optional Steps
 
+The following optional steps can be followed to add extra services.
+
 ## Amazon Web Servcies
 
 * My Account
@@ -46,7 +48,6 @@
 * rollbar (error notifications)
 * scheduler (job runner)
   * Add `./bin/rails runner 'DailyJob.perform_now'`
-* tinfoilsecurity (security scanner)
 
 ## Services
 
@@ -55,21 +56,5 @@
 * DMARC Analyzer (email checker)
   * Add DNS record for each domain with email
   * Send reports
-* Google Analytics (visitor statistics)
-  * Property
-    * Settings
-      * Enable Demographics
-      * Use enhanced link attribution
-    * Tracking Info
-      * Enable User-ID
-* Google Login
-  1. Go to https://console.developers.google.com
-  1. Go to 'Credentials'
-  1. Create a new project
-  1. Go to 'OAuth consent screen'
-  1. Provide an 'email address' and 'product name'
-  1. Create some 'OAuth Credentials'
-    1. Select 'Web application'
-    1. Set a name
-    1. Set 'Authorized redirect URIs', e.g. https://www.example.com/user/auth/google/callback
-  1. Enable the 'Contacts API' and 'Google+ API'
+* [Google Analytics](google_analytics.md) (visitor statistics)
+* [Google Login](google_login.md)
