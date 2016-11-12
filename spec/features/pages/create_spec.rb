@@ -18,7 +18,7 @@ RSpec.feature 'Creating a page' do
         expect(page).to have_content 'New Page'
       end.to change(Page, :count).by(1)
 
-      new_page = Page.find_by_site_id_and_url!(site, 'new_page')
+      new_page = Page.find_by!(site_id: site, url: 'new_page')
       expect(new_page.name).to eq 'New Page'
       expect(new_page.html_content).to eq "<p>#{new_message}</p>"
     end

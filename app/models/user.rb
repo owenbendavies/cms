@@ -74,7 +74,7 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 3 }
 
   def self.find_for_google(uid, email)
-    user = User.find_by_google_uid(uid) || User.find_by_email(email)
+    user = User.find_by(google_uid: uid) || User.find_by(email: email)
 
     user.update!(google_uid: uid) if user && !user.google_uid
 
@@ -82,7 +82,7 @@ class User < ApplicationRecord
   end
 
   def self.invite_or_add_to_site!(params, site, inviter)
-    user = User.find_by_email(params[:email])
+    user = User.find_by(email: params[:email])
 
     if user && !user.site_ids.include?(site.id)
       user.site_settings.create!(site: site)
