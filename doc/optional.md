@@ -1,5 +1,7 @@
 # Optional Steps
 
+The following optional steps can be followed to add extra services.
+
 ## Amazon Web Servcies
 
 * My Account
@@ -46,7 +48,6 @@
 * rollbar (error notifications)
 * scheduler (job runner)
   * Add `./bin/rails runner 'DailyJob.perform_now'`
-* tinfoilsecurity (security scanner)
 
 ## Services
 
@@ -55,11 +56,5 @@
 * DMARC Analyzer (email checker)
   * Add DNS record for each domain with email
   * Send reports
-* Google Analytics (visitor statistics)
-  * Property
-    * Settings
-      * Enable Demographics
-      * Use enhanced link attribution
-    * Tracking Info
-      * Enable User-ID
+* [Google Analytics](google_analytics.md) (visitor statistics)
 * [Google Login](google_login.md)
