@@ -77,7 +77,6 @@ group :development, :test do
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'rails_best_practices', require: false # Rails code quality
-  gem 'rubocop', '0.43.0', require: false # TODO: Upgrade and remove from Gemfile (requires changes)
   gem 'rubocop-rspec', '1.5.1', require: false # TODO: Upgrade (requires changes) RSpec code quality
   gem 'scss_lint', require: false # Sass code quality
 end

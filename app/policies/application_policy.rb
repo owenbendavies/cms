@@ -16,10 +16,10 @@ class ApplicationPolicy
   protected
 
   def user_site?
-    @user && @user.site_settings.find_by_site_id(@site.id)
+    @user && @user.site_settings.find_by(site_id: @site.id)
   end
 
   def user_record?
-    @user && @user.site_settings.find_by_site_id(@record.site_id)
+    @user && @user.site_settings.find_by(site_id: @record.site_id)
   end
 end

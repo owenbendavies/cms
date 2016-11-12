@@ -19,7 +19,7 @@ RSpec.feature 'Deleting a page' do
       expect(page).to have_content 'Test Page was deleted'
 
       expect(current_path).to eq '/sitemap'
-      expect(Page.find_by_site_id_and_url(site, 'test_page')).to be_nil
+      expect(Page.find_by(site_id: site, url: 'test_page')).to be_nil
     end
 
     scenario 'clicking no', js: true do
@@ -31,7 +31,7 @@ RSpec.feature 'Deleting a page' do
       end.not_to change(Page, :count)
 
       expect(current_path).to eq '/test_page'
-      expect(Page.find_by_site_id_and_url!(site, 'test_page')).to eq test_page
+      expect(Page.find_by(site_id: site, url: 'test_page')).to eq test_page
     end
   end
 end
