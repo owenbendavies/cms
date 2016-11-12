@@ -6,6 +6,9 @@ AllCops:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
 
+Metrics/BlockLength:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 100
 

@@ -8,6 +8,6 @@ class SitePolicy < ApplicationPolicy
   end
 
   def css?
-    @user.site_settings.find_by_site_id_and_admin(@record.id, true)
+    @user.site_settings.find_by(site_id: @record.id, admin: true)
   end
 end
