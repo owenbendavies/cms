@@ -1,7 +1,6 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.3
   Exclude:
     - 'db/schema.rb'
     - 'vendor/bundle/**/*'
