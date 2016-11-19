@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.2'
 
 # Frameworks
 gem 'rails', '4.2.7.1' # TODO: Upgrade when dependency conflicts are fixed
