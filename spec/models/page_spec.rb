@@ -28,7 +28,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Page, type: :model do
+RSpec.describe Page do
   describe 'acts_as_list' do
     it 'is not added to list by default' do
       expect(FactoryGirl.create(:page)).not_to be_in_list

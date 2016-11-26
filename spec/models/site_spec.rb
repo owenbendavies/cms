@@ -30,7 +30,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Site, type: :model do
+RSpec.describe Site do
   describe '#main_menu_pages' do
     subject { FactoryGirl.create(:site) }
 

@@ -22,7 +22,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Image, type: :model do
+RSpec.describe Image do
   describe '#file' do
     it 'saves an image' do
       image = described_class.new

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, '#body_id', type: :helper do
+RSpec.describe ApplicationHelper, '#body_id' do
   it 'uses path' do
     expect(body_id('/home')).to eq 'cms-page-home'
   end

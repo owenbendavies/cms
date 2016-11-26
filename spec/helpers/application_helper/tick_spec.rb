@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, '#tick', type: :helper do
+RSpec.describe ApplicationHelper, '#tick' do
   it 'shows tick for true' do
     expect(tick(true)).to eq '<i class="fa fa-check"></i>'
   end
