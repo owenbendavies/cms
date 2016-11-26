@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe NotificationsMailer, type: :feature do
+RSpec.describe NotificationsMailer do
+  include_context 'test site'
+
   describe '.new_message' do
     before do
       site_user

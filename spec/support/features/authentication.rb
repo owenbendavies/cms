@@ -1,12 +1,14 @@
 RSpec.configuration.include Warden::Test::Helpers, type: :feature
 
-RSpec.shared_context 'feature helpers', type: :feature do
+RSpec.shared_context 'feature helpers' do
   alias_method :unchecked_login_as, :login_as
 
   def login_as(*_)
     raise 'Please use methods from spec/support/feature_helpers.rb'
   end
 end
+
+RSpec.configuration.include_context 'feature helpers', type: :feature
 
 def unauthorized_topbar(topbar_link)
   scenario 'does not have topbar link' do

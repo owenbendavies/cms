@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe CustomDeviseMailer, type: :feature do
+RSpec.describe CustomDeviseMailer do
+  include_context 'test site'
+
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do

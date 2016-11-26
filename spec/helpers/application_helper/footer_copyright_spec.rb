@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, '#footer_copyright', type: :helper do
+RSpec.describe ApplicationHelper, '#footer_copyright' do
   let(:site) do
     FactoryGirl.build(
       :site,

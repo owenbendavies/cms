@@ -1,4 +1,4 @@
-RSpec.shared_context 'table helpers', type: :feature do
+RSpec.shared_context 'table helpers' do
   let(:table_header_text) do
     all('table thead th').map(&:text)
   end
@@ -7,3 +7,5 @@ RSpec.shared_context 'table helpers', type: :feature do
     all('table tbody tr').map { |row| row.all('td') }
   end
 end
+
+RSpec.configuration.include_context 'table helpers', type: :feature

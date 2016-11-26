@@ -23,7 +23,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Message, type: :model do
+RSpec.describe Message do
   describe '.ordered' do
     it 'returns ordered by created descending' do
       message1 = FactoryGirl.create(:message, created_at: Time.zone.now - 1.minute)
