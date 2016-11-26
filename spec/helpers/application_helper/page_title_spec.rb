@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationHelper, '#page_title', type: :helper do
+RSpec.describe ApplicationHelper, '#page_title' do
   context 'site with sub title' do
     let(:site) do
       FactoryGirl.build(:site, sub_title: Faker::Company.catch_phrase)

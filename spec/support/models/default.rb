@@ -1,4 +1,4 @@
-RSpec.shared_context 'models', type: :model do
+RSpec.shared_context 'models' do
   context '#versions', versioning: true do
     subject { FactoryGirl.create(described_class.to_s.underscore) }
 
@@ -20,3 +20,5 @@ RSpec.shared_context 'models', type: :model do
     end
   end
 end
+
+RSpec.configuration.include_context 'models', type: :model
