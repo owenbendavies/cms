@@ -1,4 +1,4 @@
-RSpec.shared_context 'test site', type: :feature do
+RSpec.shared_context 'test site' do
   let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
   let!(:site_user) do
@@ -29,3 +29,5 @@ RSpec.shared_context 'test site', type: :feature do
     )
   end
 end
+
+RSpec.configuration.include_context 'test site', type: :feature

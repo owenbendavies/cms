@@ -1,4 +1,4 @@
-RSpec.shared_context 'visit helpers', type: :feature do
+RSpec.shared_context 'visit helpers' do
   alias_method :unchecked_visit, :visit
 
   def visit(*_)
@@ -26,3 +26,5 @@ RSpec.shared_context 'visit helpers', type: :feature do
     expect(page.driver.error_messages).to eq [] if page.driver.class == Capybara::Webkit::Driver
   end
 end
+
+RSpec.configuration.include_context 'visit helpers', type: :feature
