@@ -2,6 +2,7 @@
 /.vagrant/
 /coverage/
 /log/*.log
+/provisioning/roles/
 /public/uploads/
 /tmp/
 /vendor/bundle/
