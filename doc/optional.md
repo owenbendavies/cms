@@ -4,11 +4,7 @@ The following optional steps can be followed to add extra services.
 
 ## Amazon Web Servcies
 
-* My Account
-  * Alternate Contacts
-* Billing & Cost Management
-  * Preferences > Receive PDF Invoice By Email
-  * Budgets > Create budget to limit total spend
+* [AWS Account](aws_account.md) settings
 * S3 (for storing files)
   * Enable versioning
   * Add lifecycle to delete old versions (if concerned about cost or sensitivity)
@@ -21,15 +17,6 @@ The following optional steps can be followed to add extra services.
   * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=db/amazon-rds-ca-cert.pem`
   * Parameter Groups
     * rds.force_ssl = 1
-* CloudWatch (notifications)
-  * Add Alarms (e.g. RDS)
-* CloudTrail (account logging)
-* Config (account versioning)
-* Trusted Advisor (security suggestions)
-  * Fix any issues
-  * Preferences > Email notifications
-* Identity and Access Management (user accounts)
-  * Fix any bad security status
 * SES (Email alternative to sendgrid)
   * Add [policy](iam_ses_policy.json) to IAM user
   * Use DKIM
