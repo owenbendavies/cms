@@ -29,8 +29,7 @@ class SystemsController < ApplicationController
     redirect_to page_path('home')
   end
 
-  def robots
-  end
+  def robots; end
 
   private
 
