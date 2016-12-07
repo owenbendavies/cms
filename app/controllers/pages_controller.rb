@@ -41,8 +41,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def new
-  end
+  def new; end
 
   def create
     if @page.update_attributes(page_params)
@@ -52,8 +51,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def contact_form
     @message = Message.new
@@ -67,8 +65,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @page.update_attributes(page_params)
