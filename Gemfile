@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
-# Frameworks
 gem 'rails', '4.2.7.1' # TODO: Upgrade when dependency conflicts are fixed
-gem 'delayed_job_active_record' # Background jobs
 
 # Databases
 gem 'pg' # PostgreSQL
+
+# Frameworks
+gem 'delayed_job_active_record' # Background jobs
 
 # Rack middleware
 gem 'rack-protection' # Protects against sessions attacks
@@ -41,7 +42,7 @@ gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'rails-timeago' # Nice time tags
 gem 'simple_form' # Easier forms
-gem 'tinymce-rails' # Rich text editor
+gem 'tinymce-rails', '4.4.3' # TODO: Upgrade when 4.5.0 is fixed - Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
