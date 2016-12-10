@@ -31,7 +31,7 @@
 class SitesController < ApplicationController
   def index
     authorize Site
-    @sites = current_user.sites.ordered
+    @sites = policy_scope(Site).ordered
   end
 
   def edit

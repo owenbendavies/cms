@@ -47,6 +47,6 @@
 class UsersController < ApplicationController
   def index
     authorize User
-    @users = @site.users.ordered
+    @users = policy_scope(User).ordered
   end
 end
