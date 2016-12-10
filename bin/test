@@ -17,7 +17,6 @@ if [ $# -gt 0 ]; then
 else
   set -v
 
-  eval './bin/rake db:test:prepare'
   eval './bin/compile'
   eval "COVERAGE=on $rspec --order random"
   eval './bin/quality'
