@@ -33,7 +33,7 @@ class PagesController < ApplicationController
   def index
     authorize Page
 
-    @pages = find_pages
+    @pages = policy_scope(Page).ordered
 
     respond_to do |format|
       format.html
@@ -90,14 +90,6 @@ class PagesController < ApplicationController
   def find_page
     @page = @site.pages.find_by!(url: params[:id])
     authorize @page
-  end
-
-  def find_pages
-    if current_user && current_user.site_settings.find_by(site_id: @site.id)
-      @site.pages.ordered
-    else
-      @site.pages.visible.ordered
-    end
   end
 
   def authenticate_page
