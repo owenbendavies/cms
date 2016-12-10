@@ -280,8 +280,6 @@ GEM
       sysexits (~> 1.1)
     hashdiff (0.3.1)
     hashie (3.4.6)
-    heroku-deflater (0.6.2)
-      rack (>= 1.4.5)
     highline (1.7.8)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
@@ -614,7 +612,6 @@ DEPENDENCIES
   gravtastic
   haml-rails
   haml_lint
-  heroku-deflater
   i18n-tasks
   jshintrb
   letter_opener_web
