@@ -47,7 +47,6 @@ gem 'will_paginate-bootstrap' # Pagination
 
 # Server
 gem 'font_assets' # Serves fonts with correct CORS headers
-gem 'heroku-deflater' # Serves gzip assets
 gem 'puma' # Web server
 
 # Monitoring
