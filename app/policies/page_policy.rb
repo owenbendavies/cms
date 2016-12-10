@@ -1,4 +1,14 @@
 class PagePolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      if user_site?
+        @scope.where(site_id: @site.id)
+      else
+        @scope.where(site_id: @site.id).visible
+      end
+    end
+  end
+
   def index?
     true
   end
