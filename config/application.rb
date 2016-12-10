@@ -49,6 +49,7 @@ module Cms
     end
 
     # Customer middleware
+    config.middleware.use Rack::Deflater
     config.middleware.use Rack::Protection
 
     config.active_job.queue_adapter = :delayed_job
