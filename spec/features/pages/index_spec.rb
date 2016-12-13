@@ -77,14 +77,28 @@ RSpec.feature 'Pages index' do
 
       visit_200_page
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'http://localhost/home'
 
       updated_at = home_page.updated_at.iso8601
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq updated_at
 
-      expect(page).to have_no_xpath('//loc', text: "https://localhost/#{hidden_page.url}")
-      expect(page).to have_no_xpath('//loc', text: "https://localhost/#{private_page.url}")
+      expect(page).to have_no_xpath('//loc', text: "http://localhost/#{hidden_page.url}")
+      expect(page).to have_no_xpath('//loc', text: "http://localhost/#{private_page.url}")
+    end
+
+    context 'when ssl is enabled' do
+      around do |example|
+        ClimateControl.modify(DISABLE_SSL: nil) do
+          example.run
+        end
+      end
+
+      scenario 'visiting the page' do
+        visit_200_page
+
+        expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
+      end
     end
   end
 end

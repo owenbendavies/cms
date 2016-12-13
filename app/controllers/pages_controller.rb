@@ -108,7 +108,7 @@ class PagesController < ApplicationController
   end
 
   def xml_sitemap
-    XmlSitemap::Map.new(@site.host, home: false, secure: true) do |map|
+    XmlSitemap::Map.new(@site.host, home: false, secure: ENV['DISABLE_SSL'].blank?) do |map|
       @pages.each do |page|
         map.add page_path(page.to_param), updated: page.updated_at
       end
