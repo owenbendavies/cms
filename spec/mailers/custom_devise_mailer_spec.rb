@@ -27,7 +27,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has confirmation link in body' do
-      link = "https://#{site.host}/user/confirmation?confirmation_token=#{token}"
+      link = "http://#{site.host}/user/confirmation?confirmation_token=#{token}"
 
       expect(subject.body).to have_link 'Confirm Email', href: link
     end
@@ -77,7 +77,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has reset password link in body' do
-      link = "https://#{site.host}/user/password/edit?reset_password_token=#{token}"
+      link = "http://#{site.host}/user/password/edit?reset_password_token=#{token}"
 
       expect(subject.body).to have_link 'Change password', href: link
     end
@@ -105,7 +105,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has reset password link in body' do
-      link = "https://#{site.host}/user/unlock?unlock_token=#{token}"
+      link = "http://#{site.host}/user/unlock?unlock_token=#{token}"
 
       expect(subject.body).to have_link 'Unlock account', href: link
     end
@@ -141,9 +141,23 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has invite link in body' do
-      link = "https://#{site.host}/user/invitation/accept?invitation_token=#{token}"
+      link = "http://#{site.host}/user/invitation/accept?invitation_token=#{token}"
 
       expect(subject.body).to have_link 'Confirm your account', href: link
+    end
+  end
+
+  context 'when ssl is enabled' do
+    around do |example|
+      ClimateControl.modify(DISABLE_SSL: nil) do
+        example.run
+      end
+    end
+
+    subject { described_class.confirmation_instructions(site_user, token) }
+
+    it 'has https links' do
+      expect(subject.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
     end
   end
 end

@@ -121,6 +121,28 @@ RSpec.describe Site do
     it { should_not allow_value('AS').for(:google_analytics) }
   end
 
+  describe '#address' do
+    subject { FactoryGirl.create(:site, host: 'localhost') }
+
+    context 'when ssl is enabled' do
+      around do |example|
+        ClimateControl.modify(DISABLE_SSL: nil) do
+          example.run
+        end
+      end
+
+      it 'returns https url' do
+        expect(subject.address).to eq 'https://localhost'
+      end
+    end
+
+    context 'when ssl is disabled' do
+      it 'returns http url' do
+        expect(subject.address).to eq 'http://localhost'
+      end
+    end
+  end
+
   describe '#css' do
     subject { FactoryGirl.build(:site) }
 

@@ -22,10 +22,25 @@ RSpec.feature 'User sites' do
       expect(links.size).to eq 2
 
       expect(links[0].text).to eq 'alphahost'
-      expect(links[0]['href']).to eq 'https://alphahost'
+      expect(links[0]['href']).to eq 'http://alphahost'
 
       expect(links[1].text).to eq 'localhost'
-      expect(links[1]['href']).to eq 'https://localhost'
+      expect(links[1]['href']).to eq 'http://localhost'
+    end
+
+    context 'when ssl is enabled' do
+      around do |example|
+        ClimateControl.modify(DISABLE_SSL: nil) do
+          example.run
+        end
+      end
+
+      scenario 'visiting the page' do
+        visit_200_page
+
+        links = all('#cms-article a')
+        expect(links[0]['href']).to eq 'https://localhost'
+      end
     end
   end
 end
