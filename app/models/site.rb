@@ -47,6 +47,11 @@ class Site < ApplicationRecord
   validates :layout, inclusion: { in: LAYOUTS }
   validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
 
+  def address
+    protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'
+    "#{protocol}://#{host}"
+  end
+
   def css
     stylesheet.read
   end
