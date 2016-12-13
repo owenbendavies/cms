@@ -1,4 +1,4 @@
-class AddDeviseLockableToUsers < ActiveRecord::Migration
+class AddDeviseLockableToUsers < ActiveRecord::Migration[5.0]
   def change
     change_table :users do |table|
       table.integer :failed_attempts, default: 0, null: false

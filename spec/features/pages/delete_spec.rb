@@ -33,7 +33,7 @@ RSpec.feature 'Deleting a page' do
       end.not_to change(Page, :count)
 
       expect(current_path).to eq '/test_page'
-      expect(Page.find_by(site_id: site, url: 'test_page')).to eq test_page
+      expect(Page.find_by(site_id: site.id, url: 'test_page')).to eq test_page
     end
   end
 end

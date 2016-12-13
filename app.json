@@ -64,7 +64,7 @@
     }
   },
   "scripts": {
-    "postdeploy": "./bin/rake db:migrate db:seed"
+    "postdeploy": "./bin/rails db:migrate db:seed"
   }
 }
 

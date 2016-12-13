@@ -55,7 +55,7 @@ class Page < ApplicationRecord
   end
 
   def name=(value)
-    self.url = value.delete("'").parameterize('_') if value
+    self.url = value.delete("'").parameterize(separator: '_') if value
     super(value)
   end
 

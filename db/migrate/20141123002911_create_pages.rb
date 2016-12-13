@@ -1,4 +1,4 @@
-class CreatePages < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration[5.0]
   def change
     create_table :pages do |table|
       table.belongs_to :site, null: false
@@ -9,7 +9,7 @@ class CreatePages < ActiveRecord::Migration
       table.boolean :contact_form, default: false, null: false
       table.text :html_content
 
-      table.timestamps null: false
+      table.timestamps
 
       table.index [:site_id, :url], unique: true
     end

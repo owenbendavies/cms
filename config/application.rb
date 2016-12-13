@@ -25,17 +25,8 @@ module Cms
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     # Raises error for missing translations
     config.action_view.raise_on_missing_translations = true
-    config.i18n.enforce_available_locales = true
-
-    if ENV['ASSET_HOST']
-      # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-      config.action_controller.asset_host = ENV['ASSET_HOST']
-    end
 
     unless ENV['DISABLE_SSL']
       # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
@@ -58,6 +49,8 @@ module Cms
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Protection
 
+    # Use a real queuing backend for Active Job (and separate queues per environment)
     config.active_job.queue_adapter = :delayed_job
+    # config.active_job.queue_name_prefix = "cms_#{Rails.env}"
   end
 end

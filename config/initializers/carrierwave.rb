@@ -5,9 +5,7 @@ CarrierWave.configure do |config|
     default_host = "https://#{ENV['AWS_S3_BUCKET']}.s3-#{ENV['AWS_REGION']}.amazonaws.com"
     config.asset_host = ENV['AWS_S3_HOST'] || default_host
 
-    config.fog_attributes = {
-      'Cache-Control' => Rails.application.config.static_cache_control
-    }
+    config.fog_attributes = Rails.application.config.public_file_server.headers
 
     config.fog_credentials = {
       provider: 'AWS',
