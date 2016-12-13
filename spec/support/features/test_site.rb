@@ -1,7 +1,7 @@
 RSpec.shared_context 'test site' do
   let!(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
-  let!(:site_user) do
+  let(:site_user) do
     FactoryGirl.create(:user).tap do |user|
       user.site_settings.create!(site: site)
     end
@@ -18,16 +18,6 @@ RSpec.shared_context 'test site' do
   let(:sysadmin) { FactoryGirl.create(:sysadmin) }
 
   let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
-
-  let!(:test_page) do
-    FactoryGirl.create(
-      :page,
-      name: 'Test Page',
-      site: site,
-      created_at: Time.zone.now,
-      updated_at: Time.zone.now
-    )
-  end
 end
 
 RSpec.configuration.include_context 'test site', type: :feature
