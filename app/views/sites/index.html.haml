@@ -3,4 +3,4 @@
 
 %ul
   - @sites.each do |site|
-    %li= link_to(site.host, "https://#{site.host}")
+    %li= link_to(site.host, site.address)

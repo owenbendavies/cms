@@ -37,6 +37,12 @@ module Cms
       config.action_controller.asset_host = ENV['ASSET_HOST']
     end
 
+    unless ENV['DISABLE_SSL']
+      # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+      config.force_ssl = true
+      config.ssl_options = { hsts: false }
+    end
+
     # Lograge options
     config.lograge.custom_options = lambda do |event|
       {
