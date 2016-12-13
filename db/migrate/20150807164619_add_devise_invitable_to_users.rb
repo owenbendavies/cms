@@ -1,4 +1,4 @@
-class AddDeviseInvitableToUsers < ActiveRecord::Migration
+class AddDeviseInvitableToUsers < ActiveRecord::Migration[5.0]
   def change
     change_table :users do |table|
       table.string :invitation_token, index: :unique

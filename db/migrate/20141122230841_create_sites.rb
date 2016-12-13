@@ -1,4 +1,4 @@
-class CreateSites < ActiveRecord::Migration
+class CreateSites < ActiveRecord::Migration[5.0]
   def change
     create_table :sites do |table|
       table.string :host, null: false, limit: 64, index: :unique
@@ -11,7 +11,7 @@ class CreateSites < ActiveRecord::Migration
       table.string :stylesheet_filename, limit: 40
       table.text :sidebar_html_content
 
-      table.timestamps null: false
+      table.timestamps
 
       table.boolean :main_menu_in_footer, default: false, null: false
       table.boolean :separate_header, default: true, null: false

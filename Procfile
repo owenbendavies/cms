@@ -1,2 +1,2 @@
-web: ./bin/puma --config config/puma.rb
-worker: QUIET=true ./bin/rake jobs:work
+web: ./bin/puma
+worker: QUIET=true ./bin/rails jobs:work

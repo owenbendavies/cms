@@ -3,7 +3,7 @@ default: &default
   checkout_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) %>
   connect_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) %>
   encoding: unicode
-  pool: <%= Integer(ENV['MAX_THREADS'] || 5) %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV['DATABASE_URL'] %>
   variables:
     statement_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) * 1000 %>

@@ -9,6 +9,6 @@ export SECRET_KEY_BASE='xxxxxxxxxxxxxxxxxxxx'
 
 set -v
 
-./bin/rake bower:install assets:precompile assets:clean[0]
+./bin/rails bower:install assets:precompile assets:clean[0]
 
 # 'Compile complete'
