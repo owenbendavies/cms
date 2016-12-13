@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Deleting a page' do
+  let!(:test_page) { FactoryGirl.create(:page, name: 'Test Page', site: site) }
+
   let(:go_to_url) { '/test_page' }
 
   as_a 'authorized user' do

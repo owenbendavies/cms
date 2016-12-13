@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Site main menu' do
+  let!(:test_page) { FactoryGirl.create(:page, name: 'Test Page', site: site) }
+
   context 'with main menu' do
     let(:go_to_url) { '/site/edit' }
 
