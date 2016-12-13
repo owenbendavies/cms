@@ -4,6 +4,7 @@ RSpec.feature 'Page with contact form' do
   let!(:contact_page) { FactoryGirl.create(:page, contact_form: true, site: site) }
 
   before do
+    site_user
     page.driver.header('User-Agent', new_company_name)
     visit_200_page "/#{contact_page.url}"
   end
