@@ -49,20 +49,13 @@ RSpec.describe Message do
     it { should allow_value('someone@example.com').for(:email) }
     it { should_not allow_value('test@').for(:email).with_message('is not a valid email address') }
 
+    it { should allow_value('07910201293').for(:phone) }
+    it { should allow_value('+1-541-754-3010').for(:phone) }
+    it { should allow_value(nil).for(:phone) }
+    it { should_not allow_value('9210').for(:phone).with_message('is invalid') }
+
     it { should validate_length_of(:message).is_at_most(2048) }
 
     it { should validate_length_of(:do_not_fill_in).is_at_most(0).with_message('do not fill in') }
-  end
-
-  describe '#phone=' do
-    it 'formats phone numbers' do
-      subject.phone = '+44 1234 567 890'
-      expect(subject.phone).to eq '+441234567890'
-    end
-
-    it 'defaults to uk' do
-      subject.phone = '01234567890'
-      expect(subject.phone).to eq '+441234567890'
-    end
   end
 end
