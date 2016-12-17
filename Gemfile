@@ -76,6 +76,7 @@ group :development, :test do
   gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
+  gem 'mdl', require: false # Markdown code quality
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', '1.5.1', require: false # TODO: Upgrade (requires changes) RSpec code quality
   gem 'scss_lint', require: false # Sass code quality
