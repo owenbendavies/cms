@@ -32,10 +32,7 @@ class Message < ApplicationRecord
 
   validates :name, length: { minimum: 3 }
   validates :email, email_format: true
+  validates :phone, phone: { allow_blank: true }
   validates :message, length: { maximum: 2048 }
   validates :do_not_fill_in, length: { maximum: 0 }
-
-  def phone=(value)
-    super(Phoner::Phone.parse(value, country_code: '44'))
-  end
 end

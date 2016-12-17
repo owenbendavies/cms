@@ -27,7 +27,7 @@ gem 'fog' # Remote file upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
 gem 'paper_trail' # Database audit
-gem 'phone' # Phone number validation
+gem 'phonelib' # Phone number validation
 gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
 gem 'schema_validations' # Automatically adds ActiveRecord validations from database schema
