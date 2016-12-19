@@ -12,6 +12,8 @@ set -v
 
 ./bin/i18n-tasks health
 
+./bin/jsonlint $(find_extensions json)
+
 ./bin/mdl --style config/markdown $(find_extensions md)
 
 ./bin/rails_best_practices --silent
