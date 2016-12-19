@@ -1,11 +1,20 @@
 #!/bin/bash
 set -e
 cd `dirname $0`/..
+
+find_extensions () {
+  find -name "*.$1" -not -path "./vendor/*" -not -path "./public/*"
+}
+
 set -v
 
 ./bin/haml-lint --exclude-linter LineLength app/views/
 
 ./bin/i18n-tasks health
+
+./bin/jsonlint $(find_extensions json)
+
+./bin/mdl --style config/markdown $(find_extensions md)
 
 ./bin/rails_best_practices --silent
 
