@@ -110,9 +110,6 @@
     "space_operators": {
         "level": "error"
     },
-    "spacing_after_comma": {
-        "level": "error"
-    },
     "transform_messes_up_line_numbers": {
         "level": "error"
     }
