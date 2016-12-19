@@ -25,7 +25,7 @@ RSpec.describe ValidateDataJob do
       end
 
       it 'sends error to Rollbar' do
-        error = "Page##{page.id}: Url is reserved"
+        error = "ValidateDataJob Page##{page.id}: Url is reserved"
         expect(Rollbar).to receive(:error).with(error).and_call_original
         described_class.perform_now
       end

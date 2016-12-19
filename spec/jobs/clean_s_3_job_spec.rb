@@ -38,7 +38,7 @@ RSpec.describe CleanS3Job do
       it 'sends an error to Rollbar' do
         expect(uploaded_files).to include 'bad.jpg'
 
-        error = 'Deleted the following file: bad.jpg'
+        error = 'CleanS3Job deleted the following file: bad.jpg'
         expect(Rollbar).to receive(:error).with(error).and_call_original
 
         described_class.perform_now
@@ -53,7 +53,7 @@ RSpec.describe CleanS3Job do
       end
 
       it 'sends an error to Rollbar' do
-        error = "The following file is missing: #{image.file.span3.path}"
+        error = "CleanS3Job found the following file is missing: #{image.file.span3.path}"
         expect(Rollbar).to receive(:error).with(error).and_call_original
 
         described_class.perform_now
