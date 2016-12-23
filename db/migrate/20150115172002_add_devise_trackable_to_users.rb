@@ -1,4 +1,4 @@
-class AddDeviseTrackableToUsers < ActiveRecord::Migration
+class AddDeviseTrackableToUsers < ActiveRecord::Migration[5.0]
   def change
     change_table :users do |table|
       table.integer :sign_in_count, default: 0, null: false

@@ -1,4 +1,4 @@
-class MakeSiteSettingsUnique < ActiveRecord::Migration
+class MakeSiteSettingsUnique < ActiveRecord::Migration[5.0]
   def change
     change_table :site_settings do |table|
       table.index [:user_id, :site_id], unique: true

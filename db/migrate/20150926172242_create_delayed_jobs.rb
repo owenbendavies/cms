@@ -1,4 +1,4 @@
-class CreateDelayedJobs < ActiveRecord::Migration
+class CreateDelayedJobs < ActiveRecord::Migration[5.0]
   def change
     create_table :delayed_jobs, force: true do |table|
       table.integer :priority, default: 0, null: false
@@ -10,7 +10,7 @@ class CreateDelayedJobs < ActiveRecord::Migration
       table.datetime :failed_at
       table.string :locked_by
       table.string :queue, null: false
-      table.timestamps null: false
+      table.timestamps
     end
 
     add_index :delayed_jobs, [:priority, :run_at], name: 'delayed_jobs_priority'

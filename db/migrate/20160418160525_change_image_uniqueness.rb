@@ -1,4 +1,4 @@
-class ChangeImageUniqueness < ActiveRecord::Migration
+class ChangeImageUniqueness < ActiveRecord::Migration[5.0]
   def change
     change_table :images do |table|
       table.index [:filename], unique: true
