@@ -7,10 +7,13 @@ SecureHeaders::Configuration.default do |config|
     preserve_schemes: true,
     default_src: ["'none'"],
     child_src: ["'self'"],
-    connect_src: ["'self'"],
+    connect_src: ["'self'", 'https://api.rollbar.com'],
     font_src: ["'self'", 'https:'],
     img_src: ["'self'", 'https:', 'data:'],
-    script_src: default_src + ['https://www.google-analytics.com'],
+    script_src: default_src + [
+      'https://www.google-analytics.com',
+      'https://d37gvrvc0wt4s1.cloudfront.net'
+    ],
     style_src: default_src + [CarrierWave::Uploader::Base.asset_host]
   }
 end
