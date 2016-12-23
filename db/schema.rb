@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -57,8 +56,9 @@ ActiveRecord::Schema.define(version: 20161107203247) do
     t.string   "filename",   :limit=>40, :null=>false, :index=>{:name=>"index_images_on_filename", :unique=>true, :using=>:btree}
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
+
+    t.index ["site_id", "name"], :name=>"index_images_on_site_id_and_name", :unique=>true, :using=>:btree
   end
-  add_index "images", ["site_id", "name"], :name=>"index_images_on_site_id_and_name", :unique=>true, :using=>:btree
 
   create_table "messages", force: :cascade do |t|
     t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_messages_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__messages_site_id", :using=>:btree}
@@ -83,9 +83,10 @@ ActiveRecord::Schema.define(version: 20161107203247) do
     t.integer  "main_menu_position"
     t.text     "custom_html"
     t.boolean  "hidden",             :default=>false, :null=>false
+
+    t.index ["site_id", "main_menu_position"], :name=>"index_pages_on_site_id_and_main_menu_position", :unique=>true, :using=>:btree
+    t.index ["site_id", "url"], :name=>"index_pages_on_site_id_and_url", :unique=>true, :using=>:btree
   end
-  add_index "pages", ["site_id", "main_menu_position"], :name=>"index_pages_on_site_id_and_main_menu_position", :unique=>true, :using=>:btree
-  add_index "pages", ["site_id", "url"], :name=>"index_pages_on_site_id_and_url", :unique=>true, :using=>:btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  :limit=>64, :null=>false, :index=>{:name=>"index_users_on_email", :unique=>true, :using=>:btree}
@@ -123,8 +124,9 @@ ActiveRecord::Schema.define(version: 20161107203247) do
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
     t.boolean  "admin",      :default=>false, :null=>false
+
+    t.index ["user_id", "site_id"], :name=>"index_site_settings_on_user_id_and_site_id", :unique=>true, :using=>:btree
   end
-  add_index "site_settings", ["user_id", "site_id"], :name=>"index_site_settings_on_user_id_and_site_id", :unique=>true, :using=>:btree
 
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",  :null=>false, :index=>{:name=>"index_versions_on_item_type_and_item_id", :with=>["item_id"], :using=>:btree}

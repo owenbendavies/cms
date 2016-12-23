@@ -12,7 +12,7 @@ class SystemsController < ApplicationController
 
   def error_delayed
     Kernel.delay(queue: 'default').fail('Test delayed error')
-    render text: 'Delayed error sent'
+    render plain: 'Delayed error sent'
   end
 
   def error_timeout
@@ -21,7 +21,7 @@ class SystemsController < ApplicationController
 
   def health
     respond_to do |format|
-      format.text { render text: 'ok' }
+      format.text { render plain: 'ok' }
     end
   end
 
