@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
   if ENV['AWS_S3_BUCKET']
-    config.storage = :fog
+    config.fog_provider = 'fog/aws'
 
     default_host = "https://#{ENV['AWS_S3_BUCKET']}.s3-#{ENV['AWS_REGION']}.amazonaws.com"
     config.asset_host = ENV['AWS_S3_HOST'] || default_host
