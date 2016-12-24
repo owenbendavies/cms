@@ -20,10 +20,12 @@ gem 'devise_zxcvbn', '2.1.1' # TODO: Upgrade when 2.1.2 is fixed - Strong passwo
 gem 'omniauth-google-oauth2' # Google login
 gem 'pundit' # Authorization
 
+# Remote file upload (before carrierwave)
+gem 'fog-aws' # AWS file upload
+
 # Model Gems
 gem 'acts_as_list' # ActiveRecord lists
-gem 'carrierwave', '0.11.0' # TODO: Upgrade when 0.11.2 is fixed - File upload
-gem 'fog' # Remote file upload
+gem 'carrierwave' # File upload
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
 gem 'paper_trail' # Database audit
