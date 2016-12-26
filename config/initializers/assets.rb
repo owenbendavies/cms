@@ -34,8 +34,3 @@ else
     'Cache-Control' => "public, max-age=#{1.year.to_i}"
   }
 end
-
-if ENV['ASSET_HOST']
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  Rails.application.config.action_controller.asset_host = ENV['ASSET_HOST']
-end
