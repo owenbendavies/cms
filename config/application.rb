@@ -28,6 +28,11 @@ module Cms
     # Raises error for missing translations
     config.action_view.raise_on_missing_translations = true
 
+    if ENV['ASSET_HOST']
+      # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+      config.action_controller.asset_host = ENV['ASSET_HOST']
+    end
+
     unless ENV['DISABLE_SSL']
       # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
       config.force_ssl = true
