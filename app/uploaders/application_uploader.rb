@@ -1,5 +1,5 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
-  storage :fog
+  storage :fog if ENV['AWS_S3_BUCKET']
 
   def uuid
     var = :"@#{mounted_as}_secure_token"
