@@ -82,7 +82,7 @@ RSpec.describe Image do
 
   describe '#valid?' do
     it 'validates database schema' do
-      should validate_presence_of(:name)
+      is_expected.to validate_presence_of(:name)
     end
   end
 end

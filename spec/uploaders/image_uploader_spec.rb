@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe ImageUploader do
-  let(:site) { FactoryGirl.create(:site) }
   subject { described_class.new(Image.new(site: site)) }
+
+  let(:site) { FactoryGirl.create(:site) }
 
   describe '.store!' do
     context 'with a non image file' do

@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe StylesheetUploader do
+  subject { described_class.new(site) }
+
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
   let(:site) { FactoryGirl.create(:site) }
-  subject { described_class.new(site) }
 
   describe '.store!' do
     it 'must be css' do
