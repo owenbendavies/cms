@@ -26,7 +26,7 @@ require 'rails_helper'
 RSpec.describe SiteSetting do
   describe '#valid?' do
     it 'validates database schema' do
-      should validate_presence_of(:user)
+      is_expected.to validate_presence_of(:user)
     end
   end
 end

@@ -101,24 +101,24 @@ RSpec.describe Site do
 
   describe '#valid?' do
     it 'validates database schema' do
-      should validate_presence_of(:name)
+      is_expected.to validate_presence_of(:name)
     end
 
-    it { should validate_length_of(:name).is_at_least(3).is_at_most(64) }
+    it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
-    it { should validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
+    it { is_expected.to validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
 
-    it { should allow_value('one_column').for(:layout) }
+    it { is_expected.to allow_value('one_column').for(:layout) }
 
-    it { should allow_value('').for(:google_analytics) }
-    it { should allow_value('UA-1234-1').for(:google_analytics) }
-    it { should allow_value('UA-123456-1').for(:google_analytics) }
-    it { should allow_value('UA-123456-22').for(:google_analytics) }
+    it { is_expected.to allow_value('').for(:google_analytics) }
+    it { is_expected.to allow_value('UA-1234-1').for(:google_analytics) }
+    it { is_expected.to allow_value('UA-123456-1').for(:google_analytics) }
+    it { is_expected.to allow_value('UA-123456-22').for(:google_analytics) }
 
-    it { should_not allow_value('XA-1234-1').for(:google_analytics) }
-    it { should_not allow_value('UA-1234').for(:google_analytics) }
-    it { should_not allow_value('UA123').for(:google_analytics) }
-    it { should_not allow_value('AS').for(:google_analytics) }
+    it { is_expected.not_to allow_value('XA-1234-1').for(:google_analytics) }
+    it { is_expected.not_to allow_value('UA-1234').for(:google_analytics) }
+    it { is_expected.not_to allow_value('UA123').for(:google_analytics) }
+    it { is_expected.not_to allow_value('AS').for(:google_analytics) }
   end
 
   describe '#address' do

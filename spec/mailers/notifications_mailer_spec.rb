@@ -9,9 +9,9 @@ RSpec.describe NotificationsMailer do
       user
     end
 
-    let(:message) { FactoryGirl.create(:message, site: site) }
-
     subject { described_class.new_message(message) }
+
+    let(:message) { FactoryGirl.create(:message, site: site) }
 
     include_examples 'site email'
 

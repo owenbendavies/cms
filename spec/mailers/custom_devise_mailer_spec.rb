@@ -112,13 +112,13 @@ RSpec.describe CustomDeviseMailer do
   end
 
   describe '.invitation_instructions' do
+    subject { described_class.invitation_instructions(invited_user, token) }
+
     let(:invited_user) do
       FactoryGirl.create(:user, invited_by: user) do |user|
         user.site_settings.create!(site: site, admin: true)
       end
     end
-
-    subject { described_class.invitation_instructions(invited_user, token) }
 
     include_examples 'site email'
 
