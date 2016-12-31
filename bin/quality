@@ -8,7 +8,7 @@ find_extensions () {
 
 set -v
 
-./bin/haml-lint --exclude-linter LineLength app/views/
+HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-lint.yml $(find_extensions haml)
 
 ./bin/i18n-tasks health
 
@@ -20,7 +20,7 @@ set -v
 
 ./bin/rails coffeelint
 
-./bin/rubocop --format simple
+./bin/rubocop --format simple --require rubocop-rspec
 
 ./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
 
