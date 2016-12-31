@@ -1,5 +1,7 @@
 require: rubocop-rspec
 
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
     - 'db/schema.rb'
@@ -18,18 +20,6 @@ Metrics/MethodLength:
 
 Rails:
   Enabled: true
-
-Rails/OutputSafety:
-  Exclude:
-    - 'app/views/layouts/pages/_right_sidebar.html.haml*'
-    - 'app/views/layouts/pages/_small_right_sidebar.html.haml*'
-    - 'app/views/pages/_form.html.haml*'
-    - 'app/views/pages/show.html.haml*'
-
-RSpec/ExampleLength:
-  Exclude:
-    - 'spec/models/image_spec.rb'
-    - 'spec/uploaders/image_uploader_spec.rb'
 
 Style/Documentation:
   Enabled: false

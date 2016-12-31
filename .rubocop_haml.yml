@@ -1,0 +1,9 @@
+Rails:
+  Enabled: true
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/views/layouts/pages/_right_sidebar.html.haml*'
+    - 'app/views/layouts/pages/_small_right_sidebar.html.haml*'
+    - 'app/views/pages/_form.html.haml*'
+
