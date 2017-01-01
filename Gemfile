@@ -44,7 +44,7 @@ gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'rails-timeago' # Nice time tags
 gem 'simple_form' # Easier forms
-gem 'tinymce-rails', '4.4.3' # TODO: Upgrade when 4.5.0 is fixed - Rich text editor
+gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
