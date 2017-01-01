@@ -7,18 +7,21 @@ rspec='xvfb-run --auto-servernum ./bin/rspec --color'
 export RAILS_ENV='test'
 
 if [ $# -gt 0 ]; then
-  export DEV_ASSETS='true'
-  export RAILS_GROUPS='assets'
+  export DEV_ASSETS=true
+  export RAILS_GROUPS=assets
   export WEB_TIMEOUT=10
 
   set -v
 
   eval "$rspec --format documentation $@"
 else
+  export DISABLE_SPRING=true
+  export COVERAGE=on
+
   set -v
 
   eval './bin/compile'
-  eval "COVERAGE=on $rspec --order random"
+  eval "$rspec --order random"
   eval './bin/quality'
 fi
 
