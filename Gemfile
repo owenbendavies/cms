@@ -67,7 +67,7 @@ group :assets, :development do
 end
 
 group :development, :test do
-  gem 'bullet', '5.2.0' # TODO: Upgrade (requires changes) - Detect bad database queries
+  gem 'bullet' # Detect bad database queries
   gem 'dotenv-rails' # Easy environment configuration
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging

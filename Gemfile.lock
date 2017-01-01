@@ -51,7 +51,7 @@ GEM
     bower-rails (0.11.0)
     brakeman (3.4.1)
     builder (3.2.2)
-    bullet (5.2.0)
+    bullet (5.5.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
@@ -486,7 +486,7 @@ DEPENDENCIES
   annotate
   bower-rails
   brakeman
-  bullet (= 5.2.0)
+  bullet
   capybara-webkit
   carrierwave
   climate_control
