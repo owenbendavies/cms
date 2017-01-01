@@ -100,7 +100,7 @@ group :test do
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
   gem 'shoulda-matchers' # Model test helpers
-  gem 'simplecov', '< 0.11.0' # TODO: Upgrade when 0.12.0 is fixed - Code coverage
+  gem 'simplecov' # Code coverage
   gem 'spring-commands-rspec' # Quick boot for RSpec
   gem 'timecop' # Change time in tests
   gem 'webmock' # Mock external web requests
