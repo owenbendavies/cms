@@ -9,7 +9,7 @@ module NewFields
     let(:new_message) { Faker::Lorem.paragraph }
     let(:new_name) { Faker::Name.name }
     let(:new_password) { Faker::Internet.password(20, 30) }
-    let(:new_phone) { "+447#{rand(1_000_000_000).to_s.ljust(9, '0')}" }
+    let(:new_phone) { "+447819#{rand(100_000).to_s.ljust(6, '0')}" }
     let(:new_number) { rand 10_000 }
 
     let(:new_facebook) { Faker::Internet.user_name(nil, ['.']) }
