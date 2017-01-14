@@ -25,10 +25,6 @@
         - nodejs-legacy
         - npm
 
-    - name: "install Bower"
-      npm: name=bower global=yes
-      become: true
-
     - name: "install Image Magick"
       apt: name=imagemagick
       become: true

@@ -57,10 +57,12 @@ gem 'newrelic_rpm' # Performance monitoring
 gem 'rollbar' # Error notifications
 
 group :assets, :development do
-  gem 'bower-rails' # Manage asset dependencies
+  gem 'autosize-rails' # JavaScript expanding textarea
+  gem 'bootstrap-sass' # CSS framework
   gem 'coffee-rails' # CoffeeScript for JavaScript
   gem 'font-awesome-sass' # Icons
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
+  gem 'jquery-rails' # jQuery
   gem 'sass-rails' # Sass for stylesheets
   gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
