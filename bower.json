@@ -1,9 +1,0 @@
-{
-  "name": "obduk-cms",
-  "dependencies": {
-    "autosize": "3.0.17",
-    "bootstrap-sass": "3.3.7",
-    "jquery": "3.1.0",
-    "jquery-ujs": "1.2.2"
-  }
-}

@@ -1,6 +1,6 @@
 #= require jquery
-#= require jquery-ujs
-#= require autosize
+#= require jquery_ujs
+#= require jquery.autosize
 #= require rails-timeago
 #= require turbolinks
 #= require google-analytics-turbolinks
