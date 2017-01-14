@@ -1,4 +1,4 @@
-plugins = ['landrush', 'vagrant-berkshelf', 'vagrant-timezone']
+plugins = ['landrush', 'vagrant-timezone']
 missing_plugins = plugins.reject { |plugin| Vagrant.has_plugin? plugin }
 
 if missing_plugins.any?
@@ -28,14 +28,9 @@ Vagrant.configure(2) do |config|
     ]
   end
 
-  config.vm.provision 'chef_apply' do |chef|
-    chef.recipe = File.read('chef/vagrant.rb')
-  end
-
-  config.vm.provision 'chef_solo' do |chef|
-    chef.roles_path = 'chef/roles'
-
-    chef.add_role 'development'
+  config.vm.provision 'ansible_local' do |ansible|
+    ansible.galaxy_role_file = 'provisioning/requirements.yml'
+    ansible.playbook = 'provisioning/playbook.yml'
   end
 
   config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/setup'
