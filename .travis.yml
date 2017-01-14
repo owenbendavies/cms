@@ -15,9 +15,7 @@ addons:
     - libqt5webkit5-dev
     - qt5-default
 
-before_script:
-  - npm install bower -g
-  - ./bin/setup
+before_script: ./bin/setup
 
 script:
   - ./bin/test
