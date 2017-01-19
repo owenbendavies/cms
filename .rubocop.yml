@@ -1,29 +1,26 @@
-require: rubocop-rspec
+require: rubocop-rspec # Enable added RSpec checks
 
-inherit_from: .rubocop_todo.yml
+inherit_from: .rubocop_todo.yml # TODO: fix
 
 AllCops:
   Exclude:
-    - 'db/schema.rb'
-    - 'provisioning/roles/**/*'
-    - 'vendor/bundle/**/*'
+    - 'db/schema.rb' # Auto generated file so can't control
+    - 'provisioning/roles/**/*' # External libraries so can't control
+    - 'vendor/bundle/**/*' # External libraries so can't control
 
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - 'config/**/*' # OK for config files to have large blocks
+    - 'spec/**/*' # OK for specs to have large blocks
 
 Metrics/LineLength:
-  Max: 100
+  Max: 100 # Default is 80 which is a bit narrow
 
-Metrics/MethodLength:
-  Exclude:
-    - 'db/migrate/20141122230841_create_sites.rb'
-    - 'db/migrate/20150926172242_create_delayed_jobs.rb'
-
-Rails:
+Rails: # Enabled added Rails checks
   Enabled: true
 
-Style/Documentation:
+Style/Documentation: # Not a public library so not needed
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Style/FrozenStringLiteralComment: # Remove in ruby 3
   Enabled: false
