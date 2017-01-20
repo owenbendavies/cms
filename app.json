@@ -32,6 +32,10 @@
       "description": "Don't install asset gems on Heroku",
       "value": "development:test:assets"
     },
+    "DISABLE_SPRING": {
+      "description": "Ensures Spring is not running on server",
+      "value": "true"
+    },
     "GOOGLE_CLIENT_ID": {
       "description": "Google client ID for OAuth login",
       "required": false
