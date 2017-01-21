@@ -20,7 +20,7 @@ RSpec.describe ValidateDataJob do
     context 'with invalid data' do
       let!(:page) do
         FactoryGirl.create(:page).tap do |page|
-          page.update_attribute(:url, 'login')
+          page.update_attribute(:url, 'login') # rubocop:disable Rails/SkipsModelValidations
         end
       end
 

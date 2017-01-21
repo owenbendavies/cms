@@ -12,7 +12,7 @@ RSpec.describe CleanS3Job do
 
   context 'with files' do
     let!(:image) do
-      Rails.root.join('spec/assets/test_image.jpg').open do |file|
+      Rails.root.join('spec', 'assets', 'test_image.jpg').open do |file|
         FactoryGirl.create(:image, file: file)
       end
     end

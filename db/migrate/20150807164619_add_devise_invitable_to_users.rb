@@ -1,12 +1,10 @@
 class AddDeviseInvitableToUsers < ActiveRecord::Migration[5.0]
   def change
-    change_table :users do |table|
-      table.string :invitation_token, index: :unique
-      table.datetime :invitation_created_at
-      table.datetime :invitation_sent_at
-      table.datetime :invitation_accepted_at
-      table.belongs_to :invited_by, references: :users
-    end
+    add_column :users, :invitation_token, :string, index: :unique
+    add_column :users, :invitation_created_at, :datetime
+    add_column :users, :invitation_sent_at, :datetime
+    add_column :users, :invitation_accepted_at, :datetime
+    add_belongs_to :users, :invited_by, references: :users, index: false
 
     change_column_null :users, :encrypted_password, true
   end

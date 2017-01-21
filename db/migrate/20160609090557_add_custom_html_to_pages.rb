@@ -1,7 +1,5 @@
 class AddCustomHtmlToPages < ActiveRecord::Migration[5.0]
   def change
-    change_table :pages do |table|
-      table.text :custom_html
-    end
+    add_column :pages, :custom_html, :text
   end
 end

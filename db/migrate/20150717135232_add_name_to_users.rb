@@ -1,7 +1,10 @@
 class AddNameToUsers < ActiveRecord::Migration[5.0]
-  def change
-    change_table :users do |table|
-      table.string :name, limit: 64, null: false
-    end
+  def up
+    add_column :users, :name, :string, limit: 64
+    change_column_null :users, :name, false
+  end
+
+  def down
+    remove_column :users, :name
   end
 end
