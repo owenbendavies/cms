@@ -19,6 +19,9 @@ Metrics/LineLength:
 Rails: # Enabled added Rails checks
   Enabled: true
 
+RSpec/MessageSpies: # Prefer receive to have_received as no duplication
+  EnforcedStyle: receive
+
 Style/Documentation: # Not a public library so not needed
   Enabled: false
 

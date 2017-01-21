@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Web server' do
   scenario 'visiting a font' do
-    font_path = Dir.glob(Rails.root.join('public/assets/**/*.woff')).first
+    font_path = Dir.glob(Rails.root.join('public', 'assets', '**', '*.woff')).first
     font_path.gsub!(Rails.root.join('public').to_s, '')
     visit_200_page font_path
 
@@ -30,7 +30,7 @@ RSpec.feature 'Web server' do
     end
 
     scenario 'visiting an asset with gzip' do
-      asset_file_path = Dir.glob(Rails.root.join('public/assets/application*.css')).first
+      asset_file_path = Dir.glob(Rails.root.join('public', 'assets', 'application*.css')).first
       asset_file_path.gsub!(Rails.root.join('public').to_s, '')
       visit_200_page asset_file_path
 

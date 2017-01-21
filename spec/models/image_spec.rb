@@ -29,7 +29,7 @@ RSpec.describe Image do
       image.site = FactoryGirl.create(:site)
       image.name = Faker::Name.name.delete("'")
 
-      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+      File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
         image.file = file
       end
 
@@ -54,7 +54,7 @@ RSpec.describe Image do
       image.site = FactoryGirl.create(:site)
       image.name = Faker::Name.name.delete("'")
 
-      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+      File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
         image.file = file
       end
 
