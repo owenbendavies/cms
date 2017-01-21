@@ -1,7 +1,5 @@
 class AddHiddenToPage < ActiveRecord::Migration[5.0]
   def change
-    change_table :pages do |table|
-      table.boolean :hidden, default: false, null: false
-    end
+    add_column :pages, :hidden, :boolean, default: false, null: false
   end
 end
