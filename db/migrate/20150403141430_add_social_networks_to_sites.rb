@@ -1,11 +1,9 @@
 class AddSocialNetworksToSites < ActiveRecord::Migration[5.0]
   def change
-    change_table :sites do |table|
-      table.string :facebook, limit: 64
-      table.string :twitter, limit: 15
-      table.string :linkedin, limit: 32
-      table.string :github, limit: 32
-      table.string :youtube, limit: 32
-    end
+    add_column :sites, :facebook, :string, limit: 64
+    add_column :sites, :twitter, :string, limit: 15
+    add_column :sites, :linkedin, :string, limit: 32
+    add_column :sites, :github, :string, limit: 32
+    add_column :sites, :youtube, :string, limit: 32
   end
 end
