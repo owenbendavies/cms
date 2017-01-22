@@ -1,6 +1,6 @@
 :javascript
   var _rollbarConfig = {
-    accessToken: "#{ENV['ROLLBAR_CLIENT_TOKEN']}",
+    accessToken: "#{ENV.fetch('ROLLBAR_CLIENT_TOKEN')}",
     captureUncaught: true,
     captureUnhandledRejections: true,
   };
