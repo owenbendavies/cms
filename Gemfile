@@ -48,6 +48,7 @@ gem 'tinymce-rails', '4.5.1' # TODO: Upgrade when 4.5.2 is fixed - Rich text edi
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
+gem 'delayed_job_worker_pool' # Multiple delayed jobs
 gem 'font_assets' # Serves fonts with correct CORS headers
 gem 'puma' # Web server
 
