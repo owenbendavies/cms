@@ -1,2 +1,2 @@
 web: ./bin/puma
-worker: QUIET=true ./bin/rails jobs:work
+worker: ./bin/delayed_job_worker_pool config/delayed_job_worker_pool.rb
