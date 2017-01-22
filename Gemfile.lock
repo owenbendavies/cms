@@ -101,6 +101,8 @@ GEM
     delayed_job_active_record (4.1.1)
       activerecord (>= 3.0, < 5.1)
       delayed_job (>= 3.0, < 5)
+    delayed_job_worker_pool (0.2.3)
+      delayed_job (>= 3.0, < 4.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -504,6 +506,7 @@ DEPENDENCIES
   coffeelint
   database_cleaner
   delayed_job_active_record
+  delayed_job_worker_pool
   devise_invitable
   devise_zxcvbn (= 2.1.1)
   dotenv-rails
