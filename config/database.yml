@@ -1,12 +1,12 @@
 default: &default
   adapter: postgresql
-  checkout_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) %>
-  connect_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) %>
+  checkout_timeout: 1
+  connect_timeout: 1
   encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= Integer(ENV.fetch('RAILS_MAX_THREADS', 5)) %>
+  url: <%= ENV.fetch('DATABASE_URL') %>
   variables:
-    statement_timeout: <%= Integer(ENV['DATABASE_TIMEOUT'] || 1) * 1000 %>
+    statement_timeout: 1000
 
 development:
   <<: *default
