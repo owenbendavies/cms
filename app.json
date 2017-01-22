@@ -11,10 +11,10 @@
       "description": "Sets the rails asset host",
       "required": false
     },
-    "AWS_IAM_KEY": {
+    "AWS_ACCESS_KEY_ID": {
       "description": "The Amazon Web Services IAM user key for S3 and optionally SES"
     },
-    "AWS_IAM_SECRET": {
+    "AWS_SECRET_ACCESS_KEY": {
       "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
     },
     "AWS_REGION": {
