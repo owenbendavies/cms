@@ -30,7 +30,7 @@ module Cms
 
     if ENV['ASSET_HOST']
       # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-      config.action_controller.asset_host = ENV['ASSET_HOST']
+      config.action_controller.asset_host = ENV.fetch('ASSET_HOST')
     end
 
     unless ENV['DISABLE_SSL']
