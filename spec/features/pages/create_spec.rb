@@ -1,3 +1,5 @@
+# TODO: refactor
+
 require 'rails_helper'
 
 RSpec.feature 'Creating a page' do
