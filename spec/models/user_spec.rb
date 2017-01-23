@@ -30,6 +30,7 @@
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
 #  google_uid             :string
+#  uuid                   :string           not null
 #
 # Indexes
 #
@@ -85,6 +86,15 @@ RSpec.describe User do
     it { is_expected.not_to allow_value('password').for(:password) }
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
+  end
+
+  describe '#save' do
+    subject(:user) { FactoryGirl.build(:user) }
+
+    it 'sets a uuid' do
+      user.save!
+      expect(user.uuid).to match(/\A[0-9a-f-]+\z/)
+    end
   end
 
   describe '#admin_for_site?' do
@@ -144,6 +154,14 @@ RSpec.describe User do
       user.site_settings.create(site: site)
 
       expect(user.site_ids).to eq [site.id]
+    end
+  end
+
+  describe '#to_param' do
+    subject(:user) { FactoryGirl.build(:user) }
+
+    it 'uses uuid' do
+      expect(user.to_param).to eq user.uuid
     end
   end
 end

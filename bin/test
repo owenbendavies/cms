@@ -20,7 +20,7 @@ else
 
   set -v
 
-  eval './bin/rails db:create'
+  eval './bin/rails db:create db:migrate'
   eval './bin/compile'
   eval "$rspec --order random"
   eval './bin/quality'
