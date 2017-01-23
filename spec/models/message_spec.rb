@@ -11,6 +11,7 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  uuid       :string           not null
 #
 # Indexes
 #
@@ -63,6 +64,23 @@ RSpec.describe Message do
     it do
       is_expected.to validate_length_of(:do_not_fill_in)
         .is_at_most(0).with_message('do not fill in')
+    end
+  end
+
+  describe '#save' do
+    subject(:message) { FactoryGirl.build(:message) }
+
+    it 'sets a uuid' do
+      message.save!
+      expect(message.uuid).to match(/\A[0-9a-f-]+\z/)
+    end
+  end
+
+  describe '#to_param' do
+    subject(:message) { FactoryGirl.build(:message) }
+
+    it 'uses uuid' do
+      expect(message.to_param).to eq message.uuid
     end
   end
 end

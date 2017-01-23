@@ -10,7 +10,7 @@ RSpec.feature 'Showing a message' do
     )
   end
 
-  let(:go_to_url) { "/site/messages/#{message.id}" }
+  let(:go_to_url) { "/site/messages/#{message.uuid}" }
 
   authenticated_page do
     scenario 'visiting the page', js: true do
@@ -31,7 +31,7 @@ RSpec.feature 'Showing a message' do
     scenario 'message from another site' do
       message = FactoryGirl.create(:message)
 
-      visit_404_page "/site/messages/#{message.id}"
+      visit_404_page "/site/messages/#{message.uuid}"
     end
 
     scenario 'unknown message' do

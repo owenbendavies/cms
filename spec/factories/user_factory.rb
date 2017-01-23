@@ -30,6 +30,7 @@
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
 #  google_uid             :string
+#  uuid                   :string           not null
 #
 # Indexes
 #

@@ -34,7 +34,7 @@ RSpec.feature 'Index messages' do
       links = table_rows[0].map { |cell| cell.find('a') }
       expect(links.count).to eq 3
       link_locations = links.map { |link| link['href'] }.uniq
-      expect(link_locations).to eq ["/site/messages/#{messages.first.id}"]
+      expect(link_locations).to eq ["/site/messages/#{messages.first.uuid}"]
     end
 
     scenario 'pagination' do
