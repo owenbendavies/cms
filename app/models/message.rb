@@ -11,6 +11,7 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  uuid       :string           not null
 #
 # Indexes
 #
@@ -22,6 +23,8 @@
 #
 
 class Message < ApplicationRecord
+  include DefaultUuid
+
   attr_accessor :do_not_fill_in
 
   schema_validations

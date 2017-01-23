@@ -5,6 +5,6 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', '#{h(@site.google_analytics)}', 'auto');
-  #{ "ga('set', 'userId', '#{current_user.id}');" if current_user }
+  #{ "ga('set', 'userId', '#{current_user.to_param}');" if current_user }
   ga('require', 'displayfeatures');
   ga('require', 'linkid');

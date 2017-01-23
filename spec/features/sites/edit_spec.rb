@@ -42,7 +42,7 @@ RSpec.feature 'Edit the site' do
 
       expect(page).to have_content 'Site successfully updated'
       expect(body).to include "ga('create', '#{new_code}', 'auto');"
-      expect(body).to include "ga('set', 'userId', '#{site_user.id}');"
+      expect(body).to include "ga('set', 'userId', '#{site_user.uuid}');"
 
       visit_200_page
 
