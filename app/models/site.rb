@@ -16,11 +16,6 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
-#  facebook             :string(64)
-#  twitter              :string(15)
-#  linkedin             :string(32)
-#  github               :string(32)
-#  youtube              :string(32)
 #
 # Indexes
 #
@@ -65,9 +60,5 @@ class Site < ApplicationRecord
 
   def email
     "noreply@#{host.gsub(/^www\./, '')}"
-  end
-
-  def social_networks?
-    !(!facebook && !twitter && !youtube && !linkedin && !github)
   end
 end
