@@ -16,11 +16,6 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
-#  facebook             :string(64)
-#  twitter              :string(15)
-#  linkedin             :string(32)
-#  github               :string(32)
-#  youtube              :string(32)
 #
 # Indexes
 #
@@ -228,39 +223,6 @@ RSpec.describe Site do
     it 'returns host without www' do
       site = FactoryGirl.create(:site, host: 'www.example.com')
       expect(site.email).to eq 'noreply@example.com'
-    end
-  end
-
-  describe '#social_networks?' do
-    subject { described_class.new }
-
-    it 'returns true with facebook' do
-      subject.facebook = new_facebook
-      expect(subject.social_networks?).to eq true
-    end
-
-    it 'returns true with twitter' do
-      subject.twitter = new_twitter
-      expect(subject.social_networks?).to eq true
-    end
-
-    it 'returns true with youtube' do
-      subject.youtube = new_youtube
-      expect(subject.social_networks?).to eq true
-    end
-
-    it 'returns true with linkedin' do
-      subject.linkedin = new_linkedin
-      expect(subject.social_networks?).to eq true
-    end
-
-    it 'returns true with github' do
-      subject.github = new_github
-      expect(subject.social_networks?).to eq true
-    end
-
-    it 'returns false with no social networks' do
-      expect(subject.social_networks?).to eq false
     end
   end
 end
