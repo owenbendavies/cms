@@ -61,6 +61,26 @@ RSpec.describe Site do
     end
   end
 
+  describe '#footer_links' do
+    subject { FactoryGirl.create(:site) }
+
+    context 'when no links' do
+      it 'returns empty array' do
+        expect(subject.footer_links).to eq []
+      end
+    end
+
+    context 'with footer links' do
+      let!(:link1) { FactoryGirl.create(:footer_link, site: subject) }
+      let!(:link2) { FactoryGirl.create(:footer_link, site: subject) }
+      let!(:other_link) { FactoryGirl.create(:footer_link) }
+
+      it 'returns links in order' do
+        expect(subject.footer_links).to eq [link1, link2]
+      end
+    end
+  end
+
   describe '#stylesheet' do
     let(:css) { "body {\r\n  padding: 4em;\r\n}" }
     let(:file) { StringUploader.new('stylesheet.css', css) }
