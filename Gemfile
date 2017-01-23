@@ -35,6 +35,7 @@ gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
 gem 'schema_validations' # Automatically adds ActiveRecord validations from database schema
 gem 'strip_attributes' # Cleans whitespace from model fields
 gem 'validates_email_format_of' # Email validation
+gem 'validate_url' # URL validation
 
 # Controller Gems
 gem 'xml-sitemap' # Generates XML site map

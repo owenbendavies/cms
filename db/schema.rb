@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114075916) do
+ActiveRecord::Schema.define(version: 20170114093416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20170114075916) do
     t.string   "linkedin",             :limit=>32
     t.string   "github",               :limit=>32
     t.string   "youtube",              :limit=>32
+  end
+
+  create_table "footer_links", force: :cascade do |t|
+    t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_footer_links_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__footer_links_site_id", :using=>:btree}
+    t.integer  "position",   :null=>false
+    t.string   "name",       :null=>false
+    t.string   "url",        :null=>false
+    t.string   "icon"
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+
+    t.index ["site_id", "position"], :name=>"index_footer_links_on_site_id_and_position", :unique=>true, :using=>:btree
   end
 
   create_table "images", force: :cascade do |t|
