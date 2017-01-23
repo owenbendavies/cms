@@ -11,12 +11,6 @@ module NewFields
     let(:new_password) { Faker::Internet.password(20, 30) }
     let(:new_phone) { "+447819#{rand(100_000).to_s.ljust(6, '0')}" }
     let(:new_number) { rand 10_000 }
-
-    let(:new_facebook) { Faker::Internet.user_name(nil, ['.']) }
-    let(:new_twitter) { Faker::Internet.user_name(nil, ['_'])[0, 15] }
-    let(:new_youtube) { Faker::Internet.user_name }
-    let(:new_linkedin) { Faker::Internet.user_name }
-    let(:new_github) { Faker::Internet.user_name }
   end
 end
 
