@@ -1,3 +1,5 @@
+# TODO: refactor
+
 require 'rails_helper'
 
 RSpec.feature 'Edit the site' do
