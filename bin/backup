@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-app=cms
 backup_location=$HOME/Backups/AWS
 
-for bucket in $(s3cmd ls | awk '{print $3}' | grep $app )
+for bucket in $(s3cmd ls | awk '{print $3}')
 do
   echo $bucket
 
@@ -18,11 +17,11 @@ do
   find $destination -type d -empty -delete
 done
 
-for app in $(heroku apps | grep $app | awk '{print $1}')
+for app in $(heroku apps | grep --invert-match '===' | awk '{print $1}')
 do
   echo $app
 
-  destination=$backup_location/$app.dump
+  destination=$backup_location/$app.sql
 
   heroku run --app $app 'pg_dump --no-owner --inserts $DATABASE_URL' > $destination
 done
