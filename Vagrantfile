@@ -30,7 +30,9 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision 'ansible_local' do |ansible|
     ansible.galaxy_role_file = 'provisioning/requirements.yml'
+    ansible.install_mode = :pip
     ansible.playbook = 'provisioning/playbook.yml'
+    ansible.version = '2.2.0.0'
   end
 
   config.vm.provision 'shell', privileged: false, inline: '/vagrant/bin/setup'

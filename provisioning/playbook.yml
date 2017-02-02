@@ -7,6 +7,7 @@
       postgresql_ext_install_dev_headers: true
 
     - role: zzet.rbenv
+      default_gems_file: 'custom-default-gems'
       rbenv:
         default_ruby: 2.3.3
         env: user
