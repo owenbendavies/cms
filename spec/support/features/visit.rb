@@ -23,7 +23,7 @@ RSpec.shared_context 'visit helpers' do
   end
 
   def check_no_js_errors
-    expect(page.driver.error_messages).to eq [] if page.driver.class == Capybara::Webkit::Driver
+    expect(page.driver.error_messages).to be_empty if page.driver.class == Capybara::Webkit::Driver
   end
 end
 

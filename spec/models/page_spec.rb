@@ -101,7 +101,7 @@ RSpec.describe Page do
       FactoryGirl.create(:hidden_page)
       FactoryGirl.create(:private_page)
 
-      expect(described_class.visible).to eq [page1, page2]
+      expect(described_class.visible).to contain_exactly(page1, page2)
     end
   end
 
