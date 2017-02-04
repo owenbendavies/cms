@@ -31,7 +31,7 @@ RSpec.describe Site do
 
     context 'when no pages' do
       it 'returns empty array' do
-        expect(subject.main_menu_pages).to eq []
+        expect(subject.main_menu_pages).to be_empty
       end
     end
 
@@ -61,7 +61,7 @@ RSpec.describe Site do
 
     context 'when no links' do
       it 'returns empty array' do
-        expect(subject.footer_links).to eq []
+        expect(subject.footer_links).to be_empty
       end
     end
 

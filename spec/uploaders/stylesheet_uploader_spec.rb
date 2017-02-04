@@ -16,7 +16,7 @@ RSpec.describe StylesheetUploader do
     end
 
     it 'has filename which is uuid' do
-      expect(uploaded_files).to eq []
+      expect(uploaded_files).to be_empty
 
       subject.store! StringUploader.new('stylesheet.css', css)
 
