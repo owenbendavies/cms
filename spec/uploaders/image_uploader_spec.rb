@@ -63,11 +63,11 @@ RSpec.describe ImageUploader do
       it 'removes exif data' do
         expect(remote_image(subject).exif['GPSLatitude']).to eq '51/1, 30/1, 1220028377/53512833'
 
-        expect(remote_image(subject.processed).exif.keys).to eq []
-        expect(remote_image(subject.span3).exif.keys).to eq []
-        expect(remote_image(subject.span4).exif.keys).to eq []
-        expect(remote_image(subject.span8).exif.keys).to eq []
-        expect(remote_image(subject.span12).exif.keys).to eq []
+        expect(remote_image(subject.processed).exif.keys).to be_empty
+        expect(remote_image(subject.span3).exif.keys).to be_empty
+        expect(remote_image(subject.span4).exif.keys).to be_empty
+        expect(remote_image(subject.span8).exif.keys).to be_empty
+        expect(remote_image(subject.span12).exif.keys).to be_empty
       end
     end
 
