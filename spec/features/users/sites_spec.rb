@@ -31,11 +31,7 @@ RSpec.feature 'User sites' do
     end
 
     context 'when ssl is enabled' do
-      around do |example|
-        ClimateControl.modify(DISABLE_SSL: nil) do
-          example.run
-        end
-      end
+      let(:environment_variables) { { DISABLE_SSL: nil } }
 
       scenario 'visiting the page' do
         visit_200_page

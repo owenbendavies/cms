@@ -1,19 +1,24 @@
-host = ENV['SEED_SITE_HOST'] || "#{ENV.fetch('HEROKU_APP_NAME')}.herokuapp.com"
+host = ENV['SEED_SITE_HOST']
+host ||= "#{ENV.fetch('HEROKU_APP_NAME')}.herokuapp.com" if ENV['HEROKU_APP_NAME']
 
-site = Site.where(host: host).first_or_create!(name: 'New Site')
+site = Site.where(host: host).first_or_create!(name: 'New Site') if host
 
-email = ENV.fetch('SEED_USER_EMAIL')
+email = ENV['SEED_USER_EMAIL']
 
-user = User.where(email: email).first_or_create! do |new_user|
-  password = SecureRandom.hex(16)
+if email
+  user = User.where(email: email).first_or_create! do |new_user|
+    password = SecureRandom.hex(16)
 
-  new_user.sysadmin = true
-  new_user.name = 'System Administrator'
-  new_user.password = password
-  new_user.password_confirmation = password
-  new_user.skip_confirmation!
+    new_user.sysadmin = true
+    new_user.name = 'System Administrator'
+    new_user.password = password
+    new_user.password_confirmation = password
+    new_user.skip_confirmation!
+  end
 end
 
-user.site_settings.where(site: site).first_or_create! do |site_setting|
-  site_setting.admin = true
+if site && user
+  user.site_settings.where(site: site).first_or_create! do |site_setting|
+    site_setting.admin = true
+  end
 end
