@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Rollbar', type: :request do
+RSpec.describe 'Rollbar' do
   let(:rollbar_config) { 'rollbarConfig' }
 
   before { request_page }
@@ -13,12 +13,7 @@ RSpec.describe 'Rollbar', type: :request do
 
   context 'with a token' do
     let(:rollbar_client_token) { 'xxxxx' }
-
-    around do |example|
-      ClimateControl.modify(ROLLBAR_CLIENT_TOKEN: rollbar_client_token) do
-        example.run
-      end
-    end
+    let(:environment_variables) { { ROLLBAR_CLIENT_TOKEN: rollbar_client_token } }
 
     it 'contains Rollbar js' do
       expect(body).to include rollbar_config

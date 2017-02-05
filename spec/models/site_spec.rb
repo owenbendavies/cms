@@ -140,11 +140,7 @@ RSpec.describe Site do
     subject { FactoryGirl.create(:site, host: 'localhost') }
 
     context 'when ssl is enabled' do
-      around do |example|
-        ClimateControl.modify(DISABLE_SSL: nil) do
-          example.run
-        end
-      end
+      let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'returns https url' do
         expect(subject.address).to eq 'https://localhost'

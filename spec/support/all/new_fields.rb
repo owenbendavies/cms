@@ -4,6 +4,7 @@ module NewFields
   included do
     let(:new_catch_phrase) { Faker::Company.catch_phrase }
     let(:new_company_name) { Faker::Company.name.delete("'") }
+    let(:new_host) { Faker::Internet.domain_name }
     let(:new_email) { Faker::Internet.email }
 
     let(:new_message) { Faker::Lorem.paragraph }

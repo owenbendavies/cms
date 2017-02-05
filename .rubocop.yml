@@ -19,6 +19,11 @@ Metrics/LineLength:
 Rails: # Enabled added Rails checks
   Enabled: true
 
+RSpec/DescribeClass: # Not testing a class or module
+  Exclude:
+    - 'spec/requests/**/*'
+    - 'spec/seeds/**/*'
+
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive
 

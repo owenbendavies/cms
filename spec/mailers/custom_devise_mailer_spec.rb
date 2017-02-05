@@ -148,13 +148,9 @@ RSpec.describe CustomDeviseMailer do
   end
 
   context 'when ssl is enabled' do
-    around do |example|
-      ClimateControl.modify(DISABLE_SSL: nil) do
-        example.run
-      end
-    end
-
     subject { described_class.confirmation_instructions(site_user, token) }
+
+    let(:environment_variables) { { DISABLE_SSL: nil } }
 
     it 'has https links' do
       expect(subject.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
