@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Logging' do
   let(:request_id) { SecureRandom.uuid }
 
-  let(:headers) do
+  let(:request_headers) do
     {
       'User-Agent' => new_company_name,
       'X-Request-Id' => request_id
