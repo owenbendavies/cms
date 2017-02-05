@@ -39,7 +39,7 @@ RSpec/NamedSubject:
     - 'spec/mailers/notifications_mailer_spec.rb'
     - 'spec/models/page_spec.rb'
     - 'spec/models/site_spec.rb'
-    - 'spec/support/mailers/default.rb'
+    - 'spec/support/mailers.rb'
     - 'spec/support/models/default.rb'
     - 'spec/uploaders/image_uploader_spec.rb'
     - 'spec/uploaders/string_uploader_spec.rb'

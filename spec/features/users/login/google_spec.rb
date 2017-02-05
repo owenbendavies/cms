@@ -6,13 +6,11 @@ RSpec.feature 'User login via Google' do
   let(:link_name) { 'Sign in with Google' }
 
   context 'when enabled' do
-    around do |example|
-      ClimateControl.modify(
+    let(:environment_variables) do
+      {
         GOOGLE_CLIENT_ID: Faker::Internet.password,
         GOOGLE_CLIENT_SECRET: Faker::Internet.password
-      ) do
-        example.run
-      end
+      }
     end
 
     before do
