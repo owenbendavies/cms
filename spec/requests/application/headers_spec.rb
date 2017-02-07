@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Headers' do
-  subject(:headers) { response.headers.except(*random_headers) }
+RSpec.describe 'Application Headers' do
+  let(:random_headers) { %w(Content-Length ETag Set-Cookie X-Request-Id X-Runtime) }
 
-  let(:random_headers) { %w(Set-Cookie X-Request-Id X-Runtime Content-Length) }
+  let(:non_random_headers) { response.headers.except(*random_headers) }
 
   let(:defaul_src) { "'self' 'unsafe-inline' http://localhost:37511" }
 
@@ -28,9 +28,9 @@ RSpec.describe 'Headers' do
     ].join('; ')
   end
 
-  let(:expected_headers) do
+  let(:expected_non_random_headers) do
     {
-      'Cache-Control' => 'no-cache',
+      'Cache-Control' => 'max-age=0, private, must-revalidate',
       'Content-Security-Policy' => csp_header,
       'Content-Type' => 'text/html; charset=utf-8',
       'Vary' => 'Accept-Encoding',
@@ -38,12 +38,19 @@ RSpec.describe 'Headers' do
       'X-Download-Options' => 'noopen',
       'X-Frame-Options' => 'sameorigin',
       'X-Permitted-Cross-Domain-Policies' => 'none',
-      'X-XSS-Protection' => '1; mode=block',
+      'X-XSS-Protection' => '1; mode=block'
     }
   end
 
+  let(:expected_headers) { random_headers + expected_non_random_headers.keys }
+
   it 'sets only expected headers' do
     request_page
-    expect(headers).to eq expected_headers
+    expect(response.headers.keys).to contain_exactly(*expected_headers)
+  end
+
+  it 'sets correct values for headers' do
+    request_page
+    expect(non_random_headers).to eq expected_non_random_headers
   end
 end

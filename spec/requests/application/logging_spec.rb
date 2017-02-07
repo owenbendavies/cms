@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Logging' do
+RSpec.describe 'Application Logging' do
   let(:request_id) { SecureRandom.uuid }
 
   let(:request_headers) do
@@ -20,7 +20,7 @@ RSpec.describe 'Logging' do
 
   let(:expected_result) do
     {
-      host: 'www.example.com',
+      host: site.host,
       request_id: request_id,
       fwd: '127.0.0.1',
       user_id: nil,
@@ -32,12 +32,11 @@ RSpec.describe 'Logging' do
     ActiveSupport::Notifications.subscribe('process_action.action_controller') do |*args|
       events << ActiveSupport::Notifications::Event.new(*args)
     end
-
-    request_page
   end
 
   context 'with no user' do
     it 'logs request information' do
+      request_page
       expect(results).to eq([expected_result])
     end
   end
@@ -46,6 +45,7 @@ RSpec.describe 'Logging' do
     let(:user) { FactoryGirl.create(:user) }
 
     it 'logs request information and the user id' do
+      request_page
       expect(results).to eq([expected_result.merge(user_id: user.id)])
     end
   end
