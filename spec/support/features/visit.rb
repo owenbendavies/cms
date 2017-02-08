@@ -22,6 +22,12 @@ RSpec.shared_context 'visit helpers' do
     expect(page).to have_content 'Page Not Found'
   end
 
+  def visit_406_page(url = go_to_url)
+    visit_non_redirect url
+    expect(page.status_code).to eq 406
+    expect(page.body).to be_empty
+  end
+
   def check_no_js_errors
     expect(page.driver.error_messages).to be_empty if page.driver.class == Capybara::Webkit::Driver
   end

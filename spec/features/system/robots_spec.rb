@@ -17,7 +17,11 @@ EOF
     expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
   end
 
-  scenario 'with non txt extension' do
+  scenario 'with html extension' do
     visit_404_page '/robots'
+  end
+
+  scenario 'with non txt extension' do
+    visit_406_page '/robots.xml'
   end
 end
