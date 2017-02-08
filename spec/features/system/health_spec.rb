@@ -10,10 +10,14 @@ RSpec.feature 'Health check' do
       expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
     end
 
-    scenario 'with non txt extension' do
-      unchecked_visit 'http://unknown.example.com/system/health.xml'
+    scenario 'with html extension' do
+      unchecked_visit 'http://unknown.example.com/system/health'
       expect(page).to have_content 'Site Not Found'
       expect(page.status_code).to eq 404
+    end
+
+    scenario 'with non txt extension' do
+      visit_406_page 'http://unknown.example.com/system/health.xml'
     end
   end
 
@@ -24,8 +28,12 @@ RSpec.feature 'Health check' do
       expect(response_headers['Content-Type']).to eq 'text/plain; charset=utf-8'
     end
 
-    scenario 'with non txt extension' do
+    scenario 'with html extension' do
       visit_404_page '/system/health'
+    end
+
+    scenario 'with non txt extension' do
+      visit_406_page '/system/health.xml'
     end
   end
 end

@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :reset_session
 
-  rescue_from ActionView::MissingTemplate, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from Pundit::NotAuthorizedError, with: :page_not_found
@@ -21,13 +20,9 @@ class ApplicationController < ActionController::Base
   def page_not_found
     skip_authorization
 
-    if @site
-      render template: 'errors/page_not_found', formats: ['html'], status: 404
-    else
-      @site = Site.new
-      @site.name = t('errors.site_not_found.title')
-
-      render template: 'errors/site_not_found', formats: ['html'], status: 404
+    respond_to do |format|
+      format.html { render page_not_found_template, status: 404 }
+      format.any { head 406 }
     end
   end
 
@@ -39,6 +34,17 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def page_not_found_template
+    if @site
+      'errors/page_not_found'
+    else
+      @site = Site.new
+      @site.name = t('errors.site_not_found.title')
+
+      'errors/site_not_found'
+    end
+  end
 
   def find_site
     @site = Site.find_by(host: request.host)
