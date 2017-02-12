@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application Logging' do
+RSpec.describe 'Application logging' do
   let(:request_id) { SecureRandom.uuid }
 
   let(:request_headers) do

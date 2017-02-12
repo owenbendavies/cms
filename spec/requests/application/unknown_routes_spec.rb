@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application Unknown routes' do
+RSpec.describe 'Application unknown routes' do
   shared_context 'renders page not found 404' do
     it 'renders page not found 404' do
       request_page(expected_status: 404)
