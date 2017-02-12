@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Application unknown routes' do
-  shared_context 'renders page not found 404' do
-    it 'renders page not found 404' do
-      request_page(expected_status: 404)
-      expect(body).to include 'Page Not Found'
-    end
-  end
-
   shared_context 'returns 406' do
     it 'returns 406' do
       request_page(expected_status: 406)
@@ -28,25 +21,25 @@ RSpec.describe 'Application unknown routes' do
   context 'urls with .html in' do
     let(:request_path) { '/login.html' }
 
-    include_context 'renders page not found 404'
+    include_context 'renders page not found'
   end
 
   context 'urls with dots in path' do
     let(:request_path) { '/file.pid/file' }
 
-    include_context 'renders page not found 404'
+    include_context 'renders page not found'
   end
 
   context 'unknown url' do
     let(:request_path) { '/badroute' }
 
-    include_context 'renders page not found 404'
+    include_context 'renders page not found'
   end
 
   context 'unknown site' do
     let(:request_host) { new_host }
 
-    it 'renders site not found 404' do
+    it 'renders site not found' do
       request_page(expected_status: 404)
       expect(body).to include 'Site Not Found'
     end
