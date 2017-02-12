@@ -10,7 +10,7 @@ RSpec.feature 'Index images' do
 
   let(:go_to_url) { '/site/images' }
 
-  authenticated_page topbar_link: 'Images', page_icon: 'picture-o' do
+  as_a 'authorized user', :site_user, 'Images', 'picture-o' do
     scenario 'visiting the page' do
       visit_200_page
 
