@@ -27,6 +27,10 @@ RSpec/DescribeClass: # Not testing a class or module
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive
 
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/**/*' # OK for multiple expectations in features
+
 Style/Documentation: # Not a public library so not needed
   Enabled: false
 
