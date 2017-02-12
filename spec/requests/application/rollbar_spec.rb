@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application Rollbar' do
+RSpec.describe 'Application rollbar' do
   let(:rollbar_config) { 'rollbarConfig' }
 
   context 'without a token' do
