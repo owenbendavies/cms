@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application Headers' do
+RSpec.describe 'Application headers' do
   let(:random_headers) { %w(Content-Length ETag Set-Cookie X-Request-Id X-Runtime) }
 
   let(:non_random_headers) { response.headers.except(*random_headers) }
