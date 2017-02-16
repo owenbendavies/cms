@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Application web server' do
+  let(:request_method) { :get }
+  let(:request_path) { '/sitemap' }
+
   context 'visiting a font' do
     let(:request_path) do
       font_path = Dir.glob(Rails.root.join('public', 'assets', '**', '*.woff')).first

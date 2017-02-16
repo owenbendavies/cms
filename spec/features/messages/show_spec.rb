@@ -14,7 +14,7 @@ RSpec.feature 'Showing a message' do
 
   let(:go_to_url) { "/site/messages/#{message.uuid}" }
 
-  authenticated_page do
+  as_a 'authorized user', :site_user do
     scenario 'visiting the page', js: true do
       visit_200_page
 
@@ -28,12 +28,6 @@ RSpec.feature 'Showing a message' do
       expect(page).to have_content message.email
       expect(page).to have_content message.phone
       expect(page).to have_content message.message
-    end
-
-    scenario 'message from another site' do
-      message = FactoryGirl.create(:message)
-
-      visit_404_page "/site/messages/#{message.uuid}"
     end
 
     scenario 'unknown message' do

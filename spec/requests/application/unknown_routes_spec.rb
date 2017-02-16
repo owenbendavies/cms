@@ -1,12 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Application unknown routes' do
-  shared_context 'returns 406' do
-    it 'returns 406' do
-      request_page(expected_status: 406)
-      expect(body).to be_empty
-    end
-  end
+  let(:request_method) { :get }
+  let(:request_path) { '/sitemap' }
 
   context 'root url' do
     let(:request_path) { '/' }

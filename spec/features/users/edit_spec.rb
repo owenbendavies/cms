@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Editing a user' do
   let(:go_to_url) { '/user/edit' }
 
-  authenticated_page login_user: :user, topbar_link: 'User Settings', page_icon: 'user' do
+  as_a 'authorized user', :user, 'User Settings', 'user' do
     before do
       user.site_settings.create!(site: site)
     end
