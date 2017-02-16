@@ -20,7 +20,7 @@ RSpec.feature 'Index messages' do
 
   let(:go_to_url) { '/site/messages' }
 
-  authenticated_page topbar_link: 'Messages', page_icon: 'envelope' do
+  as_a 'authorized user', :site_user, 'Messages', 'envelope' do
     scenario 'visiting the page', js: true do
       visit_200_page
 

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Application rollbar' do
+  let(:request_method) { :get }
+  let(:request_path) { '/sitemap' }
   let(:rollbar_config) { 'rollbarConfig' }
 
   context 'without a token' do

@@ -38,18 +38,12 @@ RSpec.feature 'Showing a page' do
 
     let(:go_to_url) { '/private' }
 
-    authenticated_page do
+    as_a 'authorized user', :site_user do
       scenario 'visiting a private page' do
         visit_200_page
 
         expect(page).to have_selector 'h1 .fa-lock'
       end
     end
-  end
-
-  scenario 'page from another site' do
-    subject = FactoryGirl.create(:page)
-
-    visit_404_page "/#{subject.url}"
   end
 end

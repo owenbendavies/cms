@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Site CSS' do
   let(:go_to_url) { '/site/css' }
 
-  authenticated_page login_user: :site_admin, topbar_link: 'CSS', page_icon: 'file' do
+  as_a 'authorized user', :site_admin, 'CSS', 'file' do
     scenario 'adding custom CSS' do
       visit_200_page
 

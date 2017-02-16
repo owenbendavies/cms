@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Edit the site' do
   let(:go_to_url) { '/site/edit' }
 
-  authenticated_page topbar_link: 'Site Settings', page_icon: 'cog' do
+  as_a 'authorized user', :site_user, 'Site Settings', 'cog' do
     scenario 'changing the name' do
       visit_200_page
 
