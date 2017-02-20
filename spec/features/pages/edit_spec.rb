@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Editing a page' do
   let(:go_to_url) { '/home/edit' }
 
-  authenticated_page do
+  as_a 'authorized user', :site_user do
     scenario 'editing the content', js: true do
       visit_200_page
 

@@ -5,15 +5,7 @@ require 'rails_helper'
 RSpec.feature 'User sites' do
   let(:go_to_url) { '/user/sites' }
 
-  authenticated_page login_user: :user, topbar_link: 'Sites', page_icon: 'list' do
-    scenario 'visiting the page' do
-      visit_200_page
-      links = all('#cms-article a')
-      expect(links.size).to eq 0
-    end
-  end
-
-  as_a 'authorized user' do
+  as_a 'authorized user', :site_user, 'Sites', 'list' do
     scenario 'visiting the page' do
       site_a = FactoryGirl.create(:site, host: 'alphahost')
       FactoryGirl.create(:site)
