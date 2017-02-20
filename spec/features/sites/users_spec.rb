@@ -7,7 +7,7 @@ RSpec.feature 'Site users' do
 
   let(:tick) { '.fa-check' }
 
-  authenticated_page topbar_link: 'Users', page_icon: 'group' do
+  as_a 'authorized user', :site_user, 'Users', 'group' do
     scenario 'visiting the page' do
       FactoryGirl.create(:user).tap do |user|
         user.site_settings.create!(site: site)

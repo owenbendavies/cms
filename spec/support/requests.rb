@@ -1,27 +1,23 @@
 RSpec.shared_context 'requests' do
   let(:request_description) do
-    self.class.metadata[:full_description].match %r{^(GET|PUT|DELETE) ([a-z/]+)}
+    self.class.metadata[:full_description].match %r{(GET|POST|PUT|PATCH|DELETE) ([a-z0-9/_:.]+)}
   end
 
   let(:request_headers) { {} }
   let(:request_host) { site.host }
 
   let(:request_method) do
-    if request_description
-      request_description.to_a[1].downcase.to_sym
-    else
-      :get
-    end
+    raise 'request_method not set' unless request_description
+    request_description.to_a[1].downcase.to_sym
   end
 
   let(:request_params) { {} }
 
   let(:request_path) do
-    if request_description
-      request_description.to_a[2]
-    else
-      '/sitemap'
-    end
+    raise 'request_path not set' unless request_description
+    path = request_description.to_a[2]
+    path.gsub!(':id', request_path_id.to_s) if path.include? ':id'
+    path
   end
 
   let(:site) { FactoryGirl.create(:site) }
@@ -41,26 +37,48 @@ RSpec.shared_context 'renders page not found' do
   end
 end
 
-RSpec.shared_context 'authenticated page' do
+RSpec.shared_context 'returns 406' do
+  it 'returns 406' do
+    request_page(expected_status: 406)
+    expect(body).to be_empty
+  end
+end
+
+RSpec.shared_context 'authenticated page' do |config|
   context 'as a unauthenticated user' do
     include_context 'renders page not found'
   end
 
-  context 'as a user from another site' do
-    let(:user) { FactoryGirl.create(:user) }
+  unless config == :skip_unauthorized_check
+    context 'as a unauthorized user' do
+      let(:user) do
+        if defined? unauthorized_user
+          unauthorized_user
+        else
+          FactoryGirl.create(:user)
+        end
+      end
 
-    include_context 'renders page not found'
+      include_context 'renders page not found'
+    end
   end
 
-  context 'as a site user' do
-    let(:user) do
-      FactoryGirl.create(:user).tap do |user|
-        user.site_settings.create!(site: site)
+  unless config == :skip_authorized_check
+    context 'as a authorized user' do
+      let(:user) do
+        if defined? authorized_user
+          authorized_user
+        else
+          FactoryGirl.create(:user).tap do |user|
+            user.site_settings.create!(site: site)
+          end
+        end
       end
-    end
 
-    it 'renders 200' do
-      request_page
+      it 'renders page' do
+        status = defined?(expected_status) ? expected_status : 200
+        request_page(expected_status: status)
+      end
     end
   end
 end

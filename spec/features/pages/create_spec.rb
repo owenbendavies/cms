@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   let(:go_to_url) { '/new' }
 
-  authenticated_page topbar_link: 'New Page', page_icon: 'plus' do
+  as_a 'authorized user', :site_user, 'New Page', 'plus' do
     scenario 'with valid data', js: true do
       visit_200_page
 

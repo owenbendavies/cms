@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'Inviting a user' do
   let(:go_to_url) { '/user/invitation/new' }
 
-  authenticated_page do
+  as_a 'authorized user', :site_user do
     scenario 'for a new user' do
       visit_200_page
       fill_in 'Name', with: new_name

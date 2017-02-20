@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Application logging' do
+  let(:request_method) { :get }
+  let(:request_path) { '/sitemap' }
+
   let(:request_id) { SecureRandom.uuid }
 
   let(:request_headers) do
