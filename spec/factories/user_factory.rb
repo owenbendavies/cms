@@ -54,17 +54,17 @@ FactoryGirl.define do
     password_confirmation { password }
     confirmed_at { Time.zone.now }
 
-    factory :sysadmin do
+    trait :sysadmin do
       sysadmin true
     end
 
-    factory :unconfirmed_user do
+    trait :unconfirmed do
       confirmed_at nil
 
       after :build, &:skip_confirmation_notification!
     end
 
-    factory :locked_user do
+    trait :locked do
       locked_at { Time.zone.now }
     end
   end

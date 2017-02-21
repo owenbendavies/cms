@@ -5,7 +5,7 @@ RSpec.describe 'Errors' do
     include_context 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
-      let(:user) { FactoryGirl.create(:sysadmin) }
+      let(:user) { FactoryGirl.create(:user, :sysadmin) }
 
       it 'raises 500 error' do
         expect { request_page }.to raise_error(RuntimeError, 'Test 500 error')
@@ -17,7 +17,7 @@ RSpec.describe 'Errors' do
     include_context 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
-      let(:user) { FactoryGirl.create(:sysadmin) }
+      let(:user) { FactoryGirl.create(:user, :sysadmin) }
 
       after { Delayed::Job.last.destroy! }
 
@@ -45,7 +45,7 @@ RSpec.describe 'Errors' do
     include_context 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
-      let(:user) { FactoryGirl.create(:sysadmin) }
+      let(:user) { FactoryGirl.create(:user, :sysadmin) }
 
       it 'raises timeout error' do
         expect { request_page }.to raise_error Rack::Timeout::RequestTimeoutError

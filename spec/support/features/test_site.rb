@@ -15,7 +15,7 @@ RSpec.shared_context 'test site' do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  let(:sysadmin) { FactoryGirl.create(:sysadmin) }
+  let(:sysadmin) { FactoryGirl.create(:user, :sysadmin) }
 
   let!(:home_page) { FactoryGirl.create(:page, name: 'Home', site: site) }
 end
