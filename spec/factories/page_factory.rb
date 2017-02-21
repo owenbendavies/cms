@@ -33,13 +33,11 @@ FactoryGirl.define do
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
     custom_html { "<p>#{Faker::Lorem.paragraph}</p>" }
 
-    factory :hidden_page do
-      name 'Hidden'
+    trait :hidden do
       hidden true
     end
 
-    factory :private_page do
-      name 'Private'
+    trait :private do
       private true
     end
   end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'GET /:id' do
   context 'private page' do
-    let(:page) { FactoryGirl.create(:private_page, site: site) }
+    let(:page) { FactoryGirl.create(:page, :private, site: site) }
     let(:request_path_id) { page.url }
 
     include_context 'authenticated page'
