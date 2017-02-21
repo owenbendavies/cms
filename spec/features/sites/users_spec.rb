@@ -35,7 +35,7 @@ RSpec.feature 'Site users' do
     end
 
     scenario 'with unconfirmed user' do
-      unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
+      unconfirmed_user = FactoryGirl.create(:user, :unconfirmed)
       unconfirmed_user.site_settings.create!(site: site)
       visit_200_page
 
@@ -45,7 +45,7 @@ RSpec.feature 'Site users' do
     end
 
     scenario 'with locked user' do
-      locked_user = FactoryGirl.create(:locked_user)
+      locked_user = FactoryGirl.create(:user, :locked)
       locked_user.site_settings.create!(site: site)
       visit_200_page
 

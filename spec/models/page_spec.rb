@@ -98,8 +98,8 @@ RSpec.describe Page do
     it 'returns non hidden or private pages' do
       page1 = FactoryGirl.create(:page)
       page2 = FactoryGirl.create(:page)
-      FactoryGirl.create(:hidden_page)
-      FactoryGirl.create(:private_page)
+      FactoryGirl.create(:page, :private)
+      FactoryGirl.create(:page, :hidden)
 
       expect(described_class.visible).to contain_exactly(page1, page2)
     end
