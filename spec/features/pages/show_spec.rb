@@ -34,9 +34,9 @@ RSpec.feature 'Showing a page' do
   end
 
   context 'private page' do
-    let!(:private_page) { FactoryGirl.create(:private_page, site: site) }
+    let!(:private_page) { FactoryGirl.create(:page, :private, site: site) }
 
-    let(:go_to_url) { '/private' }
+    let(:go_to_url) { "/#{private_page.url}" }
 
     as_a 'authorized user', :site_user do
       scenario 'visiting a private page' do

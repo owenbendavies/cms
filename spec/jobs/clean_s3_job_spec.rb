@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CleanS3Job do
-  let!(:sysadmin) { FactoryGirl.create(:sysadmin) }
+  let!(:sysadmin) { FactoryGirl.create(:user, :sysadmin) }
 
   context 'with no files' do
     it 'does not send any errors to Rollbar' do

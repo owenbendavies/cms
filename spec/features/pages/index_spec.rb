@@ -7,8 +7,8 @@ RSpec.feature 'Pages index' do
     let(:go_to_url) { '/sitemap' }
 
     scenario 'visiting the page' do
-      hidden_page = FactoryGirl.create(:hidden_page, site: site)
-      private_page = FactoryGirl.create(:private_page, site: site)
+      hidden_page = FactoryGirl.create(:page, :hidden, site: site)
+      private_page = FactoryGirl.create(:page, :private, site: site)
 
       visit_200_page
 
@@ -29,7 +29,7 @@ RSpec.feature 'Pages index' do
 
     as_a 'authorized user', :user do
       scenario 'with a hidden page' do
-        hidden_page = FactoryGirl.create(:hidden_page, site: site)
+        hidden_page = FactoryGirl.create(:page, :hidden, site: site)
 
         visit_200_page
 
@@ -37,7 +37,7 @@ RSpec.feature 'Pages index' do
       end
 
       scenario 'with a private page' do
-        private_page = FactoryGirl.create(:private_page, site: site)
+        private_page = FactoryGirl.create(:page, :private, site: site)
 
         visit_200_page
 
@@ -47,23 +47,25 @@ RSpec.feature 'Pages index' do
 
     as_a 'authorized user', :site_user do
       scenario 'with a hidden page' do
-        hidden_page = FactoryGirl.create(:hidden_page, site: site)
+        Page.destroy_all
+        hidden_page = FactoryGirl.create(:page, :hidden, site: site)
 
         visit_200_page
 
-        find('ul#cms-sitemap li:nth-child(1)').tap do |item|
-          expect(item).to have_link hidden_page.name, href: '/hidden'
+        find('ul#cms-sitemap li').tap do |item|
+          expect(item).to have_link hidden_page.name, href: "/#{hidden_page.url}"
           expect(item).to have_selector '.fa-eye-slash'
         end
       end
 
       scenario 'with a private page' do
-        private_page = FactoryGirl.create(:private_page, site: site)
+        Page.destroy_all
+        private_page = FactoryGirl.create(:page, :private, site: site)
 
         visit_200_page
 
-        find('ul#cms-sitemap li:nth-child(2)').tap do |item|
-          expect(item).to have_link private_page.name, href: '/private'
+        find('ul#cms-sitemap li').tap do |item|
+          expect(item).to have_link private_page.name, href: "/#{private_page.url}"
           expect(item).to have_selector '.fa-lock'
         end
       end
@@ -74,8 +76,8 @@ RSpec.feature 'Pages index' do
     let(:go_to_url) { '/sitemap.xml' }
 
     scenario 'visiting the page' do
-      hidden_page = FactoryGirl.create(:hidden_page, site: site)
-      private_page = FactoryGirl.create(:private_page, site: site)
+      hidden_page = FactoryGirl.create(:page, :hidden, site: site)
+      private_page = FactoryGirl.create(:page, :private, site: site)
 
       visit_200_page
 
