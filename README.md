@@ -4,6 +4,7 @@
 [![Dependency Status](https://gemnasium.com/badges/github.com/obduk/cms.svg)](https://gemnasium.com/github.com/obduk/cms)
 [![Dependency Status](https://dependencyci.com/github/obduk/cms/badge)](https://dependencyci.com/github/obduk/cms)
 [![Code Climate](https://lima.codeclimate.com/github/obduk/cms/badges/gpa.svg)](https://lima.codeclimate.com/github/obduk/cms)
+[![Coverage Status](https://coveralls.io/repos/github/obduk/cms/badge.svg?branch=master)](https://coveralls.io/github/obduk/cms?branch=master)
 
 A Content Management System (CMS) written with Ruby on Rails. Although it is a
 working project, it was not created with the intention of being a production
