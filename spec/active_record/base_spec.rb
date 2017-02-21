@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ActiveRecord::Base do
+RSpec.describe ActiveRecord::Base, transaction: false do
   describe 'timeout' do
     it 'allows fast queries' do
       described_class.connection.execute('select pg_sleep(0.5);')
