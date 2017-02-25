@@ -1,13 +1,10 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
-  let!(:contact_page) { FactoryGirl.create(:page, contact_form: true, site: site) }
+  let(:contact_page) { FactoryGirl.create(:page, contact_form: true, site: site) }
 
   before do
     site_user
-    page.driver.header('User-Agent', new_company_name)
     visit_200_page "/#{contact_page.url}"
   end
 
@@ -20,7 +17,6 @@ RSpec.feature 'Page with contact form' do
     click_button 'Send Message'
 
     expect(page).to have_content 'Thank you for your message'
-    expect(current_path).to eq "/#{contact_page.url}"
 
     expect(Message.count).to eq 1
 
@@ -48,35 +44,22 @@ RSpec.feature 'Page with contact form' do
   scenario 'with invalid data' do
     fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message
-
     click_button 'Send Message'
 
     expect(page).to have_content 'is too short'
-    expect(current_path).to eq "/#{contact_page.url}/contact_form"
-
     expect(Message.count).to eq 0
-
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 
   scenario 'with do_not_fill_in' do
     fill_in 'Name', with: new_name
     fill_in 'Email', with: new_email
-    fill_in 'Phone', with: new_phone
     fill_in 'Message', with: new_message
     fill_in 'Do not fill in', with: new_name
-
     click_button 'Send Message'
 
     expect(page).to have_content 'do not fill in'
-    expect(current_path).to eq "/#{contact_page.url}/contact_form"
-
     expect(Message.count).to eq 0
-
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-    Delayed::Worker.new.work_off
     expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end

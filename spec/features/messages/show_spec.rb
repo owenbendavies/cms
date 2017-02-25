@@ -1,9 +1,7 @@
-# TODO: refactor
-
 require 'rails_helper'
 
-RSpec.feature 'Showing a message' do
-  let!(:message) do
+RSpec.feature 'Message show' do
+  let(:message) do
     FactoryGirl.create(
       :message,
       site: site,
@@ -12,26 +10,16 @@ RSpec.feature 'Showing a message' do
     )
   end
 
-  let(:go_to_url) { "/site/messages/#{message.uuid}" }
+  scenario 'with a message', js: true do
+    login_as site_user
+    visit_200_page "/site/messages/#{message.uuid}"
 
-  as_a 'authorized user', :site_user do
-    scenario 'visiting the page', js: true do
-      visit_200_page
+    expect(page).to have_header('Message', 'envelope')
 
-      within '#cms-article-header' do
-        expect(page).to have_content 'Message'
-        expect(page).to have_selector '.fa-envelope'
-      end
-
-      expect(page).to have_content 'about a month ago'
-      expect(page).to have_content message.name
-      expect(page).to have_content message.email
-      expect(page).to have_content message.phone
-      expect(page).to have_content message.message
-    end
-
-    scenario 'unknown message' do
-      visit_404_page '/site/messages/bad'
-    end
+    expect(page).to have_content 'about a month ago'
+    expect(page).to have_content message.name
+    expect(page).to have_content message.email
+    expect(page).to have_content message.phone
+    expect(page).to have_content message.message
   end
 end

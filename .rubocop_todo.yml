@@ -25,9 +25,6 @@ RSpec/ExampleLength:
 # Offense count: 9
 RSpec/LetSetup:
   Exclude:
-    - 'spec/features/images/index_spec.rb'
-    - 'spec/features/messages/index_spec.rb'
-    - 'spec/features/pages/show_spec.rb'
     - 'spec/jobs/clean_s3_job_spec.rb'
     - 'spec/jobs/validate_data_job_spec.rb'
     - 'spec/models/site_spec.rb'
