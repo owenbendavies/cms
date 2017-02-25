@@ -34,21 +34,6 @@ RSpec.feature 'Topbar' do
       expect(current_path).to eq '/home'
     end
 
-    scenario 'navigating to page via dropdowns', js: true do
-      visit_200_page
-
-      within topbar_selector do
-        expect(page).not_to have_link 'Account menu'
-        expect(page).not_to have_link 'Messages'
-
-        click_link 'Site'
-        click_link 'Messages'
-      end
-
-      expect(page).to have_content 'Messages'
-      expect(current_path).to eq '/site/messages'
-    end
-
     scenario 'navigating to page via dropdowns on mobile', js: true do
       visit_200_page
 

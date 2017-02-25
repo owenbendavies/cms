@@ -1,8 +1,6 @@
-# TODO: refactor
-
 require 'rails_helper'
 
-RSpec.feature 'Index messages' do
+RSpec.feature 'Messages index', js: true do
   let!(:messages) do
     (0..11).map do |i|
       FactoryGirl.create(
@@ -14,41 +12,35 @@ RSpec.feature 'Index messages' do
     end
   end
 
-  let!(:other_site_message) do
+  before do
     FactoryGirl.create(:message)
+    login_as site_user
+    navigate_via_topbar menu: 'Site', title: 'Messages', icon: 'envelope'
   end
 
-  let(:go_to_url) { '/site/messages' }
+  scenario 'with list of messages' do
+    expect(table_header_text).to eq ['Created at', 'Name', 'Email']
+    expect(table_rows.count).to eq 10
 
-  as_a 'authorized user', :site_user, 'Messages', 'envelope' do
-    scenario 'visiting the page', js: true do
-      visit_200_page
+    expect(table_rows[0].map(&:text)).to eq [
+      'about a month ago',
+      messages.first.name,
+      messages.first.email
+    ]
 
-      expect(table_header_text).to eq ['Created at', 'Name', 'Email']
-      expect(table_rows.count).to eq 10
+    links = table_rows[0].map { |cell| cell.find('a') }
+    expect(links.count).to eq 3
+    link_locations = links.map { |link| link['href'] }.uniq
+    expect(link_locations).to eq ["/site/messages/#{messages.first.uuid}"]
+  end
 
-      expect(table_rows[0].map(&:text)).to eq [
-        'about a month ago',
-        messages.first.name,
-        messages.first.email
-      ]
+  scenario 'clicking pagination' do
+    expect(page).to have_content messages.first.name
+    expect(page).not_to have_content messages.last.name
 
-      links = table_rows[0].map { |cell| cell.find('a') }
-      expect(links.count).to eq 3
-      link_locations = links.map { |link| link['href'] }.uniq
-      expect(link_locations).to eq ["/site/messages/#{messages.first.uuid}"]
-    end
+    click_link 2
 
-    scenario 'pagination' do
-      visit_200_page
-
-      expect(page).to have_content messages.first.name
-      expect(page).not_to have_content messages.last.name
-
-      click_link 2
-
-      expect(page).not_to have_content messages.first.name
-      expect(page).to have_content messages.last.name
-    end
+    expect(page).not_to have_content messages.first.name
+    expect(page).to have_content messages.last.name
   end
 end
