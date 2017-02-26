@@ -3,7 +3,6 @@
   "description": "A Content Management System (CMS) written with Ruby on Rails",
   "repository": "https://github.com/obduk/cms",
   "addons": [
-    "heroku-postgresql",
     "sendgrid"
   ],
   "env": {
@@ -31,6 +30,10 @@
     "BUNDLE_WITHOUT": {
       "description": "Don't install asset gems on Heroku",
       "value": "development:test:assets"
+    },
+    "DATABASE_URL": {
+      "description": "The PostgreSQL database URL",
+      "required": false
     },
     "DISABLE_SPRING": {
       "description": "Ensures Spring is not running on server",
