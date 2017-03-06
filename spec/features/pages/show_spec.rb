@@ -1,8 +1,6 @@
-# TODO: refactor
-
 require 'rails_helper'
 
-RSpec.feature 'Showing a page' do
+RSpec.feature 'Page show' do
   scenario 'visiting the page' do
     visit_200_page '/home'
 
@@ -33,17 +31,11 @@ RSpec.feature 'Showing a page' do
     end
   end
 
-  context 'private page' do
-    let!(:private_page) { FactoryGirl.create(:page, :private, site: site) }
+  scenario 'visiting a private page' do
+    private_page = FactoryGirl.create(:page, :private, site: site)
+    login_as site_user
+    visit_200_page "/#{private_page.url}"
 
-    let(:go_to_url) { "/#{private_page.url}" }
-
-    as_a 'authorized user', :site_user do
-      scenario 'visiting a private page' do
-        visit_200_page
-
-        expect(page).to have_selector 'h1 .fa-lock'
-      end
-    end
+    expect(page).to have_selector 'h1 .fa-lock'
   end
 end
