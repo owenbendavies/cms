@@ -30,14 +30,14 @@ RSpec.shared_context 'requests' do
   end
 end
 
-RSpec.shared_context 'renders page not found' do
+RSpec.shared_examples 'renders page not found' do
   it 'renders page not found' do
     request_page(expected_status: 404)
     expect(body).to include 'Page Not Found'
   end
 end
 
-RSpec.shared_context 'returns 406' do
+RSpec.shared_examples 'returns 406' do
   it 'returns 406' do
     request_page(expected_status: 406)
     expect(body).to be_empty
