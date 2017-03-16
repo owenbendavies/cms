@@ -5,7 +5,7 @@ cd `dirname $0`/..
 find_extensions () {
   find -name "*.$1" \
     -not -path "./provisioning/roles/*" \
-    -not -path "./public/*" \
+    -not -path "./public/assets/*" \
     -not -path "./vendor/*"
 }
 
