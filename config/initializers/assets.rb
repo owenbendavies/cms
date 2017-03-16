@@ -10,6 +10,8 @@ Rails.application.config.assets.version = '5.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
+Rails.application.config.tinymce.install = :copy
+
 Rails.application.config.public_file_server.enabled = true
 
 if ENV['DEV_ASSETS']
