@@ -4,7 +4,7 @@ The following optional steps can be followed to add extra services.
 
 ## Amazon Web Servcies
 
-* [AWS Account](aws_account.md) settings
+* [AWS Account](https://github.com/obduk/aws/wiki) settings
 * S3 (for storing files)
   * Enable versioning
   * Add lifecycle to delete old versions (if concerned about cost or sensitivity)
@@ -17,6 +17,7 @@ The following optional steps can be followed to add extra services.
   * Verify SSL in URL `postgresql://username:password@url:5432/database?sslmode=verify-full&sslrootcert=db/amazon-rds-ca-cert.pem`
   * Parameter Groups
     * rds.force_ssl = 1
+  * Add CloudWatch alarms
 * SES (Email alternative to sendgrid)
   * Add [policy](iam_ses_policy.json) to IAM user
   * Use DKIM
