@@ -14,6 +14,10 @@ Rails.application.config.tinymce.install = :copy
 
 Rails.application.config.public_file_server.enabled = true
 
+Rails.application.config.public_file_server.headers = {
+  'Cache-Control' => "public, max-age=#{1.year.to_i}"
+}
+
 if ENV['DEV_ASSETS']
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -28,8 +32,4 @@ else
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   Rails.application.config.assets.compile = false
-
-  Rails.application.config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.year.to_i}"
-  }
 end
