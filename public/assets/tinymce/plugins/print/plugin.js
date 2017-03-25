@@ -1,1 +1,1 @@
-tinymce.PluginManager.add("print",function(e){e.addCommand("mcePrint",function(){e.getWin().print()}),e.addButton("print",{title:"Print",cmd:"mcePrint"}),e.addShortcut("Meta+P","","mcePrint"),e.addMenuItem("print",{text:"Print",cmd:"mcePrint",icon:"print",shortcut:"Meta+P",context:"file"})});
+plugin-c35f8904705a183aa511df359c937ed4c74d27c657c45c0dc05b047f09e2a770.js
