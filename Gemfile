@@ -50,7 +50,6 @@ gem 'will_paginate-bootstrap' # Pagination
 
 # Server
 gem 'delayed_job_worker_pool' # Multiple delayed jobs
-gem 'font_assets' # Serves fonts with correct CORS headers
 gem 'puma' # Web server
 
 # Monitoring
