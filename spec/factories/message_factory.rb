@@ -25,7 +25,9 @@
 FactoryGirl.define do
   factory :message do
     site
+
     subject { Faker::Name.name }
+
     name { Faker::Name.name }
     email { Faker::Internet.email }
     phone { "+4478#{rand(100_000_000).to_s.ljust(8, '1')}" }
