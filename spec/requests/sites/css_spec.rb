@@ -7,5 +7,5 @@ RSpec.describe 'GET /site/css' do
     end
   end
 
-  include_context 'authenticated page'
+  include_examples 'authenticated page'
 end

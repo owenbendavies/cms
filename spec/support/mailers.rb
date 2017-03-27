@@ -1,10 +1,36 @@
-RSpec.configure do |config|
-  config.before :each do
-    ActionMailer::Base.deliveries = []
+module MailHelpers
+  extend ActiveSupport::Concern
+
+  included do
+    def last_emails(expected_number)
+      expect(ActionMailer::Base.deliveries.size).to eq 0
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.size).to eq expected_number
+
+      ActionMailer::Base.deliveries.pop(expected_number)
+    end
+
+    def last_email
+      last_emails(1).first
+    end
   end
 end
 
-RSpec.shared_context 'site email' do
+RSpec.configuration.include MailHelpers
+
+RSpec.shared_context 'mailer helpers' do
+  before do
+    ActionMailer::Base.deliveries = []
+  end
+
+  after do
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+  end
+end
+
+RSpec.configuration.include_context 'mailer helpers'
+
+RSpec.shared_examples 'site email' do
   it 'has from address as site email' do
     expect(subject.from).to eq [site.email]
   end
@@ -21,5 +47,17 @@ RSpec.shared_context 'site email' do
   it 'has copyright in body' do
     body = subject.body
     expect(body).to have_content "#{site.copyright} © #{Time.zone.now.year}"
+  end
+end
+
+RSpec.shared_examples 'user email' do
+  include_examples 'site email'
+
+  it 'is sent to users email' do
+    expect(subject.to).to eq [user.email]
+  end
+
+  it 'has users name' do
+    expect(subject.body).to have_content "Hi #{user.name}"
   end
 end

@@ -67,5 +67,9 @@ FactoryGirl.define do
     trait :locked do
       locked_at { Time.zone.now }
     end
+
+    trait :unconfirmed_email do
+      unconfirmed_email { Faker::Internet.email }
+    end
   end
 end

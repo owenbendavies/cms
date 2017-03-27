@@ -17,19 +17,19 @@ RSpec.describe 'Application unknown routes' do
   context 'urls with .html in' do
     let(:request_path) { '/login.html' }
 
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 
   context 'urls with dots in path' do
     let(:request_path) { '/file.pid/file' }
 
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 
   context 'unknown url' do
     let(:request_path) { '/badroute' }
 
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 
   context 'unknown site' do
@@ -45,18 +45,18 @@ RSpec.describe 'Application unknown routes' do
     let(:request_path) { '/login.txt' }
     let(:request_host) { new_host }
 
-    include_context 'returns 406'
+    include_examples 'returns 406'
   end
 
   context 'unkown format' do
     let(:request_path) { '/login.txt' }
 
-    include_context 'returns 406'
+    include_examples 'returns 406'
   end
 
   context 'unknown accept header' do
     let(:request_headers) { { 'Accept' => 'application/json' } }
 
-    include_context 'returns 406'
+    include_examples 'returns 406'
   end
 end

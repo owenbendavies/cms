@@ -44,9 +44,9 @@ RSpec.shared_examples 'returns 406' do
   end
 end
 
-RSpec.shared_context 'authenticated page' do |config|
+RSpec.shared_examples 'authenticated page' do |config|
   context 'as a unauthenticated user' do
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 
   unless config == :skip_unauthorized_check
@@ -59,7 +59,7 @@ RSpec.shared_context 'authenticated page' do |config|
         end
       end
 
-      include_context 'renders page not found'
+      include_examples 'renders page not found'
     end
   end
 
