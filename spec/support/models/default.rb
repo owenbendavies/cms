@@ -1,4 +1,4 @@
-RSpec.shared_context 'models' do
+RSpec.shared_examples 'models' do
   context '#versions', versioning: true do
     subject { FactoryGirl.create(described_class.to_s.underscore) }
 

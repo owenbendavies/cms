@@ -21,11 +21,7 @@ RSpec.feature 'Inviting a user' do
       user = User.find_by!(email: new_email)
       expect(user.sites).to eq [site]
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
-      email = ActionMailer::Base.deliveries.last
+      email = last_email
       expect(email.to).to eq [new_email]
       expect(email.subject).to eq 'Invitation instructions'
 
@@ -46,11 +42,7 @@ RSpec.feature 'Inviting a user' do
 
       expect(page).to have_content 'Your password was set successfully'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 2
-
-      email = ActionMailer::Base.deliveries.last
+      email = last_email
       expect(email.to).to eq [new_email]
       expect(email.subject).to eq 'Password Changed'
       logout
@@ -76,11 +68,7 @@ RSpec.feature 'Inviting a user' do
 
       expect(user.sites).to eq [site]
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
-      email = ActionMailer::Base.deliveries.last
+      email = last_email
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Added to site'
 
@@ -104,10 +92,6 @@ RSpec.feature 'Inviting a user' do
       click_button 'Add User'
 
       expect(page).to have_content 'has already been taken'
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     scenario 'with invalid data' do
@@ -117,10 +101,6 @@ RSpec.feature 'Inviting a user' do
       click_button 'Add User'
 
       expect(page).to have_content 'is too short'
-
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     scenario 'visiting the page via link' do
