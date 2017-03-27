@@ -9,7 +9,7 @@ class CreateFooterLinks < ActiveRecord::Migration[5.0]
 
       table.timestamps
 
-      table.index [:site_id, :position], unique: true
+      table.index %i(site_id position), unique: true
     end
   end
 end

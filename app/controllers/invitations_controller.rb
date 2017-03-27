@@ -1,5 +1,5 @@
 class InvitationsController < Devise::InvitationsController
-  before_action :authorize_user, except: [:edit, :update]
+  before_action :authorize_user, except: %i(edit update)
 
   def authorize_user
     authorize User

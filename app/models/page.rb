@@ -43,7 +43,7 @@ class Page < ApplicationRecord
   scope :visible, -> { where(hidden: false).where(private: false) }
 
   strip_attributes(
-    except: [:html_content, :custom_html],
+    except: %i(html_content custom_html),
     collapse_spaces: true,
     replace_newlines: true
   )
