@@ -4,6 +4,9 @@ en:
       title: "Confirm Email"
       text: "Please confirm your email address."
 
+    email_changed:
+      text: "Your email is being changed to %{new_email}, please check that account for instuctions"
+
     invitation_instructions:
       text: "You have been added to %{site_name} site by %{inviter_name}."
       title: "Confirm your account"

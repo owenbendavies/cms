@@ -25,10 +25,10 @@ EOF
   end
 
   context 'GET /robots' do
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 
   context 'GET /robots.xml' do
-    include_context 'returns 406'
+    include_examples 'returns 406'
   end
 end

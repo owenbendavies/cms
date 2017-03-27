@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Errors' do
   context 'GET /system/error_500' do
-    include_context 'authenticated page', :skip_authorized_check
+    include_examples 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
       let(:user) { FactoryGirl.create(:user, :sysadmin) }
@@ -14,7 +14,7 @@ RSpec.describe 'Errors' do
   end
 
   context 'GET /system/error_delayed' do
-    include_context 'authenticated page', :skip_authorized_check
+    include_examples 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
       let(:user) { FactoryGirl.create(:user, :sysadmin) }
@@ -42,7 +42,7 @@ RSpec.describe 'Errors' do
   end
 
   context 'GET /system/error_timeout' do
-    include_context 'authenticated page', :skip_authorized_check
+    include_examples 'authenticated page', :skip_authorized_check
 
     context 'as a authorized user' do
       let(:user) { FactoryGirl.create(:user, :sysadmin) }

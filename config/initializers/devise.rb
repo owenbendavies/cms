@@ -90,6 +90,12 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
+  # When false, Devise will not attempt to reload routes on eager load.
+  # This can reduce the time taken to boot the app but if your application
+  # requires the Devise mappings to be loaded during boot time the application
+  # won't boot properly.
+  # config.reload_routes = true
+
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
@@ -104,7 +110,10 @@ Devise.setup do |config|
   # Set up a pepper to generate the hashed password.
   # config.pepper = ''
 
-  # Send a notification email when the user's password is changed
+  # Send a notification to the original email when the user's email is changed.
+  config.send_email_changed_notification = true
+
+  # Send a notification email when the user's password is changed.
   config.send_password_change_notification = true
 
   # ==> Configuration for :invitable
@@ -201,7 +210,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this

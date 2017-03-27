@@ -32,7 +32,7 @@ RSpec.describe 'Site seeds', type: :seed do
     let(:host) { new_host }
     let(:environment_variables) { { SEED_SITE_HOST: new_host } }
 
-    include_context 'creates site'
+    include_examples 'creates site'
   end
 
   context 'with HEROKU_APP_NAME set' do
@@ -40,7 +40,7 @@ RSpec.describe 'Site seeds', type: :seed do
     let(:host) { "#{heroku_app_name}.herokuapp.com" }
     let(:environment_variables) { { HEROKU_APP_NAME: heroku_app_name } }
 
-    include_context 'creates site'
+    include_examples 'creates site'
   end
 
   context 'without SEED_SITE_HOST or HEROKU_APP_NAME set' do

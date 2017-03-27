@@ -5,5 +5,5 @@ RSpec.describe 'DELETE /:id' do
   let(:request_path_id) { page.url }
   let(:expected_status) { 302 }
 
-  include_context 'authenticated page'
+  include_examples 'authenticated page'
 end
