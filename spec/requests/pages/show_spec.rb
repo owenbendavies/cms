@@ -5,13 +5,13 @@ RSpec.describe 'GET /:id' do
     let(:page) { FactoryGirl.create(:page, :private, site: site) }
     let(:request_path_id) { page.url }
 
-    include_context 'authenticated page'
+    include_examples 'authenticated page'
   end
 
   context 'page from another site' do
     let(:page) { FactoryGirl.create(:page) }
     let(:request_path_id) { page.url }
 
-    include_context 'renders page not found'
+    include_examples 'renders page not found'
   end
 end

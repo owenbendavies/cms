@@ -27,11 +27,7 @@ RSpec.feature 'Page with contact form' do
     expect(message.phone).to eq new_phone
     expect(message.message).to eq new_message
 
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-    Delayed::Worker.new.work_off
-    expect(ActionMailer::Base.deliveries.size).to eq 1
-
-    email = ActionMailer::Base.deliveries.last
+    email = last_email
     expect(email.from).to eq ["noreply@#{site.host}"]
     expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq contact_page.name
@@ -47,8 +43,6 @@ RSpec.feature 'Page with contact form' do
     click_button 'Send Message'
 
     expect(page).to have_content 'is too short'
-    expect(Message.count).to eq 0
-    expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 
   scenario 'with do_not_fill_in' do
@@ -59,7 +53,5 @@ RSpec.feature 'Page with contact form' do
     click_button 'Send Message'
 
     expect(page).to have_content 'do not fill in'
-    expect(Message.count).to eq 0
-    expect(ActionMailer::Base.deliveries.size).to eq 0
   end
 end

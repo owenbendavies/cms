@@ -28,11 +28,7 @@ RSpec.feature 'Editing a user' do
       expect(current_path).to eq '/home'
       expect(page).to have_content 'Your account has been updated'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
-
-      email = ActionMailer::Base.deliveries.last
+      email = last_email
       expect(email.to).to eq [user.email]
       expect(email.subject).to eq 'Password Changed'
 
@@ -85,19 +81,18 @@ RSpec.feature 'Editing a user' do
       expect(page).to have_content 'we need to verify your new email address'
       expect(current_path).to eq '/home'
 
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq 1
+      emails = last_emails(2)
+      expect(emails.first.subject).to eq 'Email Changed'
+      expect(emails.first.to).to eq [old_email]
 
-      email = ActionMailer::Base.deliveries.last
-      expect(email.to).to eq [new_email]
-      expect(email.subject).to eq 'Confirmation instructions'
+      expect(emails.last.subject).to eq 'Confirmation instructions'
+      expect(emails.last.to).to eq [new_email]
 
       user.reload
       expect(user.email).to eq old_email
       expect(user.unconfirmed_email).to eq new_email
 
-      link = email.html_part.body.match(/href="([^"]+)/)[1]
+      link = emails.last.html_part.body.match(/href="([^"]+)/)[1]
       expect(link).to include site.host
 
       unchecked_visit link
