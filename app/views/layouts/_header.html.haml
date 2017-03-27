@@ -1,6 +1,6 @@
 %header.col-sm-12.text-center
   %h1#cms-site-name
-    = link_to @site.name, page_path('home')
+    = link_to site.name, page_path('home')
 
-  - if @site.sub_title
-    %h2#cms-site-sub-title= @site.sub_title
+  - if site.sub_title
+    %h2#cms-site-sub-title= site.sub_title

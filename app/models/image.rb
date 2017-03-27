@@ -25,7 +25,7 @@ class Image < ApplicationRecord
 
   scope :ordered, -> { order(:name) }
 
-  schema_validations except: [:created_at, :updated_at, :filename]
+  schema_validations except: %i(created_at updated_at filename)
 
   strip_attributes collapse_spaces: true, replace_newlines: true
 end
