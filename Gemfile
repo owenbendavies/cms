@@ -79,11 +79,12 @@ group :development, :test do
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
   gem 'coffeelint' # CoffeeScript code quality
-  gem 'haml_lint', '0.21.0', require: false # TODO: changes required - HAML code quality
+  gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'jsonlint', require: false # JSON code quality
   gem 'mdl', require: false # Markdown code quality
   gem 'rails_best_practices', require: false # Rails code quality
+  gem 'rubocop', '<0.48.0', require: false # TODO: Upgrade when 0.48.0 is fixed - Ruby code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
   gem 'scss_lint', require: false # Sass code quality
 end

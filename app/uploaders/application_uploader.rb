@@ -17,6 +17,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   def full_filename(for_file)
     ext = File.extname(for_file)
     base_name = for_file.chomp(ext)
-    [base_name, version_name || 'original'].join('/') + ext
+    sub_name = version_name || 'original'
+    [base_name, sub_name].join('/') + ext
   end
 end
