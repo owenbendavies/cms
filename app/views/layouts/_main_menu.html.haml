@@ -7,13 +7,13 @@
         %span.icon-bar
         %span.icon-bar
 
-      - unless @site.separate_header
-        = link_to @site.name, page_path('home'), class: 'navbar-brand'
+      - unless site.separate_header
+        = link_to site.name, page_path('home'), class: 'navbar-brand'
 
     .collapse.navbar-collapse#cms-main-menu-collapse
-      - nav_class = 'navbar-right' unless @site.separate_header
+      - nav_class = 'navbar-right' unless site.separate_header
       %ul.nav.navbar-nav{ class: nav_class }
-        - @site.main_menu_pages.each do |page|
+        - site.main_menu_pages.each do |page|
           %li
             = link_to page_path(page.to_param), class: 'cms-page-link-' + page.to_param do
               %span= page.name

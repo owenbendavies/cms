@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Robots' do
   context 'GET /robots.txt' do
     let(:expected_body) do
-      <<EOF
-Sitemap: http://#{site.host}/sitemap.xml
+      <<~EOF
+        Sitemap: http://#{site.host}/sitemap.xml
 
-User-agent: *
-Disallow:
+        User-agent: *
+        Disallow:
 EOF
     end
 

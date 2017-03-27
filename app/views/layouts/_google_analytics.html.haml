@@ -4,7 +4,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', '#{h(@site.google_analytics)}', 'auto');
+  ga('create', '#{h(site.google_analytics)}', 'auto');
   #{ "ga('set', 'userId', '#{current_user.to_param}');" if current_user }
   ga('require', 'displayfeatures');
   ga('require', 'linkid');

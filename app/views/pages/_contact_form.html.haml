@@ -1,4 +1,4 @@
-= simple_form_for((@message || Message.new), url: contact_form_page_path) do |form|
+= simple_form_for((message || Message.new), url: contact_form_page_path) do |form|
   = form.input :name
   = form.input :email
   = form.input :phone

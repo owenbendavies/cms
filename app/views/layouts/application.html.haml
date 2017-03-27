@@ -10,31 +10,31 @@
     = render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN']
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = content_for(:head)
-    = render 'layouts/google_analytics' if @site.google_analytics
+    = render 'layouts/google_analytics', site: @site if @site.google_analytics
     = csrf_meta_tag
 
   - body_class = 'cms-loggedin' if user_signed_in?
   %body{ id: body_id(request.path), class: body_class }
     - if user_signed_in?
       .hidden-print#cms-topbar
-        = render 'layouts/topbar'
+        = render 'layouts/topbar', site: @site, page: @page
 
     #cms-wrapper
       .container#cms-page
         - if @site.separate_header
           .hidden-print.row#cms-header
-            = render 'layouts/header'
+            = render 'layouts/header', site: @site
 
         - unless @site.main_menu_pages.empty?
           .cms-main-menu.hidden-print.row#cms-main-menu
-            = render 'layouts/main_menu'
+            = render 'layouts/main_menu', site: @site
 
         .row#cms-main
-          = render "layouts/pages/#{@site.layout}"
+          = render "layouts/pages/#{@site.layout}", site: @site
 
         - if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
           .cms-main-menu.hidden-print.row#cms-footer-main-menu
-            = render 'layouts/footer_main_menu'
+            = render 'layouts/footer_main_menu', site: @site
 
         .hidden-print.row#cms-footer
-          = render 'layouts/footer'
+          = render 'layouts/footer', site: @site, page: @page

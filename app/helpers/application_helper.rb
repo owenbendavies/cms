@@ -6,9 +6,9 @@ module ApplicationHelper
   def page_title(site, content)
     title = [site.name]
 
-    if !content.blank?
+    if content.present?
       title << content
-    elsif !site.sub_title.blank?
+    elsif site.sub_title?
       title << site.sub_title
     end
 

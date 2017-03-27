@@ -1,22 +1,22 @@
 %footer.col-sm-12.text-center
   %ul.list-unstyled
-    - unless @site.footer_links.empty?
+    - unless site.footer_links.empty?
       %li
         %ul.list-inline#cms-site-footer-links
-          - @site.footer_links.each do |link|
+          - site.footer_links.each do |link|
             %li
               = link_to link.url do
                 = icon_tag(link.icon) if link.icon
                 %span= link.name
 
-    - if @page&.persisted?
+    - if page&.persisted?
       %li#cms-last-update
         %small
           = t('.last_updated')
-          = timeago_tag(@page.updated_at, force: true)
+          = timeago_tag(page.updated_at, force: true)
 
     %li#cms-copyright
-      %small= footer_copyright(@site)
+      %small= footer_copyright(site)
 
     %li
       %ul.list-inline#cms-footer-links
