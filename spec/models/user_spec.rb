@@ -82,8 +82,25 @@ RSpec.describe User do
     end
 
     it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(128) }
-    it { is_expected.to allow_value('apel203pd0pa').for(:password) }
-    it { is_expected.not_to allow_value('password').for(:password) }
+
+    it 'allows strong passwords' do
+      user = FactoryGirl.build(:user)
+      user.password = user.password_confirmation = Faker::Internet.password(20, 30)
+      expect(user).to be_valid
+    end
+
+    it 'does not allow weak passwords' do
+      user = FactoryGirl.build(:user)
+      user.password = user.password_confirmation = 'password'
+      expect(user).not_to be_valid
+    end
+
+    it 'tells the user why their password is weak' do
+      user = FactoryGirl.build(:user)
+      user.password = user.password_confirmation = 'password'
+      user.valid?
+      expect(user.errors[:password].first).to include 'This is a top-10 common password'
+    end
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
   end
