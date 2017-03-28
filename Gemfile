@@ -16,7 +16,7 @@ gem 'secure_headers' # Adds security headers to requests
 
 # Authentication and authorization
 gem 'devise_invitable' # Inviting of users
-gem 'devise_zxcvbn', '2.1.1' # TODO: Upgrade when 2.1.2 is fixed - Strong passwords for users
+gem 'devise_zxcvbn' # Strong passwords for users
 gem 'omniauth-google-oauth2' # Google login
 gem 'pundit' # Authorization
 
