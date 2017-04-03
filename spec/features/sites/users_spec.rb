@@ -17,7 +17,7 @@ RSpec.feature 'Site users' do
 
       index = site.users.ordered.find_index(site_user)
 
-      expect(table_header_text).to eq %w(Name Email Admin Confirmed Locked)
+      expect(table_header_text).to eq %w[Name Email Admin Confirmed Locked]
       expect(table_rows.count).to eq site.users.count
       expect(table_rows[index][0].text).to eq site_user.name
       expect(table_rows[index][1].text).to eq site_user.email

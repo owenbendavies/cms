@@ -11,7 +11,7 @@ class CreatePages < ActiveRecord::Migration[5.0]
 
       table.timestamps
 
-      table.index %i(site_id url), unique: true
+      table.index %i[site_id url], unique: true
     end
   end
 end

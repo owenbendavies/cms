@@ -24,7 +24,7 @@
 class FooterLink < ApplicationRecord
   acts_as_list scope: :site
 
-  schema_validations except: %i(position created_at updated_at)
+  schema_validations except: %i[position created_at updated_at]
 
   strip_attributes collapse_spaces: true, replace_newlines: true
 
