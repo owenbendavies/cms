@@ -8,7 +8,7 @@ class CreateVersions < ActiveRecord::Migration[5.0]
       table.text :object
       table.datetime :created_at
 
-      table.index %i(item_type item_id)
+      table.index %i[item_type item_id]
     end
   end
 end

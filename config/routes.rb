@@ -27,15 +27,15 @@ Rails.application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  resource :site, only: %i(edit update) do
-    match :css, via: %i(get patch)
+  resource :site, only: %i[edit update] do
+    match :css, via: %i[get patch]
 
     resources :images, only: [:index]
-    resources :messages, only: %i(index show)
+    resources :messages, only: %i[index show]
     resources :users, only: [:index]
   end
 
-  resources :pages, path: '', only: %i(new create show edit update destroy) do
+  resources :pages, path: '', only: %i[new create show edit update destroy] do
     member do
       post :contact_form
     end

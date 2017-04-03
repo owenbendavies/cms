@@ -2,7 +2,7 @@ class ImageUploader < ApplicationUploader
   include CarrierWave::MiniMagick
 
   def extension_whitelist
-    %w(jpg jpeg png)
+    %w[jpg jpeg png]
   end
 
   def store_dir
