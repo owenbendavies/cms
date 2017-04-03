@@ -8,8 +8,8 @@ class CreateImages < ActiveRecord::Migration[5.0]
 
       table.timestamps
 
-      table.index %i(site_id name), unique: true
-      table.index %i(site_id filename), unique: true
+      table.index %i[site_id name], unique: true
+      table.index %i[site_id filename], unique: true
     end
   end
 end

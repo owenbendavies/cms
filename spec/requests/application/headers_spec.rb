@@ -4,7 +4,7 @@ RSpec.describe 'Application headers' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
-  let(:random_headers) { %w(Content-Length ETag Set-Cookie X-Request-Id X-Runtime) }
+  let(:random_headers) { %w[Content-Length ETag Set-Cookie X-Request-Id X-Runtime] }
 
   let(:non_random_headers) { response.headers.except(*random_headers) }
 
