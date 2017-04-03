@@ -24,7 +24,7 @@
 #
 
 class Site < ApplicationRecord
-  LAYOUTS = %w(one_column right_sidebar small_right_sidebar).freeze
+  LAYOUTS = %w[one_column right_sidebar small_right_sidebar].freeze
 
   has_many :users, through: :settings
   has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: Page

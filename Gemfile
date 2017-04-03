@@ -34,8 +34,8 @@ gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
 gem 'schema_validations' # Automatically adds ActiveRecord validations from database schema
 gem 'strip_attributes' # Cleans whitespace from model fields
-gem 'validates_email_format_of' # Email validation
 gem 'validate_url' # URL validation
+gem 'validates_email_format_of' # Email validation
 
 # Controller Gems
 gem 'xml-sitemap' # Generates XML site map
@@ -84,7 +84,6 @@ group :development, :test do
   gem 'jsonlint', require: false # JSON code quality
   gem 'mdl', require: false # Markdown code quality
   gem 'rails_best_practices', require: false # Rails code quality
-  gem 'rubocop', '<0.48.0', require: false # TODO: Upgrade when 0.48.0 is fixed - Ruby code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
   gem 'scss_lint', require: false # Sass code quality
 end

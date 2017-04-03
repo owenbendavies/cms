@@ -1,6 +1,6 @@
 class StylesheetUploader < ApplicationUploader
   def extension_whitelist
-    %w(css)
+    %w[css]
   end
 
   def store_dir

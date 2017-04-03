@@ -1,5 +1,5 @@
 class ValidateDataJob < ApplicationJob
-  NON_MODEL_TABLES = %w(ar_internal_metadata delayed_jobs schema_migrations versions).freeze
+  NON_MODEL_TABLES = %w[ar_internal_metadata delayed_jobs schema_migrations versions].freeze
 
   def perform
     models.each do |model|

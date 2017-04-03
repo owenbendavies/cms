@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  before_action :new_page, only: %i(new create)
-  before_action :find_page, except: %i(index new create)
-  skip_before_action :authenticate_user!, only: %i(index show contact_form)
-  before_action :authenticate_page, only: %i(show contact_form)
+  before_action :new_page, only: %i[new create]
+  before_action :find_page, except: %i[index new create]
+  skip_before_action :authenticate_user!, only: %i[index show contact_form]
+  before_action :authenticate_page, only: %i[show contact_form]
 
   def index
     authorize Page
