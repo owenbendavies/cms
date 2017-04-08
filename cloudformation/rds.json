@@ -1,0 +1,257 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "obduk-cms RDS database",
+    "Outputs": {
+        "DatabaseUrl": {
+            "Description": "Value for DATABASE_URL",
+            "Value": {
+                "Fn::Sub": "postgresql://username:password@${RDSDatabase.Endpoint.Address}:${RDSDatabase.Endpoint.Port}/${CompanyName}_${ProjectName}_${Environment}?sslmode=verify-full&sslrootcert=db/amazon-rds-ca-cert.pem"
+            }
+        }
+    },
+    "Parameters": {
+        "CompanyName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for namespacing resources",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "Environment": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "e.g. test, production",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "MasterUserPassword": {
+            "Description": "Password for the database master user",
+            "MinLength": 8,
+            "NoEcho": "true",
+            "Type": "String"
+        },
+        "MasterUsername": {
+            "AllowedPattern": "[a-z][a-zA-Z0-9]*",
+            "Description": "Username for the database master user",
+            "MaxLength": 16,
+            "MinLength": 1,
+            "NoEcho": "true",
+            "Type": "String"
+        },
+        "ProjectName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for naming the project",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "CloudWatchCPU": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "AlarmName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment} > RDS > CPUUtilization"
+                },
+                "ComparisonOperator": "GreaterThanThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "DBInstanceIdentifier",
+                        "Value": {
+                            "Ref": "RDSDatabase"
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 3,
+                "InsufficientDataActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "MetricName": "CPUUtilization",
+                "Namespace": "AWS/RDS",
+                "OKActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Maximum",
+                "Threshold": 80
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "CloudWatchMemory": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "AlarmName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment} > RDS > FreeableMemory"
+                },
+                "ComparisonOperator": "LessThanThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "DBInstanceIdentifier",
+                        "Value": {
+                            "Ref": "RDSDatabase"
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 3,
+                "InsufficientDataActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "MetricName": "FreeableMemory",
+                "Namespace": "AWS/RDS",
+                "OKActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Average",
+                "Threshold": 200000000
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "CloudWatchStorage": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "AlarmName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment} > RDS > FreeStorageSpace"
+                },
+                "ComparisonOperator": "LessThanThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "DBInstanceIdentifier",
+                        "Value": {
+                            "Ref": "RDSDatabase"
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 3,
+                "InsufficientDataActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "MetricName": "FreeStorageSpace",
+                "Namespace": "AWS/RDS",
+                "OKActions": [
+                    {
+                        "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Average",
+                "Threshold": 2000000000
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "EC2SecurityGroup": {
+            "Properties": {
+                "GroupDescription": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "CidrIp": "0.0.0.0/0",
+                        "FromPort": 5432,
+                        "IpProtocol": "tcp",
+                        "ToPort": 5432
+                    }
+                ]
+            },
+            "Type": "AWS::EC2::SecurityGroup"
+        },
+        "RDSDatabase": {
+            "Properties": {
+                "AllocatedStorage": 5,
+                "BackupRetentionPeriod": 7,
+                "DBInstanceClass": "db.t2.micro",
+                "DBInstanceIdentifier": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}"
+                },
+                "DBName": {
+                    "Fn::Sub": "${CompanyName}_${ProjectName}_${Environment}"
+                },
+                "DBParameterGroupName": {
+                    "Ref": "RDSParameterGroup"
+                },
+                "Engine": "postgres",
+                "EngineVersion": "9.6.1",
+                "MasterUserPassword": {
+                    "Ref": "MasterUserPassword"
+                },
+                "MasterUsername": {
+                    "Ref": "MasterUsername"
+                },
+                "MultiAZ": false,
+                "PubliclyAccessible": true,
+                "StorageType": "gp2",
+                "VPCSecurityGroups": [
+                    {
+                        "Fn::GetAtt": [
+                            "EC2SecurityGroup",
+                            "GroupId"
+                        ]
+                    }
+                ]
+            },
+            "Type": "AWS::RDS::DBInstance"
+        },
+        "RDSEvents": {
+            "Properties": {
+                "EventCategories": [
+                    "availability",
+                    "configuration change",
+                    "creation",
+                    "deletion",
+                    "failover",
+                    "failure",
+                    "low storage",
+                    "maintenance",
+                    "notification",
+                    "read replica",
+                    "recovery",
+                    "restoration"
+                ],
+                "SnsTopicArn": {
+                    "Fn::Sub": "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:${CompanyName}-${ProjectName}-${Environment}-sysadmins"
+                },
+                "SourceIds": [
+                    {
+                        "Ref": "RDSDatabase"
+                    }
+                ],
+                "SourceType": "db-instance"
+            },
+            "Type": "AWS::RDS::EventSubscription"
+        },
+        "RDSParameterGroup": {
+            "Properties": {
+                "Description": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}"
+                },
+                "Family": "postgres9.6",
+                "Parameters": {
+                    "rds.force_ssl": 1
+                }
+            },
+            "Type": "AWS::RDS::DBParameterGroup"
+        }
+    }
+}

@@ -1,0 +1,119 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Conditions": {
+        "GlobalRegion": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-east-1"
+            ]
+        }
+    },
+    "Description": "obduk-cms IAM user",
+    "Outputs": {
+        "AccessKey": {
+            "Description": "Value for AWS_ACCESS_KEY_ID",
+            "Value": {
+                "Ref": "IAMUserAccessKey"
+            }
+        },
+        "SecretAccessKey": {
+            "Description": "Value for AWS_SECRET_ACCESS_KEY",
+            "Value": {
+                "Fn::GetAtt": [
+                    "IAMUserAccessKey",
+                    "SecretAccessKey"
+                ]
+            }
+        }
+    },
+    "Parameters": {
+        "CompanyName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for namespacing resources",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "Environment": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "e.g. test, production",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "ProjectName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for naming the project",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "IAMUser": {
+            "Condition": "GlobalRegion",
+            "Properties": {
+                "Policies": [
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "s3:ListBucket"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": {
+                                        "Fn::Sub": "arn:aws:s3:::${CompanyName}-${ProjectName}-${Environment}-uploads"
+                                    }
+                                },
+                                {
+                                    "Action": [
+                                        "s3:GetObject",
+                                        "s3:GetObjectAcl",
+                                        "s3:PutObject",
+                                        "s3:PutObjectAcl",
+                                        "s3:DeleteObject"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": {
+                                        "Fn::Sub": "arn:aws:s3:::${CompanyName}-${ProjectName}-${Environment}-uploads/*"
+                                    }
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "access-s3-bucket"
+                    },
+                    {
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Action": "ses:SendRawEmail",
+                                    "Effect": "Allow",
+                                    "Resource": "*"
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        },
+                        "PolicyName": "send-ses-email"
+                    }
+                ],
+                "UserName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}"
+                }
+            },
+            "Type": "AWS::IAM::User"
+        },
+        "IAMUserAccessKey": {
+            "Condition": "GlobalRegion",
+            "Properties": {
+                "UserName": {
+                    "Ref": "IAMUser"
+                }
+            },
+            "Type": "AWS::IAM::AccessKey"
+        }
+    }
+}
