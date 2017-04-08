@@ -1,0 +1,92 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "obduk-cms S3 buckets",
+    "Outputs": {
+        "Region": {
+            "Description": "Value for AWS_REGION",
+            "Value": {
+                "Ref": "AWS::Region"
+            }
+        },
+        "S3Bucket": {
+            "Description": "Value for AWS_S3_BUCKET",
+            "Value": {
+                "Ref": "S3UploadsBucket"
+            }
+        }
+    },
+    "Parameters": {
+        "CompanyName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for namespacing resources",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "Environment": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "e.g. test, production",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "ProjectName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for naming the project",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "S3LogsBucket": {
+            "Properties": {
+                "AccessControl": "LogDeliveryWrite",
+                "BucketName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-logs"
+                },
+                "LifecycleConfiguration": {
+                    "Rules": [
+                        {
+                            "Id": "delete-old-versions",
+                            "NoncurrentVersionExpirationInDays": 30,
+                            "Status": "Enabled"
+                        }
+                    ]
+                },
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                }
+            },
+            "Type": "AWS::S3::Bucket"
+        },
+        "S3UploadsBucket": {
+            "Properties": {
+                "BucketName": {
+                    "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-uploads"
+                },
+                "LifecycleConfiguration": {
+                    "Rules": [
+                        {
+                            "Id": "delete-old-versions",
+                            "NoncurrentVersionExpirationInDays": 30,
+                            "Status": "Enabled"
+                        }
+                    ]
+                },
+                "LoggingConfiguration": {
+                    "DestinationBucketName": {
+                        "Ref": "S3LogsBucket"
+                    },
+                    "LogFilePrefix": {
+                        "Fn::Sub": "AWSLogs/${AWS::AccountId}/s3/${CompanyName}-${ProjectName}-${Environment}-uploads/"
+                    }
+                },
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                }
+            },
+            "Type": "AWS::S3::Bucket"
+        }
+    }
+}
