@@ -1,0 +1,147 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Conditions": {
+        "GlobalRegion": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Region"
+                },
+                "us-east-1"
+            ]
+        }
+    },
+    "Description": "obduk-cms CloudFront distributions",
+    "Outputs": {
+        "AssetHost": {
+            "Description": "Value for ASSET_HOST",
+            "Value": {
+                "Fn::Sub": "https://${CloudFrontAssets.DomainName}"
+            }
+        },
+        "S3Host": {
+            "Description": "Value for AWS_S3_HOST",
+            "Value": {
+                "Fn::Sub": "https://${CloudFrontUploads.DomainName}"
+            }
+        }
+    },
+    "Parameters": {
+        "CompanyName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for namespacing resources",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "DomainName": {
+            "AllowedPattern": "([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}",
+            "Description": "Domain name for your app, e.g. `www.example.com`",
+            "Type": "String"
+        },
+        "Environment": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "e.g. test, production",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        },
+        "ProjectName": {
+            "AllowedPattern": "[a-z][a-z-]*",
+            "Description": "Used for naming the project",
+            "MaxLength": 10,
+            "MinLength": 1,
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "CloudFrontAssets": {
+            "Condition": "GlobalRegion",
+            "Properties": {
+                "DistributionConfig": {
+                    "Comment": {
+                        "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-assets"
+                    },
+                    "DefaultCacheBehavior": {
+                        "ForwardedValues": {
+                            "QueryString": false
+                        },
+                        "TargetOriginId": {
+                            "Fn::Sub": "Custom-${DomainName}"
+                        },
+                        "ViewerProtocolPolicy": "redirect-to-https"
+                    },
+                    "Enabled": true,
+                    "HttpVersion": "http2",
+                    "Logging": {
+                        "Bucket": {
+                            "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-logs.s3.amazonaws.com"
+                        },
+                        "Prefix": {
+                            "Fn::Sub": "AWSLogs/${AWS::AccountId}/cloudfront/${CompanyName}-${ProjectName}-${Environment}-assets/"
+                        }
+                    },
+                    "Origins": [
+                        {
+                            "CustomOriginConfig": {
+                                "OriginProtocolPolicy": "https-only",
+                                "OriginSSLProtocols": [
+                                    "TLSv1.2",
+                                    "TLSv1.1",
+                                    "TLSv1"
+                                ]
+                            },
+                            "DomainName": {
+                                "Ref": "DomainName"
+                            },
+                            "Id": {
+                                "Fn::Sub": "Custom-${DomainName}"
+                            }
+                        }
+                    ]
+                }
+            },
+            "Type": "AWS::CloudFront::Distribution"
+        },
+        "CloudFrontUploads": {
+            "Condition": "GlobalRegion",
+            "Properties": {
+                "DistributionConfig": {
+                    "Comment": {
+                        "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-uploads"
+                    },
+                    "DefaultCacheBehavior": {
+                        "ForwardedValues": {
+                            "QueryString": false
+                        },
+                        "TargetOriginId": {
+                            "Fn::Sub": "S3-${CompanyName}-${ProjectName}-${Environment}-uploads"
+                        },
+                        "ViewerProtocolPolicy": "redirect-to-https"
+                    },
+                    "Enabled": true,
+                    "HttpVersion": "http2",
+                    "Logging": {
+                        "Bucket": {
+                            "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-logs.s3.amazonaws.com"
+                        },
+                        "Prefix": {
+                            "Fn::Sub": "AWSLogs/${AWS::AccountId}/cloudfront/${CompanyName}-${ProjectName}-${Environment}-uploads/"
+                        }
+                    },
+                    "Origins": [
+                        {
+                            "DomainName": {
+                                "Fn::Sub": "${CompanyName}-${ProjectName}-${Environment}-uploads.s3.amazonaws.com"
+                            },
+                            "Id": {
+                                "Fn::Sub": "S3-${CompanyName}-${ProjectName}-${Environment}-uploads"
+                            },
+                            "S3OriginConfig": {}
+                        }
+                    ]
+                }
+            },
+            "Type": "AWS::CloudFront::Distribution"
+        }
+    }
+}
