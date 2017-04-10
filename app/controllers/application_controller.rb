@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :reset_session
 
+  rescue_from ActionController::InvalidCrossOriginRequest, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from Pundit::NotAuthorizedError, with: :page_not_found
