@@ -59,4 +59,11 @@ RSpec.describe 'Application unknown routes' do
 
     include_examples 'returns 406'
   end
+
+  context 'non xhr js' do
+    let(:request_headers) { { 'Accept' => 'text/javascript' } }
+    let(:request_path) { '/bad/content/js' }
+
+    include_examples 'returns 406'
+  end
 end
