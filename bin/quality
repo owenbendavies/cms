@@ -25,7 +25,7 @@ HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-li
 
 ./bin/rubocop --format simple --require rubocop-rspec
 
-./bin/scss-lint --exclude-linter IdSelector app/assets/stylesheets/
+./bin/scss-lint
 
 # Run brakeman last as large output
 ./bin/brakeman
