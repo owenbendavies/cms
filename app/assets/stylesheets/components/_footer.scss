@@ -1,0 +1,14 @@
+@media print {
+  @include responsive-invisibility('.footer');
+}
+
+.footer {
+  @include make-row;
+
+  &__menu {
+    @include list-unstyled;
+
+    line-height: 16px;
+    margin-top: 11px;
+  }
+}
