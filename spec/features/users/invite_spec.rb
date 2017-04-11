@@ -82,9 +82,7 @@ RSpec.feature 'Inviting a user' do
     end
 
     scenario 'for an existing site user' do
-      user = FactoryGirl.create(:user)
-
-      user.site_settings.create!(site: site)
+      user = FactoryGirl.create(:user, site: site)
 
       visit_200_page
       fill_in 'Name', with: new_name

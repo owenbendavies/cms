@@ -54,6 +54,20 @@ FactoryGirl.define do
     password_confirmation { password }
     confirmed_at { Time.zone.now }
 
+    transient do
+      site nil
+      site_admin false
+    end
+
+    after(:create) do |user, evaluator|
+      if evaluator.site
+        user.site_settings.create!(
+          site: evaluator.site,
+          admin: evaluator.site_admin
+        )
+      end
+    end
+
     trait :sysadmin do
       sysadmin true
     end

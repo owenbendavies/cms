@@ -1,3 +1,5 @@
+RSpec.configuration.include Warden::Test::Helpers, type: :request
+
 RSpec.shared_context 'requests' do
   let(:request_description) do
     self.class.metadata[:full_description].match %r{(GET|POST|PUT|PATCH|DELETE) ([a-z0-9/_:.]+)}
@@ -29,6 +31,8 @@ RSpec.shared_context 'requests' do
     expect(response).to have_http_status expected_status
   end
 end
+
+RSpec.configuration.include_context 'requests', type: :request
 
 RSpec.shared_examples 'renders page not found' do
   it 'renders page not found' do
@@ -69,9 +73,7 @@ RSpec.shared_examples 'authenticated page' do |config|
         if defined? authorized_user
           authorized_user
         else
-          FactoryGirl.create(:user).tap do |user|
-            user.site_settings.create!(site: site)
-          end
+          FactoryGirl.create(:user, site: site)
         end
       end
 
@@ -82,7 +84,3 @@ RSpec.shared_examples 'authenticated page' do |config|
     end
   end
 end
-
-RSpec.configuration.include_context 'requests', type: :request
-
-RSpec.configuration.include Warden::Test::Helpers, type: :request

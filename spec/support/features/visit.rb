@@ -1,4 +1,4 @@
-module FeatureTestHelpers
+RSpec.shared_context 'visit' do
   def click_topbar_link(menu:, title:, icon:)
     within '#cms-topbar' do
       expect(page).not_to have_link title
@@ -15,11 +15,7 @@ module FeatureTestHelpers
 
     expect(page).to have_header(title, icon)
   end
-end
 
-RSpec.configuration.include FeatureTestHelpers, type: :feature
-
-RSpec.shared_context 'visit helpers' do
   alias_method :unchecked_visit, :visit
 
   def visit(*_)
@@ -54,4 +50,4 @@ RSpec.shared_context 'visit helpers' do
   end
 end
 
-RSpec.configuration.include_context 'visit helpers', type: :feature
+RSpec.configuration.include_context 'visit', type: :feature

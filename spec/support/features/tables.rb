@@ -1,4 +1,4 @@
-RSpec.shared_context 'table helpers' do
+RSpec.shared_context 'tables' do
   let(:table_header_text) do
     all('table thead th').map(&:text)
   end
@@ -8,4 +8,4 @@ RSpec.shared_context 'table helpers' do
   end
 end
 
-RSpec.configuration.include_context 'table helpers', type: :feature
+RSpec.configuration.include_context 'tables', type: :feature
