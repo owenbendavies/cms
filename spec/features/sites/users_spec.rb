@@ -9,9 +9,7 @@ RSpec.feature 'Site users' do
 
   as_a 'authorized user', :site_user, 'Users', 'group' do
     scenario 'visiting the page' do
-      FactoryGirl.create(:user).tap do |user|
-        user.site_settings.create!(site: site)
-      end
+      FactoryGirl.create(:user, site: site)
 
       visit_200_page
 
@@ -35,8 +33,7 @@ RSpec.feature 'Site users' do
     end
 
     scenario 'with unconfirmed user' do
-      unconfirmed_user = FactoryGirl.create(:user, :unconfirmed)
-      unconfirmed_user.site_settings.create!(site: site)
+      unconfirmed_user = FactoryGirl.create(:user, :unconfirmed, site: site)
       visit_200_page
 
       index = site.users.ordered.find_index(unconfirmed_user)
@@ -45,8 +42,7 @@ RSpec.feature 'Site users' do
     end
 
     scenario 'with locked user' do
-      locked_user = FactoryGirl.create(:user, :locked)
-      locked_user.site_settings.create!(site: site)
+      locked_user = FactoryGirl.create(:user, :locked, site: site)
       visit_200_page
 
       index = site.users.ordered.find_index(locked_user)

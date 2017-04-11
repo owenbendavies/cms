@@ -1,24 +1,16 @@
-module MailHelpers
-  extend ActiveSupport::Concern
+RSpec.shared_context 'mailers' do
+  def last_emails(expected_number)
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+    Delayed::Worker.new.work_off
+    expect(ActionMailer::Base.deliveries.size).to eq expected_number
 
-  included do
-    def last_emails(expected_number)
-      expect(ActionMailer::Base.deliveries.size).to eq 0
-      Delayed::Worker.new.work_off
-      expect(ActionMailer::Base.deliveries.size).to eq expected_number
-
-      ActionMailer::Base.deliveries.pop(expected_number)
-    end
-
-    def last_email
-      last_emails(1).first
-    end
+    ActionMailer::Base.deliveries.pop(expected_number)
   end
-end
 
-RSpec.configuration.include MailHelpers
+  def last_email
+    last_emails(1).first
+  end
 
-RSpec.shared_context 'mailer helpers' do
   before do
     ActionMailer::Base.deliveries = []
   end
@@ -28,7 +20,7 @@ RSpec.shared_context 'mailer helpers' do
   end
 end
 
-RSpec.configuration.include_context 'mailer helpers'
+RSpec.configuration.include_context 'mailers'
 
 RSpec.shared_examples 'site email' do
   it 'has from address as site email' do
