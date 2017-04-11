@@ -116,10 +116,8 @@ RSpec.describe User do
 
   describe '#admin_for_site?' do
     context 'when admin of site' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, site: site, site_admin: true) }
       let(:site) { FactoryGirl.create(:site) }
-
-      before { user.site_settings.create(site: site, admin: true) }
 
       it 'returns true' do
         expect(user.admin_for_site?(site)).to eq true
@@ -142,10 +140,8 @@ RSpec.describe User do
     end
 
     context 'when admin of no sites' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, site: site) }
       let(:site) { FactoryGirl.create(:site) }
-
-      before { user.site_settings.create(site: site) }
 
       it 'returns false' do
         expect(user.admin_for_site?(site)).to eq false
@@ -164,11 +160,8 @@ RSpec.describe User do
 
   describe '#site_ids' do
     it 'returns all site ids for a user' do
-      user = FactoryGirl.create(:user)
-
       site = FactoryGirl.create(:site)
-
-      user.site_settings.create(site: site)
+      user = FactoryGirl.create(:user, site: site)
 
       expect(user.site_ids).to eq [site.id]
     end
