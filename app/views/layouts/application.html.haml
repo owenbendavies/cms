@@ -21,20 +21,12 @@
 
     #cms-wrapper
       .container#cms-page
-        - if @site.separate_header
-          .hidden-print.row#cms-header
-            = render 'layouts/header', site: @site
+        = render 'layouts/header', site: @site if @site.separate_header
 
-        - unless @site.main_menu_pages.empty?
-          .cms-main-menu.hidden-print.row#cms-main-menu
-            = render 'layouts/main_menu', site: @site
+        = render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty?
 
-        .row#cms-main
-          = render "layouts/pages/#{@site.layout}", site: @site
+        = render "layouts/pages/#{@site.layout}", site: @site
 
-        - if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
-          .cms-main-menu.hidden-print.row#cms-footer-main-menu
-            = render 'layouts/footer_main_menu', site: @site
+        = render 'layouts/footer_main_menu', site: @site if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
 
-        .hidden-print.row#cms-footer
-          = render 'layouts/footer', site: @site, page: @page
+        = render 'layouts/footer', site: @site, page: @page

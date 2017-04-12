@@ -1,6 +1,7 @@
-%header.col-sm-12.text-center
-  %h1#cms-site-name
-    = link_to site.name, page_path('home')
+.header#cms-header
+  %header.header__content
+    %h1#cms-site-name
+      = link_to site.name, page_path('home'), class: 'header__site-name-link'
 
-  - if site.sub_title
-    %h2#cms-site-sub-title= site.sub_title
+    - if site.sub_title
+      %h2.header__sub-title#cms-site-sub-title= site.sub_title
