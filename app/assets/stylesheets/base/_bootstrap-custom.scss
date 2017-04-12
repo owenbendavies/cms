@@ -1,3 +1,11 @@
+// Customise variables
+$line-height-base: 1.6;
+$navbar-border-radius: 0;
+$navbar-default-bg: #f8f8f8;
+$navbar-default-link-hover-bg: darken($navbar-default-bg, 6.5%);
+$navbar-margin-bottom: 0;
+$screen-lg: 8000px;
+
 // Core variables and mixins
 @import 'bootstrap/variables';
 @import 'bootstrap/mixins';

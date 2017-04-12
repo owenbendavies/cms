@@ -1,31 +1,32 @@
-%footer.col-sm-12.text-center
-  %ul.list-unstyled
-    - unless site.footer_links.empty?
-      %li
-        %ul.list-inline#cms-site-footer-links
-          - site.footer_links.each do |link|
-            %li
-              = link_to link.url do
-                = icon_tag(link.icon) if link.icon
-                %span= link.name
-
-    - if page&.persisted?
-      %li#cms-last-update
-        %small
-          = t('.last_updated')
-          = timeago_tag(page.updated_at, force: true)
-
-    %li#cms-copyright
-      %small= footer_copyright(site)
-
-    %li
-      %ul.list-inline#cms-footer-links
+.footer#cms-footer
+  %footer.col-sm-12.text-center
+    %ul.footer__menu
+      - unless site.footer_links.empty?
         %li
-          %small= link_to t('pages.index.title'), sitemap_path
+          %ul.list-inline#cms-site-footer-links
+            - site.footer_links.each do |link|
+              %li
+                = link_to link.url do
+                  = icon_tag(link.icon) if link.icon
+                  %span= link.name
 
-        - if user_signed_in?
+      - if page&.persisted?
+        %li#cms-last-update
+          %small
+            = t('.last_updated')
+            = timeago_tag(page.updated_at, force: true)
+
+      %li#cms-copyright
+        %small= footer_copyright(site)
+
+      %li
+        %ul.list-inline#cms-footer-links
           %li
-            %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
-        - else
-          %li
-            %small= link_to t('devise.sessions.new.title'), new_user_session_path
+            %small= link_to t('pages.index.title'), sitemap_path
+
+          - if user_signed_in?
+            %li
+              %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
+          - else
+            %li
+              %small= link_to t('devise.sessions.new.title'), new_user_session_path
