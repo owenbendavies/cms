@@ -4,7 +4,6 @@ RSpec.configure do |config|
       next if file.closed?
       next if file.path == '/dev/null'
       next if file.path.end_with? '.pry_history'
-      next if file.path.end_with? 'zxcvbn.js'
       next if file.path =~ /^#{Rails.root.join('log')}.*.log/
       next if file.path =~ /^#{Rails.root.join('app')}.*/
 
