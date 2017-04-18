@@ -1,13 +1,13 @@
 class SystemPolicy < ApplicationPolicy
   def error_500?
-    @user.sysadmin?
+    @user && @user.sysadmin?
   end
 
   def error_delayed?
-    @user.sysadmin?
+    @user && @user.sysadmin?
   end
 
   def error_timeout?
-    @user.sysadmin?
+    @user && @user.sysadmin?
   end
 end
