@@ -8,7 +8,7 @@
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
     = stylesheet_link_tag @site.stylesheet.url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet.url
     = render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN']
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
     = content_for(:head)
     = render 'layouts/google_analytics', site: @site if @site.google_analytics
     = csrf_meta_tag
