@@ -1,6 +1,7 @@
 AddModelVirtualAttributeCheck: { }
 #AlwaysAddDbIndexCheck: { }
 CheckSaveReturnValueCheck: { }
+CheckDestroyReturnValueCheck: { }
 DefaultScopeIsEvilCheck: { }
 DryBundlerInCapistranoCheck: { }
 HashSyntaxCheck: { }
@@ -48,7 +49,7 @@ SimplifyRenderInControllersCheck: { }
 SimplifyRenderInViewsCheck: { }
 UseBeforeFilterCheck: { customize_count: 2 }
 UseModelAssociationCheck: { }
-#UseMultipartAlternativeAsContentTypeOfEmailCheck: { }
+UseMultipartAlternativeAsContentTypeOfEmailCheck: { }
 UseParenthesesInMethodDefCheck: { }
 UseObserverCheck: { }
 UseQueryAttributeCheck: { }

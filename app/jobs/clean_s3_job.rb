@@ -39,7 +39,7 @@ class CleanS3Job < ApplicationJob
     all_files.each do |file|
       next if missing_files.delete file.key
 
-      file.destroy
+      file.destroy!
       error("deleted the following file: #{file.key}")
     end
 
