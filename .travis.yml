@@ -18,7 +18,9 @@ addons:
 services:
   - postgresql
 
-before_script: ./bin/setup
+before_script:
+  - qmake --version
+  - ./bin/setup
 
 script:
   - ./bin/test
