@@ -7,13 +7,14 @@ branches:
 
 language: ruby
 
-cache: bundler
+cache:
+  bundler: true
 
 addons:
   apt:
     packages:
-    - libqt5webkit5-dev
-    - qt5-default
+      - libqt5webkit5-dev
+      - qt5-default
 
 services:
   - postgresql
