@@ -4,7 +4,6 @@
   "repository": "https://github.com/obduk/cms",
   "stack": "heroku-16",
   "addons": [
-    "heroku-postgresql",
     "sendgrid"
   ],
   "env": {
@@ -32,6 +31,10 @@
     "BUNDLE_WITHOUT": {
       "description": "Don't install asset gems on Heroku",
       "value": "development:test:assets"
+    },
+    "DATABASE_URL": {
+      "description": "The PostgreSQL database URL",
+      "required": false
     },
     "DISABLE_SPRING": {
       "description": "Ensures Spring is not running on server",
