@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Editing a page', js: true do
+RSpec.feature 'Editing a page' do
   before do
     login_as site_user
     navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
@@ -59,10 +59,10 @@ RSpec.feature 'Editing a page', js: true do
     expect(current_path).to eq '/new_page_name'
   end
 
-  scenario 'with invalid data' do
+  scenario 'invalid data' do
     fill_in 'page[name]', with: 'Site'
     click_button 'Update Page'
-    expect(page).to have_content 'is reserved'
+    expect(page).to have_content 'Url is reserved'
   end
 
   scenario 'clicking Cancel' do

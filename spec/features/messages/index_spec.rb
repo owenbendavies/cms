@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Messages index', js: true do
+RSpec.feature 'Messages index' do
   let!(:messages) do
     (0..11).map do |i|
       FactoryGirl.create(
@@ -18,7 +18,7 @@ RSpec.feature 'Messages index', js: true do
     navigate_via_topbar menu: 'Site', title: 'Messages', icon: 'envelope'
   end
 
-  scenario 'with list of messages' do
+  scenario 'list of messages' do
     expect(table_header_text).to eq ['Created at', 'Name', 'Email']
     expect(table_rows.count).to eq 10
 

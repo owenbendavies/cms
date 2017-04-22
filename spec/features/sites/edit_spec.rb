@@ -1,94 +1,84 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'Edit the site' do
-  let(:go_to_url) { '/site/edit' }
+  before do
+    login_as site_user
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
+  end
 
-  as_a 'authorized user', :site_user, 'Site Settings', 'cog' do
-    scenario 'changing the name' do
-      visit_200_page
+  scenario 'changing the name' do
+    expect(find_field('Name').value).to eq site.name
+    expect(find_field('Name')['autofocus']).to eq 'autofocus'
 
-      expect(find_field('Name').value).to eq site.name
-      expect(find_field('Name')['autofocus']).to eq 'autofocus'
+    fill_in 'Name', with: "  #{new_company_name} "
+    click_button 'Update Site'
 
-      fill_in 'Name', with: "  #{new_company_name} "
-      click_button 'Update Site'
+    expect(page).to have_content 'Site successfully updated'
+    expect(page).to have_title new_company_name
+  end
 
-      expect(page).to have_content 'Site successfully updated'
-      expect(page).to have_title new_company_name
-    end
+  scenario 'adding a sub title' do
+    fill_in 'Sub title', with: "  #{new_catch_phrase} "
+    click_button 'Update Site'
 
-    scenario 'adding a sub title' do
-      visit_200_page
-      fill_in 'Sub title', with: "  #{new_catch_phrase} "
-      click_button 'Update Site'
+    expect(page).to have_content 'Site successfully updated'
+    expect(page).to have_content new_catch_phrase
 
-      expect(page).to have_content 'Site successfully updated'
-      expect(page).to have_content new_catch_phrase
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
-      visit_200_page
+    expect(find_field('Sub title').value).to eq new_catch_phrase
+  end
 
-      expect(find_field('Sub title').value).to eq new_catch_phrase
-    end
+  scenario 'adding Google Analytics' do
+    expect(body).not_to include "ga('create',"
 
-    scenario 'adding Google Analytics' do
-      visit_200_page
+    new_code = "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
 
-      expect(body).not_to include "ga('create',"
+    fill_in 'Google Analytics', with: "  #{new_code} "
+    click_button 'Update Site'
 
-      new_code = "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
+    expect(page).to have_content 'Site successfully updated'
+    expect(body).to include "ga('create', '#{new_code}', 'auto');"
+    expect(body).to include "ga('set', 'userId', '#{site_user.uuid}');"
 
-      fill_in 'Google Analytics', with: "  #{new_code} "
-      click_button 'Update Site'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
-      expect(page).to have_content 'Site successfully updated'
-      expect(body).to include "ga('create', '#{new_code}', 'auto');"
-      expect(body).to include "ga('set', 'userId', '#{site_user.uuid}');"
+    expect(find_field('Google Analytics').value).to eq new_code
+  end
 
-      visit_200_page
+  scenario 'adding a copyright' do
+    fill_in 'Copyright', with: " #{new_name} "
+    click_button 'Update Site'
 
-      expect(find_field('Google Analytics').value).to eq new_code
-    end
+    expect(page).to have_content 'Site successfully updated'
+    expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
 
-    scenario 'adding a copyright' do
-      visit_200_page
-      fill_in 'Copyright', with: " #{new_name} "
-      click_button 'Update Site'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
-      expect(page).to have_content 'Site successfully updated'
-      expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
+    expect(find_field('Copyright').value).to eq new_name
+  end
 
-      visit_200_page
+  scenario 'adding a charity number' do
+    fill_in 'Charity number', with: " #{new_number} "
+    click_button 'Update Site'
 
-      expect(find_field('Copyright').value).to eq new_name
-    end
+    expect(page).to have_content 'Site successfully updated'
+    expect(page).to have_content "Registered charity number #{new_number}"
 
-    scenario 'adding a charity number' do
-      visit_200_page
-      fill_in 'Charity number', with: " #{new_number} "
-      click_button 'Update Site'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
-      expect(page).to have_content 'Site successfully updated'
-      expect(page).to have_content "Registered charity number #{new_number}"
+    expect(find_field('Charity number').value).to eq new_number.to_s
+  end
 
-      visit_200_page
+  scenario 'invalid data' do
+    fill_in 'Google Analytics', with: 'bad'
+    click_button 'Update Site'
 
-      expect(find_field('Charity number').value).to eq new_number.to_s
-    end
+    expect(page).to have_content 'Google Analytics is invalid'
+  end
 
-    scenario 'with invalid data' do
-      visit_200_page
-      fill_in 'Name', with: ''
-      click_button 'Update Site'
-
-      expect(page).to have_content 'is too short'
-    end
-
-    scenario 'clicking Cancel' do
-      visit_200_page
-      click_link 'Cancel'
-      expect(current_path).to eq '/home'
-    end
+  scenario 'clicking Cancel' do
+    click_link 'Cancel'
+    expect(current_path).to eq '/home'
   end
 end

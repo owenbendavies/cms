@@ -1,5 +1,3 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'User login via Google' do
@@ -19,7 +17,7 @@ RSpec.feature 'User login via Google' do
       visit_200_page '/login'
     end
 
-    scenario 'for existing user with matching email' do
+    scenario 'existing user with matching email' do
       uid = Faker::Number.number(8)
 
       OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
@@ -34,9 +32,8 @@ RSpec.feature 'User login via Google' do
       expect(user.reload.google_uid).to eq uid
     end
 
-    scenario 'for existing user with matching Google uid' do
-      user.google_uid = Faker::Number.number(8)
-      user.save!
+    scenario 'existing user with matching Google uid' do
+      user.update! google_uid: Faker::Number.number(8)
 
       OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
         uid: user.google_uid,
@@ -72,7 +69,7 @@ RSpec.feature 'User login via Google' do
     end
   end
 
-  scenario 'when not enabled' do
+  scenario 'not enabled' do
     visit_200_page '/login'
     expect(page).not_to have_link link_name
   end
