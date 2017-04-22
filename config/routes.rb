@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   end
 
   resource :site, only: %i[edit update] do
-    match :css, via: %i[get patch]
+    member do
+      get :css
+    end
 
     resources :images, only: [:index]
     resources :messages, only: %i[index show]

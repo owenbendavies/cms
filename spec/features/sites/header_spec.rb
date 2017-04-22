@@ -1,46 +1,32 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'Site header' do
-  let(:go_to_url) { '/site/edit' }
+  let(:header) { '#cms-header' }
+  let(:navbar_brand) { '#cms-main-menu .navbar-brand' }
+  let(:right_navbar) { '#cms-main-menu .nav.navbar-right' }
 
   before do
     home_page.insert_at(1)
+    login_as site_user
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
   end
 
-  as_a 'authorized user' do
-    scenario 'removing separate header' do
-      visit_200_page
+  scenario 'removing separate header' do
+    expect(find_field('Separate header')).to be_checked
+    expect(page).to have_selector header
+    expect(page).not_to have_selector navbar_brand
+    expect(page).not_to have_selector right_navbar
 
-      within '#cms-main-menu' do
-        expect(page).not_to have_link site.name, href: '/home'
-      end
+    uncheck 'Separate header'
+    click_button 'Update Site'
 
-      within '#cms-header #cms-site-name' do
-        expect(page).to have_link site.name, href: '/home'
-      end
+    expect(page).to have_content 'Site successfully updated'
 
-      expect(page).not_to have_selector '#cms-main-menu .nav.navbar-right'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
-      expect(find_field('Separate header')).to be_checked
-
-      uncheck 'Separate header'
-      click_button 'Update Site'
-
-      expect(page).to have_content 'Site successfully updated'
-
-      within '#cms-main-menu' do
-        expect(page).to have_link site.name, href: '/home'
-      end
-
-      expect(page).not_to have_selector '#cms-header'
-
-      expect(page).to have_selector '#cms-main-menu .nav.navbar-right'
-
-      visit_200_page
-
-      expect(find_field('Separate header')).not_to be_checked
-    end
+    expect(find_field('Separate header')).not_to be_checked
+    expect(page).not_to have_selector header
+    expect(page).to have_selector navbar_brand
+    expect(page).to have_selector right_navbar
   end
 end

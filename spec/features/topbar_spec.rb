@@ -1,58 +1,47 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'Topbar' do
-  let(:go_to_url) { '/home' }
   let(:topbar_selector) { '#cms-topbar' }
   let(:body_class) { '.cms-loggedin' }
 
-  scenario 'cannot use topbar' do
-    visit_200_page
+  scenario 'no user' do
+    visit_200_page '/home'
+
     expect(page).to have_no_selector topbar_selector
     expect(page).to have_no_selector body_class
   end
 
-  as_a 'authorized user' do
-    scenario 'while logged in' do
-      visit_200_page
-
-      within topbar_selector do
-        expect(page).to have_content site_user.name
-      end
-
-      expect(page).to have_selector body_class
+  context 'when logged in' do
+    before do
+      login_as site_user
+      visit_200_page '/home'
     end
 
     scenario 'navigating to home' do
-      visit_200_page
-
       within topbar_selector do
         click_link site.name
       end
 
-      expect(current_path).to eq '/home'
+      expect(current_path).to eq '/'
     end
 
-    scenario 'navigating to page via dropdowns on mobile', js: true do
-      visit_200_page
+    it_behaves_like 'mobile' do
+      scenario 'navigating to page via dropdowns' do
+        within topbar_selector do
+          expect(page).not_to have_link 'Site'
+          expect(page).not_to have_link 'Messages'
 
-      windows.first.resize_to 640, 1136
+          click_button 'Account menu'
 
-      within topbar_selector do
-        expect(page).not_to have_link 'Site'
-        expect(page).not_to have_link 'Messages'
+          expect(page).not_to have_link 'Messages'
 
-        click_button 'Account menu'
+          click_link 'Site'
+          click_link 'Messages'
+        end
 
-        expect(page).not_to have_link 'Messages'
-
-        click_link 'Site'
-        click_link 'Messages'
+        expect(page).to have_content 'Messages'
+        expect(current_path).to eq '/site/messages'
       end
-
-      expect(page).to have_content 'Messages'
-      expect(current_path).to eq '/site/messages'
     end
   end
 end

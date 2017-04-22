@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Page show' do
-  scenario 'visiting the page' do
+  scenario 'public page' do
+    Timecop.freeze(Time.zone.now - 1.month - 3.days) do
+      home_page.update! updated_at: Time.zone.now
+    end
+
     visit_200_page '/home'
 
     expect(find('body')['id']).to eq 'cms-page-home'
@@ -13,25 +17,11 @@ RSpec.feature 'Page show' do
     end
 
     within 'footer' do
-      date = home_page.updated_at.to_date.iso8601
-      expect(page).to have_content "Page last updated #{date}"
-    end
-  end
-
-  scenario 'visiting the page with Javascript', js: true do
-    Timecop.freeze(Time.zone.now - 1.month - 3.days) do
-      home_page.updated_at = Time.zone.now
-      home_page.save!
-    end
-
-    visit_200_page '/home'
-
-    within 'footer' do
       expect(page).to have_content 'Page last updated about a month ago'
     end
   end
 
-  scenario 'visiting a private page' do
+  scenario 'private page' do
     private_page = FactoryGirl.create(:page, :private, site: site)
     login_as site_user
     visit_200_page "/#{private_page.url}"
