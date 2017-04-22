@@ -9,16 +9,12 @@ language: ruby
 
 cache: bundler
 
-addons:
-  apt:
-    packages:
-    - libqt5webkit5-dev
-    - qt5-default
-
 services:
   - postgresql
 
-before_script: ./bin/setup
+before_script:
+  - qmake --version
+  - ./bin/setup
 
 script:
   - ./bin/test
