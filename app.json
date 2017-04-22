@@ -2,6 +2,7 @@
   "name": "obduk C.M.S.",
   "description": "A Content Management System (CMS) written with Ruby on Rails",
   "repository": "https://github.com/obduk/cms",
+  "stack": "heroku-16",
   "addons": [
     "heroku-postgresql",
     "sendgrid"
