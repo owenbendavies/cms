@@ -4,8 +4,8 @@ RSpec.feature 'Sitemap' do
   let!(:hidden_page) { FactoryGirl.create(:page, :hidden, site: site) }
   let!(:private_page) { FactoryGirl.create(:page, :private, site: site) }
 
-  context 'html', js: true do
-    scenario 'when not logged in' do
+  context 'html' do
+    scenario 'not logged in' do
       visit_200_page '/home'
 
       within('#cms-footer-links') do
@@ -17,7 +17,7 @@ RSpec.feature 'Sitemap' do
       expect(page).to have_no_link private_page.name
     end
 
-    scenario 'as a site user' do
+    scenario 'site user' do
       login_as site_user
       navigate_via_topbar menu: 'Site', title: 'Sitemap', icon: 'sitemap'
 
@@ -37,8 +37,8 @@ RSpec.feature 'Sitemap' do
     end
   end
 
-  context 'xml' do
-    scenario 'with http' do
+  context 'xml', js: false do
+    scenario 'http' do
       visit_200_page '/sitemap.xml'
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'http://localhost/home'
@@ -47,7 +47,7 @@ RSpec.feature 'Sitemap' do
       expect(page).to have_no_xpath('//loc', text: "http://localhost/#{private_page.url}")
     end
 
-    scenario 'with https' do
+    scenario 'https' do
       ClimateControl.modify(DISABLE_SSL: nil) do
         visit_200_page '/sitemap.xml'
       end

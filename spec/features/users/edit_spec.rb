@@ -1,135 +1,113 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'Editing a user' do
-  let(:go_to_url) { '/user/edit' }
+  before do
+    login_as site_user
+    navigate_via_topbar menu: site_user.name, title: 'User Settings', icon: 'user'
+  end
 
-  as_a 'authorized user', :user, 'User Settings', 'user' do
-    before do
-      user.site_settings.create!(site: site)
+  scenario 'changing the password' do
+    expect(find_field('Current password')['autofocus']).to eq 'autofocus'
+    expect(find_field('Current password')['autocomplete']).to eq 'off'
+    expect(find_field('Password').value).to be_blank
+    expect(find_field('Password')['autocomplete']).to eq 'off'
+    expect(find_field('Confirm password').value).to be_blank
+    expect(find_field('Confirm password')['autocomplete']).to eq 'off'
+
+    fill_in 'Current password', with: site_user.password
+    fill_in 'Password', with: new_password
+    fill_in 'Confirm password', with: new_password
+    click_button 'Update User'
+
+    expect(page).to have_content 'Your account has been updated'
+
+    email = last_email
+    expect(email.to).to eq [site_user.email]
+    expect(email.subject).to eq 'Password Changed'
+
+    unchecked_visit '/logout'
+    visit_200_page '/login'
+    fill_in 'Email', with: site_user.email
+    fill_in 'Password', with: new_password
+    click_button 'Login'
+
+    expect(page).to have_content 'Signed in successfully.'
+  end
+
+  scenario 'changing the name' do
+    expect(find_field('Name').value).to eq site_user.name
+
+    fill_in 'Current password', with: site_user.password
+    fill_in 'Name', with: " #{new_name} "
+    click_button 'Update User'
+
+    expect(page).to have_content 'Your account has been updated'
+
+    navigate_via_topbar menu: new_name, title: 'User Settings', icon: 'user'
+
+    expect(find_field('Name').value).to eq new_name
+  end
+
+  scenario 'changing the email' do
+    within 'a[href="https://www.gravatar.com"]' do
+      gravatar_image = find('img')
+
+      expect(gravatar_image['src']).to eq site_user.gravatar_url(size: 150)
+
+      expect(gravatar_image['alt']).to eq 'Profile Image'
+      expect(gravatar_image['width']).to eq '150'
+      expect(gravatar_image['height']).to eq '150'
     end
 
-    scenario 'changing the password' do
-      visit_200_page
+    old_email = site_user.email
+    expect(find_field('Email').value).to eq site_user.email
 
-      expect(find_field('Current password')['autofocus']).to eq 'autofocus'
-      expect(find_field('Current password')['autocomplete']).to eq 'off'
-      expect(find_field('Password').value).to be_nil
-      expect(find_field('Password')['autocomplete']).to eq 'off'
-      expect(find_field('Confirm password').value).to be_nil
-      expect(find_field('Confirm password')['autocomplete']).to eq 'off'
+    fill_in 'Current password', with: site_user.password
+    fill_in 'Email', with: " #{new_email} "
+    click_button 'Update User'
 
-      fill_in 'Current password', with: user.password
-      fill_in 'Password', with: new_password
-      fill_in 'Confirm password', with: new_password
-      click_button 'Update User'
+    expect(page).to have_content 'we need to verify your new email address'
 
-      expect(current_path).to eq '/home'
-      expect(page).to have_content 'Your account has been updated'
+    emails = last_emails(2)
+    expect(emails.first.subject).to eq 'Email Changed'
+    expect(emails.first.to).to eq [old_email]
 
-      email = last_email
-      expect(email.to).to eq [user.email]
-      expect(email.subject).to eq 'Password Changed'
+    expect(emails.last.subject).to eq 'Confirmation instructions'
+    expect(emails.last.to).to eq [new_email]
 
-      unchecked_visit '/logout'
-      visit_200_page '/login'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: new_password
-      click_button 'Login'
+    link = emails.last.html_part.body.match(/href="([^"]+)/)[1]
+    expect(link).to include site.host
+    link.gsub!("http://#{site.host}", Capybara.app_host)
 
-      expect(page).to have_content 'Signed in successfully.'
+    unchecked_visit link
+
+    expect(page).to have_content 'Your email address has been successfully confirmed.'
+
+    within '#cms-topbar' do
+      image = find('img')
+      expect(image['src']).to eq site_user.reload.gravatar_url
+      expect(image['alt']).to eq 'Profile Image'
     end
+  end
 
-    scenario 'changing the name' do
-      visit_200_page
+  scenario 'incorect current password' do
+    fill_in 'Current password', with: new_password
+    fill_in 'Email', with: new_email
+    click_button 'Update User'
 
-      expect(find_field('Name').value).to eq user.name
+    expect(page).to have_content 'Current password is invalid'
+  end
 
-      fill_in 'Current password', with: user.password
-      fill_in 'Name', with: " #{new_name} "
-      click_button 'Update User'
+  scenario 'invalid data' do
+    fill_in 'Current password', with: site_user.password
+    fill_in 'Email', with: 'bad'
+    click_button 'Update User'
 
-      expect(current_path).to eq '/home'
-      expect(page).to have_content 'Your account has been updated'
+    expect(page).to have_content 'Email is invalid'
+  end
 
-      visit_200_page
-
-      expect(find_field('Name').value).to eq new_name
-    end
-
-    scenario 'changing the email' do
-      visit_200_page
-
-      within 'a[href="https://www.gravatar.com"]' do
-        gravatar_image = find('img')
-
-        expect(gravatar_image['src']).to eq user.gravatar_url(size: 150)
-
-        expect(gravatar_image['alt']).to eq 'Profile Image'
-        expect(gravatar_image['width']).to eq '150'
-        expect(gravatar_image['height']).to eq '150'
-      end
-
-      old_email = user.email
-      expect(find_field('Email').value).to eq user.email
-
-      fill_in 'Current password', with: user.password
-      fill_in 'Email', with: " #{new_email} "
-      click_button 'Update User'
-
-      expect(page).to have_content 'we need to verify your new email address'
-      expect(current_path).to eq '/home'
-
-      emails = last_emails(2)
-      expect(emails.first.subject).to eq 'Email Changed'
-      expect(emails.first.to).to eq [old_email]
-
-      expect(emails.last.subject).to eq 'Confirmation instructions'
-      expect(emails.last.to).to eq [new_email]
-
-      user.reload
-      expect(user.email).to eq old_email
-      expect(user.unconfirmed_email).to eq new_email
-
-      link = emails.last.html_part.body.match(/href="([^"]+)/)[1]
-      expect(link).to include site.host
-
-      unchecked_visit link
-
-      expect(page).to have_content 'Your email address has been successfully confirmed.'
-
-      user.reload
-      expect(user.email).to eq new_email
-
-      within '#cms-topbar' do
-        image = find('img')
-        expect(image['src']).to eq user.gravatar_url
-        expect(image['alt']).to eq 'Profile Image'
-      end
-    end
-
-    scenario 'without current password' do
-      visit_200_page
-      fill_in 'Email', with: new_email
-      click_button 'Update User'
-
-      expect(page).to have_content "can't be blank"
-    end
-
-    scenario 'with invalid data' do
-      visit_200_page
-      fill_in 'Current password', with: user.password
-      fill_in 'Email', with: ''
-      click_button 'Update User'
-
-      expect(page).to have_content "can't be blank"
-    end
-
-    scenario 'clicking Cancel' do
-      visit_200_page
-      click_link 'Cancel'
-      expect(current_path).to eq '/home'
-    end
+  scenario 'clicking Cancel' do
+    click_link 'Cancel'
+    expect(current_path).to eq '/home'
   end
 end

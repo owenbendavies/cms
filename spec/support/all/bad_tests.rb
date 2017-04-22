@@ -4,8 +4,10 @@ RSpec.configure do |config|
       next if file.closed?
       next if file.path == '/dev/null'
       next if file.path == Rails.root.join('log', 'test.log').to_s
+      next if file.path == Rails.root.join('log', 'test.log').to_s
       next if file.path.end_with? '.pry_history'
       next if file.path.end_with? 'zxcvbn.js'
+      next if file.path =~ /^#{Rails.root.join('app')}.*/
 
       raise "You have not closed #{file.path}"
     end
@@ -16,7 +18,7 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    expect(GetProcessMem.new.mb.to_i).to be < 350
+    expect(GetProcessMem.new.mb.to_i).to be < 360
   end
 
   config.after :suite do

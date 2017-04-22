@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Deleting a page', js: true do
+RSpec.feature 'Deleting a page' do
   let(:test_page) { FactoryGirl.create(:page, site: site) }
 
   before do
@@ -20,7 +20,7 @@ RSpec.feature 'Deleting a page', js: true do
     expect(page).to have_content "#{test_page.name} was deleted"
   end
 
-  scenario 'clicking no', js: true do
+  scenario 'clicking no' do
     expect do
       dismiss_confirm do
         click_topbar_link(menu: 'Page', title: 'Delete', icon: 'trash')

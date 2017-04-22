@@ -1,33 +1,25 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'User logout' do
-  let(:go_to_url) { '/home' }
+  before do
+    login_as site_user
+    visit_200_page '/home'
+  end
 
-  as_a 'authorized user' do
-    scenario 'clicking topbar link' do
-      visit_200_page
-
-      expect(page).to have_selector '#cms-topbar .fa-sign-out'
-
-      within('#cms-topbar') do
-        click_link 'Logout'
-      end
-
-      expect(page).to have_content 'Signed out successfully.'
-      expect(current_path).to eq '/home'
+  scenario 'clicking topbar link' do
+    within('#cms-topbar') do
+      click_link site_user.name
+      click_link 'Logout'
     end
 
-    scenario 'clicking footer link' do
-      visit_200_page
+    expect(page).to have_content 'Signed out successfully.'
+  end
 
-      within('#cms-footer-links') do
-        click_link 'Logout'
-      end
-
-      expect(page).to have_content 'Signed out successfully.'
-      expect(current_path).to eq '/home'
+  scenario 'clicking footer link' do
+    within('#cms-footer-links') do
+      click_link 'Logout'
     end
+
+    expect(page).to have_content 'Signed out successfully.'
   end
 end

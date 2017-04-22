@@ -1,16 +1,17 @@
 require 'rails_helper'
 
-RSpec.feature 'Images index', js: true do
+RSpec.feature 'Images index' do
   let!(:image_b) { FactoryGirl.create(:image, name: 'Image B', site: site) }
   let!(:image_c) { FactoryGirl.create(:image, name: 'Image C', site: site) }
   let!(:image_a) { FactoryGirl.create(:image, name: 'Image A', site: site) }
 
-  before { FactoryGirl.create(:image) }
-
-  scenario 'with list of images' do
+  before do
+    FactoryGirl.create(:image)
     login_as site_user
     navigate_via_topbar menu: 'Site', title: 'Images', icon: 'picture-o'
+  end
 
+  scenario 'list of images' do
     links = all('#cms-article a')
     expect(links.size).to eq 3
 

@@ -1,9 +1,7 @@
-# TODO: refactor
-
 require 'rails_helper'
 
-RSpec.feature 'User timeout' do
-  let(:go_to_url) { '/user/edit' }
+RSpec.feature 'User timeout', js: false do
+  let(:restricted_page) { '/user/edit' }
 
   after { Timecop.return }
 
@@ -19,8 +17,8 @@ RSpec.feature 'User timeout' do
     context 'after less than 2 weeks' do
       before { Timecop.travel Time.zone.now + 13.days }
 
-      scenario 'displays the page' do
-        visit_200_page
+      scenario 'is logged in' do
+        visit_200_page restricted_page
       end
     end
 
@@ -28,7 +26,7 @@ RSpec.feature 'User timeout' do
       before { Timecop.travel Time.zone.now + 15.days }
 
       scenario 'displays 404' do
-        visit_404_page
+        visit_404_page restricted_page
       end
     end
   end
@@ -45,7 +43,7 @@ RSpec.feature 'User timeout' do
       before { Timecop.travel Time.zone.now + 29.minutes }
 
       scenario 'displays the page' do
-        visit_200_page
+        visit_200_page restricted_page
       end
     end
 
@@ -53,7 +51,7 @@ RSpec.feature 'User timeout' do
       before { Timecop.travel Time.zone.now + 31.minutes }
 
       scenario 'displays 404' do
-        visit_404_page
+        visit_404_page restricted_page
       end
     end
   end
