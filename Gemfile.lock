@@ -414,6 +414,7 @@ GEM
       activerecord (>= 4.2.1, < 5.1)
       schema_plus_columns
       valuable
+    scout_apm (2.1.24)
     scss_lint (0.53.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
@@ -550,6 +551,7 @@ DEPENDENCIES
   schema_associations
   schema_auto_foreign_keys
   schema_validations
+  scout_apm
   scss_lint
   secure_headers
   shoulda-matchers

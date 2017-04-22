@@ -54,8 +54,9 @@ gem 'puma' # Web server
 
 # Monitoring
 gem 'lograge' # Single line logging
-gem 'newrelic_rpm' # Performance monitoring
+gem 'newrelic_rpm' # Application monitoring
 gem 'rollbar' # Error notifications
+gem 'scout_apm' # Application monitoring
 
 group :assets, :development do
   gem 'autosize-rails' # JavaScript expanding textarea
