@@ -1,18 +1,16 @@
-# TODO: refactor
-
 require 'rails_helper'
 
-RSpec.feature 'User forgot password' do
-  scenario 'resetting password' do
+RSpec.feature 'User forgot password', js: false do
+  before do
     visit_200_page '/login'
     click_link 'Forgot your password?'
-
     expect(page).to have_content 'Forgot your password?'
-    expect(current_path).to eq '/user/password/new'
+  end
 
+  scenario 'resetting password' do
     fill_in 'Email', with: site_user.email
-
     click_button 'Send reset password instructions'
+
     expect(page).to have_content 'If your email address exists'
 
     email = last_email
@@ -21,6 +19,7 @@ RSpec.feature 'User forgot password' do
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
+    link.gsub!("http://#{site.host}", Capybara.app_host)
 
     visit_200_page link
 
@@ -50,8 +49,6 @@ RSpec.feature 'User forgot password' do
   end
 
   scenario 'non user' do
-    visit_200_page '/login'
-    click_link 'Forgot your password?'
     fill_in 'Email', with: new_email
     click_button 'Send reset password instructions'
 

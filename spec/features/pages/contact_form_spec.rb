@@ -37,15 +37,16 @@ RSpec.feature 'Page with contact form' do
     expect(email.html_part.body).to have_content new_message
   end
 
-  scenario 'with invalid data' do
+  scenario 'invalid data' do
+    fill_in 'Name', with: 'a'
     fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message
     click_button 'Send Message'
 
-    expect(page).to have_content 'is too short'
+    expect(page).to have_content 'Name is too short'
   end
 
-  scenario 'with do_not_fill_in' do
+  scenario 'filling in do_not_fill_in', js: false do
     fill_in 'Name', with: new_name
     fill_in 'Email', with: new_email
     fill_in 'Message', with: new_message

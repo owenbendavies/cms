@@ -1,23 +1,15 @@
-# TODO: refactor
-
 require 'rails_helper'
 
 RSpec.feature 'User locking' do
   scenario 'after 5 attempts then unlocking' do
     visit_200_page '/login'
 
-    4.times do
+    5.times do
       fill_in 'Email', with: site_user.email
       fill_in 'Password', with: new_password
       click_button 'Login'
       expect(page).to have_content 'Invalid Email or password.'
     end
-
-    fill_in 'Email', with: site_user.email
-    fill_in 'Password', with: new_password
-
-    click_button 'Login'
-    expect(page).to have_content 'Invalid Email or password.'
 
     email = last_email
     expect(email.to).to eq [site_user.email]
@@ -25,6 +17,7 @@ RSpec.feature 'User locking' do
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
+    link.gsub!("http://#{site.host}", Capybara.app_host)
 
     unchecked_visit link
 

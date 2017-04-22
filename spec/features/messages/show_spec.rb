@@ -1,21 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature 'Message show' do
-  let(:message) do
-    FactoryGirl.create(
-      :message,
-      site: site,
-      created_at: Time.zone.now - 1.month - 3.days,
-      updated_at: Time.zone.now - 1.month - 3.days
-    )
-  end
+  let(:date) { Time.zone.now - 1.month - 3.days }
+  let(:message) { FactoryGirl.create(:message, site: site, created_at: date, updated_at: date) }
 
-  scenario 'with a message', js: true do
+  before do
     login_as site_user
     visit_200_page "/site/messages/#{message.uuid}"
+  end
 
+  scenario 'message' do
     expect(page).to have_header('Message', 'envelope')
-
     expect(page).to have_content 'about a month ago'
     expect(page).to have_content message.name
     expect(page).to have_content message.email
