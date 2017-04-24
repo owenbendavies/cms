@@ -1,5 +1,7 @@
-- content_for :title, t('.title')
-- content_for :page_icon, t('.icon')
+:ruby
+  content_for :title, t('.title')
+  content_for :page_icon, t('.icon')
+  content_for :form_page, true
 
 = simple_form_for @site do |form|
   = form.input :name, autofocus: true
@@ -14,6 +16,5 @@
   = form.input :main_menu_in_footer
 
   .form-group
-    .col-control-offset
-      = form.button :submit
-      = link_to t('actions.cancel'), page_path('home'), class: 'btn'
+    = form.button :submit
+    = link_to t('actions.cancel'), page_path('home'), class: 'btn'

@@ -25,7 +25,10 @@
 
         = render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty?
 
-        = render "layouts/pages/#{@site.layout}", site: @site
+        - if content_for(:form_page)
+          = render 'layouts/pages/form', site: @site
+        - else
+          = render "layouts/pages/#{@site.layout}", site: @site
 
         = render 'layouts/footer_main_menu', site: @site if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
 
