@@ -1,4 +1,5 @@
-- content_for :title, t('.title', name: @page.name)
-- content_for :page_icon, t('.icon')
+:ruby
+  content_for :title, t('.title', name: @page.name)
+  content_for :page_icon, t('.icon')
 
 = render 'form', page: @page

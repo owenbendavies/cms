@@ -1,12 +1,16 @@
 = simple_form_for((message || Message.new), url: contact_form_page_path) do |form|
-  = form.input :name
-  = form.input :email
-  = form.input :phone
-  = form.input :message, as: :text, input_html: { rows: 4, class: 'autogrow' }
+  .row
+    .col-sm-4.col-sm-offset-2
+      = form.input :name
+      = form.input :email
+      = form.input :phone
 
-  .hidden
-    = form.input :do_not_fill_in
+  .row
+    .col-sm-8.col-sm-offset-2
+      = form.input :message, as: :text, input_html: { rows: 4, class: 'autogrow' }
 
-  .form-group
-    .col-control-offset
-      = form.button :submit, t('actions.send_message')
+      .hidden
+        = form.input :do_not_fill_in
+
+      .form-group
+        = form.button :submit, t('actions.send_message')

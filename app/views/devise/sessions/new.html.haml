@@ -1,4 +1,6 @@
-- content_for :title, t('.title')
+:ruby
+  content_for :title, t('.title')
+  content_for :form_page, true
 
 = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |form|
   = form.input :email, autofocus: true
@@ -6,8 +8,7 @@
   = form.input :remember_me, as: :boolean
 
   .form-group
-    .col-control-offset
-      = form.button :submit, value: t('.title')
+    = form.button :submit, value: t('.title')
 
 = link_to t('devise.passwords.new.title'), new_password_path(resource_name)
 
