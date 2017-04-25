@@ -36,9 +36,32 @@ RSpec.shared_examples 'site email' do
     expect(subject.body).to have_content site.name
   end
 
-  it 'has copyright in body' do
-    body = subject.body
-    expect(body).to have_content "#{site.copyright} © #{Time.zone.now.year}"
+  context 'site with copyright' do
+    before { site.update!(copyright: new_name) }
+
+    it 'has copyright in body' do
+      expect(subject.body).to have_content "#{new_name} © #{Time.zone.now.year}"
+    end
+  end
+
+  context 'site without copyright' do
+    it 'has site name copyright in body' do
+      expect(subject.body).to have_content "#{site.name} © #{Time.zone.now.year}"
+    end
+  end
+
+  context 'site with charity number' do
+    before { site.update!(charity_number: new_number) }
+
+    it 'has charity number in body' do
+      expect(subject.body).to have_content "Registered charity number #{new_number}"
+    end
+  end
+
+  context 'site with charity number' do
+    it 'does not have charity number in body' do
+      expect(subject.body).not_to have_content 'Registered charity'
+    end
   end
 end
 

@@ -193,9 +193,16 @@ RESPONSIVENESS
             <table>
               <tr>
                 <td align="center">
-                  <p><%= footer_copyright(@site) %></p>
+                  <p><%= "#{@site.copyright || @site.name} © #{Time.zone.now.year}" %></p>
                 </td>
               </tr>
+              <% if @site.charity_number %>
+                <tr>
+                  <td align="center">
+                    <p><%= t('layouts.footer.charity', number: @site.charity_number) %>
+                  </td>
+                </tr>
+              <% end %>
             </table>
           </div>
         </td>
