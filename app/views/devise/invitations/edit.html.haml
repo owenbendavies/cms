@@ -1,4 +1,6 @@
-- content_for :title, t('.title')
+:ruby
+  content_for :title, t('.title')
+  content_for :form_page, true
 
 = simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |form|
   = form.hidden_field :invitation_token
@@ -7,6 +9,5 @@
   = form.input :password_confirmation, required: true, input_html: { autocomplete: 'off' }
 
   .form-group
-    .col-control-offset
-      = form.button :submit, t('.title')
+    = form.button :submit, t('.title')
 

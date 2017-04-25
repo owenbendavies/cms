@@ -1,5 +1,7 @@
-- content_for :title, t('.title')
-- content_for :page_icon, t('.icon')
+:ruby
+  content_for :title, t('.title')
+  content_for :page_icon, t('.icon')
+  content_for :form_page, true
 
 = simple_form_for resource, as: resource, url: user_registration_path do |form|
   = form.input :current_password, autofocus: true, hint: t('.current_password_hint'), required: true, input_html: { autocomplete: 'off' }
@@ -12,10 +14,8 @@
   = form.input :email, required: true
 
   .form-group
-    .col-control-offset
-      = link_to(image_tag(current_user.gravatar_url(size: 150), alt: User.human_attribute_name(:profile_image), class: 'img-circle', size: '150x150'), 'https://www.gravatar.com')
+    = link_to(image_tag(current_user.gravatar_url(size: 150), alt: User.human_attribute_name(:profile_image), class: 'img-circle', size: '150x150'), 'https://www.gravatar.com')
 
   .form-group
-    .col-control-offset
-      = form.button :submit
-      = link_to t('actions.cancel'), page_path('home'), class: 'btn'
+    = form.button :submit
+    = link_to t('actions.cancel'), page_path('home'), class: 'btn'
