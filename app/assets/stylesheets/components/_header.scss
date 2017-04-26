@@ -5,7 +5,7 @@
 .header {
   @include make-row;
 
-  &__content {
+  &__container {
     @include make-sm-column(12);
 
     text-align: center;

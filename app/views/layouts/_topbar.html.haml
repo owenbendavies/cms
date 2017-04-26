@@ -1,93 +1,94 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#cms-topbar-collapse' }
-        %span.sr-only= t('.toggle_button')
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+%nav.topbar#cms-topbar
+  .navbar.navbar-inverse.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-topbar-collapse' }
+          %span.sr-only= t('.toggle_button')
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
 
-      = link_to site.name, root_path, class: 'navbar-brand'
+        = link_to site.name, root_path, class: 'navbar-brand'
 
-    .collapse.navbar-collapse#cms-topbar-collapse
-      %ul.nav.navbar-nav.navbar-right
-        - if policy(site).update?
+      .collapse.navbar-collapse#js-topbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          - if policy(site).update?
+            %li.dropdown
+              %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
+                = Page.model_name.human
+                %b.caret
+              %ul.dropdown-menu
+                - if page&.persisted?
+                  %li
+                    = link_to edit_page_path(page.to_param) do
+                      = icon_tag t('pages.edit.icon')
+                      = t('actions.edit')
+
+                  %li
+                    = link_to icon_tag(t('pages.delete.icon')) + ' ' + t('actions.delete'),
+                              page_path(page.to_param),
+                              method: :delete,
+                              data: { confirm: t('pages.delete.text', name: page.name) }
+
+                %li
+                  = link_to new_page_path do
+                    = icon_tag(t('pages.new.icon'))
+                    = t('pages.new.title')
+
+          - if policy(site).update?
+            %li.dropdown
+              %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
+                = Site.model_name.human
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to site_messages_path do
+                    = icon_tag(t('messages.index.icon'))
+                    = t('messages.index.title')
+
+                %li
+                  = link_to site_images_path do
+                    = icon_tag(t('images.index.icon'))
+                    = t('images.index.title')
+
+                %li
+                  = link_to edit_site_path do
+                    = icon_tag(t('sites.edit.icon'))
+                    = t('sites.edit.title')
+
+                %li
+                  = link_to site_users_path do
+                    = icon_tag(t('users.index.icon'))
+                    = t('users.index.title')
+
+                - if policy(site).css?
+                  %li
+                    = link_to css_site_path do
+                      = icon_tag(t('sites.css.icon'))
+                      = t('sites.css.title')
+
+                %li
+                  = link_to sitemap_path do
+                    = icon_tag(t('pages.index.icon'))
+                    = t('pages.index.title')
+
           %li.dropdown
             %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
-              = Page.model_name.human
-              %b.caret
-            %ul.dropdown-menu
-              - if page&.persisted?
-                %li
-                  = link_to edit_page_path(page.to_param) do
-                    = icon_tag t('pages.edit.icon')
-                    = t('actions.edit')
-
-                %li
-                  = link_to icon_tag(t('pages.delete.icon')) + ' ' + t('actions.delete'),
-                            page_path(page.to_param),
-                            method: :delete,
-                            data: { confirm: t('pages.delete.text', name: page.name) }
-
-              %li
-                = link_to new_page_path do
-                  = icon_tag(t('pages.new.icon'))
-                  = t('pages.new.title')
-
-        - if policy(site).update?
-          %li.dropdown
-            %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
-              = Site.model_name.human
+              = current_user.name
               %b.caret
             %ul.dropdown-menu
               %li
-                = link_to site_messages_path do
-                  = icon_tag(t('messages.index.icon'))
-                  = t('messages.index.title')
+                = link_to edit_user_registration_path do
+                  = icon_tag(t('devise.registrations.edit.icon'))
+                  = t('devise.registrations.edit.title')
 
               %li
-                = link_to site_images_path do
-                  = icon_tag(t('images.index.icon'))
-                  = t('images.index.title')
-
+                = link_to user_sites_path do
+                  = icon_tag(t('sites.index.icon'))
+                  = t('sites.index.title')
               %li
-                = link_to edit_site_path do
-                  = icon_tag(t('sites.edit.icon'))
-                  = t('sites.edit.title')
+                = link_to destroy_user_session_path do
+                  = icon_tag(t('devise.sessions.destroy.icon'))
+                  = t('devise.sessions.destroy.title')
 
-              %li
-                = link_to site_users_path do
-                  = icon_tag(t('users.index.icon'))
-                  = t('users.index.title')
-
-              - if policy(site).css?
-                %li
-                  = link_to css_site_path do
-                    = icon_tag(t('sites.css.icon'))
-                    = t('sites.css.title')
-
-              %li
-                = link_to sitemap_path do
-                  = icon_tag(t('pages.index.icon'))
-                  = t('pages.index.title')
-
-        %li.dropdown
-          %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
-            = current_user.name
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              = link_to edit_user_registration_path do
-                = icon_tag(t('devise.registrations.edit.icon'))
-                = t('devise.registrations.edit.title')
-
-            %li
-              = link_to user_sites_path do
-                = icon_tag(t('sites.index.icon'))
-                = t('sites.index.title')
-            %li
-              = link_to destroy_user_session_path do
-                = icon_tag(t('devise.sessions.destroy.icon'))
-                = t('devise.sessions.destroy.title')
-
-        %li.avatar= image_tag(current_user.gravatar_url, alt: User.human_attribute_name(:profile_image), class: 'profile_image img-circle')
+          %li.topbar__avatar= image_tag(current_user.gravatar_url, alt: User.human_attribute_name(:profile_image), class: 'topbar__profile-image')

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Site header' do
-  let(:header) { '#cms-header' }
-  let(:navbar_brand) { '#cms-main-menu .navbar-brand' }
-  let(:right_navbar) { '#cms-main-menu .nav.navbar-right' }
+  let(:header) { '.header' }
+  let(:navbar_brand) { '.main-menu .navbar-brand' }
+  let(:right_navbar) { '.main-menu .nav.navbar-right' }
 
   before do
     home_page.insert_at(1)

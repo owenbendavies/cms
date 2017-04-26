@@ -7,7 +7,7 @@ RSpec.feature 'User logout' do
   end
 
   scenario 'clicking topbar link' do
-    within('#cms-topbar') do
+    within('.topbar') do
       click_link site_user.name
       click_link 'Logout'
     end
@@ -16,7 +16,7 @@ RSpec.feature 'User logout' do
   end
 
   scenario 'clicking footer link' do
-    within('#cms-footer-links') do
+    within('.footer') do
       click_link 'Logout'
     end
 

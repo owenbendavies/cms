@@ -14,7 +14,7 @@ RSpec.feature 'Site layouts' do
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_selector '#cms-article.col-sm-12'
+    expect(page).to have_selector '.article.col-sm-12'
   end
 
   scenario 'right_sidebar' do
@@ -24,8 +24,8 @@ RSpec.feature 'Site layouts' do
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_selector '#cms-article.col-sm-8'
-    expect(page).to have_selector '#cms-sidebar.col-sm-4 h1'
+    expect(page).to have_selector '.article.col-sm-8'
+    expect(page).to have_selector '.sidebar.col-sm-4 h1'
   end
 
   scenario 'small_right_sidebar' do
@@ -35,7 +35,7 @@ RSpec.feature 'Site layouts' do
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_selector '#cms-article.col-sm-9'
-    expect(page).to have_selector '#cms-sidebar.col-sm-3 h1'
+    expect(page).to have_selector '.article.col-sm-9'
+    expect(page).to have_selector '.sidebar.col-sm-3 h1'
   end
 end
