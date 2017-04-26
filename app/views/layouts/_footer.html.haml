@@ -17,7 +17,11 @@
             = timeago_tag(page.updated_at, force: true)
 
       %li#cms-copyright
-        %small= footer_copyright(site)
+        %small #{site.copyright || site.name} © #{Time.zone.now.year}
+
+      - if site.charity_number
+        %li#cms-charity
+          %small= t('.charity', number: site.charity_number)
 
       %li
         %ul.list-inline#cms-footer-links

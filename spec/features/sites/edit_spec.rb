@@ -47,11 +47,13 @@ RSpec.feature 'Edit the site' do
   end
 
   scenario 'adding a copyright' do
+    expect(page).to have_content "#{site.name} © #{Time.zone.now.year}"
+
     fill_in 'Copyright', with: " #{new_name} "
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_content "#{site.copyright} © #{Time.zone.now.year}"
+    expect(page).to have_content "#{new_name} © #{Time.zone.now.year}"
 
     navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
 
