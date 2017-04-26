@@ -83,7 +83,7 @@ RSpec.feature 'Editing a user' do
 
     expect(page).to have_content 'Your email address has been successfully confirmed.'
 
-    within '#cms-topbar' do
+    within '.topbar' do
       image = find('img')
       expect(image['src']).to eq site_user.reload.gravatar_url
       expect(image['alt']).to eq 'Profile Image'

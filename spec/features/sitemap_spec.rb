@@ -8,7 +8,7 @@ RSpec.feature 'Sitemap' do
     scenario 'not logged in' do
       visit_200_page '/home'
 
-      within('#cms-footer-links') do
+      within('footer') do
         click_link 'Sitemap'
       end
 
@@ -23,14 +23,14 @@ RSpec.feature 'Sitemap' do
 
       hidden_index = site.pages.ordered.find_index(hidden_page) + 1
 
-      find("ul#cms-sitemap li:nth-child(#{hidden_index})").tap do |item|
+      find(".sitemap li:nth-child(#{hidden_index})").tap do |item|
         expect(item).to have_link hidden_page.name, href: "/#{hidden_page.url}"
         expect(item).to have_selector '.fa-eye-slash'
       end
 
       private_index = site.pages.ordered.find_index(private_page) + 1
 
-      find("ul#cms-sitemap li:nth-child(#{private_index})").tap do |item|
+      find(".sitemap li:nth-child(#{private_index})").tap do |item|
         expect(item).to have_link private_page.name, href: "/#{private_page.url}"
         expect(item).to have_selector '.fa-lock'
       end

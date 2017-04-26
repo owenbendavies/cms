@@ -1,0 +1,15 @@
+@media print {
+  @include responsive-invisibility('.topbar');
+}
+
+.topbar {
+  &__avatar {
+    padding: 5px;
+  }
+
+  &__profile-image {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
+}

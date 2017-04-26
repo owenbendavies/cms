@@ -1,0 +1,21 @@
+.image {
+  &--center,
+  &--left,
+  &--right {
+    @include img-responsive;
+    @include center-block;
+    @include clearfix;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    &--left {
+      float: left;
+      margin: 0 20px 20px 0;
+    }
+
+    &--right {
+      float: right;
+      margin: 0 0 20px 20px;
+    }
+  }
+}

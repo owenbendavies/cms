@@ -1,9 +1,9 @@
-.footer#cms-footer
-  %footer.col-sm-12.text-center
+%footer.footer#cms-footer
+  .footer__container
     %ul.footer__menu
       - unless site.footer_links.empty?
         %li
-          %ul.list-inline#cms-site-footer-links
+          %ul.footer__site-links.list-inline#cms-site-footer-links
             - site.footer_links.each do |link|
               %li
                 = link_to link.url do
@@ -11,26 +11,20 @@
                   %span= link.name
 
       - if page&.persisted?
-        %li#cms-last-update
-          %small
-            = t('.last_updated')
-            = timeago_tag(page.updated_at, force: true)
+        %li.footer__last-updated#cms-last-update
+          = t('.last_updated')
+          = timeago_tag(page.updated_at, force: true)
 
-      %li#cms-copyright
-        %small #{site.copyright || site.name} © #{Time.zone.now.year}
+      %li.footer__copyright#cms-copyright #{site.copyright || site.name} © #{Time.zone.now.year}
 
       - if site.charity_number
-        %li#cms-charity
-          %small= t('.charity', number: site.charity_number)
+        %li.footer__charity#cms-charity= t('.charity', number: site.charity_number)
 
       %li
-        %ul.list-inline#cms-footer-links
-          %li
-            %small= link_to t('pages.index.title'), sitemap_path
+        %ul.footer__links.list-inline#cms-footer-links
+          %li= link_to t('pages.index.title'), sitemap_path
 
           - if user_signed_in?
-            %li
-              %small= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
+            %li= link_to t('devise.sessions.destroy.title'), destroy_user_session_path
           - else
-            %li
-              %small= link_to t('devise.sessions.new.title'), new_user_session_path
+            %li= link_to t('devise.sessions.new.title'), new_user_session_path

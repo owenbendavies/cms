@@ -1,0 +1,15 @@
+.main {
+  @include make-row;
+
+  h1,
+  h2 {
+    border-bottom: 1px solid $page-header-border-color;
+    padding-bottom: (($line-height-computed / 2) - 1);
+  }
+
+  h1,
+  h2,
+  h3 {
+    @include clearfix;
+  }
+}

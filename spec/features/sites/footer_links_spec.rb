@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Footer links' do
-  let(:css_selector) { 'footer #cms-site-footer-links' }
+  let(:css_selector) { '.footer__site-links' }
 
   scenario 'site with footer links' do
     link1 = FactoryGirl.create(:footer_link, site: site)
@@ -9,10 +9,8 @@ RSpec.feature 'Footer links' do
 
     visit_200_page '/home'
 
-    expect(page).to have_selector css_selector
-    expect(page).to have_link link1.name, href: link1.url
-
     within css_selector do
+      expect(page).to have_link link1.name, href: link1.url
       expect(page).to have_selector '.fa-facebook-official'
     end
   end

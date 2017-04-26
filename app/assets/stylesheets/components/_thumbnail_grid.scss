@@ -1,0 +1,12 @@
+.thumbnail-grid {
+  @include make-row;
+
+  &__container {
+    @include make-xs-column(6);
+    @include make-md-column(3);
+  }
+
+  &__name {
+    text-align: center;
+  }
+}

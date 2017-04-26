@@ -5,10 +5,23 @@
 .footer {
   @include make-row;
 
+  &__container {
+    @include make-sm-column(12);
+
+    text-align: center;
+  }
+
   &__menu {
     @include list-unstyled;
 
     line-height: 16px;
     margin-top: 11px;
+  }
+
+  &__last-updated,
+  &__copyright,
+  &__charity,
+  &__links {
+    font-size: 80%;
   }
 }
