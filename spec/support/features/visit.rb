@@ -1,6 +1,6 @@
 RSpec.shared_context 'visit' do
   def click_topbar_link(menu:, title:, icon:)
-    within '#cms-topbar' do
+    within '.topbar' do
       expect(page).not_to have_link title
       click_link menu
       expect(page).to have_selector ".fa-#{icon}"

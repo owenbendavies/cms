@@ -3,6 +3,16 @@ module ApplicationHelper
     'cms-page' + path.tr('/', '-').gsub('-edit', '')
   end
 
+  def body_class
+    page_class = 'page' + request.path.tr('/', '-')
+
+    classes = [page_class]
+    classes << page_class.gsub(/-edit$/, '')
+    classes += ['cms-loggedin', 'loggedin'] if user_signed_in?
+
+    classes.sort.uniq.join(' ')
+  end
+
   def page_title(site, content)
     title = [site.name]
 

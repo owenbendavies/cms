@@ -12,7 +12,7 @@ RSpec.feature 'Images index' do
   end
 
   scenario 'list of images' do
-    links = all('#cms-article a')
+    links = all('article a')
     expect(links.size).to eq 3
 
     expect(links[0]['href']).to eq image_a.file.url

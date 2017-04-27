@@ -2,7 +2,7 @@
   content_for :title, t('.title')
   content_for :page_icon, t('.icon')
 
-%ul.list-unstyled#cms-sitemap
+%ul.sitemap#cms-sitemap
   - @pages.each do |page|
     %li
       = link_to(page.name, page_path(page.to_param))
