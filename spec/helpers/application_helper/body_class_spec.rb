@@ -29,7 +29,7 @@ RSpec.describe ApplicationHelper, '#body_class' do
 
     it 'includes logged in' do
       controller.request.path = '/home'
-      expect(helper.body_class).to eq 'cms-loggedin loggedin page-home'
+      expect(helper.body_class).to eq 'loggedin page-home'
     end
   end
 end

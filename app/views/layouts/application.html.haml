@@ -13,11 +13,11 @@
     = render 'layouts/google_analytics', site: @site if @site.google_analytics
     = csrf_meta_tag
 
-  %body{ id: body_id(request.path), class: body_class }
+  %body{ class: body_class }
     = render 'layouts/topbar', site: @site, page: @page if user_signed_in?
 
-    .wrapper#cms-wrapper
-      .page.container#cms-page
+    .wrapper
+      .page.container
         = render 'layouts/header', site: @site if @site.separate_header
 
         = render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty?
