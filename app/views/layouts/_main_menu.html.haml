@@ -1,8 +1,8 @@
-.main-menu#cms-main-menu
-  %nav.navbar.navbar-default
+%nav.main-menu#cms-main-menu
+  .navbar.navbar-default
     .container
       .navbar-header
-        %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#cms-main-menu-collapse' }
+        %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-main-menu-collapse' }
           %span.sr-only= t('.toggle_button')
           %span.icon-bar
           %span.icon-bar
@@ -11,7 +11,7 @@
         - unless site.separate_header
           = link_to site.name, page_path('home'), class: 'navbar-brand'
 
-      .collapse.navbar-collapse#cms-main-menu-collapse
+      .collapse.navbar-collapse#js-main-menu-collapse
         - nav_class = 'navbar-right' unless site.separate_header
         %ul.nav.navbar-nav{ class: nav_class }
           - site.main_menu_pages.each do |page|

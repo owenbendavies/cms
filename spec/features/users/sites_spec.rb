@@ -8,7 +8,7 @@ RSpec.feature 'User sites' do
   end
 
   scenario 'list of sites' do
-    links = all('#cms-article a')
+    links = all('.article a')
     expect(links.size).to eq 1
 
     expect(links[0].text).to eq 'localhost'
@@ -19,7 +19,7 @@ RSpec.feature 'User sites' do
     let(:environment_variables) { { DISABLE_SSL: nil } }
 
     scenario 'list of sites with https' do
-      links = all('#cms-article a')
+      links = all('.article a')
       expect(links[0]['href']).to eq 'https://localhost'
     end
   end

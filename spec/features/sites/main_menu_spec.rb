@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Site main menu' do
-  let(:main_menu) { '#cms-main-menu' }
-  let(:footer_main_menu) { '#cms-footer-main-menu' }
+  let(:main_menu) { '.main-menu' }
+  let(:footer_main_menu) { '.footer-main-menu' }
 
   context 'with main menu' do
     let(:test_page) { FactoryGirl.create(:page, name: 'Test Page', site: site) }

@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Topbar' do
-  let(:topbar_selector) { '#cms-topbar' }
-  let(:body_class) { '.cms-loggedin' }
+  let(:topbar_selector) { '.topbar' }
 
   scenario 'no user' do
     visit_200_page '/home'
 
     expect(page).to have_no_selector topbar_selector
-    expect(page).to have_no_selector body_class
   end
 
   context 'when logged in' do

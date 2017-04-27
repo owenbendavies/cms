@@ -7,7 +7,7 @@
   = form.input :hidden
   = form.input :private
 
-  .tinymce.form-control{ id: 'page[html_content]' }
+  .editor.js-editor.form-control{ id: 'page[html_content]' }
     = form.object.html_content.to_s.html_safe
 
   = form.input :contact_form

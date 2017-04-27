@@ -1,6 +1,6 @@
-.header#cms-header
-  %header.header__content
-    %h1#cms-site-name
+%header.header#cms-header
+  .header__container
+    %h1.header__site-name#cms-site-name
       = link_to site.name, page_path('home'), class: 'header__site-name-link'
 
     - if site.sub_title

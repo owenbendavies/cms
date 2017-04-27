@@ -2,9 +2,9 @@
   content_for :title, t('.title')
   content_for :page_icon, t('.icon')
 
-.row
+.thumbnail-grid
   - @images.each do |image|
-    .col-xs-6.col-md-3
+    .thumbnail-grid__container
       = link_to(image.file.url, target: '_blank', class: 'thumbnail') do
         = image_tag(image.file.span3.url, alt: image.name)
-        %h5.text-center= image.name
+        %h5.thumbnail-grid__name= image.name

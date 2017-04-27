@@ -3,7 +3,7 @@
   content_for :page_icon, t('.icon')
 
 = simple_form_for @site do |form|
-  %pre.css= form.text_area :css, class: 'col-sm-12 autogrow', autofocus: true
+  %pre.css= form.text_area :css, class: 'col-sm-12 js-autogrow', autofocus: true
 
   .form-group
     = form.button :submit

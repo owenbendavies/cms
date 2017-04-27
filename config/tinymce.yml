@@ -8,5 +8,5 @@ plugins:
   - autolink
   - link
   - paste
-selector: 'div.tinymce'
+selector: '.editor'
 toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link'

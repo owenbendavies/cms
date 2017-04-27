@@ -6,7 +6,7 @@ RSpec.feature 'Inviting a user' do
     navigate_via_topbar menu: 'Site', title: 'Users', icon: 'group'
     click_link 'Add User'
 
-    within '#cms-article-header' do
+    within '.article__header' do
       expect(page).to have_content 'Add User'
       expect(page).to have_selector '.fa-user-plus'
     end
