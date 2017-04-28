@@ -1,14 +1,10 @@
 module ApplicationHelper
-  def body_id(path)
-    'cms-page' + path.tr('/', '-').gsub('-edit', '')
-  end
-
   def body_class
     page_class = 'page' + request.path.tr('/', '-')
 
     classes = [page_class]
     classes << page_class.gsub(/-edit$/, '')
-    classes += ['cms-loggedin', 'loggedin'] if user_signed_in?
+    classes << 'loggedin' if user_signed_in?
 
     classes.sort.uniq.join(' ')
   end

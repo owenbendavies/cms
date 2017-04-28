@@ -8,7 +8,7 @@ RSpec.feature 'Page show' do
 
     visit_200_page '/home'
 
-    expect(page).to have_selector 'body.page-home#cms-page-home'
+    expect(page).to have_selector 'body.page-home'
 
     within 'article' do
       expect(page).to have_content 'Home'
