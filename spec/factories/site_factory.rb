@@ -6,7 +6,6 @@
 #  host                 :string(64)       not null
 #  name                 :string(64)       not null
 #  sub_title            :string(64)
-#  layout               :string(32)       default("one_column"), not null
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)

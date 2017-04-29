@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123211602) do
+ActiveRecord::Schema.define(version: 20170429060410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20170123211602) do
     t.string   "host",                 :limit=>64, :null=>false, :index=>{:name=>"index_sites_on_host", :unique=>true, :using=>:btree}
     t.string   "name",                 :limit=>64, :null=>false
     t.string   "sub_title",            :limit=>64
-    t.string   "layout",               :limit=>32, :default=>"one_column", :null=>false
     t.string   "copyright",            :limit=>64
     t.string   "google_analytics",     :limit=>32
     t.string   "charity_number",       :limit=>32
