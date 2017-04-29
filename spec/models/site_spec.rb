@@ -6,7 +6,6 @@
 #  host                 :string(64)       not null
 #  name                 :string(64)       not null
 #  sub_title            :string(64)
-#  layout               :string(32)       default("one_column"), not null
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
@@ -122,8 +121,6 @@ RSpec.describe Site do
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
 
     it { is_expected.to validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
-
-    it { is_expected.to allow_value('one_column').for(:layout) }
 
     it { is_expected.to allow_value('').for(:google_analytics) }
     it { is_expected.to allow_value('UA-1234-1').for(:google_analytics) }

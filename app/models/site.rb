@@ -6,7 +6,6 @@
 #  host                 :string(64)       not null
 #  name                 :string(64)       not null
 #  sub_title            :string(64)
-#  layout               :string(32)       default("one_column"), not null
 #  copyright            :string(64)
 #  google_analytics     :string(32)
 #  charity_number       :string(32)
@@ -24,8 +23,6 @@
 #
 
 class Site < ApplicationRecord
-  LAYOUTS = %w[one_column right_sidebar small_right_sidebar].freeze
-
   has_many :users, through: :settings
   has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: Page
 
@@ -39,7 +36,6 @@ class Site < ApplicationRecord
 
   validates :name, length: { minimum: 3 }
   validates :sub_title, length: { allow_nil: true, minimum: 3 }
-  validates :layout, inclusion: { in: LAYOUTS }
   validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
 
   def address
