@@ -1,6 +1,6 @@
 module ApplicationHelper
   def body_class
-    page_class = 'page' + request.path.tr('/', '-')
+    page_class = "page#{request.path.tr('/', '-')}"
 
     classes = [page_class]
     classes << page_class.gsub(/-edit$/, '')
