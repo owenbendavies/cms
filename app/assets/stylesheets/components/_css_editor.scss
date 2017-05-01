@@ -1,0 +1,7 @@
+.css-editor {
+  padding: 0;
+
+  &__input {
+    @include make-sm-column(12);
+  }
+}
