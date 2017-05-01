@@ -4,7 +4,7 @@ class ValidateDataJob < ApplicationJob
   def perform
     models.each do |model|
       model.find_each.reject(&:valid?).each do |record|
-        error("#{model}##{record.id}: " + record.errors.full_messages.join(', '))
+        error("#{model}##{record.id}: #{record.errors.full_messages.join(', ')}")
       end
     end
   end
