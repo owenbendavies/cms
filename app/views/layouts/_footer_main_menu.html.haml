@@ -1,8 +1,8 @@
 %nav.footer-main-menu
-  .navbar.navbar-default
+  .footer-main-menu__bar.navbar.navbar-default
     .container
-      %ul.nav.navbar-nav
+      %ul.footer-main-menu__links.nav.navbar-nav
         - site.main_menu_pages.each do |page|
-          %li
-            = link_to page_path(page.to_param), class: 'cms-page-link-' + page.to_param do
-              %span= page.name
+          %li.footer-main-menu__link-item
+            = link_to page_path(page.to_param), class: 'footer-main-menu__link cms-page-link-' + page.to_param do
+              %span.footer-main-menu__link-text= page.name
