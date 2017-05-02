@@ -2,13 +2,13 @@
   .footer__container
     %ul.footer__menu
       - unless site.footer_links.empty?
-        %li
+        %li.footer__site-links-item
           %ul.footer__site-links.list-inline
             - site.footer_links.each do |link|
-              %li
-                = link_to link.url do
+              %li.footer__site-link-item
+                = link_to link.url, class: 'footer__site-link' do
                   = icon_tag(link.icon) if link.icon
-                  %span= link.name
+                  %span.footer__site-link-text= link.name
 
       - if page&.persisted?
         %li.footer__last-updated
@@ -20,7 +20,7 @@
       - if site.charity_number
         %li.footer__charity= t('.charity', number: site.charity_number)
 
-      %li
+      %li.footer__links-item
         %ul.footer__links.list-inline
           %li= link_to t('pages.index.title'), sitemap_path
 
