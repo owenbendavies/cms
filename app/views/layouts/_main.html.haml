@@ -1,0 +1,17 @@
+%main.main
+  - if content_for(:form_page)
+    %article.article.col-sm-12
+      .row
+        .col-sm-6.col-sm-offset-3
+          .well
+            = render 'layouts/main_article'
+
+  - elsif site.sidebar_html_content?
+    %article.article.col-sm-9
+      = render 'layouts/main_article'
+    %aside.sidebar.col-sm-3.hidden-print
+      = site.sidebar_html_content.to_s.html_safe
+
+  - else
+    %article.article.col-sm-12
+      = render 'layouts/main_article'

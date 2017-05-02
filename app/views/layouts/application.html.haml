@@ -19,14 +19,7 @@
     .wrapper
       .page.container
         = render 'layouts/header', site: @site if @site.separate_header
-
         = render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty?
-
-        - if content_for(:form_page)
-          = render 'layouts/pages/form', site: @site
-        - else
-          = render "layouts/pages/#{@site.layout}", site: @site
-
+        = render 'layouts/main', site: @site
         = render 'layouts/footer_main_menu', site: @site if @site.main_menu_in_footer && !@site.main_menu_pages.empty?
-
         = render 'layouts/footer', site: @site, page: @page
