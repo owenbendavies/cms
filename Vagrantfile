@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder '.', '/vagrant', nfs: true
 
   config.vm.provider :virtualbox do |virtualbox|
-    virtualbox.memory = 1024
+    virtualbox.memory = 1536
 
     virtualbox.customize [
       'guestproperty',
