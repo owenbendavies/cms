@@ -1,3 +1,32 @@
 .main-menu {
   @include make-row;
+
+  &__bar {
+    @extend .navbar;
+    @extend .navbar-default;
+  }
+
+  &__container {
+    @extend .container;
+  }
+
+  &__header {
+    @extend .navbar-header;
+  }
+
+  &__button {
+    @extend .navbar-toggle;
+  }
+
+  &__site-name {
+    @extend .navbar-brand;
+  }
+
+  &__collapse {
+    @extend .navbar-collapse;
+  }
+
+  &__links {
+    @extend .nav;
+  }
 }

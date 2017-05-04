@@ -1,5 +1,8 @@
 scss_files: 'app/assets/stylesheets/**/*.scss'
 
 linters:
+  PlaceholderInExtend:
+    enabled: false
+
   SelectorFormat:
     convention: strict_BEM

@@ -1,17 +1,17 @@
 %nav.topbar
-  .navbar.navbar-inverse.navbar-fixed-top
-    .container-fluid
-      .navbar-header
-        %button.navbar-toggle.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-topbar-collapse' }
+  .topbar__bar
+    .topbar__container
+      .topbar__header
+        %button.topbar__button.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-topbar-collapse' }
           %span.sr-only= t('.toggle_button')
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
 
-        = link_to site.name, root_path, class: 'navbar-brand'
+        = link_to site.name, root_path, class: 'topbar__site-name'
 
-      .collapse.navbar-collapse#js-topbar-collapse
-        %ul.nav.navbar-nav.navbar-right
+      .topbar__collapse.collapse#js-topbar-collapse
+        %ul.topbar__links.navbar-nav
           - if policy(site).update?
             %li.dropdown
               %a.dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }

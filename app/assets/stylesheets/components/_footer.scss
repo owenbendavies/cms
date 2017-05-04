@@ -18,6 +18,11 @@
     margin-top: 11px;
   }
 
+  &__links,
+  &__site-links {
+    @extend .list-inline;
+  }
+
   &__last-updated,
   &__copyright,
   &__charity,

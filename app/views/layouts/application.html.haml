@@ -16,8 +16,8 @@
   %body{ class: body_class }
     = render 'layouts/topbar', site: @site, page: @page if user_signed_in?
 
-    .wrapper
-      .page.container
+    .page
+      .page__container
         = render 'layouts/header', site: @site if @site.separate_header
         = render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty?
         = render 'layouts/main', site: @site

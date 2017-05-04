@@ -3,6 +3,37 @@
 }
 
 .topbar {
+  &__bar {
+    @extend .navbar;
+    @extend .navbar-inverse;
+    @extend .navbar-fixed-top;
+  }
+
+  &__container {
+    @extend .container-fluid;
+  }
+
+  &__header {
+    @extend .navbar-header;
+  }
+
+  &__button {
+    @extend .navbar-toggle;
+  }
+
+  &__site-name {
+    @extend .navbar-brand;
+  }
+
+  &__collapse {
+    @extend .navbar-collapse;
+  }
+
+  &__links {
+    @extend .nav;
+    @extend .navbar-right;
+  }
+
   &__avatar {
     padding: 5px;
   }

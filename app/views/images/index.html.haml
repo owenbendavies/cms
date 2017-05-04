@@ -5,6 +5,6 @@
 .thumbnail-grid
   - @images.each do |image|
     .thumbnail-grid__container
-      = link_to(image.file.url, target: '_blank', class: 'thumbnail') do
+      = link_to(image.file.url, target: '_blank', class: 'thumbnail-grid__link') do
         = image_tag(image.file.span3.url, alt: image.name)
         %h5.thumbnail-grid__name= image.name
