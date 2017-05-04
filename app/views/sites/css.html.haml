@@ -5,6 +5,6 @@
 = simple_form_for @site do |form|
   %pre.css-editor= form.text_area :css, class: 'css-editor__input js-autogrow', autofocus: true
 
-  .form-group
+  .form__buttons
     = form.button :submit
     = link_to t('actions.cancel'), page_path('home'), class: 'btn'

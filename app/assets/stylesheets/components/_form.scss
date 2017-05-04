@@ -1,0 +1,11 @@
+.form {
+  &__buttons {
+    @extend .form-group;
+  }
+
+  &__button {
+    &--cancel {
+      @extend .btn;
+    }
+  }
+}

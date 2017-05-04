@@ -2,4 +2,8 @@
   background: $body-bg;
   min-height: 200px;
   padding-top: 15px;
+
+  &__header-links {
+    @extend .pull-right;
+  }
 }
