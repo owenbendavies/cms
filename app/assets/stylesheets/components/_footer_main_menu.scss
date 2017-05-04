@@ -1,3 +1,17 @@
 .footer-main-menu {
   @include make-row;
+
+  &__bar {
+    @extend .navbar;
+    @extend .navbar-default;
+  }
+
+  &__container {
+    @extend .container;
+  }
+
+  &__links {
+    @extend .nav;
+    @extend .navbar-nav;
+  }
 }

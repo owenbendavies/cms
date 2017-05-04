@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Site header' do
   let(:header) { '.header' }
-  let(:navbar_brand) { '.main-menu .navbar-brand' }
-  let(:right_navbar) { '.main-menu .nav.navbar-right' }
+  let(:main_menu_site_name) { '.main-menu__site-name' }
+  let(:main_menu_right_links) { '.main-menu__links.navbar-right' }
 
   before do
     home_page.insert_at(1)
@@ -14,8 +14,8 @@ RSpec.feature 'Site header' do
   scenario 'removing separate header' do
     expect(find_field('Separate header')).to be_checked
     expect(page).to have_selector header
-    expect(page).not_to have_selector navbar_brand
-    expect(page).not_to have_selector right_navbar
+    expect(page).not_to have_selector main_menu_site_name
+    expect(page).not_to have_selector main_menu_right_links
 
     uncheck 'Separate header'
     click_button 'Update Site'
@@ -26,7 +26,7 @@ RSpec.feature 'Site header' do
 
     expect(find_field('Separate header')).not_to be_checked
     expect(page).not_to have_selector header
-    expect(page).to have_selector navbar_brand
-    expect(page).to have_selector right_navbar
+    expect(page).to have_selector main_menu_site_name
+    expect(page).to have_selector main_menu_right_links
   end
 end

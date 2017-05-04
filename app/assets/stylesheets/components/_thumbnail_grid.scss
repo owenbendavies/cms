@@ -6,6 +6,10 @@
     @include make-md-column(3);
   }
 
+  &__link {
+    @extend .thumbnail;
+  }
+
   &__name {
     text-align: center;
   }
