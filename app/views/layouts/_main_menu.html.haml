@@ -9,7 +9,7 @@
           %span.icon-bar
 
         - unless site.separate_header
-          = link_to site.name, page_path('home'), class: 'main_menu__site-name navbar-brand'
+          = link_to site.name, page_path('home'), class: 'main-menu__site-name navbar-brand'
 
       .collapse.navbar-collapse#js-main-menu-collapse
         - nav_class = 'navbar-right' unless site.separate_header
