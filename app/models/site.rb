@@ -24,13 +24,18 @@
 
 class Site < ApplicationRecord
   has_many :users, through: :settings
-  has_many :main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: Page
+
+  has_many(
+    :main_menu_pages,
+    -> { in_list.order(:main_menu_position) },
+    class_name: Page
+  )
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
   schema_validations
 
-  scope :ordered, -> { order(:host) }
+  scope(:ordered, -> { order(:host) })
 
   strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
 

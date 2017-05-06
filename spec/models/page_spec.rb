@@ -30,57 +30,30 @@ require 'rails_helper'
 
 RSpec.describe Page do
   describe 'acts_as_list' do
+    let(:site1) { FactoryGirl.create(:site) }
+    let(:site2) { FactoryGirl.create(:site) }
+
     it 'is not added to list by default' do
       expect(FactoryGirl.create(:page)).not_to be_in_list
     end
 
-    context 'with multiple sites' do
-      let(:site1) { FactoryGirl.create(:site) }
-      let(:site2) { FactoryGirl.create(:site) }
+    it 'is scoped by site' do
+      page1 = FactoryGirl.create(:page, site: site1)
+      page2 = FactoryGirl.create(:page, site: site2)
+      page1.insert_at(1)
+      page2.insert_at(1)
 
-      let(:site1page1) do
-        FactoryGirl.create(:page, site: site1).tap do |page|
-          page.insert_at(1)
-          page.reload
-        end
-      end
-
-      let(:site1page2) do
-        FactoryGirl.create(:page, site: site1).tap do |page|
-          page.insert_at(2)
-          page.reload
-        end
-      end
-
-      let(:site2page1) do
-        FactoryGirl.create(:page, site: site2).tap do |page|
-          page.insert_at(1)
-          page.reload
-        end
-      end
-
-      let(:site2page2) do
-        FactoryGirl.create(:page, site: site2).tap do |page|
-          page.insert_at(2)
-          page.reload
-        end
-      end
-
-      it 'is scoped by site' do
-        expect(site1page1.main_menu_position).to eq 1
-        expect(site1page2.main_menu_position).to eq 2
-        expect(site2page1.main_menu_position).to eq 1
-        expect(site2page2.main_menu_position).to eq 2
-      end
+      expect(page1.reload.main_menu_position).to eq 1
     end
   end
 
   describe '.valid?' do
+    subject(:page) { described_class.new }
+
     it 'strips html tags' do
-      subject = described_class.new
-      subject.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'
-      subject.valid?
-      expect(subject.html_content).to eq '<a href="url" class="link">a link</a>tag'
+      page.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'
+      page.valid?
+      expect(page.html_content).to eq '<a href="url" class="link">a link</a>tag'
     end
   end
 
@@ -118,32 +91,34 @@ RSpec.describe Page do
   end
 
   describe '#name=' do
+    subject(:page) { described_class.new }
+
     it 'sets url as downcases name' do
-      subject.name = 'Name'
-      expect(subject.url).to eq 'name'
+      page.name = 'Name'
+      expect(page.url).to eq 'name'
     end
 
     it 'sets url spaces with _' do
-      subject.name = 'new name'
-      expect(subject.url).to eq 'new_name'
+      page.name = 'new name'
+      expect(page.url).to eq 'new_name'
     end
 
     it 'works when name is nil' do
-      subject.name = nil
-      expect(subject.url).to be_nil
+      page.name = nil
+      expect(page.url).to be_nil
     end
   end
 
   describe '#to_param' do
-    subject { FactoryGirl.create(:page, name: 'Test Page') }
+    subject(:page) { FactoryGirl.create(:page, name: 'Test Page') }
 
     it 'uses url' do
-      expect(subject.to_param).to eq 'test_page'
+      expect(page.to_param).to eq 'test_page'
     end
 
     it 'uses unchanged url' do
-      subject.url = 'new_page'
-      expect(subject.to_param).to eq 'test_page'
+      page.url = 'new_page'
+      expect(page.to_param).to eq 'test_page'
     end
   end
 end

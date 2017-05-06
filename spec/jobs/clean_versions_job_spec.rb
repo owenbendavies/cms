@@ -22,7 +22,7 @@ RSpec.describe CleanVersionsJob do
   it 'does not remove recent versions' do
     expect do
       described_class.perform_now
-    end.not_to change { recent_model.versions.count }
+    end.not_to(change { recent_model.versions.count })
   end
 
   it 'logs how many versions are deleted' do

@@ -1,8 +1,2 @@
 Rails:
   Enabled: true
-
-Rails/OutputSafety:
-  Exclude:
-    - 'app/views/layouts/_main.html.haml'
-    - 'app/views/pages/_form.html.haml'
-

@@ -9,52 +9,61 @@ RSpec.describe NotificationsMailer do
       user
     end
 
-    subject { described_class.new_message(message) }
+    subject(:email) { described_class.new_message(message) }
 
     let(:message) { FactoryGirl.create(:message, site: site) }
 
     include_examples 'site email'
 
     it 'is sent to sites users email' do
-      expect(subject.to).to eq [site_user.email]
+      expect(email.to).to eq [site_user.email]
     end
 
     it 'includes message subject' do
-      expect(subject.subject).to eq message.subject
+      expect(email.subject).to eq message.subject
     end
 
     it 'has text in body' do
-      expect(subject.body)
+      expect(email.body)
         .to have_content "A new message has been posted on #{site.name}:"
     end
 
+    it 'has message name in body' do
+      expect(email.body).to have_content message.name
+    end
+
+    it 'has message email in body' do
+      expect(email.body).to have_content message.email
+    end
+
+    it 'has message phone in body' do
+      expect(email.body).to have_content message.phone
+    end
+
     it 'has message in body' do
-      expect(subject.body).to have_content message.name
-      expect(subject.body).to have_content message.email
-      expect(subject.body).to have_content message.phone
-      expect(subject.body).to have_content message.message
+      expect(email.body).to have_content message.message
     end
   end
 
   describe '.user_added_to_site' do
-    subject { described_class.user_added_to_site(user, site, site_user) }
+    subject(:email) { described_class.user_added_to_site(user, site, site_user) }
 
     include_examples 'site email'
 
     it 'is sent to users email' do
-      expect(subject.to).to eq [user.email]
+      expect(email.to).to eq [user.email]
     end
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Added to site'
+      expect(email.subject).to eq 'Added to site'
     end
 
     it 'has users name' do
-      expect(subject.body).to have_content "Hi #{user.name}"
+      expect(email.body).to have_content "Hi #{user.name}"
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content(
+      expect(email.body).to have_content(
         "You have been added to #{site.name} site by #{site_user.name}."
       )
     end

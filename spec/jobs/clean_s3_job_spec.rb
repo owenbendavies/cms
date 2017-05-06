@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CleanS3Job do
-  let!(:sysadmin) { FactoryGirl.create(:user, :sysadmin) }
+  before { FactoryGirl.create(:user, :sysadmin) }
 
   context 'with no files' do
     it 'does not send any errors to Rollbar' do
@@ -17,30 +17,36 @@ RSpec.describe CleanS3Job do
       end
     end
 
-    let!(:site) do
+    before do
       css_file = StringUploader.new('stylesheet.css', 'body {padding: 4em}')
       FactoryGirl.create(:site, stylesheet: css_file)
     end
 
-    let!(:good_files) { uploaded_files }
-
     it 'does not send any errors to Rollbar if all good' do
       expect(Rollbar).not_to receive(:error)
       described_class.perform_now
-      expect(uploaded_files).to eq good_files
+    end
+
+    it 'does not delete any files' do
+      expect { described_class.perform_now }.not_to(change { uploaded_files })
     end
 
     context 'with invalid file' do
+      let!(:good_files) { uploaded_files }
+
       before do
         fog_directory.files.create(key: 'bad.jpg')
+        expect(uploaded_files).to include 'bad.jpg'
       end
 
       it 'sends an error to Rollbar' do
-        expect(uploaded_files).to include 'bad.jpg'
-
         error = 'CleanS3Job deleted the following file: bad.jpg'
         expect(Rollbar).to receive(:error).with(error).and_call_original
 
+        described_class.perform_now
+      end
+
+      it 'does not delete any files' do
         described_class.perform_now
 
         expect(uploaded_files).to eq good_files
