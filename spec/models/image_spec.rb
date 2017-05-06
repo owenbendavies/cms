@@ -24,42 +24,40 @@ require 'rails_helper'
 
 RSpec.describe Image do
   describe '#file' do
-    it 'saves an image' do
-      image = described_class.new
-      image.site = FactoryGirl.create(:site)
-      image.name = Faker::Name.name.delete("'")
+    let(:image) { FactoryGirl.build(:image, filename: nil) }
 
-      File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
-        image.file = file
-      end
+    let(:uuid) { File.basename(image.filename, '.jpg') }
 
-      image.save!
-
-      expect(image.filename).to match(/\A[0-9a-f-]+\.jpg/)
-
-      uuid = File.basename(image.filename, '.jpg')
-
-      expect(image.file.url).to eq File.join(
+    let(:filename) do
+      File.join(
         'https://obduk-cms-test.s3-eu-east-1.amazonaws.com',
         'images',
         uuid,
         'original.jpg'
       )
-
-      expect(uploaded_files).to include "images/#{uuid}/original.jpg"
     end
 
-    it 'recreates versions' do
-      image = described_class.new
-      image.site = FactoryGirl.create(:site)
-      image.name = Faker::Name.name.delete("'")
-
+    before do
       File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
         image.file = file
       end
 
       image.save!
+    end
 
+    it 'saves an image' do
+      expect(uploaded_files).to include "images/#{uuid}/original.jpg"
+    end
+
+    it 'saves filename as uuid' do
+      expect(image.filename).to match(/\A[0-9a-f-]+\.jpg/)
+    end
+
+    it 'stores filename as url' do
+      expect(image.file.url).to eq filename
+    end
+
+    it 'recreates versions' do
       files = uploaded_files
 
       described_class.find(image.id).file.recreate_versions!

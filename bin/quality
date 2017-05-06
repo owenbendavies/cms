@@ -23,7 +23,7 @@ HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-li
 
 ./bin/rails coffeelint
 
-./bin/rubocop --format simple --require rubocop-rspec
+./bin/rubocop --format simple
 
 ./bin/scss-lint
 
