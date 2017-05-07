@@ -26,51 +26,52 @@ require 'rails_helper'
 
 RSpec.describe Site do
   describe '#main_menu_pages' do
-    subject { FactoryGirl.create(:site) }
+    subject(:site) { FactoryGirl.create(:site) }
 
     context 'when no pages' do
       it 'returns empty array' do
-        expect(subject.main_menu_pages).to be_empty
+        expect(site.main_menu_pages).to be_empty
       end
     end
 
     context 'with pages' do
       let!(:page1) do
-        FactoryGirl.create(:page, site: subject).tap do |page|
+        FactoryGirl.create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
       let!(:page2) do
-        FactoryGirl.create(:page, site: subject).tap do |page|
+        FactoryGirl.create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
-      let!(:other_page) { FactoryGirl.create(:page, site: subject) }
+      before { FactoryGirl.create(:page, site: site) }
 
       it 'returns pages when page ids' do
-        expect(subject.main_menu_pages).to eq [page2, page1]
+        expect(site.main_menu_pages).to eq [page2, page1]
       end
     end
   end
 
   describe '#footer_links' do
-    subject { FactoryGirl.create(:site) }
+    subject(:site) { FactoryGirl.create(:site) }
 
     context 'when no links' do
       it 'returns empty array' do
-        expect(subject.footer_links).to be_empty
+        expect(site.footer_links).to be_empty
       end
     end
 
     context 'with footer links' do
-      let!(:link1) { FactoryGirl.create(:footer_link, site: subject) }
-      let!(:link2) { FactoryGirl.create(:footer_link, site: subject) }
-      let!(:other_link) { FactoryGirl.create(:footer_link) }
+      let!(:link1) { FactoryGirl.create(:footer_link, site: site) }
+      let!(:link2) { FactoryGirl.create(:footer_link, site: site) }
+
+      before { FactoryGirl.create(:footer_link) }
 
       it 'returns links in order' do
-        expect(subject.footer_links).to eq [link1, link2]
+        expect(site.footer_links).to eq [link1, link2]
       end
     end
   end
@@ -134,75 +135,77 @@ RSpec.describe Site do
   end
 
   describe '#address' do
-    subject { FactoryGirl.create(:site, host: 'localhost') }
+    subject(:site) { FactoryGirl.create(:site, host: 'localhost') }
 
     context 'when ssl is enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'returns https url' do
-        expect(subject.address).to eq 'https://localhost'
+        expect(site.address).to eq 'https://localhost'
       end
     end
 
     context 'when ssl is disabled' do
       it 'returns http url' do
-        expect(subject.address).to eq 'http://localhost'
+        expect(site.address).to eq 'http://localhost'
       end
     end
   end
 
   describe '#css' do
-    subject { FactoryGirl.build(:site) }
+    subject(:site) { FactoryGirl.build(:site) }
 
     it 'returns returns css' do
-      subject.css = "body {\r\n  padding: 4em;\r\n}"
-      subject.save!
-      subject.stylesheet.file.send(:file).reload
-      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+      site.css = "body {\r\n  padding: 4em;\r\n}"
+      site.save!
+      site.stylesheet.file.send(:file).reload
+      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
     it 'returns nil when empty' do
-      expect(subject.css).to be_nil
+      expect(site.css).to be_nil
     end
   end
 
   describe '#css=' do
-    subject { FactoryGirl.build(:site) }
+    subject(:site) { FactoryGirl.build(:site) }
 
     it 'strips end of line whitespace' do
-      subject.css = "body {\r\n  padding: 4em; \r\n}"
-      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+      site.css = "body {\r\n  padding: 4em; \r\n}"
+      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
     it 'converts tabs to spaces' do
-      subject.css = "body {\r\n\tpadding: 4em;\r\n}"
-      expect(subject.css).to eq "body {\r\n  padding: 4em;\r\n}"
+      site.css = "body {\r\n\tpadding: 4em;\r\n}"
+      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
     end
 
     it 'saves a file' do
-      subject.css = "body {\r\n  padding: 4em;\r\n}"
-      subject.save!
-      subject.stylesheet.file.send(:file).reload
+      site.css = "body {\r\n  padding: 4em;\r\n}"
+      site.save!
+      site.stylesheet.file.send(:file).reload
 
-      uuid = File.basename(subject.stylesheet_filename, '.css')
+      uuid = File.basename(site.stylesheet_filename, '.css')
       expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
     end
 
     context 'with an exiting file' do
-      let(:site) { described_class.find_by(id: subject.id) }
-      let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
+      let(:another_site) { described_class.find_by(id: site.id) }
+      let(:uuid) { File.basename(another_site.stylesheet_filename, '.css') }
 
       before do
-        subject.css = "body {\r\n  padding: 4em;\r\n}"
-        subject.save!
+        site.css = "body {\r\n  padding: 4em;\r\n}"
+        site.save!
+        another_site.css = 'body{background-color: red}'
+        another_site.save!
       end
 
       it 'deletes old version' do
-        site.css = 'body{background-color: red}'
-        site.save!
-
         expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-        expect(site.stylesheet_filename).not_to eq subject.stylesheet_filename
+      end
+
+      it 'creates new filename' do
+        expect(another_site.stylesheet_filename).not_to eq site.stylesheet_filename
       end
     end
   end

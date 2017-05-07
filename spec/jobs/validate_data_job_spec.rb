@@ -9,8 +9,10 @@ RSpec.describe ValidateDataJob do
   end
 
   context 'with valid data' do
-    let!(:sysadmin) { FactoryGirl.create(:user, :sysadmin) }
-    let!(:site) { FactoryGirl.create(:site) }
+    before do
+      FactoryGirl.create(:user, :sysadmin)
+      FactoryGirl.create(:site)
+    end
 
     it 'does not send any errors to Rollbar' do
       expect(Rollbar).not_to receive(:error)

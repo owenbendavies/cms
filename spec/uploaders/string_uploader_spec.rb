@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe StringUploader do
-  subject { described_class.new('filename.txt', 'text') }
+  subject(:string_uploader) { described_class.new('filename.txt', 'text') }
 
   it 'has a filename' do
-    expect(subject.original_filename).to eq 'filename.txt'
+    expect(string_uploader.original_filename).to eq 'filename.txt'
   end
 
   it 'returns file contents' do
-    expect(subject.read).to eq 'text'
+    expect(string_uploader.read).to eq 'text'
   end
 end

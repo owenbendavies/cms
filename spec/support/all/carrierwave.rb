@@ -16,6 +16,11 @@ RSpec.shared_context 'carrierwave' do
     MiniMagick::Image.read(remote_file.read)
   end
 
+  def image_dimension(remote_file)
+    image = remote_image(remote_file)
+    "#{image[:width]}x#{image[:height]}"
+  end
+
   before do
     Fog.mock!
     Fog::Mock.reset

@@ -23,7 +23,7 @@
 class Image < ApplicationRecord
   mount_uploader :file, ImageUploader, mount_on: :filename
 
-  scope :ordered, -> { order(:name) }
+  scope(:ordered, -> { order(:name) })
 
   schema_validations except: %i[created_at updated_at filename]
 

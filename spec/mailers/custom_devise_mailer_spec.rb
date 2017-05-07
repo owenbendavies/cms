@@ -6,97 +6,97 @@ RSpec.describe CustomDeviseMailer do
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do
-    subject { described_class.confirmation_instructions(user, token) }
+    subject(:email) { described_class.confirmation_instructions(user, token) }
 
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Confirmation instructions'
+      expect(email.subject).to eq 'Confirmation instructions'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content 'Please confirm your email address.'
+      expect(email.body).to have_content 'Please confirm your email address.'
     end
 
     it 'has confirmation link in body' do
       link = "http://#{site.host}/user/confirmation?confirmation_token=#{token}"
 
-      expect(subject.body).to have_link 'Confirm Email', href: link
+      expect(email.body).to have_link 'Confirm Email', href: link
     end
   end
 
   describe '.password_change' do
-    subject { described_class.password_change(user) }
+    subject(:email) { described_class.password_change(user) }
 
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Password Changed'
+      expect(email.subject).to eq 'Password Changed'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content 'Your password has been changed'
+      expect(email.body).to have_content 'Your password has been changed'
     end
   end
 
   describe '.email_changed' do
-    subject { described_class.email_changed(user) }
+    subject(:email) { described_class.email_changed(user) }
 
     let(:user) { FactoryGirl.create(:user, :unconfirmed_email, site: site) }
 
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Email Changed'
+      expect(email.subject).to eq 'Email Changed'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content "email is being changed to #{user.unconfirmed_email}"
+      expect(email.body).to have_content "email is being changed to #{user.unconfirmed_email}"
     end
   end
 
   describe '.reset_password_instructions' do
-    subject { described_class.reset_password_instructions(user, token) }
+    subject(:email) { described_class.reset_password_instructions(user, token) }
 
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Reset password instructions'
+      expect(email.subject).to eq 'Reset password instructions'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content 'Someone has requested a link to change your password.'
+      expect(email.body).to have_content 'Someone has requested a link to change your password.'
     end
 
     it 'has reset password link in body' do
       link = "http://#{site.host}/user/password/edit?reset_password_token=#{token}"
 
-      expect(subject.body).to have_link 'Change password', href: link
+      expect(email.body).to have_link 'Change password', href: link
     end
   end
 
   describe '.unlock_instructions' do
-    subject { described_class.unlock_instructions(user, token) }
+    subject(:email) { described_class.unlock_instructions(user, token) }
 
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Unlock instructions'
+      expect(email.subject).to eq 'Unlock instructions'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content 'Your account has been locked'
+      expect(email.body).to have_content 'Your account has been locked'
     end
 
     it 'has reset password link in body' do
       link = "http://#{site.host}/user/unlock?unlock_token=#{token}"
 
-      expect(subject.body).to have_link 'Unlock account', href: link
+      expect(email.body).to have_link 'Unlock account', href: link
     end
   end
 
   describe '.invitation_instructions' do
-    subject { described_class.invitation_instructions(user, token) }
+    subject(:email) { described_class.invitation_instructions(user, token) }
 
     let(:inviter) { FactoryGirl.create(:user) }
     let(:user) { FactoryGirl.create(:user, invited_by: inviter, site: site, site_admin: true) }
@@ -104,11 +104,11 @@ RSpec.describe CustomDeviseMailer do
     include_examples 'user email'
 
     it 'has subject' do
-      expect(subject.subject).to eq 'Invitation instructions'
+      expect(email.subject).to eq 'Invitation instructions'
     end
 
     it 'has text in body' do
-      expect(subject.body).to have_content(
+      expect(email.body).to have_content(
         "You have been added to #{site.name} site by #{inviter.name}."
       )
     end
@@ -116,17 +116,17 @@ RSpec.describe CustomDeviseMailer do
     it 'has invite link in body' do
       link = "http://#{site.host}/user/invitation/accept?invitation_token=#{token}"
 
-      expect(subject.body).to have_link 'Confirm your account', href: link
+      expect(email.body).to have_link 'Confirm your account', href: link
     end
   end
 
   context 'when ssl is enabled' do
-    subject { described_class.confirmation_instructions(user, token) }
+    subject(:email) { described_class.confirmation_instructions(user, token) }
 
     let(:environment_variables) { { DISABLE_SSL: nil } }
 
     it 'has https links' do
-      expect(subject.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
+      expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
     end
   end
 end
