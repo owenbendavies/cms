@@ -28,16 +28,16 @@ RSpec.describe FooterLink do
     let(:site1) { FactoryGirl.create(:site) }
     let(:site2) { FactoryGirl.create(:site) }
 
-    let(:site1footerlink1) { FactoryGirl.create(:footer_link, site: site1) }
-    let(:site1footerlink2) { FactoryGirl.create(:footer_link, site: site1) }
-    let(:site2footerlink1) { FactoryGirl.create(:footer_link, site: site2) }
-    let(:site2footerlink2) { FactoryGirl.create(:footer_link, site: site2) }
-
     it 'is scoped by site' do
-      expect(site1footerlink1.position).to eq 1
-      expect(site1footerlink2.position).to eq 2
-      expect(site2footerlink1.position).to eq 1
-      expect(site2footerlink2.position).to eq 2
+      FactoryGirl.create(:footer_link, site: site1)
+      link = FactoryGirl.create(:footer_link, site: site2)
+      expect(link.position).to eq 1
+    end
+
+    it 'apends new items' do
+      FactoryGirl.create(:footer_link, site: site1)
+      link = FactoryGirl.create(:footer_link, site: site1)
+      expect(link.position).to eq 2
     end
   end
 

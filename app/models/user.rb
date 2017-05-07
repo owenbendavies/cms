@@ -68,7 +68,7 @@ class User < ApplicationRecord
 
   schema_validations
 
-  scope :ordered, -> { order(:email) }
+  scope(:ordered, -> { order(:email) })
 
   strip_attributes collapse_spaces: true, replace_newlines: true
 

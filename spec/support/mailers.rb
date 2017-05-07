@@ -24,29 +24,29 @@ RSpec.configuration.include_context 'mailers'
 
 RSpec.shared_examples 'site email' do
   it 'has from address as site email' do
-    expect(subject.from).to eq [site.email]
+    expect(email.from).to eq [site.email]
   end
 
   it 'has from name as site name' do
-    addresses = subject.header['from'].address_list.addresses
+    addresses = email.header['from'].address_list.addresses
     expect(addresses.first.display_name).to eq site.name
   end
 
   it 'has site name in body' do
-    expect(subject.body).to have_content site.name
+    expect(email.body).to have_content site.name
   end
 
   context 'site with copyright' do
     before { site.update!(copyright: new_name) }
 
     it 'has copyright in body' do
-      expect(subject.body).to have_content "#{new_name} © #{Time.zone.now.year}"
+      expect(email.body).to have_content "#{new_name} © #{Time.zone.now.year}"
     end
   end
 
   context 'site without copyright' do
     it 'has site name copyright in body' do
-      expect(subject.body).to have_content "#{site.name} © #{Time.zone.now.year}"
+      expect(email.body).to have_content "#{site.name} © #{Time.zone.now.year}"
     end
   end
 
@@ -54,13 +54,13 @@ RSpec.shared_examples 'site email' do
     before { site.update!(charity_number: new_number) }
 
     it 'has charity number in body' do
-      expect(subject.body).to have_content "Registered charity number #{new_number}"
+      expect(email.body).to have_content "Registered charity number #{new_number}"
     end
   end
 
   context 'site with charity number' do
     it 'does not have charity number in body' do
-      expect(subject.body).not_to have_content 'Registered charity'
+      expect(email.body).not_to have_content 'Registered charity'
     end
   end
 end
@@ -69,10 +69,10 @@ RSpec.shared_examples 'user email' do
   include_examples 'site email'
 
   it 'is sent to users email' do
-    expect(subject.to).to eq [user.email]
+    expect(email.to).to eq [user.email]
   end
 
   it 'has users name' do
-    expect(subject.body).to have_content "Hi #{user.name}"
+    expect(email.body).to have_content "Hi #{user.name}"
   end
 end
