@@ -39,7 +39,9 @@ RSpec.feature 'Sitemap' do
 
   context 'xml', js: false do
     scenario 'http' do
-      visit_200_page '/sitemap.xml'
+      ClimateControl.modify(DISABLE_SSL: 'true') do
+        visit_200_page '/sitemap.xml'
+      end
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'http://localhost/home'
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq home_page.updated_at.iso8601
@@ -48,9 +50,7 @@ RSpec.feature 'Sitemap' do
     end
 
     scenario 'https' do
-      ClimateControl.modify(DISABLE_SSL: nil) do
-        visit_200_page '/sitemap.xml'
-      end
+      visit_200_page '/sitemap.xml'
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
     end

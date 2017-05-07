@@ -30,6 +30,7 @@ RSpec.shared_context 'requests' do
 
   def send_request
     host! request_host
+    https!
 
     args = [request_method, request_path, headers: request_headers, params: request_params]
 

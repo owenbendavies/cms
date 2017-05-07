@@ -19,7 +19,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has confirmation link in body' do
-      link = "http://#{site.host}/user/confirmation?confirmation_token=#{token}"
+      link = "https://#{site.host}/user/confirmation?confirmation_token=#{token}"
 
       expect(email.body).to have_link 'Confirm Email', href: link
     end
@@ -69,7 +69,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has reset password link in body' do
-      link = "http://#{site.host}/user/password/edit?reset_password_token=#{token}"
+      link = "https://#{site.host}/user/password/edit?reset_password_token=#{token}"
 
       expect(email.body).to have_link 'Change password', href: link
     end
@@ -89,7 +89,7 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has reset password link in body' do
-      link = "http://#{site.host}/user/unlock?unlock_token=#{token}"
+      link = "https://#{site.host}/user/unlock?unlock_token=#{token}"
 
       expect(email.body).to have_link 'Unlock account', href: link
     end
@@ -114,19 +114,19 @@ RSpec.describe CustomDeviseMailer do
     end
 
     it 'has invite link in body' do
-      link = "http://#{site.host}/user/invitation/accept?invitation_token=#{token}"
+      link = "https://#{site.host}/user/invitation/accept?invitation_token=#{token}"
 
       expect(email.body).to have_link 'Confirm your account', href: link
     end
   end
 
-  context 'when ssl is enabled' do
+  context 'when ssl is disabled' do
     subject(:email) { described_class.confirmation_instructions(user, token) }
 
-    let(:environment_variables) { { DISABLE_SSL: nil } }
+    let(:environment_variables) { { DISABLE_SSL: 'true'} }
 
-    it 'has https links' do
-      expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
+    it 'has http links' do
+      expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttp://#{site.host}/}
     end
   end
 end

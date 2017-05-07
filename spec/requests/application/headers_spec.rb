@@ -36,6 +36,7 @@ RSpec.describe 'Application headers' do
       'Cache-Control' => 'max-age=0, private, must-revalidate',
       'Content-Security-Policy' => csp_header,
       'Content-Type' => 'text/html; charset=utf-8',
+      'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains',
       'Vary' => 'Accept-Encoding',
       'X-Content-Type-Options' => 'nosniff',
       'X-Download-Options' => 'noopen',
