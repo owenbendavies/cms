@@ -1,3 +1,5 @@
 .editor {
+  @extend .form-control;
+
   height: auto;
 }

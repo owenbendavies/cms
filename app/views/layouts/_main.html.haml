@@ -9,7 +9,7 @@
   - elsif site.sidebar_html_content?
     %article.article.col-sm-9
       = render 'layouts/main_article'
-    %aside.sidebar.col-sm-3.hidden-print
+    %aside.sidebar.col-sm-3
       = site.sidebar_html_content&.html_safe
 
   - else

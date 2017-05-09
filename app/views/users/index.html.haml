@@ -3,11 +3,11 @@
   content_for :page_icon, t('.icon')
 
 - content_for :header_links do
-  = link_to new_user_invitation_path, class: 'btn btn-primary' do
+  = link_to new_user_invitation_path, class: 'button--main' do
     = icon_tag(t('devise.invitations.new.icon'))
     = t('devise.invitations.new.title')
 
-%table.table
+%table.users
   %thead
     %tr
       %th= User.human_attribute_name(:name)
