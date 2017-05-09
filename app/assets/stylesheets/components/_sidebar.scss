@@ -1,0 +1,3 @@
+@media print {
+  @include responsive-invisibility('.sidebar');
+}
