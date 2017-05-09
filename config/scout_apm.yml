@@ -1,5 +1,11 @@
 common: &defaults
   name: <%= ENV['HEROKU_APP_NAME'] %>
 
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
 production:
   <<: *defaults
