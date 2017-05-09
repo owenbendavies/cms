@@ -7,13 +7,13 @@
   = form.input :hidden
   = form.input :private
 
-  .editor.js-editor.form-control{ id: 'page[html_content]' }
+  .editor.js-editor{ id: 'page[html_content]' }
     = form.object.html_content&.html_safe
 
   = form.input :contact_form
 
   .form__buttons
     = form.button :submit
-    = link_to t('actions.cancel'), page, class: 'btn'
+    = link_to t('actions.cancel'), page, class: 'button--cancel'
 
 = tinymce

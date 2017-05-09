@@ -1,0 +1,11 @@
+.button {
+  &--main {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+
+  &--cancel {
+    @extend .btn;
+    @extend .btn-default;
+  }
+}

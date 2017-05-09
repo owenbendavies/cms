@@ -1,4 +1,8 @@
 .image {
+  &--circle {
+    border-radius: 50%;
+  }
+
   &--center,
   &--left,
   &--right {
