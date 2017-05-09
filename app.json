@@ -3,6 +3,11 @@
   "description": "A Content Management System (CMS) written with Ruby on Rails",
   "repository": "https://github.com/obduk/cms",
   "stack": "heroku-16",
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
   "addons": [
     "heroku-postgresql",
     "sendgrid"
@@ -67,9 +72,5 @@
     "worker": {
       "quantity": 1
     }
-  },
-  "scripts": {
-    "postdeploy": "./bin/rails db:migrate db:seed"
   }
 }
-

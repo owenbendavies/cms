@@ -21,6 +21,6 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    expect(Time.zone.now - config.start_time).to be < 4.minutes
+    expect(Time.zone.now - config.start_time).to be < 5.minutes
   end
 end
