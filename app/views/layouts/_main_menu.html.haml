@@ -3,10 +3,11 @@
     .main-menu__container
       .main-menu__header
         %button.main-menu__button.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-main-menu-collapse' }
-          %span.sr-only= t('.toggle_button')
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
+          %span.main-menu__button-text= t('.toggle_button')
+          .main-menu__button-hamburger
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
 
         - unless site.separate_header
           = link_to site.name, page_path('home'), class: 'main-menu__site-name'

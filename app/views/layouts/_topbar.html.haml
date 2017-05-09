@@ -3,10 +3,11 @@
     .topbar__container
       .topbar__header
         %button.topbar__button.collapsed{ 'type': 'button', 'data-toggle': 'collapse', 'data-target': '#js-topbar-collapse' }
-          %span.sr-only= t('.toggle_button')
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
+          %span.topbar__button-text= t('.toggle_button')
+          .topbar__button-hamburger
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
 
         = link_to site.name, root_path, class: 'topbar__site-name'
 
@@ -91,4 +92,4 @@
                   = icon_tag(t('devise.sessions.destroy.icon'))
                   = t('devise.sessions.destroy.title')
 
-          %li.topbar__avatar= image_tag(current_user.gravatar_url, alt: User.human_attribute_name(:profile_image), class: 'topbar__profile-image')
+          %li.topbar__avatar= image_tag(current_user.gravatar_url(size: 40), alt: User.human_attribute_name(:profile_image), class: 'topbar__profile-image', size: '40x40')

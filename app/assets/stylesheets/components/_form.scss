@@ -3,9 +3,21 @@
     @extend .form-group;
   }
 
-  &__button {
-    &--cancel {
-      @extend .btn;
-    }
+  &__row {
+    @include make-row;
+  }
+
+  &__small-inputs {
+    @include make-sm-column(4);
+    @include make-sm-column-offset(2);
+  }
+
+  &__large-inputs {
+    @include make-sm-column(8);
+    @include make-sm-column-offset(2);
+  }
+
+  &__do-not-fill-in {
+    @extend .hidden;
   }
 }
