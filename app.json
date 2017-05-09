@@ -1,76 +1,76 @@
 {
-  "name": "obduk C.M.S.",
-  "description": "A Content Management System (CMS) written with Ruby on Rails",
-  "repository": "https://github.com/obduk/cms",
-  "stack": "heroku-16",
-  "buildpacks": [
-    {
-      "url": "heroku/ruby"
-    }
-  ],
-  "addons": [
-    "heroku-postgresql",
-    "sendgrid"
-  ],
-  "env": {
-    "ASSET_HOST": {
-      "description": "Sets the rails asset host",
-      "required": false
+    "addons": [
+        "heroku-postgresql",
+        "sendgrid"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/ruby"
+        }
+    ],
+    "description": "A Content Management System (CMS) written with Ruby on Rails",
+    "env": {
+        "ASSET_HOST": {
+            "description": "Sets the rails asset host",
+            "required": false
+        },
+        "AWS_ACCESS_KEY_ID": {
+            "description": "The Amazon Web Services IAM user key for S3 and optionally SES"
+        },
+        "AWS_REGION": {
+            "description": "The Amazon Web Services region used for S3 and optionally SES",
+            "value": "us-east-1"
+        },
+        "AWS_S3_BUCKET": {
+            "description": "The Amazon Web Services S3 bucket name"
+        },
+        "AWS_S3_HOST": {
+            "description": "The host of the CloudFront endpoint for the S3 bucket (defaults to https://AWS_S3_BUCKET.s3-AWS_REGION.amazonaws.com)",
+            "required": false
+        },
+        "AWS_SECRET_ACCESS_KEY": {
+            "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
+        },
+        "BUNDLE_WITHOUT": {
+            "description": "Don't install asset gems on Heroku",
+            "value": "development:test:assets"
+        },
+        "DISABLE_SPRING": {
+            "description": "Ensures Spring is not running on server",
+            "value": "true"
+        },
+        "GOOGLE_CLIENT_ID": {
+            "description": "Google client ID for OAuth login",
+            "required": false
+        },
+        "GOOGLE_CLIENT_SECRET": {
+            "description": "Google client secret for OAuth login",
+            "required": false
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Set to same as the Heroku App name (set automatically for review apps)"
+        },
+        "SECRET_KEY_BASE": {
+            "description": "A randomly generated secret to verify sessions",
+            "generator": "secret"
+        },
+        "SEED_SITE_HOST": {
+            "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
+            "required": false
+        },
+        "SEED_USER_EMAIL": {
+            "description": "The email address for the first system administrator user"
+        }
     },
-    "AWS_ACCESS_KEY_ID": {
-      "description": "The Amazon Web Services IAM user key for S3 and optionally SES"
+    "formation": {
+        "web": {
+            "quantity": 1
+        },
+        "worker": {
+            "quantity": 1
+        }
     },
-    "AWS_SECRET_ACCESS_KEY": {
-      "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
-    },
-    "AWS_REGION": {
-      "description": "The Amazon Web Services region used for S3 and optionally SES",
-      "value": "us-east-1"
-    },
-    "AWS_S3_BUCKET": {
-      "description": "The Amazon Web Services S3 bucket name"
-    },
-    "AWS_S3_HOST": {
-      "description": "The host of the CloudFront endpoint for the S3 bucket (defaults to https://AWS_S3_BUCKET.s3-AWS_REGION.amazonaws.com)",
-      "required": false
-    },
-    "BUNDLE_WITHOUT": {
-      "description": "Don't install asset gems on Heroku",
-      "value": "development:test:assets"
-    },
-    "DISABLE_SPRING": {
-      "description": "Ensures Spring is not running on server",
-      "value": "true"
-    },
-    "GOOGLE_CLIENT_ID": {
-      "description": "Google client ID for OAuth login",
-      "required": false
-    },
-    "GOOGLE_CLIENT_SECRET": {
-      "description": "Google client secret for OAuth login",
-      "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "Set to same as the Heroku App name (set automatically for review apps)"
-    },
-    "SECRET_KEY_BASE": {
-      "description": "A randomly generated secret to verify sessions",
-      "generator": "secret"
-    },
-    "SEED_SITE_HOST": {
-      "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
-      "required": false
-    },
-    "SEED_USER_EMAIL": {
-      "description": "The email address for the first system administrator user"
-    }
-  },
-  "formation": {
-    "web": {
-      "quantity": 1
-    },
-    "worker": {
-      "quantity": 1
-    }
-  }
+    "name": "obduk C.M.S.",
+    "repository": "https://github.com/obduk/cms",
+    "stack": "heroku-16"
 }
