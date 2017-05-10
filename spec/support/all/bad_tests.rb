@@ -17,7 +17,7 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    expect(GetProcessMem.new.mb.to_i).to be < 380
+    expect(GetProcessMem.new.mb.to_i).to be < 400
   end
 
   config.after :suite do
