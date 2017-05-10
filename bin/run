@@ -7,4 +7,4 @@ export WORKER_CONCURRENCY=1
 
 set -v
 
-./bin/foreman start --port=3000
+./bin/foreman start --port=3000 --formation='web=1,worker=1'
