@@ -24,7 +24,6 @@
       with_items:
         - nodejs
         - nodejs-legacy
-        - npm
 
     - name: "install Image Magick"
       apt: name=imagemagick
