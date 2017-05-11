@@ -1,0 +1,32 @@
+version: '3'
+
+volumes:
+  postgres_data:
+
+services:
+  development:
+    build: .
+    command: ./bin/run
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: 'postgres://postgres:@postgres:5432/cms_development'
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+
+  test:
+    build: .
+    command: ./bin/test
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: 'postgres://postgres:@postgres:5432/cms_test'
+    volumes:
+      - .:/usr/src/app
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
