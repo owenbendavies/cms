@@ -47,7 +47,7 @@ GEM
       rake (>= 10.4, < 12.0)
     arel (7.1.4)
     ast (2.3.0)
-    autoprefixer-rails (6.7.7.2)
+    autoprefixer-rails (7.0.1)
       execjs
     autosize-rails (1.18.17)
       rails (>= 3.1)
@@ -95,7 +95,7 @@ GEM
       safe_yaml (~> 1.0.0)
     css_parser (1.5.0)
       addressable
-    database_cleaner (1.6.0)
+    database_cleaner (1.6.1)
     delayed_job (4.1.2)
       activesupport (>= 3.0, < 5.1)
     delayed_job_active_record (4.1.1)
@@ -235,7 +235,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_magick (4.7.0)
     mini_portile2 (2.1.0)
-    minitest (5.10.1)
+    minitest (5.10.2)
     mixlib-cli (1.7.0)
     mixlib-config (2.2.4)
     modware (0.1.3)
@@ -245,7 +245,7 @@ GEM
     multipart-post (2.0.0)
     newrelic_rpm (4.1.0.333)
     nio4r (2.0.0)
-    nokogiri (1.7.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     oauth2 (1.3.1)
       faraday (>= 0.8, < 0.12)
@@ -294,8 +294,8 @@ GEM
     puma (3.8.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.1)
-    rack-protection (1.5.3)
+    rack (2.0.2)
+    rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -312,15 +312,15 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.2)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails-timeago (2.16.0)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
-    rails_best_practices (1.18.0)
+    rails_best_practices (1.18.1)
       activesupport
       code_analyzer (>= 0.4.3)
       erubis
@@ -562,7 +562,7 @@ DEPENDENCIES
   spring-commands-rspec
   strip_attributes
   timecop
-  tinymce-rails
+  tinymce-rails (< 4.6)
   turbolinks
   uglifier
   validate_url
