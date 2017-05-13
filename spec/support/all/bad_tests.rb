@@ -17,10 +17,10 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    expect(GetProcessMem.new.mb.to_i).to be < 400
+    expect(GetProcessMem.new.mb.to_i).to be < 512
   end
 
   config.after :suite do
-    expect(Time.zone.now - config.start_time).to be < 6.minutes
+    expect(Time.zone.now - config.start_time).to be < 8.minutes
   end
 end
