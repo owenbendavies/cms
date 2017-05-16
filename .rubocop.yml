@@ -27,7 +27,7 @@ Rails: # Enabled added Rails checks
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
     - 'spec/requests/**/*'
-    - 'spec/seeds/**/*'
+    - 'spec/tasks/**/*'
 
 RSpec/ExampleLength:
   Exclude:
