@@ -39,6 +39,10 @@
             "description": "Ensures Spring is not running on server",
             "value": "true"
         },
+        "ERROR_PAGE_URL": {
+            "description": "URL to use for Heroku error page",
+            "value": "https://raw.githubusercontent.com/obduk/cms/master/public/500.html"
+        },
         "GOOGLE_CLIENT_ID": {
             "description": "Google client ID for OAuth login",
             "required": false
@@ -49,6 +53,10 @@
         },
         "HEROKU_APP_NAME": {
             "description": "Set to same as the Heroku App name (set automatically for review apps)"
+        },
+        "MAINTENANCE_PAGE_URL": {
+            "description": "URL to use for Heroku maintenance page",
+            "value": "https://raw.githubusercontent.com/obduk/cms/master/public/502.html"
         },
         "SECRET_KEY_BASE": {
             "description": "A randomly generated secret to verify sessions",
