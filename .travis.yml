@@ -21,9 +21,17 @@ addons:
 services:
   - postgresql
 
+env:
+  - SCRIPT='./bin/rails db:create db:schema:load && DISABLE_SPRING=true COVERAGE=on xvfb-run --auto-servernum ./bin/rspec --color --order random'
+  - SCRIPT='./bin/compile'
+  - SCRIPT='./bin/quality'
+  - SCRIPT='./bin/rails db:create db:migrate && ./bin/annotate --show-foreign-keys --show-indexes'
+
 script:
-  - ./bin/test
-  - ./bin/annotate --show-foreign-keys --show-indexes
+  - echo $SCRIPT
+  - eval $SCRIPT
+
+after_success:
   - git clean --force public/assets/.sprockets-manifest-*.json
   - git checkout public/assets/.sprockets-manifest-*.json
   - ./bin/changes
