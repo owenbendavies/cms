@@ -5,6 +5,7 @@ gem 'rails'
 
 # Databases
 gem 'pg' # PostgreSQL
+gem 'seedbank' # Better database seeds
 
 # Frameworks
 gem 'delayed_job_active_record' # Background jobs
