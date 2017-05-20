@@ -24,10 +24,21 @@ RSpec.shared_context 'requests' do
 
   let(:site) { FactoryGirl.create(:site) }
 
-  def request_page(expected_status: 200)
+  def login
     login_as user if defined? user
+  end
+
+  def send_request
     host! request_host
-    send(request_method, request_path, headers: request_headers, params: request_params)
+
+    args = [request_method, request_path, headers: request_headers, params: request_params]
+
+    expect { send(*args) }.not_to exceed_query_limit(14)
+  end
+
+  def request_page(expected_status: 200)
+    login
+    send_request
     expect(response).to have_http_status expected_status
   end
 end
