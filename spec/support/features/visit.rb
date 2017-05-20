@@ -23,7 +23,7 @@ RSpec.shared_context 'visit' do
   end
 
   def visit_non_redirect(url)
-    unchecked_visit url
+    expect { unchecked_visit url }.not_to exceed_query_limit(14)
     expect(current_path).to eq URI.parse(url).path
   end
 
