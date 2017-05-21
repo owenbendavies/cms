@@ -42,7 +42,7 @@ gem 'validates_email_format_of' # Email validation
 gem 'xml-sitemap' # Generates XML site map
 
 # View Gems
-gem 'haml-rails', '< 1' # TODO: upgrade when fixed - HAML for views
+gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'rails-timeago' # Nice time tags
 gem 'simple_form' # Easier forms
