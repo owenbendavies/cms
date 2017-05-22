@@ -1,10 +1,8 @@
 begin
-  MODELS = (
-    ActiveRecord::Base.connection.tables -
-    %w[ar_internal_metadata].freeze
-  ).sort.map do |name|
+  MODELS = ActiveRecord::Base.connection.tables.sort.map do |name|
     name
       .classify
+      .gsub('ArInternalMetadatum', 'ActiveRecord::InternalMetadata')
       .gsub('DelayedJob', 'Delayed::Job')
       .gsub('SchemaMigration', 'ActiveRecord::SchemaMigration')
       .gsub('Version', 'PaperTrail::Version')
