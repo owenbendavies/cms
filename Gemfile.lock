@@ -79,9 +79,9 @@ GEM
     code_analyzer (0.4.7)
       sexp_processor
     coderay (1.1.1)
-    coffee-rails (4.2.1)
+    coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
+      railties (>= 4.0.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -96,8 +96,8 @@ GEM
     css_parser (1.5.0)
       addressable
     database_cleaner (1.6.1)
-    delayed_job (4.1.2)
-      activesupport (>= 3.0, < 5.1)
+    delayed_job (4.1.3)
+      activesupport (>= 3.0, < 5.2)
     delayed_job_active_record (4.1.1)
       activerecord (>= 3.0, < 5.1)
       delayed_job (>= 3.0, < 5)
@@ -142,7 +142,7 @@ GEM
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
       ipaddress (~> 0.8)
-    fog-core (1.44.2)
+    fog-core (1.44.3)
       builder
       excon (~> 0.49)
       formatador (~> 0.2)
@@ -244,7 +244,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    newrelic_rpm (4.1.0.333)
+    newrelic_rpm (4.2.0.334)
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -270,6 +270,7 @@ GEM
     paper_trail (7.0.2)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
+    parallel (1.11.2)
     parser (2.4.0.0)
       ast (~> 2.2)
     pg (0.20.0)
@@ -369,7 +370,8 @@ GEM
       rails (> 4.0, < 6.0)
       rspec (~> 3.0)
     rspec-support (3.6.0)
-    rubocop (0.48.1)
+    rubocop (0.49.0)
+      parallel (~> 1.10)
       parser (>= 2.3.3.1, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
@@ -442,7 +444,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.1)
     slop (3.6.0)
-    spring (2.0.1)
+    spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -464,7 +466,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.7)
     timecop (0.8.1)
-    tinymce-rails (4.5.7)
+    tinymce-rails (4.6.2)
       railties (>= 3.1.1)
     trollop (2.1.2)
     turbolinks (5.0.1)
@@ -497,7 +499,7 @@ GEM
       will_paginate (>= 3.0.3)
     xml-sitemap (1.3.3)
       builder (>= 2.0)
-    xpath (2.0.0)
+    xpath (2.1.0)
       nokogiri (~> 1.3)
     zxcvbn-js (4.4.2)
       execjs
@@ -574,7 +576,7 @@ DEPENDENCIES
   spring-commands-rspec
   strip_attributes
   timecop
-  tinymce-rails (< 4.6)
+  tinymce-rails
   turbolinks
   uglifier
   validate_url
