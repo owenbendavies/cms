@@ -60,6 +60,34 @@
             },
             "Type": "AWS::S3::Bucket"
         },
+        "S3LogsBucketPolicy": {
+            "Properties": {
+                "Bucket": {
+                    "Ref": "S3LogsBucket"
+                },
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "s3:List*",
+                                "s3:Put*"
+                            ],
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": [
+                                    "arn:aws:iam::719734659904:root"
+                                ]
+                            },
+                            "Resource": {
+                                "Fn::Sub": "arn:aws:s3:::${S3LogsBucket}/papertrail/*"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::S3::BucketPolicy"
+        },
         "S3UploadsBucket": {
             "Properties": {
                 "BucketName": {
