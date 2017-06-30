@@ -27,7 +27,7 @@ RSpec.describe 'Application headers' do
       "font-src 'self' https:",
       "img-src 'self' https: data:",
       script_src,
-      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-east-1.amazonaws.com"
+      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-west-1.amazonaws.com"
     ].join('; ')
   end
 
