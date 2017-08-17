@@ -25,7 +25,7 @@ FILE
   end
 
   context 'with GET /robots' do
-    include_examples 'renders page not found'
+    include_examples 'renders html page not found'
   end
 
   context 'with GET /robots.xml' do

@@ -5,7 +5,7 @@ RSpec.describe 'Authorization' do
     let(:user) { FactoryBot.create(:user) }
 
     context 'when visiting a restricted page like GET /site/edit' do
-      include_examples 'renders page not found'
+      include_examples 'renders html page not found'
     end
   end
 end
