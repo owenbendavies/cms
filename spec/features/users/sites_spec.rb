@@ -7,17 +7,19 @@ RSpec.feature 'User sites' do
     navigate_via_topbar menu: site_user.name, title: 'Sites', icon: 'list'
   end
 
-  scenario 'list of sites' do
-    links = all('.article a')
-    expect(links.size).to eq 1
+  context 'when ssl is disabled' do
+    let(:environment_variables) { { DISABLE_SSL: 'true' } }
 
-    expect(links[0].text).to eq 'localhost'
-    expect(links[0]['href']).to eq 'http://localhost'
+    scenario 'list of sites with http' do
+      links = all('.article a')
+      expect(links.size).to eq 1
+
+      expect(links[0].text).to eq 'localhost'
+      expect(links[0]['href']).to eq 'http://localhost'
+    end
   end
 
   context 'when ssl is enabled' do
-    let(:environment_variables) { { DISABLE_SSL: nil } }
-
     scenario 'list of sites with https' do
       links = all('.article a')
       expect(links[0]['href']).to eq 'https://localhost'
