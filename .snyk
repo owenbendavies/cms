@@ -1,0 +1,11 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.7.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-RUBY-ACTIONCABLE-20338:
+    - '* > rails@5.0.5':
+        reason: ActionCable not used, just included as part of Rails
+  SNYK-RUBY-NOKOGIRI-20299:
+    - '* > fog-aws@1.4.0':
+        reason: No user uploaded XML files processed by fog
+patch: {}
