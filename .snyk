@@ -4,10 +4,8 @@ version: v1.7.1
 ignore:
   SNYK-RUBY-ACTIONCABLE-20338:
     - '* > rails@5.0.5':
-        reason: None given
-        expires: '2017-09-08T09:22:41.254Z'
+        reason: ActionCable not used, just included as part of Rails
   SNYK-RUBY-NOKOGIRI-20299:
     - '* > fog-aws@1.4.0':
-        reason: None given
-        expires: '2017-09-08T09:22:41.254Z'
+        reason: No user uploaded XML files processed by fog
 patch: {}
