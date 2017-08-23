@@ -104,7 +104,6 @@ group :test do
   gem 'faker' # Generates test data
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
-  gem 'rspec-sqlimit' # Check number of SQL queries
   gem 'shoulda-matchers' # Model test helpers
   gem 'simplecov' # Code coverage
   gem 'spring-commands-rspec' # Quick boot for RSpec
