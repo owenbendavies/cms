@@ -51,6 +51,14 @@ GEM
       execjs
     autosize-rails (1.18.17)
       rails (>= 3.1)
+    aws-sdk (2.9.25)
+      aws-sdk-resources (= 2.9.25)
+    aws-sdk-core (2.9.25)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.9.25)
+      aws-sdk-core (= 2.9.25)
+    aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -199,6 +207,7 @@ GEM
       terminal-table (>= 1.5.1)
     ipaddress (0.8.3)
     its-it (1.3.0)
+    jmespath (1.3.1)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -505,6 +514,7 @@ DEPENDENCIES
   acts_as_list
   annotate
   autosize-rails
+  aws-sdk
   bootstrap-sass
   brakeman
   bullet
