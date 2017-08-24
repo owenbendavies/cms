@@ -3,6 +3,10 @@ ruby '2.3.4'
 
 gem 'rails'
 
+# Services
+gem 'aws-sdk' # AWS
+gem 'fog-aws' # AWS file upload
+
 # Databases
 gem 'pg' # PostgreSQL
 gem 'seedbank' # Better database seeds
@@ -20,9 +24,6 @@ gem 'devise_invitable' # Inviting of users
 gem 'devise_zxcvbn' # Strong passwords for users
 gem 'omniauth-google-oauth2' # Google login
 gem 'pundit' # Authorization
-
-# Remote file upload (before carrierwave)
-gem 'fog-aws' # AWS file upload
 
 # Model Gems
 gem 'acts_as_list' # ActiveRecord lists
