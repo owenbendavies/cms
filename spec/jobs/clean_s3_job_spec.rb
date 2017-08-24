@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe CleanS3Job do
-  let(:query_limit) { 2 }
-
   before { FactoryGirl.create(:user, :sysadmin) }
 
   context 'with no files' do
     it 'does not send any errors to Rollbar' do
       expect(Rollbar).not_to receive(:error)
-      run_job
+      described_class.perform_now
     end
   end
 
@@ -26,11 +24,11 @@ RSpec.describe CleanS3Job do
 
     it 'does not send any errors to Rollbar if all good' do
       expect(Rollbar).not_to receive(:error)
-      run_job
+      described_class.perform_now
     end
 
     it 'does not delete any files' do
-      expect { run_job }.not_to(change { uploaded_files })
+      expect { described_class.perform_now }.not_to(change { uploaded_files })
     end
 
     context 'with invalid file' do
@@ -45,11 +43,11 @@ RSpec.describe CleanS3Job do
         error = 'CleanS3Job deleted the following file: bad.jpg'
         expect(Rollbar).to receive(:error).with(error).and_call_original
 
-        run_job
+        described_class.perform_now
       end
 
       it 'does not delete any files' do
-        run_job
+        described_class.perform_now
 
         expect(uploaded_files).to eq good_files
       end
@@ -64,7 +62,7 @@ RSpec.describe CleanS3Job do
         error = "CleanS3Job found the following file is missing: #{image.file.span3.path}"
         expect(Rollbar).to receive(:error).with(error).and_call_original
 
-        run_job
+        described_class.perform_now
       end
     end
   end
