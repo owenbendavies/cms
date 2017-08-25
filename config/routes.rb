@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/system/error_timeout', to: 'systems#error_timeout'
   get '/system/health', to: 'systems#health'
 
+  post '/sns', to: 'sns#message'
+
   get '/user/sites', to: 'sites#index'
 
   devise_for :user, skip: [:sessions], controllers: {
