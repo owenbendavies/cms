@@ -7,13 +7,11 @@ ignore:
         reason: 'ActionCable not used, just included as part of Rails'
   SNYK-RUBY-NOKOGIRI-20299:
     - '* > fog-aws@1.4.0':
-        reason: No user uploaded XML files processed by fog
+        reason: 'Does not process untrusted XML files'
     - '* > capybara-webkit@1.14.0':
         reason: Only used in tests
     - '* > rails-timeago@2.16.0':
-        reason: None given
-        expires: '2017-09-25T10:05:24.117Z'
+        reason: 'Does not process untrusted XML files'
     - '* > simple_form@3.5.0':
-        reason: None given
-        expires: '2017-09-28T07:35:52.062Z'
+        reason: 'Does not process untrusted XML files'
 patch: {}
