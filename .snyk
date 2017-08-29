@@ -13,4 +13,7 @@ ignore:
     - '* > rails-timeago@2.16.0':
         reason: None given
         expires: '2017-09-25T10:05:24.117Z'
+    - '* > simple_form@3.5.0':
+        reason: None given
+        expires: '2017-09-28T07:35:52.062Z'
 patch: {}
