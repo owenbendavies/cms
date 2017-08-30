@@ -20,4 +20,7 @@ ignore:
     - '* > dotenv-rails@2.2.1':
         reason: None given
         expires: '2017-09-29T08:39:56.377Z'
+    - '* > factory_girl_rails@4.8.0':
+        reason: None given
+        expires: '2017-09-29T09:27:55.602Z'
 patch: {}
