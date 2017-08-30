@@ -17,4 +17,7 @@ ignore:
     - '* > coffee-rails@4.2.2':
         reason: None given
         expires: '2017-09-29T08:00:34.398Z'
+    - '* > dotenv-rails@2.2.1':
+        reason: None given
+        expires: '2017-09-29T08:39:56.377Z'
 patch: {}
