@@ -6,21 +6,6 @@ ignore:
     - '* > rails@5.0.5':
         reason: 'ActionCable not used, just included as part of Rails'
   SNYK-RUBY-NOKOGIRI-20299:
-    - '* > fog-aws@1.4.0':
-        reason: Does not process untrusted XML files
-    - '* > capybara-webkit@1.14.0':
-        reason: Only used in tests
-    - '* > rails-timeago@2.16.0':
-        reason: Does not process untrusted XML files
-    - '* > simple_form@3.5.0':
-        reason: Does not process untrusted XML files
-    - '* > coffee-rails@4.2.2':
-        reason: None given
-        expires: '2017-09-29T08:00:34.398Z'
-    - '* > dotenv-rails@2.2.1':
-        reason: None given
-        expires: '2017-09-29T08:39:56.377Z'
-    - '* > factory_girl_rails@4.8.0':
-        reason: None given
-        expires: '2017-09-29T09:27:55.602Z'
+    - '*':
+        reason: 'No fix and not exploitable'
 patch: {}
