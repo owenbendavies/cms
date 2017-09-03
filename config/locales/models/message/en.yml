@@ -1,19 +1,18 @@
+---
 en:
   activerecord:
-    models:
-      message: "Message"
-
     attributes:
       message:
-        created_at: "Created at"
-        name: "Name"
-        email: "Email"
-        phone: "Phone"
-        message: "Message"
-
+        created_at: Created at
+        email: Email
+        message: Message
+        name: Name
+        phone: Phone
     errors:
       models:
         message:
           attributes:
             do_not_fill_in:
-              too_long: "do not fill in"
+              too_long: do not fill in
+    models:
+      message: Message

@@ -1,5 +1,6 @@
+---
 en:
   images:
     index:
-      title: "Images"
-      icon: "picture-o"
+      icon: picture-o
+      title: Images

@@ -1,11 +1,10 @@
+---
 en:
   actions:
-    edit: "Edit"
-    cancel: "Cancel"
-    delete: "Delete"
-    send_message: "Send Message"
-
+    cancel: Cancel
+    delete: Delete
+    edit: Edit
+    send_message: Send Message
   flash:
-    updated: "%{name} successfully updated"
     deleted: "%{name} was deleted"
-
+    updated: "%{name} successfully updated"

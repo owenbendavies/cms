@@ -1,15 +1,15 @@
+---
 en:
   activerecord:
-    models:
-      site: "Site"
-
     attributes:
       site:
-        host: "Host"
-        name: "Name"
-        sub_title: "Sub title"
-        copyright: "Copyright"
-        google_analytics: "Google Analytics"
-        charity_number: "Charity number"
-        main_menu_in_footer: "Main menu"
-        separate_header: "Separate header"
+        charity_number: Charity number
+        copyright: Copyright
+        google_analytics: Google Analytics
+        host: Host
+        main_menu_in_footer: Main menu
+        name: Name
+        separate_header: Separate header
+        sub_title: Sub title
+    models:
+      site: Site
