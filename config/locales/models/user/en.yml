@@ -1,14 +1,14 @@
+---
 en:
   activerecord:
-    models:
-      user: "User"
-
     attributes:
       user:
-        password: "Password"
-        password_confirmation: "Confirm password"
-        name: "Name"
-        email: "Email"
-        confirmed: "Confirmed"
-        locked: "Locked"
-        profile_image: "Profile Image"
+        confirmed: Confirmed
+        email: Email
+        locked: Locked
+        name: Name
+        password: Password
+        password_confirmation: Confirm password
+        profile_image: Profile Image
+    models:
+      user: User

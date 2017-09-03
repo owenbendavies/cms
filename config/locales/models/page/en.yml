@@ -1,12 +1,11 @@
+---
 en:
   activerecord:
-    models:
-      page: "Page"
-
     attributes:
       page:
-        name: "Name"
-        contact_form: "Contact Form"
-        private: "Private"
-        hidden: "Hidden"
-
+        contact_form: Contact Form
+        hidden: Hidden
+        name: Name
+        private: Private
+    models:
+      page: Page

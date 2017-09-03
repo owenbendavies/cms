@@ -1,14 +1,13 @@
+---
 en:
   sites:
     css:
-      title: "CSS"
-      icon: "file"
-
+      icon: file
+      title: CSS
     edit:
-      title: "Site Settings"
-      icon: "cog"
-      footer: "Footer"
-
+      footer: Footer
+      icon: cog
+      title: Site Settings
     index:
-      title: "Sites"
-      icon: "list"
+      icon: list
+      title: Sites

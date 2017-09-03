@@ -1,27 +1,23 @@
+---
 en:
   pages:
-    index:
-      title: "Sitemap"
-      icon: "sitemap"
-
-    new:
-      title: "New Page"
-      icon: "plus"
-
     contact_form:
       flash:
-        success: "Thank you for your message"
-
+        success: Thank you for your message
     delete:
-      icon: "trash"
-      text: "Are you sure you want to delete page '%{name}'?"
-
+      icon: trash
+      text: Are you sure you want to delete page '%{name}'?
+    edit:
+      icon: pencil
+      title: Editing %{name}
+    index:
+      icon: sitemap
+      title: Sitemap
+    new:
+      icon: plus
+      title: New Page
     show:
       hidden:
-        icon: "eye-slash"
+        icon: eye-slash
       private:
-        icon: "lock"
-
-    edit:
-      title: "Editing %{name}"
-      icon: "pencil"
+        icon: lock
