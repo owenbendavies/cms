@@ -1,9 +1,8 @@
+---
 en:
   activerecord:
-    models:
-      site_setting: "Site Setting"
-
     attributes:
       site_setting:
-        admin: "Admin"
-
+        admin: Admin
+    models:
+      site_setting: Site Setting

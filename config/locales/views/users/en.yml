@@ -1,5 +1,6 @@
+---
 en:
   users:
     index:
-      title: "Users"
-      icon: "group"
+      icon: group
+      title: Users
