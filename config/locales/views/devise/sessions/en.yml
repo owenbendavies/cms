@@ -1,11 +1,11 @@
+---
 en:
   devise:
     sessions:
-      new:
-        title: "Login"
-        accounts: "Login with account"
-        google: "Sign in with Google"
-
       destroy:
-        title: "Logout"
-        icon: "sign-out"
+        icon: sign-out
+        title: Logout
+      new:
+        accounts: Login with account
+        google: Sign in with Google
+        title: Login

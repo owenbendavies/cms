@@ -1,9 +1,9 @@
+---
 en:
   messages:
     index:
-      title: "Messages"
-      icon: "envelope"
-
+      icon: envelope
+      title: Messages
     show:
-      title: "Message"
-      icon: "envelope"
+      icon: envelope
+      title: Message
