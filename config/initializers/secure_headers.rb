@@ -12,7 +12,7 @@ SecureHeaders::Configuration.default do |config|
     img_src: ["'self'", 'https:', 'data:'],
     script_src: default_src + [
       'https://www.google-analytics.com',
-      'https://d37gvrvc0wt4s1.cloudfront.net'
+      'https://cdnjs.cloudflare.com'
     ],
     style_src: default_src + [CarrierWave::Uploader::Base.asset_host]
   }
