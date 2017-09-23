@@ -15,7 +15,7 @@ RSpec.describe 'Application headers' do
       'script-src',
       defaul_src,
       'https://www.google-analytics.com',
-      'https://d37gvrvc0wt4s1.cloudfront.net'
+      'https://cdnjs.cloudflare.com'
     ].join(' ')
   end
 
