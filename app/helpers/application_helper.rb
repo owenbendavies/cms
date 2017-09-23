@@ -1,3 +1,5 @@
+require 'rollbar/middleware/js'
+
 module ApplicationHelper
   def body_class
     page_class = "page#{request.path.tr('/', '-')}"
@@ -27,5 +29,9 @@ module ApplicationHelper
 
   def icon_tag(icon)
     content_tag(:i, nil, class: "fa fa-#{icon}")
+  end
+
+  def rollbar_js
+    Rollbar::Middleware::Js::SNIPPET
   end
 end
