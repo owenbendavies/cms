@@ -1,4 +1,5 @@
 class SnsController < ApplicationController
+  skip_before_action :render_site_not_found, only: %i[message]
   skip_before_action :authenticate_user!, only: %i[message]
   skip_after_action :verify_authorized, only: %i[message]
 
