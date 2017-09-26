@@ -19,4 +19,12 @@ RSpec.describe 'POST /sns' do
     request_page(expected_status: 204)
     expect(SnsNotification.last.message).to eq JSON.parse(request_params)
   end
+
+  context 'unknown site' do
+    let(:request_host) { new_host }
+
+    it 'saves the notification' do
+      expect { request_page(expected_status: 204) }.to change(SnsNotification, :count).by(1)
+    end
+  end
 end
