@@ -23,12 +23,6 @@ Outputs:
     Description: Value for AWS_SECRET_ACCESS_KEY
     Value: !GetAtt IAMUserAccessKey.SecretAccessKey
 
-Parameters:
-  DomainName:
-    AllowedPattern: "([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}"
-    Description: Domain name for your app, e.g. `www.example.com`
-    Type: String
-
 Resources:
   CloudFront:
     Type: AWS::CloudFront::Distribution
@@ -63,7 +57,7 @@ Resources:
             - TLSv1.2
             - TLSv1.1
             - TLSv1
-          DomainName: !Ref DomainName
+          DomainName: !Sub ${AWS::StackName}.herokuapp.com
           Id: App
 
   IAMUser:
@@ -159,6 +153,6 @@ Resources:
   SNSTopicSubscription:
     Type: AWS::SNS::Subscription
     Properties:
-      Endpoint: !Sub https://${DomainName}/sns
+      Endpoint: !Sub https://${AWS::StackName}.herokuapp.com/sns
       Protocol: https
       TopicArn: !Ref SNSTopic
