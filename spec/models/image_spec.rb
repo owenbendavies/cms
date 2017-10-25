@@ -24,7 +24,7 @@ require 'rails_helper'
 
 RSpec.describe Image do
   describe '#file' do
-    let(:image) { FactoryGirl.build(:image, filename: nil) }
+    let(:image) { FactoryBot.build(:image, filename: nil) }
 
     let(:uuid) { File.basename(image.filename, '.jpg') }
 
@@ -68,9 +68,9 @@ RSpec.describe Image do
 
   describe '.ordered' do
     it 'returns ordered by name' do
-      image_c = FactoryGirl.create(:image, name: 'image C')
-      image_a = FactoryGirl.create(:image, name: 'image A')
-      image_b = FactoryGirl.create(:image, name: 'image B')
+      image_c = FactoryBot.create(:image, name: 'image C')
+      image_a = FactoryBot.create(:image, name: 'image A')
+      image_b = FactoryBot.create(:image, name: 'image B')
 
       expect(described_class.ordered).to eq [image_a, image_b, image_c]
     end

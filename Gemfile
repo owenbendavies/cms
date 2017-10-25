@@ -102,7 +102,7 @@ group :test do
   gem 'capybara-webkit' # Web browser tester
   gem 'climate_control' # Modifies environment variables
   gem 'database_cleaner' # Cleans the database
-  gem 'factory_girl_rails' # Generates test models
+  gem 'factory_bot_rails' # Generates test models
   gem 'faker' # Generates test data
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework

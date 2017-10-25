@@ -28,7 +28,7 @@ RSpec.feature 'Site users' do
   end
 
   scenario 'unconfirmed user' do
-    unconfirmed_user = FactoryGirl.create(:user, :unconfirmed, site: site)
+    unconfirmed_user = FactoryBot.create(:user, :unconfirmed, site: site)
     index = site.users.ordered.find_index(unconfirmed_user)
     navigate_via_topbar menu: 'Site', title: 'Users', icon: 'group'
 
@@ -36,7 +36,7 @@ RSpec.feature 'Site users' do
   end
 
   scenario 'locked user' do
-    locked_user = FactoryGirl.create(:user, :locked, site: site)
+    locked_user = FactoryBot.create(:user, :locked, site: site)
     index = site.users.ordered.find_index(locked_user)
     navigate_via_topbar menu: 'Site', title: 'Users', icon: 'group'
 

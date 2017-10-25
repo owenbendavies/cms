@@ -11,7 +11,7 @@ RSpec.describe NotificationsMailer do
 
     subject(:email) { described_class.new_message(message) }
 
-    let(:message) { FactoryGirl.create(:message, site: site) }
+    let(:message) { FactoryBot.create(:message, site: site) }
 
     include_examples 'site email'
 

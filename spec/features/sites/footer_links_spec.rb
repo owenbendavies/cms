@@ -4,8 +4,8 @@ RSpec.feature 'Footer links' do
   let(:css_selector) { '.footer__site-links' }
 
   scenario 'site with footer links' do
-    link1 = FactoryGirl.create(:footer_link, site: site)
-    FactoryGirl.create(:footer_link, site: site, icon: 'facebook-official')
+    link1 = FactoryBot.create(:footer_link, site: site)
+    FactoryBot.create(:footer_link, site: site, icon: 'facebook-official')
 
     visit_200_page '/home'
 

@@ -5,9 +5,9 @@ RSpec.describe UserPolicy do
     subject(:policy_scope) { described_class::Scope.new(context, scope).resolve }
 
     let(:scope) { User }
-    let(:user) { FactoryGirl.create(:user, site: site) }
+    let(:user) { FactoryBot.create(:user, site: site) }
 
-    before { FactoryGirl.create(:user) }
+    before { FactoryBot.create(:user) }
 
     it 'returns sites users' do
       expect(policy_scope).to contain_exactly user

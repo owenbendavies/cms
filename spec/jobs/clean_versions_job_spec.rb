@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe CleanVersionsJob do
   let!(:old_model) do
     Timecop.travel(31.days.ago) do
-      FactoryGirl.create(:user)
+      FactoryBot.create(:user)
     end
   end
 
   let!(:recent_model) do
     Timecop.travel(29.days.ago) do
-      FactoryGirl.create(:user)
+      FactoryBot.create(:user)
     end
   end
 
