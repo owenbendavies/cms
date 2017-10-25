@@ -22,7 +22,7 @@ RSpec.shared_context 'requests' do
     path
   end
 
-  let(:site) { FactoryGirl.create(:site) }
+  let(:site) { FactoryBot.create(:site) }
 
   def request_page(expected_status: 200)
     login_as user if defined? user
@@ -59,7 +59,7 @@ RSpec.shared_examples 'authenticated page' do |config|
         if defined? unauthorized_user
           unauthorized_user
         else
-          FactoryGirl.create(:user)
+          FactoryBot.create(:user)
         end
       end
 
@@ -73,7 +73,7 @@ RSpec.shared_examples 'authenticated page' do |config|
         if defined? authorized_user
           authorized_user
         else
-          FactoryGirl.create(:user, site: site)
+          FactoryBot.create(:user, site: site)
         end
       end
 

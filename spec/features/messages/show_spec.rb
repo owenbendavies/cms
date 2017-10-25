@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Message show' do
   let(:date) { Time.zone.now - 1.month - 3.days }
-  let(:message) { FactoryGirl.create(:message, site: site, created_at: date, updated_at: date) }
+  let(:message) { FactoryBot.create(:message, site: site, created_at: date, updated_at: date) }
 
   before do
     login_as site_user

@@ -21,7 +21,7 @@
 #  fk_footer_links_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :footer_link do
     site
     name { Faker::Name.name }

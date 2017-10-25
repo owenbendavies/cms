@@ -25,18 +25,18 @@ require 'rails_helper'
 
 RSpec.describe FooterLink do
   describe 'acts_as_list' do
-    let(:site1) { FactoryGirl.create(:site) }
-    let(:site2) { FactoryGirl.create(:site) }
+    let(:site1) { FactoryBot.create(:site) }
+    let(:site2) { FactoryBot.create(:site) }
 
     it 'is scoped by site' do
-      FactoryGirl.create(:footer_link, site: site1)
-      link = FactoryGirl.create(:footer_link, site: site2)
+      FactoryBot.create(:footer_link, site: site1)
+      link = FactoryBot.create(:footer_link, site: site2)
       expect(link.position).to eq 1
     end
 
     it 'apends new items' do
-      FactoryGirl.create(:footer_link, site: site1)
-      link = FactoryGirl.create(:footer_link, site: site1)
+      FactoryBot.create(:footer_link, site: site1)
+      link = FactoryBot.create(:footer_link, site: site1)
       expect(link.position).to eq 2
     end
   end

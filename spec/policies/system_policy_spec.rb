@@ -13,7 +13,7 @@ RSpec.describe SystemPolicy do
     end
 
     context 'non sysadmin user' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       it 'is not permitted' do
         expect(policy).not_to permit(context, scope)
@@ -21,7 +21,7 @@ RSpec.describe SystemPolicy do
     end
 
     context 'sysadmin user' do
-      let(:user) { FactoryGirl.create(:user, :sysadmin) }
+      let(:user) { FactoryBot.create(:user, :sysadmin) }
 
       it 'is permitted' do
         expect(policy).to permit(context, scope)

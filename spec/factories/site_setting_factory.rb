@@ -21,7 +21,7 @@
 #  fk_site_settings_user_id  (user_id => users.id) ON DELETE => no_action ON UPDATE => no_action
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :site_setting do
     site
     user

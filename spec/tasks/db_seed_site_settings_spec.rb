@@ -9,11 +9,11 @@ RSpec.describe 'db:seed:site_settings', type: :task do
   end
 
   context 'with no site setting' do
-    let!(:user1) { FactoryGirl.create(:user, :sysadmin, email: new_email) }
-    let!(:user2) { FactoryGirl.create(:user, :sysadmin) }
-    let!(:site1) { FactoryGirl.create(:site, host: new_host) }
-    let!(:site2) { FactoryGirl.create(:site) }
-    let(:other_user) { FactoryGirl.create(:user) }
+    let!(:user1) { FactoryBot.create(:user, :sysadmin, email: new_email) }
+    let!(:user2) { FactoryBot.create(:user, :sysadmin) }
+    let!(:site1) { FactoryBot.create(:site, host: new_host) }
+    let!(:site2) { FactoryBot.create(:site) }
+    let(:other_user) { FactoryBot.create(:user) }
 
     before do
       expect(STDOUT).to receive(:puts)
@@ -53,9 +53,9 @@ RSpec.describe 'db:seed:site_settings', type: :task do
 
   context 'with site setting' do
     before do
-      user = FactoryGirl.create(:user, :sysadmin, email: new_email)
-      site = FactoryGirl.create(:site, host: new_host)
-      FactoryGirl.create(:site_setting, user: user, site: site)
+      user = FactoryBot.create(:user, :sysadmin, email: new_email)
+      site = FactoryBot.create(:site, host: new_host)
+      FactoryBot.create(:site_setting, user: user, site: site)
     end
 
     it 'does not create site setting' do

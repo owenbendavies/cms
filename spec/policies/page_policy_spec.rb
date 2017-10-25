@@ -5,10 +5,10 @@ RSpec.describe PagePolicy do
     subject(:policy_scope) { described_class::Scope.new(context, scope).resolve }
 
     let(:scope) { Page }
-    let!(:site_page) { FactoryGirl.create(:page, site: site) }
-    let!(:private_site_page) { FactoryGirl.create(:page, :private, site: site) }
+    let!(:site_page) { FactoryBot.create(:page, site: site) }
+    let!(:private_site_page) { FactoryBot.create(:page, :private, site: site) }
 
-    before { FactoryGirl.create(:page) }
+    before { FactoryBot.create(:page) }
 
     context 'no user' do
       let(:user) { nil }
@@ -19,7 +19,7 @@ RSpec.describe PagePolicy do
     end
 
     context 'another site user' do
-      let(:user) { FactoryGirl.create :user }
+      let(:user) { FactoryBot.create :user }
 
       it 'returns visible site pages' do
         expect(policy_scope).to contain_exactly site_page
@@ -27,7 +27,7 @@ RSpec.describe PagePolicy do
     end
 
     context 'site user' do
-      let(:user) { FactoryGirl.create(:user, site: site) }
+      let(:user) { FactoryBot.create(:user, site: site) }
 
       it 'returns all site pages' do
         expect(policy_scope).to contain_exactly(site_page, private_site_page)
@@ -49,13 +49,13 @@ RSpec.describe PagePolicy do
 
   permissions :show?, :contact_form? do
     context 'private page' do
-      let(:scope) { FactoryGirl.create(:page, :private, site: site) }
+      let(:scope) { FactoryBot.create(:page, :private, site: site) }
 
       include_examples 'user record policy'
     end
 
     context 'non private page' do
-      let(:scope) { FactoryGirl.create(:page, site: site) }
+      let(:scope) { FactoryBot.create(:page, site: site) }
 
       context 'no user' do
         let(:user) { nil }
@@ -68,7 +68,7 @@ RSpec.describe PagePolicy do
   end
 
   permissions :create?, :update?, :destroy? do
-    let(:scope) { FactoryGirl.create(:page, site: site) }
+    let(:scope) { FactoryBot.create(:page, site: site) }
 
     include_examples 'user record policy'
   end

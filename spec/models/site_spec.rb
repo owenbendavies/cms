@@ -26,7 +26,7 @@ require 'rails_helper'
 
 RSpec.describe Site do
   describe '#main_menu_pages' do
-    subject(:site) { FactoryGirl.create(:site) }
+    subject(:site) { FactoryBot.create(:site) }
 
     context 'when no pages' do
       it 'returns empty array' do
@@ -36,18 +36,18 @@ RSpec.describe Site do
 
     context 'with pages' do
       let!(:page1) do
-        FactoryGirl.create(:page, site: site).tap do |page|
+        FactoryBot.create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
       let!(:page2) do
-        FactoryGirl.create(:page, site: site).tap do |page|
+        FactoryBot.create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
-      before { FactoryGirl.create(:page, site: site) }
+      before { FactoryBot.create(:page, site: site) }
 
       it 'returns pages when page ids' do
         expect(site.main_menu_pages).to eq [page2, page1]
@@ -56,7 +56,7 @@ RSpec.describe Site do
   end
 
   describe '#footer_links' do
-    subject(:site) { FactoryGirl.create(:site) }
+    subject(:site) { FactoryBot.create(:site) }
 
     context 'when no links' do
       it 'returns empty array' do
@@ -65,10 +65,10 @@ RSpec.describe Site do
     end
 
     context 'with footer links' do
-      let!(:link1) { FactoryGirl.create(:footer_link, site: site) }
-      let!(:link2) { FactoryGirl.create(:footer_link, site: site) }
+      let!(:link1) { FactoryBot.create(:footer_link, site: site) }
+      let!(:link2) { FactoryBot.create(:footer_link, site: site) }
 
-      before { FactoryGirl.create(:footer_link) }
+      before { FactoryBot.create(:footer_link) }
 
       it 'returns links in order' do
         expect(site.footer_links).to eq [link1, link2]
@@ -79,7 +79,7 @@ RSpec.describe Site do
   describe '#stylesheet' do
     let(:css) { "body {\r\n  padding: 4em;\r\n}" }
     let(:file) { StringUploader.new('stylesheet.css', css) }
-    let!(:site) { FactoryGirl.create(:site, stylesheet: file) }
+    let!(:site) { FactoryBot.create(:site, stylesheet: file) }
     let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
 
     it 'saves the stylesheet' do
@@ -99,9 +99,9 @@ RSpec.describe Site do
 
   describe '.ordered' do
     it 'returns ordered by host' do
-      site_c = FactoryGirl.create(:site, host: 'sitec')
-      site_a = FactoryGirl.create(:site, host: 'sitea')
-      site_b = FactoryGirl.create(:site, host: 'siteb')
+      site_c = FactoryBot.create(:site, host: 'sitec')
+      site_a = FactoryBot.create(:site, host: 'sitea')
+      site_b = FactoryBot.create(:site, host: 'siteb')
 
       expect(described_class.ordered).to eq [site_a, site_b, site_c]
     end
@@ -135,7 +135,7 @@ RSpec.describe Site do
   end
 
   describe '#address' do
-    subject(:site) { FactoryGirl.create(:site, host: 'localhost') }
+    subject(:site) { FactoryBot.create(:site, host: 'localhost') }
 
     context 'when ssl is enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
@@ -153,7 +153,7 @@ RSpec.describe Site do
   end
 
   describe '#css' do
-    subject(:site) { FactoryGirl.build(:site) }
+    subject(:site) { FactoryBot.build(:site) }
 
     it 'returns returns css' do
       site.css = "body {\r\n  padding: 4em;\r\n}"
@@ -168,7 +168,7 @@ RSpec.describe Site do
   end
 
   describe '#css=' do
-    subject(:site) { FactoryGirl.build(:site) }
+    subject(:site) { FactoryBot.build(:site) }
 
     it 'strips end of line whitespace' do
       site.css = "body {\r\n  padding: 4em; \r\n}"
@@ -212,12 +212,12 @@ RSpec.describe Site do
 
   describe '#email' do
     it 'returns noreply email address' do
-      site = FactoryGirl.create(:site, host: 'example.com')
+      site = FactoryBot.create(:site, host: 'example.com')
       expect(site.email).to eq 'noreply@example.com'
     end
 
     it 'returns host without www' do
-      site = FactoryGirl.create(:site, host: 'www.example.com')
+      site = FactoryBot.create(:site, host: 'www.example.com')
       expect(site.email).to eq 'noreply@example.com'
     end
   end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Messages index' do
   let!(:messages) do
     (0..11).map do |i|
-      FactoryGirl.create(
+      FactoryBot.create(
         :message,
         site: site,
         created_at: Time.zone.now - 1.month - 3.days - i.minutes,
@@ -13,7 +13,7 @@ RSpec.feature 'Messages index' do
   end
 
   before do
-    FactoryGirl.create(:message)
+    FactoryBot.create(:message)
     login_as site_user
     navigate_via_topbar menu: 'Site', title: 'Messages', icon: 'envelope'
   end
