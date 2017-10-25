@@ -22,7 +22,7 @@ RSpec.feature 'Page show' do
   end
 
   scenario 'private page' do
-    private_page = FactoryGirl.create(:page, :private, site: site)
+    private_page = FactoryBot.create(:page, :private, site: site)
     login_as site_user
     visit_200_page "/#{private_page.url}"
 

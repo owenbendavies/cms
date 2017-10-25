@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User sites' do
   before do
-    FactoryGirl.create(:site)
+    FactoryBot.create(:site)
     login_as site_user
     navigate_via_topbar menu: site_user.name, title: 'Sites', icon: 'list'
   end

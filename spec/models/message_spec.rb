@@ -27,9 +27,9 @@ require 'rails_helper'
 RSpec.describe Message do
   describe '.ordered' do
     it 'returns ordered by created descending' do
-      message1 = FactoryGirl.create(:message, created_at: Time.zone.now - 1.minute)
-      message3 = FactoryGirl.create(:message, created_at: Time.zone.now - 3.minutes)
-      message2 = FactoryGirl.create(:message, created_at: Time.zone.now - 2.minutes)
+      message1 = FactoryBot.create(:message, created_at: Time.zone.now - 1.minute)
+      message3 = FactoryBot.create(:message, created_at: Time.zone.now - 3.minutes)
+      message2 = FactoryBot.create(:message, created_at: Time.zone.now - 2.minutes)
 
       expect(described_class.ordered).to eq [message1, message2, message3]
     end
@@ -68,7 +68,7 @@ RSpec.describe Message do
   end
 
   describe '#save' do
-    subject(:message) { FactoryGirl.build(:message) }
+    subject(:message) { FactoryBot.build(:message) }
 
     it 'sets a uuid' do
       message.save!
@@ -77,7 +77,7 @@ RSpec.describe Message do
   end
 
   describe '#to_param' do
-    subject(:message) { FactoryGirl.build(:message) }
+    subject(:message) { FactoryBot.build(:message) }
 
     it 'uses uuid' do
       expect(message.to_param).to eq message.uuid

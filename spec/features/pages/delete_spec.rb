@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Deleting a page' do
-  let(:test_page) { FactoryGirl.create(:page, site: site) }
+  let(:test_page) { FactoryBot.create(:page, site: site) }
 
   before do
     login_as site_user

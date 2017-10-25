@@ -26,7 +26,7 @@ RSpec.describe 'db:seed:users', type: :task do
     end
 
     context 'with a user matching the email' do
-      before { FactoryGirl.create(:user, email: new_email) }
+      before { FactoryBot.create(:user, email: new_email) }
 
       it 'does not create a user' do
         expect do

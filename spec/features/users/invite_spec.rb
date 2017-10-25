@@ -75,7 +75,7 @@ RSpec.feature 'Inviting a user' do
   end
 
   scenario 'existing site user' do
-    user = FactoryGirl.create(:user, site: site)
+    user = FactoryBot.create(:user, site: site)
 
     fill_in 'Name', with: new_name
     fill_in 'Email', with: user.email
