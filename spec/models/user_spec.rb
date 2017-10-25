@@ -58,9 +58,9 @@ RSpec.describe User do
 
   describe '.ordered' do
     it 'returns ordered by email' do
-      user3 = FactoryGirl.create(:user, email: 'user3@example.com')
-      user1 = FactoryGirl.create(:user, email: 'user1@example.com')
-      user2 = FactoryGirl.create(:user, email: 'user2@example.com')
+      user3 = FactoryBot.create(:user, email: 'user3@example.com')
+      user1 = FactoryBot.create(:user, email: 'user1@example.com')
+      user2 = FactoryBot.create(:user, email: 'user2@example.com')
 
       expect(described_class.ordered).to eq [user1, user2, user3]
     end
@@ -84,19 +84,19 @@ RSpec.describe User do
     it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(128) }
 
     it 'allows strong passwords' do
-      user = FactoryGirl.build(:user)
+      user = FactoryBot.build(:user)
       user.password = user.password_confirmation = Faker::Internet.password(20, 30)
       expect(user).to be_valid
     end
 
     it 'does not allow weak passwords' do
-      user = FactoryGirl.build(:user)
+      user = FactoryBot.build(:user)
       user.password = user.password_confirmation = 'password'
       expect(user).not_to be_valid
     end
 
     it 'tells the user why their password is weak' do
-      user = FactoryGirl.build(:user)
+      user = FactoryBot.build(:user)
       user.password = user.password_confirmation = 'password'
       user.valid?
       expect(user.errors[:password].first).to include 'This is a top-10 common password'
@@ -106,7 +106,7 @@ RSpec.describe User do
   end
 
   describe '#save' do
-    subject(:user) { FactoryGirl.build(:user) }
+    subject(:user) { FactoryBot.build(:user) }
 
     it 'sets a uuid' do
       user.save!
@@ -116,8 +116,8 @@ RSpec.describe User do
 
   describe '#admin_for_site?' do
     context 'when admin of site' do
-      let(:user) { FactoryGirl.create(:user, site: site, site_admin: true) }
-      let(:site) { FactoryGirl.create(:site) }
+      let(:user) { FactoryBot.create(:user, site: site, site_admin: true) }
+      let(:site) { FactoryBot.create(:site) }
 
       it 'returns true' do
         expect(user.admin_for_site?(site)).to eq true
@@ -125,9 +125,9 @@ RSpec.describe User do
     end
 
     context 'when admin of another site' do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:site) { FactoryGirl.create(:site) }
-      let(:another_site) { FactoryGirl.create(:site) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:site) { FactoryBot.create(:site) }
+      let(:another_site) { FactoryBot.create(:site) }
 
       before do
         user.site_settings.create(site: site)
@@ -140,8 +140,8 @@ RSpec.describe User do
     end
 
     context 'when admin of no sites' do
-      let(:user) { FactoryGirl.create(:user, site: site) }
-      let(:site) { FactoryGirl.create(:site) }
+      let(:user) { FactoryBot.create(:user, site: site) }
+      let(:site) { FactoryBot.create(:site) }
 
       it 'returns false' do
         expect(user.admin_for_site?(site)).to eq false
@@ -149,8 +149,8 @@ RSpec.describe User do
     end
 
     context 'when no sites' do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:site) { FactoryGirl.create(:site) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:site) { FactoryBot.create(:site) }
 
       it 'returns false' do
         expect(user.admin_for_site?(site)).to eq false
@@ -160,15 +160,15 @@ RSpec.describe User do
 
   describe '#site_ids' do
     it 'returns all site ids for a user' do
-      site = FactoryGirl.create(:site)
-      user = FactoryGirl.create(:user, site: site)
+      site = FactoryBot.create(:site)
+      user = FactoryBot.create(:user, site: site)
 
       expect(user.site_ids).to eq [site.id]
     end
   end
 
   describe '#to_param' do
-    subject(:user) { FactoryGirl.build(:user) }
+    subject(:user) { FactoryBot.build(:user) }
 
     it 'uses uuid' do
       expect(user.to_param).to eq user.uuid

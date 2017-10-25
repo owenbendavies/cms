@@ -5,9 +5,9 @@ RSpec.describe SitePolicy do
     subject(:policy_scope) { described_class::Scope.new(context, scope).resolve }
 
     let(:scope) { Site }
-    let(:user) { FactoryGirl.create(:user, site: site) }
+    let(:user) { FactoryBot.create(:user, site: site) }
 
-    before { FactoryGirl.create(:site) }
+    before { FactoryBot.create(:site) }
 
     it 'returns users sites' do
       expect(policy_scope).to contain_exactly site
@@ -26,7 +26,7 @@ RSpec.describe SitePolicy do
     end
 
     context 'user' do
-      let(:user) { FactoryGirl.create :user }
+      let(:user) { FactoryBot.create :user }
 
       it 'is permitted' do
         expect(policy).to permit(context, scope)

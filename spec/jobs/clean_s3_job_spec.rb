@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CleanS3Job do
-  before { FactoryGirl.create(:user, :sysadmin) }
+  before { FactoryBot.create(:user, :sysadmin) }
 
   context 'with no files' do
     it 'does not send any errors to Rollbar' do
@@ -13,13 +13,13 @@ RSpec.describe CleanS3Job do
   context 'with files' do
     let!(:image) do
       Rails.root.join('spec', 'assets', 'test_image.jpg').open do |file|
-        FactoryGirl.create(:image, file: file)
+        FactoryBot.create(:image, file: file)
       end
     end
 
     before do
       css_file = StringUploader.new('stylesheet.css', 'body {padding: 4em}')
-      FactoryGirl.create(:site, stylesheet: css_file)
+      FactoryBot.create(:site, stylesheet: css_file)
     end
 
     it 'does not send any errors to Rollbar if all good' do

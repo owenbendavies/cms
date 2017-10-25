@@ -8,7 +8,7 @@ RSpec.describe MessagePolicy do
   end
 
   permissions :show? do
-    let(:scope) { FactoryGirl.create(:message, site: site) }
+    let(:scope) { FactoryBot.create(:message, site: site) }
 
     include_examples 'user record policy'
   end

@@ -30,16 +30,16 @@ require 'rails_helper'
 
 RSpec.describe Page do
   describe 'acts_as_list' do
-    let(:site1) { FactoryGirl.create(:site) }
-    let(:site2) { FactoryGirl.create(:site) }
+    let(:site1) { FactoryBot.create(:site) }
+    let(:site2) { FactoryBot.create(:site) }
 
     it 'is not added to list by default' do
-      expect(FactoryGirl.create(:page)).not_to be_in_list
+      expect(FactoryBot.create(:page)).not_to be_in_list
     end
 
     it 'is scoped by site' do
-      page1 = FactoryGirl.create(:page, site: site1)
-      page2 = FactoryGirl.create(:page, site: site2)
+      page1 = FactoryBot.create(:page, site: site1)
+      page2 = FactoryBot.create(:page, site: site2)
       page1.insert_at(1)
       page2.insert_at(1)
 
@@ -59,9 +59,9 @@ RSpec.describe Page do
 
   describe '.ordered' do
     it 'returns ordered by name' do
-      page_c = FactoryGirl.create(:page, name: 'Page C')
-      page_a = FactoryGirl.create(:page, name: 'Page A')
-      page_b = FactoryGirl.create(:page, name: 'Page B')
+      page_c = FactoryBot.create(:page, name: 'Page C')
+      page_a = FactoryBot.create(:page, name: 'Page A')
+      page_b = FactoryBot.create(:page, name: 'Page B')
 
       expect(described_class.ordered).to eq [page_a, page_b, page_c]
     end
@@ -69,10 +69,10 @@ RSpec.describe Page do
 
   describe '.visible' do
     it 'returns non hidden or private pages' do
-      page1 = FactoryGirl.create(:page)
-      page2 = FactoryGirl.create(:page)
-      FactoryGirl.create(:page, :private)
-      FactoryGirl.create(:page, :hidden)
+      page1 = FactoryBot.create(:page)
+      page2 = FactoryBot.create(:page)
+      FactoryBot.create(:page, :private)
+      FactoryBot.create(:page, :hidden)
 
       expect(described_class.visible).to contain_exactly(page1, page2)
     end
@@ -110,7 +110,7 @@ RSpec.describe Page do
   end
 
   describe '#to_param' do
-    subject(:page) { FactoryGirl.create(:page, name: 'Test Page') }
+    subject(:page) { FactoryBot.create(:page, name: 'Test Page') }
 
     it 'uses url' do
       expect(page.to_param).to eq 'test_page'

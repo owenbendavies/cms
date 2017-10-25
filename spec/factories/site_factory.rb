@@ -22,7 +22,7 @@
 #  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :site do
     host { Faker::Internet.domain_name }
     name { Faker::Company.name.delete("'") }

@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :sns_notification do
     transient do
       message_file 'subscription_confirmation.json'

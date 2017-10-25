@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CustomDeviseMailer do
-  let(:site) { FactoryGirl.create(:site, host: 'localhost') }
-  let(:user) { FactoryGirl.create(:user, site: site) }
+  let(:site) { FactoryBot.create(:site, host: 'localhost') }
+  let(:user) { FactoryBot.create(:user, site: site) }
   let(:token) { rand(10_000) }
 
   describe '.confirmation_instructions' do
@@ -42,7 +42,7 @@ RSpec.describe CustomDeviseMailer do
   describe '.email_changed' do
     subject(:email) { described_class.email_changed(user) }
 
-    let(:user) { FactoryGirl.create(:user, :unconfirmed_email, site: site) }
+    let(:user) { FactoryBot.create(:user, :unconfirmed_email, site: site) }
 
     include_examples 'user email'
 
@@ -98,8 +98,8 @@ RSpec.describe CustomDeviseMailer do
   describe '.invitation_instructions' do
     subject(:email) { described_class.invitation_instructions(user, token) }
 
-    let(:inviter) { FactoryGirl.create(:user) }
-    let(:user) { FactoryGirl.create(:user, invited_by: inviter, site: site, site_admin: true) }
+    let(:inviter) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:user, invited_by: inviter, site: site, site_admin: true) }
 
     include_examples 'user email'
 

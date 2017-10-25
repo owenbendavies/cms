@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Images index' do
-  let!(:image_b) { FactoryGirl.create(:image, name: 'Image B', site: site) }
-  let!(:image_c) { FactoryGirl.create(:image, name: 'Image C', site: site) }
-  let!(:image_a) { FactoryGirl.create(:image, name: 'Image A', site: site) }
+  let!(:image_b) { FactoryBot.create(:image, name: 'Image B', site: site) }
+  let!(:image_c) { FactoryBot.create(:image, name: 'Image C', site: site) }
+  let!(:image_a) { FactoryBot.create(:image, name: 'Image A', site: site) }
 
   before do
-    FactoryGirl.create(:image)
+    FactoryBot.create(:image)
     login_as site_user
     navigate_via_topbar menu: 'Site', title: 'Images', icon: 'picture-o'
   end

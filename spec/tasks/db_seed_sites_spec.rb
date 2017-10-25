@@ -20,7 +20,7 @@ RSpec.describe 'db:seed:sites', type: :task do
     end
 
     context 'with a site matching the host' do
-      before { FactoryGirl.create(:site, host: host) }
+      before { FactoryBot.create(:site, host: host) }
 
       it 'does not create a site' do
         expect do
