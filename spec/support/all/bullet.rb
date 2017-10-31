@@ -1,9 +1,9 @@
 RSpec.configure do |config|
-  config.before :each do
+  config.before do
     Bullet.start_request
   end
 
-  config.after :each do
+  config.after do
     Bullet.end_request
   end
 end

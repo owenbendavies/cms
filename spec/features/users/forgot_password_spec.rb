@@ -19,7 +19,7 @@ RSpec.feature 'User forgot password', js: false do
 
     link = email.html_part.body.match(/href="([^"]+)/)[1]
     expect(link).to include site.host
-    link.gsub!("http://#{site.host}", Capybara.app_host)
+    link.gsub!("http://#{site.host}", '')
 
     visit_200_page link
 
