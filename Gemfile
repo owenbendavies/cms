@@ -87,8 +87,7 @@ group :development, :test do
   gem 'jsonlint', require: false # JSON code quality
   gem 'mdl', require: false # Markdown code quality
   gem 'rails_best_practices', require: false # Rails code quality
-  gem 'rubocop', '0.49.1' # TODO: fix new rules and remove from Gemfile
-  gem 'rubocop-rspec', '1.15.1', require: false # TODO: fix new rules - RSpec code quality
+  gem 'rubocop-rspec', require: false # RSpec code quality
   gem 'scss_lint', require: false # Sass code quality
 end
 

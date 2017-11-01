@@ -24,7 +24,7 @@ RSpec.feature 'Site main menu' do
         click_link 'Test Page'
       end
 
-      expect(current_path).to eq '/test_page'
+      expect(page).to have_current_path '/test_page'
     end
 
     scenario 'adding main menu to footer' do

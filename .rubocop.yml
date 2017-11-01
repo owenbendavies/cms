@@ -6,6 +6,9 @@ AllCops:
     - 'provisioning/roles/**/*' # External libraries so can't control
     - 'vendor/bundle/**/*' # External libraries so can't control
 
+Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - 'config/**/*' # OK for config files to have large blocks
@@ -32,6 +35,9 @@ RSpec/DescribeClass: # Not testing a class or module
 RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
+
+RSpec/ExpectInHook: # TODO: remove and fix
+  Enabled: false
 
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive

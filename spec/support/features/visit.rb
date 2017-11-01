@@ -24,7 +24,7 @@ RSpec.shared_context 'visit' do
 
   def visit_non_redirect(url)
     unchecked_visit url
-    expect(current_path).to eq URI.parse(url).path
+    expect(page).to have_current_path url
   end
 
   def visit_200_page(url)

@@ -86,7 +86,7 @@ class User < ApplicationRecord
   def self.invite_or_add_to_site!(params, site, inviter)
     user = User.find_by(email: params[:email])
 
-    if user && !user.site_ids.include?(site.id)
+    if user&.site_ids&.exclude?(site.id)
       user.site_settings.create!(site: site)
       NotificationsMailer.user_added_to_site(user, site, inviter).deliver_later
       user
