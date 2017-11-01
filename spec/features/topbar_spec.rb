@@ -20,7 +20,7 @@ RSpec.feature 'Topbar' do
         click_link site.name
       end
 
-      expect(current_path).to eq '/'
+      expect(page).to have_current_path '/'
     end
 
     it_behaves_like 'mobile' do
@@ -38,7 +38,7 @@ RSpec.feature 'Topbar' do
         end
 
         expect(page).to have_content 'Messages'
-        expect(current_path).to eq '/site/messages'
+        expect(page).to have_current_path '/site/messages'
       end
     end
   end

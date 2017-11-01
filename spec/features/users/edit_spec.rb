@@ -108,6 +108,6 @@ RSpec.feature 'Editing a user' do
 
   scenario 'clicking Cancel' do
     click_link 'Cancel'
-    expect(current_path).to eq '/home'
+    expect(page).to have_current_path '/home'
   end
 end

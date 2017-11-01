@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.after :each do
+  config.after do
     ObjectSpace.each_object(File) do |file|
       next if file.closed?
       next if file.path == '/dev/null'
@@ -11,7 +11,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.after :each do
+  config.after do
     expect(Delayed::Job.count).to eq 0
   end
 

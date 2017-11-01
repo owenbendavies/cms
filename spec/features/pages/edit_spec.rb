@@ -56,7 +56,7 @@ RSpec.feature 'Editing a page' do
     fill_in 'Name', with: 'New Page Name'
     click_button 'Update Page'
 
-    expect(current_path).to eq '/new_page_name'
+    expect(page).to have_current_path '/new_page_name'
   end
 
   scenario 'invalid data' do
@@ -67,6 +67,6 @@ RSpec.feature 'Editing a page' do
 
   scenario 'clicking Cancel' do
     click_link 'Cancel'
-    expect(current_path).to eq '/home'
+    expect(page).to have_current_path '/home'
   end
 end
