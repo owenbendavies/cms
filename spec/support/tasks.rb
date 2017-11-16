@@ -5,8 +5,8 @@ RSpec.configure do |config|
   end
 end
 
-RSpec.shared_context 'tasks' do
+RSpec.shared_context 'with tasks' do
   subject(:task) { Rake::Task[self.class.top_level_description] }
 end
 
-RSpec.configuration.include_context 'tasks', type: :task
+RSpec.configuration.include_context 'with tasks', type: :task

@@ -6,7 +6,7 @@ RSpec.describe 'Application rollbar' do
   let(:rollbar_config) { 'rollbarConfig' }
   let(:rollbar_js) { 'rollbarJsUrl' }
 
-  context 'without a token' do
+  context 'without token' do
     it 'does not contain Rollbar config' do
       request_page
       expect(body).not_to include rollbar_config
@@ -18,7 +18,7 @@ RSpec.describe 'Application rollbar' do
     end
   end
 
-  context 'with a token' do
+  context 'with token' do
     let(:rollbar_client_token) { 'xxxxx' }
     let(:environment_variables) { { ROLLBAR_CLIENT_TOKEN: rollbar_client_token } }
 

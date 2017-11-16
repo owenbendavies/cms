@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Robots' do
-  context 'GET /robots.txt' do
+  context 'with GET /robots.txt' do
     let(:expected_body) do
       <<~FILE
         Sitemap: http://#{site.host}/sitemap.xml
@@ -24,11 +24,11 @@ FILE
     end
   end
 
-  context 'GET /robots' do
+  context 'with GET /robots' do
     include_examples 'renders page not found'
   end
 
-  context 'GET /robots.xml' do
+  context 'with GET /robots.xml' do
     include_examples 'returns 406'
   end
 end

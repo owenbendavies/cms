@@ -24,7 +24,7 @@ RSpec.describe SnsNotification do
       expect(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
     end
 
-    context 'with no message type' do
+    context 'without message type' do
       before do
         expect(verifier).to receive(:authenticate!).with(message.to_json)
       end
@@ -36,7 +36,7 @@ RSpec.describe SnsNotification do
       end
     end
 
-    context 'with a subscription confirmation message' do
+    context 'with ubscription confirmation message' do
       before do
         expect(verifier).to receive(:authenticate!).with(message.to_json)
 
@@ -55,7 +55,7 @@ RSpec.describe SnsNotification do
       end
     end
 
-    context 'with a notification' do
+    context 'with notification' do
       before do
         expect(verifier).to receive(:authenticate!).with(message.to_json)
       end
@@ -72,7 +72,7 @@ RSpec.describe SnsNotification do
       end
     end
 
-    context 'with an unverified message' do
+    context 'with unverified message' do
       before do
         expect(verifier).to receive(:authenticate!)
           .and_raise(Aws::SNS::MessageVerifier::VerificationError)

@@ -1,4 +1,4 @@
-RSpec.shared_context 'carrierwave' do
+RSpec.shared_context 'with carrierwave' do
   def fog_directories
     Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials).directories
   end
@@ -29,4 +29,4 @@ RSpec.shared_context 'carrierwave' do
   end
 end
 
-RSpec.configuration.include_context 'carrierwave'
+RSpec.configuration.include_context 'with carrierwave'

@@ -10,7 +10,7 @@ RSpec.describe PagePolicy do
 
     before { FactoryBot.create(:page) }
 
-    context 'no user' do
+    context 'without user' do
       let(:user) { nil }
 
       it 'returns visible site pages' do
@@ -18,7 +18,7 @@ RSpec.describe PagePolicy do
       end
     end
 
-    context 'another site user' do
+    context 'with another site user' do
       let(:user) { FactoryBot.create :user }
 
       it 'returns visible site pages' do
@@ -26,7 +26,7 @@ RSpec.describe PagePolicy do
       end
     end
 
-    context 'site user' do
+    context 'with site user' do
       let(:user) { FactoryBot.create(:user, site: site) }
 
       it 'returns all site pages' do
@@ -38,7 +38,7 @@ RSpec.describe PagePolicy do
   permissions :index? do
     let(:scope) { Page }
 
-    context 'no user' do
+    context 'without user' do
       let(:user) { nil }
 
       it 'is permitted' do
@@ -48,16 +48,16 @@ RSpec.describe PagePolicy do
   end
 
   permissions :show?, :contact_form? do
-    context 'private page' do
+    context 'with private page' do
       let(:scope) { FactoryBot.create(:page, :private, site: site) }
 
       include_examples 'user record policy'
     end
 
-    context 'non private page' do
+    context 'with non private page' do
       let(:scope) { FactoryBot.create(:page, site: site) }
 
-      context 'no user' do
+      context 'without user' do
         let(:user) { nil }
 
         it 'is permitted' do
