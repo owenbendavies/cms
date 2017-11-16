@@ -4,7 +4,7 @@ RSpec.feature 'Sitemap' do
   let!(:hidden_page) { FactoryBot.create(:page, :hidden, site: site) }
   let!(:private_page) { FactoryBot.create(:page, :private, site: site) }
 
-  context 'html' do
+  context 'with html' do
     scenario 'not logged in' do
       visit_200_page '/home'
 
@@ -37,7 +37,7 @@ RSpec.feature 'Sitemap' do
     end
   end
 
-  context 'xml', js: false do
+  context 'with xml', js: false do
     scenario 'http' do
       visit_200_page '/sitemap.xml'
 

@@ -1,4 +1,4 @@
-RSpec.shared_context 'visit' do
+RSpec.shared_context 'with visit' do
   def click_topbar_link(menu:, title:, icon:)
     within '.topbar' do
       expect(page).not_to have_link title
@@ -39,4 +39,4 @@ RSpec.shared_context 'visit' do
   end
 end
 
-RSpec.configuration.include_context 'visit', type: :feature
+RSpec.configuration.include_context 'with visit', type: :feature

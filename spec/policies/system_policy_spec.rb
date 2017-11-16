@@ -4,7 +4,7 @@ RSpec.describe SystemPolicy do
   permissions :error_500?, :error_delayed?, :error_timeout? do
     let(:scope) { :system }
 
-    context 'no user' do
+    context 'without user' do
       let(:user) { nil }
 
       it 'is not permitted' do
@@ -12,7 +12,7 @@ RSpec.describe SystemPolicy do
       end
     end
 
-    context 'non sysadmin user' do
+    context 'with non sysadmin user' do
       let(:user) { FactoryBot.create(:user) }
 
       it 'is not permitted' do
@@ -20,7 +20,7 @@ RSpec.describe SystemPolicy do
       end
     end
 
-    context 'sysadmin user' do
+    context 'with sysadmin user' do
       let(:user) { FactoryBot.create(:user, :sysadmin) }
 
       it 'is permitted' do

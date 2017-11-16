@@ -8,7 +8,7 @@ RSpec.describe 'db:seed:site_settings', type: :task do
     }
   end
 
-  context 'with no site setting' do
+  context 'without site setting' do
     let!(:user1) { FactoryBot.create(:user, :sysadmin, email: new_email) }
     let!(:user2) { FactoryBot.create(:user, :sysadmin) }
     let!(:site1) { FactoryBot.create(:site, host: new_host) }

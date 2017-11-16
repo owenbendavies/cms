@@ -115,7 +115,7 @@ RSpec.describe User do
   end
 
   describe '#admin_for_site?' do
-    context 'when admin of site' do
+    context 'with admin of site' do
       let(:user) { FactoryBot.create(:user, site: site, site_admin: true) }
       let(:site) { FactoryBot.create(:site) }
 
@@ -124,7 +124,7 @@ RSpec.describe User do
       end
     end
 
-    context 'when admin of another site' do
+    context 'with admin of another site' do
       let(:user) { FactoryBot.create(:user) }
       let(:site) { FactoryBot.create(:site) }
       let(:another_site) { FactoryBot.create(:site) }
@@ -139,7 +139,7 @@ RSpec.describe User do
       end
     end
 
-    context 'when admin of no sites' do
+    context 'with admin of no sites' do
       let(:user) { FactoryBot.create(:user, site: site) }
       let(:site) { FactoryBot.create(:site) }
 
@@ -148,7 +148,7 @@ RSpec.describe User do
       end
     end
 
-    context 'when no sites' do
+    context 'without sites' do
       let(:user) { FactoryBot.create(:user) }
       let(:site) { FactoryBot.create(:site) }
 

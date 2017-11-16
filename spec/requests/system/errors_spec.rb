@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Errors' do
-  context 'GET /system/error_500' do
+  context 'with GET /system/error_500' do
     include_examples 'authenticated page', :skip_authorized_check
 
-    context 'as a authorized user' do
+    context 'with authorized user' do
       let(:user) { FactoryBot.create(:user, :sysadmin) }
 
       it 'raises 500 error' do
@@ -13,10 +13,10 @@ RSpec.describe 'Errors' do
     end
   end
 
-  context 'GET /system/error_delayed' do
+  context 'with GET /system/error_delayed' do
     include_examples 'authenticated page', :skip_authorized_check
 
-    context 'as a authorized user' do
+    context 'with authorized user' do
       let(:user) { FactoryBot.create(:user, :sysadmin) }
 
       after { Delayed::Job.last.destroy! }
@@ -41,10 +41,10 @@ RSpec.describe 'Errors' do
     end
   end
 
-  context 'GET /system/error_timeout' do
+  context 'with GET /system/error_timeout' do
     include_examples 'authenticated page', :skip_authorized_check
 
-    context 'as a authorized user' do
+    context 'with authorized user' do
       let(:user) { FactoryBot.create(:user, :sysadmin) }
 
       it 'raises timeout error' do

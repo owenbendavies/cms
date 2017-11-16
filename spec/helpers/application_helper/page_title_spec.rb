@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, '#page_title' do
-  context 'site with sub title' do
+  context 'with site with sub title' do
     let(:site) do
       FactoryBot.build(:site, sub_title: Faker::Company.catch_phrase)
     end
@@ -12,20 +12,20 @@ RSpec.describe ApplicationHelper, '#page_title' do
       end
     end
 
-    context 'blank content' do
+    context 'with blank content' do
       it 'shows title and sub title' do
         expect(helper.page_title(site, '')).to eq "#{site.name} | #{site.sub_title}"
       end
     end
 
-    context 'no content' do
+    context 'without content' do
       it 'shows title and sub title' do
         expect(helper.page_title(site, nil)).to eq "#{site.name} | #{site.sub_title}"
       end
     end
   end
 
-  context 'site without sub title' do
+  context 'with site without sub title' do
     let(:site) { FactoryBot.build(:site) }
 
     context 'with content' do
@@ -34,7 +34,7 @@ RSpec.describe ApplicationHelper, '#page_title' do
       end
     end
 
-    context 'no content' do
+    context 'without content' do
       it 'shows title' do
         expect(helper.page_title(site, '')).to eq site.name
       end

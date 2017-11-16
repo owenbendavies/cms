@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Health check' do
   shared_examples 'renders health check' do
-    context 'GET /system/health.txt' do
+    context 'with GET /system/health.txt' do
       it 'renders ok' do
         request_page
 
@@ -16,16 +16,16 @@ RSpec.describe 'Health check' do
       end
     end
 
-    context 'GET /system/health.xml' do
+    context 'with GET /system/health.xml' do
       include_examples 'returns 406'
     end
   end
 
-  context 'known site' do
+  context 'with known site' do
     include_examples 'renders health check'
   end
 
-  context 'unknown site' do
+  context 'with unknown site' do
     let(:request_host) { new_host }
 
     include_examples 'renders health check'
