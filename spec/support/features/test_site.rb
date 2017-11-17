@@ -1,4 +1,4 @@
-RSpec.shared_context 'test site' do
+RSpec.shared_context 'with test site' do
   let!(:site) { FactoryBot.create(:site, host: 'localhost') }
 
   let(:site_user) { FactoryBot.create(:user, site: site) }
@@ -10,4 +10,4 @@ RSpec.shared_context 'test site' do
   let!(:home_page) { FactoryBot.create(:page, name: 'Home', site: site) }
 end
 
-RSpec.configuration.include_context 'test site', type: :feature
+RSpec.configuration.include_context 'with test site', type: :feature

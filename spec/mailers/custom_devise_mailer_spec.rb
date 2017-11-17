@@ -120,7 +120,7 @@ RSpec.describe CustomDeviseMailer do
     end
   end
 
-  context 'when ssl is enabled' do
+  context 'with ssl is enabled' do
     subject(:email) { described_class.confirmation_instructions(user, token) }
 
     let(:environment_variables) { { DISABLE_SSL: nil } }

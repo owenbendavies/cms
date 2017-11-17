@@ -24,7 +24,7 @@ RSpec.describe 'Application web server' do
     end
   end
 
-  context 'visiting a font' do
+  context 'when visiting a font' do
     let(:request_path) do
       Dir
         .glob(Rails.root.join('public', 'assets', '**', '*.woff'))
@@ -35,7 +35,7 @@ RSpec.describe 'Application web server' do
     include_examples 'asset headers'
   end
 
-  context 'visiting a asset' do
+  context 'when visiting a asset' do
     let(:request_path) do
       Dir
         .glob(Rails.root.join('public', 'assets', 'application-*.js'))
@@ -46,7 +46,7 @@ RSpec.describe 'Application web server' do
     include_examples 'asset headers'
   end
 
-  context 'with a bad client' do
+  context 'with bad client' do
     let(:request_headers) do
       {
         'HTTP_CLIENT_IP' => 'y',
@@ -62,7 +62,7 @@ RSpec.describe 'Application web server' do
   context 'with gzip' do
     let(:request_headers) { { 'HTTP_ACCEPT_ENCODING' => 'gzip, deflate' } }
 
-    context 'visiting a page' do
+    context 'when visiting a page' do
       it 'serves pages with gzip' do
         request_page
 
@@ -70,7 +70,7 @@ RSpec.describe 'Application web server' do
       end
     end
 
-    context 'visiting an asset' do
+    context 'when visiting an asset' do
       let(:request_path) do
         asset_file_path = Dir.glob(Rails.root.join('public', 'assets', 'application*.css')).first
         asset_file_path.gsub(Rails.root.join('public').to_s, '')

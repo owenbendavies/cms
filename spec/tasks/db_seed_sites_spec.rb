@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'db:seed:sites', type: :task do
-  shared_context 'creates site' do
-    context 'with no site' do
+  shared_examples 'creates site' do
+    context 'without site' do
       before do
         expect(STDOUT).to receive(:puts).with "Creating Site http://#{host}"
       end
@@ -19,7 +19,7 @@ RSpec.describe 'db:seed:sites', type: :task do
       end
     end
 
-    context 'with a site matching the host' do
+    context 'with site matching the host' do
       before { FactoryBot.create(:site, host: host) }
 
       it 'does not create a site' do

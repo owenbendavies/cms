@@ -4,7 +4,7 @@ RSpec.describe 'Application unknown routes' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
-  context 'root url' do
+  context 'with root url' do
     let(:request_path) { '/' }
 
     it 'redirects to home' do
@@ -14,25 +14,25 @@ RSpec.describe 'Application unknown routes' do
     end
   end
 
-  context 'urls with .html in' do
+  context 'with urls with .html in' do
     let(:request_path) { '/login.html' }
 
     include_examples 'renders page not found'
   end
 
-  context 'urls with dots in path' do
+  context 'with urls with dots in path' do
     let(:request_path) { '/file.pid/file' }
 
     include_examples 'renders page not found'
   end
 
-  context 'unknown url' do
+  context 'with unknown url' do
     let(:request_path) { '/badroute' }
 
     include_examples 'renders page not found'
   end
 
-  context 'unknown site' do
+  context 'with unknown site' do
     let(:request_host) { new_host }
 
     it 'renders site not found' do
@@ -41,26 +41,26 @@ RSpec.describe 'Application unknown routes' do
     end
   end
 
-  context 'unknown site and unkown format' do
+  context 'with unknown site and unkown format' do
     let(:request_path) { '/login.txt' }
     let(:request_host) { new_host }
 
     include_examples 'returns 406'
   end
 
-  context 'unkown format' do
+  context 'with unkown format' do
     let(:request_path) { '/login.txt' }
 
     include_examples 'returns 406'
   end
 
-  context 'unknown accept header' do
+  context 'with unknown accept header' do
     let(:request_headers) { { 'Accept' => 'application/json' } }
 
     include_examples 'returns 406'
   end
 
-  context 'non xhr js' do
+  context 'with non xhr js' do
     let(:request_headers) { { 'Accept' => 'text/javascript' } }
     let(:request_path) { '/bad/content/js' }
 

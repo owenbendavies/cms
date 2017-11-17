@@ -37,14 +37,14 @@ RSpec.describe 'Application logging' do
     end
   end
 
-  context 'with no user' do
+  context 'without user' do
     it 'logs request information' do
       request_page
       expect(results).to eq([expected_result])
     end
   end
 
-  context 'with a user' do
+  context 'with user' do
     let(:user) { FactoryBot.create(:user) }
 
     it 'logs request information and the user id' do

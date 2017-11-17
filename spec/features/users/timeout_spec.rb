@@ -5,7 +5,7 @@ RSpec.feature 'User timeout', js: false do
 
   after { Timecop.return }
 
-  context 'logged in site user with remember me' do
+  context 'with logged in site user with remember me' do
     before do
       visit_200_page '/login'
       fill_in 'Email', with: user.email
@@ -14,7 +14,7 @@ RSpec.feature 'User timeout', js: false do
       click_button 'Login'
     end
 
-    context 'after less than 2 weeks' do
+    context 'when after less than 2 weeks' do
       before { Timecop.travel Time.zone.now + 13.days }
 
       scenario 'is logged in' do
@@ -22,7 +22,7 @@ RSpec.feature 'User timeout', js: false do
       end
     end
 
-    context 'after 2 weeks' do
+    context 'when after 2 weeks' do
       before { Timecop.travel Time.zone.now + 15.days }
 
       scenario 'displays 404' do
@@ -31,7 +31,7 @@ RSpec.feature 'User timeout', js: false do
     end
   end
 
-  context 'logged in site user without remember me' do
+  context 'with logged in site user without remember me' do
     before do
       visit_200_page '/login'
       fill_in 'Email', with: user.email
@@ -39,7 +39,7 @@ RSpec.feature 'User timeout', js: false do
       click_button 'Login'
     end
 
-    context 'after less than 30 minutes' do
+    context 'when after less than 30 minutes' do
       before { Timecop.travel Time.zone.now + 29.minutes }
 
       scenario 'displays the page' do
@@ -47,7 +47,7 @@ RSpec.feature 'User timeout', js: false do
       end
     end
 
-    context 'after 30 minutes' do
+    context 'when after 30 minutes' do
       before { Timecop.travel Time.zone.now + 31.minutes }
 
       scenario 'displays 404' do
