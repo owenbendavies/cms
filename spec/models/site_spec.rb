@@ -28,7 +28,7 @@ RSpec.describe Site do
   describe '#main_menu_pages' do
     subject(:site) { FactoryBot.create(:site) }
 
-    context 'when no pages' do
+    context 'without pages' do
       it 'returns empty array' do
         expect(site.main_menu_pages).to be_empty
       end
@@ -58,7 +58,7 @@ RSpec.describe Site do
   describe '#footer_links' do
     subject(:site) { FactoryBot.create(:site) }
 
-    context 'when no links' do
+    context 'without links' do
       it 'returns empty array' do
         expect(site.footer_links).to be_empty
       end
@@ -137,7 +137,7 @@ RSpec.describe Site do
   describe '#address' do
     subject(:site) { FactoryBot.create(:site, host: 'localhost') }
 
-    context 'when ssl is enabled' do
+    context 'with ssl enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'returns https url' do
@@ -145,7 +145,7 @@ RSpec.describe Site do
       end
     end
 
-    context 'when ssl is disabled' do
+    context 'with ssl disabled' do
       it 'returns http url' do
         expect(site.address).to eq 'http://localhost'
       end

@@ -17,7 +17,7 @@ RSpec.describe SitePolicy do
   permissions :index? do
     let(:scope) { Site }
 
-    context 'no user' do
+    context 'without user' do
       let(:user) { nil }
 
       it 'is not permitted' do
@@ -25,7 +25,7 @@ RSpec.describe SitePolicy do
       end
     end
 
-    context 'user' do
+    context 'with user' do
       let(:user) { FactoryBot.create :user }
 
       it 'is permitted' do

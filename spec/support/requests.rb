@@ -1,6 +1,6 @@
 RSpec.configuration.include Warden::Test::Helpers, type: :request
 
-RSpec.shared_context 'requests' do
+RSpec.shared_context 'with requests' do
   let(:request_description) do
     self.class.metadata[:full_description].match %r{(GET|POST|PUT|PATCH|DELETE) ([a-z0-9/_:.]+)}
   end
@@ -32,7 +32,7 @@ RSpec.shared_context 'requests' do
   end
 end
 
-RSpec.configuration.include_context 'requests', type: :request
+RSpec.configuration.include_context 'with requests', type: :request
 
 RSpec.shared_examples 'renders page not found' do
   it 'renders page not found' do
@@ -49,12 +49,12 @@ RSpec.shared_examples 'returns 406' do
 end
 
 RSpec.shared_examples 'authenticated page' do |config|
-  context 'as a unauthenticated user' do
+  context 'with unauthenticated user' do
     include_examples 'renders page not found'
   end
 
   unless config == :skip_unauthorized_check
-    context 'as a unauthorized user' do
+    context 'with unauthorized user' do
       let(:user) do
         if defined? unauthorized_user
           unauthorized_user
@@ -68,7 +68,7 @@ RSpec.shared_examples 'authenticated page' do |config|
   end
 
   unless config == :skip_authorized_check
-    context 'as a authorized user' do
+    context 'with authorized user' do
       let(:user) do
         if defined? authorized_user
           authorized_user

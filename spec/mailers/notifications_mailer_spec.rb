@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NotificationsMailer do
-  include_context 'test site'
+  include_context 'with test site'
 
   describe '.new_message' do
     before do

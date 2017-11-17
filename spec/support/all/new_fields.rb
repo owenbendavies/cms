@@ -1,4 +1,4 @@
-RSpec.shared_context 'new fields' do
+RSpec.shared_context 'with new fields' do
   let(:new_catch_phrase) { Faker::Company.catch_phrase }
   let(:new_company_name) { Faker::Company.name.delete("'") }
   let(:new_host) { Faker::Internet.domain_name }
@@ -11,4 +11,4 @@ RSpec.shared_context 'new fields' do
   let(:new_number) { rand 10_000 }
 end
 
-RSpec.configuration.include_context 'new fields'
+RSpec.configuration.include_context 'with new fields'

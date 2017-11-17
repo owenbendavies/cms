@@ -1,4 +1,4 @@
-RSpec.shared_context 'mailers' do
+RSpec.shared_context 'with mailers' do
   def last_emails(expected_number)
     expect(ActionMailer::Base.deliveries.size).to eq 0
     Delayed::Worker.new.work_off
@@ -20,7 +20,7 @@ RSpec.shared_context 'mailers' do
   end
 end
 
-RSpec.configuration.include_context 'mailers'
+RSpec.configuration.include_context 'with mailers'
 
 RSpec.shared_examples 'site email' do
   it 'has from address as site email' do
@@ -36,7 +36,7 @@ RSpec.shared_examples 'site email' do
     expect(email.body).to have_content site.name
   end
 
-  context 'site with copyright' do
+  context 'with site with copyright' do
     before { site.update!(copyright: new_name) }
 
     it 'has copyright in body' do
@@ -44,13 +44,13 @@ RSpec.shared_examples 'site email' do
     end
   end
 
-  context 'site without copyright' do
+  context 'with site without copyright' do
     it 'has site name copyright in body' do
       expect(email.body).to have_content "#{site.name} © #{Time.zone.now.year}"
     end
   end
 
-  context 'site with charity number' do
+  context 'with site with charity number' do
     before { site.update!(charity_number: new_number) }
 
     it 'has charity number in body' do
@@ -58,7 +58,7 @@ RSpec.shared_examples 'site email' do
     end
   end
 
-  context 'site with charity number' do
+  context 'with site with charity number' do
     it 'does not have charity number in body' do
       expect(email.body).not_to have_content 'Registered charity'
     end

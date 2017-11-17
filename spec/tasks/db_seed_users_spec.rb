@@ -8,7 +8,7 @@ RSpec.describe 'db:seed:users', type: :task do
       }
     end
 
-    context 'with no user' do
+    context 'without user' do
       before do
         expect(STDOUT).to receive(:puts).with "Creating User #{new_email}"
       end
@@ -25,7 +25,7 @@ RSpec.describe 'db:seed:users', type: :task do
       end
     end
 
-    context 'with a user matching the email' do
+    context 'with user matching the email' do
       before { FactoryBot.create(:user, email: new_email) }
 
       it 'does not create a user' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationHelper, '#body_class' do
-  context 'when not signed in' do
+  context 'without sigining in' do
     before do
       allow(helper).to receive(:user_signed_in?).and_return(false)
     end
@@ -22,7 +22,7 @@ RSpec.describe ApplicationHelper, '#body_class' do
     end
   end
 
-  context 'when signed in' do
+  context 'with signed in' do
     before do
       allow(helper).to receive(:user_signed_in?).and_return(true)
     end

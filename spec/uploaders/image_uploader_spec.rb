@@ -17,7 +17,7 @@ RSpec.describe ImageUploader do
   end
 
   describe '.store!' do
-    context 'with a non image file' do
+    context 'with non image file' do
       it 'raise an exception' do
         expect { image_uploader.store! StringUploader.new('stylesheet.exe', 'asd') }
           .to raise_error(
@@ -27,7 +27,7 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'with a file' do
+    context 'with file' do
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
           image_uploader.store! file
@@ -59,7 +59,7 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'file with exif data' do
+    context 'with file has exif data' do
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
           image_uploader.store! file
@@ -92,7 +92,7 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'with a small image' do
+    context 'with small image' do
       before do
         File.open(Rails.root.join('spec', 'assets', 'small.jpg')) do |file|
           image_uploader.store! file
@@ -116,7 +116,7 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'with a filename extension that is capitals' do
+    context 'with filename extension that is capitals' do
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image_capital.JPG')) do |file|
           image_uploader.store! file
@@ -128,7 +128,7 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'with a .jpeg' do
+    context 'with .jpeg' do
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image.jpeg')) do |file|
           image_uploader.store! file

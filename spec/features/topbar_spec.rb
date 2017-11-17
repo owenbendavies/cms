@@ -23,7 +23,7 @@ RSpec.feature 'Topbar' do
       expect(page).to have_current_path '/'
     end
 
-    it_behaves_like 'mobile' do
+    it_behaves_like 'with mobile' do
       scenario 'navigating to page via dropdowns' do
         within topbar_selector do
           expect(page).not_to have_link 'Site'

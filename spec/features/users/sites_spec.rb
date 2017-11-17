@@ -15,7 +15,7 @@ RSpec.feature 'User sites' do
     expect(links[0]['href']).to eq 'http://localhost'
   end
 
-  context 'when ssl is enabled' do
+  context 'with ssl is enabled' do
     let(:environment_variables) { { DISABLE_SSL: nil } }
 
     scenario 'list of sites with https' do
