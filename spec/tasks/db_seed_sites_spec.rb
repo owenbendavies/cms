@@ -4,7 +4,7 @@ RSpec.describe 'db:seed:sites', type: :task do
   shared_examples 'creates site' do
     context 'without site' do
       before do
-        expect(STDOUT).to receive(:puts).with "Creating Site http://#{host}"
+        allow(STDOUT).to receive(:puts).with "Creating Site http://#{host}"
       end
 
       it 'creates a site' do
