@@ -12,14 +12,15 @@ RSpec.configure do |config|
   end
 
   config.after do
-    expect(Delayed::Job.count).to eq 0
+    raise 'Delayed::Job not processed' unless Delayed::Job.count == 0
   end
 
   config.after :suite do
-    expect(GetProcessMem.new.mb.to_i).to be < 512
+    raise 'Memory too hight' if GetProcessMem.new.mb.to_i > 512
   end
 
   config.after :suite do
-    expect(Time.zone.now - config.start_time).to be < 8.minutes
+    time = Time.zone.now - config.start_time
+    raise 'Tests took too long' if time > 8.minutes
   end
 end

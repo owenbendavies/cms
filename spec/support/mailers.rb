@@ -16,7 +16,7 @@ RSpec.shared_context 'with mailers' do
   end
 
   after do
-    expect(ActionMailer::Base.deliveries.size).to eq 0
+    raise 'Emails not processed' unless ActionMailer::Base.deliveries.empty?
   end
 end
 

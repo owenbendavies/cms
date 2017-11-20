@@ -7,8 +7,8 @@ RSpec.describe 'POST /sns' do
 
   before do
     verifier = instance_double(Aws::SNS::MessageVerifier)
-    expect(verifier).to receive(:authenticate!).with(request_params)
-    expect(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
+    allow(verifier).to receive(:authenticate!).with(request_params)
+    allow(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
   end
 
   it 'saves the notification' do
