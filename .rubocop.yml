@@ -36,9 +36,6 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
 
-RSpec/ExpectInHook: # TODO: remove and fix
-  Enabled: false
-
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive
 

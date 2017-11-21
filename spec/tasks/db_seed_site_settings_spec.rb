@@ -16,16 +16,16 @@ RSpec.describe 'db:seed:site_settings', type: :task do
     let(:other_user) { FactoryBot.create(:user) }
 
     before do
-      expect(STDOUT).to receive(:puts)
+      allow(STDOUT).to receive(:puts)
         .with "Creating SiteSetting for #{user1.email} http://#{site1.host}"
 
-      expect(STDOUT).to receive(:puts)
+      allow(STDOUT).to receive(:puts)
         .with "Creating SiteSetting for #{user1.email} http://#{site2.host}"
 
-      expect(STDOUT).to receive(:puts)
+      allow(STDOUT).to receive(:puts)
         .with "Creating SiteSetting for #{user2.email} http://#{site1.host}"
 
-      expect(STDOUT).to receive(:puts)
+      allow(STDOUT).to receive(:puts)
         .with "Creating SiteSetting for #{user2.email} http://#{site2.host}"
     end
 

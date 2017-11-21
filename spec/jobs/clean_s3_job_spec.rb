@@ -36,7 +36,6 @@ RSpec.describe CleanS3Job do
 
       before do
         fog_directory.files.create(key: 'bad.jpg')
-        expect(uploaded_files).to include 'bad.jpg'
       end
 
       it 'sends an error to Rollbar' do

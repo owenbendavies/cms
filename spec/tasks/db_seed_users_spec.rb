@@ -10,7 +10,7 @@ RSpec.describe 'db:seed:users', type: :task do
 
     context 'without user' do
       before do
-        expect(STDOUT).to receive(:puts).with "Creating User #{new_email}"
+        allow(STDOUT).to receive(:puts).with "Creating User #{new_email}"
       end
 
       it 'creates a user' do
