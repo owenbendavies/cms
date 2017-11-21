@@ -5,14 +5,14 @@ RSpec.feature 'Inviting a user' do
     login_as site_user
     navigate_via_topbar menu: 'Site', title: 'Users', icon: 'group'
     click_link 'Add User'
+  end
 
+  scenario 'new user' do
     within '.article__header' do
       expect(page).to have_content 'Add User'
       expect(page).to have_selector '.fa-user-plus'
     end
-  end
 
-  scenario 'new user' do
     fill_in 'Name', with: new_name
     fill_in 'Email', with: new_email
     click_button 'Add User'

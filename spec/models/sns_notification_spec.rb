@@ -21,12 +21,12 @@ RSpec.describe SnsNotification do
     let(:verifier) { instance_double(Aws::SNS::MessageVerifier) }
 
     before do
-      expect(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
+      allow(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
     end
 
     context 'without message type' do
       before do
-        expect(verifier).to receive(:authenticate!).with(message.to_json)
+        allow(verifier).to receive(:authenticate!).with(message.to_json)
       end
 
       let(:message) { message_json.tap { |json| json.delete 'Type' } }
@@ -36,28 +36,28 @@ RSpec.describe SnsNotification do
       end
     end
 
-    context 'with ubscription confirmation message' do
+    context 'with subscription confirmation message' do
+      let(:topic) { instance_double(Aws::SNS::Topic) }
+
       before do
-        expect(verifier).to receive(:authenticate!).with(message.to_json)
+        allow(verifier).to receive(:authenticate!).with(message.to_json)
 
-        topic = instance_double(Aws::SNS::Topic)
-
-        expect(topic).to receive(:confirm_subscription).with(token: message.fetch('Token'))
-
-        expect(Aws::SNS::Topic).to receive(:new).with(
+        allow(Aws::SNS::Topic).to receive(:new).with(
           arn: message.fetch('TopicArn'),
           client: AWS_SNS_CLIENT
         ).and_return topic
       end
 
       it 'confirms the subscription' do
+        expect(topic).to receive(:confirm_subscription).with(token: message.fetch('Token'))
+
         sns_notification
       end
     end
 
     context 'with notification' do
       before do
-        expect(verifier).to receive(:authenticate!).with(message.to_json)
+        allow(verifier).to receive(:authenticate!).with(message.to_json)
       end
 
       let(:message_file) { 'notification.json' }
@@ -74,7 +74,7 @@ RSpec.describe SnsNotification do
 
     context 'with unverified message' do
       before do
-        expect(verifier).to receive(:authenticate!)
+        allow(verifier).to receive(:authenticate!)
           .and_raise(Aws::SNS::MessageVerifier::VerificationError)
       end
 

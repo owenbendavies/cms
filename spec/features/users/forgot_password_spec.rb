@@ -4,10 +4,11 @@ RSpec.feature 'User forgot password', js: false do
   before do
     visit_200_page '/login'
     click_link 'Forgot your password?'
-    expect(page).to have_content 'Forgot your password?'
   end
 
   scenario 'resetting password' do
+    expect(page).to have_content 'Forgot your password?'
+
     fill_in 'Email', with: site_user.email
     click_button 'Send reset password instructions'
 
