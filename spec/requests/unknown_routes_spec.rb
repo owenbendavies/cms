@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application unknown routes' do
+RSpec.describe 'Unknown routes' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
