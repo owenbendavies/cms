@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application logging' do
+RSpec.describe 'Logging' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
