@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Application headers' do
+RSpec.describe 'Headers' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
