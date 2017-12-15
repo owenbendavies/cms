@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Editing a page' do
   before do
+    home_page.update!(html_content: '<p>Hello world</p>')
+
     login_as site_user
     navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
   end
@@ -9,11 +11,14 @@ RSpec.feature 'Editing a page' do
   scenario 'changing the content' do
     expect(body).to include home_page.html_content
 
-    page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
+    find('.mce-content-body')
+    find('.js-tinymce').click
+    find('.js-tinymce').base.send_keys(' today')
 
     click_button 'Update Page'
 
-    expect(page).to have_content new_message
+    expect(page).to have_content 'Hello world today'
+    expect(home_page.reload.html_content).to eq '<p>Hello world today</p>'
   end
 
   scenario 'making the page hidden' do
