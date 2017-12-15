@@ -9,5 +9,5 @@ plugins:
   - link
   - lists
   - paste
-selector: '.editor'
+selector: '.js-tinymce'
 toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link'
