@@ -9,7 +9,9 @@ RSpec.feature 'Creating a page' do
   scenario 'valid data' do
     fill_in 'Name', with: new_name
 
-    page.execute_script("tinyMCE.editors[0].setContent('#{new_message}');")
+    find('.mce-content-body')
+    find('.js-tinymce').click
+    find('.js-tinymce').base.send_keys(new_message)
 
     expect do
       click_button 'Create Page'
