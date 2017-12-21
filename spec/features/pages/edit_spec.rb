@@ -6,12 +6,12 @@ RSpec.feature 'Editing a page' do
 
     login_as site_user
     navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
+    find('.mce-content-body')
   end
 
   scenario 'changing the content' do
     expect(body).to include home_page.html_content
 
-    find('.mce-content-body')
     find('.js-tinymce').click
     find('.js-tinymce').base.send_keys(' today')
 
