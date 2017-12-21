@@ -23,12 +23,13 @@
 #
 
 class Site < ApplicationRecord
-  has_many :users, through: :settings
+  has_many :users, through: :settings, inverse_of: false
 
   has_many(
     :main_menu_pages,
     -> { in_list.order(:main_menu_position) },
-    class_name: Page
+    class_name: Page,
+    inverse_of: :site
   )
 
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename

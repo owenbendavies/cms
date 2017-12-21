@@ -64,7 +64,7 @@ class User < ApplicationRecord
 
   gravtastic default: 'mm', size: 40
 
-  has_many :sites, through: :site_settings
+  has_many :sites, through: :site_settings, inverse_of: false
 
   schema_validations
 
