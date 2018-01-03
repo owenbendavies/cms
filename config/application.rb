@@ -39,7 +39,7 @@ module Cms
       config.ssl_options = { hsts: false }
     end
 
-    # Lograge options
+    # Lograge
     config.lograge.custom_options = lambda do |event|
       {
         host: event.payload[:host],
@@ -49,6 +49,9 @@ module Cms
         user_agent: event.payload[:user_agent].inspect
       }
     end
+
+    config.lograge.enabled = true
+    config.lograge.keep_original_rails_log = ENV['DEV_LOGGING'] == 'true'
 
     # Customer middleware
     config.middleware.use Rack::Deflater

@@ -17,19 +17,25 @@ RSpec.describe 'Unknown routes' do
   context 'with urls with .html in' do
     let(:request_path) { '/login.html' }
 
-    include_examples 'renders page not found'
+    include_examples 'renders html page not found'
   end
 
   context 'with urls with dots in path' do
     let(:request_path) { '/file.pid/file' }
 
-    include_examples 'renders page not found'
+    include_examples 'renders html page not found'
   end
 
   context 'with unknown url' do
-    let(:request_path) { '/badroute' }
+    let(:request_path) { '/bad/route' }
 
-    include_examples 'renders page not found'
+    include_examples 'renders html page not found'
+  end
+
+  context 'with missing record' do
+    let(:request_path) { '/badpage' }
+
+    include_examples 'renders html page not found'
   end
 
   context 'with unknown site' do
@@ -48,7 +54,7 @@ RSpec.describe 'Unknown routes' do
     include_examples 'returns 406'
   end
 
-  context 'with unkown format' do
+  context 'with unkown extension' do
     let(:request_path) { '/login.txt' }
 
     include_examples 'returns 406'
