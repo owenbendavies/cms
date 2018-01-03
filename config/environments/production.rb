@@ -41,14 +41,10 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  # Logging
   config.logger = ActiveSupport::Logger.new(STDOUT)
-  config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Raw.new
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
   config.logger.formatter = proc do |severity, _time, _progname, message|
     if message.class == Hash
       fields = message.map { |key, value| "#{key}=#{value.inspect}" }.join(' ')

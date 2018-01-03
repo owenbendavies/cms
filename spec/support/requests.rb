@@ -30,12 +30,23 @@ RSpec.shared_context 'with requests' do
     send(request_method, request_path, headers: request_headers, params: request_params)
     expect(response).to have_http_status expected_status
   end
+
+  def json_body
+    JSON.parse(response.body)
+  end
 end
 
 RSpec.configuration.include_context 'with requests', type: :request
 
-RSpec.shared_examples 'renders page not found' do
-  it 'renders page not found' do
+RSpec.shared_examples 'renders json page not found' do
+  it 'renders json page not found' do
+    request_page(expected_status: 404)
+    expect(json_body).to eq('error' => '404 not found')
+  end
+end
+
+RSpec.shared_examples 'renders html page not found' do
+  it 'renders html page not found' do
     request_page(expected_status: 404)
     expect(body).to include 'Page Not Found'
   end
