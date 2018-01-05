@@ -1,3 +1,3 @@
 web: ./bin/puma
-worker: ./bin/delayed_job_worker_pool config/delayed_job_worker_pool.rb
+worker: QUIET=true ./bin/rails jobs:work
 release: ./bin/rails db:migrate db:seed
