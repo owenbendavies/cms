@@ -46,7 +46,7 @@ module Cms
         request_id: event.payload[:request_id],
         fwd: event.payload[:fwd],
         user_id: event.payload[:user_id],
-        user_agent: event.payload[:user_agent].inspect
+        user_agent: event.payload[:user_agent]
       }
     end
 
