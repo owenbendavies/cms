@@ -55,7 +55,6 @@ gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
-gem 'delayed_job_worker_pool' # Multiple delayed jobs
 gem 'puma' # Web server
 
 # Monitoring
