@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get '/sitemap', to: 'pages#index'
 
   get '/system/error_500', to: 'systems#error_500'
-  get '/system/error_delayed', to: 'systems#error_delayed'
   get '/system/error_timeout', to: 'systems#error_timeout'
   get '/system/health', to: 'systems#health'
 
