@@ -5,51 +5,43 @@ RSpec.describe 'Logging' do
   let(:request_path) { '/sitemap' }
 
   let(:request_id) { SecureRandom.uuid }
+  let(:user_agent) { new_company_name }
 
   let(:request_headers) do
     {
-      'User-Agent' => new_company_name,
+      'User-Agent' => user_agent,
       'X-Request-Id' => request_id
     }
   end
 
   let(:events) { [] }
 
-  let(:results) do
-    events.map do |event|
-      Rails.application.config.lograge.custom_options.call(event)
-    end
-  end
-
   let(:expected_result) do
-    {
-      host: site.host,
-      request_id: request_id,
-      fwd: '127.0.0.1',
-      user_id: nil,
-      user_agent: "\"#{new_company_name}\""
-    }
+    /\Amethod=GET path=#{request_path} format=html controller=PagesController action=index status=200 duration=[0-9]+\.[0-9][0-9] view=[0-9]+\.[0-9][0-9] db=[0-9]+\.[0-9][0-9] host=#{request_host} request_id=#{request_id} fwd=127.0.0.1 user_id=#{user_id} user_agent=#{user_agent}\z/ # rubocop:disable Metrics/LineLength
   end
 
   before do
-    ActiveSupport::Notifications.subscribe('process_action.action_controller') do |*args|
-      events << ActiveSupport::Notifications::Event.new(*args)
+    allow(Rails.logger).to receive(:info) do |message|
+      events << message
     end
   end
 
   context 'without user' do
+    let(:user_id) { nil }
+
     it 'logs request information' do
       request_page
-      expect(results).to eq([expected_result])
+      expect(events.last).to match(expected_result)
     end
   end
 
   context 'with user' do
     let(:user) { FactoryBot.create(:user) }
+    let(:user_id) { user.id }
 
     it 'logs request information and the user id' do
       request_page
-      expect(results).to eq([expected_result.merge(user_id: user.id)])
+      expect(events.last).to match(expected_result)
     end
   end
 end
