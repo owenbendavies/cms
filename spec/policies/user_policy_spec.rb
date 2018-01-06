@@ -2,9 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UserPolicy do
   describe 'Scope' do
-    subject(:policy_scope) { described_class::Scope.new(context, scope).resolve }
+    subject(:policy_scope) { described_class::Scope.new(context, User).resolve }
 
-    let(:scope) { User }
     let(:user) { FactoryBot.create(:user, site: site) }
 
     before { FactoryBot.create(:user) }
@@ -15,8 +14,6 @@ RSpec.describe UserPolicy do
   end
 
   permissions :index?, :create? do
-    let(:scope) { User }
-
     include_examples 'user site policy'
   end
 end

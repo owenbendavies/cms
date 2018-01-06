@@ -22,6 +22,8 @@ class API < Grape::API
   namespace do
     after(&:verify_authorized)
 
+    mount ErrorsAPI
+    mount HealthAPI
     mount MessagesAPI
   end
 

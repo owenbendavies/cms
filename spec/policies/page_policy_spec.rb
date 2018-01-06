@@ -2,17 +2,14 @@ require 'rails_helper'
 
 RSpec.describe PagePolicy do
   describe 'Scope' do
-    subject(:policy_scope) { described_class::Scope.new(context, scope).resolve }
+    subject(:policy_scope) { described_class::Scope.new(context, Page).resolve }
 
-    let(:scope) { Page }
     let!(:site_page) { FactoryBot.create(:page, site: site) }
     let!(:private_site_page) { FactoryBot.create(:page, :private, site: site) }
 
     before { FactoryBot.create(:page) }
 
     context 'without user' do
-      let(:user) { nil }
-
       it 'returns visible site pages' do
         expect(policy_scope).to contain_exactly site_page
       end
@@ -36,39 +33,33 @@ RSpec.describe PagePolicy do
   end
 
   permissions :index? do
-    let(:scope) { Page }
-
     context 'without user' do
-      let(:user) { nil }
-
       it 'is permitted' do
-        expect(policy).to permit(context, scope)
+        expect(described_class).to permit(context)
       end
     end
   end
 
   permissions :show?, :contact_form? do
     context 'with private page' do
-      let(:scope) { FactoryBot.create(:page, :private, site: site) }
+      let(:record) { FactoryBot.create(:page, :private, site: site) }
 
       include_examples 'user record policy'
     end
 
     context 'with non private page' do
-      let(:scope) { FactoryBot.create(:page, site: site) }
+      let(:record) { FactoryBot.create(:page, site: site) }
 
       context 'without user' do
-        let(:user) { nil }
-
         it 'is permitted' do
-          expect(policy).to permit(context, scope)
+          expect(described_class).to permit(context, record)
         end
       end
     end
   end
 
   permissions :create?, :update?, :destroy? do
-    let(:scope) { FactoryBot.create(:page, site: site) }
+    let(:record) { FactoryBot.create(:page, site: site) }
 
     include_examples 'user record policy'
   end
