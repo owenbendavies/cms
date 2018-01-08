@@ -22,12 +22,6 @@ RSpec.describe 'API Unknown routes' do
     include_examples 'renders json page not found'
   end
 
-  context 'with unknown site' do
-    let(:request_host) { new_host }
-
-    include_examples 'renders json page not found'
-  end
-
   context 'with unkown extension' do
     let(:request_path) { '/api/messages/id.txt' }
 
