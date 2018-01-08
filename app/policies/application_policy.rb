@@ -2,12 +2,13 @@ class ApplicationPolicy
   module Shared
     protected
 
-    def user_site?
-      @user&.site_settings&.find_by(site_id: @site.id)
+    def initialize(context, _)
+      @user = context[:user]
+      @site = context[:site]
     end
 
-    def user_record?
-      @user&.site_settings&.find_by(site_id: @record.site_id)
+    def user_site?
+      @site && @user&.site_settings&.find_by(site_id: @site.id)
     end
   end
 
@@ -15,8 +16,7 @@ class ApplicationPolicy
     include Shared
 
     def initialize(context, scope)
-      @user = context[:user]
-      @site = context[:site]
+      super
       @scope = scope
     end
 
@@ -28,8 +28,7 @@ class ApplicationPolicy
   include Shared
 
   def initialize(context, record)
-    @user = context[:user]
-    @site = context[:site]
+    super
     @record = record
   end
 
@@ -39,5 +38,15 @@ class ApplicationPolicy
 
   def edit?
     update?
+  end
+
+  private
+
+  def site_record?
+    @site && @record.site_id == @site.id
+  end
+
+  def user_record?
+    site_record? && user_site?
   end
 end

@@ -14,7 +14,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def show?
-    !@record.private? || user_record?
+    @record.private? ? user_record? : site_record?
   end
 
   def contact_form?

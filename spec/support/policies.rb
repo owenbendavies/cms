@@ -13,8 +13,23 @@ end
 
 RSpec.configuration.include_context 'with policies', type: :policy
 
-RSpec.shared_examples 'user site policy' do
+RSpec.shared_examples 'no user policy' do
   context 'without user' do
+    it 'is not permitted' do
+      expect(described_class).not_to permit(context, record)
+    end
+  end
+
+  context 'without site' do
+    let(:context) do
+      {
+        user: user,
+        site: nil
+      }
+    end
+
+    let(:user) { FactoryBot.create(:user, site: site) }
+
     it 'is not permitted' do
       expect(described_class).not_to permit(context, record)
     end
@@ -27,6 +42,10 @@ RSpec.shared_examples 'user site policy' do
       expect(described_class).not_to permit(context, record)
     end
   end
+end
+
+RSpec.shared_examples 'user site policy' do
+  include_examples 'no user policy'
 
   context 'with site user' do
     let(:user) { FactoryBot.create(:user, site: site) }
@@ -38,19 +57,7 @@ RSpec.shared_examples 'user site policy' do
 end
 
 RSpec.shared_examples 'user site admin policy' do
-  context 'without user' do
-    it 'is not permitted' do
-      expect(described_class).not_to permit(context, record)
-    end
-  end
-
-  context 'with another site user' do
-    let(:user) { FactoryBot.create :user }
-
-    it 'is not permitted' do
-      expect(described_class).not_to permit(context, record)
-    end
-  end
+  include_examples 'no user policy'
 
   context 'with another site admin user' do
     let(:user) { FactoryBot.create(:user, site_admin: true) }
