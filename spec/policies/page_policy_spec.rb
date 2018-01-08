@@ -55,6 +55,15 @@ RSpec.describe PagePolicy do
           expect(described_class).to permit(context, record)
         end
       end
+
+      context 'with another site' do
+        let(:other_site) { FactoryBot.create(:site) }
+        let(:record) { FactoryBot.create(:page, site: other_site) }
+
+        it 'is not permitted' do
+          expect(described_class).not_to permit(context, record)
+        end
+      end
     end
   end
 

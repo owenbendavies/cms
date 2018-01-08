@@ -15,10 +15,6 @@ class API < Grape::API
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from Pundit::NotAuthorizedError, with: :page_not_found
 
-  before do
-    @site = Site.find_by!(host: request.host)
-  end
-
   namespace do
     after(&:verify_authorized)
 
