@@ -21,6 +21,7 @@ class API < Grape::API
     mount ErrorsAPI
     mount HealthAPI
     mount MessagesAPI
+    mount SnsNotificationsAPI
   end
 
   add_swagger_documentation(doc_version: 'v1', info: { title: 'obduk CMS API' })
