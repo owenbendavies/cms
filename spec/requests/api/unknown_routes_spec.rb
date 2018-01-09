@@ -19,7 +19,7 @@ RSpec.describe 'API Unknown routes' do
   context 'with missing record' do
     let(:request_path) { '/api/messages/badmessage' }
 
-    include_examples 'renders json page not found'
+    include_examples 'renders json forbidden'
   end
 
   context 'with unkown extension' do

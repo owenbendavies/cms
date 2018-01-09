@@ -12,8 +12,8 @@ class API < Grape::API
   helpers ::Helpers::Authentication
   helpers ::Helpers::Errors
 
-  rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
-  rescue_from Pundit::NotAuthorizedError, with: :page_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :forbidden
+  rescue_from Pundit::NotAuthorizedError, with: :forbidden
 
   namespace do
     after(&:verify_authorized)
