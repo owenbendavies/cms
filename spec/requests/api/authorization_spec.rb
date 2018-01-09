@@ -8,7 +8,7 @@ RSpec.describe 'API Authorization' do
       let(:message) { FactoryBot.create(:message) }
       let(:request_path_id) { message.uuid }
 
-      include_examples 'renders json page not found'
+      include_examples 'renders json forbidden'
     end
   end
 end
