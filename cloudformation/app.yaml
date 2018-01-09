@@ -153,6 +153,6 @@ Resources:
   SNSTopicSubscription:
     Type: AWS::SNS::Subscription
     Properties:
-      Endpoint: !Sub https://${AWS::StackName}.herokuapp.com/sns
+      Endpoint: !Sub https://${AWS::StackName}.herokuapp.com/api/sns_notifications
       Protocol: https
       TopicArn: !Ref SNSTopic
