@@ -1,21 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'POST /api/sns_notifications' do
+  let(:request_headers) { { 'Content-Type' => 'text/plain; charset=UTF-8' } }
+
   let(:request_host) { new_host }
 
   let(:request_params) do
     Rails.root.join('spec', 'assets', 'sns', 'notification.json').read
   end
-
-  let(:expected_result) do
-    {
-      'message' => JSON.parse(request_params),
-      'created_at' => new_sns.created_at.iso8601,
-      'updated_at' => new_sns.updated_at.iso8601
-    }
-  end
-
-  let(:new_sns) { SnsNotification.last }
 
   before do
     verifier = instance_double(Aws::SNS::MessageVerifier)
@@ -24,7 +16,7 @@ RSpec.describe 'POST /api/sns_notifications' do
   end
 
   it 'saves the sns message' do
-    request_page(expected_status: 201)
-    expect(json_body).to eq expected_result
+    request_page(expected_status: 204)
+    expect(SnsNotification.last.message).to eq JSON.parse(request_params)
   end
 end
