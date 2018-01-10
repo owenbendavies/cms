@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   get '/system/error_500', to: 'systems#error_500'
   get '/system/error_timeout', to: 'systems#error_timeout'
 
-  post '/sns', to: 'sns#message'
-
   get '/user/sites', to: 'sites#index'
 
   devise_for :user, skip: [:sessions], controllers: {
