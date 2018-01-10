@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
 
     default_host = "https://#{bucket}.s3-#{region}.amazonaws.com"
 
-    config.asset_host = ENV['AWS_S3_HOST'] || default_host
+    config.asset_host = ENV['ASSET_HOST'] || default_host
 
     config.fog_attributes = {
       'Cache-Control' => "public, max-age=#{1.year.to_i}"

@@ -30,7 +30,7 @@ RSpec.describe Image do
 
     let(:filename) do
       File.join(
-        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com',
+        'http://localhost:37511',
         'images',
         uuid,
         'original.jpg'
