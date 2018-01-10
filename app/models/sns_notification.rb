@@ -14,7 +14,6 @@ class SnsNotification < ApplicationRecord
     notification = create!(message: JSON.parse(raw_message))
 
     notification.confirm_subscription if notification.type == 'SubscriptionConfirmation'
-    notification
   end
 
   def confirm_subscription
