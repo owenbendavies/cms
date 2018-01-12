@@ -1,41 +1,41 @@
 ---
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 
-Description: obduk-cms app
+Description: "obduk-cms app"
 
 Outputs:
   AssetHost:
-    Description: Value for ASSET_HOST
-    Value: !Sub https://${CloudFront.DomainName}
+    Description: "Value for ASSET_HOST"
+    Value: !Sub "https://${CloudFront.DomainName}"
   AwsAccessKeyId:
-    Description: Value for AWS_ACCESS_KEY_ID
+    Description: "Value for AWS_ACCESS_KEY_ID"
     Value: !Ref IAMUserAccessKey
   AwsRegion:
-    Description: Value for AWS_REGION
-    Value: !Ref AWS::Region
+    Description: "Value for AWS_REGION"
+    Value: !Ref "AWS::Region"
   AwsS3Bucket:
-    Description: Value for AWS_S3_BUCKET
+    Description: "Value for AWS_S3_BUCKET"
     Value: !Ref S3Bucket
   AWSS3Host:
-    Description: Value for AWS_S3_HOST
-    Value: !Sub https://${CloudFront.DomainName}
+    Description: "Value for AWS_S3_HOST"
+    Value: !Sub "https://${CloudFront.DomainName}"
   AwsSecretAccessKey:
-    Description: Value for AWS_SECRET_ACCESS_KEY
+    Description: "Value for AWS_SECRET_ACCESS_KEY"
     Value: !GetAtt IAMUserAccessKey.SecretAccessKey
 
 Resources:
   CloudFront:
-    Type: AWS::CloudFront::Distribution
+    Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
         CacheBehaviors:
           - Compress: true
             ForwardedValues:
               QueryString: false
-            PathPattern: '/assets/*'
+            PathPattern: /assets/*
             TargetOriginId: App
             ViewerProtocolPolicy: redirect-to-https
-        Comment: !Ref AWS::StackName
+        Comment: !Ref "AWS::StackName"
         DefaultCacheBehavior:
           Compress: true
           ForwardedValues:
@@ -47,113 +47,108 @@ Resources:
         IPV6Enabled: true
         Logging:
           Bucket: !GetAtt S3LogsBucket.DomainName
-          Prefix: !Sub AWSLogs/${AWS::AccountId}/cloudfront/${AWS::StackName}/
+          Prefix: !Sub "AWSLogs/${AWS::AccountId}/cloudfront/${AWS::StackName}/"
         Origins:
-        - DomainName: !GetAtt S3Bucket.DomainName
-          Id: S3
-          S3OriginConfig: {}
-        - CustomOriginConfig:
-            OriginProtocolPolicy: https-only
-            OriginSSLProtocols:
-            - TLSv1.2
-            - TLSv1.1
-            - TLSv1
-          DomainName: !Sub ${AWS::StackName}.herokuapp.com
-          Id: App
+          - DomainName: !GetAtt S3Bucket.DomainName
+            Id: S3
+            S3OriginConfig: {}
+          - CustomOriginConfig:
+              OriginProtocolPolicy: https-only
+              OriginSSLProtocols:
+                - TLSv1.2
+                - TLSv1.1
+                - TLSv1
+            DomainName: !Sub "${AWS::StackName}.herokuapp.com"
+            Id: App
 
   IAMUser:
-    Type: AWS::IAM::User
+    Type: "AWS::IAM::User"
     Properties:
       Policies:
-      - PolicyName: access-s3-bucket
-        PolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-          - Action: s3:ListBucket
-            Effect: Allow
-            Resource: !GetAtt S3Bucket.Arn
-          - Action:
-            - s3:GetObject
-            - s3:GetObjectAcl
-            - s3:PutObject
-            - s3:PutObjectAcl
-            - s3:DeleteObject
-            Effect: Allow
-            Resource: !Sub "${S3Bucket.Arn}/*"
-      - PolicyName: send-ses-email
-        PolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-          - Action: ses:SendRawEmail
-            Effect: Allow
-            Resource: "*"
-      - PolicyName: subscribe-sns
-        PolicyDocument:
-          Version: '2012-10-17'
-          Statement:
-          - Action:
-            - sns:Subscribe
-            - sns:ConfirmSubscription
-            Effect: Allow
-            Resource: !Ref SNSTopic
-
-      UserName: !Ref AWS::StackName
+        - PolicyDocument:
+            Statement:
+              - Action: "s3:ListBucket"
+                Effect: Allow
+                Resource: !GetAtt S3Bucket.Arn
+              - Action:
+                  - "s3:GetObject"
+                  - "s3:GetObjectAcl"
+                  - "s3:PutObject"
+                  - "s3:PutObjectAcl"
+                  - "s3:DeleteObject"
+                Effect: Allow
+                Resource: !Sub "${S3Bucket.Arn}/*"
+            Version: "2012-10-17"
+          PolicyName: access-s3-bucket
+        - PolicyDocument:
+            Statement:
+              - Action: "ses:SendRawEmail"
+                Effect: Allow
+                Resource: "*"
+            Version: "2012-10-17"
+          PolicyName: send-ses-email
+        - PolicyDocument:
+            Statement:
+              - Action:
+                  - "sns:Subscribe"
+                  - "sns:ConfirmSubscription"
+                Effect: Allow
+                Resource: !Ref SNSTopic
+            Version: "2012-10-17"
+          PolicyName: subscribe-sns
+      UserName: !Ref "AWS::StackName"
 
   IAMUserAccessKey:
-    Type: AWS::IAM::AccessKey
+    Type: "AWS::IAM::AccessKey"
     Properties:
       UserName: !Ref IAMUser
 
   S3Bucket:
-    Type: AWS::S3::Bucket
+    Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Ref AWS::StackName
+      BucketName: !Ref "AWS::StackName"
       LifecycleConfiguration:
         Rules:
-        - Id: delete-old-versions
-          NoncurrentVersionExpirationInDays: 30
-          Status: Enabled
+          - Id: delete-old-versions
+            NoncurrentVersionExpirationInDays: 30
+            Status: Enabled
       LoggingConfiguration:
         DestinationBucketName: !Ref S3LogsBucket
-        LogFilePrefix: !Sub AWSLogs/${AWS::AccountId}/s3/${AWS::StackName}/
+        LogFilePrefix: !Sub "AWSLogs/${AWS::AccountId}/s3/${AWS::StackName}/"
       VersioningConfiguration:
         Status: Enabled
 
   S3LogsBucket:
-    Type: AWS::S3::Bucket
+    Type: "AWS::S3::Bucket"
     Properties:
       AccessControl: LogDeliveryWrite
       BucketName: !Sub "${AWS::StackName}-logs"
       LifecycleConfiguration:
         Rules:
-        - Id: delete-old-versions
-          NoncurrentVersionExpirationInDays: 30
-          Status: Enabled
+          - Id: delete-old-versions
+            NoncurrentVersionExpirationInDays: 30
+            Status: Enabled
       VersioningConfiguration:
         Status: Enabled
 
   S3LogsBucketPolicy:
-    Type: AWS::S3::BucketPolicy
+    Type: "AWS::S3::BucketPolicy"
     Properties:
       Bucket: !Ref S3LogsBucket
       PolicyDocument:
         Statement:
-        - Action: s3:PutObject
-          Effect: Allow
-          Principal:
-            AWS:
-            - arn:aws:iam::719734659904:root
-          Resource: !Sub ${S3LogsBucket.Arn}/papertrail/*
-        Version: '2012-10-17'
+          - Action: "s3:PutObject"
+            Effect: Allow
+            Principal:
+              AWS:
+                - "arn:aws:iam::719734659904:root"
+            Resource: !Sub "${S3LogsBucket.Arn}/papertrail/*"
+        Version: "2012-10-17"
 
   SNSTopic:
-    Type: AWS::SNS::Topic
+    Type: "AWS::SNS::Topic"
     Properties:
-      TopicName: !Ref AWS::StackName
-
-  SNSTopicSubscription:
-    Type: AWS::SNS::Subscription
-    Properties:
-      Endpoint: !Sub https://${AWS::StackName}.herokuapp.com/api/sns_notifications
-      Protocol: https
-      TopicArn: !Ref SNSTopic
+      Subscription:
+        - Endpoint: !Sub "https://${AWS::StackName}.herokuapp.com/api/sns_notifications"
+          Protocol: https
+      TopicName: !Ref "AWS::StackName"
