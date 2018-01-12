@@ -23,6 +23,12 @@ Outputs:
     Description: "Value for AWS_SECRET_ACCESS_KEY"
     Value: !GetAtt IAMUserAccessKey.SecretAccessKey
 
+Parameters:
+  SysadminEmail:
+    AllowedPattern: "[a-zA-Z0-9+.]+@([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}"
+    Description: "Email address for system notifications"
+    Type: "String"
+
 Resources:
   CloudFront:
     Type: "AWS::CloudFront::Distribution"
@@ -152,3 +158,31 @@ Resources:
         - Endpoint: !Sub "https://${AWS::StackName}.herokuapp.com/api/sns_notifications"
           Protocol: https
       TopicName: !Ref "AWS::StackName"
+
+  SNSTopicFailedAlarm:
+    Type: "AWS::CloudWatch::Alarm"
+    Properties:
+      AlarmActions:
+        - !Ref SNSTopicSysadmins
+      AlarmName: !Sub "${AWS::StackName} > SNS > NumberOfNotificationsFailed"
+      ComparisonOperator: GreaterThanThreshold
+      Dimensions:
+        - Name: TopicName
+          Value: !GetAtt SNSTopic.TopicName
+      EvaluationPeriods: 1
+      MetricName: NumberOfNotificationsFailed
+      Namespace: AWS/SNS
+      OKActions:
+        - !Ref SNSTopicSysadmins
+      Period: 60
+      Statistic: Average
+      Threshold: 0
+      TreatMissingData: notBreaching
+
+  SNSTopicSysadmins:
+    Type: "AWS::SNS::Topic"
+    Properties:
+      Subscription:
+        - Endpoint: !Ref SysadminEmail
+          Protocol: email
+      TopicName: !Sub "${AWS::StackName}-sysadmins"
