@@ -70,8 +70,10 @@ Resources:
   IAMUser:
     Type: "AWS::IAM::User"
     Properties:
+      UserName: !Ref "AWS::StackName"
       Policies:
-        - PolicyDocument:
+        - PolicyName: access-s3-bucket
+          PolicyDocument:
             Statement:
               - Action: "s3:ListBucket"
                 Effect: Allow
@@ -85,15 +87,15 @@ Resources:
                 Effect: Allow
                 Resource: !Sub "${S3Bucket.Arn}/*"
             Version: "2012-10-17"
-          PolicyName: access-s3-bucket
-        - PolicyDocument:
+        - PolicyName: send-ses-email
+          PolicyDocument:
             Statement:
               - Action: "ses:SendRawEmail"
                 Effect: Allow
                 Resource: "*"
             Version: "2012-10-17"
-          PolicyName: send-ses-email
-        - PolicyDocument:
+        - PolicyName: subscribe-sns
+          PolicyDocument:
             Statement:
               - Action:
                   - "sns:Subscribe"
@@ -101,8 +103,6 @@ Resources:
                 Effect: Allow
                 Resource: !Ref SNSTopic
             Version: "2012-10-17"
-          PolicyName: subscribe-sns
-      UserName: !Ref "AWS::StackName"
 
   IAMUserAccessKey:
     Type: "AWS::IAM::AccessKey"
@@ -146,8 +146,7 @@ Resources:
           - Action: "s3:PutObject"
             Effect: Allow
             Principal:
-              AWS:
-                - "arn:aws:iam::719734659904:root"
+              AWS: "arn:aws:iam::719734659904:root"
             Resource: !Sub "${S3LogsBucket.Arn}/papertrail/*"
         Version: "2012-10-17"
 
