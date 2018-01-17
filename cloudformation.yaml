@@ -105,7 +105,7 @@ Resources:
             Statement:
               - Effect: Allow
                 Action: "s3:ListBucket"
-                Resource: !GetAtt S3Bucket.Arn
+                Resource: !GetAtt S3LogsBucket.Arn
               - Effect: Allow
                 Action:
                   - "s3:GetObject"
