@@ -90,27 +90,27 @@ Resources:
     Type: "AWS::IAM::Role"
     Properties:
       AssumeRolePolicyDocument:
+        Version: "2012-10-17"
         Statement:
-          - Action: "sts:AssumeRole"
-            Effect: Allow
+          - Effect: Allow
+            Action: "sts:AssumeRole"
             Principal:
               Service: glue.amazonaws.com
-        Version: "2012-10-17"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
       Policies:
         - PolicyName: access-s3-bucket
           PolicyDocument:
+            Version: "2012-10-17"
             Statement:
-              - Action: "s3:ListBucket"
-                Effect: Allow
+              - Effect: Allow
+                Action: "s3:ListBucket"
                 Resource: !GetAtt S3Bucket.Arn
-              - Action:
+              - Effect: Allow
+                Action:
                   - "s3:GetObject"
                   - "s3:PutObject"
-                Effect: Allow
                 Resource: !Sub "${S3LogsBucket.Arn}/*"
-            Version: "2012-10-17"
       RoleName: !Sub "${AWS::StackName}-glue"
 
   IAMUser:
@@ -120,35 +120,35 @@ Resources:
       Policies:
         - PolicyName: access-s3-bucket
           PolicyDocument:
+            Version: "2012-10-17"
             Statement:
-              - Action: "s3:ListBucket"
-                Effect: Allow
+              - Effect: Allow
+                Action: "s3:ListBucket"
                 Resource: !GetAtt S3Bucket.Arn
-              - Action:
+              - Effect: Allow
+                Action:
                   - "s3:GetObject"
                   - "s3:GetObjectAcl"
                   - "s3:PutObject"
                   - "s3:PutObjectAcl"
                   - "s3:DeleteObject"
-                Effect: Allow
                 Resource: !Sub "${S3Bucket.Arn}/*"
-            Version: "2012-10-17"
         - PolicyName: send-ses-email
           PolicyDocument:
-            Statement:
-              - Action: "ses:SendRawEmail"
-                Effect: Allow
-                Resource: "*"
             Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "ses:SendRawEmail"
+                Resource: "*"
         - PolicyName: subscribe-sns
           PolicyDocument:
+            Version: "2012-10-17"
             Statement:
-              - Action:
+              - Effect: Allow
+                Action:
                   - "sns:Subscribe"
                   - "sns:ConfirmSubscription"
-                Effect: Allow
                 Resource: !Ref SNSTopic
-            Version: "2012-10-17"
 
   IAMUserAccessKey:
     Type: "AWS::IAM::AccessKey"
@@ -188,13 +188,13 @@ Resources:
     Properties:
       Bucket: !Ref S3LogsBucket
       PolicyDocument:
+        Version: "2012-10-17"
         Statement:
-          - Action: "s3:PutObject"
-            Effect: Allow
+          - Effect: Allow
+            Action: "s3:PutObject"
             Principal:
               AWS: "arn:aws:iam::719734659904:root"
             Resource: !Sub "${S3LogsBucket.Arn}/papertrail/*"
-        Version: "2012-10-17"
 
   SNSTopic:
     Type: "AWS::SNS::Topic"
