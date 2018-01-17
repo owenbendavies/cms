@@ -67,6 +67,52 @@ Resources:
             DomainName: !Sub "${AWS::StackName}.herokuapp.com"
             Id: App
 
+  GlueDatabase:
+    Type: "AWS::Glue::Database"
+    Properties:
+      DatabaseInput:
+        Name: !Ref "AWS::StackName"
+      CatalogId: !Ref "AWS::AccountId"
+
+  GlueCrawler:
+    Type: "AWS::Glue::Crawler"
+    Properties:
+      Role: !GetAtt GlueRole.Arn
+      Schedule:
+        ScheduleExpression: "cron(0 0 * * ? *)"
+      DatabaseName: !Ref GlueDatabase
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://${S3LogsBucket}/papertrail"
+      Name: !Ref "AWS::StackName"
+
+  GlueRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: "sts:AssumeRole"
+            Effect: Allow
+            Principal:
+              Service: glue.amazonaws.com
+        Version: "2012-10-17"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+      Policies:
+        - PolicyName: access-s3-bucket
+          PolicyDocument:
+            Statement:
+              - Action: "s3:ListBucket"
+                Effect: Allow
+                Resource: !GetAtt S3Bucket.Arn
+              - Action:
+                  - "s3:GetObject"
+                  - "s3:PutObject"
+                Effect: Allow
+                Resource: !Sub "${S3LogsBucket.Arn}/*"
+            Version: "2012-10-17"
+      RoleName: !Sub "${AWS::StackName}-glue"
+
   IAMUser:
     Type: "AWS::IAM::User"
     Properties:
