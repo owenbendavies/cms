@@ -8,7 +8,7 @@ gem 'aws-sdk-sns' # AWS SDK for SNS
 gem 'fog-aws' # AWS file upload
 
 # Databases
-gem 'pg' # PostgreSQL
+gem 'pg', '< 1' # TODO: upgrade when fixed - PostgreSQL
 gem 'seedbank' # Better database seeds
 
 # Frameworks
