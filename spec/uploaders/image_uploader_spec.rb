@@ -16,6 +16,16 @@ RSpec.describe ImageUploader do
     ].sort
   end
 
+  let(:uploaded_file_sizes) do
+    file_sizes = expected_files.collect do |filename|
+      file = fog_directory.files.get(filename)
+      image = MiniMagick::Image.read(file.body)
+      [filename, "#{image[:width]}x#{image[:height]}"]
+    end
+
+    Hash[file_sizes]
+  end
+
   describe '.store!' do
     context 'with non image file' do
       it 'raise an exception' do
@@ -27,39 +37,73 @@ RSpec.describe ImageUploader do
       end
     end
 
-    context 'with file' do
+    context 'with large file' do
+      let(:expected_file_sizes) do
+        {
+          "images/#{image_uploader.uuid}/original.jpg" => '1296x968',
+          "images/#{image_uploader.uuid}/processed.jpg" => '1296x968',
+          "images/#{image_uploader.uuid}/span12.jpg" => '940x702',
+          "images/#{image_uploader.uuid}/span8.jpg" => '620x463',
+          "images/#{image_uploader.uuid}/span4.jpg" => '300x224',
+          "images/#{image_uploader.uuid}/span3.jpg" => '220x164'
+        }
+      end
+
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
           image_uploader.store! file
         end
       end
 
-      it 'stores file with filename which is uuid' do
-        expect(image_uploader.uuid).to match(/\A[0-9a-f-]+\z/)
+      it 'fits images to version sizes' do
+        expect(uploaded_file_sizes).to eq expected_file_sizes
+      end
+    end
+
+    context 'with small image' do
+      let(:expected_file_sizes) do
+        {
+          "images/#{image_uploader.uuid}/original.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/processed.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/span12.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/span8.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/span4.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/span3.jpg" => '80x80'
+        }
       end
 
-      it 'creates expected files' do
-        expect(uploaded_files).to eq expected_files
+      before do
+        File.open(Rails.root.join('spec', 'assets', 'small.jpg')) do |file|
+          image_uploader.store! file
+        end
       end
 
-      it 'creates span3 image' do
-        expect(image_dimension(image_uploader.span3)).to eq '220x164'
-      end
-
-      it 'creates span4 image' do
-        expect(image_dimension(image_uploader.span4)).to eq '300x224'
-      end
-
-      it 'creates span8 image' do
-        expect(image_dimension(image_uploader.span8)).to eq '620x463'
-      end
-
-      it 'creates span12 image' do
-        expect(image_dimension(image_uploader.span12)).to eq '940x702'
+      it 'does not enlarge image versions' do
+        expect(uploaded_file_sizes).to eq expected_file_sizes
       end
     end
 
     context 'with file has exif data' do
+      let(:uploaded_file_exif_data) do
+        file_exif = expected_files.collect do |filename|
+          file = fog_directory.files.get(filename)
+          image = MiniMagick::Image.read(file.body)
+          [filename, image.exif]
+        end
+
+        Hash[file_exif]
+      end
+
+      let(:expected_file_exif_data) do
+        {
+          "images/#{image_uploader.uuid}/processed.jpg" => {},
+          "images/#{image_uploader.uuid}/span12.jpg" => {},
+          "images/#{image_uploader.uuid}/span8.jpg" => {},
+          "images/#{image_uploader.uuid}/span4.jpg" => {},
+          "images/#{image_uploader.uuid}/span3.jpg" => {}
+        }
+      end
+
       before do
         File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
           image_uploader.store! file
@@ -67,52 +111,13 @@ RSpec.describe ImageUploader do
       end
 
       it 'keeps exif data on origonal image' do
-        data = remote_image(image_uploader).exif['GPSLatitude']
-        expect(data).to eq '51/1, 30/1, 1220028377/53512833'
+        exif = uploaded_file_exif_data.fetch("images/#{image_uploader.uuid}/original.jpg")
+        expect(exif.fetch('GPSLatitude')).to eq '51/1, 30/1, 1220028377/53512833'
       end
 
-      it 'removes exif data from processed image' do
-        expect(remote_image(image_uploader.processed).exif.keys).to be_empty
-      end
-
-      it 'removes exif data from span3 image' do
-        expect(remote_image(image_uploader.span3).exif.keys).to be_empty
-      end
-
-      it 'removes exif data from span4 image' do
-        expect(remote_image(image_uploader.span4).exif.keys).to be_empty
-      end
-
-      it 'removes exif data from span8 image' do
-        expect(remote_image(image_uploader.span8).exif.keys).to be_empty
-      end
-
-      it 'removes exif data from span12 image' do
-        expect(remote_image(image_uploader.span12).exif.keys).to be_empty
-      end
-    end
-
-    context 'with small image' do
-      before do
-        File.open(Rails.root.join('spec', 'assets', 'small.jpg')) do |file|
-          image_uploader.store! file
-        end
-      end
-
-      it 'does not enlarge span3 image' do
-        expect(image_dimension(image_uploader.span3)).to eq '80x80'
-      end
-
-      it 'does not enlarge span4 image' do
-        expect(image_dimension(image_uploader.span4)).to eq '80x80'
-      end
-
-      it 'does not enlarge span8 image' do
-        expect(image_dimension(image_uploader.span8)).to eq '80x80'
-      end
-
-      it 'does not enlarge span12 image' do
-        expect(image_dimension(image_uploader.span12)).to eq '80x80'
+      it 'removes exif data from image versions' do
+        uploaded_file_exif_data.delete("images/#{image_uploader.uuid}/original.jpg")
+        expect(uploaded_file_exif_data).to eq expected_file_exif_data
       end
     end
 
