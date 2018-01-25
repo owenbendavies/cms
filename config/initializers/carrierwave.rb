@@ -10,7 +10,7 @@ CarrierWave.configure do |config|
     config.asset_host = ENV['ASSET_HOST'] || default_host
 
     config.fog_attributes = {
-      'Cache-Control' => "public, max-age=#{1.year.to_i}"
+      cache_control: "public, max-age=#{1.year.to_i}"
     }
 
     config.fog_credentials = {
