@@ -5,12 +5,12 @@ class MessagesAPI < Grape::API
     desc 'Messages', success: ENTITY
 
     params do
-      requires :uuid, type: String
+      requires :uid, type: String
     end
 
-    route_param :uuid do
+    route_param :uid do
       get do
-        message = Message.find_by!(uuid: params[:uuid])
+        message = Message.find_by!(uid: params[:uid])
         authorize message, :show?
         present message, with: ENTITY
       end

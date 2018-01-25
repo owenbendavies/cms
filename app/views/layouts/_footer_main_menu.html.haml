@@ -4,5 +4,5 @@
       %ul.footer-main-menu__links
         - site.main_menu_pages.each do |page|
           %li.footer-main-menu__link-item
-            = link_to page_path(page.to_param), class: "footer-main-menu__link cms-page-link-#{page.to_param}" do
+            = link_to page_path(page), class: "footer-main-menu__link cms-page-link-#{page.to_param}" do
               %span.footer-main-menu__link-text= page.name

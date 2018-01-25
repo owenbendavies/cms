@@ -30,7 +30,7 @@
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
 #  google_uid             :string
-#  uuid                   :string           not null
+#  uid                    :string           not null
 #
 # Indexes
 #
@@ -39,6 +39,7 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_invitation_token      (invitation_token) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_uid                   (uid) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 # Foreign Keys
@@ -49,6 +50,10 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  it_behaves_like 'model with uid' do
+    subject(:model) { FactoryBot.build(:user) }
+  end
+
   it 'has a gravatar_url' do
     user = described_class.new(email: 'test@example.com')
     md5 = '55502f40dc8b7c769880b10874abc9d0'
@@ -105,15 +110,6 @@ RSpec.describe User do
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
   end
 
-  describe '#save' do
-    subject(:user) { FactoryBot.build(:user) }
-
-    it 'sets a uuid' do
-      user.save!
-      expect(user.uuid).to match(/\A[0-9a-f-]+\z/)
-    end
-  end
-
   describe '#admin_for_site?' do
     context 'with admin of site' do
       let(:user) { FactoryBot.create(:user, site: site, site_admin: true) }
@@ -164,14 +160,6 @@ RSpec.describe User do
       user = FactoryBot.create(:user, site: site)
 
       expect(user.site_ids).to eq [site.id]
-    end
-  end
-
-  describe '#to_param' do
-    subject(:user) { FactoryBot.build(:user) }
-
-    it 'uses uuid' do
-      expect(user.to_param).to eq user.uuid
     end
   end
 end

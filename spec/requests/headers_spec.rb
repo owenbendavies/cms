@@ -64,7 +64,7 @@ RSpec.describe 'Headers' do
   context 'when api page like GET /api/messages/:id' do
     let(:user) { FactoryBot.create(:user, site: site) }
     let(:message) { FactoryBot.create(:message, site: site) }
-    let(:request_path_id) { message.uuid }
+    let(:request_path_id) { message.uid }
     let(:expected_content_type) { 'application/json' }
 
     include_examples 'sets headers'
