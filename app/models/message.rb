@@ -11,11 +11,12 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uuid       :string           not null
+#  uid        :string           not null
 #
 # Indexes
 #
-#  fk__messages_site_id  (site_id)
+#  fk__messages_site_id   (site_id)
+#  index_messages_on_uid  (uid) UNIQUE
 #
 # Foreign Keys
 #
@@ -23,7 +24,7 @@
 #
 
 class Message < ApplicationRecord
-  include DefaultUuid
+  include DefaultUid
 
   attr_accessor :do_not_fill_in
 

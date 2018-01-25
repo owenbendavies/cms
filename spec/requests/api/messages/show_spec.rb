@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe 'GET /api/messages/:id' do
   let(:user) { FactoryBot.create(:user, site: site) }
   let(:message) { FactoryBot.create(:message, site: site) }
-  let(:request_path_id) { message.uuid }
+  let(:request_path_id) { message.uid }
 
   let(:expected_result) do
     {
-      'uuid' => message.uuid,
+      'uid' => message.uid,
       'name' => message.name,
       'email' => message.email,
       'phone' => message.phone,
