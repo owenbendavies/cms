@@ -5,7 +5,7 @@ RSpec.describe 'API Logging' do
   let(:message) { FactoryBot.create(:message, site: site) }
 
   let(:request_method) { :get }
-  let(:request_path) { "/api/messages/#{message.uuid}" }
+  let(:request_path) { "/api/messages/#{message.uid}" }
 
   let(:request_id) { SecureRandom.uuid }
   let(:user_agent) { new_company_name }

@@ -21,13 +21,13 @@
               %ul.dropdown-menu
                 - if page&.persisted?
                   %li
-                    = link_to edit_page_path(page.to_param) do
+                    = link_to edit_page_path(page) do
                       = icon_tag t('pages.edit.icon')
                       = t('actions.edit')
 
                   %li
                     = link_to icon_tag(t('pages.delete.icon')) + ' ' + t('actions.delete'),
-                              page_path(page.to_param),
+                              page_path(page),
                               method: :delete,
                               data: { confirm: t('pages.delete.text', name: page.name) }
 

@@ -1,6 +1,6 @@
 module Entities
   class Message < Grape::Entity
-    expose :uuid
+    expose :uid
     expose :name
     expose :email
     expose :phone

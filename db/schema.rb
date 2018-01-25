@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711085447) do
+ActiveRecord::Schema.define(version: 20180125115509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170711085447) do
     t.text     "message",    :null=>false
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
-    t.string   "uuid",       :null=>false
+    t.string   "uid",        :null=>false, :index=>{:name=>"index_messages_on_uid", :unique=>true, :using=>:btree}
   end
 
   create_table "pages", force: :cascade do |t|
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20170711085447) do
     t.datetime "invitation_accepted_at"
     t.integer  "invited_by_id",          :foreign_key=>{:references=>"users", :name=>"fk_users_invited_by_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__users_invited_by_id", :using=>:btree}
     t.string   "google_uid"
-    t.string   "uuid",                   :null=>false
+    t.string   "uid",                    :null=>false, :index=>{:name=>"index_users_on_uid", :unique=>true, :using=>:btree}
   end
 
   create_table "site_settings", force: :cascade do |t|

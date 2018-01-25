@@ -6,7 +6,7 @@ RSpec.describe 'API Authorization' do
 
     context 'when visiting a restricted page like GET /api/messages/:id' do
       let(:message) { FactoryBot.create(:message) }
-      let(:request_path_id) { message.uuid }
+      let(:request_path_id) { message.uid }
 
       include_examples 'renders json forbidden'
     end

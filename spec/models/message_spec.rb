@@ -11,11 +11,12 @@
 #  message    :text             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  uuid       :string           not null
+#  uid        :string           not null
 #
 # Indexes
 #
-#  fk__messages_site_id  (site_id)
+#  fk__messages_site_id   (site_id)
+#  index_messages_on_uid  (uid) UNIQUE
 #
 # Foreign Keys
 #
@@ -25,6 +26,10 @@
 require 'rails_helper'
 
 RSpec.describe Message do
+  it_behaves_like 'model with uid' do
+    subject(:model) { FactoryBot.build(:message) }
+  end
+
   describe '.ordered' do
     it 'returns ordered by created descending' do
       message1 = FactoryBot.create(:message, created_at: Time.zone.now - 1.minute)
@@ -64,23 +69,6 @@ RSpec.describe Message do
     it do
       is_expected.to validate_length_of(:do_not_fill_in)
         .is_at_most(0).with_message('do not fill in')
-    end
-  end
-
-  describe '#save' do
-    subject(:message) { FactoryBot.build(:message) }
-
-    it 'sets a uuid' do
-      message.save!
-      expect(message.uuid).to match(/\A[0-9a-f-]+\z/)
-    end
-  end
-
-  describe '#to_param' do
-    subject(:message) { FactoryBot.build(:message) }
-
-    it 'uses uuid' do
-      expect(message.to_param).to eq message.uuid
     end
   end
 end

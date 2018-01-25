@@ -19,7 +19,7 @@ class PagesController < ApplicationController
 
   def create
     if @page.update_attributes(page_params)
-      redirect_to page_path(@page.to_param)
+      redirect_to page_path(@page)
     else
       render :new
     end
@@ -33,7 +33,7 @@ class PagesController < ApplicationController
     if @message.update_attributes(message_params)
       NotificationsMailer.new_message(@message).deliver_later
       flash.notice = t('pages.contact_form.flash.success')
-      redirect_to page_path(@page.to_param)
+      redirect_to page_path(@page)
     else
       render :show
     end
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
 
   def update
     if @page.update_attributes(page_params)
-      redirect_to page_path(@page.to_param)
+      redirect_to page_path(@page)
     else
       render :edit
     end
@@ -84,7 +84,7 @@ class PagesController < ApplicationController
   def xml_sitemap
     XmlSitemap::Map.new(@site.host, home: false, secure: ENV['DISABLE_SSL'].blank?) do |map|
       @pages.each do |page|
-        map.add page_path(page.to_param), updated: page.updated_at
+        map.add page_path(page), updated: page.updated_at
       end
     end
   end
