@@ -24,10 +24,6 @@
         "AWS_S3_BUCKET": {
             "description": "The Amazon Web Services S3 bucket name"
         },
-        "AWS_S3_HOST": {
-            "description": "The host of the CloudFront endpoint for the S3 bucket (defaults to https://AWS_S3_BUCKET.s3-AWS_REGION.amazonaws.com)",
-            "required": false
-        },
         "AWS_SECRET_ACCESS_KEY": {
             "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
         },
