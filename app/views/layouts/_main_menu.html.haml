@@ -17,5 +17,5 @@
         %ul.main-menu__links.navbar-nav{ class: nav_class }
           - site.main_menu_pages.each do |page|
             %li.main-menu__link-item
-              = link_to page_path(page.to_param), class: "main-menu__link cms-page-link-#{page.to_param}" do
+              = link_to page_path(page), class: "main-menu__link cms-page-link-#{page.to_param}" do
                 %span.main-menu__link-text= page.name

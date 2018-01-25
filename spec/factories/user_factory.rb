@@ -30,7 +30,7 @@
 #  invitation_accepted_at :datetime
 #  invited_by_id          :integer
 #  google_uid             :string
-#  uuid                   :string           not null
+#  uid                    :string           not null
 #
 # Indexes
 #
@@ -39,6 +39,7 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_invitation_token      (invitation_token) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_uid                   (uid) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 # Foreign Keys

@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = @site.messages.find_by!(uuid: params[:id])
+    @message = @site.messages.find_by!(uid: params[:id])
     authorize @message
   end
 end
