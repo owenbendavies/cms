@@ -16,9 +16,6 @@ Outputs:
   AwsS3Bucket:
     Description: "Value for AWS_S3_BUCKET"
     Value: !Ref S3Bucket
-  AWSS3Host:
-    Description: "Value for AWS_S3_HOST"
-    Value: !Sub "https://${CloudFront.DomainName}"
   AwsSecretAccessKey:
     Description: "Value for AWS_SECRET_ACCESS_KEY"
     Value: !GetAtt IAMUserAccessKey.SecretAccessKey

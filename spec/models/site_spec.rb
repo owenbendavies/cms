@@ -92,7 +92,7 @@ RSpec.describe Site do
 
     it 'is saved in the stylesheets directory on s3' do
       expect(site.stylesheet.url).to eq File.join(
-        'https://obduk-cms-test.s3-eu-west-1.amazonaws.com', 'stylesheets', uuid, 'original.css'
+        'http://localhost:37511', 'stylesheets', uuid, 'original.css'
       )
     end
   end

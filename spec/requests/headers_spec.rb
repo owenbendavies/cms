@@ -9,7 +9,6 @@ RSpec.describe 'Headers' do
 
   let(:script_src) do
     [
-      'script-src',
       defaul_src,
       'https://www.google-analytics.com',
       'https://cdnjs.cloudflare.com'
@@ -23,8 +22,8 @@ RSpec.describe 'Headers' do
       "connect-src 'self' https://api.rollbar.com",
       "font-src 'self' https:",
       "img-src 'self' https: data:",
-      script_src,
-      "style-src #{defaul_src} https://obduk-cms-test.s3-eu-west-1.amazonaws.com"
+      "script-src #{script_src}",
+      "style-src #{defaul_src}"
     ].join('; ')
   end
 
