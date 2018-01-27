@@ -155,6 +155,10 @@ Resources:
   S3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
       BucketName: !Ref "AWS::StackName"
       LifecycleConfiguration:
         Rules:
@@ -171,6 +175,10 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       AccessControl: LogDeliveryWrite
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
       BucketName: !Sub "${AWS::StackName}-logs"
       LifecycleConfiguration:
         Rules:
