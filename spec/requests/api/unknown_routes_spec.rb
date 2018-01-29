@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'API Unknown routes' do
   let(:request_method) { :get }
-  let(:request_path) { '/api/messages/xxx' }
 
   context 'with root url' do
     let(:request_path) { '/api' }

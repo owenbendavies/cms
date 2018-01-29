@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.describe 'Headers' do
+RSpec.shared_context 'with headers' do
   let(:random_headers) { %w[Content-Length ETag Set-Cookie X-Request-Id X-Runtime] }
 
   let(:non_random_headers) { response.headers.except(*random_headers) }
@@ -53,20 +51,5 @@ RSpec.describe 'Headers' do
       request_page
       expect(non_random_headers).to eq expected_non_random_headers
     end
-  end
-
-  context 'when html page like GET /sitemap' do
-    let(:expected_content_type) { 'text/html; charset=utf-8' }
-
-    include_examples 'sets headers'
-  end
-
-  context 'when api page like GET /api/messages/:id' do
-    let(:user) { FactoryBot.create(:user, site: site) }
-    let(:message) { FactoryBot.create(:message, site: site) }
-    let(:request_path_id) { message.uid }
-    let(:expected_content_type) { 'application/json' }
-
-    include_examples 'sets headers'
   end
 end
