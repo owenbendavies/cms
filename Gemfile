@@ -20,6 +20,7 @@ gem 'rack-timeout' # Limits web request time
 gem 'secure_headers' # Adds security headers to requests
 
 # API
+gem 'api-pagination' # Pagination for APIs
 gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
 

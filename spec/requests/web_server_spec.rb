@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Application web server' do
+  include_context 'with headers'
+
   let(:request_method) { :get }
   let(:request_path) { '/sitemap' }
 
@@ -21,6 +23,12 @@ RSpec.describe 'Application web server' do
 
     it 'sets Cache Control' do
       expect(response.headers['Cache-Control']).to eq "public, max-age=#{1.year.to_i}"
+    end
+  end
+
+  context 'when visiting an html page' do
+    include_examples 'sets headers' do
+      let(:expected_content_type) { 'text/html; charset=utf-8' }
     end
   end
 
