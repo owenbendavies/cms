@@ -1,0 +1,67 @@
+---
+- - :whitelist
+  - MIT
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:52:00.551389404 Z
+- - :whitelist
+  - Apache 2.0
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:52:44.452889548 Z
+- - :whitelist
+  - Simplified BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:53:09.382963458 Z
+- - :whitelist
+  - New BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:53:23.780224198 Z
+- - :whitelist
+  - ruby
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:54:08.431106846 Z
+- - :whitelist
+  - BSD
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:54:22.462031035 Z
+- - :whitelist
+  - ISC
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 09:56:13.681050270 Z
+- - :whitelist
+  - WTFPL
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 10:00:36.113533716 Z
+- - :approve
+  - newrelic_rpm
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 10:00:50.792443266 Z
+- - :approve
+  - scout_apm
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 10:00:52.540137799 Z
+- - :approve
+  - bundler
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-01-30 19:27:39.637419141 Z
