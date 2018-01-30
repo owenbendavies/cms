@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'API Logging' do
-  let(:user) { FactoryBot.create(:user, site: site) }
-  let(:message) { FactoryBot.create(:message, site: site) }
-
   let(:request_method) { :get }
-  let(:request_path) { "/api/messages/#{message.uid}" }
+  let(:request_path) { '/api/health' }
 
   let(:request_id) { SecureRandom.uuid }
   let(:user_agent) { new_company_name }
