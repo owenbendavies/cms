@@ -11,6 +11,8 @@ find_extensions () {
 
 set -v
 
+./bin/bundle-audit update && ./bin/bundle-audit
+
 HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-lint.yml $(find_extensions haml)
 
 ./bin/i18n-tasks health
