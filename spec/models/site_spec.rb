@@ -91,7 +91,7 @@ RSpec.describe Site do
     end
 
     it 'is saved in the stylesheets directory on s3' do
-      expect(site.stylesheet.url).to eq File.join(
+      expect(site.stylesheet.public_url).to eq File.join(
         'http://localhost:37511', 'stylesheets', uuid, 'original.css'
       )
     end
