@@ -54,7 +54,7 @@ RSpec.describe Image do
     end
 
     it 'stores filename as url' do
-      expect(image.file.url).to eq filename
+      expect(image.file.public_url).to eq filename
     end
 
     it 'recreates versions' do
