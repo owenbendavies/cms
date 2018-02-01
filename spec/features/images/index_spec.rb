@@ -15,19 +15,19 @@ RSpec.feature 'Images index' do
     links = all('article a')
     expect(links.size).to eq 3
 
-    expect(links[0]['href']).to eq image_a.file.url
+    expect(links[0]['href']).to eq image_a.file.public_url
     image1 = links[0].find('img')
-    expect(image1['src']).to eq image_a.file.span3.url
+    expect(image1['src']).to eq image_a.file.span3.public_url
     expect(image1['alt']).to eq image_a.name
 
-    expect(links[1]['href']).to eq image_b.file.url
+    expect(links[1]['href']).to eq image_b.file.public_url
     image2 = links[1].find('img')
-    expect(image2['src']).to eq image_b.file.span3.url
+    expect(image2['src']).to eq image_b.file.span3.public_url
     expect(image2['alt']).to eq image_b.name
 
-    expect(links[2]['href']).to eq image_c.file.url
+    expect(links[2]['href']).to eq image_c.file.public_url
     image3 = links[2].find('img')
-    expect(image3['src']).to eq image_c.file.span3.url
+    expect(image3['src']).to eq image_c.file.span3.public_url
     expect(image3['alt']).to eq image_c.name
   end
 end

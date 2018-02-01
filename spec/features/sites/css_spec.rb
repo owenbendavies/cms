@@ -15,7 +15,9 @@ RSpec.feature 'Site CSS' do
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_selector "link[href=\"#{site.reload.stylesheet.url}\"]", visible: false
+    uuid = File.basename(site.reload.stylesheet_filename, '.css')
+    url = File.join('http://localhost:37511', 'stylesheets', uuid, 'original.css')
+    expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'file'
 

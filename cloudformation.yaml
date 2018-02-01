@@ -54,7 +54,8 @@ Resources:
         Origins:
           - DomainName: !GetAtt S3Bucket.DomainName
             Id: S3
-            S3OriginConfig: {}
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
           - CustomOriginConfig:
               OriginProtocolPolicy: https-only
               OriginSSLProtocols:
@@ -63,6 +64,12 @@ Resources:
                 - TLSv1
             DomainName: !Sub "${AWS::StackName}.herokuapp.com"
             Id: App
+
+  CloudFrontOriginAccessIdentity:
+    Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Ref "AWS::StackName"
 
   GlueDatabase:
     Type: "AWS::Glue::Database"
@@ -90,9 +97,9 @@ Resources:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
-            Action: "sts:AssumeRole"
             Principal:
               Service: glue.amazonaws.com
+            Action: "sts:AssumeRole"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
       Policies:
@@ -171,6 +178,19 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
 
+  S3BucketPolicy:
+    Type: "AWS::S3::BucketPolicy"
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${CloudFrontOriginAccessIdentity}"
+            Action: "s3:GetObject"
+            Resource: !Sub "${S3Bucket.Arn}/*"
+
   S3LogsBucket:
     Type: "AWS::S3::Bucket"
     Properties:
@@ -196,9 +216,9 @@ Resources:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
-            Action: "s3:PutObject"
             Principal:
               AWS: "arn:aws:iam::719734659904:root"
+            Action: "s3:PutObject"
             Resource: !Sub "${S3LogsBucket.Arn}/papertrail/*"
 
   SNSTopic:

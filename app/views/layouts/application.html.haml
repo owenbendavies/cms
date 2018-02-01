@@ -6,7 +6,7 @@
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
     %title= page_title(@site, content_for(:title))
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
-    = stylesheet_link_tag @site.stylesheet.url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet.url
+    = stylesheet_link_tag @site.stylesheet.public_url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet_filename
     = render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN']
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
     = content_for(:head)

@@ -21,6 +21,8 @@ CarrierWave.configure do |config|
     }
 
     config.fog_directory = bucket
+
+    config.fog_public = false
   else
     config.storage = :file
     config.base_path = '/uploads'

@@ -1,4 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
+  delegate :public_url, to: :file
+
   storage :fog if ENV['AWS_S3_BUCKET']
 
   def uuid
