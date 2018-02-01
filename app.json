@@ -11,8 +11,7 @@
     "description": "A Content Management System (CMS) written with Ruby on Rails",
     "env": {
         "ASSET_HOST": {
-            "description": "Sets the rails asset host",
-            "required": false
+            "description": "Sets the rails asset host"
         },
         "AWS_ACCESS_KEY_ID": {
             "description": "The Amazon Web Services IAM user key for S3 and optionally SES"
