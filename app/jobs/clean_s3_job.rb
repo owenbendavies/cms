@@ -1,7 +1,7 @@
 class CleanS3Job < ApplicationJob
   def perform
     clean_files.each do |file|
-      error("found the following file is missing: #{file}")
+      error('found missing file', missing_file: file)
     end
   end
 
@@ -40,7 +40,7 @@ class CleanS3Job < ApplicationJob
       next if missing_files.delete file.key
 
       file.destroy
-      error("deleted the following file: #{file.key}")
+      error('deleted unknown file', deleted_file: file.key)
     end
 
     missing_files
