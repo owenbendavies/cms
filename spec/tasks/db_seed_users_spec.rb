@@ -37,6 +37,12 @@ RSpec.describe 'db:seed:users', type: :task do
   end
 
   context 'without SEED_USER_EMAIL' do
+    let(:environment_variables) do
+      {
+        SEED_USER_EMAIL: nil
+      }
+    end
+
     it 'raises an exception' do
       expect { task.execute }.to raise_error(
         ArgumentError,

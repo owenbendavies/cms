@@ -20,10 +20,8 @@ else
 
   set -v
 
-  eval './bin/rails db:create db:migrate'
-  eval './bin/compile'
+  eval './bin/rails db:create db:schema:load'
   eval "$rspec --order random"
-  eval './bin/quality'
 fi
 
 # 'test complete'
