@@ -10,7 +10,7 @@ language: ruby
 cache:
   bundler: true
   directories:
-    - tmp/cache/assets
+    - /home/travis/.rvm/
 
 addons:
   apt:
@@ -21,9 +21,11 @@ addons:
 services:
   - postgresql
 
+env:
+  - TEST_COMMAND=./bin/quality
+  - TEST_COMMAND=./bin/setup
+  - TEST_COMMAND=./bin/test
+
 script:
-  - ./bin/test
-  - ./bin/annotate --show-foreign-keys --show-indexes
-  - git clean --force public/assets/.sprockets-manifest-*.json
-  - git checkout public/assets/.sprockets-manifest-*.json
+  - $TEST_COMMAND
   - ./bin/changes
