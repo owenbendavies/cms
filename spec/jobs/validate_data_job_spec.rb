@@ -26,9 +26,18 @@ RSpec.describe ValidateDataJob do
         end
       end
 
+      let(:extra) do
+        {
+          job: 'ValidateDataJob',
+          model_class: 'Page',
+          model_id: page.id,
+          model_errors: ['Url is reserved']
+        }
+      end
+
       it 'sends error to Rollbar' do
-        error = "ValidateDataJob Page##{page.id}: Url is reserved"
-        expect(Rollbar).to receive(:error).with(error).and_call_original
+        error = 'ValidateDataJob found invalid model'
+        expect(Rollbar).to receive(:error).with(error, extra).and_call_original
         described_class.perform_now
       end
     end
