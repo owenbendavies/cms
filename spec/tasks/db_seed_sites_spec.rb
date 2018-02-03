@@ -35,7 +35,8 @@ RSpec.describe 'db:seed:sites', type: :task do
 
     let(:environment_variables) do
       {
-        SEED_SITE_HOST: new_host
+        SEED_SITE_HOST: new_host,
+        HEROKU_APP_NAME: nil
       }
     end
 
@@ -48,6 +49,7 @@ RSpec.describe 'db:seed:sites', type: :task do
 
     let(:environment_variables) do
       {
+        SEED_SITE_HOST: nil,
         HEROKU_APP_NAME: heroku_app_name
       }
     end
@@ -70,6 +72,13 @@ RSpec.describe 'db:seed:sites', type: :task do
   end
 
   context 'without SEED_SITE_HOST or HEROKU_APP_NAME set' do
+    let(:environment_variables) do
+      {
+        HEROKU_APP_NAME: nil,
+        SEED_SITE_HOST: nil
+      }
+    end
+
     it 'raise an exception' do
       expect { task.execute }.to raise_error(
         ArgumentError,
