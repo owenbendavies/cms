@@ -20,7 +20,7 @@ else
 
   set -v
 
-  eval './bin/rails db:create db:schema:load'
+  eval 'DATABASE_TIMEOUT=5 ./bin/rails db:create db:schema:load'
   eval "$rspec --order random"
 fi
 
