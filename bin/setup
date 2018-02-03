@@ -15,7 +15,7 @@ FileUtils.chdir APP_ROOT do
   system('bundle check') || system!('bundle install --jobs=3 --retry=3')
 
   puts "\n== Preparing database =="
-  system! 'bin/rails db:create db:migrate db:seed'
+  system! 'DATABASE_TIMEOUT=5 bin/rails db:create db:migrate db:seed'
 
   puts "\n== Update documention =="
   system! 'bin/annotate --show-foreign-keys --show-indexes'

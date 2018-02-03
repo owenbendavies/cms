@@ -12,6 +12,9 @@ cache:
   directories:
     - /home/travis/.rvm/
 
+git:
+  depth: 3
+
 addons:
   apt:
     packages:
