@@ -2,6 +2,9 @@
 set -e
 cd `dirname $0`/..
 
+git clean --force public/assets/.sprockets-manifest-*.json
+git checkout public/assets/.sprockets-manifest-*.json
+
 if [[ $(git status --porcelain) != '' ]]
 then
   git status
