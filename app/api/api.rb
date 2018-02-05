@@ -13,6 +13,7 @@ class API < Grape::API
   helpers ::Helpers::Errors
 
   rescue_from ActiveRecord::RecordNotFound, with: :forbidden
+  rescue_from Grape::Exceptions::ValidationErrors, with: :validation_errors
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
 
   namespace do
