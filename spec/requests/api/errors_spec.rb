@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'API Errors' do
-  let(:user) { FactoryBot.create(:user, :sysadmin) }
+  let(:request_user) { FactoryBot.create(:user, :sysadmin) }
 
   context 'with GET /api/errors/500' do
     it 'raises 500 error' do
