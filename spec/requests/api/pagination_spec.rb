@@ -6,7 +6,7 @@ RSpec.describe 'API pagination' do
   let(:request_method) { :get }
   let(:request_path) { '/api/messages' }
 
-  let(:user) { FactoryBot.create(:user, site: site) }
+  let(:request_user) { FactoryBot.create(:user, site: site) }
 
   let!(:objects) do
     (0..11).map do |i|

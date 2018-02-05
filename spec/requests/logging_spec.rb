@@ -36,8 +36,8 @@ RSpec.describe 'Logging' do
   end
 
   context 'with user' do
-    let(:user) { FactoryBot.create(:user) }
-    let(:user_id) { user.id }
+    let(:request_user) { FactoryBot.create(:user) }
+    let(:user_id) { request_user.id }
 
     it 'logs request information and the user id' do
       request_page
