@@ -25,7 +25,7 @@ RSpec.shared_context 'with requests' do
   let(:site) { FactoryBot.create(:site) }
 
   def request_page(expected_status: 200)
-    login_as user if defined? user
+    login_as request_user if defined? request_user
     host! request_host
     send(request_method, request_path, headers: request_headers, params: request_params)
     expect(response).to have_http_status expected_status
