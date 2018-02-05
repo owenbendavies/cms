@@ -7,7 +7,7 @@ module Helpers
         'message' => 'Either you do not have permission or the resource was not found'
       }
 
-      error!(message, 403)
+      error!(message, message.fetch('http_status_code'))
     end
 
     def page_not_found
@@ -17,7 +17,17 @@ module Helpers
         'message' => 'Please check API documentation'
       }
 
-      error!(message, 404)
+      error!(message, message.fetch('http_status_code'))
+    end
+
+    def validation_errors(error)
+      message = {
+        'http_status_code' => 400,
+        'error' => 'Bad Request',
+        'messages' => error.full_messages
+      }
+
+      error!(message, message.fetch('http_status_code'))
     end
   end
 end
