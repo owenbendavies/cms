@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Errors' do
-  let(:user) { FactoryBot.create(:user, :sysadmin) }
+  let(:request_user) { FactoryBot.create(:user, :sysadmin) }
 
   context 'with GET /system/error_500' do
     it 'raises 500 error' do
