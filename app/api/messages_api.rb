@@ -1,21 +1,28 @@
 class MessagesAPI < Grape::API
   namespace :messages do
-    ENTITY = Entities::Message
-
-    desc 'Messages', success: ENTITY, is_array: true
+    desc 'Messages', success: Message::Entity, is_array: true
     paginate
     get do
       authorize Message, :index?
-      messages = paginate policy_scope(Message).ordered
-      present messages, with: ENTITY
+      present paginate(policy_scope(Message).ordered)
     end
 
-    desc 'Messages', success: ENTITY
     route_param :uid, type: String do
+      before do
+        @message = Message.find_by!(uid: params[:uid])
+      end
+
+      desc 'Messages', success: Message::Entity
       get do
-        message = Message.find_by!(uid: params[:uid])
-        authorize message, :show?
-        present message, with: ENTITY
+        authorize @message, :show?
+        present @message
+      end
+
+      desc 'Messages'
+      delete do
+        authorize @message, :destroy?
+        @message.destroy!
+        present
       end
     end
   end

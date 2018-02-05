@@ -33,4 +33,13 @@ RSpec.describe 'API Messages' do
       expect(json_body).to eq expected_result
     end
   end
+
+  describe 'DELETE /api/messages/:id' do
+    let(:request_path_id) { message.uid }
+
+    it 'deletes a message' do
+      request_page(expected_status: 204)
+      expect(Message.find_by(id: message.id)).to be_nil
+    end
+  end
 end
