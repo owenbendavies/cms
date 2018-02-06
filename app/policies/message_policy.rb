@@ -6,4 +6,8 @@ class MessagePolicy < ApplicationPolicy
   def show?
     user_record?
   end
+
+  def destroy?
+    user_record?
+  end
 end
