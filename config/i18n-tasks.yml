@@ -67,6 +67,7 @@ search:
   exclude:
     - app/assets/images
     - app/assets/fonts
+    - app/api
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -97,6 +98,7 @@ ignore_unused:
   - 'activerecord.models.*'
   - 'devise.*'
   - 'errors.messages.*'
+  - 'api.*'
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

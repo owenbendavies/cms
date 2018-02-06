@@ -1,4 +1,4 @@
-class SnsNotificationsAPI < Grape::API
+class SnsNotificationsAPI < ApplicationAPI
   format :txt
 
   namespace :sns_notifications do
