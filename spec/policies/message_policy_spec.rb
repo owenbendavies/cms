@@ -5,7 +5,7 @@ RSpec.describe MessagePolicy do
     include_examples 'user site policy'
   end
 
-  permissions :show? do
+  permissions :show?, :destroy? do
     let(:record) { FactoryBot.create(:message, site: site) }
 
     include_examples 'user record policy'
