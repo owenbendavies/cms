@@ -1,6 +1,6 @@
-class MessagesAPI < Grape::API
+class MessagesAPI < ApplicationAPI
   namespace :messages do
-    desc 'Messages', success: Message::Entity, is_array: true
+    desc t('.index.description'), success: Message::Entity, is_array: true
     paginate
     get do
       authorize Message, :index?
@@ -12,13 +12,13 @@ class MessagesAPI < Grape::API
         @message = Message.find_by!(uid: params[:uid])
       end
 
-      desc 'Messages', success: Message::Entity
+      desc t('.show.description'), success: Message::Entity
       get do
         authorize @message, :show?
         present @message
       end
 
-      desc 'Messages'
+      desc t('.delete.description')
       delete do
         authorize @message, :destroy?
         @message.destroy!

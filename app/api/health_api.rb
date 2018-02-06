@@ -1,4 +1,4 @@
-class HealthAPI < Grape::API
+class HealthAPI < ApplicationAPI
   get :health do
     authorize :health, :status?
     { 'status' => 'ok' }

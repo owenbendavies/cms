@@ -17,6 +17,11 @@ RSpec.describe 'API Messages' do
   end
 
   describe 'GET /api/messages' do
+    include_examples(
+      'swagger documentation',
+      description: 'List messages'
+    )
+
     it 'returns array of messages' do
       request_page
 
@@ -27,6 +32,11 @@ RSpec.describe 'API Messages' do
   describe 'GET /api/messages/:id' do
     let(:request_path_id) { message.uid }
 
+    include_examples(
+      'swagger documentation',
+      description: 'Show a message'
+    )
+
     it 'returns a message' do
       request_page
 
@@ -36,6 +46,11 @@ RSpec.describe 'API Messages' do
 
   describe 'DELETE /api/messages/:id' do
     let(:request_path_id) { message.uid }
+
+    include_examples(
+      'swagger documentation',
+      description: 'Delete a message'
+    )
 
     it 'deletes a message' do
       request_page(expected_status: 204)
