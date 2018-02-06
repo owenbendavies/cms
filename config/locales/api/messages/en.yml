@@ -1,0 +1,11 @@
+---
+en:
+  api:
+    messages:
+      index:
+        description: List messages
+      uid:
+        delete:
+          description: Delete a message
+        show:
+          description: Show a message

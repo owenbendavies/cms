@@ -1,4 +1,4 @@
-class ErrorsAPI < Grape::API
+class ErrorsAPI < ApplicationAPI
   namespace :errors do
     get '500' do
       authorize :errors, :error_500?
