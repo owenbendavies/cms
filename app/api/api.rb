@@ -1,4 +1,4 @@
-class API < Grape::API
+class API < ApplicationAPI
   use(
     GrapeLogging::Middleware::RequestLogger,
     instrumentation_key: 'grape_api',
