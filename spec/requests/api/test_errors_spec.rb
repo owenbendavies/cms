@@ -1,15 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe 'API Errors' do
+RSpec.describe 'API Test Errors' do
   let(:request_user) { FactoryBot.create(:user, :sysadmin) }
 
-  context 'with GET /api/errors/500' do
+  context 'with GET /api/test_errors/500' do
+    include_examples(
+      'swagger documentation',
+      description: 'Creates a test 500 error'
+    )
+
     it 'raises 500 error' do
       expect { request_page }.to raise_error(RuntimeError, 'Test 500 error')
     end
   end
 
-  context 'with GET /api/errors/delayed' do
+  context 'with GET /api/test_errors/delayed' do
+    include_examples(
+      'swagger documentation',
+      description: 'Creates a test background job error'
+    )
+
     before { request_page }
 
     after { Delayed::Job.last.destroy! }
@@ -23,7 +33,12 @@ RSpec.describe 'API Errors' do
     end
   end
 
-  context 'with GET /api/errors/timeout' do
+  context 'with GET /api/test_errors/timeout' do
+    include_examples(
+      'swagger documentation',
+      description: 'Creates a test timeout error'
+    )
+
     it 'raises timeout error' do
       expect { request_page }.to raise_error Rack::Timeout::RequestTimeoutError
     end

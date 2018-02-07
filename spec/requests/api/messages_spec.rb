@@ -19,7 +19,7 @@ RSpec.describe 'API Messages' do
   describe 'GET /api/messages' do
     include_examples(
       'swagger documentation',
-      description: 'List messages'
+      description: 'Lists messages'
     )
 
     it 'returns array of messages' do
@@ -34,7 +34,7 @@ RSpec.describe 'API Messages' do
 
     include_examples(
       'swagger documentation',
-      description: 'Show a message'
+      description: 'Shows a message'
     )
 
     it 'returns a message' do
@@ -49,7 +49,7 @@ RSpec.describe 'API Messages' do
 
     include_examples(
       'swagger documentation',
-      description: 'Delete a message'
+      description: 'Deletes a message'
     )
 
     it 'deletes a message' do

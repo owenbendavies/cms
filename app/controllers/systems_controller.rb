@@ -5,12 +5,12 @@ class SystemsController < ApplicationController
   skip_after_action :verify_authorized, only: PUBLIC_PAGES
 
   def error_500
-    authorize :errors
+    authorize :test_errors
     raise 'Test 500 error'
   end
 
   def error_timeout
-    authorize :errors
+    authorize :test_errors
     sleep Rack::Timeout.service_timeout + 1
   end
 

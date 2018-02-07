@@ -1,4 +1,4 @@
-class ErrorsPolicy < ApplicationPolicy
+class TestErrorsPolicy < ApplicationPolicy
   def error_500?
     @user&.sysadmin?
   end
