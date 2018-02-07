@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ErrorsPolicy do
+RSpec.describe TestErrorsPolicy do
   permissions :error_500?, :error_delayed?, :error_timeout? do
     include_examples 'no user policy'
 
