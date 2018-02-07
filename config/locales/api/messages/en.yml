@@ -3,9 +3,9 @@ en:
   api:
     messages:
       index:
-        description: List messages
+        description: Lists messages
       uid:
         delete:
-          description: Delete a message
+          description: Deletes a message
         show:
-          description: Show a message
+          description: Shows a message

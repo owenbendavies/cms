@@ -13,10 +13,6 @@ RSpec.describe 'GET /api/swagger_doc' do
     expect(json_body.fetch('info').fetch('version')).to eq 'v1'
   end
 
-  it 'includes paths' do
-    expect(json_body.fetch('paths').keys).to include '/messages/{uid}'
-  end
-
   it 'includes definitions' do
     expect(json_body.fetch('definitions').keys).to include 'Message'
   end

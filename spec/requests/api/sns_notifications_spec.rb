@@ -15,6 +15,11 @@ RSpec.describe 'POST /api/sns_notifications' do
     allow(Aws::SNS::MessageVerifier).to receive(:new).and_return(verifier)
   end
 
+  include_examples(
+    'swagger documentation',
+    description: 'Saves a AWS SNS notification'
+  )
+
   it 'saves the sns message' do
     request_page(expected_status: 204)
     expect(SnsNotification.last.message).to eq JSON.parse(request_params)

@@ -19,10 +19,10 @@ class API < ApplicationAPI
   namespace do
     after(&:verify_authorized)
 
-    mount ErrorsAPI
     mount HealthAPI
     mount MessagesAPI
     mount SnsNotificationsAPI
+    mount TestErrorsAPI
   end
 
   add_swagger_documentation(doc_version: 'v1', info: { title: 'obduk CMS API' })
