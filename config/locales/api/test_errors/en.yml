@@ -1,0 +1,10 @@
+---
+en:
+  api:
+    test_errors:
+      '500':
+        description: Creates a test 500 error
+      delayed:
+        description: Creates a test background job error
+      timeout:
+        description: Creates a test timeout error

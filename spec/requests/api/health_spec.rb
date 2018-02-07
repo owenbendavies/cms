@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'GET /api/health' do
   let(:request_host) { new_host }
 
+  include_examples(
+    'swagger documentation',
+    description: 'Returns the health of the system'
+  )
+
   it 'renders ok' do
     request_page
 
