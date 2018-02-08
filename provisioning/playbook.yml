@@ -9,10 +9,10 @@
     - role: zzet.rbenv
       default_gems_file: 'custom-default-gems'
       rbenv:
-        default_ruby: 2.3.5
+        default_ruby: 2.3.6
         env: user
         rubies:
-          - version: 2.3.5
+          - version: 2.3.6
         version: v1.1.0
       rbenv_users:
         - vagrant
