@@ -5,12 +5,8 @@ sudo: false
 branches:
   only: master
 
-language: ruby
-
 cache:
   bundler: true
-  directories:
-    - /home/travis/.rvm/
 
 git:
   depth: 3
@@ -29,6 +25,4 @@ env:
   - TEST_COMMAND=./bin/setup
   - TEST_COMMAND=./bin/test
 
-script:
-  - $TEST_COMMAND
-  - ./bin/changes
+script: $TEST_COMMAND && ./bin/changes
