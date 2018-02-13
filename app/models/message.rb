@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
-#  subject    :string(64)       not null
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
@@ -25,13 +24,13 @@
 
 class Message < ApplicationRecord
   class Entity < Grape::Entity
-    expose :uid
-    expose :name
-    expose :email
-    expose :phone
-    expose :message
-    expose :created_at
-    expose :updated_at
+    expose :uid, documentation: { type: String }
+    expose :name, documentation: { type: String }
+    expose :email, documentation: { type: String }
+    expose :phone, documentation: { type: String }
+    expose :message, documentation: { type: String }
+    expose :created_at, documentation: { type: DateTime }
+    expose :updated_at, documentation: { type: DateTime }
   end
 
   include DefaultUid

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125115509) do
+ActiveRecord::Schema.define(version: 20180212145501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20180125115509) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_messages_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__messages_site_id", :using=>:btree}
-    t.string   "subject",    :limit=>64, :null=>false
     t.string   "name",       :limit=>64, :null=>false
     t.string   "email",      :limit=>64, :null=>false
     t.string   "phone",      :limit=>32

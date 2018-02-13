@@ -62,23 +62,4 @@ RSpec.describe 'API pagination' do
       expect(uids).to eq objects[0, 5].map(&:uid)
     end
   end
-
-  context 'with invalid parameters' do
-    let(:request_path) { '/api/messages?per_page=bad' }
-
-    let(:expected_body) do
-      {
-        'http_status_code' => 400,
-        'error' => 'Bad Request',
-        'messages' => [
-          'per_page is invalid'
-        ]
-      }
-    end
-
-    it 'returns errors' do
-      request_page(expected_status: 400)
-      expect(json_body).to eq expected_body
-    end
-  end
 end

@@ -30,7 +30,7 @@ RSpec.feature 'Page with contact form' do
     email = last_email
     expect(email.from).to eq ["noreply@#{site.host}"]
     expect(email.to).to eq [site_user.email]
-    expect(email.subject).to eq contact_page.name
+    expect(email.subject).to eq 'New message'
     expect(email.html_part.body).to have_content new_name
     expect(email.html_part.body).to have_content new_email
     expect(email.html_part.body).to have_content new_phone

@@ -7,7 +7,7 @@ class NotificationsMailer < ApplicationMailer
     mail(
       from: from_site(message.site),
       to: @site.users.pluck(:email),
-      subject: message.subject
+      subject: t('mailers.new_message.subject')
     )
   end
 
