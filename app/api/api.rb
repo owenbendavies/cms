@@ -11,7 +11,9 @@ class API < ApplicationAPI
   helpers Pundit
   helpers ::Helpers::Authentication
   helpers ::Helpers::Errors
+  helpers ::Helpers::Params
 
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveRecord::RecordNotFound, with: :forbidden
   rescue_from Grape::Exceptions::ValidationErrors, with: :validation_errors
   rescue_from Pundit::NotAuthorizedError, with: :forbidden

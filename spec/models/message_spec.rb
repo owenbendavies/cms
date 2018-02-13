@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
-#  subject    :string(64)       not null
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
@@ -40,7 +39,6 @@ RSpec.describe Message do
     end
   end
 
-  it { is_expected.to strip_attribute(:subject).collapse_spaces }
   it { is_expected.to strip_attribute(:name).collapse_spaces }
   it { is_expected.to strip_attribute(:email).collapse_spaces }
   it { is_expected.not_to strip_attribute(:message) }

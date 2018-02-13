@@ -17,7 +17,7 @@ RSpec.describe 'POST /api/sns_notifications' do
 
   include_examples(
     'swagger documentation',
-    description: 'Saves a AWS SNS notification'
+    description: 'Creates an AWS SNS notification'
   )
 
   it 'saves the sns message' do

@@ -3,6 +3,10 @@ class MessagePolicy < ApplicationPolicy
     user_site?
   end
 
+  def create?
+    site_record?
+  end
+
   def show?
     user_record?
   end

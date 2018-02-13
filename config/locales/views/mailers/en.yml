@@ -10,6 +10,7 @@ en:
       text: You have been added to %{site_name} site by %{inviter_name}.
       title: Confirm your account
     new_message:
+      subject: New message
       text: 'A new message has been posted on %{site_name}:'
     password_change:
       text: Your password has been changed
