@@ -38,38 +38,6 @@ end
 
 RSpec.configuration.include_context 'with requests', type: :request
 
-RSpec.shared_examples 'renders json forbidden' do
-  let(:expected_body) do
-    {
-      'http_status_code' => 403,
-      'error' => 'Forbidden',
-      'message' => 'Either you do not have permission or the resource was not found'
-    }
-  end
-
-  it 'renders json forbidden' do
-    request_page(expected_status: 403)
-
-    expect(json_body).to eq(expected_body)
-  end
-end
-
-RSpec.shared_examples 'renders json page not found' do
-  let(:expected_body) do
-    {
-      'http_status_code' => 404,
-      'error' => 'Not found',
-      'message' => 'Please check API documentation'
-    }
-  end
-
-  it 'renders json page not found' do
-    request_page(expected_status: 404)
-
-    expect(json_body).to eq(expected_body)
-  end
-end
-
 RSpec.shared_examples 'renders html page not found' do
   it 'renders html page not found' do
     request_page(expected_status: 404)

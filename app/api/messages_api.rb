@@ -7,21 +7,31 @@ class MessagesAPI < ApplicationAPI
       present paginate(policy_scope(Message).ordered)
     end
 
-    route_param :uid, type: String do
-      before do
-        @message = Message.find_by!(uid: params[:uid])
-      end
+    desc t('.create.description'), success: Message::Entity
+    params do
+      requires :all, using: Message::Entity.documentation.slice(:name, :email, :message)
+      optional :all, using: Message::Entity.documentation.slice(:phone)
+    end
+    post do
+      message = Message.new(params.merge(site: site))
+      authorize message, :create?
+      message.save!
+      present message
+    end
 
+    route_param :uid, type: String do
       desc t('.show.description'), success: Message::Entity
       get do
-        authorize @message, :show?
-        present @message
+        message = Message.find_by!(uid: params[:uid])
+        authorize message, :show?
+        present message
       end
 
       desc t('.delete.description')
       delete do
-        authorize @message, :destroy?
-        @message.destroy!
+        message = Message.find_by!(uid: params[:uid])
+        authorize message, :destroy?
+        message.destroy!
         present
       end
     end
