@@ -2,6 +2,8 @@
 en:
   api:
     messages:
+      create:
+        description: Creates a message
       index:
         description: Lists messages
       uid:

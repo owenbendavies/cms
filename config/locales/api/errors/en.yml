@@ -1,0 +1,16 @@
+---
+en:
+  api:
+    errors:
+      forbidden:
+        error: Forbidden
+        message: Either you do not have permission or the resource was not found
+      page_not_found:
+        error: Not found
+        message: Please check API documentation
+      record_invalid:
+        error: Unprocessable Entity
+        message: Validation failed
+      validation_errors:
+        error: Bad request
+        message: Invalid parameters

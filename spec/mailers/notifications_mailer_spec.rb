@@ -20,7 +20,7 @@ RSpec.describe NotificationsMailer do
     end
 
     it 'includes message subject' do
-      expect(email.subject).to eq message.subject
+      expect(email.subject).to eq 'New message'
     end
 
     it 'has text in body' do

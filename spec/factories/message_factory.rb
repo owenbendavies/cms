@@ -4,7 +4,6 @@
 #
 #  id         :integer          not null, primary key
 #  site_id    :integer          not null
-#  subject    :string(64)       not null
 #  name       :string(64)       not null
 #  email      :string(64)       not null
 #  phone      :string(32)
@@ -26,8 +25,6 @@
 FactoryBot.define do
   factory :message do
     site
-
-    subject { Faker::Name.name }
 
     name { Faker::Name.name }
     email { Faker::Internet.email }
