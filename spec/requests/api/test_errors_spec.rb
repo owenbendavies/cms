@@ -4,13 +4,22 @@ RSpec.describe 'API Test Errors' do
   let(:request_user) { FactoryBot.create(:user, :sysadmin) }
 
   context 'with GET /api/test_errors/500' do
+    let(:expected_body) do
+      {
+        'error' => 'Internal server error',
+        'message' => 'Sorry, something unexpected has gone wrong',
+        'errors' => {}
+      }
+    end
+
     include_examples(
       'swagger documentation',
       description: 'Creates a test 500 error'
     )
 
-    it 'raises 500 error' do
-      expect { request_page }.to raise_error(RuntimeError, 'Test 500 error')
+    it 'returns 500 error' do
+      request_page(expected_status: 500)
+      expect(json_body).to eq expected_body
     end
   end
 
@@ -20,7 +29,7 @@ RSpec.describe 'API Test Errors' do
       description: 'Creates a test background job error'
     )
 
-    before { request_page }
+    before { request_page(expected_status: 202) }
 
     after { Delayed::Job.last.destroy! }
 

@@ -17,6 +17,7 @@ class API < ApplicationAPI
   rescue_from ActiveRecord::RecordNotFound, with: :forbidden
   rescue_from Grape::Exceptions::ValidationErrors, with: :validation_errors
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
+  rescue_from :all, with: :unexpected_error
 
   namespace do
     after(&:verify_authorized)

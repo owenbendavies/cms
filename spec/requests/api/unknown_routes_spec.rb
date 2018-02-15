@@ -5,7 +5,8 @@ RSpec.describe 'API Unknown routes' do
     let(:expected_body) do
       {
         'error' => 'Not found',
-        'message' => 'Please check API documentation'
+        'message' => 'Please check API documentation',
+        'errors' => {}
       }
     end
 
