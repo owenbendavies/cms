@@ -5,7 +5,8 @@ RSpec.describe 'API Authorization' do
     let(:expected_body) do
       {
         'error' => 'Forbidden',
-        'message' => 'Either you do not have permission or the resource was not found'
+        'message' => 'Either you do not have permission or the resource was not found',
+        'errors' => {}
       }
     end
 

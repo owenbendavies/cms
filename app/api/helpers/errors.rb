@@ -1,37 +1,31 @@
 module Helpers
   module Errors
-    def t(key, options = {})
-      key = ['api', 'errors', key].join('.') if key.first == '.'
+    def system_error!(name, status, errors = {})
+      message = {
+        error: I18n.t("api.errors.#{name}.error"),
+        message: I18n.t("api.errors.#{name}.message"),
+        errors: errors,
+        with: Entities::SystemError
+      }
 
-      I18n.translate(key, options)
+      error!(message, status)
     end
 
     def forbidden
-      message = {
-        'error' => t('.forbidden.error'),
-        'message' => t('.forbidden.message')
-      }
-
-      error!(message, 403)
+      system_error!(:forbidden, 403)
     end
 
     def page_not_found
-      message = {
-        'error' => t('.page_not_found.error'),
-        'message' => t('.page_not_found.message')
-      }
-
-      error!(message, 404)
+      system_error!(:page_not_found, 404)
     end
 
     def record_invalid(exception)
-      message = {
-        'error' => t('.record_invalid.error'),
-        'message' => t('.record_invalid.message'),
-        'errors' => exception.record.errors.messages
-      }
+      errors = exception.record.errors.messages
+      system_error!(:record_invalid, 422, errors)
+    end
 
-      error!(message, 422)
+    def unexpected_error
+      system_error!(:unexpected_error, 500)
     end
 
     def validation_errors(exception)
@@ -39,13 +33,7 @@ module Helpers
         hash[error.fetch(:params).first] = error.fetch(:messages)
       end
 
-      message = {
-        'error' => t('.validation_errors.error'),
-        'message' => t('.validation_errors.message'),
-        'errors' => errors
-      }
-
-      error!(message, 400)
+      system_error!(:validation_errors, 400, errors)
     end
   end
 end

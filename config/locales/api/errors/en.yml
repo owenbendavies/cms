@@ -11,6 +11,9 @@ en:
       record_invalid:
         error: Unprocessable Entity
         message: Validation failed
+      unexpected_error:
+        error: Internal server error
+        message: Sorry, something unexpected has gone wrong
       validation_errors:
         error: Bad request
         message: Invalid parameters
