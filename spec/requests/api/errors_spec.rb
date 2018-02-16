@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'API errors' do
   shared_examples 'renders bad request' do |expected_messages|
+    let(:expected_status) { 400 }
+
     let(:expected_body) do
       {
         'error' => 'Bad request',
@@ -11,7 +13,7 @@ RSpec.describe 'API errors' do
     end
 
     it 'renders bad request' do
-      request_page(expected_status: 400)
+      request_page
 
       expect(json_body).to eq(expected_body)
     end
@@ -50,6 +52,8 @@ RSpec.describe 'API errors' do
       }
     end
 
+    let(:expected_status) { 422 }
+
     let(:expected_body) do
       {
         'error' => 'Unprocessable Entity',
@@ -62,7 +66,7 @@ RSpec.describe 'API errors' do
     end
 
     it 'returns errors' do
-      request_page(expected_status: 422)
+      request_page
       expect(json_body).to eq expected_body
     end
   end
@@ -80,8 +84,10 @@ RSpec.describe 'API errors' do
       }
     end
 
+    let(:expected_status) { 201 }
+
     it 'does not update the fields' do
-      request_page(expected_status: 201)
+      request_page
       expect(json_body.fetch('uid')).to match(/\A[0-9a-z]{8}+\z/)
     end
   end
