@@ -20,6 +20,10 @@ class API < ApplicationAPI
   rescue_from :all, with: :unexpected_error
 
   namespace do
+    before do
+      PaperTrail.whodunnit = current_user.id if current_user
+    end
+
     after(&:verify_authorized)
 
     mount HealthAPI
