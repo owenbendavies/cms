@@ -6,9 +6,10 @@ RSpec.describe 'Unknown routes' do
 
   context 'with root url' do
     let(:request_path) { '/' }
+    let(:expected_status) { 302 }
 
     it 'redirects to home' do
-      request_page(expected_status: 302)
+      request_page
 
       expect(response).to redirect_to '/home'
     end
@@ -40,9 +41,10 @@ RSpec.describe 'Unknown routes' do
 
   context 'with unknown site' do
     let(:request_host) { new_host }
+    let(:expected_status) { 404 }
 
     it 'renders site not found' do
-      request_page(expected_status: 404)
+      request_page
       expect(body).to include 'Site Not Found'
     end
   end

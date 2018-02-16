@@ -22,10 +22,16 @@ RSpec.shared_context 'with requests' do
     path
   end
 
+  let(:expected_status) { 200 }
+
   let(:site) { FactoryBot.create(:site) }
 
-  def request_page(expected_status: 200)
+  def login_as_request_user
     login_as request_user if defined? request_user
+  end
+
+  def request_page
+    login_as_request_user
     host! request_host
     send(request_method, request_path, headers: request_headers, params: request_params)
     expect(response).to have_http_status expected_status
@@ -39,15 +45,19 @@ end
 RSpec.configuration.include_context 'with requests', type: :request
 
 RSpec.shared_examples 'renders html page not found' do
+  let(:expected_status) { 404 }
+
   it 'renders html page not found' do
-    request_page(expected_status: 404)
+    request_page
     expect(body).to include 'Page Not Found'
   end
 end
 
 RSpec.shared_examples 'returns 406' do
+  let(:expected_status) { 406 }
+
   it 'returns 406' do
-    request_page(expected_status: 406)
+    request_page
     expect(body).to be_empty
   end
 end

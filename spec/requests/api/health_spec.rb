@@ -5,7 +5,8 @@ RSpec.describe 'GET /api/health' do
 
   include_examples(
     'swagger documentation',
-    description: 'Returns the health of the system'
+    description: 'Returns the health of the system',
+    model: 'SystemHealth'
   )
 
   it 'renders ok' do

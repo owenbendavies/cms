@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'API Unknown routes' do
   shared_examples 'renders page not found' do
+    let(:expected_status) { 404 }
+
     let(:expected_body) do
       {
         'error' => 'Not found',
@@ -11,7 +13,7 @@ RSpec.describe 'API Unknown routes' do
     end
 
     it 'renders page not found' do
-      request_page(expected_status: 404)
+      request_page
 
       expect(json_body).to eq(expected_body)
     end
