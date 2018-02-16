@@ -24,7 +24,8 @@ module Helpers
       system_error!(:record_invalid, 422, errors)
     end
 
-    def unexpected_error
+    def unexpected_error(exception)
+      Rollbar.error(exception)
       system_error!(:unexpected_error, 500)
     end
 
