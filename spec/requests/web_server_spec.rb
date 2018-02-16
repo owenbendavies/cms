@@ -62,8 +62,10 @@ RSpec.describe 'Application web server' do
       }
     end
 
+    let(:expected_status) { 403 }
+
     it 'returns 403' do
-      request_page(expected_status: 403)
+      request_page
     end
   end
 

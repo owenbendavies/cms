@@ -6,7 +6,7 @@ class SnsNotificationsAPI < ApplicationAPI
     post do
       authorize :sns, :create?
       SnsNotification.from_message(request.body.read)
-      status :no_content
+      present
     end
   end
 end

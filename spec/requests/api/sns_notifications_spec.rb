@@ -9,6 +9,8 @@ RSpec.describe 'POST /api/sns_notifications' do
     Rails.root.join('spec', 'assets', 'sns', 'notification.json').read
   end
 
+  let(:expected_status) { 201 }
+
   before do
     verifier = instance_double(Aws::SNS::MessageVerifier)
     allow(verifier).to receive(:authenticate!).with(request_params)
@@ -17,11 +19,12 @@ RSpec.describe 'POST /api/sns_notifications' do
 
   include_examples(
     'swagger documentation',
-    description: 'Creates an AWS SNS notification'
+    description: 'Creates an AWS SNS notification',
+    model: nil
   )
 
   it 'saves the sns message' do
-    request_page(expected_status: 204)
+    request_page
     expect(SnsNotification.last.message).to eq JSON.parse(request_params)
   end
 end

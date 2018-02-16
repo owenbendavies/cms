@@ -7,10 +7,34 @@ RSpec.shared_examples 'swagger documentation' do |options|
     json_body.fetch('paths').fetch(path).fetch(request_method.to_s)
   end
 
+  let(:expected_scheama) do
+    if expected_status == 204 || options.fetch(:model).nil?
+      nil
+    elsif options.fetch(:model).is_a? Array
+      {
+        'type' => 'array',
+        'items' => {
+          '$ref' => "#/definitions/#{options.fetch(:model).first}"
+        }
+      }
+    else
+      {
+        '$ref' => "#/definitions/#{options.fetch(:model)}"
+      }
+    end
+  end
+
   let(:expected_doc) do
     {
       'description' => options.fetch(:description),
-      'produces' => ['application/json']
+      'produces' => ['application/json'],
+      'summary' => options.fetch(:description),
+      'responses' => {
+        expected_status.to_s => {
+          'description' => options.fetch(:description),
+          'schema' => expected_scheama
+        }.compact
+      }
     }
   end
 
