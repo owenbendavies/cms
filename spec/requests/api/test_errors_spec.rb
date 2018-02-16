@@ -24,6 +24,11 @@ RSpec.describe 'API Test Errors' do
       request_page
       expect(json_body).to eq expected_body
     end
+
+    it 'logs error to rollbar' do
+      expect(Rollbar).to receive(:error).with(RuntimeError).and_call_original
+      request_page
+    end
   end
 
   context 'with GET /api/test_errors/delayed' do
