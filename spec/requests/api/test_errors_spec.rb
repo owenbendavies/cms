@@ -12,24 +12,30 @@ RSpec.describe 'API Test Errors' do
       }
     end
 
+    let(:expected_status) { 500 }
+
     include_examples(
       'swagger documentation',
-      description: 'Creates a test 500 error'
+      description: 'Creates a test 500 error',
+      model: 'SystemError'
     )
 
     it 'returns 500 error' do
-      request_page(expected_status: 500)
+      request_page
       expect(json_body).to eq expected_body
     end
   end
 
   context 'with GET /api/test_errors/delayed' do
+    let(:expected_status) { 202 }
+
     include_examples(
       'swagger documentation',
-      description: 'Creates a test background job error'
+      description: 'Creates a test background job error',
+      model: 'SystemMessage'
     )
 
-    before { request_page(expected_status: 202) }
+    before { request_page }
 
     after { Delayed::Job.last.destroy! }
 
@@ -45,7 +51,8 @@ RSpec.describe 'API Test Errors' do
   context 'with GET /api/test_errors/timeout' do
     include_examples(
       'swagger documentation',
-      description: 'Creates a test timeout error'
+      description: 'Creates a test timeout error',
+      model: nil
     )
 
     it 'raises timeout error' do

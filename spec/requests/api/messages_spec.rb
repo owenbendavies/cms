@@ -19,7 +19,8 @@ RSpec.describe 'API Messages' do
   describe 'GET /api/messages' do
     include_examples(
       'swagger documentation',
-      description: 'Lists messages'
+      description: 'Lists messages',
+      model: ['Message']
     )
 
     it 'returns array of messages' do
@@ -42,13 +43,16 @@ RSpec.describe 'API Messages' do
 
     let(:message) { Message.last }
 
+    let(:expected_status) { 201 }
+
     include_examples(
       'swagger documentation',
-      description: 'Creates a message'
+      description: 'Creates a message',
+      model: 'Message'
     )
 
     it 'creates a message' do
-      request_page(expected_status: 201)
+      request_page
 
       expect(json_body).to eq expected_result
     end
@@ -59,7 +63,8 @@ RSpec.describe 'API Messages' do
 
     include_examples(
       'swagger documentation',
-      description: 'Shows a message'
+      description: 'Shows a message',
+      model: 'Message'
     )
 
     it 'returns a message' do
@@ -71,6 +76,7 @@ RSpec.describe 'API Messages' do
 
   describe 'DELETE /api/messages/:id' do
     let(:request_path_id) { message.uid }
+    let(:expected_status) { 204 }
 
     include_examples(
       'swagger documentation',
@@ -78,7 +84,7 @@ RSpec.describe 'API Messages' do
     )
 
     it 'deletes a message' do
-      request_page(expected_status: 204)
+      request_page
       expect(Message.find_by(id: message.id)).to be_nil
     end
   end

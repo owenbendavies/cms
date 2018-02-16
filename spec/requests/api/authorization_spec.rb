@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'API Authorization' do
   shared_examples 'renders forbidden' do
+    let(:expected_status) { 403 }
+
     let(:expected_body) do
       {
         'error' => 'Forbidden',
@@ -11,7 +13,7 @@ RSpec.describe 'API Authorization' do
     end
 
     it 'renders forbidden' do
-      request_page(expected_status: 403)
+      request_page
 
       expect(json_body).to eq(expected_body)
     end
