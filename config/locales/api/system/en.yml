@@ -1,10 +1,12 @@
 ---
 en:
   api:
-    test_errors:
-      '500':
+    system:
+      health:
+        description: Returns the health of the system
+      test_500_error:
         description: Creates a test 500 error
-      delayed:
+      test_delayed_error:
         description: Creates a test background job error
-      timeout:
+      test_timeout_error:
         description: Creates a test timeout error

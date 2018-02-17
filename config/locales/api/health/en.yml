@@ -1,5 +1,0 @@
----
-en:
-  api:
-    health:
-      description: Returns the health of the system

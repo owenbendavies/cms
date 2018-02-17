@@ -1,9 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe 'API Test Errors' do
-  let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+RSpec.describe 'API System' do
+  context 'with GET /api/system/health' do
+    let(:request_host) { new_host }
 
-  context 'with GET /api/test_errors/500' do
+    include_examples(
+      'swagger documentation',
+      description: 'Returns the health of the system',
+      model: 'SystemHealth'
+    )
+
+    it 'renders ok' do
+      request_page
+
+      expect(json_body).to eq('status' => 'ok')
+    end
+  end
+
+  context 'with GET /api/system/test_500_error' do
+    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+
     let(:expected_body) do
       {
         'error' => 'Internal server error',
@@ -31,7 +47,9 @@ RSpec.describe 'API Test Errors' do
     end
   end
 
-  context 'with GET /api/test_errors/delayed' do
+  context 'with GET /api/system/test_delayed_error' do
+    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+
     let(:expected_status) { 202 }
 
     include_examples(
@@ -53,7 +71,9 @@ RSpec.describe 'API Test Errors' do
     end
   end
 
-  context 'with GET /api/test_errors/timeout' do
+  context 'with GET /api/system/test_timeout_error' do
+    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+
     include_examples(
       'swagger documentation',
       description: 'Creates a test timeout error',
