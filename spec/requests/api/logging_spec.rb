@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'API Logging' do
   let(:request_method) { :get }
-  let(:request_path) { '/api/health' }
+  let(:request_path) { '/api/system/health' }
 
   let(:request_id) { SecureRandom.uuid }
   let(:user_agent) { new_company_name }

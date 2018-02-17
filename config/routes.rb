@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'pages#index'
 
-  get '/system/error_500', to: 'systems#error_500'
-  get '/system/error_timeout', to: 'systems#error_timeout'
+  get '/system/test_500_error', to: 'systems#test_500_error'
+  get '/system/test_timeout_error', to: 'systems#test_timeout_error'
 
   get '/user/sites', to: 'sites#index'
 
