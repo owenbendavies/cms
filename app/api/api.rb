@@ -26,10 +26,9 @@ class API < ApplicationAPI
 
     after(&:verify_authorized)
 
-    mount HealthAPI
     mount MessagesAPI
     mount SnsNotificationsAPI
-    mount TestErrorsAPI
+    mount SystemAPI
   end
 
   add_swagger_documentation(doc_version: 'v1', info: { title: 'obduk CMS API' })
