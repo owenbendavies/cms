@@ -1,5 +1,9 @@
 module Entities
   class SystemHealth < Grape::Entity
-    expose :status
+    expose :all, documentation: { type: 'Boolean' }
+
+    def all
+      true
+    end
   end
 end
