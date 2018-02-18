@@ -3,7 +3,7 @@ class SystemAPI < ApplicationAPI
     desc t('.health.description'), success: Entities::SystemHealth
     get 'health' do
       authorize :system, :health?
-      status = { status: 'ok' }
+      status = {}
       present status, with: Entities::SystemHealth
     end
 

@@ -13,7 +13,7 @@ RSpec.describe 'API System' do
     it 'renders ok' do
       request_page
 
-      expect(json_body).to eq('status' => 'ok')
+      expect(json_body).to eq('all' => true)
     end
   end
 
