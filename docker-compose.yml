@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    environment:
+      - DATABASE_HOST=db
+    command: ./bin/run
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/app"
+      - "bundler:/usr/local/bundle"
+
+  db:
+    image: "postgres:9.6"
+    volumes:
+      - "db:/var/lib/postgresql"
+
+volumes:
+  bundler:
+  db:
