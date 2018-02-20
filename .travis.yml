@@ -21,8 +21,8 @@ services:
   - postgresql
 
 env:
-  - TEST_COMMAND=./bin/quality
-  - TEST_COMMAND=./bin/setup
-  - TEST_COMMAND=./bin/test
+  - DATABASE_HOST=localhost TEST_COMMAND=./bin/quality
+  - DATABASE_HOST=localhost TEST_COMMAND=./bin/setup
+  - DATABASE_HOST=localhost TEST_COMMAND=./bin/test
 
 script: $TEST_COMMAND && ./bin/changes

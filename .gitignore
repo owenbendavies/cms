@@ -1,9 +1,6 @@
 /.bundle/
-/.vagrant/
 /coverage/
 /log/*.log
-/provisioning/playbook.retry
-/provisioning/roles/
 /public/uploads/
 /tmp/
 /vendor/bundle/
