@@ -3,7 +3,6 @@ require: rubocop-rspec # Enable added RSpec checks
 AllCops:
   Exclude:
     - 'db/schema.rb' # Auto generated file so can't control
-    - 'provisioning/roles/**/*' # External libraries so can't control
     - 'vendor/bundle/**/*' # External libraries so can't control
 
 Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
