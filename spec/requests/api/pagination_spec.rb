@@ -27,8 +27,9 @@ RSpec.describe 'API pagination' do
     let(:expected_pagination_headers) do
       expected_non_random_headers.merge(
         'Link' => "<#{expected_url}?page=2>; rel=\"last\", <#{expected_url}?page=2>; rel=\"next\"",
-        'Per-Page' => '10',
-        'Total' => '12'
+        'X-Page' => '1',
+        'X-Per-Page' => '10',
+        'X-Total' => '12'
       )
     end
 
