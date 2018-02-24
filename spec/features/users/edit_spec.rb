@@ -25,7 +25,7 @@ RSpec.feature 'Editing a user' do
     expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Password Changed'
 
-    unchecked_visit '/logout'
+    visit '/logout'
     visit_200_page '/login'
     fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password
@@ -79,7 +79,7 @@ RSpec.feature 'Editing a user' do
     expect(link).to include site.host
     link.gsub!("http://#{site.host}", Capybara.app_host)
 
-    unchecked_visit link
+    visit link
 
     expect(page).to have_content 'Your email address has been successfully confirmed.'
 

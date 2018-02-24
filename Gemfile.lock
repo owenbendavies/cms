@@ -88,6 +88,10 @@ GEM
     capybara-webkit (1.14.0)
       capybara (>= 2.3.0, < 2.14.0)
       json
+    capybara_table (0.1.1)
+      capybara (~> 2.0)
+      terminal-table
+      xpath (~> 2.1)
     carrierwave (1.2.2)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -593,6 +597,7 @@ DEPENDENCIES
   bullet
   bundler-audit
   capybara-webkit
+  capybara_table
   carrierwave
   climate_control
   coffee-rails
@@ -670,4 +675,4 @@ RUBY VERSION
    ruby 2.3.6p384
 
 BUNDLED WITH
-   1.13.7
+   1.16.1
