@@ -19,7 +19,7 @@ RSpec.feature 'User locking' do
     expect(link).to include site.host
     link.gsub!("http://#{site.host}", Capybara.app_host)
 
-    unchecked_visit link
+    visit link
 
     expect(page).to have_content 'Your account has been unlocked'
 

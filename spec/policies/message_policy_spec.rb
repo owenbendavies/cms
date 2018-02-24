@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MessagePolicy do
   permissions :index? do
-    include_examples 'user site policy'
+    include_examples 'policy for site user'
   end
 
   permissions :create? do
@@ -26,6 +26,6 @@ RSpec.describe MessagePolicy do
   permissions :show?, :destroy? do
     let(:record) { FactoryBot.create(:message, site: site) }
 
-    include_examples 'user record policy'
+    include_examples 'policy for user record'
   end
 end
