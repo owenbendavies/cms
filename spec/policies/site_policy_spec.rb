@@ -32,12 +32,12 @@ RSpec.describe SitePolicy do
   permissions :update? do
     let(:record) { site }
 
-    include_examples 'user site policy'
+    include_examples 'policy for site user'
   end
 
   permissions :css? do
     let(:record) { site }
 
-    include_examples 'user site admin policy'
+    include_examples 'policy for site admin'
   end
 end

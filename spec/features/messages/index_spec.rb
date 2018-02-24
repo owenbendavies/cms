@@ -19,14 +19,13 @@ RSpec.feature 'Messages index' do
   end
 
   scenario 'list of messages' do
-    expect(table_header_text).to eq ['Created at', 'Name', 'Email']
-    expect(table_rows.count).to eq 10
+    expect(all('table tbody tr').size).to eq 10
 
-    expect(table_rows[0].map(&:text)).to eq [
-      'about a month ago',
-      messages.first.name,
-      messages.first.email
-    ]
+    expect(find('table')).to have_table_row(
+      'Created at' => 'about a month ago',
+      'Name' => messages.first.name,
+      'Email' => messages.first.email
+    )
 
     links = table_rows[0].map { |cell| cell.find('a') }
     expect(links.count).to eq 3

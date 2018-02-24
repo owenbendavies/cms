@@ -1,4 +1,4 @@
-RSpec.shared_context 'with visit' do
+module VisitTestHelpers
   def click_topbar_link(menu:, title:, icon:)
     within '.topbar' do
       expect(page).not_to have_link title
@@ -16,27 +16,18 @@ RSpec.shared_context 'with visit' do
     expect(page).to have_header(title, icon)
   end
 
-  alias_method :unchecked_visit, :visit
-
-  def visit(*_)
-    raise "Please use methods from #{__FILE__}"
-  end
-
-  def visit_non_redirect(url)
-    unchecked_visit url
-    expect(page).to have_current_path url
-  end
-
   def visit_200_page(url)
-    visit_non_redirect url
+    visit url
+    expect(page).to have_current_path url
     expect(page.status_code).to eq 200
   end
 
   def visit_404_page(url)
-    visit_non_redirect url
+    visit url
+    expect(page).to have_current_path url
     expect(page.status_code).to eq 404
     expect(page).to have_content 'Page Not Found'
   end
 end
 
-RSpec.configuration.include_context 'with visit', type: :feature
+RSpec.configuration.include VisitTestHelpers, type: :feature

@@ -40,7 +40,7 @@ RSpec.feature 'User forgot password', js: false do
     expect(email.subject).to eq 'Password Changed'
     site_user.reload
 
-    unchecked_visit '/logout'
+    visit '/logout'
     visit_200_page '/login'
     fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password

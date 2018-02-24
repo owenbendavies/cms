@@ -14,6 +14,6 @@ RSpec.describe UserPolicy do
   end
 
   permissions :index?, :create? do
-    include_examples 'user site policy'
+    include_examples 'policy for site user'
   end
 end

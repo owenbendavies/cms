@@ -1,28 +1,4 @@
-RSpec.shared_context 'with mailers' do
-  def last_emails(expected_number)
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-    Delayed::Worker.new.work_off
-    expect(ActionMailer::Base.deliveries.size).to eq expected_number
-
-    ActionMailer::Base.deliveries.pop(expected_number)
-  end
-
-  def last_email
-    last_emails(1).first
-  end
-
-  before do
-    ActionMailer::Base.deliveries = []
-  end
-
-  after do
-    raise 'Emails not processed' unless ActionMailer::Base.deliveries.empty?
-  end
-end
-
-RSpec.configuration.include_context 'with mailers'
-
-RSpec.shared_examples 'site email' do
+RSpec.shared_examples 'email for site' do
   it 'has from address as site email' do
     expect(email.from).to eq [site.email]
   end
@@ -62,17 +38,5 @@ RSpec.shared_examples 'site email' do
     it 'does not have charity number in body' do
       expect(email.body).not_to have_content 'Registered charity'
     end
-  end
-end
-
-RSpec.shared_examples 'user email' do
-  include_examples 'site email'
-
-  it 'is sent to users email' do
-    expect(email.to).to eq [user.email]
-  end
-
-  it 'has users name' do
-    expect(email.body).to have_content "Hi #{user.name}"
   end
 end

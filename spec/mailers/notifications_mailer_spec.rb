@@ -13,7 +13,7 @@ RSpec.describe NotificationsMailer do
 
     let(:message) { FactoryBot.create(:message, site: site) }
 
-    include_examples 'site email'
+    include_examples 'email for site'
 
     it 'is sent to sites users email' do
       expect(email.to).to eq [site_user.email]
@@ -48,7 +48,7 @@ RSpec.describe NotificationsMailer do
   describe '.user_added_to_site' do
     subject(:email) { described_class.user_added_to_site(user, site, site_user) }
 
-    include_examples 'site email'
+    include_examples 'email for site'
 
     it 'is sent to users email' do
       expect(email.to).to eq [user.email]

@@ -44,7 +44,7 @@ RSpec.describe PagePolicy do
     context 'with private page' do
       let(:record) { FactoryBot.create(:page, :private, site: site) }
 
-      include_examples 'user record policy'
+      include_examples 'policy for user record'
     end
 
     context 'with non private page' do
@@ -70,6 +70,6 @@ RSpec.describe PagePolicy do
   permissions :create?, :update?, :destroy? do
     let(:record) { FactoryBot.create(:page, site: site) }
 
-    include_examples 'user record policy'
+    include_examples 'policy for user record'
   end
 end
