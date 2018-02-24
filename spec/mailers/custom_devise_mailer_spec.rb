@@ -8,7 +8,7 @@ RSpec.describe CustomDeviseMailer do
   describe '.confirmation_instructions' do
     subject(:email) { described_class.confirmation_instructions(user, token) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Confirmation instructions'
@@ -28,7 +28,7 @@ RSpec.describe CustomDeviseMailer do
   describe '.password_change' do
     subject(:email) { described_class.password_change(user) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Password Changed'
@@ -44,7 +44,7 @@ RSpec.describe CustomDeviseMailer do
 
     let(:user) { FactoryBot.create(:user, :unconfirmed_email, site: site) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Email Changed'
@@ -58,7 +58,7 @@ RSpec.describe CustomDeviseMailer do
   describe '.reset_password_instructions' do
     subject(:email) { described_class.reset_password_instructions(user, token) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Reset password instructions'
@@ -78,7 +78,7 @@ RSpec.describe CustomDeviseMailer do
   describe '.unlock_instructions' do
     subject(:email) { described_class.unlock_instructions(user, token) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Unlock instructions'
@@ -101,7 +101,7 @@ RSpec.describe CustomDeviseMailer do
     let(:inviter) { FactoryBot.create(:user) }
     let(:user) { FactoryBot.create(:user, invited_by: inviter, site: site, site_admin: true) }
 
-    include_examples 'user email'
+    include_examples 'email for user'
 
     it 'has subject' do
       expect(email.subject).to eq 'Invitation instructions'

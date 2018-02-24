@@ -1,4 +1,4 @@
-RSpec.shared_context 'with carrierwave' do
+module FogTestHelpers
   def fog_directories
     Fog::Storage.new(CarrierWave::Uploader::Base.fog_credentials).directories
   end
@@ -10,13 +10,6 @@ RSpec.shared_context 'with carrierwave' do
   def uploaded_files
     fog_directory.files.map(&:key)
   end
-
-  before do
-    Fog.mock!
-    Fog::Mock.reset
-
-    fog_directories.create(key: CarrierWave::Uploader::Base.fog_directory)
-  end
 end
 
-RSpec.configuration.include_context 'with carrierwave'
+RSpec.configuration.include FogTestHelpers
