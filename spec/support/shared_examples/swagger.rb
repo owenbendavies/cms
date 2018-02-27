@@ -1,6 +1,6 @@
-RSpec.shared_examples 'swagger documentation' do |options|
+RSpec.shared_examples 'swagger' do |options|
   let(:swagger_doc) do
-    get '/api/swagger_doc'
+    get '/api/swagger'
     path = request_description.to_a[2]
     path.gsub!(':id', '{uid}') if path.include? ':id'
     path.gsub!('/api', '')

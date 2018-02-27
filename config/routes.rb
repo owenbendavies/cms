@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/emails'
-    mount GrapeSwaggerRails::Engine, at: '/swagger'
-  end
-
+  mount GrapeSwaggerRails::Engine, at: '/swagger' if Rails.env.development?
   mount API, at: '/api'
 
   root 'systems#home'
