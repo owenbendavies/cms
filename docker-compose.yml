@@ -3,11 +3,14 @@ version: "3"
 services:
   app:
     build: .
-    environment:
-      - DATABASE_HOST=db
     command: ./bin/run
     depends_on:
       - db
+      - email
+    environment:
+      - DATABASE_HOST=db
+      - SMTP_ADDRESS=email
+      - SMTP_PORT=1025
     ports:
       - "3000:3000"
     volumes:
@@ -18,6 +21,20 @@ services:
     image: "postgres:9.6"
     volumes:
       - "db:/var/lib/postgresql"
+
+  email:
+    image: "schickling/mailcatcher"
+    ports:
+      - "1080:1080"
+
+  swagger:
+    depends_on:
+      - app
+    environment:
+      - "API_URL=http://localhost:3000/api/swagger"
+    image: "swaggerapi/swagger-ui"
+    ports:
+      - "8080:8080"
 
 volumes:
   bundler:
