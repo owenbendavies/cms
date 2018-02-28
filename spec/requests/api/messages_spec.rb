@@ -18,7 +18,7 @@ RSpec.describe 'API Messages' do
 
   describe 'GET /api/messages' do
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Lists messages',
       model: ['Message']
     )
@@ -46,7 +46,7 @@ RSpec.describe 'API Messages' do
     let(:expected_status) { 201 }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Creates a message',
       model: 'Message'
     )
@@ -62,7 +62,7 @@ RSpec.describe 'API Messages' do
     let(:request_path_id) { message.uid }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Shows a message',
       model: 'Message'
     )
@@ -79,7 +79,7 @@ RSpec.describe 'API Messages' do
     let(:expected_status) { 204 }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Deletes a message'
     )
 

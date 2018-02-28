@@ -1,4 +1,9 @@
-if ENV['SENDGRID_USERNAME'] && ENV['SENDGRID_PASSWORD']
+if ENV['SMTP_ADDRESS'] && ENV['SMTP_PORT']
+  ActionMailer::Base.smtp_settings = {
+    address: ENV.fetch('SMTP_ADDRESS'),
+    port: Integer(ENV.fetch('SMTP_PORT'))
+  }
+elsif ENV['SENDGRID_USERNAME'] && ENV['SENDGRID_PASSWORD']
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587,
