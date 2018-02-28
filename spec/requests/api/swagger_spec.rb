@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'GET /api/swagger_doc' do
+RSpec.describe 'GET /api/swagger' do
   before do
     request_page
   end

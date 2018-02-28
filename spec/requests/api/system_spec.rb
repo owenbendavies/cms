@@ -5,7 +5,7 @@ RSpec.describe 'API System' do
     let(:request_host) { new_host }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Returns the health of the system',
       model: 'SystemHealth'
     )
@@ -31,7 +31,7 @@ RSpec.describe 'API System' do
     let(:expected_status) { 500 }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Creates a test 500 error',
       model: 'SystemError'
     )
@@ -53,7 +53,7 @@ RSpec.describe 'API System' do
     let(:expected_status) { 202 }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Creates a test background job error',
       model: 'SystemMessage'
     )
@@ -75,7 +75,7 @@ RSpec.describe 'API System' do
     let(:request_user) { FactoryBot.create(:user, :sysadmin) }
 
     include_examples(
-      'swagger documentation',
+      'swagger',
       description: 'Creates a test timeout error',
       model: nil
     )

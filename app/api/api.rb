@@ -31,7 +31,11 @@ class API < ApplicationAPI
     mount SystemAPI
   end
 
-  add_swagger_documentation(doc_version: 'v1', info: { title: 'obduk CMS API' })
+  add_swagger_documentation(
+    doc_version: 'v1',
+    mount_path: 'swagger',
+    info: { title: 'obduk CMS API' }
+  )
 
   route :any, '*path' do
     page_not_found
