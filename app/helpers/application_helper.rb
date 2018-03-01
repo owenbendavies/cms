@@ -24,11 +24,11 @@ module ApplicationHelper
   end
 
   def tick(boolean)
-    content_tag(:i, nil, class: 'fa fa-check') if boolean
+    icon_tag('fas fa-check fa-fw') if boolean
   end
 
-  def icon_tag(icon)
-    content_tag(:i, nil, class: "fa fa-#{icon}")
+  def icon_tag(css_class)
+    content_tag(:i, nil, class: css_class)
   end
 
   def rollbar_js

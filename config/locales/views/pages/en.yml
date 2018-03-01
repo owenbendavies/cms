@@ -5,19 +5,19 @@ en:
       flash:
         success: Thank you for your message
     delete:
-      icon: trash
+      icon: fas fa-trash fa-fw
       text: Are you sure you want to delete page '%{name}'?
     edit:
-      icon: pencil
+      icon: fas fa-edit fa-fw
       title: Editing %{name}
     index:
-      icon: sitemap
+      icon: fas fa-sitemap fa-fw
       title: Sitemap
     new:
-      icon: plus
+      icon: fas fa-plus fa-fw
       title: New Page
     show:
       hidden:
-        icon: eye-slash
+        icon: fas fa-eye-slash fa-fw
       private:
-        icon: lock
+        icon: fas fa-lock fa-fw

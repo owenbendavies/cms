@@ -29,7 +29,7 @@ RSpec.feature 'Site main menu' do
 
     scenario 'adding main menu to footer' do
       login_as site_user
-      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
+      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
 
       expect(page).not_to have_selector footer_main_menu
       expect(find_field('Main menu')).not_to be_checked
@@ -46,7 +46,7 @@ RSpec.feature 'Site main menu' do
         expect(page).to have_selector 'a.cms-page-link-test_page'
       end
 
-      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'cog'
+      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
 
       expect(find_field('Main menu')).to be_checked
     end

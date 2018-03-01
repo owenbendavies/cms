@@ -2,8 +2,8 @@
 en:
   messages:
     index:
-      icon: envelope
+      icon: fas fa-envelope fa-fw
       title: Messages
     show:
-      icon: envelope
+      icon: fas fa-envelope fa-fw
       title: Message

@@ -8,7 +8,7 @@ RSpec.feature 'Images index' do
   before do
     FactoryBot.create(:image)
     login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Images', icon: 'picture-o'
+    navigate_via_topbar menu: 'Site', title: 'Images', icon: '.fas.fa-image.fa-fw'
   end
 
   scenario 'list of images' do

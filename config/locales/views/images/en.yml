@@ -2,5 +2,5 @@
 en:
   images:
     index:
-      icon: picture-o
+      icon: fas fa-image fa-fw
       title: Images
