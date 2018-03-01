@@ -5,7 +5,7 @@ RSpec.feature 'Editing a page' do
     home_page.update!(html_content: '<p>Hello world</p>')
 
     login_as site_user
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
     find('.mce-content-body')
   end
 
@@ -26,7 +26,7 @@ RSpec.feature 'Editing a page' do
     check 'Hidden'
     click_button 'Update Page'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
     expect(find_field('Hidden')).to be_checked
   end
 
@@ -35,9 +35,9 @@ RSpec.feature 'Editing a page' do
     check 'Private'
     click_button 'Update Page'
 
-    expect(page).to have_selector 'h1 .fa-lock'
+    expect(page).to have_selector 'h1 .fas.fa-lock.fa-fw'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
     expect(find_field('page[private]')).to be_checked
   end
 
@@ -46,7 +46,7 @@ RSpec.feature 'Editing a page' do
     check 'Contact Form'
     click_button 'Update Page'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'pencil'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
     expect(find_field('page[contact_form]')).to be_checked
   end
 

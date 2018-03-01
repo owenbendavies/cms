@@ -105,7 +105,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara-webkit' # Web browser tester
+  gem 'capybara-webkit', '< 1.15' # TODO: upgrade when fixed - Web browser tester
   gem 'capybara_table' # Capybara table matchers
   gem 'climate_control' # Modifies environment variables
   gem 'database_cleaner' # Cleans the database

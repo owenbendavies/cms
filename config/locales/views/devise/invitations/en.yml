@@ -6,5 +6,5 @@ en:
         new_password: New password
         title: Set Password
       new:
-        icon: user-plus
+        icon: fas fa-user-plus fa-fw
         title: Add User

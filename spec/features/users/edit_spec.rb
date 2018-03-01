@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Editing a user' do
   before do
     login_as site_user
-    navigate_via_topbar menu: site_user.name, title: 'User Settings', icon: 'user'
+    navigate_via_topbar menu: site_user.name, title: 'User Settings', icon: '.fas.fa-user.fa-fw'
   end
 
   scenario 'changing the password' do
@@ -43,7 +43,7 @@ RSpec.feature 'Editing a user' do
 
     expect(page).to have_content 'Your account has been updated'
 
-    navigate_via_topbar menu: new_name, title: 'User Settings', icon: 'user'
+    navigate_via_topbar menu: new_name, title: 'User Settings', icon: '.fas.fa-user.fa-fw'
 
     expect(find_field('Name').value).to eq new_name
   end

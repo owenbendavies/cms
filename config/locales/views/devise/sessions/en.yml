@@ -3,7 +3,7 @@ en:
   devise:
     sessions:
       destroy:
-        icon: sign-out
+        icon: fas fa-sign-out-alt fa-fw
         title: Logout
       new:
         accounts: Login with account

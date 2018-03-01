@@ -19,20 +19,20 @@ RSpec.feature 'Sitemap' do
 
     scenario 'site user' do
       login_as site_user
-      navigate_via_topbar menu: 'Site', title: 'Sitemap', icon: 'sitemap'
+      navigate_via_topbar menu: 'Site', title: 'Sitemap', icon: '.fas.fa-sitemap.fa-fw'
 
       hidden_index = site.pages.ordered.find_index(hidden_page) + 1
 
       find(".sitemap li:nth-child(#{hidden_index})").tap do |item|
         expect(item).to have_link hidden_page.name, href: "/#{hidden_page.url}"
-        expect(item).to have_selector '.fa-eye-slash'
+        expect(item).to have_selector '.fas.fa-eye-slash.fa-fw'
       end
 
       private_index = site.pages.ordered.find_index(private_page) + 1
 
       find(".sitemap li:nth-child(#{private_index})").tap do |item|
         expect(item).to have_link private_page.name, href: "/#{private_page.url}"
-        expect(item).to have_selector '.fa-lock'
+        expect(item).to have_selector '.fas.fa-lock.fa-fw'
       end
     end
   end

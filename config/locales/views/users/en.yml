@@ -2,5 +2,5 @@
 en:
   users:
     index:
-      icon: group
+      icon: fas fa-users fa-fw
       title: Users
