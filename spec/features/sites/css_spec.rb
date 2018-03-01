@@ -5,7 +5,7 @@ RSpec.feature 'Site CSS' do
 
   before do
     login_as site_admin
-    navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'file'
+    navigate_via_topbar menu: 'Site', title: 'CSS', icon: '.fas.fa-file.fa-fw'
   end
 
   scenario 'adding custom CSS' do
@@ -19,7 +19,7 @@ RSpec.feature 'Site CSS' do
     url = File.join('http://localhost:37511', 'stylesheets', uuid, 'original.css')
     expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
-    navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'file'
+    navigate_via_topbar menu: 'Site', title: 'CSS', icon: '.fas.fa-file.fa-fw'
 
     expect(find('pre textarea').text).to eq css
   end

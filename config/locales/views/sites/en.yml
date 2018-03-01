@@ -2,12 +2,12 @@
 en:
   sites:
     css:
-      icon: file
+      icon: fas fa-file fa-fw
       title: CSS
     edit:
       footer: Footer
-      icon: cog
+      icon: fas fa-cog fa-fw
       title: Site Settings
     index:
-      icon: list
+      icon: fas fa-list fa-fw
       title: Sites

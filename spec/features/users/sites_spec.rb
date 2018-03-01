@@ -4,7 +4,7 @@ RSpec.feature 'User sites' do
   before do
     FactoryBot.create(:site)
     login_as site_user
-    navigate_via_topbar menu: site_user.name, title: 'Sites', icon: 'list'
+    navigate_via_topbar menu: site_user.name, title: 'Sites', icon: '.fas.fa-list.fa-fw'
   end
 
   scenario 'list of sites' do
