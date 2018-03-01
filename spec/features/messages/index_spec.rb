@@ -15,7 +15,7 @@ RSpec.feature 'Messages index' do
   before do
     FactoryBot.create(:message)
     login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Messages', icon: 'envelope'
+    navigate_via_topbar menu: 'Site', title: 'Messages', icon: '.fas.fa-envelope.fa-fw'
   end
 
   scenario 'list of messages' do

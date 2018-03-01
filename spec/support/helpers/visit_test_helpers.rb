@@ -3,7 +3,7 @@ module VisitTestHelpers
     within '.topbar' do
       expect(page).not_to have_link title
       click_link menu
-      expect(page).to have_selector ".fa-#{icon}"
+      expect(page).to have_selector icon
       click_link title
     end
   end

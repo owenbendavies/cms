@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   before do
     login_as site_user
-    navigate_via_topbar menu: 'Page', title: 'New Page', icon: 'plus'
+    navigate_via_topbar menu: 'Page', title: 'New Page', icon: '.fas.fa-plus.fa-fw'
     find('.mce-content-body')
   end
 

@@ -76,7 +76,9 @@ FactoryBot.define do
     trait :unconfirmed do
       confirmed_at nil
 
+      # rubocop:disable FactoryBot/DynamicAttributeDefinedStatically
       after :build, &:skip_confirmation_notification!
+      # rubocop:enable FactoryBot/DynamicAttributeDefinedStatically
     end
 
     trait :locked do
