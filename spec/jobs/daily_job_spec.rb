@@ -8,8 +8,8 @@ RSpec.describe DailyJob do
     described_class.perform_now
   end
 
-  it 'runs CleanVersionsJob' do
-    expect(CleanVersionsJob).to receive(:perform_later).once.and_call_original
+  it 'runs DeleteOldModelsJob' do
+    expect(DeleteOldModelsJob).to receive(:perform_later).once.and_call_original
     described_class.perform_now
   end
 
