@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212145501) do
+ActiveRecord::Schema.define(version: 20180305120334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20180212145501) do
     t.string   "email",      :limit=>64, :null=>false
     t.string   "phone",      :limit=>32
     t.text     "message",    :null=>false
-    t.datetime "created_at", :null=>false
+    t.datetime "created_at", :null=>false, :index=>{:name=>"index_messages_on_created_at", :using=>:btree}
     t.datetime "updated_at", :null=>false
     t.string   "uid",        :null=>false, :index=>{:name=>"index_messages_on_uid", :unique=>true, :using=>:btree}
   end
