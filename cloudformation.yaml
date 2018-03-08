@@ -82,8 +82,6 @@ Resources:
     Type: "AWS::Glue::Crawler"
     Properties:
       Role: !GetAtt GlueRole.Arn
-      Schedule:
-        ScheduleExpression: "cron(0 0 * * ? *)"
       DatabaseName: !Ref GlueDatabase
       Targets:
         S3Targets:
