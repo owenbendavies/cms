@@ -193,7 +193,7 @@ RESPONSIVENESS
             <table>
               <tr>
                 <td align="center">
-                  <p><%= "#{@site.copyright || @site.name} © #{Time.zone.now.year}" %></p>
+                  <p><%= copyright(@site) %></p>
                 </td>
               </tr>
               <% if @site.charity_number %>
