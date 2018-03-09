@@ -15,7 +15,7 @@
           = t('.last_updated')
           = timeago_tag(page.updated_at, force: true)
 
-      %li.footer__copyright #{site.copyright || site.name} © #{Time.zone.now.year}
+      %li.footer__copyright= copyright(site)
 
       - if site.charity_number
         %li.footer__charity= t('.charity', number: site.charity_number)

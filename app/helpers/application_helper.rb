@@ -11,6 +11,10 @@ module ApplicationHelper
     classes.sort.uniq.join(' ')
   end
 
+  def copyright(site)
+    "#{site.copyright || site.name} © #{Time.zone.now.year}"
+  end
+
   def page_title(site, content)
     title = [site.name]
 
