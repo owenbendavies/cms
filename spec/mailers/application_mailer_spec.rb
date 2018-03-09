@@ -21,12 +21,20 @@ RSpec.describe ApplicationMailer do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'has https links' do
-        expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}/}
+        expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttps://#{site.host}:37511/}
       end
     end
 
     context 'with ssl disabled' do
       it 'has http links' do
+        expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttp://#{site.host}:37511/}
+      end
+    end
+
+    context 'with email link port not set' do
+      let(:environment_variables) { { EMAIL_LINK_PORT: nil } }
+
+      it 'has no port on links' do
         expect(email.body).to have_link 'Confirm Email', href: %r{\Ahttp://#{site.host}/}
       end
     end

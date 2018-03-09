@@ -25,11 +25,7 @@ RSpec.feature 'Inviting a user' do
     expect(email.to).to eq [new_email]
     expect(email.subject).to eq 'Invitation instructions'
 
-    link = email.html_part.body.match(/href="([^"]+)/)[1]
-    expect(link).to include site.host
-    link.gsub!("http://#{site.host}", '')
-
-    visit_200_page link
+    visit email.html_part.body.match(/href="([^"]+)/)[1]
 
     expect(page).to have_content 'Set Password'
 

@@ -75,11 +75,7 @@ RSpec.feature 'Editing a user' do
     expect(emails.last.subject).to eq 'Confirmation instructions'
     expect(emails.last.to).to eq [new_email]
 
-    link = emails.last.html_part.body.match(/href="([^"]+)/)[1]
-    expect(link).to include site.host
-    link.gsub!("http://#{site.host}", Capybara.app_host)
-
-    visit link
+    visit emails.last.html_part.body.match(/href="([^"]+)/)[1]
 
     expect(page).to have_content 'Your email address has been successfully confirmed.'
 
