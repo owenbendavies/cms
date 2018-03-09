@@ -1,5 +1,5 @@
 Capybara.default_driver = :webkit
-Capybara.server_port = 37_511
+Capybara.server_port = Integer(ENV.fetch('EMAIL_LINK_PORT'))
 Capybara.default_host = 'http://localhost'
 Capybara.app_host = "#{Capybara.default_host}:#{Capybara.server_port}"
 
