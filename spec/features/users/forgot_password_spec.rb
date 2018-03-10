@@ -18,11 +18,7 @@ RSpec.feature 'User forgot password', js: false do
     expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Reset password instructions'
 
-    link = email.html_part.body.match(/href="([^"]+)/)[1]
-    expect(link).to include site.host
-    link.gsub!("http://#{site.host}", '')
-
-    visit_200_page link
+    visit email.html_part.body.match(/href="([^"]+)/)[1]
 
     expect(page).to have_content 'Change password'
 
