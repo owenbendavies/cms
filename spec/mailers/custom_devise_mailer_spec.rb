@@ -14,7 +14,7 @@ RSpec.describe CustomDeviseMailer do
     include_examples 'email for user'
 
     it 'has confirmation link in body' do
-      link = "http://#{site.host}/user/confirmation?confirmation_token=#{token}"
+      link = "http://#{site.host}:37511/user/confirmation?confirmation_token=#{token}"
 
       expect(email.body).to have_link 'Confirm Email', href: link
     end
@@ -48,7 +48,7 @@ RSpec.describe CustomDeviseMailer do
     include_examples 'email for user'
 
     it 'has reset password link in body' do
-      link = "http://#{site.host}/user/password/edit?reset_password_token=#{token}"
+      link = "http://#{site.host}:37511/user/password/edit?reset_password_token=#{token}"
 
       expect(email.body).to have_link 'Change password', href: link
     end
@@ -63,7 +63,7 @@ RSpec.describe CustomDeviseMailer do
     include_examples 'email for user'
 
     it 'has reset password link in body' do
-      link = "http://#{site.host}/user/unlock?unlock_token=#{token}"
+      link = "http://#{site.host}:37511/user/unlock?unlock_token=#{token}"
 
       expect(email.body).to have_link 'Unlock account', href: link
     end
@@ -80,7 +80,7 @@ RSpec.describe CustomDeviseMailer do
     include_examples 'email for user'
 
     it 'has invite link in body' do
-      link = "http://#{site.host}/user/invitation/accept?invitation_token=#{token}"
+      link = "http://#{site.host}:37511/user/invitation/accept?invitation_token=#{token}"
 
       expect(email.body).to have_link 'Confirm your account', href: link
     end

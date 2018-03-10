@@ -15,11 +15,7 @@ RSpec.feature 'User locking' do
     expect(email.to).to eq [site_user.email]
     expect(email.subject).to eq 'Unlock instructions'
 
-    link = email.html_part.body.match(/href="([^"]+)/)[1]
-    expect(link).to include site.host
-    link.gsub!("http://#{site.host}", Capybara.app_host)
-
-    visit link
+    visit email.html_part.body.match(/href="([^"]+)/)[1]
 
     expect(page).to have_content 'Your account has been unlocked'
 
