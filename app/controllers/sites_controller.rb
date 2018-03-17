@@ -11,7 +11,7 @@ class SitesController < ApplicationController
   def update
     authorize @site
 
-    if @site.update_attributes site_params
+    if @site.update site_params
       flash.notice = t('flash.updated', name: Site.model_name.human)
       redirect_to page_path('home')
     else
