@@ -6,7 +6,7 @@ class AddUuidToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :uuid, :string
 
     User.find_each do |user|
-      user.update_attributes!(uuid: SecureRandom.uuid)
+      user.update!(uuid: SecureRandom.uuid)
     end
 
     change_column_null :users, :uuid, false
