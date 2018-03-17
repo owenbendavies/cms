@@ -2,11 +2,6 @@ class ApplicationPolicy
   module Shared
     protected
 
-    def initialize(context, _)
-      @user = context[:user]
-      @site = context[:site]
-    end
-
     def user_site?
       @site && @user&.site_settings&.find_by(site_id: @site.id)
     end
@@ -16,7 +11,8 @@ class ApplicationPolicy
     include Shared
 
     def initialize(context, scope)
-      super
+      @user = context[:user]
+      @site = context[:site]
       @scope = scope
     end
 
@@ -28,7 +24,8 @@ class ApplicationPolicy
   include Shared
 
   def initialize(context, record)
-    super
+    @user = context[:user]
+    @site = context[:site]
     @record = record
   end
 

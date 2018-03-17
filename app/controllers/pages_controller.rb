@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   def new; end
 
   def create
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       redirect_to page_path(@page)
     else
       render :new
@@ -30,7 +30,7 @@ class PagesController < ApplicationController
   def contact_form
     @message = Message.new
 
-    if @message.update_attributes(message_params)
+    if @message.update(message_params)
       NotificationsMailer.new_message(@message).deliver_later
       flash.notice = t('pages.contact_form.flash.success')
       redirect_to page_path(@page)
@@ -42,7 +42,7 @@ class PagesController < ApplicationController
   def edit; end
 
   def update
-    if @page.update_attributes(page_params)
+    if @page.update(page_params)
       redirect_to page_path(@page)
     else
       render :edit
