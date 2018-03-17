@@ -6,7 +6,7 @@ class AddUuidToMessages < ActiveRecord::Migration[5.0]
     add_column :messages, :uuid, :string
 
     Message.find_each do |message|
-      message.update_attributes!(uuid: SecureRandom.uuid)
+      message.update!(uuid: SecureRandom.uuid)
     end
 
     change_column_null :messages, :uuid, false
