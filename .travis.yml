@@ -16,6 +16,7 @@ addons:
     packages:
       - libqt5webkit5-dev
       - qt5-default
+  postgresql: "9.6"
 
 services:
   - postgresql

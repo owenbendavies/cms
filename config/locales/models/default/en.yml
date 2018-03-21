@@ -4,4 +4,5 @@ en:
     errors:
       messages:
         invalid_email_address: is not a valid email address
+        invalid_json: is not valid
         weak_password: "%{feedback}"

@@ -1,14 +1,14 @@
 %footer.footer
   .footer__container
     %ul.footer__menu
-      - unless site.footer_links.empty?
+      - if site.links.present?
         %li.footer__site-links-item
           %ul.footer__site-links
-            - site.footer_links.each do |link|
+            - site.links.each do |link|
               %li.footer__site-link-item
-                = link_to link.url, class: 'footer__site-link' do
-                  = icon_tag(link.icon) if link.icon
-                  %span.footer__site-link-text= link.name
+                = link_to link.fetch('url'), class: 'footer__site-link' do
+                  = icon_tag(link.fetch('icon')) if link.fetch('icon')
+                  %span.footer__site-link-text= link.fetch('name')
 
       - if page&.persisted?
         %li.footer__last-updated

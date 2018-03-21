@@ -3,7 +3,7 @@ set -e
 cd `dirname $0`/..
 
 find_extensions () {
-  find -name "*.$1" \
+  find . -name "*.$1" \
     -not -path "./public/assets/*" \
     -not -path "./vendor/*"
 }
