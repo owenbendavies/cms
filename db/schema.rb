@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305120334) do
+ActiveRecord::Schema.define(version: 20180320140348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,18 +42,7 @@ ActiveRecord::Schema.define(version: 20180305120334) do
     t.datetime "updated_at",           :null=>false
     t.boolean  "main_menu_in_footer",  :default=>false, :null=>false
     t.boolean  "separate_header",      :default=>true, :null=>false
-  end
-
-  create_table "footer_links", force: :cascade do |t|
-    t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_footer_links_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"fk__footer_links_site_id", :using=>:btree}
-    t.integer  "position",   :null=>false
-    t.string   "name",       :null=>false
-    t.string   "url",        :null=>false
-    t.string   "icon"
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
-
-    t.index ["site_id", "position"], :name=>"index_footer_links_on_site_id_and_position", :unique=>true, :using=>:btree
+    t.jsonb    "links",                :default=>[]
   end
 
   create_table "images", force: :cascade do |t|
