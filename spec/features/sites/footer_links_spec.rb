@@ -3,15 +3,18 @@ require 'rails_helper'
 RSpec.feature 'Footer links' do
   let(:css_selector) { '.footer__site-links' }
 
-  scenario 'site with footer links' do
-    link1 = FactoryBot.create(:footer_link, site: site)
-    FactoryBot.create(:footer_link, site: site, icon: 'fas fa-facebook fa-fw')
+  context 'with with footer links' do
+    let!(:site) { FactoryBot.create(:site, :with_links, host: 'localhost') }
+    let(:link_name) { site.links.first.fetch('name') }
+    let(:link_url) { site.links.first.fetch('url') }
 
-    visit_200_page '/home'
+    scenario 'site with footer links' do
+      visit_200_page '/home'
 
-    within css_selector do
-      expect(page).to have_link link1.name, href: link1.url
-      expect(page).to have_selector '.fas.fa-facebook.fa-fw'
+      within css_selector do
+        expect(page).to have_link link_name, href: link_url
+        expect(page).to have_selector '.fas.fa-facebook.fa-fw'
+      end
     end
   end
 

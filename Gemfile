@@ -32,6 +32,7 @@ gem 'omniauth-google-oauth2' # Google login
 gem 'pundit' # Authorization
 
 # Model Gems
+gem 'activerecord_json_validator' # JSON validation
 gem 'acts_as_list' # ActiveRecord lists
 gem 'carrierwave' # File upload
 gem 'gravtastic' # Profile pictures
@@ -42,7 +43,6 @@ gem 'schema_associations' # Automatically adds ActiveRecord relations
 gem 'schema_auto_foreign_keys' # Automatically adds foreign keys to migrations
 gem 'schema_validations' # Automatically adds ActiveRecord validations from database schema
 gem 'strip_attributes' # Cleans whitespace from model fields
-gem 'validate_url' # URL validation
 gem 'validates_email_format_of' # Email validation
 
 # Controller Gems

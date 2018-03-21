@@ -15,6 +15,7 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
+#  links                :jsonb
 #
 # Indexes
 #
@@ -51,27 +52,6 @@ RSpec.describe Site do
 
       it 'returns pages when page ids' do
         expect(site.main_menu_pages).to eq [page2, page1]
-      end
-    end
-  end
-
-  describe '#footer_links' do
-    subject(:site) { FactoryBot.create(:site) }
-
-    context 'without links' do
-      it 'returns empty array' do
-        expect(site.footer_links).to be_empty
-      end
-    end
-
-    context 'with footer links' do
-      let!(:link1) { FactoryBot.create(:footer_link, site: site) }
-      let!(:link2) { FactoryBot.create(:footer_link, site: site) }
-
-      before { FactoryBot.create(:footer_link) }
-
-      it 'returns links in order' do
-        expect(site.footer_links).to eq [link1, link2]
       end
     end
   end
@@ -132,6 +112,31 @@ RSpec.describe Site do
     it { is_expected.not_to allow_value('UA-1234').for(:google_analytics) }
     it { is_expected.not_to allow_value('UA123').for(:google_analytics) }
     it { is_expected.not_to allow_value('AS').for(:google_analytics) }
+
+    it do
+      links = [{ 'name' => 'Site', 'url' => 'http://www.example.com', 'icon' => nil }]
+      is_expected.to allow_value(links).for(:links)
+    end
+
+    it do
+      links = [{ 'name' => 'Site', 'url' => 'http://www.example.com', 'icon' => 'fa-facebook' }]
+      is_expected.to allow_value(links).for(:links)
+    end
+
+    it do
+      links = []
+      is_expected.to allow_value(links).for(:links)
+    end
+
+    it do
+      links = [{ 'name' => 'missing keys' }]
+      is_expected.not_to allow_value(links).for(:links).with_message('is not valid')
+    end
+
+    it do
+      links = [{ 'name' => 'Link', 'url' => 'http://www.tmp.com', 'icon' => nil, 'bad' => 'field' }]
+      is_expected.not_to allow_value(links).for(:links).with_message('is not valid')
+    end
   end
 
   describe '#address' do

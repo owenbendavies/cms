@@ -15,6 +15,7 @@
 #  updated_at           :datetime         not null
 #  main_menu_in_footer  :boolean          default(FALSE), not null
 #  separate_header      :boolean          default(TRUE), not null
+#  links                :jsonb
 #
 # Indexes
 #
@@ -23,6 +24,8 @@
 #
 
 class Site < ApplicationRecord
+  LINKS_JSON_SCHEMA = Rails.root.join('config', 'json_schemas', 'site_links.json').to_s
+
   has_many :users, through: :settings, inverse_of: false
 
   has_many(
@@ -43,6 +46,7 @@ class Site < ApplicationRecord
   validates :name, length: { minimum: 3 }
   validates :sub_title, length: { allow_nil: true, minimum: 3 }
   validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
+  validates :links, json: { schema: LINKS_JSON_SCHEMA }
 
   def address
     protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'
