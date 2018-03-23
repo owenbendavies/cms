@@ -4,7 +4,7 @@ RSpec.describe StylesheetUploader do
   subject(:stylesheet_uploader) { described_class.new(site) }
 
   let(:css) { "body {\r\n  padding: 4em;\r\n}" }
-  let(:site) { FactoryBot.create(:site) }
+  let(:site) { FactoryBot.build_stubbed(:site) }
 
   describe '.store!' do
     it 'must be css' do

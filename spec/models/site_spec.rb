@@ -217,12 +217,12 @@ RSpec.describe Site do
 
   describe '#email' do
     it 'returns noreply email address' do
-      site = FactoryBot.create(:site, host: 'example.com')
+      site = FactoryBot.build_stubbed(:site, host: 'example.com')
       expect(site.email).to eq 'noreply@example.com'
     end
 
     it 'returns host without www' do
-      site = FactoryBot.create(:site, host: 'www.example.com')
+      site = FactoryBot.build_stubbed(:site, host: 'www.example.com')
       expect(site.email).to eq 'noreply@example.com'
     end
   end

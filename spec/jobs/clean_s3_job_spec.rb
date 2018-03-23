@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CleanS3Job do
-  before { FactoryBot.create(:user, :sysadmin) }
-
   context 'without files' do
     it 'does not send any errors to Rollbar' do
       expect(Rollbar).not_to receive(:error)

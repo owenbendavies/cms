@@ -10,7 +10,6 @@ RSpec.describe ValidateDataJob do
 
   context 'with valid data' do
     before do
-      FactoryBot.create(:user, :sysadmin)
       FactoryBot.create(:site)
     end
 
