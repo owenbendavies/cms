@@ -89,19 +89,19 @@ RSpec.describe User do
     it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(128) }
 
     it 'allows strong passwords' do
-      user = FactoryBot.build(:user)
+      user = FactoryBot.build_stubbed(:user)
       user.password = user.password_confirmation = Faker::Internet.password(20, 30)
       expect(user).to be_valid
     end
 
     it 'does not allow weak passwords' do
-      user = FactoryBot.build(:user)
+      user = FactoryBot.build_stubbed(:user)
       user.password = user.password_confirmation = 'password'
       expect(user).not_to be_valid
     end
 
     it 'tells the user why their password is weak' do
-      user = FactoryBot.build(:user)
+      user = FactoryBot.build_stubbed(:user)
       user.password = user.password_confirmation = 'password'
       user.valid?
       expect(user.errors[:password].first).to include 'This is a top-10 common password'

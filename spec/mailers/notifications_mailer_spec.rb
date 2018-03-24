@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe NotificationsMailer do
-  let(:site) { FactoryBot.build(:site) }
+  let(:site) { FactoryBot.create(:site) }
 
   describe '.new_message' do
     subject(:email) { described_class.new_message(message) }
@@ -32,8 +32,8 @@ RSpec.describe NotificationsMailer do
   describe '.user_added_to_site' do
     subject(:email) { described_class.user_added_to_site(user, site, site_user) }
 
-    let(:user) { FactoryBot.build(:user) }
-    let(:site_user) { FactoryBot.build(:user, site: site) }
+    let(:user) { FactoryBot.build_stubbed(:user) }
+    let(:site_user) { FactoryBot.build_stubbed(:user, site: site) }
     let(:expected_subject) { 'Added to site' }
     let(:expected_body) { "You have been added to #{site.name} site by #{site_user.name}." }
 
