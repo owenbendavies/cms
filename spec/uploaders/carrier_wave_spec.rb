@@ -5,7 +5,7 @@ RSpec.describe CarrierWave do
     fog_directory.files.get(uploader.store_path)
   end
 
-  let(:site) { FactoryBot.create(:site) }
+  let(:site) { FactoryBot.build_stubbed(:site) }
   let(:uploader) { StylesheetUploader.new(site) }
 
   before do
