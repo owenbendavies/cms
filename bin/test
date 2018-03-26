@@ -2,7 +2,7 @@
 set -e
 cd `dirname $0`/..
 
-rspec='xvfb-run --auto-servernum ./bin/rspec --color'
+rspec='./bin/rspec --color'
 
 export RAILS_ENV='test'
 
