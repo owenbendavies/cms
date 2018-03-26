@@ -22,8 +22,8 @@ services:
   - postgresql
 
 env:
-  - DATABASE_HOST=localhost TEST_COMMAND=./bin/quality
-  - DATABASE_HOST=localhost TEST_COMMAND=./bin/setup
-  - DATABASE_HOST=localhost TEST_COMMAND=./bin/test
+  - TEST_COMMAND=./bin/quality
+  - TEST_COMMAND=./bin/setup
+  - TEST_COMMAND=./bin/test
 
-script: $TEST_COMMAND && ./bin/changes
+script: xvfb-run --auto-servernum $TEST_COMMAND && ./bin/changes

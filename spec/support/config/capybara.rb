@@ -5,6 +5,7 @@ Capybara.app_host = "#{Capybara.default_host}:#{Capybara.server_port}"
 
 Capybara::Webkit.configure do |config|
   config.raise_javascript_errors = true
+  config.timeout = 10
 
   config.block_url('https://secure.gravatar.com')
   config.block_url('https://www.google-analytics.com')
