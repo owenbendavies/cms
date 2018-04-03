@@ -21,7 +21,7 @@ class API < ApplicationAPI
 
   namespace do
     before do
-      PaperTrail.whodunnit = current_user.id if current_user
+      PaperTrail.request.whodunnit = current_user.id if current_user
     end
 
     after(&:verify_authorized)
