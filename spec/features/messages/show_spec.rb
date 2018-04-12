@@ -6,7 +6,7 @@ RSpec.feature 'Message show' do
 
   before do
     login_as site_user
-    visit_200_page "/site/messages/#{message.uid}"
+    visit "/site/messages/#{message.uid}"
   end
 
   scenario 'message' do

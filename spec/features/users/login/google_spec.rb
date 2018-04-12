@@ -14,7 +14,7 @@ RSpec.feature 'User login via Google' do
     before do
       OmniAuth.config.test_mode = true
 
-      visit_200_page '/login'
+      visit '/login'
     end
 
     scenario 'existing user with matching email' do
@@ -70,7 +70,7 @@ RSpec.feature 'User login via Google' do
   end
 
   scenario 'not enabled' do
-    visit_200_page '/login'
+    visit '/login'
     expect(page).not_to have_link link_name
   end
 end

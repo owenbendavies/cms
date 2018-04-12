@@ -41,7 +41,7 @@ RSpec.feature 'Inviting a user' do
 
     logout
 
-    visit_200_page '/login'
+    visit '/login'
     fill_in 'Email', with: new_email
     fill_in 'Password', with: new_password
     click_button 'Login'
@@ -60,7 +60,7 @@ RSpec.feature 'Inviting a user' do
     expect(email.to).to eq [user.email]
     expect(email.subject).to eq 'Added to site'
 
-    visit_200_page '/login'
+    visit '/login'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Login'

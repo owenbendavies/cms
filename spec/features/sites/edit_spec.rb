@@ -8,7 +8,7 @@ RSpec.feature 'Edit the site' do
 
   scenario 'changing the name' do
     expect(find_field('Name').value).to eq site.name
-    expect(find_field('Name')['autofocus']).to eq 'autofocus'
+    expect(find_field('Name')['autofocus']).to eq 'true'
 
     fill_in 'Name', with: "  #{new_company_name} "
     click_button 'Update Site'

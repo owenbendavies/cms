@@ -9,7 +9,7 @@ RSpec.feature 'Footer links' do
     let(:link_url) { site.links.first.fetch('url') }
 
     scenario 'site with footer links' do
-      visit_200_page '/home'
+      visit '/home'
 
       within css_selector do
         expect(page).to have_link link_name, href: link_url
@@ -19,7 +19,7 @@ RSpec.feature 'Footer links' do
   end
 
   scenario 'site without footer links' do
-    visit_200_page '/home'
+    visit '/home'
 
     expect(page).not_to have_selector css_selector
   end
