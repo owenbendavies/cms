@@ -7,7 +7,7 @@ RSpec.feature 'Editing a user' do
   end
 
   scenario 'changing the password' do
-    expect(find_field('Current password')['autofocus']).to eq 'autofocus'
+    expect(find_field('Current password')['autofocus']).to eq 'true'
     expect(find_field('Current password')['autocomplete']).to eq 'off'
     expect(find_field('Password').value).to be_blank
     expect(find_field('Password')['autocomplete']).to eq 'off'
@@ -26,7 +26,7 @@ RSpec.feature 'Editing a user' do
     expect(email.subject).to eq 'Password Changed'
 
     visit '/logout'
-    visit_200_page '/login'
+    visit '/login'
     fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password
     click_button 'Login'
@@ -96,10 +96,10 @@ RSpec.feature 'Editing a user' do
 
   scenario 'invalid data' do
     fill_in 'Current password', with: site_user.password
-    fill_in 'Email', with: 'bad'
+    fill_in 'Email', with: 'bad@email'
     click_button 'Update User'
 
-    expect(page).to have_content 'Email is invalid'
+    expect(page).to have_content 'Email is not a valid email'
   end
 
   scenario 'clicking Cancel' do

@@ -5,7 +5,7 @@ RSpec.feature 'Site sidebar' do
 
   scenario 'site with sidebar' do
     site.update! sidebar_html_content: '<h1>Sidebar Content</h1>'
-    visit_200_page '/home'
+    visit '/home'
 
     expect(page).to have_selector '.article.col-sm-9'
 
@@ -15,7 +15,7 @@ RSpec.feature 'Site sidebar' do
   end
 
   scenario 'site without sidebar' do
-    visit_200_page '/home'
+    visit '/home'
     expect(page).to have_selector '.article.col-sm-12'
     expect(page).not_to have_selector sidebar
   end

@@ -4,7 +4,7 @@ RSpec.feature 'Topbar' do
   let(:topbar_selector) { '.topbar' }
 
   scenario 'no user' do
-    visit_200_page '/home'
+    visit '/home'
 
     expect(page).to have_no_selector topbar_selector
   end
@@ -12,7 +12,7 @@ RSpec.feature 'Topbar' do
   context 'when logged in' do
     before do
       login_as site_user
-      visit_200_page '/home'
+      visit '/home'
     end
 
     scenario 'navigating to home' do

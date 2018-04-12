@@ -10,7 +10,7 @@ RSpec.feature 'Deleting a page' do
 
   before do
     login_as site_user
-    visit_200_page "/#{test_page.url}"
+    visit "/#{test_page.url}"
   end
 
   scenario 'clicking yes' do
@@ -20,9 +20,8 @@ RSpec.feature 'Deleting a page' do
       end
 
       expect(message).to eq("Are you sure you want to delete page '#{test_page.name}'?")
+      expect(page).to have_content "#{test_page.name} was deleted"
     end.to change(Page, :count).by(-1)
-
-    expect(page).to have_content "#{test_page.name} was deleted"
   end
 
   scenario 'clicking no' do

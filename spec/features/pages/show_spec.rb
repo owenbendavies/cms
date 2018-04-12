@@ -6,7 +6,7 @@ RSpec.feature 'Page show' do
       home_page.update! updated_at: Time.zone.now
     end
 
-    visit_200_page '/home'
+    visit '/home'
 
     expect(page).to have_selector 'body.page-home'
 
@@ -24,7 +24,7 @@ RSpec.feature 'Page show' do
   scenario 'private page' do
     private_page = FactoryBot.create(:page, :private, site: site)
     login_as site_user
-    visit_200_page "/#{private_page.url}"
+    visit "/#{private_page.url}"
 
     expect(page).to have_selector 'h1 .fas.fa-lock.fa-fw'
   end

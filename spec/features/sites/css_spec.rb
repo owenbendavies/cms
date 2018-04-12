@@ -9,7 +9,7 @@ RSpec.feature 'Site CSS' do
   end
 
   scenario 'adding custom CSS' do
-    expect(find('pre textarea')['autofocus']).to eq 'autofocus'
+    expect(find('pre textarea')['autofocus']).to eq 'true'
 
     fill_in 'site_css', with: css
     click_button 'Update Site'

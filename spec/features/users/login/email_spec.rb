@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.feature 'User login via email' do
   before do
-    visit_200_page '/home'
+    visit '/home'
     click_link 'Login'
   end
 
   scenario 'valid email and password' do
-    expect(find_field('Email')['autofocus']).to eq 'autofocus'
+    expect(find_field('Email')['autofocus']).to eq 'true'
     expect(find_field('Password')['autocomplete']).to eq 'off'
 
     fill_in 'Email', with: user.email
