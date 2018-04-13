@@ -19,11 +19,17 @@ class API < ApplicationAPI
   rescue_from Pundit::NotAuthorizedError, with: :forbidden
   rescue_from :all, with: :unexpected_error
 
-  namespace do
-    before do
-      PaperTrail.request.whodunnit = current_user.id if current_user
-    end
+  before do
+    PaperTrail.request.whodunnit = current_user.id if current_user
+  end
 
+  before do
+    next unless request.params[:monitoring] == 'skip'
+    ScoutApm::RequestManager.lookup.ignore_request!
+    NewRelic::Agent.ignore_transaction
+  end
+
+  namespace do
     after(&:verify_authorized)
 
     mount MessagesAPI
