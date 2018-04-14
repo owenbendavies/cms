@@ -5,7 +5,7 @@ RSpec.feature 'Page with contact form' do
 
   before do
     site_user
-    visit_200_page "/#{contact_page.url}"
+    visit "/#{contact_page.url}"
   end
 
   scenario 'sending a message' do

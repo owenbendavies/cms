@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User locking' do
   scenario 'after 5 attempts then unlocking' do
-    visit_200_page '/login'
+    visit '/login'
 
     5.times do
       fill_in 'Email', with: site_user.email
@@ -27,7 +27,7 @@ RSpec.feature 'User locking' do
   end
 
   scenario 'resending unlock email' do
-    visit_200_page '/login'
+    visit '/login'
 
     5.times do
       fill_in 'Email', with: site_user.email
@@ -38,7 +38,7 @@ RSpec.feature 'User locking' do
 
     last_email
 
-    visit_200_page '/user/unlock/new'
+    visit '/user/unlock/new'
 
     expect(page).to have_content 'Unlock account'
 
@@ -53,7 +53,7 @@ RSpec.feature 'User locking' do
   end
 
   scenario 'non user' do
-    visit_200_page '/user/unlock/new'
+    visit '/user/unlock/new'
 
     fill_in 'Email', with: new_email
     click_button 'Resend unlock instructions'

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User forgot password', js: false do
   before do
-    visit_200_page '/login'
+    visit '/login'
     click_link 'Forgot your password?'
   end
 
@@ -37,7 +37,7 @@ RSpec.feature 'User forgot password', js: false do
     site_user.reload
 
     visit '/logout'
-    visit_200_page '/login'
+    visit '/login'
     fill_in 'Email', with: site_user.email
     fill_in 'Password', with: new_password
     click_button 'Login'

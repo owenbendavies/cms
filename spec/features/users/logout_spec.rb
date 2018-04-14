@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User logout' do
   before do
     login_as site_user
-    visit_200_page '/home'
+    visit '/home'
   end
 
   scenario 'clicking topbar link' do

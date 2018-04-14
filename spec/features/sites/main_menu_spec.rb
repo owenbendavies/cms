@@ -13,7 +13,7 @@ RSpec.feature 'Site main menu' do
     end
 
     scenario 'navigating to page via main menu' do
-      visit_200_page '/home'
+      visit '/home'
 
       within main_menu do
         expect(page).to have_link 'Home', href: '/home'
@@ -54,7 +54,7 @@ RSpec.feature 'Site main menu' do
 
   scenario 'no main menu' do
     site.update! main_menu_in_footer: true
-    visit_200_page '/home'
+    visit '/home'
 
     expect(page).not_to have_selector main_menu
     expect(page).not_to have_selector footer_main_menu
