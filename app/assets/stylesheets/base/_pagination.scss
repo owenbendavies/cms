@@ -1,0 +1,16 @@
+.pagination {
+  @media print {
+    display: none;
+  }
+
+  @extend .justify-content-center;
+
+  li {
+    @extend .page-item;
+
+    span,
+    a {
+      @extend .page-link;
+    }
+  }
+}

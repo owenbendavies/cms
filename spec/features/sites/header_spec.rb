@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Site header' do
   let(:header) { '.header' }
   let(:main_menu_site_name) { '.main-menu__site-name' }
-  let(:main_menu_right_links) { '.main-menu__links.navbar-right' }
+  let(:main_menu_right_links) { '.main-menu__links.ml-auto' }
 
   before do
     home_page.insert_at(1)

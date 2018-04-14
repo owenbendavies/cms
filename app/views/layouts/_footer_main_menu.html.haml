@@ -1,8 +1,7 @@
 %nav.footer-main-menu
   .footer-main-menu__bar
-    .footer-main-menu__container
-      %ul.footer-main-menu__links
-        - site.main_menu_pages.each do |page|
-          %li.footer-main-menu__link-item
-            = link_to page_path(page), class: "footer-main-menu__link cms-page-link-#{page.to_param}" do
-              %span.footer-main-menu__link-text= page.name
+    %ul.footer-main-menu__links
+      - site.main_menu_pages.each do |page|
+        %li.footer-main-menu__link-item
+          = link_to page_path(page), class: "footer-main-menu__link cms-page-link-#{page.to_param}" do
+            %span.footer-main-menu__link-text= page.name

@@ -1,12 +1,12 @@
-@media print {
-  @include responsive-invisibility('.header');
-}
-
 .header {
-  @include make-row;
+  @media print {
+    display: none;
+  }
+
+  @include make-row();
 
   &__container {
-    @include make-sm-column(12);
+    @include make-col-ready();
 
     text-align: center;
   }
@@ -14,11 +14,5 @@
   &__site-name-link,
   &__site-name-link:hover {
     color: inherit;
-  }
-
-  &__sub-title {
-    color: $headings-small-color;
-    font-size: $jumbotron-font-size;
-    font-weight: normal;
   }
 }

@@ -1,16 +1,26 @@
 .thumbnail-grid {
-  @include make-row;
+  @extend .card-columns;
 
-  &__container {
-    @include make-xs-column(6);
-    @include make-md-column(3);
+  column-count: 2;
+
+  @include media-breakpoint-up(md) {
+    column-count: 4;
   }
 
   &__link {
-    @extend .thumbnail;
+    @extend .card;
+  }
+
+  &__image {
+    @extend .card-img-top;
+  }
+
+  &__body {
+    @extend .card-body;
   }
 
   &__name {
+    @extend .card-title;
     text-align: center;
   }
 }
