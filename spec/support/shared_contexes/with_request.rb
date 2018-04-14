@@ -1,6 +1,6 @@
 RSpec.shared_context 'with request' do
   let(:request_description) do
-    self.class.metadata[:full_description].match %r{(GET|POST|PUT|PATCH|DELETE) ([a-z0-9/_:.]+)}
+    self.class.metadata[:full_description].match %r{(GET|POST|PUT|PATCH|DELETE) ([a-z0-9/_:.?=]+)}
   end
 
   let(:request_headers) { {} }
