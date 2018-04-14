@@ -105,14 +105,16 @@ group :development do
 end
 
 group :test do
-  gem 'capybara-webkit', '< 1.15' # TODO: upgrade when fixed - Web browser tester
+  gem 'capybara' # Web browser tester
   gem 'capybara_table' # Capybara table matchers
+  gem 'chromedriver-helper' # Installs Google chromedriver command
   gem 'climate_control' # Modifies environment variables
   gem 'database_cleaner' # Cleans the database
   gem 'factory_bot_rails' # Generates test models
   gem 'faker' # Generates test data
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
+  gem 'selenium-webdriver' # Controls real browsers
   gem 'shoulda-matchers' # Model test helpers
   gem 'simplecov' # Code coverage
   gem 'spring-commands-rspec' # Quick boot for RSpec

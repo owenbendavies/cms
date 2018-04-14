@@ -52,11 +52,11 @@ RSpec.feature 'Editing a page' do
 
   scenario 'renaming a page' do
     url_field = find('#page_url')
-    expect(url_field['disabled']).to eq true
+    expect(url_field['disabled']).to eq 'true'
     expect(url_field.value).to eq home_page.url
 
     expect(find_field('Name').value).to eq home_page.name
-    expect(find_field('Name')['autofocus']).to eq 'autofocus'
+    expect(find_field('Name')['autofocus']).to eq 'true'
 
     fill_in 'Name', with: 'New Page Name'
     click_button 'Update Page'
@@ -67,7 +67,7 @@ RSpec.feature 'Editing a page' do
   scenario 'invalid data' do
     fill_in 'page[name]', with: 'Site'
     click_button 'Update Page'
-    expect(page).to have_content 'Url is reserved'
+    expect(page).to have_content "Url\nis reserved"
   end
 
   scenario 'clicking Cancel' do
