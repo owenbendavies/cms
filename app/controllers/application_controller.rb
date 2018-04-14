@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
   rescue_from Pundit::NotAuthorizedError, with: :page_not_found
 
+  before_action :skip_monitoring
   before_action :set_paper_trail_whodunnit
   before_action :find_site
   before_action :render_site_not_found
@@ -35,6 +36,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def skip_monitoring
+    return unless params[:monitoring] == 'skip'
+    ScoutApm::RequestManager.lookup.ignore_request!
+    NewRelic::Agent.ignore_transaction
+  end
 
   def page_not_found_template
     if @site
