@@ -71,9 +71,10 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+    bootstrap (4.0.0)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
     brakeman (4.2.1)
     builder (3.2.3)
     bullet (5.7.5)
@@ -346,6 +347,7 @@ GEM
     parslet (1.8.2)
     pg (0.21.0)
     phonelib (0.6.20)
+    popper_js (1.12.9)
     powerpack (0.1.1)
     premailer (1.11.1)
       addressable
@@ -596,7 +598,7 @@ DEPENDENCIES
   api-pagination
   autosize-rails
   aws-sdk-sns
-  bootstrap-sass
+  bootstrap
   brakeman
   bullet
   bundler-audit

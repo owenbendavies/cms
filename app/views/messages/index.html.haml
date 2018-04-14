@@ -16,5 +16,4 @@
         %td= link_to(message.name, site_message_path(message))
         %td= link_to(message.email, site_message_path(message))
 
-.text-center
-  = will_paginate @messages, renderer: BootstrapPagination::Rails
+= will_paginate @messages, renderer: BootstrapPagination::Rails
