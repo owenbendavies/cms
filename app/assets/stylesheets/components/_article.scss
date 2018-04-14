@@ -1,9 +1,9 @@
 .article {
-  background: $body-bg;
   min-height: 200px;
+  padding-bottom: 15px;
   padding-top: 15px;
 
   &__header-links {
-    @extend .pull-right;
+    @include float-right();
   }
 }

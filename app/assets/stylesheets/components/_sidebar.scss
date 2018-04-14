@@ -1,3 +1,5 @@
-@media print {
-  @include responsive-invisibility('.sidebar');
+.sidebar {
+  @media print {
+    display: none;
+  }
 }

@@ -1,8 +1,13 @@
+# Order dependant libraries
 #= require jquery
-#= require jquery_ujs
-#= require jquery.autosize
-#= require rails-timeago
+#= require popper
 #= require turbolinks
+
+# Libraries
+#= require bootstrap
 #= require google-analytics-turbolinks
-#= require bootstrap-custom
+#= require jquery.autosize
+#= require jquery_ujs
+#= require rails-timeago
+
 #= require main

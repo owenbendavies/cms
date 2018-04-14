@@ -1,33 +1,25 @@
 .main-menu {
-  @include make-row;
+  @include make-row();
 
   &__bar {
+    @extend .bg-light;
+    @extend .navbar-expand-md;
+    @extend .navbar-light;
     @extend .navbar;
-    @extend .navbar-default;
-  }
 
-  &__container {
-    @extend .container;
-  }
-
-  &__header {
-    @extend .navbar-header;
+    @include make-col-ready();
   }
 
   &__button {
-    @extend .navbar-toggle;
+    @extend .navbar-toggler;
   }
 
   &__button-text {
-    display: inline-block;
-    float: left;
-    line-height: 14px;
-    padding-right: 10px;
+    @extend .navbar-text;
   }
 
   &__button-hamburger {
-    display: inline-block;
-    float: left;
+    @extend .navbar-toggler-icon;
   }
 
   &__site-name {
@@ -39,6 +31,19 @@
   }
 
   &__links {
-    @extend .nav;
+    @extend .navbar-nav;
+  }
+
+  &__link-item {
+    @extend .nav-item;
+
+    &:hover,
+    &:focus {
+      background-color: darken($light, 6.5%);
+    }
+  }
+
+  &__link {
+    @extend .nav-link;
   }
 }
