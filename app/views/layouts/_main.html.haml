@@ -1,17 +1,18 @@
 %main.main
   - if content_for(:form_page)
-    %article.article.col-sm-12
-      .row
-        .col-sm-6.col-sm-offset-3
-          .well
-            = render 'layouts/main_article'
+    %article.article.col
+      .row.justify-content-md-center
+        .col-md-6
+          .card
+            .card-body
+              = render 'layouts/main_article'
 
   - elsif site.sidebar_html_content?
-    %article.article.col-sm-9
+    %article.article.col-md-9
       = render 'layouts/main_article'
-    %aside.sidebar.col-sm-3
+    %aside.sidebar.col-md-3
       = site.sidebar_html_content&.html_safe
 
   - else
-    %article.article.col-sm-12
+    %article.article.col
       = render 'layouts/main_article'

@@ -1,18 +1,19 @@
-@media print {
-  @include responsive-invisibility('.footer');
-}
-
 .footer {
-  @include make-row;
+  @media print {
+    display: none;
+  }
+
+  @include make-row();
+  font-size: 80%;
 
   &__container {
-    @include make-sm-column(12);
+    @include make-col-ready();
 
     text-align: center;
   }
 
   &__menu {
-    @include list-unstyled;
+    @include list-unstyled();
 
     line-height: 16px;
     margin-top: 11px;
@@ -23,10 +24,8 @@
     @extend .list-inline;
   }
 
-  &__last-updated,
-  &__copyright,
-  &__charity,
-  &__links {
-    font-size: 80%;
+  &__link-item,
+  &__site-link-item {
+    @extend .list-inline-item;
   }
 }

@@ -1,17 +1,30 @@
 .footer-main-menu {
-  @include make-row;
+  @include make-row();
 
   &__bar {
+    @extend .bg-light;
+    @extend .navbar-expand-md;
+    @extend .navbar-light;
     @extend .navbar;
-    @extend .navbar-default;
-  }
 
-  &__container {
-    @extend .container;
+    @include make-col-ready();
+
   }
 
   &__links {
-    @extend .nav;
     @extend .navbar-nav;
+  }
+
+  &__link-item {
+    @extend .nav-item;
+
+    &:hover,
+    &:focus {
+      background-color: darken($light, 6.5%);
+    }
+  }
+
+  &__link {
+    @extend .nav-link;
   }
 }

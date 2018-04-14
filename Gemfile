@@ -67,7 +67,7 @@ gem 'scout_apm' # Application monitoring
 
 group :assets, :development do
   gem 'autosize-rails' # JavaScript expanding textarea
-  gem 'bootstrap-sass' # CSS framework
+  gem 'bootstrap' # CSS framework
   gem 'coffee-rails' # CoffeeScript for JavaScript
   gem 'font-awesome-sass' # Icons
   gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks

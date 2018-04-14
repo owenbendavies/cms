@@ -1,4 +1,18 @@
 .image {
+  @include media-breakpoint-up(md) {
+    &--left {
+      @include float-left();
+
+      margin: 0 20px 20px 0;
+    }
+
+    &--right {
+      @include float-right();
+
+      margin: 0 0 20px 20px;
+    }
+  }
+
   &--circle {
     border-radius: 50%;
   }
@@ -6,20 +20,11 @@
   &--center,
   &--left,
   &--right {
-    @include img-responsive;
-    @include center-block;
-    @include clearfix;
-  }
+    @include img-fluid();
+    @include clearfix();
 
-  @media (min-width: $screen-sm-min) {
-    &--left {
-      float: left;
-      margin: 0 20px 20px 0;
-    }
-
-    &--right {
-      float: right;
-      margin: 0 0 20px 20px;
-    }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
