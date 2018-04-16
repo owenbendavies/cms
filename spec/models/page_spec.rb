@@ -17,7 +17,7 @@
 #
 # Indexes
 #
-#  fk__pages_site_id                              (site_id)
+#  index_pages_on_site_id                         (site_id)
 #  index_pages_on_site_id_and_main_menu_position  (site_id,main_menu_position) UNIQUE
 #  index_pages_on_site_id_and_url                 (site_id,url) UNIQUE
 #
