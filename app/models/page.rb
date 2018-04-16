@@ -31,7 +31,7 @@ class Page < ApplicationRecord
   HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze
   HTML_ATTRIBUTES = %w[href target class src alt].freeze
 
-  INVALID_URLS = %w[login logout new robots site sitemap system user].freeze
+  INVALID_URLS = %w[admin login logout new robots sitemap system user].freeze
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 

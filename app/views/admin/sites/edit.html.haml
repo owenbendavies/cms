@@ -3,7 +3,7 @@
   content_for :page_icon, t('.icon')
   content_for :form_page, true
 
-= simple_form_for @site do |form|
+= simple_form_for [:admin, @site] do |form|
   = form.input :name, autofocus: true
   = form.input :sub_title
   = form.input :google_analytics

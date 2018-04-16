@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/system/test_500_error', to: 'systems#test_500_error'
   get '/system/test_timeout_error', to: 'systems#test_timeout_error'
 
-  get '/user/sites', to: 'sites#index'
+  get '/user/sites', to: 'admin/sites#index'
 
   devise_for :user, skip: [:sessions], controllers: {
     invitations: 'invitations',
@@ -26,9 +26,11 @@ Rails.application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  resource :site, only: %i[edit update] do
-    member do
-      get :css
+  namespace :admin do
+    resource :site, only: %i[edit update] do
+      member do
+        get :css
+      end
     end
 
     resources :images, only: [:index]

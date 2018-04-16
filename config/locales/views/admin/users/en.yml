@@ -1,0 +1,7 @@
+---
+en:
+  admin:
+    users:
+      index:
+        icon: fas fa-users fa-fw
+        title: Users
