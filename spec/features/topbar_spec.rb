@@ -38,7 +38,7 @@ RSpec.feature 'Topbar' do
         end
 
         expect(page).to have_content 'Messages'
-        expect(page).to have_current_path '/site/messages'
+        expect(page).to have_current_path '/admin/messages'
       end
     end
   end

@@ -30,7 +30,7 @@ RSpec.feature 'Messages index' do
     links = table_rows[0].map { |cell| cell.find('a') }
     expect(links.count).to eq 3
     link_locations = links.map { |link| link['href'] }.uniq
-    expect(link_locations).to eq ["http://localhost:37511/site/messages/#{messages.first.uid}"]
+    expect(link_locations).to eq ["http://localhost:37511/admin/messages/#{messages.first.uid}"]
   end
 
   scenario 'clicking pagination' do

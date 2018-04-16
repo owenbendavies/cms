@@ -32,26 +32,26 @@
           %a.topbar__dropdown-toggle{ 'data-toggle': 'dropdown', href: '#' }
             = Site.model_name.human
           .dropdown-menu
-            = link_to site_messages_path, class: 'dropdown-item' do
-              = icon_tag(t('messages.index.icon'))
-              = t('messages.index.title')
+            = link_to admin_messages_path, class: 'dropdown-item' do
+              = icon_tag(t('admin.messages.index.icon'))
+              = t('admin.messages.index.title')
 
-            = link_to site_images_path, class: 'dropdown-item' do
-              = icon_tag(t('images.index.icon'))
-              = t('images.index.title')
+            = link_to admin_images_path, class: 'dropdown-item' do
+              = icon_tag(t('admin.images.index.icon'))
+              = t('admin.images.index.title')
 
-            = link_to edit_site_path, class: 'dropdown-item' do
-              = icon_tag(t('sites.edit.icon'))
-              = t('sites.edit.title')
+            = link_to edit_admin_site_path, class: 'dropdown-item' do
+              = icon_tag(t('admin.sites.edit.icon'))
+              = t('admin.sites.edit.title')
 
-            = link_to site_users_path, class: 'dropdown-item' do
-              = icon_tag(t('users.index.icon'))
-              = t('users.index.title')
+            = link_to admin_users_path, class: 'dropdown-item' do
+              = icon_tag(t('admin.users.index.icon'))
+              = t('admin.users.index.title')
 
             - if policy(site).css?
-              = link_to css_site_path, class: 'dropdown-item' do
-                = icon_tag(t('sites.css.icon'))
-                = t('sites.css.title')
+              = link_to css_admin_site_path, class: 'dropdown-item' do
+                = icon_tag(t('admin.sites.css.icon'))
+                = t('admin.sites.css.title')
 
             = link_to sitemap_path, class: 'dropdown-item' do
               = icon_tag(t('pages.index.icon'))
@@ -66,8 +66,8 @@
             = t('devise.registrations.edit.title')
 
           = link_to user_sites_path, class: 'dropdown-item' do
-            = icon_tag(t('sites.index.icon'))
-            = t('sites.index.title')
+            = icon_tag(t('admin.sites.index.icon'))
+            = t('admin.sites.index.title')
 
           = link_to destroy_user_session_path, class: 'dropdown-item' do
             = icon_tag(t('devise.sessions.destroy.icon'))

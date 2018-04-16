@@ -2,7 +2,7 @@
   content_for :title, t('.title')
   content_for :page_icon, t('.icon')
 
-= simple_form_for @site do |form|
+= simple_form_for [:admin, @site] do |form|
   %pre.css-editor= form.text_area :css, class: 'css-editor__input js-autogrow', autofocus: true
 
   .form__buttons
