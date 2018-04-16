@@ -1,7 +1,7 @@
 class CreateMessages < ActiveRecord::Migration[5.0]
   def change
     create_table :messages do |table|
-      table.belongs_to :site, null: false
+      table.belongs_to :site, null: false, foreign_key: true, index: { name: 'fk__messages_site_id' }
 
       table.string :subject, null: false, limit: 64
       table.string :name, null: false, limit: 64
