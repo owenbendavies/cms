@@ -14,8 +14,8 @@
 #
 # Indexes
 #
-#  fk__messages_site_id          (site_id)
 #  index_messages_on_created_at  (created_at)
+#  index_messages_on_site_id     (site_id)
 #  index_messages_on_uid         (uid) UNIQUE
 #
 # Foreign Keys
