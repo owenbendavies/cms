@@ -4,7 +4,7 @@ RSpec.describe 'paper trail' do
   context 'when updating something via the frontend' do
     let(:request_user) { FactoryBot.create(:user, site: site) }
     let(:request_method) { :put }
-    let(:request_path) { '/site' }
+    let(:request_path) { '/admin/site' }
     let(:request_params) { { 'site' => { 'name' => new_name } } }
     let(:expected_status) { 302 }
 

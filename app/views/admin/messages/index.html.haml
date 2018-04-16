@@ -12,8 +12,8 @@
   %tbody
     - @messages.each do |message|
       %tr
-        %td= link_to(timeago_tag(message.created_at, force: true), site_message_path(message))
-        %td= link_to(message.name, site_message_path(message))
-        %td= link_to(message.email, site_message_path(message))
+        %td= link_to(timeago_tag(message.created_at, force: true), admin_message_path(message))
+        %td= link_to(message.name, admin_message_path(message))
+        %td= link_to(message.email, admin_message_path(message))
 
 = will_paginate @messages, renderer: BootstrapPagination::Rails

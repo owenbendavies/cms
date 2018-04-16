@@ -18,6 +18,6 @@ class InvitationsController < Devise::InvitationsController
   end
 
   def after_invite_path_for(_resource)
-    site_users_path
+    admin_users_path
   end
 end
