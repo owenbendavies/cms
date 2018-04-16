@@ -65,7 +65,7 @@ RSpec.feature 'Editing a page' do
   end
 
   scenario 'invalid data' do
-    fill_in 'page[name]', with: 'Site'
+    fill_in 'page[name]', with: 'Admin'
     click_button 'Update Page'
     expect(page).to have_content "Url\nis reserved"
   end

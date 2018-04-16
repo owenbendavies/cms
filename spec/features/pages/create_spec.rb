@@ -21,7 +21,7 @@ RSpec.feature 'Creating a page' do
   end
 
   scenario 'invalid data' do
-    fill_in 'Name', with: 'Site'
+    fill_in 'Name', with: 'Admin'
     click_button 'Create Page'
 
     expect(page).to have_content 'Url is reserved'
