@@ -17,10 +17,15 @@
 #
 # Foreign Keys
 #
-#  fk_site_settings_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
-#  fk_site_settings_user_id  (user_id => users.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_site_settings_site_id  (site_id => sites.id)
+#  fk_site_settings_user_id  (user_id => users.id)
 #
 
 class SiteSetting < ApplicationRecord
+  # relations
+  belongs_to :site
+  belongs_to :user
+
+  # validations
   schema_validations
 end

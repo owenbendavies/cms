@@ -17,15 +17,21 @@
 #
 # Foreign Keys
 #
-#  fk_images_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_images_site_id  (site_id => sites.id)
 #
 
 class Image < ApplicationRecord
   mount_uploader :file, ImageUploader, mount_on: :filename
 
+  # relations
+  belongs_to :site
+
+  # scopes
   scope(:ordered, -> { order(:name) })
 
-  schema_validations except: %i[created_at updated_at filename]
-
+  # before validations
   strip_attributes collapse_spaces: true, replace_newlines: true
+
+  # validations
+  schema_validations except: %i[created_at updated_at filename]
 end

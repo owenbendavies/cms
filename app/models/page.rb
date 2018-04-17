@@ -23,24 +23,27 @@
 #
 # Foreign Keys
 #
-#  fk_pages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_pages_site_id  (site_id => sites.id)
 #
 
 class Page < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-  HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze
-  HTML_ATTRIBUTES = %w[href target class src alt].freeze
 
+  HTML_ATTRIBUTES = %w[href target class src alt].freeze
+  HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze
   INVALID_URLS = %w[admin login logout new robots sitemap system user].freeze
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 
-  before_validation :clean_html_content
+  # relations
+  belongs_to :site
 
-  schema_validations
-
+  # scopes
   scope(:ordered, -> { order(:name) })
   scope(:visible, -> { where(hidden: false).where(private: false) })
+
+  # before validations
+  before_validation :clean_html_content
 
   strip_attributes(
     except: %i[html_content custom_html],
@@ -48,6 +51,8 @@ class Page < ApplicationRecord
     replace_newlines: true
   )
 
+  # validations
+  schema_validations
   validates :url, exclusion: { in: INVALID_URLS }
 
   def clean_html_content

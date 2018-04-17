@@ -26,6 +26,35 @@
 require 'rails_helper'
 
 RSpec.describe Site do
+  describe '#stylesheet' do
+    let(:css) { "body {\r\n  padding: 4em;\r\n}" }
+    let(:file) { StringUploader.new('stylesheet.css', css) }
+    let!(:site) { FactoryBot.create(:site, stylesheet: file) }
+    let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
+
+    it 'saves the stylesheet' do
+      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
+    end
+
+    it 'uses a uuid as the filename' do
+      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
+    end
+
+    it 'is saved in the stylesheets directory on s3' do
+      expect(site.stylesheet.public_url).to eq File.join(
+        'http://localhost:37511', 'stylesheets', uuid, 'original.css'
+      )
+    end
+  end
+
+  describe 'relations' do
+    it { is_expected.to have_many(:images).dependent(:destroy) }
+    it { is_expected.to have_many(:messages).dependent(:destroy) }
+    it { is_expected.to have_many(:pages).dependent(:destroy) }
+    it { is_expected.to have_many(:site_settings).dependent(:destroy) }
+    it { is_expected.to have_many(:users).through(:site_settings) }
+  end
+
   describe '#main_menu_pages' do
     subject(:site) { FactoryBot.create(:site) }
 
@@ -56,45 +85,28 @@ RSpec.describe Site do
     end
   end
 
-  describe '#stylesheet' do
-    let(:css) { "body {\r\n  padding: 4em;\r\n}" }
-    let(:file) { StringUploader.new('stylesheet.css', css) }
-    let!(:site) { FactoryBot.create(:site, stylesheet: file) }
-    let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
+  describe 'scopes' do
+    describe '.ordered' do
+      it 'returns ordered by host' do
+        site_c = FactoryBot.create(:site, host: 'sitec')
+        site_a = FactoryBot.create(:site, host: 'sitea')
+        site_b = FactoryBot.create(:site, host: 'siteb')
 
-    it 'saves the stylesheet' do
-      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-    end
-
-    it 'uses a uuid as the filename' do
-      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
-    end
-
-    it 'is saved in the stylesheets directory on s3' do
-      expect(site.stylesheet.public_url).to eq File.join(
-        'http://localhost:37511', 'stylesheets', uuid, 'original.css'
-      )
+        expect(described_class.ordered).to eq [site_a, site_b, site_c]
+      end
     end
   end
 
-  describe '.ordered' do
-    it 'returns ordered by host' do
-      site_c = FactoryBot.create(:site, host: 'sitec')
-      site_a = FactoryBot.create(:site, host: 'sitea')
-      site_b = FactoryBot.create(:site, host: 'siteb')
-
-      expect(described_class.ordered).to eq [site_a, site_b, site_c]
-    end
+  describe 'before validations' do
+    it { is_expected.to strip_attribute(:host).collapse_spaces }
+    it { is_expected.to strip_attribute(:name).collapse_spaces }
+    it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
+    it { is_expected.to strip_attribute(:copyright).collapse_spaces }
+    it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
+    it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
   end
 
-  it { is_expected.to strip_attribute(:host).collapse_spaces }
-  it { is_expected.to strip_attribute(:name).collapse_spaces }
-  it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
-  it { is_expected.to strip_attribute(:copyright).collapse_spaces }
-  it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
-  it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
-
-  describe '#valid?' do
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:name)
     end

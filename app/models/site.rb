@@ -26,7 +26,14 @@
 class Site < ApplicationRecord
   LINKS_JSON_SCHEMA = Rails.root.join('config', 'json_schemas', 'site_links.json').to_s
 
-  has_many :users, through: :settings, inverse_of: false
+  mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
+
+  # relations
+  has_many :images, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :pages, dependent: :destroy
+  has_many :site_settings, dependent: :destroy
+  has_many :users, through: :site_settings
 
   has_many(
     :main_menu_pages,
@@ -35,14 +42,14 @@ class Site < ApplicationRecord
     inverse_of: :site
   )
 
-  mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
-
-  schema_validations
-
+  # scopes
   scope(:ordered, -> { order(:host) })
 
+  # before validations
   strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
 
+  # validations
+  schema_validations
   validates :name, length: { minimum: 3 }
   validates :sub_title, length: { allow_nil: true, minimum: 3 }
   validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }

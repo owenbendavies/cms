@@ -23,7 +23,7 @@
 #
 # Foreign Keys
 #
-#  fk_pages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_pages_site_id  (site_id => sites.id)
 #
 
 require 'rails_helper'
@@ -47,8 +47,39 @@ RSpec.describe Page do
     end
   end
 
-  describe '.valid?' do
+  describe 'relations' do
+    it { is_expected.to belong_to(:site) }
+  end
+
+  describe 'scopes' do
+    describe '.ordered' do
+      it 'returns ordered by name' do
+        page_c = FactoryBot.create(:page, name: 'Page C')
+        page_a = FactoryBot.create(:page, name: 'Page A')
+        page_b = FactoryBot.create(:page, name: 'Page B')
+
+        expect(described_class.ordered).to eq [page_a, page_b, page_c]
+      end
+    end
+
+    describe '.visible' do
+      it 'returns non hidden or private pages' do
+        page1 = FactoryBot.create(:page)
+        page2 = FactoryBot.create(:page)
+        FactoryBot.create(:page, :private)
+        FactoryBot.create(:page, :hidden)
+
+        expect(described_class.visible).to contain_exactly(page1, page2)
+      end
+    end
+  end
+
+  describe 'before validations' do
     subject(:page) { described_class.new }
+
+    it { is_expected.to strip_attribute(:name).collapse_spaces }
+    it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
+    it { is_expected.not_to strip_attribute(:custom_html).collapse_spaces }
 
     it 'strips html tags' do
       page.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'
@@ -57,32 +88,7 @@ RSpec.describe Page do
     end
   end
 
-  describe '.ordered' do
-    it 'returns ordered by name' do
-      page_c = FactoryBot.create(:page, name: 'Page C')
-      page_a = FactoryBot.create(:page, name: 'Page A')
-      page_b = FactoryBot.create(:page, name: 'Page B')
-
-      expect(described_class.ordered).to eq [page_a, page_b, page_c]
-    end
-  end
-
-  describe '.visible' do
-    it 'returns non hidden or private pages' do
-      page1 = FactoryBot.create(:page)
-      page2 = FactoryBot.create(:page)
-      FactoryBot.create(:page, :private)
-      FactoryBot.create(:page, :hidden)
-
-      expect(described_class.visible).to contain_exactly(page1, page2)
-    end
-  end
-
-  it { is_expected.to strip_attribute(:name).collapse_spaces }
-  it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
-  it { is_expected.not_to strip_attribute(:custom_html).collapse_spaces }
-
-  describe '#valid?' do
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:name)
     end

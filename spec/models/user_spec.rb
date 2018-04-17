@@ -44,7 +44,7 @@
 #
 # Foreign Keys
 #
-#  fk_users_invited_by_id  (invited_by_id => users.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_users_invited_by_id  (invited_by_id => users.id)
 #
 
 require 'rails_helper'
@@ -61,20 +61,29 @@ RSpec.describe User do
     expect(user.gravatar_url).to eq "https://secure.gravatar.com/avatar/#{md5}.png?d=mm&r=PG&s=40"
   end
 
-  describe '.ordered' do
-    it 'returns ordered by email' do
-      user3 = FactoryBot.create(:user, email: 'user3@example.com')
-      user1 = FactoryBot.create(:user, email: 'user1@example.com')
-      user2 = FactoryBot.create(:user, email: 'user2@example.com')
+  describe 'relations' do
+    it { is_expected.to have_many(:site_settings).dependent(:destroy) }
+    it { is_expected.to have_many(:sites).through(:site_settings) }
+  end
 
-      expect(described_class.ordered).to eq [user1, user2, user3]
+  describe 'scopes' do
+    describe '.ordered' do
+      it 'returns ordered by email' do
+        user3 = FactoryBot.create(:user, email: 'user3@example.com')
+        user1 = FactoryBot.create(:user, email: 'user1@example.com')
+        user2 = FactoryBot.create(:user, email: 'user2@example.com')
+
+        expect(described_class.ordered).to eq [user1, user2, user3]
+      end
     end
   end
 
-  it { is_expected.to strip_attribute(:name).collapse_spaces }
-  it { is_expected.to strip_attribute(:email).collapse_spaces }
+  describe 'before validations' do
+    it { is_expected.to strip_attribute(:name).collapse_spaces }
+    it { is_expected.to strip_attribute(:email).collapse_spaces }
+  end
 
-  describe '#valid?' do
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:name)
     end
