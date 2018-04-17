@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  fk_images_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_images_site_id  (site_id => sites.id)
 #
 
 require 'rails_helper'
@@ -66,19 +66,27 @@ RSpec.describe Image do
     end
   end
 
-  describe '.ordered' do
-    it 'returns ordered by name' do
-      image_c = FactoryBot.create(:image, name: 'image C')
-      image_a = FactoryBot.create(:image, name: 'image A')
-      image_b = FactoryBot.create(:image, name: 'image B')
+  describe 'relations' do
+    it { is_expected.to belong_to(:site) }
+  end
 
-      expect(described_class.ordered).to eq [image_a, image_b, image_c]
+  describe 'scopes' do
+    describe '.ordered' do
+      it 'returns ordered by name' do
+        image_c = FactoryBot.create(:image, name: 'image C')
+        image_a = FactoryBot.create(:image, name: 'image A')
+        image_b = FactoryBot.create(:image, name: 'image B')
+
+        expect(described_class.ordered).to eq [image_a, image_b, image_c]
+      end
     end
   end
 
-  it { is_expected.to strip_attribute(:name).collapse_spaces }
+  describe 'before validations' do
+    it { is_expected.to strip_attribute(:name).collapse_spaces }
+  end
 
-  describe '#valid?' do
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:name)
     end
