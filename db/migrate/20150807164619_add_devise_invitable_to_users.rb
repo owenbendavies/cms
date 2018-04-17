@@ -4,7 +4,7 @@ class AddDeviseInvitableToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :invitation_created_at, :datetime
     add_column :users, :invitation_sent_at, :datetime
     add_column :users, :invitation_accepted_at, :datetime
-    add_belongs_to :users, :invited_by, references: :users, index: { name: 'fk__users_invited_by_id' }
+    add_belongs_to :users, :invited_by, foreign_key: { to_table: :users, name: 'fk_users_invited_by_id' }, index: { name: 'fk__users_invited_by_id' }
 
     change_column_null :users, :encrypted_password, true
   end

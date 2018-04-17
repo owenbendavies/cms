@@ -17,14 +17,19 @@
 #
 # Foreign Keys
 #
-#  fk_site_settings_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
-#  fk_site_settings_user_id  (user_id => users.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_site_settings_site_id  (site_id => sites.id)
+#  fk_site_settings_user_id  (user_id => users.id)
 #
 
 require 'rails_helper'
 
 RSpec.describe SiteSetting do
-  describe '#valid?' do
+  describe 'relations' do
+    it { is_expected.to belong_to(:site) }
+    it { is_expected.to belong_to(:user) }
+  end
+
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:user)
     end

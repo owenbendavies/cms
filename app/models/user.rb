@@ -44,7 +44,7 @@
 #
 # Foreign Keys
 #
-#  fk_users_invited_by_id  (invited_by_id => users.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_users_invited_by_id  (invited_by_id => users.id)
 #
 
 class User < ApplicationRecord
@@ -65,14 +65,18 @@ class User < ApplicationRecord
 
   gravtastic default: 'mm', size: 40
 
-  has_many :sites, through: :site_settings, inverse_of: false
+  # relations
+  has_many :site_settings, dependent: :destroy
+  has_many :sites, through: :site_settings
 
-  schema_validations
-
+  # scopes
   scope(:ordered, -> { order(:email) })
 
+  # before validations
   strip_attributes collapse_spaces: true, replace_newlines: true
 
+  # validations
+  schema_validations
   validates :email, email_format: true
   validates :name, length: { minimum: 3 }
 
