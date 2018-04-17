@@ -29,6 +29,54 @@ ActiveRecord::Schema.define(version: 20180416152407) do
     t.datetime "updated_at", :null=>false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.integer  "site_id",    :null=>false, :index=>{:name=>"index_images_on_site_id", :using=>:btree}
+    t.string   "name",       :limit=>64, :null=>false
+    t.string   "filename",   :limit=>40, :null=>false, :index=>{:name=>"index_images_on_filename", :unique=>true, :using=>:btree}
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+
+    t.index ["site_id", "name"], :name=>"index_images_on_site_id_and_name", :unique=>true, :using=>:btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "site_id",    :null=>false, :index=>{:name=>"index_messages_on_site_id", :using=>:btree}
+    t.string   "name",       :limit=>64, :null=>false
+    t.string   "email",      :limit=>64, :null=>false
+    t.string   "phone",      :limit=>32
+    t.text     "message",    :null=>false
+    t.datetime "created_at", :null=>false, :index=>{:name=>"index_messages_on_created_at", :using=>:btree}
+    t.datetime "updated_at", :null=>false
+    t.string   "uid",        :null=>false, :index=>{:name=>"index_messages_on_uid", :unique=>true, :using=>:btree}
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.integer  "site_id",            :null=>false, :index=>{:name=>"index_pages_on_site_id", :using=>:btree}
+    t.string   "url",                :limit=>64, :null=>false
+    t.string   "name",               :limit=>64, :null=>false
+    t.boolean  "private",            :default=>false, :null=>false
+    t.boolean  "contact_form",       :default=>false, :null=>false
+    t.text     "html_content"
+    t.datetime "created_at",         :null=>false
+    t.datetime "updated_at",         :null=>false
+    t.integer  "main_menu_position"
+    t.text     "custom_html"
+    t.boolean  "hidden",             :default=>false, :null=>false
+
+    t.index ["site_id", "main_menu_position"], :name=>"index_pages_on_site_id_and_main_menu_position", :unique=>true, :using=>:btree
+    t.index ["site_id", "url"], :name=>"index_pages_on_site_id_and_url", :unique=>true, :using=>:btree
+  end
+
+  create_table "site_settings", force: :cascade do |t|
+    t.integer  "user_id",    :null=>false, :index=>{:name=>"index_site_settings_on_user_id", :using=>:btree}
+    t.integer  "site_id",    :null=>false, :index=>{:name=>"index_site_settings_on_site_id", :using=>:btree}
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+    t.boolean  "admin",      :default=>false, :null=>false
+
+    t.index ["user_id", "site_id"], :name=>"index_site_settings_on_user_id_and_site_id", :unique=>true, :using=>:btree
+  end
+
   create_table "sites", force: :cascade do |t|
     t.string   "host",                 :limit=>64, :null=>false, :index=>{:name=>"index_sites_on_host", :unique=>true, :using=>:btree}
     t.string   "name",                 :limit=>64, :null=>false
@@ -45,42 +93,10 @@ ActiveRecord::Schema.define(version: 20180416152407) do
     t.jsonb    "links",                :default=>[]
   end
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_images_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_images_on_site_id", :using=>:btree}
-    t.string   "name",       :limit=>64, :null=>false
-    t.string   "filename",   :limit=>40, :null=>false, :index=>{:name=>"index_images_on_filename", :unique=>true, :using=>:btree}
+  create_table "sns_notifications", force: :cascade do |t|
+    t.json     "message",    :null=>false
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
-
-    t.index ["site_id", "name"], :name=>"index_images_on_site_id_and_name", :unique=>true, :using=>:btree
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_messages_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_messages_on_site_id", :using=>:btree}
-    t.string   "name",       :limit=>64, :null=>false
-    t.string   "email",      :limit=>64, :null=>false
-    t.string   "phone",      :limit=>32
-    t.text     "message",    :null=>false
-    t.datetime "created_at", :null=>false, :index=>{:name=>"index_messages_on_created_at", :using=>:btree}
-    t.datetime "updated_at", :null=>false
-    t.string   "uid",        :null=>false, :index=>{:name=>"index_messages_on_uid", :unique=>true, :using=>:btree}
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.integer  "site_id",            :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_pages_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_pages_on_site_id", :using=>:btree}
-    t.string   "url",                :limit=>64, :null=>false
-    t.string   "name",               :limit=>64, :null=>false
-    t.boolean  "private",            :default=>false, :null=>false
-    t.boolean  "contact_form",       :default=>false, :null=>false
-    t.text     "html_content"
-    t.datetime "created_at",         :null=>false
-    t.datetime "updated_at",         :null=>false
-    t.integer  "main_menu_position"
-    t.text     "custom_html"
-    t.boolean  "hidden",             :default=>false, :null=>false
-
-    t.index ["site_id", "main_menu_position"], :name=>"index_pages_on_site_id_and_main_menu_position", :unique=>true, :using=>:btree
-    t.index ["site_id", "url"], :name=>"index_pages_on_site_id_and_url", :unique=>true, :using=>:btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,25 +125,9 @@ ActiveRecord::Schema.define(version: 20180416152407) do
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
-    t.integer  "invited_by_id",          :foreign_key=>{:references=>"users", :name=>"fk_users_invited_by_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_users_on_invited_by_id", :using=>:btree}
+    t.integer  "invited_by_id",          :index=>{:name=>"index_users_on_invited_by_id", :using=>:btree}
     t.string   "google_uid"
     t.string   "uid",                    :null=>false, :index=>{:name=>"index_users_on_uid", :unique=>true, :using=>:btree}
-  end
-
-  create_table "site_settings", force: :cascade do |t|
-    t.integer  "user_id",    :null=>false, :foreign_key=>{:references=>"users", :name=>"fk_site_settings_user_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_site_settings_on_user_id", :using=>:btree}
-    t.integer  "site_id",    :null=>false, :foreign_key=>{:references=>"sites", :name=>"fk_site_settings_site_id", :on_update=>:no_action, :on_delete=>:no_action}, :index=>{:name=>"index_site_settings_on_site_id", :using=>:btree}
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
-    t.boolean  "admin",      :default=>false, :null=>false
-
-    t.index ["user_id", "site_id"], :name=>"index_site_settings_on_user_id_and_site_id", :unique=>true, :using=>:btree
-  end
-
-  create_table "sns_notifications", force: :cascade do |t|
-    t.json     "message",    :null=>false
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
   end
 
   create_table "versions", force: :cascade do |t|
@@ -139,4 +139,10 @@ ActiveRecord::Schema.define(version: 20180416152407) do
     t.datetime "created_at", :index=>{:name=>"index_versions_on_created_at", :using=>:btree}
   end
 
+  add_foreign_key "images", "sites", name: "fk_images_site_id"
+  add_foreign_key "messages", "sites", name: "fk_messages_site_id"
+  add_foreign_key "pages", "sites", name: "fk_pages_site_id"
+  add_foreign_key "site_settings", "sites", name: "fk_site_settings_site_id"
+  add_foreign_key "site_settings", "users", name: "fk_site_settings_user_id"
+  add_foreign_key "users", "users", column: "invited_by_id", name: "fk_users_invited_by_id"
 end

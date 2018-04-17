@@ -1,5 +1,5 @@
 RSpec.shared_examples 'models' do
-  context '#versions', versioning: true do
+  context 'versioning', versioning: true do
     subject(:model) { FactoryBot.create(described_class.to_s.underscore) }
 
     it 'records creates' do

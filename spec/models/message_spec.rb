@@ -20,7 +20,7 @@
 #
 # Foreign Keys
 #
-#  fk_messages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_messages_site_id  (site_id => sites.id)
 #
 
 require 'rails_helper'
@@ -30,21 +30,29 @@ RSpec.describe Message do
     subject(:model) { FactoryBot.build(:message) }
   end
 
-  describe '.ordered' do
-    it 'returns ordered by created descending' do
-      message1 = FactoryBot.create(:message, created_at: Time.zone.now - 1.minute)
-      message3 = FactoryBot.create(:message, created_at: Time.zone.now - 3.minutes)
-      message2 = FactoryBot.create(:message, created_at: Time.zone.now - 2.minutes)
+  describe 'relations' do
+    it { is_expected.to belong_to(:site) }
+  end
 
-      expect(described_class.ordered).to eq [message1, message2, message3]
+  describe 'scopes' do
+    describe '.ordered' do
+      it 'returns ordered by created descending' do
+        message1 = FactoryBot.create(:message, created_at: Time.zone.now - 1.minute)
+        message3 = FactoryBot.create(:message, created_at: Time.zone.now - 3.minutes)
+        message2 = FactoryBot.create(:message, created_at: Time.zone.now - 2.minutes)
+
+        expect(described_class.ordered).to eq [message1, message2, message3]
+      end
     end
   end
 
-  it { is_expected.to strip_attribute(:name).collapse_spaces }
-  it { is_expected.to strip_attribute(:email).collapse_spaces }
-  it { is_expected.not_to strip_attribute(:message) }
+  describe 'before validations' do
+    it { is_expected.to strip_attribute(:name).collapse_spaces }
+    it { is_expected.to strip_attribute(:email).collapse_spaces }
+    it { is_expected.not_to strip_attribute(:message) }
+  end
 
-  describe '#valid?' do
+  describe 'validations' do
     it 'validates database schema' do
       is_expected.to validate_presence_of(:name)
     end

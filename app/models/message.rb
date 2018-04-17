@@ -20,7 +20,7 @@
 #
 # Foreign Keys
 #
-#  fk_messages_site_id  (site_id => sites.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_messages_site_id  (site_id => sites.id)
 #
 
 class Message < ApplicationRecord
@@ -38,12 +38,17 @@ class Message < ApplicationRecord
 
   attr_accessor :do_not_fill_in
 
-  schema_validations
+  # relations
+  belongs_to :site
 
+  # scopes
   scope(:ordered, -> { order(created_at: :desc) })
 
+  # before validations
   strip_attributes except: :message, collapse_spaces: true, replace_newlines: true
 
+  # validations
+  schema_validations
   validates :name, length: { minimum: 3 }
   validates :email, email_format: true
   validates :phone, phone: { allow_blank: true }

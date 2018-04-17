@@ -44,7 +44,7 @@
 #
 # Foreign Keys
 #
-#  fk_users_invited_by_id  (invited_by_id => users.id) ON DELETE => no_action ON UPDATE => no_action
+#  fk_users_invited_by_id  (invited_by_id => users.id)
 #
 
 FactoryBot.define do
