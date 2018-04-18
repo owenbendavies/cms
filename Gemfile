@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
-ruby '2.3.7'
+ruby '2.5.1'
 
-gem 'rails'
+gem 'rails', '~> 5.1.0'
 
 # Services
 gem 'aws-sdk-sns' # AWS SDK for SNS
 gem 'fog-aws' # AWS file upload
 
 # Databases
-gem 'pg', '< 1' # TODO: upgrade when fixed - PostgreSQL
+gem 'pg' # PostgreSQL
 gem 'seedbank' # Better database seeds
 
 # Frameworks
@@ -80,7 +80,7 @@ group :development, :test do
   gem 'grape-swagger-rails' # API docs viewer
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
-  gem 'spring' # Quick boot
+  gem 'spring-watcher-listen' # Quick boot
 
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
@@ -99,6 +99,7 @@ end
 group :development do
   gem 'annotate', require: false # Adds comments of database schema to code
   gem 'foreman', require: false # Starts multiple processes
+  gem 'web-console' # Web console debugger
 end
 
 group :test do

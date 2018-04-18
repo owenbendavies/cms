@@ -13,7 +13,7 @@ RSpec.describe CarrierWave do
   end
 
   it 'sets cache as 1 year' do
-    expect(uploaded_file.cache_control).to eq 'public, max-age=31557600'
+    expect(uploaded_file.cache_control).to eq 'public, max-age=31556952'
   end
 
   it 'uploads files as private' do
