@@ -1,6 +1,7 @@
 /.bundle/
 /coverage/
 /log/*.log
+/node_modules/
 /public/uploads/
 /tmp/
 /vendor/bundle/

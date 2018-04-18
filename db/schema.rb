@@ -15,145 +15,145 @@ ActiveRecord::Schema.define(version: 20180416152407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
+  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue",                  null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+    t.string "locked_by"
+    t.string "queue", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "site_id",               null: false
-    t.string   "name",       limit: 64, null: false
-    t.string   "filename",   limit: 40, null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["filename"], name: "index_images_on_filename", unique: true, using: :btree
-    t.index ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true, using: :btree
-    t.index ["site_id"], name: "index_images_on_site_id", using: :btree
+  create_table "images", id: :serial, force: :cascade do |t|
+    t.integer "site_id", null: false
+    t.string "name", limit: 64, null: false
+    t.string "filename", limit: 40, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filename"], name: "index_images_on_filename", unique: true
+    t.index ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true
+    t.index ["site_id"], name: "index_images_on_site_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer  "site_id",               null: false
-    t.string   "name",       limit: 64, null: false
-    t.string   "email",      limit: 64, null: false
-    t.string   "phone",      limit: 32
-    t.text     "message",               null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "uid",                   null: false
-    t.index ["created_at"], name: "index_messages_on_created_at", using: :btree
-    t.index ["site_id"], name: "index_messages_on_site_id", using: :btree
-    t.index ["uid"], name: "index_messages_on_uid", unique: true, using: :btree
+  create_table "messages", id: :serial, force: :cascade do |t|
+    t.integer "site_id", null: false
+    t.string "name", limit: 64, null: false
+    t.string "email", limit: 64, null: false
+    t.string "phone", limit: 32
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uid", null: false
+    t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["site_id"], name: "index_messages_on_site_id"
+    t.index ["uid"], name: "index_messages_on_uid", unique: true
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.integer  "site_id",                                       null: false
-    t.string   "url",                limit: 64,                 null: false
-    t.string   "name",               limit: 64,                 null: false
-    t.boolean  "private",                       default: false, null: false
-    t.boolean  "contact_form",                  default: false, null: false
-    t.text     "html_content"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.integer  "main_menu_position"
-    t.text     "custom_html"
-    t.boolean  "hidden",                        default: false, null: false
-    t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true, using: :btree
-    t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true, using: :btree
-    t.index ["site_id"], name: "index_pages_on_site_id", using: :btree
+  create_table "pages", id: :serial, force: :cascade do |t|
+    t.integer "site_id", null: false
+    t.string "url", limit: 64, null: false
+    t.string "name", limit: 64, null: false
+    t.boolean "private", default: false, null: false
+    t.boolean "contact_form", default: false, null: false
+    t.text "html_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "main_menu_position"
+    t.text "custom_html"
+    t.boolean "hidden", default: false, null: false
+    t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true
+    t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true
+    t.index ["site_id"], name: "index_pages_on_site_id"
   end
 
-  create_table "site_settings", force: :cascade do |t|
-    t.integer  "user_id",                    null: false
-    t.integer  "site_id",                    null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "admin",      default: false, null: false
-    t.index ["site_id"], name: "index_site_settings_on_site_id", using: :btree
-    t.index ["user_id", "site_id"], name: "index_site_settings_on_user_id_and_site_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_site_settings_on_user_id", using: :btree
+  create_table "site_settings", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "site_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
+    t.index ["site_id"], name: "index_site_settings_on_site_id"
+    t.index ["user_id", "site_id"], name: "index_site_settings_on_user_id_and_site_id", unique: true
+    t.index ["user_id"], name: "index_site_settings_on_user_id"
   end
 
-  create_table "sites", force: :cascade do |t|
-    t.string   "host",                 limit: 64,                 null: false
-    t.string   "name",                 limit: 64,                 null: false
-    t.string   "sub_title",            limit: 64
-    t.string   "copyright",            limit: 64
-    t.string   "google_analytics",     limit: 32
-    t.string   "charity_number",       limit: 32
-    t.string   "stylesheet_filename",  limit: 40
-    t.text     "sidebar_html_content"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.boolean  "main_menu_in_footer",             default: false, null: false
-    t.boolean  "separate_header",                 default: true,  null: false
-    t.jsonb    "links",                           default: []
-    t.index ["host"], name: "index_sites_on_host", unique: true, using: :btree
-    t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true, using: :btree
+  create_table "sites", id: :serial, force: :cascade do |t|
+    t.string "host", limit: 64, null: false
+    t.string "name", limit: 64, null: false
+    t.string "sub_title", limit: 64
+    t.string "copyright", limit: 64
+    t.string "google_analytics", limit: 32
+    t.string "charity_number", limit: 32
+    t.string "stylesheet_filename", limit: 40
+    t.text "sidebar_html_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "main_menu_in_footer", default: false, null: false
+    t.boolean "separate_header", default: true, null: false
+    t.jsonb "links", default: []
+    t.index ["host"], name: "index_sites_on_host", unique: true
+    t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true
   end
 
-  create_table "sns_notifications", force: :cascade do |t|
-    t.json     "message",    null: false
+  create_table "sns_notifications", id: :serial, force: :cascade do |t|
+    t.json "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 64,                 null: false
-    t.string   "encrypted_password",     limit: 64
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.integer  "sign_in_count",                     default: 0,     null: false
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", limit: 64, null: false
+    t.string "encrypted_password", limit: 64
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.integer  "failed_attempts",                   default: 0,     null: false
-    t.string   "unlock_token"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
     t.datetime "locked_at"
     t.datetime "remember_created_at"
-    t.string   "reset_password_token"
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string   "confirmation_token"
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.boolean  "sysadmin",                          default: false, null: false
-    t.string   "name",                   limit: 64,                 null: false
-    t.string   "invitation_token"
+    t.string "unconfirmed_email"
+    t.boolean "sysadmin", default: false, null: false
+    t.string "name", limit: 64, null: false
+    t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
-    t.integer  "invited_by_id"
-    t.string   "google_uid"
-    t.string   "uid",                                               null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
-    t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["uid"], name: "index_users_on_uid", unique: true, using: :btree
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+    t.integer "invited_by_id"
+    t.string "google_uid"
+    t.string "uid", null: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
-    t.string   "whodunnit"
-    t.text     "object"
+  create_table "versions", id: :serial, force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
     t.datetime "created_at"
-    t.index ["created_at"], name: "index_versions_on_created_at", using: :btree
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+    t.index ["created_at"], name: "index_versions_on_created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "images", "sites", name: "fk_images_site_id"
