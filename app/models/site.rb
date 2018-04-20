@@ -24,8 +24,6 @@
 #
 
 class Site < ApplicationRecord
-  LINKS_JSON_SCHEMA = Rails.root.join('config', 'json_schemas', 'site_links.json').to_s
-
   mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
 
   # relations
@@ -49,11 +47,50 @@ class Site < ApplicationRecord
   strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
 
   # validations
-  schema_validations
-  validates :name, length: { minimum: 3 }
-  validates :sub_title, length: { allow_nil: true, minimum: 3 }
-  validates :google_analytics, format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true }
-  validates :links, json: { schema: LINKS_JSON_SCHEMA }
+  validates(
+    :host,
+    length: { maximum: 64 },
+    presence: true,
+    uniqueness: true
+  )
+
+  validates(
+    :name,
+    length: { minimum: 3, maximum: 64 },
+    presence: true
+  )
+
+  validates(
+    :sub_title,
+    length: { allow_nil: true, minimum: 3, maximum: 64 }
+  )
+
+  validates(
+    :copyright,
+    length: { allow_nil: true, maximum: 64 }
+  )
+
+  validates(
+    :google_analytics,
+    format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true },
+    length: { allow_nil: true, maximum: 32 }
+  )
+
+  validates(
+    :charity_number,
+    length: { allow_nil: true, maximum: 32 }
+  )
+
+  validates(
+    :stylesheet_filename,
+    length: { allow_nil: true, maximum: 40 },
+    uniqueness: { allow_nil: true }
+  )
+
+  validates(
+    :links,
+    json: { schema: Rails.root.join('config', 'json_schemas', 'site_links.json').to_s }
+  )
 
   def address
     protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'

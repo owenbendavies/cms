@@ -53,11 +53,10 @@ RSpec.describe Message do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:name)
-    end
+    it { is_expected.to validate_presence_of(:site) }
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:name) }
 
     it { is_expected.to allow_value('someone@example.com').for(:email) }
 
@@ -66,12 +65,17 @@ RSpec.describe Message do
         .for(:email).with_message('is not a valid email address')
     end
 
+    it { is_expected.to validate_length_of(:email).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:email) }
+
+    it { is_expected.to validate_length_of(:phone).is_at_most(32) }
     it { is_expected.to allow_value('07910201293').for(:phone) }
     it { is_expected.to allow_value('+1-541-754-3010').for(:phone) }
     it { is_expected.to allow_value(nil).for(:phone) }
     it { is_expected.not_to allow_value('9210').for(:phone).with_message('is invalid') }
 
     it { is_expected.to validate_length_of(:message).is_at_most(2048) }
+    it { is_expected.to validate_presence_of(:message) }
 
     it do
       is_expected.to validate_length_of(:do_not_fill_in)

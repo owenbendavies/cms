@@ -48,10 +48,38 @@ class Message < ApplicationRecord
   strip_attributes except: :message, collapse_spaces: true, replace_newlines: true
 
   # validations
-  schema_validations
-  validates :name, length: { minimum: 3 }
-  validates :email, email_format: true
-  validates :phone, phone: { allow_blank: true }
-  validates :message, length: { maximum: 2048 }
-  validates :do_not_fill_in, length: { maximum: 0 }
+  validates(
+    :site,
+    presence: true
+  )
+
+  validates(
+    :name,
+    length: { minimum: 3, maximum: 64 },
+    presence: true
+  )
+
+  validates(
+    :email,
+    email_format: true,
+    length: { maximum: 64 },
+    presence: true
+  )
+
+  validates(
+    :phone,
+    length: { maximum: 32 },
+    phone: { allow_blank: true }
+  )
+
+  validates(
+    :message,
+    length: { maximum: 2048 },
+    presence: true
+  )
+
+  validates(
+    :do_not_fill_in,
+    length: { maximum: 0 }
+  )
 end

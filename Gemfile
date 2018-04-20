@@ -39,9 +39,6 @@ gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
 gem 'paper_trail' # Database audit
 gem 'phonelib' # Phone number validation
-# gem 'schema_associations' # TODO: add back - Automatically adds ActiveRecord relations
-# gem 'schema_auto_foreign_keys' # TODO: add back - Automatically adds foreign keys to migrations
-gem 'schema_validations' # Automatically adds ActiveRecord validations from database schema
 gem 'strip_attributes' # Cleans whitespace from model fields
 gem 'validates_email_format_of' # Email validation
 
