@@ -33,5 +33,20 @@ class Image < ApplicationRecord
   strip_attributes collapse_spaces: true, replace_newlines: true
 
   # validations
-  schema_validations except: %i[created_at updated_at filename]
+  validates(
+    :site,
+    presence: true
+  )
+
+  validates(
+    :name,
+    length: { maximum: 64 },
+    presence: true,
+    uniqueness: { scope: :site_id }
+  )
+
+  validates(
+    :filename,
+    uniqueness: true
+  )
 end

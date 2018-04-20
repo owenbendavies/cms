@@ -4,7 +4,15 @@ module DefaultUid
   CHARSET = Array('a'..'z') + Array(0..9)
 
   included do
+    # before validations
     before_validation :set_uid
+
+    # validations
+    validates(
+      :uid,
+      presence: true,
+      uniqueness: true
+    )
   end
 
   def set_uid

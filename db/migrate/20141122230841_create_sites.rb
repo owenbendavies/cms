@@ -1,7 +1,7 @@
 class CreateSites < ActiveRecord::Migration[5.0]
   def change
     create_table :sites do |table|
-      table.string :host, null: false, limit: 64, index: :unique
+      table.string :host, null: false, limit: 64
       table.string :name, null: false, limit: 64
       table.string :sub_title, limit: 64
       table.string :layout, default: 'one_column', limit: 32, null: false
@@ -15,6 +15,8 @@ class CreateSites < ActiveRecord::Migration[5.0]
 
       table.boolean :main_menu_in_footer, default: false, null: false
       table.boolean :separate_header, default: true, null: false
+
+      table.index :host, unique: true
     end
   end
 end

@@ -76,9 +76,19 @@ class User < ApplicationRecord
   strip_attributes collapse_spaces: true, replace_newlines: true
 
   # validations
-  schema_validations
-  validates :email, email_format: true
-  validates :name, length: { minimum: 3 }
+  validates(
+    :email,
+    email_format: true,
+    length: { maximum: 64 },
+    presence: true,
+    uniqueness: true
+  )
+
+  validates(
+    :name,
+    length: { minimum: 3, maximum: 64 },
+    presence: true
+  )
 
   def self.find_for_google(uid, email)
     user = User.find_by(google_uid: uid) || User.find_by(email: email)

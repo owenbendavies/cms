@@ -89,11 +89,17 @@ RSpec.describe Page do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:name)
-    end
+    subject { FactoryBot.build :page }
+
+    it { is_expected.to validate_presence_of(:site) }
 
     it { is_expected.not_to allow_value('login').for(:url) }
+    it { is_expected.to validate_length_of(:url).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:url) }
+    it { is_expected.to validate_uniqueness_of(:url).scoped_to(:site_id) }
+
+    it { is_expected.to validate_length_of(:name).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:name) }
   end
 
   describe '#name=' do

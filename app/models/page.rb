@@ -52,8 +52,24 @@ class Page < ApplicationRecord
   )
 
   # validations
-  schema_validations
-  validates :url, exclusion: { in: INVALID_URLS }
+  validates(
+    :site,
+    presence: true
+  )
+
+  validates(
+    :url,
+    exclusion: { in: INVALID_URLS },
+    length: { maximum: 64 },
+    presence: true,
+    uniqueness: { scope: :site_id }
+  )
+
+  validates(
+    :name,
+    length: { maximum: 64 },
+    presence: true
+  )
 
   def clean_html_content
     self.html_content = sanitize(html_content, tags: HTML_TAGS, attributes: HTML_ATTRIBUTES)
