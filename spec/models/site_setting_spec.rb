@@ -30,8 +30,11 @@ RSpec.describe SiteSetting do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:user)
-    end
+    subject { FactoryBot.build :site_setting }
+
+    it { is_expected.to validate_presence_of(:site) }
+    it { is_expected.to validate_uniqueness_of(:site).scoped_to(:user_id) }
+
+    it { is_expected.to validate_presence_of(:user) }
   end
 end

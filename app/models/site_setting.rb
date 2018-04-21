@@ -27,5 +27,14 @@ class SiteSetting < ApplicationRecord
   belongs_to :user
 
   # validations
-  schema_validations
+  validates(
+    :site,
+    presence: true,
+    uniqueness: { scope: :user_id }
+  )
+
+  validates(
+    :user,
+    presence: true
+  )
 end

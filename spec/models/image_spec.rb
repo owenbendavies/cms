@@ -87,8 +87,14 @@ RSpec.describe Image do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:name)
-    end
+    subject { FactoryBot.build(:image) }
+
+    it { is_expected.to validate_presence_of(:site) }
+
+    it { is_expected.to validate_length_of(:name).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name).scoped_to(:site_id) }
+
+    it { is_expected.to validate_uniqueness_of(:filename) }
   end
 end
