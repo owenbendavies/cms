@@ -36,7 +36,7 @@ class Site < ApplicationRecord
   has_many(
     :main_menu_pages,
     -> { in_list.order(:main_menu_position) },
-    class_name: Page,
+    class_name: 'Page',
     inverse_of: :site
   )
 
