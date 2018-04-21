@@ -17,15 +17,10 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Max: 100 # Default is 80 which is a bit narrow
-  Exclude:
-    - 'db/migrate/20141123000846_create_site_settings.rb'
-    - 'db/migrate/20141123002911_create_pages.rb'
-    - 'db/migrate/20141123011326_create_messages.rb'
-    - 'db/migrate/20141123011330_create_images.rb'
-    - 'db/migrate/20150807164619_add_devise_invitable_to_users.rb'
 
 Metrics/MethodLength:
   Exclude:
+    - 'db/migrate/20141123002911_create_pages.rb' # OK to be long
     - 'db/migrate/20141122230841_create_sites.rb' # OK to be long
     - 'db/migrate/20150926172242_create_delayed_jobs.rb' # OK to be long
 

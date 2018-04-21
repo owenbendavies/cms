@@ -1,7 +1,7 @@
 class CreatePages < ActiveRecord::Migration[5.0]
   def change
     create_table :pages do |table|
-      table.belongs_to :site, null: false, foreign_key: { name: 'fk_pages_site_id' }, index: { name: 'fk__pages_site_id' }
+      table.belongs_to :site, null: false, index: { name: 'fk__pages_site_id' }
 
       table.string :url, null: false, limit: 64
       table.string :name, null: false, limit: 64
@@ -12,6 +12,8 @@ class CreatePages < ActiveRecord::Migration[5.0]
       table.timestamps
 
       table.index %i[site_id url], unique: true
+
+      table.foreign_key :sites, name: 'fk_pages_site_id'
     end
   end
 end

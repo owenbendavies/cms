@@ -107,23 +107,31 @@ RSpec.describe Site do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:name)
-    end
+    subject { FactoryBot.build(:site) }
+
+    it { is_expected.to validate_length_of(:host).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:host) }
+    it { is_expected.to validate_uniqueness_of(:host) }
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:name) }
 
     it { is_expected.to validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
+
+    it { is_expected.to validate_length_of(:copyright).is_at_most(64) }
 
     it { is_expected.to allow_value('').for(:google_analytics) }
     it { is_expected.to allow_value('UA-1234-1').for(:google_analytics) }
     it { is_expected.to allow_value('UA-123456-1').for(:google_analytics) }
     it { is_expected.to allow_value('UA-123456-22').for(:google_analytics) }
-
     it { is_expected.not_to allow_value('XA-1234-1').for(:google_analytics) }
     it { is_expected.not_to allow_value('UA-1234').for(:google_analytics) }
     it { is_expected.not_to allow_value('UA123').for(:google_analytics) }
     it { is_expected.not_to allow_value('AS').for(:google_analytics) }
+
+    it { is_expected.to validate_length_of(:charity_number).is_at_most(32) }
+
+    it { is_expected.to validate_uniqueness_of(:stylesheet_filename) }
 
     it do
       links = [{ 'name' => 'Site', 'url' => 'http://www.example.com', 'icon' => nil }]

@@ -84,16 +84,18 @@ RSpec.describe User do
   end
 
   describe 'validations' do
-    it 'validates database schema' do
-      is_expected.to validate_presence_of(:name)
-    end
-
     it { is_expected.to allow_value('someone@example.com').for(:email) }
 
     it do
       is_expected.not_to allow_value('test@')
         .for(:email).with_message('is not a valid email address')
     end
+
+    it { is_expected.to validate_length_of(:email).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:email) }
+
+    it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
+    it { is_expected.to validate_presence_of(:name) }
 
     it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(128) }
 
@@ -115,8 +117,6 @@ RSpec.describe User do
       user.valid?
       expect(user.errors[:password].first).to include 'This is a top-10 common password'
     end
-
-    it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
   end
 
   describe '#admin_for_site?' do
