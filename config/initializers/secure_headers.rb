@@ -1,7 +1,7 @@
 SecureHeaders::Configuration.default do |config|
   config.hsts = SecureHeaders::OPT_OUT
 
-  default_src = ["'self'", "'unsafe-inline'", ENV['ASSET_HOST']]
+  asset_src = ["'self'", "'unsafe-inline'", ENV['ASSET_HOST']].compact
 
   config.csp = {
     preserve_schemes: true,
@@ -10,10 +10,10 @@ SecureHeaders::Configuration.default do |config|
     connect_src: ["'self'", 'https://api.rollbar.com'],
     font_src: ["'self'", 'https:'],
     img_src: ["'self'", 'https:', 'data:'],
-    script_src: default_src + [
+    script_src: asset_src + [
       'https://www.google-analytics.com',
       'https://cdnjs.cloudflare.com'
     ],
-    style_src: default_src + [CarrierWave::Uploader::Base.asset_host]
+    style_src: asset_src
   }
 end
