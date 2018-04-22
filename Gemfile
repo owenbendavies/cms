@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.1'
 
-gem 'rails', '~> 5.1.0'
+gem 'rails'
 
 # Services
 gem 'aws-sdk-sns' # AWS SDK for SNS
@@ -54,6 +54,7 @@ gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
+gem 'bootsnap' # Fast booting
 gem 'puma' # Web server
 
 # Monitoring

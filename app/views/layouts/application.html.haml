@@ -4,13 +4,14 @@
     %meta{ charset: 'utf-8' }
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
     %title= page_title(@site, content_for(:title))
+    = csrf_meta_tag
+    = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
     = stylesheet_link_tag @site.stylesheet.public_url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet_filename
     = render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN']
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
     = content_for(:head)
     = render 'layouts/google_analytics', site: @site if @site.google_analytics
-    = csrf_meta_tag
 
   %body{ class: body_class }
     = render 'layouts/topbar', site: @site, page: @page if user_signed_in?
