@@ -4,11 +4,19 @@ cd `dirname $0`/..
 
 find_extensions () {
   find . -name "*.$1" \
+    -not -path "./coverage/*" \
+    -not -path "./node_modules/*" \
     -not -path "./public/assets/*" \
     -not -path "./vendor/*"
 }
 
 set -v
+
+./bin/yarn
+
+./node_modules/.bin/eslint $(find_extensions js)
+
+./node_modules/.bin/jshint $(find_extensions js)
 
 ./bin/bundle-audit update && ./bin/bundle-audit
 
@@ -23,8 +31,6 @@ HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-li
 ./bin/mdl --style config/markdown $(find_extensions md)
 
 ./bin/rails_best_practices --silent
-
-./bin/rails coffeelint
 
 ./bin/rubocop --format simple
 
