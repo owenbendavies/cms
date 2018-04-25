@@ -77,9 +77,15 @@
     :why: 
     :versions: []
     :when: 2018-03-21 08:27:44.210680320 Z
-- - :approve
-  - cms
+- - :whitelist
+  - "(WTFPL OR MIT)"
   - :who: 
     :why: 
     :versions: []
-    :when: 2018-04-18 09:20:46.181874000 Z
+    :when: 2018-04-25 10:08:44.178182000 Z
+- - :whitelist
+  - "(MIT AND JSON)"
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-04-25 10:11:58.682630000 Z
