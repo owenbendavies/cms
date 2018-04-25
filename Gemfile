@@ -64,14 +64,8 @@ gem 'rollbar' # Error notifications
 gem 'scout_apm' # Application monitoring
 
 group :assets, :development do
-  gem 'autosize-rails' # JavaScript expanding textarea
-  gem 'bootstrap' # CSS framework
-  gem 'coffee-rails' # CoffeeScript for JavaScript
   gem 'font-awesome-sass' # Icons
-  gem 'google-analytics-turbolinks' # Make Google Analytics work for TurboLinks
-  gem 'jquery-rails' # jQuery
   gem 'sass-rails' # Sass for stylesheets
-  gem 'turbolinks' # JavaScript switching between pages
   gem 'uglifier' # JavaScript compression
 end
 
@@ -86,7 +80,6 @@ group :development, :test do
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
   gem 'bundler-audit', require: false # Checks for venerable Gems
-  gem 'coffeelint' # CoffeeScript code quality
   gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'jsonlint', require: false # JSON code quality

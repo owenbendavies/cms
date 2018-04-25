@@ -1,5 +1,15 @@
 {
   "name": "cms",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "autosize": "^4.0.1",
+    "bootstrap": "^4.1.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "turbolinks": "^5.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "jshint": "^2.9.5"
+  }
 }
