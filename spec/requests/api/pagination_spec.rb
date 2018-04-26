@@ -63,4 +63,24 @@ RSpec.describe 'API pagination' do
       expect(uids).to eq objects[0, 5].map(&:uid)
     end
   end
+
+  context 'with per_page too large' do
+    let(:request_path) { '/api/messages?per_page=101' }
+    let(:expected_status) { 400 }
+
+    let(:expected_body) do
+      {
+        'error' => 'Bad request',
+        'message' => 'Invalid parameters',
+        'errors' => {
+          'per_page' => ['does not have a valid value']
+        }
+      }
+    end
+
+    it 'returns error' do
+      request_page
+      expect(json_body).to eq expected_body
+    end
+  end
 end

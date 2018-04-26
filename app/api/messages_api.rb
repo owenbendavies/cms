@@ -1,7 +1,7 @@
 class MessagesAPI < ApplicationAPI
   namespace :messages do
     desc t('.index.description'), success: Message::Entity, is_array: true
-    paginate
+    paginate_with_max_per_page
     get do
       authorize Message, :index?
       present paginate(policy_scope(Message).ordered)

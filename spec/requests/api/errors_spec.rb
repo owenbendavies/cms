@@ -23,7 +23,10 @@ RSpec.describe 'API errors' do
     let(:request_method) { :get }
     let(:request_path) { '/api/messages?per_page=bad' }
 
-    include_examples 'renders bad request', 'per_page' => ['is invalid']
+    include_examples(
+      'renders bad request',
+      'per_page' => ['is invalid', 'does not have a valid value']
+    )
   end
 
   context 'with missing parameters' do
