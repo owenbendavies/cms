@@ -7,4 +7,8 @@ class ApplicationAPI < Grape::API
 
     I18n.translate(key, options)
   end
+
+  def self.paginate_with_max_per_page
+    paginate per_page: 10, max_per_page: 100, enforce_max_per_page: true
+  end
 end
