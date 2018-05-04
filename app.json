@@ -6,6 +6,9 @@
     "buildpacks": [
         {
             "url": "heroku/ruby"
+        },
+        {
+            "url": "heroku/nodejs"
         }
     ],
     "description": "A Content Management System (CMS) written with Ruby on Rails",
@@ -24,10 +27,6 @@
         },
         "AWS_SECRET_ACCESS_KEY": {
             "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
-        },
-        "BUNDLE_WITHOUT": {
-            "description": "Don't install asset gems on Heroku",
-            "value": "development:test:assets"
         },
         "DISABLE_SPRING": {
             "description": "Ensures Spring is not running on server",
