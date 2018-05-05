@@ -38,6 +38,12 @@ Resources:
             PathPattern: /assets/*
             TargetOriginId: App
             ViewerProtocolPolicy: redirect-to-https
+          - Compress: true
+            ForwardedValues:
+              QueryString: false
+            PathPattern: /packs/*
+            TargetOriginId: App
+            ViewerProtocolPolicy: redirect-to-https
         Comment: !Ref "AWS::StackName"
         DefaultCacheBehavior:
           Compress: true
