@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  protect_from_forgery with: :reset_session
+
   rescue_from ActionController::InvalidCrossOriginRequest, with: :page_not_found
   rescue_from ActionController::UnknownFormat, with: :page_not_found
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
