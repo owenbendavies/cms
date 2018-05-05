@@ -1,12 +1,11 @@
 {
     "env": {
         "browser": true,
-        "jquery": true
+        "es6": true
     },
     "extends": "eslint:recommended",
-    "globals": {
-        "autosize": false,
-        "ga": false
+    "parserOptions": {
+        "sourceType": "module"
     },
     "rules": {
         "indent": ["error", 2],

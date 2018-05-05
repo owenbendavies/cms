@@ -3,8 +3,9 @@ require: rubocop-rspec # Enable added RSpec checks
 AllCops:
   Exclude:
     - 'config/initializers/simple_form.rb' # Auto generated file
-    - 'db/schema.rb' # Auto generated file so can't control
-    - 'vendor/bundle/**/*' # External libraries so can't control
+    - 'db/schema.rb' # Auto generated file
+    - 'node_modules/**/*' # External libraries
+    - 'vendor/bundle/**/*' # External libraries
 
 Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
   Enabled: false

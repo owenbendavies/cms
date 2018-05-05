@@ -8,7 +8,6 @@ export RAILS_ENV='test'
 
 if [ $# -gt 0 ]; then
   export DEV_ASSETS=true
-  export RAILS_GROUPS=assets
   export WEB_TIMEOUT=0
 
   set -v
@@ -21,6 +20,7 @@ else
   set -v
 
   eval 'DATABASE_TIMEOUT=5 ./bin/rails db:create db:schema:load'
+  eval './bin/rails assets:precompile'
   eval "$rspec --order random"
 fi
 
