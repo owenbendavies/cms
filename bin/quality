@@ -7,6 +7,8 @@ find_extensions () {
     -not -path "./coverage/*" \
     -not -path "./node_modules/*" \
     -not -path "./public/assets/*" \
+    -not -path "./public/packs/*" \
+    -not -path "./public/packs-test/*" \
     -not -path "./vendor/*"
 }
 
@@ -15,8 +17,6 @@ set -v
 ./bin/yarn
 
 ./node_modules/.bin/eslint $(find_extensions js)
-
-./node_modules/.bin/jshint $(find_extensions js)
 
 ./bin/bundle-audit update && ./bin/bundle-audit
 
