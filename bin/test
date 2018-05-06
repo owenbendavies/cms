@@ -20,7 +20,7 @@ else
   set -v
 
   eval 'DATABASE_TIMEOUT=5 ./bin/rails db:create db:schema:load'
-  eval './bin/rails assets:precompile'
+  eval './bin/compile'
   eval "$rspec --order random"
 fi
 

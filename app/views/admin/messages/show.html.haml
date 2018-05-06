@@ -2,7 +2,7 @@
   content_for :title, t('.title')
   content_for :page_icon, t('.icon')
 
-%p= timeago_tag(@message.created_at, force: true)
+%p= timeago(@message.created_at)
 
 %p= @message.name
 

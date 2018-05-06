@@ -15,6 +15,10 @@ module ApplicationHelper
     "#{site.copyright || site.name} © #{Time.zone.now.year}"
   end
 
+  def icon_tag(css_class)
+    content_tag(:i, nil, class: css_class)
+  end
+
   def page_title(site, content)
     title = [site.name]
 
@@ -31,8 +35,8 @@ module ApplicationHelper
     icon_tag('fas fa-check fa-fw') if boolean
   end
 
-  def icon_tag(css_class)
-    content_tag(:i, nil, class: css_class)
+  def timeago(time)
+    content_tag(:time, time.to_s(:short), class: 'js-timeago', datetime: time.iso8601)
   end
 
   def rollbar_js
