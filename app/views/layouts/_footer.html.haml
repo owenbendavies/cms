@@ -13,7 +13,7 @@
       - if page&.persisted?
         %li.footer__last-updated
           = t('.last_updated')
-          = timeago_tag(page.updated_at, force: true)
+          = timeago(page.updated_at)
 
       %li.footer__copyright= copyright(site)
 
