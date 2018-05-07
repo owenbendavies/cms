@@ -48,7 +48,6 @@ gem 'xml-sitemap' # Generates XML site map
 # View Gems
 gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
-gem 'rails-timeago' # Nice time tags
 gem 'simple_form' # Easier forms
 gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination

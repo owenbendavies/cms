@@ -46,7 +46,7 @@ RSpec.describe 'Application web server' do
   context 'when visiting a asset' do
     let(:request_path) do
       Dir
-        .glob(Rails.root.join('public', 'assets', 'application-*.js'))
+        .glob(Rails.root.join('public', '*', 'application-*.js'))
         .first
         .gsub(Rails.root.join('public').to_s, '')
     end
