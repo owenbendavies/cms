@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount GrapeSwaggerRails::Engine, at: '/swagger' if Rails.env.development?
   mount API, at: '/api'
 
   root 'systems#home'
