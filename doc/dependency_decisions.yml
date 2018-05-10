@@ -191,3 +191,21 @@
     :why: 
     :versions: []
     :when: 2018-05-05 09:13:29.507834000 Z
+- - :whitelist
+  - "(CC-BY-4.0 AND MIT)"
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-05-10 10:37:53.954304000 Z
+- - :approve
+  - "@fortawesome/fontawesome-common-types"
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-05-10 10:38:58.947982000 Z
+- - :whitelist
+  - LGPL-2.1
+  - :who: 
+    :why: 
+    :versions: []
+    :when: 2018-05-10 10:40:23.030114000 Z

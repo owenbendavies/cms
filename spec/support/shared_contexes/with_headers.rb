@@ -3,11 +3,11 @@ RSpec.shared_context 'with headers' do
 
   let(:non_random_headers) { response.headers.except(*random_headers) }
 
-  let(:defaul_src) { "'self' 'unsafe-inline' http://localhost:37511" }
+  let(:asset_src) { "'self' 'unsafe-inline' http://localhost:37511" }
 
   let(:script_src) do
     [
-      defaul_src,
+      asset_src,
       'https://www.google-analytics.com',
       'https://cdnjs.cloudflare.com'
     ].join(' ')
@@ -18,10 +18,10 @@ RSpec.shared_context 'with headers' do
       "default-src 'none'",
       "child-src 'self'",
       "connect-src 'self' https://api.rollbar.com",
-      "font-src 'self' https:",
+      "font-src 'self' https: data:",
       "img-src 'self' https: data:",
       "script-src #{script_src}",
-      "style-src #{defaul_src}"
+      "style-src #{asset_src}"
     ].join('; ')
   end
 

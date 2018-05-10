@@ -9,6 +9,6 @@ export SECRET_KEY_BASE='xxxxxxxxxxxxxxxxxxxx'
 
 set -v
 
-./bin/rails assets:precompile assets:clean[0]
+./bin/rails assets:precompile
 
 # 'Compile complete'

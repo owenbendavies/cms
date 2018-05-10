@@ -16,7 +16,7 @@ RSpec.feature 'Deleting a page' do
   scenario 'clicking yes' do
     expect do
       message = accept_confirm do
-        click_topbar_link(menu: 'Page', title: 'Delete', icon: '.fas.fa-trash.fa-fw')
+        click_topbar_link(menu: 'Page', title: 'Delete', icon: 'svg.fa-trash.fa-fw')
       end
 
       expect(message).to eq("Are you sure you want to delete page '#{test_page.name}'?")
@@ -27,7 +27,7 @@ RSpec.feature 'Deleting a page' do
   scenario 'clicking no' do
     expect do
       dismiss_confirm do
-        click_topbar_link(menu: 'Page', title: 'Delete', icon: '.fas.fa-trash.fa-fw')
+        click_topbar_link(menu: 'Page', title: 'Delete', icon: 'svg.fa-trash.fa-fw')
       end
     end.not_to change(Page, :count)
   end

@@ -26,6 +26,6 @@ RSpec.feature 'Page show' do
     login_as site_user
     visit "/#{private_page.url}"
 
-    expect(page).to have_selector 'h1 .fas.fa-lock.fa-fw'
+    expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
   end
 end

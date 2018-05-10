@@ -49,7 +49,6 @@ gem 'xml-sitemap' # Generates XML site map
 gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
-gem 'tinymce-rails' # Rich text editor
 gem 'will_paginate-bootstrap' # Pagination
 
 # Server
@@ -63,9 +62,6 @@ gem 'rollbar' # Error notifications
 gem 'scout_apm' # Application monitoring
 
 # Assets
-gem 'font-awesome-sass' # Icons
-gem 'sass-rails' # Sass for stylesheets
-gem 'uglifier' # JavaScript compression
 gem 'webpacker' # JavaScript compiler
 
 group :development, :test do
@@ -86,7 +82,6 @@ group :development, :test do
   gem 'mdl', require: false # Markdown code quality
   gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
-  gem 'scss_lint', require: false # Sass code quality
 end
 
 group :development do

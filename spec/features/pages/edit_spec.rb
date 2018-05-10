@@ -5,15 +5,20 @@ RSpec.feature 'Editing a page' do
     home_page.update!(html_content: '<p>Hello world</p>')
 
     login_as site_user
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
-    find('.mce-content-body')
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
+
+    page.within_frame('page[html_content]_ifr') do
+      find('.mce-content-body')
+    end
   end
 
   scenario 'changing the content' do
     expect(body).to include home_page.html_content
 
-    find('.js-tinymce').click
-    find('.js-tinymce').base.send_keys(' today')
+    page.within_frame('page[html_content]_ifr') do
+      find('.mce-content-body').click
+      find('.mce-content-body').base.send_keys(' today')
+    end
 
     click_button 'Update Page'
 
@@ -26,7 +31,7 @@ RSpec.feature 'Editing a page' do
     check 'Hidden'
     click_button 'Update Page'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
     expect(find_field('Hidden')).to be_checked
   end
 
@@ -35,9 +40,9 @@ RSpec.feature 'Editing a page' do
     check 'Private'
     click_button 'Update Page'
 
-    expect(page).to have_selector 'h1 .fas.fa-lock.fa-fw'
+    expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
     expect(find_field('page[private]')).to be_checked
   end
 
@@ -46,7 +51,7 @@ RSpec.feature 'Editing a page' do
     check 'Contact Form'
     click_button 'Update Page'
 
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: '.fas.fa-edit.fa-fw'
+    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
     expect(find_field('page[contact_form]')).to be_checked
   end
 
