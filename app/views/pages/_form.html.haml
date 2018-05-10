@@ -1,5 +1,5 @@
 - content_for :head do
-  = javascript_include_tag 'tinymce', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
+  = javascript_pack_tag 'tinymce', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
 
 = simple_form_for page do |form|
   = form.input :url, disabled: true
@@ -15,5 +15,3 @@
   .form__buttons
     = form.button :submit
     = link_to t('actions.cancel'), page, class: 'button--cancel'
-
-  = tinymce

@@ -13,7 +13,7 @@ RSpec.feature 'Footer links' do
 
       within css_selector do
         expect(page).to have_link link_name, href: link_url
-        expect(page).to have_selector '.fas.fa-facebook.fa-fw'
+        expect(page).to have_selector 'svg.fa-facebook.fa-fw'
       end
     end
   end

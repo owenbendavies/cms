@@ -8,7 +8,7 @@ RSpec.feature 'Site header' do
   before do
     home_page.insert_at(1)
     login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
   end
 
   scenario 'removing separate header' do
@@ -22,7 +22,7 @@ RSpec.feature 'Site header' do
 
     expect(page).to have_content 'Site successfully updated'
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Separate header')).not_to be_checked
     expect(page).not_to have_selector header

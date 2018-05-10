@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.feature 'Inviting a user' do
   before do
     login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Users', icon: '.fas.fa-users.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Users', icon: 'svg.fa-users.fa-fw'
     click_link 'Add User'
   end
 
   scenario 'new user' do
     within '.article__header' do
       expect(page).to have_content 'Add User'
-      expect(page).to have_selector '.fas.fa-user-plus.fa-fw'
+      expect(page).to have_selector 'svg.fa-user-plus.fa-fw'
     end
 
     fill_in 'Name', with: new_name

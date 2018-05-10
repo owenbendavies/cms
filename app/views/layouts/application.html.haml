@@ -6,7 +6,7 @@
     %title= page_title(@site, content_for(:title))
     = csrf_meta_tag
     = csp_meta_tag
-    = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
+    = stylesheet_pack_tag 'stylesheet', 'data-turbolinks-track': 'reload', media: 'all'
     = stylesheet_link_tag @site.stylesheet.public_url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet_filename
     = render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN']
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous'
