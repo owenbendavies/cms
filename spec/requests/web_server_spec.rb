@@ -32,17 +32,6 @@ RSpec.describe 'Application web server' do
     end
   end
 
-  context 'when visiting a font' do
-    let(:request_path) do
-      Dir
-        .glob(Rails.root.join('public', 'assets', '**', '*.woff'))
-        .first
-        .gsub(Rails.root.join('public').to_s, '')
-    end
-
-    include_examples 'asset headers'
-  end
-
   context 'when visiting a asset' do
     let(:request_path) do
       Dir
@@ -82,7 +71,7 @@ RSpec.describe 'Application web server' do
 
     context 'when visiting an asset' do
       let(:request_path) do
-        asset_file_path = Dir.glob(Rails.root.join('public', 'assets', 'application*.css')).first
+        asset_file_path = Dir.glob(Rails.root.join('public', 'packs', 'stylesheet*.css')).first
         asset_file_path.gsub(Rails.root.join('public').to_s, '')
       end
 

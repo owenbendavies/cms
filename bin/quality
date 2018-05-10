@@ -6,9 +6,7 @@ find_extensions () {
   find . -name "*.$1" \
     -not -path "./coverage/*" \
     -not -path "./node_modules/*" \
-    -not -path "./public/assets/*" \
     -not -path "./public/packs/*" \
-    -not -path "./public/packs-test/*" \
     -not -path "./vendor/*"
 }
 
@@ -17,6 +15,8 @@ set -v
 ./bin/yarn
 
 ./node_modules/.bin/eslint $(find_extensions js)
+
+./node_modules/.bin/stylelint $(find_extensions scss)
 
 ./bin/bundle-audit update && ./bin/bundle-audit
 
@@ -33,8 +33,6 @@ HAML_LINT_RUBOCOP_CONF=.rubocop_haml.yml ./bin/haml-lint --config config/haml-li
 ./bin/rails_best_practices --silent
 
 ./bin/rubocop --format simple
-
-./bin/scss-lint
 
 # Run brakeman last as large output
 ./bin/brakeman

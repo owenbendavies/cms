@@ -3,15 +3,20 @@ require 'rails_helper'
 RSpec.feature 'Creating a page' do
   before do
     login_as site_user
-    navigate_via_topbar menu: 'Page', title: 'New Page', icon: '.fas.fa-plus.fa-fw'
-    find('.mce-content-body')
+    navigate_via_topbar menu: 'Page', title: 'New Page', icon: 'svg.fa-plus.fa-fw'
+
+    page.within_frame('page[html_content]_ifr') do
+      find('.mce-content-body')
+    end
   end
 
   scenario 'valid data' do
     fill_in 'Name', with: new_name
 
-    find('.js-tinymce').click
-    find('.js-tinymce').base.send_keys(new_message)
+    page.within_frame('page[html_content]_ifr') do
+      find('.mce-content-body').click
+      find('.mce-content-body').base.send_keys(new_message)
+    end
 
     click_button 'Create Page'
     expect(page).to have_content new_name

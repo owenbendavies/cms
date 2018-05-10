@@ -2,9 +2,8 @@
 /coverage/
 /log/*.log
 /node_modules/
-/public/assets/
 /public/packs/
-/public/packs-test/
 /public/uploads/
 /tmp/
 /vendor/bundle/
+/yarn-error.log

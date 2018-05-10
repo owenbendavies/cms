@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Edit the site' do
   before do
     login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
   end
 
   scenario 'changing the name' do
@@ -24,7 +24,7 @@ RSpec.feature 'Edit the site' do
     expect(page).to have_content 'Site successfully updated'
     expect(page).to have_content new_catch_phrase
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Sub title').value).to eq new_catch_phrase
   end
@@ -41,7 +41,7 @@ RSpec.feature 'Edit the site' do
     expect(body).to include "ga('create', '#{new_code}', 'auto');"
     expect(body).to include "ga('set', 'userId', '#{site_user.uid}');"
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Google Analytics').value).to eq new_code
   end
@@ -55,7 +55,7 @@ RSpec.feature 'Edit the site' do
     expect(page).to have_content 'Site successfully updated'
     expect(page).to have_content "#{new_name} © #{Time.zone.now.year}"
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Copyright').value).to eq new_name
   end
@@ -67,7 +67,7 @@ RSpec.feature 'Edit the site' do
     expect(page).to have_content 'Site successfully updated'
     expect(page).to have_content "Registered charity number #{new_number}"
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: '.fas.fa-cog.fa-fw'
+    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Charity number').value).to eq new_number.to_s
   end
