@@ -7,7 +7,6 @@ rspec='./bin/rspec --color'
 export RAILS_ENV='test'
 
 if [ $# -gt 0 ]; then
-  export DEV_ASSETS=true
   export WEB_TIMEOUT=0
 
   set -v
