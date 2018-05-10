@@ -200,8 +200,6 @@ GEM
     grape-swagger-entity (0.2.5)
       grape-entity (>= 0.5.0)
       grape-swagger (>= 0.20.4)
-    grape-swagger-rails (0.3.0)
-      railties (>= 3.2.12)
     grape_logging (1.8.0)
       grape
       rack
@@ -560,7 +558,6 @@ DEPENDENCIES
   get_process_mem
   grape-route-helpers
   grape-swagger-entity
-  grape-swagger-rails
   grape_logging
   gravtastic
   haml-rails

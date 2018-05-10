@@ -67,7 +67,6 @@ gem 'webpacker' # JavaScript compiler
 group :development, :test do
   gem 'bullet' # Detect bad database queries
   gem 'dotenv-rails' # Easy environment configuration
-  gem 'grape-swagger-rails' # API docs viewer
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'spring-watcher-listen' # Quick boot
