@@ -10,7 +10,7 @@ class MessagesAPI < ApplicationAPI
     desc t('.create.description'), success: Message::Entity
     params do
       requires :all, using: Message::Entity.documentation.slice(:name, :email, :message)
-      optional :all, using: Message::Entity.documentation.slice(:phone)
+      optional :all, using: Message::Entity.documentation.slice(:phone, :privacy_policy_agreed)
     end
     post do
       message = Message.new(params.merge(site: site))

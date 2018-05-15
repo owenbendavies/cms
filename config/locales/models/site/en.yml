@@ -9,6 +9,7 @@ en:
         host: Host
         main_menu_in_footer: Main menu
         name: Name
+        privacy_policy_page_id: Privacy policy page
         separate_header: Separate header
         sub_title: Sub title
     models:

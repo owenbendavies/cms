@@ -2,15 +2,16 @@
 #
 # Table name: messages
 #
-#  id         :integer          not null, primary key
-#  site_id    :integer          not null
-#  name       :string(64)       not null
-#  email      :string(64)       not null
-#  phone      :string(32)
-#  message    :text             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  uid        :string           not null
+#  id                    :integer          not null, primary key
+#  site_id               :integer          not null
+#  name                  :string(64)       not null
+#  email                 :string(64)       not null
+#  phone                 :string(32)
+#  message               :text             not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  uid                   :string           not null
+#  privacy_policy_agreed :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -80,6 +81,16 @@ RSpec.describe Message do
     it do
       is_expected.to validate_length_of(:do_not_fill_in)
         .is_at_most(0).with_message('do not fill in')
+    end
+
+    it { is_expected.not_to validate_presence_of(:privacy_policy_agreed) }
+
+    context 'when site has privacy policy' do
+      subject { FactoryBot.build(:message, site: site) }
+
+      let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
+
+      it { is_expected.to validate_presence_of(:privacy_policy_agreed) }
     end
   end
 end

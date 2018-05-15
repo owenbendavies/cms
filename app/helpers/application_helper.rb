@@ -31,6 +31,12 @@ module ApplicationHelper
     title.join(' | ')
   end
 
+  def privacy_policy_link(site)
+    privacy_policy = site.privacy_policy_page
+
+    link_to(privacy_policy.name, page_path(privacy_policy.url), target: '_blank')
+  end
+
   def tick(boolean)
     icon_tag('fas fa-check fa-fw') if boolean
   end
@@ -41,5 +47,9 @@ module ApplicationHelper
 
   def rollbar_js
     Rollbar::Middleware::Js::SNIPPET
+  end
+
+  def yes_no(boolean)
+    boolean ? t('yes') : t('no')
   end
 end
