@@ -6,4 +6,4 @@
 
 = @page.custom_html&.html_safe
 
-= render 'pages/contact_form', message: @message if @page.contact_form
+= render 'pages/contact_form', message: @message, site: @site if @page.contact_form

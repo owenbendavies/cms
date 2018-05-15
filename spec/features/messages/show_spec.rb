@@ -11,10 +11,23 @@ RSpec.feature 'Message show' do
 
   scenario 'message' do
     expect(page).to have_header('Message', 'svg.fa-envelope.fa-fw')
+
+    expect(page).to have_content 'Created at'
     expect(page).to have_content 'about a month ago'
+
+    expect(page).to have_content 'Name'
     expect(page).to have_content message.name
+
+    expect(page).to have_content 'Email'
     expect(page).to have_content message.email
+
+    expect(page).to have_content 'Phone'
     expect(page).to have_content message.phone
+
+    expect(page).to have_content 'Privacy policy agreed'
+    expect(page).to have_content 'Yes'
+
+    expect(page).to have_content 'Message'
     expect(page).to have_content message.message
   end
 end
