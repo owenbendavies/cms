@@ -26,8 +26,8 @@ module Admin
 
     def site_params
       params.require(:site).permit(
-        :charity_number, :copyright, :css, :google_analytics,
-        :main_menu_in_footer, :name, :separate_header, :sub_title
+        :charity_number, :copyright, :css, :google_analytics, :main_menu_in_footer,
+        :name, :separate_header, :privacy_policy_page_id, :sub_title
       )
     end
   end

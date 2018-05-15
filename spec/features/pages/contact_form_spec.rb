@@ -55,4 +55,30 @@ RSpec.feature 'Page with contact form' do
 
     expect(page).to have_content 'do not fill in'
   end
+
+  context 'when site has privacy policy' do
+    let!(:site) { FactoryBot.create(:site, :with_privacy_policy, host: 'localhost') }
+    let(:privacy_policy_text) { "I agree to #{site.privacy_policy_page.name}" }
+
+    before do
+      fill_in 'Name', with: new_name
+      fill_in 'Email', with: new_email
+      fill_in 'Message', with: new_message
+    end
+
+    scenario 'when agreeing to privacy policy' do
+      check privacy_policy_text
+      click_button 'Send Message'
+
+      expect(page).to have_content 'Thank you for your message'
+
+      last_email
+    end
+
+    scenario 'when not agreeing to privacy policy' do
+      click_button 'Send Message'
+
+      expect(page).to have_content "#{privacy_policy_text} can't be blank"
+    end
+  end
 end

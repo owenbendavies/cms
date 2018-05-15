@@ -75,7 +75,9 @@ class PagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:name, :email, :phone, :message, :do_not_fill_in).merge(
+    params.require(:message).permit(
+      :name, :email, :phone, :message, :privacy_policy_agreed, :do_not_fill_in
+    ).merge(
       site: @site
     )
   end

@@ -2,15 +2,16 @@
 #
 # Table name: messages
 #
-#  id         :integer          not null, primary key
-#  site_id    :integer          not null
-#  name       :string(64)       not null
-#  email      :string(64)       not null
-#  phone      :string(32)
-#  message    :text             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  uid        :string           not null
+#  id                    :integer          not null, primary key
+#  site_id               :integer          not null
+#  name                  :string(64)       not null
+#  email                 :string(64)       not null
+#  phone                 :string(32)
+#  message               :text             not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  uid                   :string           not null
+#  privacy_policy_agreed :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -31,5 +32,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     phone { "+4478#{rand(100_000_000).to_s.ljust(8, '1')}" }
     message { Faker::Lorem.paragraph }
+    privacy_policy_agreed true
   end
 end

@@ -1,10 +1,18 @@
 %p= t('.text', site_name: @site.name)
 
-%p= @message.name
+%dl
+  %dt= Message.human_attribute_name(:name)
+  %dd= @message.name
 
-%p= @message.email
+  %dt= Message.human_attribute_name(:email)
+  %dd= @message.email
 
-- if @message.phone
-  %p= @message.phone
+  - if @message.phone
+    %dt= Message.human_attribute_name(:phone)
+    %dd= @message.phone
 
-= simple_format(@message.message)
+  %dt= Message.human_attribute_name(:privacy_policy_agreed)
+  %dd= yes_no(@message.privacy_policy_agreed)
+
+  %dt= Message.human_attribute_name(:message)
+  %dd= simple_format(@message.message)
