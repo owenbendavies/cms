@@ -11,6 +11,7 @@ RSpec.describe 'API Messages' do
       'email' => message.email,
       'phone' => message.phone,
       'message' => message.message,
+      'privacy_policy_agreed' => true,
       'created_at' => message.created_at.iso8601,
       'updated_at' => message.updated_at.iso8601
     }
@@ -37,7 +38,8 @@ RSpec.describe 'API Messages' do
         'name' => new_name,
         'email' => new_email,
         'phone' => new_phone,
-        'message' => new_message
+        'message' => new_message,
+        'privacy_policy_agreed' => true
       }
     end
 

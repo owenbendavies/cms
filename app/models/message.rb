@@ -2,15 +2,16 @@
 #
 # Table name: messages
 #
-#  id         :integer          not null, primary key
-#  site_id    :integer          not null
-#  name       :string(64)       not null
-#  email      :string(64)       not null
-#  phone      :string(32)
-#  message    :text             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  uid        :string           not null
+#  id                    :integer          not null, primary key
+#  site_id               :integer          not null
+#  name                  :string(64)       not null
+#  email                 :string(64)       not null
+#  phone                 :string(32)
+#  message               :text             not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  uid                   :string           not null
+#  privacy_policy_agreed :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -30,6 +31,7 @@ class Message < ApplicationRecord
     expose :email, documentation: { type: String }
     expose :phone, documentation: { type: String }
     expose :message, documentation: { type: String }
+    expose :privacy_policy_agreed, documentation: { type: Grape::API::Boolean }
     expose :created_at, documentation: { type: DateTime }
     expose :updated_at, documentation: { type: DateTime }
   end
@@ -81,5 +83,11 @@ class Message < ApplicationRecord
   validates(
     :do_not_fill_in,
     length: { maximum: 0 }
+  )
+
+  validates(
+    :privacy_policy_agreed,
+    if: ->(message) { message.site&.privacy_policy_page_id },
+    presence: true
   )
 end

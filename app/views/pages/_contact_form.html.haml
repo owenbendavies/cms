@@ -4,10 +4,14 @@
       = form.input :name
       = form.input :email
       = form.input :phone
-
   .form__row
     .form__large-inputs
       = form.input :message, as: :text, input_html: { rows: 4, class: 'js-autogrow' }
+
+  .form__row
+    .form__small-inputs
+      - if site.privacy_policy_page_id
+        = form.input :privacy_policy_agreed, label: t('.privacy_policy', link: privacy_policy_link(site)).html_safe
 
       .form__do-not-fill-in
         = form.input :do_not_fill_in

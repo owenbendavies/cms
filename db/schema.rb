@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_16_152407) do
+ActiveRecord::Schema.define(version: 2018_05_15_100715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_152407) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uid", null: false
+    t.boolean "privacy_policy_agreed", default: false
     t.index ["created_at"], name: "index_messages_on_created_at"
     t.index ["site_id"], name: "index_messages_on_site_id"
     t.index ["uid"], name: "index_messages_on_uid", unique: true
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_04_16_152407) do
     t.boolean "main_menu_in_footer", default: false, null: false
     t.boolean "separate_header", default: true, null: false
     t.jsonb "links", default: []
+    t.integer "privacy_policy_page_id"
     t.index ["host"], name: "index_sites_on_host", unique: true
     t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true
   end
@@ -161,5 +163,6 @@ ActiveRecord::Schema.define(version: 2018_04_16_152407) do
   add_foreign_key "pages", "sites", name: "fk_pages_site_id"
   add_foreign_key "site_settings", "sites", name: "fk_site_settings_site_id"
   add_foreign_key "site_settings", "users", name: "fk_site_settings_user_id"
+  add_foreign_key "sites", "pages", column: "privacy_policy_page_id", name: "fk__sites_privacy_policy_page_id"
   add_foreign_key "users", "users", column: "invited_by_id", name: "fk_users_invited_by_id"
 end

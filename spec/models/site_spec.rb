@@ -2,25 +2,30 @@
 #
 # Table name: sites
 #
-#  id                   :integer          not null, primary key
-#  host                 :string(64)       not null
-#  name                 :string(64)       not null
-#  sub_title            :string(64)
-#  copyright            :string(64)
-#  google_analytics     :string(32)
-#  charity_number       :string(32)
-#  stylesheet_filename  :string(40)
-#  sidebar_html_content :text
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  main_menu_in_footer  :boolean          default(FALSE), not null
-#  separate_header      :boolean          default(TRUE), not null
-#  links                :jsonb
+#  id                     :integer          not null, primary key
+#  host                   :string(64)       not null
+#  name                   :string(64)       not null
+#  sub_title              :string(64)
+#  copyright              :string(64)
+#  google_analytics       :string(32)
+#  charity_number         :string(32)
+#  stylesheet_filename    :string(40)
+#  sidebar_html_content   :text
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  main_menu_in_footer    :boolean          default(FALSE), not null
+#  separate_header        :boolean          default(TRUE), not null
+#  links                  :jsonb
+#  privacy_policy_page_id :integer
 #
 # Indexes
 #
 #  index_sites_on_host                 (host) UNIQUE
 #  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
+#
+# Foreign Keys
+#
+#  fk__sites_privacy_policy_page_id  (privacy_policy_page_id => pages.id)
 #
 
 require 'rails_helper'
@@ -53,6 +58,7 @@ RSpec.describe Site do
     it { is_expected.to have_many(:pages).dependent(:destroy) }
     it { is_expected.to have_many(:site_settings).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:site_settings) }
+    it { is_expected.to belong_to(:privacy_policy_page) }
   end
 
   describe '#main_menu_pages' do
