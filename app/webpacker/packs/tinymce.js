@@ -13,10 +13,10 @@ tinymce.init({
   browser_spellcheck: true,
   element_format: "html",
   entity_encoding: "raw",
+  inline: true,
   menubar: false,
   plugins: "autolink,link,lists,paste",
   selector: ".js-tinymce",
   skin: false,
-  statusbar: false,
   toolbar: "formatselect bold italic subscript superscript | bullist numlist | link"
 });
