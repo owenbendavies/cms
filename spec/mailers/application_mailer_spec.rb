@@ -55,4 +55,16 @@ RSpec.describe ApplicationMailer do
       end
     end
   end
+
+  context 'when site has privacy policy' do
+    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+    let(:privacy_policy) { site.privacy_policy_page }
+
+    it 'has privacy policy in body' do
+      expect(email.body).to have_link(
+        privacy_policy.name,
+        href: "http://#{site.host}:37511/#{privacy_policy.url}"
+      )
+    end
+  end
 end
