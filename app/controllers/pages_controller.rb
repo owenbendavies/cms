@@ -35,6 +35,7 @@ class PagesController < ApplicationController
       flash.notice = t('pages.contact_form.flash.success')
       redirect_to page_path(@page)
     else
+      flash.alert = t('pages.contact_form.flash.alert')
       render :show
     end
   end

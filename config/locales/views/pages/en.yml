@@ -3,6 +3,7 @@ en:
   pages:
     contact_form:
       flash:
+        alert: Sorry your message was invalid, please fix the problems below
         success: Thank you for your message
       privacy_policy: I agree to %{link}
     delete:

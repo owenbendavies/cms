@@ -43,6 +43,7 @@ RSpec.feature 'Page with contact form' do
     fill_in 'Message', with: new_message
     click_button 'Send Message'
 
+    expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
     expect(page).to have_content 'Name is too short'
   end
 
@@ -53,6 +54,7 @@ RSpec.feature 'Page with contact form' do
     fill_in 'Do not fill in', with: new_name
     click_button 'Send Message'
 
+    expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
     expect(page).to have_content 'do not fill in'
   end
 
@@ -75,10 +77,11 @@ RSpec.feature 'Page with contact form' do
       last_email
     end
 
-    scenario 'when not agreeing to privacy policy' do
+    scenario 'when not agreeing to privacy policy', js: false do
       click_button 'Send Message'
 
-      expect(page).to have_content "#{privacy_policy_text} can't be blank"
+      expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
+      expect(page).to have_content "#{privacy_policy_text}can't be blank"
     end
   end
 end
