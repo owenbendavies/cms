@@ -7,18 +7,14 @@ RSpec.feature 'Editing a page' do
     login_as site_user
     navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
 
-    page.within_frame('page[html_content]_ifr') do
-      find('.mce-content-body')
-    end
+    find('.mce-content-body')
   end
 
   scenario 'changing the content' do
     expect(body).to include home_page.html_content
 
-    page.within_frame('page[html_content]_ifr') do
-      find('.mce-content-body').click
-      find('.mce-content-body').base.send_keys(' today')
-    end
+    find('.mce-content-body').click
+    find('.mce-content-body').base.send_keys(' today')
 
     click_button 'Update Page'
 
