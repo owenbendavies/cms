@@ -1,5 +1,6 @@
 .editor {
   @extend .form-control;
 
-  height: auto;
+  height: 400px;
+  overflow: auto;
 }
