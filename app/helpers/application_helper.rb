@@ -31,10 +31,11 @@ module ApplicationHelper
     title.join(' | ')
   end
 
-  def privacy_policy_link(site)
+  def privacy_policy_link(site, url: false)
     privacy_policy = site.privacy_policy_page
+    url_method = url ? :page_url : :page_path
 
-    link_to(privacy_policy.name, page_path(privacy_policy.url), target: '_blank')
+    link_to(privacy_policy.name, send(url_method, privacy_policy.url), target: '_blank')
   end
 
   def tick(boolean)
