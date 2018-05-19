@@ -207,6 +207,13 @@ RESPONSIVENESS
                   </td>
                 </tr>
               <% end %>
+              <% if @site.privacy_policy_page_id%>
+                <tr>
+                  <td align="center">
+                    <p><%= privacy_policy_link(@site, url: true) %>
+                  </td>
+                </tr>
+              <% end %>
             </table>
           </div>
         </td>
