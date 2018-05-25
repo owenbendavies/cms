@@ -77,6 +77,13 @@ RSpec.describe Message do
 
     it { is_expected.to validate_length_of(:message).is_at_most(2048) }
     it { is_expected.to validate_presence_of(:message) }
+    it { is_expected.to allow_value('HTML & escape - characters').for(:message) }
+
+    it do
+      is_expected.not_to allow_value('Hello <a>bad</a>')
+        .for(:message)
+        .with_message('html is not allowed')
+    end
 
     it do
       is_expected.to validate_length_of(:do_not_fill_in)
