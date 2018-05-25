@@ -25,6 +25,8 @@
 #
 
 class Message < ApplicationRecord
+  include ActionView::Helpers::SanitizeHelper
+
   class Entity < Grape::Entity
     expose :uid, documentation: { type: String }
     expose :name, documentation: { type: String }
@@ -79,6 +81,10 @@ class Message < ApplicationRecord
     length: { maximum: 2048 },
     presence: true
   )
+
+  validate do
+    errors.add(:message, :contains_html) if ERB::Util.html_escape(message) != strip_tags(message)
+  end
 
   validates(
     :do_not_fill_in,
