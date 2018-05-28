@@ -83,7 +83,12 @@ class Message < ApplicationRecord
   )
 
   validate do
-    errors.add(:message, :contains_html) if ERB::Util.html_escape(message) != strip_tags(message)
+    next unless message
+    parsed_message = message.delete("'")
+    escaped_message = ERB::Util.html_escape(parsed_message)
+    stripped_message = strip_tags(parsed_message)
+
+    errors.add(:message, :contains_html) if escaped_message != stripped_message
   end
 
   validates(
