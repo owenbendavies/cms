@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Sitemap' do
-  let!(:hidden_page) { FactoryBot.create(:page, :hidden, site: site) }
-  let!(:private_page) { FactoryBot.create(:page, :private, site: site) }
+  let!(:hidden_page) { FactoryBot.create(:page, hidden: true, site: site) }
+  let!(:private_page) { FactoryBot.create(:page, private: true, site: site) }
 
   context 'with html' do
     scenario 'not logged in' do

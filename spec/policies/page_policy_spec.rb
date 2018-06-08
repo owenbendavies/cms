@@ -5,7 +5,7 @@ RSpec.describe PagePolicy do
     subject(:policy_scope) { described_class::Scope.new(context, Page).resolve }
 
     let!(:site_page) { FactoryBot.create(:page, site: site) }
-    let!(:private_site_page) { FactoryBot.create(:page, :private, site: site) }
+    let!(:private_site_page) { FactoryBot.create(:page, private: true, site: site) }
 
     before { FactoryBot.create(:page) }
 
@@ -42,7 +42,7 @@ RSpec.describe PagePolicy do
 
   permissions :show?, :contact_form? do
     context 'with private page' do
-      let(:record) { FactoryBot.create(:page, :private, site: site) }
+      let(:record) { FactoryBot.create(:page, private: true, site: site) }
 
       include_examples 'policy for user record'
     end
