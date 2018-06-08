@@ -29,7 +29,7 @@ class SystemAPI < ApplicationAPI
     desc t('.test_timeout_error.description')
     get :test_timeout_error do
       authorize :system, :test_timeout_error?
-      sleep Rack::Timeout.service_timeout + 1
+      sleep 30
     end
   end
 end

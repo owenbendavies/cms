@@ -44,6 +44,10 @@
         "HEROKU_APP_NAME": {
             "description": "Set to same as the Heroku App name (set automatically for review apps)"
         },
+        "RACK_TIMEOUT_SERVICE_TIMEOUT": {
+            "description": "Number of seconds a page is allowed to run",
+            "value": "2"
+        },
         "SECRET_KEY_BASE": {
             "description": "A randomly generated secret to verify sessions",
             "generator": "secret"
