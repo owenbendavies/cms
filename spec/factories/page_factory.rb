@@ -32,13 +32,5 @@ FactoryBot.define do
     name { Faker::Name.name }
     html_content { "<p>#{Faker::Lorem.paragraph}</p>" }
     custom_html { "<p>#{Faker::Lorem.paragraph}</p>" }
-
-    trait :hidden do
-      hidden true
-    end
-
-    trait :private do
-      private true
-    end
   end
 end

@@ -28,7 +28,6 @@ RSpec.shared_examples 'swagger' do |options|
     {
       'description' => options.fetch(:description),
       'produces' => ['application/json'],
-      'summary' => options.fetch(:description),
       'responses' => {
         expected_status.to_s => {
           'description' => options.fetch(:description),
