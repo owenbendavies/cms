@@ -7,14 +7,15 @@ rspec='./bin/rspec --color'
 export RAILS_ENV='test'
 
 if [ $# -gt 0 ]; then
-  export WEB_TIMEOUT=0
+  export RACK_TIMEOUT_SERVICE_TIMEOUT=0
 
   set -v
 
   eval "$rspec --format documentation $@"
 else
-  export DISABLE_SPRING=true
   export COVERAGE=on
+  export DISABLE_SPRING=true
+  export RACK_TIMEOUT_SERVICE_TIMEOUT=1
 
   set -v
 

@@ -11,7 +11,7 @@ class SystemsController < ApplicationController
 
   def test_timeout_error
     authorize :system
-    sleep Rack::Timeout.service_timeout + 1
+    sleep 30
   end
 
   def home

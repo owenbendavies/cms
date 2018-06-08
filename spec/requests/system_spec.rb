@@ -24,7 +24,7 @@ RSpec.describe 'System' do
 
         User-agent: *
         Disallow:
-FILE
+      FILE
     end
 
     it 'renders robots file' do

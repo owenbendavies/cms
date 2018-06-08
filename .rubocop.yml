@@ -3,6 +3,7 @@ require: rubocop-rspec # Enable added RSpec checks
 AllCops:
   Exclude:
     - 'config/initializers/simple_form.rb' # Auto generated file
+    - 'db/migrate/20180515100715_squash_migrations.rb' # Auto generated file
     - 'db/schema.rb' # Auto generated file
     - 'node_modules/**/*' # External libraries
     - 'vendor/bundle/**/*' # External libraries
@@ -18,12 +19,6 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Max: 100 # Default is 80 which is a bit narrow
-
-Metrics/MethodLength:
-  Exclude:
-    - 'db/migrate/20141123002911_create_pages.rb' # OK to be long
-    - 'db/migrate/20141122230841_create_sites.rb' # OK to be long
-    - 'db/migrate/20150926172242_create_delayed_jobs.rb' # OK to be long
 
 Rails: # Enabled added Rails checks
   Enabled: true
