@@ -5,8 +5,6 @@
 #  id                     :integer          not null, primary key
 #  host                   :string(64)       not null
 #  name                   :string(64)       not null
-#  sub_title              :string(64)
-#  copyright              :string(64)
 #  google_analytics       :string(32)
 #  charity_number         :string(32)
 #  stylesheet_filename    :string(40)
@@ -106,8 +104,6 @@ RSpec.describe Site do
   describe 'before validations' do
     it { is_expected.to strip_attribute(:host).collapse_spaces }
     it { is_expected.to strip_attribute(:name).collapse_spaces }
-    it { is_expected.to strip_attribute(:sub_title).collapse_spaces }
-    it { is_expected.to strip_attribute(:copyright).collapse_spaces }
     it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
     it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
   end
@@ -121,10 +117,6 @@ RSpec.describe Site do
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
     it { is_expected.to validate_presence_of(:name) }
-
-    it { is_expected.to validate_length_of(:sub_title).is_at_least(3).is_at_most(64) }
-
-    it { is_expected.to validate_length_of(:copyright).is_at_most(64) }
 
     it { is_expected.to allow_value('').for(:google_analytics) }
     it { is_expected.to allow_value('UA-1234-1').for(:google_analytics) }
