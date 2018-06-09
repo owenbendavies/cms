@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def copyright(site)
-    "#{site.copyright || site.name} © #{Time.zone.now.year}"
+    "#{site.name} © #{Time.zone.now.year}"
   end
 
   def icon_tag(css_class)
@@ -20,15 +20,7 @@ module ApplicationHelper
   end
 
   def page_title(site, content)
-    title = [site.name]
-
-    if content.present?
-      title << content
-    elsif site.sub_title?
-      title << site.sub_title
-    end
-
-    title.join(' | ')
+    [site.name, content].compact.join(' | ')
   end
 
   def privacy_policy_link(site, url: false)
