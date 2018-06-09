@@ -5,8 +5,6 @@
 #  id                     :integer          not null, primary key
 #  host                   :string(64)       not null
 #  name                   :string(64)       not null
-#  sub_title              :string(64)
-#  copyright              :string(64)
 #  google_analytics       :string(32)
 #  charity_number         :string(32)
 #  stylesheet_filename    :string(40)

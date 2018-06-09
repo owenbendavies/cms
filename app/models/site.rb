@@ -5,8 +5,6 @@
 #  id                     :integer          not null, primary key
 #  host                   :string(64)       not null
 #  name                   :string(64)       not null
-#  sub_title              :string(64)
-#  copyright              :string(64)
 #  google_analytics       :string(32)
 #  charity_number         :string(32)
 #  stylesheet_filename    :string(40)
@@ -64,16 +62,6 @@ class Site < ApplicationRecord
     :name,
     length: { minimum: 3, maximum: 64 },
     presence: true
-  )
-
-  validates(
-    :sub_title,
-    length: { allow_nil: true, minimum: 3, maximum: 64 }
-  )
-
-  validates(
-    :copyright,
-    length: { allow_nil: true, maximum: 64 }
   )
 
   validates(

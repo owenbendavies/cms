@@ -2,6 +2,3 @@
   .header__container
     %h1.header__site-name
       = link_to site.name, page_path('home'), class: 'header__site-name-link'
-
-    - if site.sub_title
-      %h2.header__sub-title= site.sub_title

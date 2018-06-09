@@ -5,12 +5,10 @@
 
 = simple_form_for [:admin, @site] do |form|
   = form.input :name, autofocus: true
-  = form.input :sub_title
   = form.input :google_analytics
   = form.input :separate_header
 
   %h2= t('.footer')
-  = form.input :copyright
   = form.input :charity_number
   = form.input :privacy_policy_page_id, collection: @site.pages.ordered, label_method: :name, value_method: :id
   = form.input :main_menu_in_footer
