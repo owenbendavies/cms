@@ -17,18 +17,6 @@ RSpec.feature 'Edit the site' do
     expect(page).to have_title new_company_name
   end
 
-  scenario 'adding a sub title' do
-    fill_in 'Sub title', with: "  #{new_catch_phrase} "
-    click_button 'Update Site'
-
-    expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_content new_catch_phrase
-
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-    expect(find_field('Sub title').value).to eq new_catch_phrase
-  end
-
   scenario 'adding Google Analytics' do
     expect(body).not_to include "ga('create',"
 
@@ -44,20 +32,6 @@ RSpec.feature 'Edit the site' do
     navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 
     expect(find_field('Google Analytics').value).to eq new_code
-  end
-
-  scenario 'adding a copyright' do
-    expect(page).to have_content "#{site.name} © #{Time.zone.now.year}"
-
-    fill_in 'Copyright', with: " #{new_name} "
-    click_button 'Update Site'
-
-    expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_content "#{new_name} © #{Time.zone.now.year}"
-
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-    expect(find_field('Copyright').value).to eq new_name
   end
 
   scenario 'adding a charity number' do
