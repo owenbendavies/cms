@@ -1,0 +1,12 @@
+<% content_for :title, t('.title') %>
+<% content_for :page_icon, t('.icon') %>
+
+<ul class="sitemap">
+  <% @pages.each do |page| %>
+    <li>
+      <%= link_to(page.name, page_path(page)) %>
+      <%= icon_tag(t('pages.show.hidden.icon')) if page.hidden? %>
+      <%= icon_tag(t('pages.show.private.icon')) if page.private? %>
+    </li>
+  <% end %>
+</ul>

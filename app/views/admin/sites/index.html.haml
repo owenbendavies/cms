@@ -1,7 +1,0 @@
-:ruby
-  content_for :title, t('.title')
-  content_for :page_icon, t('.icon')
-
-%ul.sites
-  - @sites.each do |site|
-    %li= link_to(site.host, site.address)

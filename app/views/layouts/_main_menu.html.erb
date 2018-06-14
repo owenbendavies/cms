@@ -1,0 +1,28 @@
+<nav class="main-menu">
+  <div class="main-menu__bar">
+    <% unless site.separate_header %>
+      <%= link_to site.name, page_path('home'), class: 'main-menu__site-name' %>
+    <% end %>
+
+    <button class="main-menu__button" type="button" data-toggle="collapse" data-target="#js-main-menu-collapse">
+      <span class="main-menu__button-hamburger"></span>
+      <span class="main-menu__button-text"><%= t('.toggle_button') %>
+      </span>
+    </button>
+
+    <div class="main-menu__collapse collapse" id="js-main-menu-collapse">
+      <% nav_class = 'ml-auto' unless site.separate_header %>
+      <ul class="<%= nav_class %> main-menu__links">
+        <% site.main_menu_pages.each do |page| %>
+          <li class="main-menu__link-item">
+            <%= link_to page_path(page), class: "main-menu__link cms-page-link-#{page.to_param}" do %>
+              <span class="main-menu__link-text">
+                <%= page.name %>
+              </span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
