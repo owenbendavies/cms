@@ -1,0 +1,114 @@
+<nav class="topbar">
+  <%= link_to site.name, root_path, class: 'topbar__site-name' %>
+
+  <button class="topbar__button" type="button" data-toggle="collapse" data-target="#js-topbar-collapse">
+    <span class="topbar__button-hamburger"></span>
+    <span class="topbar__button-text">
+      <%= t('.toggle_button') %>
+    </span>
+  </button>
+
+  <div class="topbar__collapse collapse" id="js-topbar-collapse">
+    <ul class="topbar__links">
+      <% if policy(site).update? %>
+        <li class="topbar__dropdown-item">
+          <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
+            <%= Page.model_name.human %>
+          </a>
+          <div class="dropdown-menu">
+            <% if page&.persisted? %>
+              <%= link_to edit_page_path(page), class: 'dropdown-item' do %>
+                <%= icon_tag t('pages.edit.icon') %>
+                <%= t('actions.edit') %>
+              <% end %>
+
+              <%=
+                link_to(
+                  icon_tag(t('pages.delete.icon')) + ' ' + t('actions.delete'),
+                  page_path(page),
+                  class: 'dropdown-item',
+                  method: :delete,
+                  data: { confirm: t('pages.delete.text', name: page.name) }
+                )
+              %>
+            <% end %>
+
+            <%= link_to new_page_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('pages.new.icon')) %>
+              <%= t('pages.new.title') %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+
+      <% if policy(site).update? %>
+        <li class="topbar__dropdown-item">
+          <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
+            <%= Site.model_name.human %>
+          </a>
+
+          <div class="dropdown-menu">
+            <%= link_to admin_messages_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('admin.messages.index.icon')) %>
+              <%= t('admin.messages.index.title') %>
+            <% end %>
+
+            <%= link_to admin_images_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('admin.images.index.icon')) %>
+              <%= t('admin.images.index.title') %>
+            <% end %>
+
+            <%= link_to edit_admin_site_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('admin.sites.edit.icon')) %>
+              <%= t('admin.sites.edit.title') %>
+            <% end %>
+
+            <%= link_to admin_users_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('admin.users.index.icon')) %>
+              <%= t('admin.users.index.title') %>
+            <% end %>
+
+            <% if policy(site).css? %>
+              <%= link_to css_admin_site_path, class: 'dropdown-item' do %>
+                <%= icon_tag(t('admin.sites.css.icon')) %>
+                <%= t('admin.sites.css.title') %>
+              <% end %>
+            <% end %>
+
+            <%= link_to sitemap_path, class: 'dropdown-item' do %>
+              <%= icon_tag(t('pages.index.icon')) %>
+              <%= t('pages.index.title') %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="topbar__dropdown-item">
+        <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= current_user.name %>
+        </a>
+
+        <div class="dropdown-menu">
+          <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+            <%= icon_tag(t('devise.registrations.edit.icon')) %>
+            <%= t('devise.registrations.edit.title') %>
+          <% end %>
+
+          <%= link_to user_sites_path, class: 'dropdown-item' do %>
+            <%= icon_tag(t('admin.sites.index.icon')) %>
+            <%= t('admin.sites.index.title') %>
+          <% end %>
+
+          <%= link_to destroy_user_session_path, class: 'dropdown-item' do %>
+            <%= icon_tag(t('devise.sessions.destroy.icon')) %>
+            <%= t('devise.sessions.destroy.title') %>
+          <% end %>
+        </div>
+      </li>
+
+      <li class="topbar__avatar">
+        <%= image_tag(current_user.gravatar_url(size: 40), alt: User.human_attribute_name(:profile_image), class: 'topbar__profile-image', size: '40x40') %>
+      </li>
+    </ul>
+  </div>
+</nav>

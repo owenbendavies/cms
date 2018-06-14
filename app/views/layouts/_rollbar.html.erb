@@ -1,0 +1,9 @@
+<script>
+  var _rollbarConfig = {
+    accessToken: "<%= ENV.fetch('ROLLBAR_CLIENT_TOKEN') %>",
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  };
+
+  <%= rollbar_js.html_safe %>
+</script>

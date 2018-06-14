@@ -1,0 +1,26 @@
+<main class="main">
+  <% if content_for(:form_page) %>
+    <article class="article col">
+      <div class="row justify-content-md-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <%= render 'layouts/main_article' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  <% elsif site.sidebar_html_content? %>
+    <article class="article col-md-9">
+      <%= render 'layouts/main_article' %>
+    </article>
+    <aside class="sidebar col-md-3">
+      <%= site.sidebar_html_content&.html_safe %>
+    </aside>
+  <% else %>
+    <article class="article col">
+      <%= render 'layouts/main_article' %>
+    </article>
+  <% end %>
+</main>

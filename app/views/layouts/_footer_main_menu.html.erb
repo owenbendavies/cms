@@ -1,0 +1,15 @@
+<nav class="footer-main-menu">
+  <div class="footer-main-menu__bar">
+    <ul class="footer-main-menu__links">
+      <% site.main_menu_pages.each do |page| %>
+        <li class="footer-main-menu__link-item">
+          <%= link_to page_path(page), class: "footer-main-menu__link cms-page-link-#{page.to_param}" do %>
+            <span class="footer-main-menu__link-text">
+              <%= page.name %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

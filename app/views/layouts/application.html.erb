@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <title><%= page_title(@site, content_for(:title)) %></title>
+    <%= csrf_meta_tag %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'stylesheet', 'data-turbolinks-track': 'reload', media: 'all' %>
+    <%= stylesheet_link_tag @site.stylesheet.public_url, 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet_filename %>
+    <%= render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN'] %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+    <%= content_for(:head) %>
+    <%= render 'layouts/google_analytics', site: @site if @site.google_analytics %>
+  </head>
+
+  <body class="<%= body_class %>">
+    <%= render 'layouts/topbar', site: @site, page: @page if user_signed_in? %>
+
+    <div class="page">
+      <div class="page__container">
+        <%= render 'layouts/header', site: @site if @site.separate_header %>
+        <%= render 'layouts/main_menu', site: @site unless @site.main_menu_pages.empty? %>
+        <%= render 'layouts/main', site: @site %>
+        <%= render 'layouts/footer_main_menu', site: @site if @site.main_menu_in_footer && !@site.main_menu_pages.empty? %>
+        <%= render 'layouts/footer', site: @site, page: @page %>
+      </div>
+    </div>
+  </body>
+</html>

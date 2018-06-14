@@ -1,5 +1,0 @@
-Rails:
-  Enabled: true
-
-Rails/OutputSafety: # OK when know what it is doing
-  Enabled: false
