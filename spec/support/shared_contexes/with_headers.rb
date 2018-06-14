@@ -30,10 +30,11 @@ RSpec.shared_context 'with headers' do
       'Cache-Control' => 'max-age=0, private, must-revalidate',
       'Content-Security-Policy' => csp_header,
       'Content-Type' => expected_content_type,
+      'Referrer-Policy' => 'strict-origin-when-cross-origin',
       'Vary' => 'Accept-Encoding',
       'X-Content-Type-Options' => 'nosniff',
       'X-Download-Options' => 'noopen',
-      'X-Frame-Options' => 'sameorigin',
+      'X-Frame-Options' => 'DENY',
       'X-Permitted-Cross-Domain-Policies' => 'none',
       'X-XSS-Protection' => '1; mode=block'
     }
