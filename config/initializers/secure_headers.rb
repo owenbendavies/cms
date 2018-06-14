@@ -1,5 +1,7 @@
 SecureHeaders::Configuration.default do |config|
-  config.hsts = SecureHeaders::OPT_OUT
+  config.x_frame_options = 'DENY'
+
+  config.referrer_policy = 'strict-origin-when-cross-origin'
 
   asset_src = ["'self'", "'unsafe-inline'", ENV['ASSET_HOST']].compact
 
