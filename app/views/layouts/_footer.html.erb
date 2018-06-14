@@ -1,0 +1,64 @@
+<footer class="footer">
+  <div class="footer__container">
+    <ul class="footer__menu">
+      <% if site.links.present? %>
+        <li class="footer__site-links-item">
+          <ul class="footer__site-links">
+            <% site.links.each do |link| %>
+              <li class="footer__site-link-item">
+                <%= link_to link.fetch('url'), class: 'footer__site-link' do %>
+                  <%= icon_tag(link.fetch('icon')) if link.fetch('icon') %>
+
+                  <span class="footer__site-link-text">
+                    <%= link.fetch('name') %>
+                  </span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+
+      <% if page&.persisted? %>
+        <li class="footer__last-updated">
+          <%= t('.last_updated') %>
+          <%= timeago(page.updated_at) %>
+        </li>
+      <% end %>
+
+      <li class="footer__copyright">
+        <%= copyright(site) %>
+      </li>
+
+      <% if site.charity_number %>
+        <li class="footer__charity">
+          <%= t('.charity', number: site.charity_number) %>
+        </li>
+      <% end %>
+
+      <% if site.privacy_policy_page_id %>
+        <li class="footer__privacy-policy">
+          <%= privacy_policy_link(site) %>
+        </li>
+      <% end %>
+
+      <li class="footer__links-item">
+        <ul class="footer__links">
+          <li class="footer__link-item">
+            <%= link_to t('pages.index.title'), sitemap_path %>
+          </li>
+
+          <% if user_signed_in? %>
+            <li class="footer__link-item">
+              <%= link_to t('devise.sessions.destroy.title'), destroy_user_session_path %>
+            </li>
+          <% else %>
+            <li class="footer__link-item">
+              <%= link_to t('devise.sessions.new.title'), new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</footer>

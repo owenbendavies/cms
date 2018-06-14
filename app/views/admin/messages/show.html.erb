@@ -1,0 +1,24 @@
+<% content_for :title, t('.title') %>
+<% content_for :page_icon, t('.icon') %>
+
+<dl>
+  <dt><%= Message.human_attribute_name(:created_at) %></dt>
+  <dd><%= timeago(@message.created_at) %></dd>
+
+  <dt><%= Message.human_attribute_name(:name) %></dt>
+  <dd><%= @message.name %></dd>
+
+  <dt><%= Message.human_attribute_name(:email) %></dt>
+  <dd><%= @message.email %></dd>
+
+  <% if @message.phone %>
+    <dt><%= Message.human_attribute_name(:phone) %></dt>
+    <dd><%= @message.phone %></dd>
+  <% end %>
+
+  <dt><%= Message.human_attribute_name(:privacy_policy_agreed) %></dt>
+  <dd><%= yes_no(@message.privacy_policy_agreed) %></dd>
+
+  <dt><%= Message.human_attribute_name(:message) %></dt>
+  <dd><%= simple_format(@message.message) %></dd>
+</dl>

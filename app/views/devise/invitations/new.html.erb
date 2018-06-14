@@ -1,0 +1,12 @@
+<% content_for :title, t('.title') %>
+<% content_for :page_icon, t('.icon') %>
+<% content_for :form_page, true %>
+
+<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |form| %>
+  <%= form.input :name %>
+  <%= form.input :email %>
+
+  <div class="form__buttons">
+    <%= form.button :submit, t('.title') %>
+  </div>
+<% end %>
