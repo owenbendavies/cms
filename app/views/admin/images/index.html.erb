@@ -1,0 +1,15 @@
+<% content_for :title, t('.title') %>
+<% content_for :page_icon, t('.icon') %>
+
+<div class="thumbnail-grid">
+  <% @images.each do |image| %>
+    <%= link_to(image.file.public_url, target: '_blank', class: 'thumbnail-grid__link') do %>
+      <%= image_tag(image.file.span3.public_url, alt: image.name, class: 'thumbnail-grid__image') %>
+      <div class="thumbnail-grid__body">
+        <h5 class="thumbnail-grid__name">
+          <%= image.name %>
+        </h5>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<% content_for :title, t('.title') %>
+<% content_for :form_page, true %>
+
+<%= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |form| %>
+  <%= form.input :reset_password_token, as: :hidden %>
+
+  <%= form.input :password, label: t('.new_password'), required: true, autofocus: true, input_html: { autocomplete: 'off' } %>
+  <%= form.input :password_confirmation, required: true, input_html: { autocomplete: 'off' } %>
+
+  <div class="form__buttons">
+    <%= form.button :submit, t('.title') %>
+  </div>
+<% end %>

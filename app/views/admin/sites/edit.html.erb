@@ -1,0 +1,19 @@
+<% content_for :title, t('.title') %>
+<% content_for :page_icon, t('.icon') %>
+<% content_for :form_page, true %>
+
+<%= simple_form_for [:admin, @site] do |form| %>
+  <%= form.input :name, autofocus: true %>
+  <%= form.input :google_analytics %>
+  <%= form.input :separate_header %>
+
+  <h2><%= t('.footer') %></h2>
+  <%= form.input :charity_number %>
+  <%= form.input :privacy_policy_page_id, collection: @site.pages.ordered, label_method: :name, value_method: :id %>
+  <%= form.input :main_menu_in_footer %>
+
+  <div class="form__buttons">
+    <%= form.button :submit %>
+    <%= link_to t('actions.cancel'), page_path('home'), class: 'button--cancel' %>
+  </div>
+<% end %>

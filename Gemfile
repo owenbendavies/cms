@@ -46,7 +46,6 @@ gem 'validates_email_format_of' # Email validation
 gem 'xml-sitemap' # Generates XML site map
 
 # View Gems
-gem 'haml-rails' # HAML for views
 gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
 gem 'will_paginate-bootstrap' # Pagination
@@ -74,7 +73,6 @@ group :development, :test do
   # Code quality tools
   gem 'brakeman', require: false # Detect security vulnerabilities
   gem 'bundler-audit', require: false # Checks for venerable Gems
-  gem 'haml_lint', require: false # HAML code quality
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'jsonlint', require: false # JSON code quality
   gem 'license_finder', require: false # Whitelist of dependency licenses

@@ -1,0 +1,36 @@
+<header class="article__header">
+  <h1>
+    <% if content_for(:header_links) %>
+      <div class="article__header-links">
+        <%= content_for(:header_links) %>
+      </div>
+    <% end %>
+
+    <%= icon_tag(content_for(:page_icon)) if content_for(:page_icon) %>
+    <%= content_for(:title) %>
+  </h1>
+</header>
+
+<% if notice %>
+  <div class="alert alert-success alert-dismissible">
+    <button class="close" type="button" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible">
+    <button class="close" type="button" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+
+    <%= alert %>
+  </div>
+<% end %>
+
+<section class="article__content">
+  <%= yield %>
+</section>
