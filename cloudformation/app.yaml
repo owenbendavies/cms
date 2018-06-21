@@ -35,6 +35,12 @@ Resources:
           - Compress: true
             ForwardedValues:
               QueryString: false
+            PathPattern: /css/*
+            TargetOriginId: App
+            ViewerProtocolPolicy: redirect-to-https
+          - Compress: true
+            ForwardedValues:
+              QueryString: false
             PathPattern: /packs/*
             TargetOriginId: App
             ViewerProtocolPolicy: redirect-to-https

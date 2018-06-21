@@ -20,13 +20,11 @@ module Admin
       end
     end
 
-    alias css edit
-
     private
 
     def site_params
       params.require(:site).permit(
-        :charity_number, :css, :google_analytics, :main_menu_in_footer, :name,
+        :charity_number, :google_analytics, :main_menu_in_footer, :name,
         :separate_header, :privacy_policy_page_id
       )
     end
