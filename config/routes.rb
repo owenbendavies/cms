@@ -26,16 +26,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resource :site, only: %i[edit update] do
-      member do
-        get :css
-      end
-    end
-
+    resource :site, only: %i[edit update]
+    resource :stylesheet, only: %i[edit update]
     resources :images, only: [:index]
     resources :messages, only: %i[index show]
     resources :users, only: [:index]
   end
+
+  resources :css, only: %i[show]
 
   resources :pages, path: '', only: %i[new create show edit update destroy] do
     member do

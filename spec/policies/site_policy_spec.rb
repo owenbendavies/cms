@@ -34,10 +34,4 @@ RSpec.describe SitePolicy do
 
     include_examples 'policy for site user'
   end
-
-  permissions :css? do
-    let(:record) { site }
-
-    include_examples 'policy for site admin'
-  end
 end

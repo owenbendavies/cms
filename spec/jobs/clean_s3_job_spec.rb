@@ -15,11 +15,6 @@ RSpec.describe CleanS3Job do
       end
     end
 
-    before do
-      css_file = StringUploader.new('stylesheet.css', 'body {padding: 4em}')
-      FactoryBot.create(:site, stylesheet: css_file)
-    end
-
     it 'does not send any errors to Rollbar if all good' do
       expect(Rollbar).not_to receive(:error)
       described_class.perform_now

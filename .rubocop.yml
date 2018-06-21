@@ -23,6 +23,11 @@ Metrics/LineLength:
 Rails: # Enabled added Rails checks
   Enabled: true
 
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20180621093047_create_stylesheets.rb'
+
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
     - 'spec/requests/**/*'

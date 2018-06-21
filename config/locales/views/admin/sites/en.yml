@@ -2,9 +2,6 @@
 en:
   admin:
     sites:
-      css:
-        icon: fas fa-file fa-fw
-        title: CSS
       edit:
         footer: Footer
         icon: fas fa-cog fa-fw

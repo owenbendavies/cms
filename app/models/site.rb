@@ -27,14 +27,13 @@
 #
 
 class Site < ApplicationRecord
-  mount_uploader :stylesheet, StylesheetUploader, mount_on: :stylesheet_filename
-
   # relations
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :pages, dependent: :destroy
   has_many :site_settings, dependent: :destroy
   has_many :users, through: :site_settings
+  has_one :stylesheet, dependent: :destroy
   belongs_to :privacy_policy_page, class_name: 'Page', optional: true
 
   has_many(
@@ -89,17 +88,6 @@ class Site < ApplicationRecord
   def address
     protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'
     "#{protocol}://#{host}"
-  end
-
-  def css
-    stylesheet.read
-  end
-
-  def css=(posted_css)
-    posted_css.gsub!(/\t/, '  ')
-    posted_css.gsub!(/ +\r\n/, "\r\n")
-
-    self.stylesheet = StringUploader.new('stylesheet.css', posted_css)
   end
 
   def email
