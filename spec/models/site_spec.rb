@@ -29,32 +29,12 @@
 require 'rails_helper'
 
 RSpec.describe Site do
-  describe '#stylesheet' do
-    let(:css) { "body {\r\n  padding: 4em;\r\n}" }
-    let(:file) { StringUploader.new('stylesheet.css', css) }
-    let!(:site) { FactoryBot.create(:site, stylesheet: file) }
-    let(:uuid) { File.basename(site.stylesheet_filename, '.css') }
-
-    it 'saves the stylesheet' do
-      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-    end
-
-    it 'uses a uuid as the filename' do
-      expect(site.stylesheet_filename).to match(/\A[0-9a-f-]+\.css/)
-    end
-
-    it 'is saved in the stylesheets directory on s3' do
-      expect(site.stylesheet.public_url).to eq File.join(
-        'http://localhost:37511', 'stylesheets', uuid, 'original.css'
-      )
-    end
-  end
-
   describe 'relations' do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
     it { is_expected.to have_many(:site_settings).dependent(:destroy) }
+    it { is_expected.to have_one(:stylesheet).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:site_settings) }
     it { is_expected.to belong_to(:privacy_policy_page) }
   end
@@ -171,64 +151,6 @@ RSpec.describe Site do
     context 'with ssl disabled' do
       it 'returns http url' do
         expect(site.address).to eq 'http://localhost'
-      end
-    end
-  end
-
-  describe '#css' do
-    subject(:site) { FactoryBot.build(:site) }
-
-    it 'returns returns css' do
-      site.css = "body {\r\n  padding: 4em;\r\n}"
-      site.save!
-      site.stylesheet.file.send(:file).reload
-      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
-    end
-
-    it 'returns nil when empty' do
-      expect(site.css).to be_nil
-    end
-  end
-
-  describe '#css=' do
-    subject(:site) { FactoryBot.build(:site) }
-
-    it 'strips end of line whitespace' do
-      site.css = "body {\r\n  padding: 4em; \r\n}"
-      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
-    end
-
-    it 'converts tabs to spaces' do
-      site.css = "body {\r\n\tpadding: 4em;\r\n}"
-      expect(site.css).to eq "body {\r\n  padding: 4em;\r\n}"
-    end
-
-    it 'saves a file' do
-      site.css = "body {\r\n  padding: 4em;\r\n}"
-      site.save!
-      site.stylesheet.file.send(:file).reload
-
-      uuid = File.basename(site.stylesheet_filename, '.css')
-      expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-    end
-
-    context 'with an exiting file' do
-      let(:another_site) { described_class.find_by(id: site.id) }
-      let(:uuid) { File.basename(another_site.stylesheet_filename, '.css') }
-
-      before do
-        site.css = "body {\r\n  padding: 4em;\r\n}"
-        site.save!
-        another_site.css = 'body{background-color: red}'
-        another_site.save!
-      end
-
-      it 'deletes old version' do
-        expect(uploaded_files).to eq ["stylesheets/#{uuid}/original.css"]
-      end
-
-      it 'creates new filename' do
-        expect(another_site.stylesheet_filename).not_to eq site.stylesheet_filename
       end
     end
   end

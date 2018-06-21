@@ -5,6 +5,10 @@ class ApplicationPolicy
     def user_site?
       @site && @user&.site_settings&.find_by(site_id: @site.id)
     end
+
+    def admin_site?
+      @site && @user&.site_settings&.find_by(site_id: @site.id, admin: true)
+    end
   end
 
   class Scope

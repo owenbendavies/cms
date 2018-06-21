@@ -13,12 +13,6 @@ class CleanS3Job < ApplicationJob
     directory.files
   end
 
-  def site_files
-    Site.where.not(stylesheet_filename: nil).find_each.map do |site|
-      site.stylesheet.path
-    end
-  end
-
   def image_files
     Image.find_each.map do |image|
       versions = image.file.versions.map do |_version_name, version|
@@ -29,12 +23,8 @@ class CleanS3Job < ApplicationJob
     end
   end
 
-  def valid_files
-    (site_files + image_files).flatten
-  end
-
   def clean_files
-    missing_files = valid_files
+    missing_files = image_files.flatten
 
     all_files.each do |file|
       next if missing_files.delete file.key

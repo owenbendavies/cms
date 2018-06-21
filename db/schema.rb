@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_09_070335) do
+ActiveRecord::Schema.define(version: 2018_06_21_093047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,14 @@ ActiveRecord::Schema.define(version: 2018_06_09_070335) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stylesheets", id: :serial, force: :cascade do |t|
+    t.integer "site_id", null: false
+    t.text "css", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_stylesheets_on_site_id", unique: true
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", limit: 64, null: false
     t.string "encrypted_password", limit: 64
@@ -162,5 +170,6 @@ ActiveRecord::Schema.define(version: 2018_06_09_070335) do
   add_foreign_key "site_settings", "sites", name: "fk_site_settings_site_id"
   add_foreign_key "site_settings", "users", name: "fk_site_settings_user_id"
   add_foreign_key "sites", "pages", column: "privacy_policy_page_id", name: "fk__sites_privacy_policy_page_id"
+  add_foreign_key "stylesheets", "sites", name: "fk_stylesheets_site_id"
   add_foreign_key "users", "users", column: "invited_by_id", name: "fk_users_invited_by_id"
 end

@@ -68,10 +68,10 @@
               <%= t('admin.users.index.title') %>
             <% end %>
 
-            <% if policy(site).css? %>
-              <%= link_to css_admin_site_path, class: 'dropdown-item' do %>
-                <%= icon_tag(t('admin.sites.css.icon')) %>
-                <%= t('admin.sites.css.title') %>
+            <% if policy(Stylesheet).edit? %>
+              <%= link_to edit_admin_stylesheet_path, class: 'dropdown-item' do %>
+                <%= icon_tag(t('admin.stylesheets.edit.icon')) %>
+                <%= t('admin.stylesheets.edit.title') %>
               <% end %>
             <% end %>
 
