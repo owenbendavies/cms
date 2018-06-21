@@ -1,0 +1,8 @@
+---
+en:
+  activerecord:
+    attributes:
+      stylesheet:
+        css: CSS
+    models:
+      stylesheet: Stylesheet

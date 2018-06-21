@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Site CSS' do
+RSpec.feature 'Stylesheet' do
   let(:css) { 'body{background-color: red}' }
 
   before do
@@ -11,12 +11,11 @@ RSpec.feature 'Site CSS' do
   scenario 'adding custom CSS' do
     expect(find('pre textarea')['autofocus']).to eq 'true'
 
-    fill_in 'site_css', with: css
-    click_button 'Update Site'
+    fill_in 'stylesheet_css', with: css
+    click_button 'Create Stylesheet'
 
-    expect(page).to have_content 'Site successfully updated'
-    uuid = File.basename(site.reload.stylesheet_filename, '.css')
-    url = File.join('http://localhost:37511', 'stylesheets', uuid, 'original.css')
+    expect(page).to have_content 'Stylesheet successfully updated'
+    url = "http://localhost:37511/css/#{site.host}-#{site.stylesheet.updated_at.to_i}.css"
     expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'svg.fa-file.fa-fw'

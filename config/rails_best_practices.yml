@@ -36,7 +36,6 @@ RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 
 RemoveUnusedMethodsInModelsCheck: {
   except_methods: [
-    'Site#css',
     'User#send_devise_notification'
   ]
 }

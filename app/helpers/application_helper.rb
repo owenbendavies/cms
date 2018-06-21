@@ -30,6 +30,12 @@ module ApplicationHelper
     link_to(privacy_policy.name, send(url_method, privacy_policy.url), target: '_blank')
   end
 
+  def site_stylesheet(site)
+    stylesheet = site.stylesheet
+    id = "#{site.host}-#{stylesheet.updated_at.to_i}"
+    asset_path(css_path(id, format: 'css'))
+  end
+
   def tick(boolean)
     icon_tag('fas fa-check fa-fw') if boolean
   end

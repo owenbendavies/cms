@@ -12,8 +12,4 @@ class SitePolicy < ApplicationPolicy
   def update?
     user_site?
   end
-
-  def css?
-    @user&.site_settings&.find_by(site_id: @record.id, admin: true)
-  end
 end
