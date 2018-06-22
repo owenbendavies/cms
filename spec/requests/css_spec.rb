@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'CSS' do
-  context 'with GET /css/example-xxx.css' do
+  context 'with GET /css/:id-xxx.css' do
+    let!(:site) { FactoryBot.create(:site) }
+    let(:request_host) { new_host }
+    let(:request_path_id) { site.uid }
+
     context 'with stylesheet' do
-      let(:request_host) { new_host }
-      let(:site) { FactoryBot.create(:site, host: 'example') }
       let!(:stylesheet) { FactoryBot.create(:stylesheet, site: site) }
 
       before do
