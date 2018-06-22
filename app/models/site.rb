@@ -15,6 +15,7 @@
 #  separate_header        :boolean          default(TRUE), not null
 #  links                  :jsonb
 #  privacy_policy_page_id :integer
+#  uid                    :string           not null
 #
 # Indexes
 #
@@ -27,6 +28,8 @@
 #
 
 class Site < ApplicationRecord
+  include DefaultUid
+
   # relations
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
