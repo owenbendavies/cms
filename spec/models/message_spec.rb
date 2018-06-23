@@ -27,9 +27,7 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-  it_behaves_like 'model with uid' do
-    subject(:model) { FactoryBot.build(:message) }
-  end
+  it_behaves_like 'model with uid'
 
   describe 'relations' do
     it { is_expected.to belong_to(:site) }

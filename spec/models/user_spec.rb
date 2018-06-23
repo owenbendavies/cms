@@ -50,9 +50,7 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  it_behaves_like 'model with uid' do
-    subject(:model) { FactoryBot.build(:user) }
-  end
+  it_behaves_like 'model with uid'
 
   it 'has a gravatar_url' do
     user = described_class.new(email: 'test@example.com')

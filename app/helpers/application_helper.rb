@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def site_stylesheet(site)
     stylesheet = site.stylesheet
-    id = "#{site.host}-#{stylesheet.updated_at.to_i}"
+    id = "#{site.uid}-#{stylesheet.updated_at.to_i}"
     asset_path(css_path(id, format: 'css'))
   end
 

@@ -15,6 +15,7 @@
 #  separate_header        :boolean          default(TRUE), not null
 #  links                  :jsonb
 #  privacy_policy_page_id :integer
+#  uid                    :string           not null
 #
 # Indexes
 #
@@ -29,6 +30,8 @@
 require 'rails_helper'
 
 RSpec.describe Site do
+  it_behaves_like 'model with uid'
+
   describe 'relations' do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
@@ -89,7 +92,7 @@ RSpec.describe Site do
   end
 
   describe 'validations' do
-    subject { FactoryBot.build(:site) }
+    subject { FactoryBot.create(:site) }
 
     it { is_expected.to validate_length_of(:host).is_at_most(64) }
     it { is_expected.to validate_presence_of(:host) }

@@ -1,7 +1,5 @@
 RSpec.shared_examples 'model with uid' do
-  before do
-    model.save!
-  end
+  subject(:model) { FactoryBot.create(described_class.to_s.underscore) }
 
   describe '#save' do
     it 'sets a uid' do

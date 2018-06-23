@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_21_093047) do
+ActiveRecord::Schema.define(version: 2018_06_22_092845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2018_06_21_093047) do
     t.boolean "separate_header", default: true, null: false
     t.jsonb "links", default: []
     t.integer "privacy_policy_page_id"
+    t.string "uid", null: false
     t.index ["host"], name: "index_sites_on_host", unique: true
     t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true
   end

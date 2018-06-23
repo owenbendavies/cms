@@ -15,6 +15,7 @@
 #  separate_header        :boolean          default(TRUE), not null
 #  links                  :jsonb
 #  privacy_policy_page_id :integer
+#  uid                    :string           not null
 #
 # Indexes
 #
