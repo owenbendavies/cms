@@ -4,7 +4,6 @@ ruby '2.5.1'
 gem 'rails'
 
 # Services
-gem 'aws-sdk-sns' # AWS SDK for SNS
 gem 'fog-aws' # AWS file upload
 
 # Databases

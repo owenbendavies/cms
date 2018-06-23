@@ -1,6 +1,0 @@
----
-en:
-  api:
-    sns_notifications:
-      create:
-        description: Creates an AWS SNS notification
