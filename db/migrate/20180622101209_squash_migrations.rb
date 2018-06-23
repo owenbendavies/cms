@@ -72,8 +72,6 @@ class SquashMigrations < ActiveRecord::Migration[5.2]
     create_table "sites", id: :serial, force: :cascade do |t|
       t.string "host", limit: 64, null: false
       t.string "name", limit: 64, null: false
-      t.string "sub_title", limit: 64
-      t.string "copyright", limit: 64
       t.string "google_analytics", limit: 32
       t.string "charity_number", limit: 32
       t.string "stylesheet_filename", limit: 40
@@ -84,14 +82,17 @@ class SquashMigrations < ActiveRecord::Migration[5.2]
       t.boolean "separate_header", default: true, null: false
       t.jsonb "links", default: []
       t.integer "privacy_policy_page_id"
+      t.string "uid", null: false
       t.index ["host"], name: "index_sites_on_host", unique: true
       t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true
     end
 
-    create_table "sns_notifications", id: :serial, force: :cascade do |t|
-      t.json "message", null: false
+    create_table "stylesheets", id: :serial, force: :cascade do |t|
+      t.integer "site_id", null: false
+      t.text "css", null: false
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
+      t.index ["site_id"], name: "index_stylesheets_on_site_id", unique: true
     end
 
     create_table "users", id: :serial, force: :cascade do |t|
@@ -149,6 +150,7 @@ class SquashMigrations < ActiveRecord::Migration[5.2]
     add_foreign_key "site_settings", "sites", name: "fk_site_settings_site_id"
     add_foreign_key "site_settings", "users", name: "fk_site_settings_user_id"
     add_foreign_key "sites", "pages", column: "privacy_policy_page_id", name: "fk__sites_privacy_policy_page_id"
+    add_foreign_key "stylesheets", "sites", name: "fk_stylesheets_site_id"
     add_foreign_key "users", "users", column: "invited_by_id", name: "fk_users_invited_by_id"
   end
 end
