@@ -33,7 +33,6 @@ class API < ApplicationAPI
     after(&:verify_authorized)
 
     mount MessagesAPI
-    mount SnsNotificationsAPI
     mount SystemAPI
   end
 
