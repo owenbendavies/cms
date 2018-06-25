@@ -20,12 +20,4 @@ addons:
 services:
   - postgresql
 
-before_install:
-  - gem install bundler # TODO: remove when working
-
-env:
-  - TEST_COMMAND=./bin/quality
-  - TEST_COMMAND=./bin/setup
-  - TEST_COMMAND=./bin/test
-
-script: $TEST_COMMAND && ./bin/changes
+script: ./bin/setup && ./bin/test && ./bin/changes
