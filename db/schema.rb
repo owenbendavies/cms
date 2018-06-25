@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_101209) do
+ActiveRecord::Schema.define(version: 2018_06_25_125427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2018_06_22_101209) do
     t.string "name", limit: 64, null: false
     t.string "google_analytics", limit: 32
     t.string "charity_number", limit: 32
-    t.string "stylesheet_filename", limit: 40
     t.text "sidebar_html_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,7 +98,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_101209) do
     t.integer "privacy_policy_page_id"
     t.string "uid", null: false
     t.index ["host"], name: "index_sites_on_host", unique: true
-    t.index ["stylesheet_filename"], name: "index_sites_on_stylesheet_filename", unique: true
+    t.index ["uid"], name: "index_sites_on_uid", unique: true
   end
 
   create_table "stylesheets", id: :serial, force: :cascade do |t|

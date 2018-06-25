@@ -28,12 +28,17 @@ RSpec.describe ImageUploader do
 
   describe '.store!' do
     context 'with non image file' do
+      let(:upload) do
+        File.open(Rails.root.join('spec', 'assets', 'bad.exe')) do |file|
+          image_uploader.store! file
+        end
+      end
+
       it 'raise an exception' do
-        expect { image_uploader.store! StringUploader.new('stylesheet.exe', 'asd') }
-          .to raise_error(
-            CarrierWave::IntegrityError,
-            /.* "exe" files, allowed types: jpg, jpeg, png/
-          )
+        expect { upload }.to raise_error(
+          CarrierWave::IntegrityError,
+          /.* "exe" files, allowed types: jpg, jpeg, png/
+        )
       end
     end
 
