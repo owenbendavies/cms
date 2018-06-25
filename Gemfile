@@ -81,7 +81,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'annotate', require: false # Adds comments of database schema to code
   gem 'foreman', require: false # Starts multiple processes
   gem 'web-console' # Web console debugger
 end
