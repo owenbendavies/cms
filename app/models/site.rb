@@ -7,7 +7,6 @@
 #  name                   :string(64)       not null
 #  google_analytics       :string(32)
 #  charity_number         :string(32)
-#  stylesheet_filename    :string(40)
 #  sidebar_html_content   :text
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -19,8 +18,8 @@
 #
 # Indexes
 #
-#  index_sites_on_host                 (host) UNIQUE
-#  index_sites_on_stylesheet_filename  (stylesheet_filename) UNIQUE
+#  index_sites_on_host  (host) UNIQUE
+#  index_sites_on_uid   (uid) UNIQUE
 #
 # Foreign Keys
 #
@@ -75,12 +74,6 @@ class Site < ApplicationRecord
   validates(
     :charity_number,
     length: { allow_nil: true, maximum: 32 }
-  )
-
-  validates(
-    :stylesheet_filename,
-    length: { allow_nil: true, maximum: 40 },
-    uniqueness: { allow_nil: true }
   )
 
   validates(
