@@ -29,10 +29,6 @@
         "AWS_SECRET_ACCESS_KEY": {
             "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
         },
-        "DISABLE_SPRING": {
-            "description": "Ensures Spring is not running on server",
-            "value": "true"
-        },
         "GOOGLE_CLIENT_ID": {
             "description": "Google client ID for OAuth login",
             "required": false
