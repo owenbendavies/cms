@@ -19,9 +19,8 @@ else
 
   set -v
 
-  eval 'DATABASE_TIMEOUT=5 ./bin/rails db:create db:schema:load'
-  eval './bin/compile'
   eval "$rspec --order random"
+  eval './bin/quality'
 fi
 
 # 'test complete'

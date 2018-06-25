@@ -12,8 +12,6 @@ find_extensions () {
 
 set -v
 
-./bin/yarn
-
 ./node_modules/.bin/eslint $(find_extensions js)
 
 ./node_modules/.bin/stylelint $(find_extensions scss)
