@@ -6,10 +6,12 @@ RSpec.describe CarrierWave do
   end
 
   let(:site) { FactoryBot.build_stubbed(:site) }
-  let(:uploader) { StylesheetUploader.new(site) }
+  let(:uploader) { ImageUploader.new(Image.new(site: site)) }
 
   before do
-    uploader.store! StringUploader.new('stylesheet.css', 'bob')
+    File.open(Rails.root.join('spec', 'assets', 'small.jpg')) do |file|
+      uploader.store! file
+    end
   end
 
   it 'sets cache as 1 year' do
