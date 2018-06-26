@@ -19,7 +19,7 @@ gem 'rack-timeout' # Limits web request time
 gem 'secure_headers' # Adds security headers to requests
 
 # API
-gem 'api-pagination', '< 4.8' # TODO: upgrade when fixed - Pagination for APIs
+gem 'api-pagination' # Pagination for APIs
 gem 'grape-route-helpers' # Named routes for APIs
 gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
@@ -68,16 +68,6 @@ group :development, :test do
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'spring-watcher-listen' # Quick boot
-
-  # Code quality tools
-  gem 'brakeman', require: false # Detect security vulnerabilities
-  gem 'bundler-audit', require: false # Checks for venerable Gems
-  gem 'i18n-tasks', require: false # Detects missing translations
-  gem 'jsonlint', require: false # JSON code quality
-  gem 'license_finder', require: false # Whitelist of dependency licenses
-  gem 'mdl', require: false # Markdown code quality
-  gem 'rails_best_practices', require: false # Rails code quality
-  gem 'rubocop-rspec', require: false # RSpec code quality
 end
 
 group :development do
@@ -101,4 +91,14 @@ group :test do
   gem 'spring-commands-rspec' # Quick boot for RSpec
   gem 'timecop' # Change time in tests
   gem 'webmock' # Mock external web requests
+
+  # Code quality tools
+  gem 'brakeman', require: false # Detect security vulnerabilities
+  gem 'bundler-audit', require: false # Checks for venerable Gems
+  gem 'i18n-tasks', require: false # Detects missing translations
+  gem 'jsonlint', require: false # JSON code quality
+  gem 'license_finder', require: false # Whitelist of dependency licenses
+  gem 'mdl', require: false # Markdown code quality
+  gem 'rails_best_practices', require: false # Rails code quality
+  gem 'rubocop-rspec', require: false # RSpec code quality
 end
