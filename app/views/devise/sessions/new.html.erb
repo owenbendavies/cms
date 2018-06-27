@@ -4,7 +4,6 @@
 <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |form| %>
   <%= form.input :email, autofocus: true %>
   <%= form.input :password, input_html: { autocomplete: 'off' } %>
-  <%= form.input :remember_me, as: :boolean %>
 
   <div class="form__buttons">
     <%= form.button :submit, value: t('.title') %>
