@@ -8,7 +8,6 @@ class User < ApplicationRecord
          :lockable,
          :omniauthable,
          :recoverable,
-         :rememberable,
          :timeoutable,
          :trackable,
          :validatable,
