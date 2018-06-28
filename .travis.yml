@@ -11,7 +11,7 @@ git:
 
 addons:
   chrome: stable
-  postgresql: "9.6"
+  postgresql: 9.6 # TODO - upgrade to 10 when Travis supports it
 
 services:
   - postgresql
