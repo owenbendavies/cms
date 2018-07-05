@@ -71,50 +71,6 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: !Ref "AWS::StackName"
 
-  GlueDatabase:
-    Type: "AWS::Glue::Database"
-    Properties:
-      DatabaseInput:
-        Name: !Ref "AWS::StackName"
-      CatalogId: !Ref "AWS::AccountId"
-
-  GlueCrawler:
-    Type: "AWS::Glue::Crawler"
-    Properties:
-      Role: !GetAtt GlueRole.Arn
-      DatabaseName: !Ref GlueDatabase
-      Targets:
-        S3Targets:
-          - Path: !Sub "s3://${S3LogsBucket}/papertrail"
-      Name: !Ref "AWS::StackName"
-
-  GlueRole:
-    Type: "AWS::IAM::Role"
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: glue.amazonaws.com
-            Action: "sts:AssumeRole"
-      ManagedPolicyArns:
-        - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
-      Policies:
-        - PolicyName: access-s3-bucket
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              - Effect: Allow
-                Action: "s3:ListBucket"
-                Resource: !GetAtt S3LogsBucket.Arn
-              - Effect: Allow
-                Action:
-                  - "s3:GetObject"
-                  - "s3:PutObject"
-                Resource: !Sub "${S3LogsBucket.Arn}/*"
-      RoleName: !Sub "${AWS::StackName}-glue"
-
   IAMUser:
     Type: "AWS::IAM::User"
     Properties:
@@ -200,23 +156,10 @@ Resources:
               DaysAfterInitiation: 1
             Status: Enabled
           - Id: delete-old-files
-            ExpirationInDays: 90
+            ExpirationInDays: 30
             Status: Enabled
           - Id: delete-old-versions
             NoncurrentVersionExpirationInDays: 30
             Status: Enabled
       VersioningConfiguration:
         Status: Enabled
-
-  S3LogsBucketPolicy:
-    Type: "AWS::S3::BucketPolicy"
-    Properties:
-      Bucket: !Ref S3LogsBucket
-      PolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              AWS: "arn:aws:iam::719734659904:root"
-            Action: "s3:PutObject"
-            Resource: !Sub "${S3LogsBucket.Arn}/papertrail/*"
