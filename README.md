@@ -1,6 +1,6 @@
 # CMS
 
-[![Build Status](https://travis-ci.org/obduk/cms.svg?branch=master)](https://travis-ci.org/obduk/cms)
+[![Build Status](https://travis-ci.com/obduk/cms.svg?branch=master)](https://travis-ci.com/obduk/cms)
 
 A Content Management System (CMS) written with Ruby on Rails. Although it is a
 working project, it was not created with the intention of being a production
