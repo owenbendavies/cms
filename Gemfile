@@ -23,6 +23,7 @@ gem 'api-pagination' # Pagination for APIs
 gem 'grape-route-helpers' # Named routes for APIs
 gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
+gem 'will_paginate' # Pagination for api-pagination
 
 # Authentication and authorization
 gem 'devise_invitable' # Inviting of users
@@ -47,7 +48,6 @@ gem 'xml-sitemap' # Generates XML site map
 # View Gems
 gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
-gem 'will_paginate-bootstrap' # Pagination
 
 # Server
 gem 'bootsnap' # Fast booting

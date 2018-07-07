@@ -2,7 +2,6 @@ module Admin
   class MessagesController < ApplicationController
     def index
       authorize Message
-      @messages = policy_scope(Message).ordered.paginate(page: params[:page])
     end
 
     def show
