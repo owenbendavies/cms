@@ -89,19 +89,14 @@
         </a>
 
         <div class="dropdown-menu">
-          <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
-            <%= icon_tag(t('devise.registrations.edit.icon')) %>
-            <%= t('devise.registrations.edit.title') %>
-          <% end %>
-
           <%= link_to user_sites_path, class: 'dropdown-item' do %>
             <%= icon_tag(t('admin.sites.index.icon')) %>
             <%= t('admin.sites.index.title') %>
           <% end %>
 
-          <%= link_to destroy_user_session_path, class: 'dropdown-item' do %>
-            <%= icon_tag(t('devise.sessions.destroy.icon')) %>
-            <%= t('devise.sessions.destroy.title') %>
+          <%= link_to logout_path, class: 'dropdown-item' do %>
+            <%= icon_tag(t('sessions.destroy.icon')) %>
+            <%= t('sessions.destroy.title') %>
           <% end %>
         </div>
       </li>

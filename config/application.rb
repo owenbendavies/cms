@@ -61,6 +61,17 @@ module Cms
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Protection
 
+    config.middleware.use(
+      OmniAuth::Strategies::CognitoIdP,
+      ENV.fetch('AWS_COGNITO_CLIENT_ID'),
+      ENV.fetch('AWS_COGNITO_CLIENT_SECRET'),
+      aws_region: ENV.fetch('AWS_REGION'),
+      client_options: {
+        site: ENV.fetch('AWS_COGNITO_DOMAIN')
+      },
+      user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID')
+    )
+
     # Use a real queuing backend for Active Job (and separate queues per environment)
     config.active_job.queue_adapter = :delayed_job
     # config.active_job.queue_name_prefix = "cms_#{Rails.env}"

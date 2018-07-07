@@ -29,14 +29,6 @@
         "AWS_SECRET_ACCESS_KEY": {
             "description": "The Amazon Web Services IAM user secret for S3 and optionally SES"
         },
-        "GOOGLE_CLIENT_ID": {
-            "description": "Google client ID for OAuth login",
-            "required": false
-        },
-        "GOOGLE_CLIENT_SECRET": {
-            "description": "Google client secret for OAuth login",
-            "required": false
-        },
         "HEROKU_APP_NAME": {
             "description": "Set to same as the Heroku App name (set automatically for review apps)"
         },
@@ -51,9 +43,6 @@
         "SEED_SITE_HOST": {
             "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
             "required": false
-        },
-        "SEED_USER_EMAIL": {
-            "description": "The email address for the first system administrator user"
         }
     },
     "formation": {

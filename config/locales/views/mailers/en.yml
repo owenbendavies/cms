@@ -1,22 +1,6 @@
 ---
 en:
   mailers:
-    confirmation_instructions:
-      text: Please confirm your email address.
-      title: Confirm Email
-    email_changed:
-      text: Your email is being changed to %{new_email}, please check that account for instuctions
-    invitation_instructions:
-      text: You have been added to %{site_name} site by %{inviter_name}.
-      title: Confirm your account
     new_message:
       subject: New message
       text: 'A new message has been posted on %{site_name}:'
-    password_change:
-      text: Your password has been changed
-    reset_password_instructions:
-      text: Someone has requested a link to change your password.
-    unlock_instructions:
-      text: Your account has been locked due to an excessive number of unsuccessful sign in attempts.
-    user_added_to_site:
-      subject: Added to site

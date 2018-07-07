@@ -7,9 +7,7 @@ RSpec.describe Site do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
-    it { is_expected.to have_many(:site_settings).dependent(:destroy) }
     it { is_expected.to have_one(:stylesheet).dependent(:destroy) }
-    it { is_expected.to have_many(:users).through(:site_settings) }
     it { is_expected.to belong_to(:privacy_policy_page) }
   end
 

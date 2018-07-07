@@ -1,7 +1,5 @@
 import "bootstrap";
 
-import "../images/all";
-
 import "../js/autosize";
 import "../js/fontawesome";
 import "../js/google_analytics";

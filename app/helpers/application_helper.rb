@@ -6,7 +6,7 @@ module ApplicationHelper
 
     classes = [page_class]
     classes << page_class.gsub(/-edit$/, '')
-    classes << 'loggedin' if user_signed_in?
+    classes << 'loggedin' if current_user
 
     classes.sort.uniq.join(' ')
   end
