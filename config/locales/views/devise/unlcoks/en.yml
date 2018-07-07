@@ -1,7 +1,0 @@
----
-en:
-  devise:
-    unlocks:
-      new:
-        submit: Resend unlock instructions
-        title: Unlock account

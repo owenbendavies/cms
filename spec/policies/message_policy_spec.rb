@@ -24,7 +24,7 @@ RSpec.describe MessagePolicy do
   end
 
   permissions :show?, :destroy? do
-    let(:record) { FactoryBot.create(:message, site: site) }
+    let(:record) { FactoryBot.build(:message, site: site) }
 
     include_examples 'policy for user record'
   end

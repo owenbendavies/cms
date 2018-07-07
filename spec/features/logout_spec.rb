@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'User logout' do
   before do
-    login_as site_user
-    visit '/home'
+    login_with_omniauth_as(site_user)
+    visit '/login'
   end
 
   scenario 'clicking topbar link' do

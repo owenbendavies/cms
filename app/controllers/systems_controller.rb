@@ -1,8 +1,6 @@
 class SystemsController < ApplicationController
-  PUBLIC_PAGES = %i[home robots].freeze
-
-  skip_before_action :authenticate_user!, only: PUBLIC_PAGES
-  skip_after_action :verify_authorized, only: PUBLIC_PAGES
+  skip_before_action :authenticate_user!, only: %i[robots]
+  skip_after_action :verify_authorized, only: %i[robots]
 
   def test_500_error
     authorize :system
@@ -12,10 +10,6 @@ class SystemsController < ApplicationController
   def test_timeout_error
     authorize :system
     sleep 30
-  end
-
-  def home
-    redirect_to page_path('home')
   end
 
   def robots; end

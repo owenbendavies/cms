@@ -2,8 +2,4 @@
   min-height: 200px;
   padding-bottom: 15px;
   padding-top: 15px;
-
-  &__header-links {
-    @include float-right();
-  }
 }

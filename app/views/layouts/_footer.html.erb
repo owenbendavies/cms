@@ -48,13 +48,13 @@
             <%= link_to t('pages.index.title'), sitemap_path %>
           </li>
 
-          <% if user_signed_in? %>
+          <% if current_user  %>
             <li class="footer__link-item">
-              <%= link_to t('devise.sessions.destroy.title'), destroy_user_session_path %>
+              <%= link_to t('sessions.destroy.title'), logout_path, 'data-turbolinks': false %>
             </li>
           <% else %>
             <li class="footer__link-item">
-              <%= link_to t('devise.sessions.new.title'), new_user_session_path %>
+              <%= link_to t('sessions.new.title'), login_path %>
             </li>
           <% end %>
         </ul>

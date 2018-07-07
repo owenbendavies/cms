@@ -22,7 +22,7 @@ RSpec.describe 'API Authorization' do
   context 'with an unauthorized user' do
     let(:request_method) { :get }
     let(:request_path) { '/api/messages' }
-    let(:request_user) { FactoryBot.create(:user) }
+    let(:request_user) { FactoryBot.build(:user) }
 
     include_examples 'renders forbidden'
   end

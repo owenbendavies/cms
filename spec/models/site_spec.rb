@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Site do
   it_behaves_like 'model with uid'
+  it_behaves_like 'model with versioning'
 
   describe 'relations' do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
-    it { is_expected.to have_many(:site_settings).dependent(:destroy) }
     it { is_expected.to have_one(:stylesheet).dependent(:destroy) }
-    it { is_expected.to have_many(:users).through(:site_settings) }
     it { is_expected.to belong_to(:privacy_policy_page) }
   end
 
@@ -136,6 +135,16 @@ RSpec.describe Site do
     it 'returns host without www' do
       site = FactoryBot.build_stubbed(:site, host: 'www.example.com')
       expect(site.email).to eq 'noreply@example.com'
+    end
+  end
+
+  describe '#user_emails' do
+    include_context 'with stubbed user emails'
+
+    subject(:site) { FactoryBot.build(:site) }
+
+    it 'returns email addresses of users in site from AWS' do
+      expect(site.user_emails).to eq user_emails
     end
   end
 end

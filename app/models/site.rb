@@ -5,8 +5,6 @@ class Site < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :pages, dependent: :destroy
-  has_many :site_settings, dependent: :destroy
-  has_many :users, through: :site_settings
   has_one :stylesheet, dependent: :destroy
   belongs_to :privacy_policy_page, class_name: 'Page', optional: true
 
@@ -60,5 +58,14 @@ class Site < ApplicationRecord
 
   def email
     "noreply@#{host.gsub(/^www\./, '')}"
+  end
+
+  def user_emails
+    AWS_COGNITO.list_users_in_group(
+      user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID'),
+      group_name: host
+    ).users.map do |user|
+      user.attributes.find { |attribute| attribute.name == 'email' }.value
+    end
   end
 end

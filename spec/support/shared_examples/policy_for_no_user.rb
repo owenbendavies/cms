@@ -13,7 +13,7 @@ RSpec.shared_examples 'policy for no user' do
       }
     end
 
-    let(:user) { FactoryBot.create(:user, site: site) }
+    let(:user) { FactoryBot.build(:user, site: site) }
 
     it 'is not permitted' do
       expect(described_class).not_to permit(context, record)
@@ -21,7 +21,7 @@ RSpec.shared_examples 'policy for no user' do
   end
 
   context 'with another site user' do
-    let(:user) { FactoryBot.create :user }
+    let(:user) { FactoryBot.build :user }
 
     it 'is not permitted' do
       expect(described_class).not_to permit(context, record)

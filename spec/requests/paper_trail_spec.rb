@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'paper trail' do
   context 'when updating something via the frontend' do
-    let(:request_user) { FactoryBot.create(:user, site: site) }
+    let(:request_user) { FactoryBot.build(:user, site: site) }
     let(:request_method) { :put }
     let(:request_path) { '/admin/site' }
     let(:request_params) { { 'site' => { 'name' => new_name } } }
@@ -19,7 +19,7 @@ RSpec.describe 'paper trail' do
   context 'when creating something via the api' do
     let(:request_method) { :post }
     let(:request_path) { '/api/messages' }
-    let(:request_user) { FactoryBot.create(:user, site: site) }
+    let(:request_user) { FactoryBot.build(:user, site: site) }
     let(:expected_status) { 201 }
 
     let(:request_params) do
