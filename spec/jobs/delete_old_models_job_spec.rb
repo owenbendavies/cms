@@ -41,7 +41,7 @@ RSpec.describe DeleteOldModelsJob do
   context 'with versions' do
     let(:old_model) do
       Timecop.travel(old_time) do
-        FactoryBot.create(:user)
+        FactoryBot.create(:site)
       end
     end
 
@@ -53,7 +53,7 @@ RSpec.describe DeleteOldModelsJob do
 
     let(:recent_model) do
       Timecop.travel(recent_time) do
-        FactoryBot.create(:user)
+        FactoryBot.create(:site)
       end
     end
 

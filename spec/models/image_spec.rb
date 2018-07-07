@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Image do
+  it_behaves_like 'model with versioning'
+
   describe '#file' do
     let(:image) { FactoryBot.build(:image, filename: nil) }
 

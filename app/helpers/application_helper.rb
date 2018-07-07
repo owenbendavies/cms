@@ -6,7 +6,7 @@ module ApplicationHelper
 
     classes = [page_class]
     classes << page_class.gsub(/-edit$/, '')
-    classes << 'loggedin' if user_signed_in?
+    classes << 'loggedin' if current_user
 
     classes.sort.uniq.join(' ')
   end
@@ -34,10 +34,6 @@ module ApplicationHelper
     stylesheet = site.stylesheet
     id = "#{site.uid}-#{stylesheet.updated_at.to_i}"
     asset_path(css_path(id, format: 'css'))
-  end
-
-  def tick(boolean)
-    icon_tag('fas fa-check fa-fw') if boolean
   end
 
   def timeago(time)

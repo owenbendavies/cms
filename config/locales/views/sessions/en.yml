@@ -1,0 +1,13 @@
+---
+en:
+  sessions:
+    create:
+      message: Signed in successfully.
+    destroy:
+      icon: fas fa-sign-out-alt fa-fw
+      message: Signed out successfully.
+      title: Logout
+    invalid:
+      message: Error signing in
+    new:
+      title: Login

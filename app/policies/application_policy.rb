@@ -3,11 +3,15 @@ class ApplicationPolicy
     protected
 
     def user_site?
-      @site && @user&.site_settings&.find_by(site_id: @site.id)
+      @site && @user&.groups&.include?(@site.host)
     end
 
     def admin_site?
-      @site && @user&.site_settings&.find_by(site_id: @site.id, admin: true)
+      user_site? && @user&.groups&.include?('admin')
+    end
+
+    def sysadmin?
+      @user&.groups&.include?('sysadmin')
     end
   end
 

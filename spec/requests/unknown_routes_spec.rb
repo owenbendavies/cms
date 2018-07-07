@@ -6,7 +6,7 @@ RSpec.describe 'Unknown routes' do
 
   context 'with root url' do
     let(:request_path) { '/' }
-    let(:expected_status) { 302 }
+    let(:expected_status) { 301 }
 
     it 'redirects to home' do
       request_page
@@ -16,7 +16,7 @@ RSpec.describe 'Unknown routes' do
   end
 
   context 'with urls with .html in' do
-    let(:request_path) { '/login.html' }
+    let(:request_path) { '/sitemap.html' }
 
     include_examples 'renders html page not found'
   end
@@ -50,14 +50,14 @@ RSpec.describe 'Unknown routes' do
   end
 
   context 'with unknown site and unkown format' do
-    let(:request_path) { '/login.txt' }
+    let(:request_path) { '/sitemap.txt' }
     let(:request_host) { new_host }
 
     include_examples 'returns 406'
   end
 
   context 'with unkown extension' do
-    let(:request_path) { '/login.txt' }
+    let(:request_path) { '/sitemap.txt' }
 
     include_examples 'returns 406'
   end

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Page do
+  it_behaves_like 'model with versioning'
+
   describe 'acts_as_list' do
     let(:site1) { FactoryBot.create(:site) }
     let(:site2) { FactoryBot.create(:site) }

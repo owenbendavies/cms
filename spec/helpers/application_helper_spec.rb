@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe ApplicationHelper do
   describe '#body_class' do
     context 'without sigining in' do
-      before do
-        allow(helper).to receive(:user_signed_in?).and_return(false)
+      helper do
+        def current_user
+          nil
+        end
       end
 
       it 'uses path' do
@@ -24,8 +26,10 @@ RSpec.describe ApplicationHelper do
     end
 
     context 'with signed in' do
-      before do
-        allow(helper).to receive(:user_signed_in?).and_return(true)
+      helper do
+        def current_user
+          FactoryBot.build(:user)
+        end
       end
 
       it 'includes logged in' do
@@ -95,16 +99,6 @@ RSpec.describe ApplicationHelper do
       url = "http://localhost:37511/css/#{site.uid}-#{stylesheet.updated_at.to_i}.css"
 
       expect(helper.site_stylesheet(site)).to eq url
-    end
-  end
-
-  describe '#tick' do
-    it 'shows tick for true' do
-      expect(helper.tick(true)).to eq '<i class="fas fa-check fa-fw"></i>'
-    end
-
-    it 'shows nothing when not true' do
-      expect(helper.tick(false)).to be_nil
     end
   end
 

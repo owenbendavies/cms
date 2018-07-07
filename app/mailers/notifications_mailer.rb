@@ -6,20 +6,8 @@ class NotificationsMailer < ApplicationMailer
 
     mail(
       from: from_site(message.site),
-      to: @site.users.pluck(:email),
+      to: @site.user_emails,
       subject: t('mailers.new_message.subject')
-    )
-  end
-
-  def user_added_to_site(user, site, inviter)
-    @site = site
-    @resource = user
-    @inviter = inviter
-
-    mail(
-      from: from_site(site),
-      to: user.email,
-      subject: t('mailers.user_added_to_site.subject')
     )
   end
 end
