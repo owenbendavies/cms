@@ -16,8 +16,6 @@ set -v
 
 ./node_modules/.bin/stylelint $(find_extensions scss)
 
-./bin/bundle-audit update && ./bin/bundle-audit
-
 ./bin/i18n-tasks health
 
 ./bin/jsonlint $(find_extensions json)
