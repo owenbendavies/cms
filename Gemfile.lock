@@ -295,7 +295,7 @@ GEM
       ast (~> 2.4.0)
     parslet (1.8.2)
     pg (1.0.0)
-    phonelib (0.6.22)
+    phonelib (0.6.23)
     powerpack (0.1.2)
     premailer (1.11.1)
       addressable
