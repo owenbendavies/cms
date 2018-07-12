@@ -4,7 +4,7 @@ RSpec.describe ApplicationHelper do
   describe '#body_class' do
     context 'without sigining in' do
       before do
-        allow(helper).to receive(:user_signed_in?).and_return(false)
+        allow(helper).to receive(:current_user).and_return(false)
       end
 
       it 'uses path' do
@@ -25,7 +25,7 @@ RSpec.describe ApplicationHelper do
 
     context 'with signed in' do
       before do
-        allow(helper).to receive(:user_signed_in?).and_return(true)
+        allow(helper).to receive(:current_user).and_return(true)
       end
 
       it 'includes logged in' do

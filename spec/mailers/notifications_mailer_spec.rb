@@ -34,15 +34,4 @@ RSpec.describe NotificationsMailer do
       expect(email.to).to contain_exactly(site_user1.email, site_user2.email)
     end
   end
-
-  describe '.user_added_to_site' do
-    subject(:email) { described_class.user_added_to_site(user, site, site_user) }
-
-    let(:user) { FactoryBot.build_stubbed(:user) }
-    let(:site_user) { FactoryBot.build_stubbed(:user, site: site) }
-    let(:expected_subject) { 'Added to site' }
-    let(:expected_body) { "You have been added to #{site.name} site by #{site_user.name}." }
-
-    include_examples 'email for user'
-  end
 end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Authentication
   include Pundit
 
   protect_from_forgery with: :reset_session
@@ -14,10 +15,9 @@ class ApplicationController < ActionController::Base
   before_action :render_site_not_found
   before_action :check_format_is_not_html
   before_action :authenticate_user!, except: [:page_not_found]
-  before_action :configure_devise_parameters, if: :devise_controller?
 
-  after_action :verify_authorized, unless: :devise_controller?
-  after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
+  after_action :verify_authorized
+  after_action :verify_policy_scoped, only: :index
 
   def page_not_found
     skip_authorization
@@ -26,13 +26,6 @@ class ApplicationController < ActionController::Base
       format.html { render page_not_found_template, status: 404 }
       format.any { head 406 }
     end
-  end
-
-  protected
-
-  def configure_devise_parameters
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
-    devise_parameter_sanitizer.permit(:invite, keys: [:name])
   end
 
   private
