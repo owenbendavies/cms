@@ -98,6 +98,5 @@ group :test do
   gem 'jsonlint', require: false # JSON code quality
   gem 'license_finder', require: false # Whitelist of dependency licenses
   gem 'mdl', require: false # Markdown code quality
-  gem 'rails_best_practices', require: false # Rails code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
 end
