@@ -89,8 +89,6 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     climate_control (0.2.0)
-    code_analyzer (0.4.8)
-      sexp_processor
     coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -131,7 +129,6 @@ GEM
       thread_safe
     equalizer (0.0.11)
     erubi (1.7.1)
-    erubis (2.7.0)
     excon (0.62.0)
     execjs (2.7.0)
     factory_bot (4.10.0)
@@ -344,14 +341,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_best_practices (1.19.3)
-      activesupport
-      code_analyzer (>= 0.4.8)
-      erubis
-      i18n
-      json
-      require_all (~> 2.0)
-      ruby-progressbar
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -365,7 +354,6 @@ GEM
       ffi (>= 0.5.0, < 2)
     request_store (1.4.1)
       rack (>= 1.4)
-    require_all (2.0.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -408,7 +396,6 @@ GEM
     selenium-webdriver (3.13.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
-    sexp_processor (4.11.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     simple_form (4.0.1)
@@ -534,7 +521,6 @@ DEPENDENCIES
   rack-protection
   rack-timeout
   rails
-  rails_best_practices
   rollbar
   rspec-rails
   rubocop-rspec
