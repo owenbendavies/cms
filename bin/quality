@@ -24,8 +24,6 @@ set -v
 
 ./bin/mdl --style config/markdown $(find_extensions md)
 
-./bin/rails_best_practices --silent
-
 ./bin/rubocop --format simple
 
 # Run brakeman last as large output
