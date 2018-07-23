@@ -405,7 +405,7 @@ GEM
     scout_apm (2.4.14)
     secure_headers (6.0.0)
     seedbank (0.4.0)
-    selenium-webdriver (3.13.0)
+    selenium-webdriver (3.13.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sexp_processor (4.11.0)
