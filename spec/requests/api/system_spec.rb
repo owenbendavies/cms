@@ -18,7 +18,7 @@ RSpec.describe 'API System' do
   end
 
   context 'with GET /api/system/test_500_error' do
-    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+    let(:request_user) { FactoryBot.build(:user, sysadmin: true) }
 
     let(:expected_body) do
       {
@@ -48,7 +48,7 @@ RSpec.describe 'API System' do
   end
 
   context 'with GET /api/system/test_delayed_error' do
-    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+    let(:request_user) { FactoryBot.build(:user, sysadmin: true) }
 
     let(:expected_status) { 202 }
 
@@ -72,7 +72,7 @@ RSpec.describe 'API System' do
   end
 
   context 'with GET /api/system/test_timeout_error' do
-    let(:request_user) { FactoryBot.create(:user, :sysadmin) }
+    let(:request_user) { FactoryBot.build(:user, sysadmin: true) }
 
     include_examples(
       'swagger',

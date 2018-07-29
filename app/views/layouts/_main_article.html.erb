@@ -1,11 +1,5 @@
 <header class="article__header">
   <h1>
-    <% if content_for(:header_links) %>
-      <div class="article__header-links">
-        <%= content_for(:header_links) %>
-      </div>
-    <% end %>
-
     <%= icon_tag(content_for(:page_icon)) if content_for(:page_icon) %>
     <%= content_for(:title) %>
   </h1>

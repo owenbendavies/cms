@@ -1,9 +1,0 @@
----
-en:
-  devise:
-    registrations:
-      edit:
-        current_password_hint: needed to validate changes
-        icon: fas fa-user fa-fw
-        password_hint: leave blank if not changing
-        title: User Settings

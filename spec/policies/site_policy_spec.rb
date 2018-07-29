@@ -4,7 +4,7 @@ RSpec.describe SitePolicy do
   describe 'Scope' do
     subject(:policy_scope) { described_class::Scope.new(context, Site).resolve }
 
-    let(:user) { FactoryBot.create(:user, site: site) }
+    let(:user) { FactoryBot.build(:user, site: site) }
 
     before { FactoryBot.create(:site) }
 
@@ -21,7 +21,7 @@ RSpec.describe SitePolicy do
     end
 
     context 'with user' do
-      let(:user) { FactoryBot.create :user }
+      let(:user) { FactoryBot.build :user }
 
       it 'is permitted' do
         expect(described_class).to permit(context)

@@ -1,8 +1,0 @@
----
-en:
-  activerecord:
-    attributes:
-      site_setting:
-        admin: Admin
-    models:
-      site_setting: Site Setting

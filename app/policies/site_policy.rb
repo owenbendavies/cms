@@ -1,7 +1,7 @@
 class SitePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      @user.sites
+      Site.where(host: @user.groups)
     end
   end
 

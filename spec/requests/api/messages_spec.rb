@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'API Messages' do
-  let(:request_user) { FactoryBot.create(:user, site: site) }
+  let(:request_user) { FactoryBot.build(:user, site: site) }
   let(:message) { FactoryBot.create(:message, site: site) }
 
   let(:expected_result) do

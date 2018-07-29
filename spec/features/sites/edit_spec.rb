@@ -27,7 +27,7 @@ RSpec.feature 'Edit the site' do
 
     expect(page).to have_content 'Site successfully updated'
     expect(body).to include "ga('create', '#{new_code}', 'auto');"
-    expect(body).to include "ga('set', 'userId', '#{site_user.uid}');"
+    expect(body).to include "ga('set', 'userId', '#{site_user.id}');"
 
     navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
 

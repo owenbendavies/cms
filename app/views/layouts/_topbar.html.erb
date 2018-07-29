@@ -63,11 +63,6 @@
               <%= t('admin.sites.edit.title') %>
             <% end %>
 
-            <%= link_to admin_users_path, class: 'dropdown-item' do %>
-              <%= icon_tag(t('admin.users.index.icon')) %>
-              <%= t('admin.users.index.title') %>
-            <% end %>
-
             <% if policy(Stylesheet).edit? %>
               <%= link_to edit_admin_stylesheet_path, class: 'dropdown-item' do %>
                 <%= icon_tag(t('admin.stylesheets.edit.icon')) %>
@@ -89,19 +84,14 @@
         </a>
 
         <div class="dropdown-menu">
-          <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
-            <%= icon_tag(t('devise.registrations.edit.icon')) %>
-            <%= t('devise.registrations.edit.title') %>
-          <% end %>
-
           <%= link_to user_sites_path, class: 'dropdown-item' do %>
             <%= icon_tag(t('admin.sites.index.icon')) %>
             <%= t('admin.sites.index.title') %>
           <% end %>
 
-          <%= link_to destroy_user_session_path, class: 'dropdown-item' do %>
-            <%= icon_tag(t('devise.sessions.destroy.icon')) %>
-            <%= t('devise.sessions.destroy.title') %>
+          <%= link_to logout_path, class: 'dropdown-item', 'data-turbolinks': false do %>
+            <%= icon_tag(t('sessions.destroy.icon')) %>
+            <%= t('sessions.destroy.title') %>
           <% end %>
         </div>
       </li>

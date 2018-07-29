@@ -1,11 +1,11 @@
 module Helpers
   module Authentication
-    def warden
-      env['warden']
+    def session
+      env['rack.session']
     end
 
     def current_user
-      warden.user
+      @current_user ||= User.new(session[:user]) if session[:user]
     end
 
     def site

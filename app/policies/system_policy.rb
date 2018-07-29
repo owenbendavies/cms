@@ -4,14 +4,14 @@ class SystemPolicy < ApplicationPolicy
   end
 
   def test_500_error?
-    @user&.sysadmin?
+    sysadmin?
   end
 
   def test_delayed_error?
-    @user&.sysadmin?
+    sysadmin?
   end
 
   def test_timeout_error?
-    @user&.sysadmin?
+    sysadmin?
   end
 end

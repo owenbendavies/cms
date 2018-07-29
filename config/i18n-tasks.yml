@@ -90,11 +90,9 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-  - 'time.formats.devise.*'
   - 'activerecord.attributes.*'
   - 'activerecord.errors.*'
   - 'activerecord.models.*'
-  - 'devise.*'
   - 'errors.messages.*'
   - 'api.*'
 # - 'activerecord.attributes.*'

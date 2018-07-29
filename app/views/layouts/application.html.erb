@@ -15,7 +15,7 @@
   </head>
 
   <body class="<%= body_class %>">
-    <%= render 'layouts/topbar', site: @site, page: @page if user_signed_in? %>
+    <%= render 'layouts/topbar', site: @site, page: @page if current_user %>
 
     <div class="page">
       <div class="page__container">

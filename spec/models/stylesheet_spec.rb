@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Stylesheet do
+  it_behaves_like 'model with versioning'
+
   describe 'relations' do
     it { is_expected.to belong_to(:site) }
   end

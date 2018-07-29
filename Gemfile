@@ -4,6 +4,7 @@ ruby '2.5.1'
 gem 'rails'
 
 # Services
+gem 'aws-sdk-cognitoidentityprovider' # AWS Cognito API
 gem 'fog-aws' # AWS file upload
 
 # Databases
@@ -25,9 +26,7 @@ gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
 
 # Authentication and authorization
-gem 'devise_invitable' # Inviting of users
-gem 'devise_zxcvbn' # Strong passwords for users
-gem 'omniauth-google-oauth2' # Google login
+gem 'omniauth-cognito-idp' # AWS Cognito login
 gem 'pundit' # Authorization
 
 # Model Gems

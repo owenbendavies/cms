@@ -7,7 +7,7 @@ RSpec.describe PagePolicy do
     let!(:site_page) { FactoryBot.create(:page, site: site) }
     let!(:private_site_page) { FactoryBot.create(:page, private: true, site: site) }
 
-    before { FactoryBot.create(:page) }
+    before { FactoryBot.build(:page) }
 
     context 'without user' do
       it 'returns visible site pages' do
@@ -16,7 +16,7 @@ RSpec.describe PagePolicy do
     end
 
     context 'with another site user' do
-      let(:user) { FactoryBot.create :user }
+      let(:user) { FactoryBot.build :user }
 
       it 'returns visible site pages' do
         expect(policy_scope).to contain_exactly site_page
@@ -24,7 +24,7 @@ RSpec.describe PagePolicy do
     end
 
     context 'with site user' do
-      let(:user) { FactoryBot.create(:user, site: site) }
+      let(:user) { FactoryBot.build(:user, site: site) }
 
       it 'returns all site pages' do
         expect(policy_scope).to contain_exactly(site_page, private_site_page)
@@ -42,13 +42,13 @@ RSpec.describe PagePolicy do
 
   permissions :show?, :contact_form? do
     context 'with private page' do
-      let(:record) { FactoryBot.create(:page, private: true, site: site) }
+      let(:record) { FactoryBot.build(:page, private: true, site: site) }
 
       include_examples 'policy for user record'
     end
 
     context 'with non private page' do
-      let(:record) { FactoryBot.create(:page, site: site) }
+      let(:record) { FactoryBot.build(:page, site: site) }
 
       context 'without user' do
         it 'is permitted' do
@@ -57,8 +57,8 @@ RSpec.describe PagePolicy do
       end
 
       context 'with another site' do
-        let(:other_site) { FactoryBot.create(:site) }
-        let(:record) { FactoryBot.create(:page, site: other_site) }
+        let(:other_site) { FactoryBot.build(:site) }
+        let(:record) { FactoryBot.build(:page, site: other_site) }
 
         it 'is not permitted' do
           expect(described_class).not_to permit(context, record)
@@ -68,7 +68,7 @@ RSpec.describe PagePolicy do
   end
 
   permissions :create?, :update?, :destroy? do
-    let(:record) { FactoryBot.create(:page, site: site) }
+    let(:record) { FactoryBot.build(:page, site: site) }
 
     include_examples 'policy for user record'
   end
