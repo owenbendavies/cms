@@ -16,7 +16,7 @@ RSpec.describe SystemPolicy do
     include_examples 'policy for no user'
 
     context 'with sysadmin user' do
-      let(:user) { FactoryBot.create(:user, :sysadmin) }
+      let(:user) { FactoryBot.build(:user, sysadmin: true) }
 
       it 'is permitted' do
         expect(described_class).to permit(context)

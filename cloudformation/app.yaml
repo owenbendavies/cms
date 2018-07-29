@@ -10,6 +10,15 @@ Outputs:
   AwsAccessKeyId:
     Description: "Value for AWS_ACCESS_KEY_ID"
     Value: !Ref IAMUserAccessKey
+  AwsCognitoClientId:
+    Description: "Value for AWS_COGNITO_CLIENT_ID"
+    Value: !Ref CognitoUserPoolClient
+  AwsCognitoClientSecret:
+    Description: "Value for AWS_COGNITO_CLIENT_SECRET"
+    Value: !GetAtt CognitoUserPoolClient.ClientSecret
+  AwsCognitoUserPoolId:
+    Description: "Value for AWS_COGNITO_USER_POOL_ID"
+    Value: !Ref CognitoUserPool
   AwsRegion:
     Description: "Value for AWS_REGION"
     Value: !Ref "AWS::Region"
@@ -71,6 +80,26 @@ Resources:
       CloudFrontOriginAccessIdentityConfig:
         Comment: !Ref "AWS::StackName"
 
+  CognitoUserPool:
+    Type: "AWS::Cognito::UserPool"
+    Properties:
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+      AutoVerifiedAttributes: [email]
+      Schema:
+        - Name: name
+          Mutable: true
+          Required: true
+      UsernameAttributes: [email]
+      UserPoolName: !Ref "AWS::StackName"
+
+  CognitoUserPoolClient:
+    Type: "AWS::Cognito::UserPoolClient"
+    Properties:
+      ClientName: !Ref "AWS::StackName"
+      GenerateSecret: true
+      UserPoolId: !Ref CognitoUserPool
+
   IAMUser:
     Type: "AWS::IAM::User"
     Properties:
@@ -98,6 +127,13 @@ Resources:
               - Effect: Allow
                 Action: "ses:SendRawEmail"
                 Resource: "*"
+        - PolicyName: cognito
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "cognito-idp:ListUsersInGroup"
+                Resource: !GetAtt CognitoUserPool.Arn
 
   IAMUserAccessKey:
     Type: "AWS::IAM::AccessKey"

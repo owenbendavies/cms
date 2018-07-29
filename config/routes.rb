@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   mount API, at: '/api'
 
-  root 'systems#home'
+  root to: redirect('/home')
+
+  get '/auth/cognito-idp/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#invalid'
+
+  get '/login', to: redirect('/auth/cognito-idp')
+  get '/logout', to: 'sessions#destroy'
 
   get '/robots', to: 'systems#robots'
   get '/sitemap', to: 'pages#index'
@@ -11,26 +17,11 @@ Rails.application.routes.draw do
 
   get '/user/sites', to: 'admin/sites#index'
 
-  devise_for :user, skip: [:sessions], controllers: {
-    invitations: 'invitations',
-    omniauth_callbacks: 'omniauth_callbacks'
-  }
-
-  devise_scope :user do
-    get '/user/edit', to: 'devise/registrations#edit', as: 'edit_user_registration'
-    patch '/user', to: 'devise/registrations#update', as: 'user_registration'
-
-    get '/login', to: 'devise/sessions#new', as: :new_user_session
-    post '/login', to: 'devise/sessions#create', as: :user_session
-    get '/logout', to: 'devise/sessions#destroy', as: :destroy_user_session
-  end
-
   namespace :admin do
     resource :site, only: %i[edit update]
     resource :stylesheet, only: %i[edit update]
-    resources :images, only: [:index]
+    resources :images, only: %i[index]
     resources :messages, only: %i[index show]
-    resources :users, only: [:index]
   end
 
   resources :css, only: %i[show]
