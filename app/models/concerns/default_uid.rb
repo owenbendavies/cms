@@ -4,8 +4,10 @@ module DefaultUid
   CHARSET = Array('a'..'z') + Array(0..9)
 
   included do
-    # before validations
-    before_validation :set_uid
+    # default values
+    default_value_for :uid do
+      Array.new(8) { CHARSET.sample }.join
+    end
 
     # validations
     validates(
@@ -13,10 +15,6 @@ module DefaultUid
       presence: true,
       uniqueness: true
     )
-  end
-
-  def set_uid
-    self.uid ||= Array.new(8) { CHARSET.sample }.join
   end
 
   def to_param
