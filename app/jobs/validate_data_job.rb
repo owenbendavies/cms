@@ -3,8 +3,6 @@ class ValidateDataJob < ApplicationJob
     ar_internal_metadata
     delayed_jobs
     schema_migrations
-    site_settings
-    users
     versions
   ].freeze
 
