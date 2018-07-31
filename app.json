@@ -1,7 +1,6 @@
 {
     "addons": [
-        "heroku-postgresql",
-        "sendgrid"
+        "heroku-postgresql"
     ],
     "buildpacks": [
         {
@@ -51,6 +50,9 @@
         "SECRET_KEY_BASE": {
             "description": "A randomly generated secret to verify sessions",
             "generator": "secret"
+        },
+        "SEED_SITE_EMAIL": {
+            "description": "The default email from address for sites"
         },
         "SEED_SITE_HOST": {
             "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",

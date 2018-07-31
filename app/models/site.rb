@@ -1,6 +1,11 @@
 class Site < ApplicationRecord
   include DefaultUid
 
+  # default values
+  default_value_for :email do
+    ENV.fetch('SEED_SITE_EMAIL')
+  end
+
   # relations
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -54,10 +59,6 @@ class Site < ApplicationRecord
   def address
     protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'
     "#{protocol}://#{host}"
-  end
-
-  def email
-    "noreply@#{host.gsub(/^www\./, '')}"
   end
 
   def user_emails

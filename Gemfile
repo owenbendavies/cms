@@ -4,7 +4,9 @@ ruby '2.5.1'
 gem 'rails'
 
 # Services
-gem 'aws-sdk-cognitoidentityprovider' # AWS Cognito API
+gem 'aws-sdk-cognitoidentityprovider' # User management with AWS Cognito
+gem 'aws-sdk-rails' # Sets up AWS SDK to work with Rails
+gem 'aws-sdk-ses' # Send emails with AWS
 gem 'fog-aws' # AWS file upload
 
 # Databases
@@ -33,6 +35,7 @@ gem 'pundit' # Authorization
 gem 'activerecord_json_validator' # JSON validation
 gem 'acts_as_list' # ActiveRecord lists
 gem 'carrierwave' # File upload
+gem 'default_value_for' # Set default values for attributes
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
 gem 'paper_trail' # Database audit
