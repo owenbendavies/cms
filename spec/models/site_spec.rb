@@ -4,6 +4,20 @@ RSpec.describe Site do
   it_behaves_like 'model with uid'
   it_behaves_like 'model with versioning'
 
+  describe 'default values' do
+    subject(:site) { described_class.new }
+
+    let(:environment_variables) do
+      {
+        'SEED_SITE_EMAIL' => new_email
+      }
+    end
+
+    it 'sets email as SEED_SITE_EMAIL' do
+      expect(site.email).to eq new_email
+    end
+  end
+
   describe 'relations' do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
@@ -123,18 +137,6 @@ RSpec.describe Site do
       it 'returns http url' do
         expect(site.address).to eq 'http://localhost'
       end
-    end
-  end
-
-  describe '#email' do
-    it 'returns noreply email address' do
-      site = FactoryBot.build_stubbed(:site, host: 'example.com')
-      expect(site.email).to eq 'noreply@example.com'
-    end
-
-    it 'returns host without www' do
-      site = FactoryBot.build_stubbed(:site, host: 'www.example.com')
-      expect(site.email).to eq 'noreply@example.com'
     end
   end
 
