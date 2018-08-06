@@ -115,6 +115,7 @@ GEM
     css_parser (1.6.0)
       addressable
     database_cleaner (1.7.0)
+    deepl-rb (2.1.0)
     default_value_for (3.1.0)
       activerecord (>= 3.2.0, < 6.0)
     delayed_job (4.1.5)
@@ -197,9 +198,10 @@ GEM
     htmlentities (4.3.4)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.21)
+    i18n-tasks (0.9.23)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
+      deepl-rb (>= 2.1.0)
       easy_translate (>= 0.5.1)
       erubi
       highline (>= 1.7.3)
@@ -292,7 +294,7 @@ GEM
       request_store (~> 1.1)
     paper_trail-association_tracking (1.0.0)
     parallel (1.12.1)
-    parser (2.5.1.0)
+    parser (2.5.1.2)
       ast (~> 2.4.0)
     parslet (1.8.2)
     pg (1.0.0)
