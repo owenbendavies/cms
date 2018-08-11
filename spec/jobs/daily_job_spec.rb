@@ -1,24 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe DailyJob do
-  after { Delayed::Worker.new.work_off }
-
   it 'runs CleanS3Job' do
-    expect(CleanS3Job).to receive(:perform_later).once.and_call_original
-    described_class.perform_now
+    expect { described_class.perform_now }.to have_enqueued_job(CleanS3Job)
   end
 
   it 'runs DeleteOldModelsJob' do
-    expect(DeleteOldModelsJob).to receive(:perform_later).once.and_call_original
-    described_class.perform_now
+    expect { described_class.perform_now }.to have_enqueued_job(DeleteOldModelsJob)
   end
 
   it 'runs ValidateDataJob' do
-    expect(ValidateDataJob).to receive(:perform_later).once.and_call_original
-    described_class.perform_now
-  end
-
-  it 'runs jobs as jobs' do
-    expect { described_class.perform_now }.to change(Delayed::Job, :count).from(0).to(3)
+    expect { described_class.perform_now }.to have_enqueued_job(ValidateDataJob)
   end
 end
