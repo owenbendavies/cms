@@ -11,10 +11,6 @@ RSpec.configure do |config|
     end
   end
 
-  config.after do
-    raise 'Delayed::Job not processed' unless Delayed::Job.count == 0
-  end
-
   config.after :suite do
     raise 'Memory too hight' if GetProcessMem.new.mb.to_i > 512
   end

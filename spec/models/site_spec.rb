@@ -4,6 +4,24 @@ RSpec.describe Site do
   it_behaves_like 'model with uid'
   it_behaves_like 'model with versioning'
 
+  describe 'callbacks' do
+    describe 'after save' do
+      let(:site) { FactoryBot.build(:site) }
+
+      it 'updates cognito sites' do
+        expect { site.save! }.to have_enqueued_job(UpdateCognitoSitesJob)
+      end
+    end
+
+    describe 'after destroy' do
+      let!(:site) { FactoryBot.create(:site) }
+
+      it 'updates cognito sites' do
+        expect { site.destroy! }.to have_enqueued_job(UpdateCognitoSitesJob)
+      end
+    end
+  end
+
   describe 'default values' do
     subject(:site) { described_class.new }
 
@@ -123,7 +141,7 @@ RSpec.describe Site do
   end
 
   describe '#address' do
-    subject(:site) { FactoryBot.create(:site, host: 'localhost') }
+    subject(:site) { FactoryBot.build(:site, host: 'localhost') }
 
     context 'with ssl enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
@@ -140,10 +158,50 @@ RSpec.describe Site do
     end
   end
 
-  describe '#user_emails' do
-    include_context 'with stubbed user emails'
+  describe '#url_options' do
+    subject(:site) { FactoryBot.build(:site, host: 'localhost') }
 
+    it 'has host' do
+      expect(site.url_options.fetch(:host)).to eq 'localhost'
+    end
+
+    context 'with ssl enabled' do
+      let(:environment_variables) { { DISABLE_SSL: nil } }
+
+      it 'has https protocl' do
+        expect(site.url_options.fetch(:protocol)).to eq 'https'
+      end
+    end
+
+    context 'with ssl disabled' do
+      let(:environment_variables) { { DISABLE_SSL: 'true' } }
+
+      it 'has http protocal' do
+        expect(site.url_options.fetch(:protocol)).to eq 'http'
+      end
+    end
+
+    context 'with email link port set' do
+      let(:environment_variables) { { EMAIL_LINK_PORT: '37511' } }
+
+      it 'has port' do
+        expect(site.url_options.fetch(:port)).to eq '37511'
+      end
+    end
+
+    context 'with email link port not set' do
+      let(:environment_variables) { { EMAIL_LINK_PORT: nil } }
+
+      it 'has no port' do
+        expect(site.url_options.fetch(:port)).to eq nil
+      end
+    end
+  end
+
+  describe '#user_emails' do
     subject(:site) { FactoryBot.build(:site) }
+
+    let(:user_emails) { ['siteuser@example.com', 'sysadmin@example.com', 'admin@example.com'] }
 
     it 'returns email addresses of users in site from AWS' do
       expect(site.user_emails).to eq user_emails

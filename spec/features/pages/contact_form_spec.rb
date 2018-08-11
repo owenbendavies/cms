@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
-  include_context 'with stubbed user emails'
-
   let(:contact_page) { FactoryBot.create(:page, contact_form: true, site: site) }
+  let(:user_emails) { ['siteuser@example.com', 'sysadmin@example.com', 'admin@example.com'] }
 
   before do
     visit "/#{contact_page.url}"
@@ -15,9 +14,11 @@ RSpec.feature 'Page with contact form' do
     fill_in 'Phone', with: " #{new_phone} "
     fill_in 'Message', with: new_message
 
-    click_button 'Send Message'
+    perform_enqueued_jobs do
+      click_button 'Send Message'
 
-    expect(page).to have_content 'Thank you for your message'
+      expect(page).to have_content 'Thank you for your message'
+    end
 
     expect(Message.count).to eq 1
 
@@ -71,11 +72,9 @@ RSpec.feature 'Page with contact form' do
 
     scenario 'when agreeing to privacy policy' do
       check privacy_policy_text
+
       click_button 'Send Message'
-
       expect(page).to have_content 'Thank you for your message'
-
-      last_email
     end
 
     scenario 'when not agreeing to privacy policy', js: false do
