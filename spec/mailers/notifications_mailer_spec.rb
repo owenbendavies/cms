@@ -4,11 +4,11 @@ RSpec.describe NotificationsMailer do
   let(:site) { FactoryBot.build(:site) }
 
   describe '.new_message' do
-    include_context 'with stubbed user emails'
-
     subject(:email) { described_class.new_message(message) }
 
     let(:message) { FactoryBot.build(:message, site: site) }
+
+    let(:user_emails) { ['siteuser@example.com', 'sysadmin@example.com', 'admin@example.com'] }
 
     let(:expected_body) do
       <<~BODY

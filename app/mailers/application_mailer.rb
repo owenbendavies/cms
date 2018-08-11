@@ -6,9 +6,7 @@ class ApplicationMailer < ActionMailer::Base
   protected
 
   def from_site(site)
-    default_url_options[:host] = site.host
-    default_url_options[:protocol] = ENV['DISABLE_SSL'] ? 'http' : 'https'
-    default_url_options[:port] = ENV['EMAIL_LINK_PORT']
+    default_url_options.merge! site.url_options
 
     from = Mail::Address.new(site.email)
     from.display_name = site.name
