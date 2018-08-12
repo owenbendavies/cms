@@ -132,7 +132,12 @@ Resources:
             Version: "2012-10-17"
             Statement:
               - Effect: Allow
-                Action: "cognito-idp:ListUsersInGroup"
+                Action:
+                  - "cognito-idp:CreateGroup"
+                  - "cognito-idp:DeleteGroup"
+                  - "cognito-idp:ListGroups"
+                  - "cognito-idp:ListUsersInGroup"
+                  - "cognito-idp:UpdateUserPoolClient"
                 Resource: !GetAtt CognitoUserPool.Arn
 
   IAMUserAccessKey:
