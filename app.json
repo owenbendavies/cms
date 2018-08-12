@@ -1,7 +1,4 @@
 {
-    "addons": [
-        "heroku-postgresql"
-    ],
     "buildpacks": [
         {
             "url": "heroku/ruby"
@@ -39,6 +36,10 @@
         },
         "AWS_SECRET_ACCESS_KEY": {
             "description": "The Amazon Web Services IAM user secret"
+        },
+        "DATABASE_URL": {
+            "description": "URL for the database",
+            "required": false
         },
         "HEROKU_APP_NAME": {
             "description": "Set to same as the Heroku App name (set automatically for review apps)"
