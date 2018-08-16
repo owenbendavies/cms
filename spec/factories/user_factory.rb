@@ -12,9 +12,9 @@ FactoryBot.define do
     end
 
     transient do
-      site nil
-      site_admin false
-      sysadmin false
+      site { nil }
+      site_admin { false }
+      sysadmin { false }
     end
   end
 end
