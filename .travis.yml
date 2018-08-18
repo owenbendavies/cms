@@ -6,9 +6,6 @@ cache:
   directories:
     - node_modules
 
-git:
-  depth: 3
-
 addons:
   chrome: stable
   postgresql: 9.6 # TODO - upgrade to 10 when Travis supports it
