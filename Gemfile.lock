@@ -216,7 +216,7 @@ GEM
       trollop (~> 2)
     jwt (1.5.6)
     kramdown (1.17.0)
-    license_finder (5.3.0)
+    license_finder (5.4.0)
       bundler
       rubyzip
       thor
