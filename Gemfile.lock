@@ -91,8 +91,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
-    capybara_table (0.1.1)
-      capybara (~> 2.0)
+    capybara_table (0.2.0)
+      capybara (>= 2.0)
       terminal-table
       xpath (~> 2.1)
     carrierwave (1.2.3)
