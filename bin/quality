@@ -3,18 +3,14 @@ set -e
 cd `dirname $0`/..
 
 find_extensions () {
-  find . -name "*.$1" \
-    -not -path "./coverage/*" \
-    -not -path "./node_modules/*" \
-    -not -path "./public/packs/*" \
-    -not -path "./vendor/*"
+  git ls-files | grep "\.$1\$"
 }
 
 set -v
 
-./node_modules/.bin/eslint $(find_extensions js)
+./bin/yarn eslint app/webpacker
 
-./node_modules/.bin/stylelint $(find_extensions scss)
+./bin/yarn stylelint app/webpacker
 
 ./bin/i18n-tasks health
 

@@ -26,6 +26,7 @@ gem 'api-pagination' # Pagination for APIs
 gem 'grape-route-helpers' # Named routes for APIs
 gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
+gem 'will_paginate' # Pagination for api-pagination
 
 # Authentication and authorization
 gem 'omniauth-cognito-idp' # AWS Cognito login
@@ -49,7 +50,6 @@ gem 'xml-sitemap' # Generates XML site map
 # View Gems
 gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
-gem 'will_paginate-bootstrap' # Pagination
 
 # Server
 gem 'bootsnap' # Fast booting
@@ -79,7 +79,6 @@ end
 
 group :test do
   gem 'capybara' # Web browser tester
-  gem 'capybara_table' # Capybara table matchers
   gem 'chromedriver-helper' # Installs Google chromedriver command
   gem 'climate_control' # Modifies environment variables
   gem 'database_cleaner' # Cleans the database

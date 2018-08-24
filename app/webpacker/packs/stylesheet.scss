@@ -1,5 +1,6 @@
 // Libraries
 @import '~bootstrap/scss/bootstrap';
+@import 'react-table/react-table.css';
 
 // Base items
 @import '../scss/base/loggedin';
@@ -18,7 +19,6 @@
 @import '../scss/components/image';
 @import '../scss/components/main';
 @import '../scss/components/main_menu';
-@import '../scss/components/message';
 @import '../scss/components/page';
 @import '../scss/components/sidebar';
 @import '../scss/components/sitemap';
