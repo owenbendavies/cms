@@ -1,0 +1,7 @@
+<% content_for :title, t('admin.messages.index.title') %>
+<% content_for :page_icon, t('admin.messages.index.icon') %>
+<% content_for :head do %>
+  <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+<% end %>
+
+<div id="js-react-admin"></div>

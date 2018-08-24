@@ -91,10 +91,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
-    capybara_table (0.2.0)
-      capybara (>= 2.0)
-      terminal-table
-      xpath (~> 2.1)
     carrierwave (1.2.3)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
@@ -454,8 +450,6 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
-    will_paginate-bootstrap (1.0.1)
-      will_paginate (>= 3.0.3)
     with_env (1.1.0)
     xml-simple (1.1.5)
     xml-sitemap (1.3.3)
@@ -477,7 +471,6 @@ DEPENDENCIES
   brakeman
   bullet
   capybara
-  capybara_table
   carrierwave
   chromedriver-helper
   climate_control
@@ -531,7 +524,7 @@ DEPENDENCIES
   web-console
   webmock
   webpacker
-  will_paginate-bootstrap
+  will_paginate
   xml-sitemap
 
 RUBY VERSION

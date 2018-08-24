@@ -13,7 +13,10 @@ module VisitTestHelpers
 
     click_topbar_link(menu: menu, title: title, icon: icon)
 
-    expect(page).to have_header(title, icon)
+    within '.article__header' do
+      expect(page).to have_content title
+      expect(page).to have_selector icon
+    end
   end
 end
 
