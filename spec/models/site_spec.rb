@@ -94,7 +94,7 @@ RSpec.describe Site do
   end
 
   describe 'validations' do
-    subject { FactoryBot.create(:site) }
+    subject(:site) { FactoryBot.create(:site) }
 
     it { is_expected.to validate_length_of(:host).is_at_most(64) }
     it { is_expected.to validate_presence_of(:host) }
@@ -116,27 +116,27 @@ RSpec.describe Site do
 
     it do
       links = [{ 'name' => 'Site', 'url' => 'http://www.example.com', 'icon' => nil }]
-      is_expected.to allow_value(links).for(:links)
+      expect(site).to allow_value(links).for(:links)
     end
 
     it do
       links = [{ 'name' => 'Site', 'url' => 'http://www.example.com', 'icon' => 'fa-facebook' }]
-      is_expected.to allow_value(links).for(:links)
+      expect(site).to allow_value(links).for(:links)
     end
 
     it do
       links = []
-      is_expected.to allow_value(links).for(:links)
+      expect(site).to allow_value(links).for(:links)
     end
 
     it do
       links = [{ 'name' => 'missing keys' }]
-      is_expected.not_to allow_value(links).for(:links).with_message('is not valid')
+      expect(site).not_to allow_value(links).for(:links).with_message('is not valid')
     end
 
     it do
       links = [{ 'name' => 'Link', 'url' => 'http://www.tmp.com', 'icon' => nil, 'bad' => 'field' }]
-      is_expected.not_to allow_value(links).for(:links).with_message('is not valid')
+      expect(site).not_to allow_value(links).for(:links).with_message('is not valid')
     end
   end
 
