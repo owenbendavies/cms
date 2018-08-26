@@ -52,15 +52,15 @@ RSpec.describe 'API System' do
 
     let(:expected_status) { 202 }
 
+    before { request_page }
+
+    after { Delayed::Job.last.destroy! }
+
     include_examples(
       'swagger',
       description: 'Creates a test background job error',
       model: 'SystemMessage'
     )
-
-    before { request_page }
-
-    after { Delayed::Job.last.destroy! }
 
     it 'renders message' do
       expect(json_body).to eq('message' => 'Delayed error sent')

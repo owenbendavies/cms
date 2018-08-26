@@ -27,6 +27,8 @@ RSpec.describe Message do
   end
 
   describe 'validations' do
+    subject(:message) { FactoryBot.build(:message) }
+
     it { is_expected.to validate_presence_of(:site) }
 
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
@@ -35,7 +37,7 @@ RSpec.describe Message do
     it { is_expected.to allow_value('someone@example.com').for(:email) }
 
     it do
-      is_expected.not_to allow_value('test@')
+      expect(message).not_to allow_value('test@')
         .for(:email).with_message('is not a valid email address')
     end
 
@@ -54,13 +56,13 @@ RSpec.describe Message do
     it { is_expected.to allow_value("Don't remove").for(:message) }
 
     it do
-      is_expected.not_to allow_value('Hello <a>bad</a>')
+      expect(message).not_to allow_value('Hello <a>bad</a>')
         .for(:message)
         .with_message('html is not allowed')
     end
 
     it do
-      is_expected.to validate_length_of(:do_not_fill_in)
+      expect(message).to validate_length_of(:do_not_fill_in)
         .is_at_most(0).with_message('do not fill in')
     end
 
