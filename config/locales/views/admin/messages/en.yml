@@ -5,6 +5,3 @@ en:
       index:
         icon: fas fa-envelope fa-fw
         title: Messages
-      show:
-        icon: fas fa-envelope fa-fw
-        title: Message

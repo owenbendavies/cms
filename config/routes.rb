@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     resource :site, only: %i[edit update]
     resource :stylesheet, only: %i[edit update]
     resources :images, only: %i[index]
-    resources :messages, only: %i[index show]
   end
+
+  get '/admin/*path', to: 'admin#index', via: :get, as: :admin
 
   resources :css, only: %i[show]
 
