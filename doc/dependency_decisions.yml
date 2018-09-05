@@ -215,3 +215,9 @@
     :why: 
     :versions: []
     :when: 2018-06-26 10:38:36.264705000 Z
+- - :whitelist
+  - "(GPL-2.0 OR MIT)"
+  - :who:
+    :why:
+    :versions: []
+    :when: 2018-08-14 15:38:26.681103000 Z

@@ -48,7 +48,7 @@
           </a>
 
           <div class="dropdown-menu">
-            <%= link_to admin_messages_path, class: 'dropdown-item' do %>
+            <%= link_to admin_path('messages'), class: 'dropdown-item' do %>
               <%= icon_tag(t('admin.messages.index.icon')) %>
               <%= t('admin.messages.index.title') %>
             <% end %>
