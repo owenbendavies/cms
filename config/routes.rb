@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount GrapeSwaggerRails::Engine => '/swagger' if Rails.env.development?
+
   mount API, at: '/api'
 
   root to: redirect('/home')
