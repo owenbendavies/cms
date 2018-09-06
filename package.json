@@ -14,7 +14,7 @@
     "prop-types": "^15.6.2",
     "rails-ujs": "^5.2.1",
     "react": "^16.5.0",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.5.0",
     "react-router-dom": "^4.3.1",
     "react-table": "^6.8.6",
     "swagger-client": "^3.8.6",
