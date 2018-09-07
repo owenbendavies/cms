@@ -180,6 +180,8 @@ GEM
     grape-swagger-entity (0.3.0)
       grape-entity (>= 0.5.0)
       grape-swagger (>= 0.31.0)
+    grape-swagger-rails (0.3.0)
+      railties (>= 3.2.12)
     grape_logging (1.8.0)
       grape
       rack
@@ -212,6 +214,10 @@ GEM
       trollop (~> 2)
     jwt (1.5.6)
     kramdown (1.17.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.6.0)
+      launchy (~> 2.2)
     license_finder (5.4.0)
       bundler
       rubyzip
@@ -485,10 +491,12 @@ DEPENDENCIES
   get_process_mem
   grape-route-helpers
   grape-swagger-entity
+  grape-swagger-rails
   grape_logging
   gravtastic
   i18n-tasks
   jsonlint
+  letter_opener
   license_finder
   lograge
   mdl

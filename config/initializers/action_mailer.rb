@@ -1,10 +1,7 @@
 if Rails.env.test?
   Rails.application.config.action_mailer.delivery_method = :test
-elsif ENV['SMTP_ADDRESS'] && ENV['SMTP_PORT']
-  ActionMailer::Base.smtp_settings = {
-    address: ENV.fetch('SMTP_ADDRESS'),
-    port: Integer(ENV.fetch('SMTP_PORT'))
-  }
+elsif Rails.env.development?
+  Rails.application.config.action_mailer.delivery_method = :letter_opener
 else
   Aws::Rails.add_action_mailer_delivery_method(:aws_sdk)
 
