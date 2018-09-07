@@ -6,7 +6,8 @@ if ENV['COVERAGE']
 
     groups.delete 'Libraries'
 
-    add_group 'Middleware', 'app/middleware'
+    add_group 'Api', 'app/api'
+    add_group 'GraphQL', 'app/graphql'
     add_group 'Policies', 'app/policies'
     add_group 'Uploaders', 'app/uploaders'
   end
