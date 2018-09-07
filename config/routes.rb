@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  mount GrapeSwaggerRails::Engine => '/swagger' if Rails.env.development?
+  if Rails.env.development?
+    mount GrapeSwaggerRails::Engine => '/swagger'
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
+  end
 
   mount API, at: '/api'
 
   root to: redirect('/home')
+
+  post '/graphql', to: 'graphql#execute'
 
   get '/auth/cognito-idp/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#invalid'

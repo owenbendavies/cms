@@ -185,6 +185,10 @@ GEM
     grape_logging (1.8.0)
       grape
       rack
+    graphiql-rails (1.4.11)
+      railties
+      sprockets-rails
+    graphql (1.8.8)
     gravtastic (3.2.6)
     hashdiff (0.3.7)
     hashie (3.5.7)
@@ -495,6 +499,8 @@ DEPENDENCIES
   grape-swagger-entity
   grape-swagger-rails
   grape_logging
+  graphiql-rails
+  graphql
   gravtastic
   i18n-tasks
   jsonlint
