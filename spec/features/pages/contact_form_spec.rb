@@ -46,7 +46,7 @@ RSpec.feature 'Page with contact form' do
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
-    expect(page).to have_content 'Name is too short'
+    expect(page).to have_content "Name\nis too short"
   end
 
   scenario 'filling in do_not_fill_in', js: false do
@@ -81,7 +81,7 @@ RSpec.feature 'Page with contact form' do
       click_button 'Send Message'
 
       expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
-      expect(page).to have_content "#{privacy_policy_text}can't be blank"
+      expect(page).to have_content "#{privacy_policy_text}\ncan't be blank"
     end
   end
 end
