@@ -74,6 +74,8 @@ end
 
 group :development do
   gem 'foreman', require: false # Starts multiple processes
+  gem 'grape-swagger-rails' # Grape swagger UI
+  gem 'letter_opener' # Email client
   gem 'web-console' # Web console debugger
 end
 
