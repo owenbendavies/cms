@@ -50,7 +50,7 @@ RSpec.feature 'Edit the site' do
     fill_in 'Google Analytics', with: 'bad'
     click_button 'Update Site'
 
-    expect(page).to have_content 'Google Analytics is invalid'
+    expect(page).to have_content "Google Analytics\nis invalid"
   end
 
   scenario 'clicking Cancel' do
