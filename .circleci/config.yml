@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  build:
+    docker:
+       - image: circleci/ruby:2.5.1-node-browsers
+       - image: circleci/postgres:10
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - dependencies-bundle-{{ checksum "Gemfile.lock" }}
+          - dependencies-bundle-
+
+      - restore_cache:
+          keys:
+            - dependencies-yarn-{{ checksum "yarn.lock" }}
+            - dependencies-yarn-
+
+      - run:
+          name: Setup
+          command: ./bin/setup
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: dependencies-bundle-{{ checksum "Gemfile.lock" }}
+
+      - save_cache:
+          key: dependencies-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Tests
+          command: ./bin/test
+
+      - run:
+          name: Changes
+          command: ./bin/changes
+
+      - store_test_results:
+          path: ./tmp/test_results
+
+      - store_artifacts:
+          path: ./coverage
+          destination: coverage

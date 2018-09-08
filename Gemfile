@@ -88,6 +88,7 @@ group :test do
   gem 'faker' # Generates test data
   gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
+  gem 'rspec_junit_formatter' # Output RSpec results as XML
   gem 'selenium-webdriver' # Controls real browsers
   gem 'shoulda-matchers' # Model test helpers
   gem 'simplecov' # Code coverage
