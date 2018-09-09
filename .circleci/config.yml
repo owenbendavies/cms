@@ -5,6 +5,9 @@ jobs:
        - image: circleci/ruby:2.5.1-node-browsers
        - image: circleci/postgres:10
 
+    environment:
+      BUNDLE_PATH: vendor/bundle
+
     steps:
       - checkout
 
