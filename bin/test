@@ -19,7 +19,7 @@ else
 
   set -v
 
-  eval "$rspec --order random"
+  eval "$rspec --order random --format progress --format RspecJunitFormatter --out tmp/test_results/rspec.xml"
   eval './bin/quality'
 fi
 

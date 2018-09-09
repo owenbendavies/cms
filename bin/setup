@@ -11,11 +11,12 @@ end
 FileUtils.chdir APP_ROOT do
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
-  system('bundle check') || system!('bundle install --jobs=3 --retry=3')
+  system('bundle check') || system!('bundle install --jobs=3 --retry=3 --path vendor/bundle')
   system! 'bin/yarn'
 
   puts "\n== Preparing database =="
   system! 'DATABASE_TIMEOUT=5 bin/rails db:create db:migrate db:seed'
+  system! 'RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create'
 
   puts "\n== Removing old logs and tempfiles =="
   system! 'bin/rails log:clear tmp:clear'
