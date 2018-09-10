@@ -8,9 +8,7 @@ find_extensions () {
 
 set -v
 
-./bin/yarn eslint app/webpacker
-
-./bin/yarn stylelint app/webpacker
+./bin/brakeman
 
 ./bin/i18n-tasks health
 
@@ -22,7 +20,8 @@ set -v
 
 ./bin/rubocop --format simple
 
-# Run brakeman last as large output
-./bin/brakeman
+./bin/yarn eslint app/webpacker
+
+./bin/yarn stylelint app/webpacker
 
 # Code quality passed
