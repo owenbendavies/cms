@@ -5,9 +5,6 @@ jobs:
        - image: circleci/ruby:2.5.1-node-browsers
        - image: circleci/postgres:10
 
-    environment:
-      BUNDLE_PATH: vendor/bundle
-
     steps:
       - checkout
 
@@ -22,7 +19,9 @@ jobs:
             - dependencies-yarn-
 
       - run:
-          name: Setup
+          command: bundle config --local deployment true
+
+      - run:
           command: ./bin/setup
 
       - save_cache:
@@ -36,11 +35,9 @@ jobs:
             - ./node_modules
 
       - run:
-          name: Tests
           command: ./bin/test
 
       - run:
-          name: Changes
           command: ./bin/changes
 
       - store_test_results:
