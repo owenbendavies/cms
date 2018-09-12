@@ -15,27 +15,4 @@ RSpec.describe 'paper trail' do
       expect(site.versions.last.whodunnit).to eq request_user.id.to_s
     end
   end
-
-  context 'when creating something via the api' do
-    let(:request_method) { :post }
-    let(:request_path) { '/api/messages' }
-    let(:request_user) { FactoryBot.build(:user, site: site) }
-    let(:expected_status) { 201 }
-
-    let(:request_params) do
-      {
-        'name' => new_name,
-        'email' => new_email,
-        'phone' => new_phone,
-        'message' => new_message
-      }
-    end
-
-    it 'records who created a model' do
-      request_page
-
-      message = Message.last
-      expect(message.versions.last.whodunnit).to eq request_user.id.to_s
-    end
-  end
 end

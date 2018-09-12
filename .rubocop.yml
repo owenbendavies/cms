@@ -13,7 +13,6 @@ Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
 
 Metrics/BlockLength:
   Exclude:
-    - 'app/api/**/*' # OK for large api namespaces
     - 'config/**/*' # OK for config files to have large blocks
     - 'spec/**/*' # OK for specs to have large blocks
 

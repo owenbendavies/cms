@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GrapeSwaggerRails::Engine => '/swagger'
-    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
-  end
-
-  mount API, at: '/api'
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
 
   root to: redirect('/home')
 

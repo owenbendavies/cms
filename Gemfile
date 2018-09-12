@@ -15,19 +15,12 @@ gem 'seedbank' # Better database seeds
 
 # Frameworks
 gem 'delayed_job_active_record' # Background jobs
+gem 'graphql' # GraphQL API
 
 # Rack middleware
 gem 'rack-protection' # Protects against sessions attacks
 gem 'rack-timeout' # Limits web request time
 gem 'secure_headers' # Adds security headers to requests
-
-# API
-gem 'api-pagination' # Pagination for APIs
-gem 'grape-route-helpers' # Named routes for APIs
-gem 'grape-swagger-entity' # API docs generator
-gem 'grape_logging' # API logging
-gem 'graphql' # GraphQL API
-gem 'will_paginate' # Pagination for api-pagination
 
 # Authentication and authorization
 gem 'omniauth-cognito-idp' # AWS Cognito login
@@ -75,7 +68,6 @@ end
 
 group :development do
   gem 'foreman', require: false # Starts multiple processes
-  gem 'grape-swagger-rails' # Grape swagger UI
   gem 'graphiql-rails' # GraphQL web client
   gem 'letter_opener' # Opens emails in browser
   gem 'web-console' # Web console debugger
