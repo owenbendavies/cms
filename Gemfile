@@ -26,6 +26,7 @@ gem 'api-pagination' # Pagination for APIs
 gem 'grape-route-helpers' # Named routes for APIs
 gem 'grape-swagger-entity' # API docs generator
 gem 'grape_logging' # API logging
+gem 'graphql' # GraphQL API
 gem 'will_paginate' # Pagination for api-pagination
 
 # Authentication and authorization
@@ -75,7 +76,8 @@ end
 group :development do
   gem 'foreman', require: false # Starts multiple processes
   gem 'grape-swagger-rails' # Grape swagger UI
-  gem 'letter_opener' # Email client
+  gem 'graphiql-rails' # GraphQL web client
+  gem 'letter_opener' # Opens emails in browser
   gem 'web-console' # Web console debugger
 end
 
