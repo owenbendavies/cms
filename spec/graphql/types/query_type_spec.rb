@@ -15,14 +15,16 @@ RSpec.describe Types::QueryType do
         <<~BODY
           query {
             messages {
-              uid
-              name
-              email
-              phone
-              message
-              privacyPolicyAgreed
-              createdAt
-              updatedAt
+              nodes {
+                uid
+                name
+                email
+                phone
+                message
+                privacyPolicyAgreed
+                createdAt
+                updatedAt
+              }
             }
           }
         BODY
@@ -31,18 +33,20 @@ RSpec.describe Types::QueryType do
       let(:expected_result) do
         [
           {
-            'messages' => [
-              {
-                'uid' => message.uid,
-                'name' => message.name,
-                'email' => message.email,
-                'phone' => message.phone,
-                'message' => message.message,
-                'privacyPolicyAgreed' => true,
-                'createdAt' => message.created_at.iso8601,
-                'updatedAt' => message.updated_at.iso8601
-              }
-            ]
+            'messages' => {
+              'nodes' => [
+                {
+                  'uid' => message.uid,
+                  'name' => message.name,
+                  'email' => message.email,
+                  'phone' => message.phone,
+                  'message' => message.message,
+                  'privacyPolicyAgreed' => true,
+                  'createdAt' => message.created_at.iso8601,
+                  'updatedAt' => message.updated_at.iso8601
+                }
+              ]
+            }
           }
         ]
       end
@@ -77,7 +81,9 @@ RSpec.describe Types::QueryType do
         <<~BODY
           query {
             messages {
-              name
+              nodes {
+                name
+              }
             }
           }
         BODY
@@ -86,10 +92,12 @@ RSpec.describe Types::QueryType do
       let(:expected_result) do
         [
           {
-            'messages' => [
-              { 'name' => message2.name },
-              { 'name' => message1.name }
-            ]
+            'messages' => {
+              'nodes' => [
+                { 'name' => message2.name },
+                { 'name' => message1.name }
+              ]
+            }
           }
         ]
       end
@@ -106,7 +114,9 @@ RSpec.describe Types::QueryType do
         <<~BODY
           query {
             messages {
-              name
+              nodes {
+                name
+              }
             }
           }
         BODY
@@ -115,9 +125,11 @@ RSpec.describe Types::QueryType do
       let(:expected_result) do
         [
           {
-            'messages' => [
-              { 'name' => message.name }
-            ]
+            'messages' => {
+              'nodes' => [
+                { 'name' => message.name }
+              ]
+            }
           }
         ]
       end
