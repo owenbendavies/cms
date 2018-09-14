@@ -38,7 +38,9 @@ RSpec.describe 'GraphQL' do
         <<~BODY
           query {
             messages {
-              name
+              nodes {
+                name
+              }
             }
           }
         BODY
@@ -53,11 +55,11 @@ RSpec.describe 'GraphQL' do
       let(:expected_body) do
         {
           'data' => {
-            'messages' => [
-              {
-                'name' => message.name
-              }
-            ]
+            'messages' => {
+              'nodes' => [
+                { 'name' => message.name }
+              ]
+            }
           }
         }
       end
