@@ -6906,9 +6906,9 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
-swagger-client@^3.8.20:
-  version "3.8.20"
-  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.8.20.tgz#201afceb0879ed90a71ca91e1834ccf7913c10fe"
+swagger-client@^3.8.21:
+  version "3.8.21"
+  resolved "https://registry.yarnpkg.com/swagger-client/-/swagger-client-3.8.21.tgz#1baf4f2622f451792dc51c6d0888d38691cd6242"
   dependencies:
     "@kyleshockey/js-yaml" "^1.0.1"
     "@kyleshockey/object-assign-deep" "^0.4.0"
