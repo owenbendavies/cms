@@ -1,4 +1,5 @@
 version: 2
+
 jobs:
   build:
     docker:
@@ -17,9 +18,6 @@ jobs:
           keys:
             - dependencies-yarn-{{ checksum "yarn.lock" }}
             - dependencies-yarn-
-
-      - run:
-          command: bundle config --local deployment true
 
       - run:
           command: ./bin/setup
