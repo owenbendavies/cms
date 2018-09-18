@@ -11,7 +11,9 @@ end
 FileUtils.chdir APP_ROOT do
   puts '== Installing dependencies =='
   system! 'gem install bundler --conservative'
+  system!('bundle config --local path vendor/bundle')
   system('bundle check') || system!('bundle install --jobs=3 --retry=3')
+  system!('bundle clean')
   system! 'bin/yarn'
 
   puts "\n== Preparing database =="
