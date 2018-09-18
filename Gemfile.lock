@@ -222,7 +222,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.6.0)
       launchy (~> 2.2)
-    license_finder (5.4.0)
+    license_finder (5.4.1)
       bundler
       rubyzip
       thor
