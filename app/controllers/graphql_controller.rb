@@ -4,7 +4,8 @@ class GraphqlController < ApplicationController
   def execute
     render json: GraphqlSchema.execute(
       params[:query],
-      context: pundit_user
+      context: pundit_user,
+      variables: params[:variables]
     )
   end
 end
