@@ -8,54 +8,6 @@ RSpec.describe Types::QueryType do
   let(:context) { { user: user, site: site } }
 
   context 'with messages query' do
-    context 'with all fields' do
-      let!(:message) { FactoryBot.create(:message, site: site) }
-
-      let(:query) do
-        <<~BODY
-          query {
-            messages {
-              nodes {
-                uid
-                name
-                email
-                phone
-                message
-                privacyPolicyAgreed
-                createdAt
-                updatedAt
-              }
-            }
-          }
-        BODY
-      end
-
-      let(:expected_result) do
-        [
-          {
-            'messages' => {
-              'nodes' => [
-                {
-                  'uid' => message.uid,
-                  'name' => message.name,
-                  'email' => message.email,
-                  'phone' => message.phone,
-                  'message' => message.message,
-                  'privacyPolicyAgreed' => true,
-                  'createdAt' => message.created_at.iso8601,
-                  'updatedAt' => message.updated_at.iso8601
-                }
-              ]
-            }
-          }
-        ]
-      end
-
-      it 'returns all feilds' do
-        expect(result.values).to eq expected_result
-      end
-    end
-
     context 'with multiple messages' do
       let!(:message1) do
         FactoryBot.create(
