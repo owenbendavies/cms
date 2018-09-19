@@ -1,17 +1,5 @@
 class Message < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-
-  class Entity < Grape::Entity
-    expose :uid, documentation: { type: String }
-    expose :name, documentation: { type: String }
-    expose :email, documentation: { type: String }
-    expose :phone, documentation: { type: String }
-    expose :message, documentation: { type: String }
-    expose :privacy_policy_agreed, documentation: { type: Grape::API::Boolean }
-    expose :created_at, documentation: { type: DateTime }
-    expose :updated_at, documentation: { type: DateTime }
-  end
-
   include DefaultUid
 
   attr_accessor :do_not_fill_in
