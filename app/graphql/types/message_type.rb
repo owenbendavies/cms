@@ -8,5 +8,9 @@ module Types
     field :privacy_policy_agreed, Boolean, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
+
+    def self.connection_type_class
+      TotalCountConnection
+    end
   end
 end

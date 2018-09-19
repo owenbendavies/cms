@@ -1,6 +1,7 @@
+import ApolloClient from "apollo-boost";
 import React from "react";
 import ReactTable from "react-table";
-import Swagger from "swagger-client";
+import gql from "graphql-tag";
 
 export default class Messages extends React.Component {
   constructor() {
@@ -12,24 +13,45 @@ export default class Messages extends React.Component {
       loading: true
     };
 
+    const csrfToken = document.querySelector("meta[name=csrf-token]").getAttribute("content");
+
+    this.client = new ApolloClient({
+      headers: {
+        'X-CSRF-Token': csrfToken
+      }
+    });
+
     this.fetchData = this.fetchData.bind(this);
   }
 
   fetchData(state) {
     this.setState({ loading: true });
 
-    Swagger("/api/swagger").then(client => {
-      return client.apis.messages.getMessages({
-        page: state.page + 1,
-        per_page: state.pageSize
-      });
-    }).then(response => {
-      const total = response.headers["x-total"];
-      const perPage = response.headers["x-per-page"];
-      const pages = Math.ceil(total / perPage);
+    this.client.query({
+      query: gql`
+        query Messages($first: Int, $after: String) {
+          messages(first: $first, after: $after) {
+            nodes {
+              name
+              email
+              phone
+              message
+              createdAt
+            }
+            totalCount
+          }
+        }
+      `,
+      variables: {
+        "first": state.pageSize,
+        "after": btoa(state.page * state.pageSize)
+      }
+    }).then(result => {
+      const total = result.data.messages.totalCount;
+      const pages = Math.ceil(total / state.pageSize);
 
       this.setState({
-        data: response.body,
+        data: result.data.messages.nodes,
         pages: pages,
         loading: false
       });
@@ -54,7 +76,7 @@ export default class Messages extends React.Component {
           },
           {
             Header: "Created At",
-            accessor: "created_at"
+            accessor: "createdAt"
           }
         ]}
         data={this.state.data}
