@@ -12,10 +12,11 @@ RSpec.feature 'Topbar' do
   context 'when logged in' do
     before do
       login_as site_user
-      visit '/home'
     end
 
     scenario 'navigating to home' do
+      visit '/home'
+
       within topbar_selector do
         click_link site.name
       end
@@ -23,23 +24,24 @@ RSpec.feature 'Topbar' do
       expect(page).to have_current_path '/'
     end
 
-    it_behaves_like 'with mobile' do
-      scenario 'navigating to page via dropdowns' do
-        within topbar_selector do
-          expect(page).not_to have_link 'Site'
-          expect(page).not_to have_link 'Messages'
+    scenario 'navigating to page on mobile via dropdowns' do
+      windows.first.resize_to(640, 1136)
+      visit '/home'
 
-          click_button 'Account menu'
+      within topbar_selector do
+        expect(page).not_to have_link 'Site'
+        expect(page).not_to have_link 'Messages'
 
-          expect(page).not_to have_link 'Messages'
+        click_button 'Account menu'
 
-          click_link 'Site'
-          click_link 'Messages'
-        end
+        expect(page).not_to have_link 'Messages'
 
-        expect(page).to have_content 'Messages'
-        expect(page).to have_current_path '/admin/messages'
+        click_link 'Site'
+        click_link 'Messages'
       end
+
+      expect(page).to have_content 'Messages'
+      expect(page).to have_current_path '/admin/messages'
     end
   end
 end
