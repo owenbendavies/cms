@@ -1,8 +1,3 @@
-import $ from "jquery";
-import "timeago";
+import Rails from "rails-ujs";
 
-document.addEventListener("turbolinks:load", function() {
-  "use strict";
-
-  $(".js-timeago").timeago();
-});
+Rails.start();
