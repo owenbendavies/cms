@@ -3,7 +3,12 @@ SecureHeaders::Configuration.default do |config|
 
   config.referrer_policy = 'strict-origin-when-cross-origin'
 
-  asset_src = ["'self'", "'unsafe-inline'", ENV['ASSET_HOST']].compact
+  asset_src = [
+    "'self'",
+    "'unsafe-inline'",
+    ENV['ASSET_HOST'],
+    ENV['AWS_S3_ASSET_HOST']
+  ].compact
 
   script_src = asset_src + [
     'https://www.google-analytics.com',
