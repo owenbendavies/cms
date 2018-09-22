@@ -22,6 +22,9 @@ Outputs:
   AwsRegion:
     Description: "Value for AWS_REGION"
     Value: !Ref "AWS::Region"
+  AwsS3AssetHost:
+    Description: "Value for AWS_S3_ASSET_HOST"
+    Value: !Sub "https://${CloudFront.DomainName}"
   AwsS3Bucket:
     Description: "Value for AWS_S3_BUCKET"
     Value: !Ref S3Bucket
