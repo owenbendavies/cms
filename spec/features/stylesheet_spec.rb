@@ -15,7 +15,7 @@ RSpec.feature 'Stylesheet' do
     click_button 'Create Stylesheet'
 
     expect(page).to have_content 'Stylesheet successfully updated'
-    url = "http://localhost:37511/css/#{site.uid}-#{site.stylesheet.updated_at.to_i}.css"
+    url = "/css/#{site.uid}-#{site.stylesheet.updated_at.to_i}.css"
     expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'svg.fa-file.fa-fw'

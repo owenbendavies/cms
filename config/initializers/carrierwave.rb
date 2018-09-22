@@ -5,9 +5,7 @@ CarrierWave.configure do |config|
     bucket = ENV.fetch('AWS_S3_BUCKET')
     region = ENV.fetch('AWS_REGION')
 
-    default_host = "https://#{bucket}.s3-#{region}.amazonaws.com"
-
-    config.asset_host = ENV['ASSET_HOST'] || default_host
+    config.asset_host = ENV.fetch('AWS_S3_ASSET_HOST')
 
     config.fog_attributes = {
       cache_control: "public, max-age=#{1.year.to_i}"

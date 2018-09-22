@@ -31,6 +31,9 @@
         "AWS_REGION": {
             "description": "The Amazon Web Services region"
         },
+        "AWS_S3_ASSET_HOST": {
+            "description": "The Cloudfront URL for the S3 bucket"
+        },
         "AWS_S3_BUCKET": {
             "description": "The Amazon Web Services S3 bucket name"
         },
