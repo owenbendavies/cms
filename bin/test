@@ -2,7 +2,7 @@
 set -e
 cd `dirname $0`/..
 
-rspec='./bin/rspec --color'
+rspec='./bin/rspec'
 
 export RAILS_ENV='test'
 
