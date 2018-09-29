@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup project",
+            "type": "shell",
+            "command": "./bin/setup",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run server",
+            "type": "shell",
+            "command": "./bin/run",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run all tests",
+            "type": "shell",
+            "command": "./bin/test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Test current file",
+            "type": "shell",
+            "command": "./bin/test",
+            "args": [
+                "${file}"
+            ],
+            "group": "test"
+        },
+
+        {
+            "label": "Run code quality tools",
+            "type": "shell",
+            "command": "./bin/quality",
+            "group": "test"
+        }
+    ]
+}
