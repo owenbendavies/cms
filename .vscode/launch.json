@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Test current file",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "useBundler": true,
+            "env": {
+                "DISABLE_SPRING": true,
+                "RACK_TIMEOUT_SERVICE_TIMEOUT": 0
+            },
+            "program": "./bin/rspec",
+            "args": [
+                "${file}"
+            ]
+        }
+    ]
+}
