@@ -11,7 +11,7 @@ if [ $# -gt 0 ]; then
 
   set -v
 
-  eval "$rspec --format documentation $@"
+  eval "$rspec $@"
 else
   export COVERAGE=on
   export DISABLE_SPRING=true
@@ -19,7 +19,7 @@ else
 
   set -v
 
-  eval "$rspec --order random --format progress --format RspecJunitFormatter --out tmp/test_results/rspec.xml"
+  eval "$rspec"
   eval './bin/quality'
 fi
 
