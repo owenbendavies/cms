@@ -26,16 +26,6 @@
             }
         },
         {
-            "label": "Test current file",
-            "type": "shell",
-            "command": "./bin/test",
-            "args": [
-                "${file}"
-            ],
-            "group": "test"
-        },
-
-        {
             "label": "Run code quality tools",
             "type": "shell",
             "command": "./bin/quality",
