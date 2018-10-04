@@ -30,18 +30,18 @@ RSpec.feature 'Topbar' do
 
       within topbar_selector do
         expect(page).not_to have_link 'Site'
-        expect(page).not_to have_link 'Messages'
+        expect(page).not_to have_link 'Images'
 
         click_button 'Account menu'
 
-        expect(page).not_to have_link 'Messages'
+        expect(page).not_to have_link 'Images'
 
         click_link 'Site'
-        click_link 'Messages'
+        click_link 'Images'
       end
 
-      expect(page).to have_content 'Messages'
-      expect(page).to have_current_path '/admin/messages'
+      expect(page).to have_content 'Images'
+      expect(page).to have_current_path '/admin/images'
     end
   end
 end

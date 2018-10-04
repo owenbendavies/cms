@@ -17,6 +17,14 @@
     @extend .navbar-toggler-icon;
   }
 
+  &__item {
+    @extend .nav-item;
+  }
+
+  &__link {
+    @extend .nav-link;
+  }
+
   &__site-name {
     @extend .navbar-brand;
   }

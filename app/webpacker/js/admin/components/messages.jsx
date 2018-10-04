@@ -1,97 +1,40 @@
-import ApolloClient from "apollo-boost";
 import React from "react";
-import ReactTable from "react-table";
-import gql from "graphql-tag";
 
-export default class Messages extends React.Component {
-  constructor() {
-    super();
+import {
+  Datagrid,
+  DateField,
+  List,
+  RichTextField,
+  Show,
+  ShowButton,
+  SimpleShowLayout,
+  TextField
+} from "react-admin";
 
-    this.state = {
-      data: [],
-      pages: null,
-      loading: true
-    };
+export const MessageList = (props) => (
+  <List bulkActions={false} {...props}>
+    <Datagrid>
+      <TextField source="name" sortable={false} />
+      <TextField source="email" sortable={false} />
+      <TextField source="phone" sortable={false} />
+      <DateField source="createdAt" showTime sortable={false} />
+      <ShowButton />
+    </Datagrid>
+  </List>
+);
 
-    const csrfToken = document.querySelector("meta[name=csrf-token]").getAttribute("content");
+const MessageTitle = ({ record }) => (
+  <span>{ `Message from ${record.name}` }</span>
+);
 
-    this.client = new ApolloClient({
-      headers: {
-        'X-CSRF-Token': csrfToken
-      }
-    });
-
-    this.fetchData = this.fetchData.bind(this);
-  }
-
-  fetchData(state) {
-    this.setState({ loading: true });
-
-    this.client.query({
-      query: gql`
-        query Messages($first: Int, $after: String) {
-          messages(first: $first, after: $after) {
-            nodes {
-              name
-              email
-              phone
-              message
-              createdAt
-            }
-            totalCount
-          }
-        }
-      `,
-      variables: {
-        "first": state.pageSize,
-        "after": btoa(state.page * state.pageSize)
-      }
-    }).then(result => {
-      const total = result.data.messages.totalCount;
-      const pages = Math.ceil(total / state.pageSize);
-
-      this.setState({
-        data: result.data.messages.nodes,
-        pages: pages,
-        loading: false
-      });
-    });
-  }
-
-  render() {
-    return (
-      <ReactTable
-        columns={[
-          {
-            Header: "Name",
-            accessor: "name"
-          },
-          {
-            Header: "Email",
-            accessor: "email"
-          },
-          {
-            Header: "Phone",
-            accessor: "phone"
-          },
-          {
-            Header: "Created At",
-            accessor: "createdAt"
-          }
-        ]}
-        data={this.state.data}
-        defaultPageSize={10}
-        loading={this.state.loading}
-        manual
-        onFetchData={this.fetchData}
-        pages={this.state.pages}
-        sortable={false}
-        SubComponent={row => {
-          return (
-            <p>{row.original.message}</p>
-          )
-        }}
-      />
-    );
-  }
-}
+export const MessageShow = (props) => (
+  <Show title={<MessageTitle />} {...props}>
+    <SimpleShowLayout>
+      <TextField source="name" />
+      <TextField source="email" />
+      <TextField source="phone" />
+      <DateField source="createdAt" showTime />
+      <RichTextField source="message" />
+    </SimpleShowLayout>
+  </Show>
+);

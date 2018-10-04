@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :images, only: %i[index]
   end
 
-  get '/admin/*path', to: 'admin#index', via: :get, as: :admin
+  get '/admin', to: 'admin#index'
 
   resources :css, only: %i[show]
 
