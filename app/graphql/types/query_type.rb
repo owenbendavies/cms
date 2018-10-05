@@ -5,6 +5,7 @@ module Types
     alias pundit_user context
 
     field :messages, MessageType.connection_type, null: true
+    field :node, field: GraphQL::Relay::Node.field
 
     def messages
       policy_scope(Message).ordered
