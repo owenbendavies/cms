@@ -95,4 +95,38 @@ RSpec.describe Types::QueryType do
       end
     end
   end
+
+  context 'with node query' do
+    let(:message) { FactoryBot.create(:message, site: site) }
+
+    let(:id) { Base64.urlsafe_encode64("Message-#{message.uid}") }
+
+    let(:query) do
+      <<~BODY
+        query {
+          node(id: "#{id}") {
+            id
+            ... on Message {
+              name
+            }
+          }
+        }
+      BODY
+    end
+
+    let(:expected_result) do
+      [
+        {
+          'node' => {
+            'id' => id,
+            'name' => message.name
+          }
+        }
+      ]
+    end
+
+    it 'returns message' do
+      expect(result.values).to eq expected_result
+    end
+  end
 end
