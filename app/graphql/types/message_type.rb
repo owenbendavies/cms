@@ -1,6 +1,9 @@
 module Types
   class MessageType < Types::BaseObject
-    field :uid, ID, null: false
+    implements GraphQL::Relay::Node.interface
+
+    global_id_field :id
+
     field :name, String, null: false
     field :email, String, null: false
     field :phone, String, null: true
