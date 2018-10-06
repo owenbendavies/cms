@@ -15,7 +15,7 @@ RSpec.describe Types::MessageType do
         query {
           messages {
             nodes {
-              uid
+              id
               name
               email
               phone
@@ -35,7 +35,7 @@ RSpec.describe Types::MessageType do
           'messages' => {
             'nodes' => [
               {
-                'uid' => message.uid,
+                'id' => Base64.urlsafe_encode64("Message-#{message.uid}"),
                 'name' => message.name,
                 'email' => message.email,
                 'phone' => message.phone,
@@ -63,7 +63,7 @@ RSpec.describe Types::MessageType do
         query {
           messages(first: 1) {
             nodes {
-              uid
+              name
             }
             totalCount
           }
@@ -76,7 +76,7 @@ RSpec.describe Types::MessageType do
         {
           'messages' => {
             'nodes' => [
-              { 'uid' => message.uid }
+              { 'name' => message.name }
             ],
             'totalCount' => 2
           }
@@ -88,7 +88,7 @@ RSpec.describe Types::MessageType do
       FactoryBot.create(:message, site: site, created_at: 10.days.ago)
     end
 
-    it 'returns all feilds' do
+    it 'returns total number' do
       expect(result.values).to eq expected_result
     end
   end
