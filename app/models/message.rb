@@ -46,6 +46,7 @@ class Message < ApplicationRecord
 
   validate do
     next unless message
+
     parsed_message = message.delete("'")
     escaped_message = ERB::Util.html_escape(parsed_message)
     stripped_message = strip_tags(parsed_message)
