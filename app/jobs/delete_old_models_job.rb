@@ -10,6 +10,7 @@ class DeleteOldModelsJob < ApplicationJob
     old_models = models.where('created_at < ?', 30.days.ago)
     count = old_models.count
     return unless count.positive?
+
     old_models.delete_all
     info "deleted #{count} #{name}"
   end

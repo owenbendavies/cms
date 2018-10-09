@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
   def skip_monitoring
     return unless params[:monitoring] == 'skip'
+
     ScoutApm::RequestManager.lookup.ignore_request!
     NewRelic::Agent.ignore_transaction
   end
