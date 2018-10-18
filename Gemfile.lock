@@ -151,7 +151,7 @@ GEM
     foreman (0.85.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
-    get_process_mem (0.2.2)
+    get_process_mem (0.2.3)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     graphiql-rails (1.4.11)
