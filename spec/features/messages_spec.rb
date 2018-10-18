@@ -1,59 +1,97 @@
 require 'rails_helper'
 
 RSpec.feature 'Messages' do
-  let!(:messages) do
-    (0..11).map do |i|
-      FactoryBot.create(
-        :message,
-        site: site,
-        created_at: Time.zone.now - 1.month - 3.days - i.minutes,
-        updated_at: Time.zone.now - 1.month - 3.days - i.minutes
-      )
+  context 'with a message' do
+    let!(:message) do
+      FactoryBot.create(:message, site: site)
+    end
+
+    let(:created_at) do
+      message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y, %H:%M:%S')
+    end
+
+    before do
+      login_as site_user
+      visit '/home'
+      click_link 'Admin'
+      click_link 'Messages'
+    end
+
+    scenario 'list of messages' do
+      within('table tbody tr:nth-child(1)') do
+        expect(find('td:nth-child(1)').text).to eq message.name
+        expect(find('td:nth-child(2)').text).to eq message.email
+        expect(find('td:nth-child(3)').text).to eq message.phone
+        expect(find('td:nth-child(4)').text).to eq created_at
+      end
+    end
+
+    scenario 'viewing a message' do
+      within('table tbody tr:nth-child(1)') do
+        click_link 'Show'
+      end
+
+      within('.ra-field-name') do
+        expect(page).to have_content 'Name'
+        expect(page).to have_content message.name
+      end
+
+      within('.ra-field-email') do
+        expect(page).to have_content 'Email'
+        expect(page).to have_content message.email
+      end
+
+      within('.ra-field-phone') do
+        expect(page).to have_content 'Phone'
+        expect(page).to have_content message.phone
+      end
+
+      within('.ra-field-createdAt') do
+        expect(page).to have_content 'Created at'
+        expect(page).to have_content created_at
+      end
+
+      within('.ra-field-message') do
+        expect(page).to have_content 'Message'
+        expect(page).to have_content message.message
+      end
     end
   end
 
-  before do
-    FactoryBot.create(:message)
-    login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Messages', icon: 'svg.fa-envelope.fa-fw'
-  end
-
-  scenario 'list of messages' do
-    expect(all(:react_table_rows).size).to eq 10
-
-    within(:react_table_row, 1) do
-      expect(find(:react_table_cell, 2).text).to eq messages.first.name
-      expect(find(:react_table_cell, 3).text).to eq messages.first.email
-      expect(find(:react_table_cell, 4).text).to eq messages.first.phone
-      expect(find(:react_table_cell, 5).text).to eq messages.first.created_at.iso8601
+  context 'with multiple messages' do
+    let!(:messages) do
+      (0..11).map do |i|
+        FactoryBot.create(
+          :message,
+          site: site,
+          created_at: Time.zone.now - 1.month - 3.days - i.minutes,
+          updated_at: Time.zone.now - 1.month - 3.days - i.minutes
+        )
+      end
     end
-  end
 
-  scenario 'expanding a row' do
-    within(:react_table_row, 1) do
-      expect(page).not_to have_content messages.first.message
-      find(:react_table_cell, 1).click
-      expect(page).to have_content messages.first.message
+    before do
+      login_as site_user
+      visit '/home'
+      click_link 'Admin'
+      click_link 'Messages'
     end
-  end
 
-  scenario 'clicking pagination' do
-    expect(page).to have_content messages.first.name
-    expect(page).not_to have_content messages.last.name
+    scenario 'clicking pagination' do
+      expect(all('table tbody tr').size).to eq 10
 
-    click_button 'Next'
+      expect(page).to have_content messages.first.name
+      expect(page).not_to have_content messages.last.name
 
-    expect(page).not_to have_content messages.first.name
-    expect(page).to have_content messages.last.name
+      click_button 'Next'
 
-    click_button 'Previous'
+      expect(page).not_to have_content messages.first.name
+      expect(page).to have_content messages.last.name
 
-    expect(page).to have_content messages.first.name
-    expect(page).not_to have_content messages.last.name
-  end
+      click_button 'Prev'
 
-  scenario 'changing number of rows' do
-    find('.select-wrap select').select('5 rows')
-    expect(all(:react_table_rows).size).to eq 5
+      expect(page).to have_content messages.first.name
+      expect(page).not_to have_content messages.last.name
+    end
   end
 end
