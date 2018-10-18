@@ -1,7 +1,0 @@
----
-en:
-  admin:
-    messages:
-      index:
-        icon: fas fa-envelope fa-fw
-        title: Messages
