@@ -1,3 +1,4 @@
+import gql from "graphql-tag";
 import React from "react";
 
 import {
@@ -10,6 +11,21 @@ import {
   TextField
 } from "react-admin";
 
+export const MessageListQuery = gql`
+  query Messages($first: Int, $after: String) {
+    messages(first: $first, after: $after) {
+      nodes {
+        id
+        name
+        email
+        phone
+        createdAt
+      }
+      totalCount
+    }
+  }
+`;
+
 export const MessageList = (props) => (
   <List bulkActions={false} {...props}>
     <Datagrid rowClick="show">
@@ -20,6 +36,21 @@ export const MessageList = (props) => (
     </Datagrid>
   </List>
 );
+
+export const MessageShowQuery = gql`
+  query Node($id: ID!) {
+    node(id: $id) {
+      id
+      ... on Message {
+        name
+        email
+        phone
+        createdAt
+        message
+      }
+    }
+  }
+`;
 
 const MessageTitle = ({ record }) => (
   <span>{ `Message from ${record.name}` }</span>
