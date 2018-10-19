@@ -37,7 +37,7 @@ RSpec.describe 'GraphQL' do
       let(:query) do
         <<~BODY
           query {
-            messages {
+            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
               nodes {
                 name
               }

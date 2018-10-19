@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import {
   MessageListQuery,
   MessageShowQuery
@@ -9,8 +11,12 @@ export const query = introspectionResults => (fetchType, resource, params) => {
     return {
       query: MessageListQuery,
       variables: {
-        "first": params.pagination.perPage,
-        "after": btoa((params.pagination.page - 1) * params.pagination.perPage)
+        first: params.pagination.perPage,
+        after: btoa((params.pagination.page - 1) * params.pagination.perPage),
+        orderBy: {
+          field: _.toUpper(_.snakeCase(params.sort.field)),
+          direction: params.sort.order
+        }
       },
       parseResponse: response => ({
         data: response.data.messages.nodes,
