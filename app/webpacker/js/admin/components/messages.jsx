@@ -12,8 +12,8 @@ import {
 } from "react-admin";
 
 export const MessageListQuery = gql`
-  query Messages($first: Int, $after: String) {
-    messages(first: $first, after: $after) {
+  query Messages($first: Int, $after: String, $orderBy: MessageOrder!) {
+    messages(first: $first, after: $after, orderBy: $orderBy) {
       nodes {
         id
         name
@@ -27,12 +27,12 @@ export const MessageListQuery = gql`
 `;
 
 export const MessageList = (props) => (
-  <List bulkActions={false} {...props}>
+  <List bulkActions={false} sort={{ field: "createdAt", order: "DESC" }} {...props}>
     <Datagrid rowClick="show">
-      <TextField source="name" sortable={false} />
-      <TextField source="email" sortable={false} />
-      <TextField source="phone" sortable={false} />
-      <DateField source="createdAt" showTime sortable={false} />
+      <TextField source="name" />
+      <TextField source="email" />
+      <TextField source="phone" />
+      <DateField source="createdAt" showTime />
     </Datagrid>
   </List>
 );

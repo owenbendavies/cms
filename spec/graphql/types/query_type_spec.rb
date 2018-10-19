@@ -32,7 +32,7 @@ RSpec.describe Types::QueryType do
       let(:query) do
         <<~BODY
           query {
-            messages {
+            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
               nodes {
                 name
               }
@@ -65,7 +65,7 @@ RSpec.describe Types::QueryType do
       let(:query) do
         <<~BODY
           query {
-            messages {
+            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
               nodes {
                 name
               }

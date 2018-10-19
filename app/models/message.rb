@@ -7,9 +7,6 @@ class Message < ApplicationRecord
   # relations
   belongs_to :site
 
-  # scopes
-  scope(:ordered, -> { order(created_at: :desc) })
-
   # before validations
   strip_attributes except: :message, collapse_spaces: true, replace_newlines: true
 
