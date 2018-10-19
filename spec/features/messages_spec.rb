@@ -27,9 +27,7 @@ RSpec.feature 'Messages' do
     end
 
     scenario 'viewing a message' do
-      within('table tbody tr:nth-child(1)') do
-        click_link 'Show'
-      end
+      find('table tbody tr:nth-child(1)').click
 
       within('.ra-field-name') do
         expect(page).to have_content 'Name'

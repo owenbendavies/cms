@@ -6,19 +6,17 @@ import {
   List,
   RichTextField,
   Show,
-  ShowButton,
   SimpleShowLayout,
   TextField
 } from "react-admin";
 
 export const MessageList = (props) => (
   <List bulkActions={false} {...props}>
-    <Datagrid>
+    <Datagrid rowClick="show">
       <TextField source="name" sortable={false} />
       <TextField source="email" sortable={false} />
       <TextField source="phone" sortable={false} />
       <DateField source="createdAt" showTime sortable={false} />
-      <ShowButton />
     </Datagrid>
   </List>
 );
