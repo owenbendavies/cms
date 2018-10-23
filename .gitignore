@@ -2,6 +2,7 @@
 /coverage/
 /log/*.log
 /node_modules/
+/public/packs-test/
 /public/packs/
 /public/uploads/
 /tmp/
