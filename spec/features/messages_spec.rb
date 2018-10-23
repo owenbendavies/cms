@@ -54,6 +54,56 @@ RSpec.feature 'Messages' do
         expect(page).to have_content message.message
       end
     end
+
+    scenario 'navigating back to list' do
+      find('table tbody tr:nth-child(1)').click
+
+      within('.ra-field-name') do
+        expect(page).to have_content 'Name'
+        expect(page).to have_content message.name
+      end
+
+      click_link 'List'
+
+      within('table tbody tr:nth-child(1)') do
+        expect(find('td:nth-child(1)').text).to eq message.name
+      end
+    end
+  end
+
+  context 'when on mobile' do
+    let!(:message) do
+      FactoryBot.create(:message, site: site)
+    end
+
+    let(:created_at) do
+      message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y')
+    end
+
+    before do
+      windows.first.resize_to(300, 600)
+      login_as site_user
+      visit '/home'
+      click_button 'Account menu'
+      click_link 'Admin'
+      find('button[aria-label="open drawer"]').click
+      click_link 'Messages'
+    end
+
+    scenario 'navigating to message' do
+      within('.list-page ul a:nth-child(1)') do
+        expect(page).to have_content message.name
+        expect(page).to have_content message.email
+        expect(page).to have_content created_at
+      end
+
+      find('.list-page ul a:nth-child(1)').click
+
+      within('.ra-field-name') do
+        expect(page).to have_content 'Name'
+        expect(page).to have_content message.name
+      end
+    end
   end
 
   context 'with multiple messages' do
