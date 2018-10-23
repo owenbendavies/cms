@@ -13,7 +13,7 @@ RSpec.describe Types::MessageType do
     let(:query) do
       <<~BODY
         query {
-          messages {
+          messages(orderBy: {field: CREATED_AT, direction: DESC}) {
             nodes {
               id
               name
@@ -61,7 +61,7 @@ RSpec.describe Types::MessageType do
     let(:query) do
       <<~BODY
         query {
-          messages(first: 1) {
+          messages(first: 1, orderBy: {field: CREATED_AT, direction: DESC}) {
             nodes {
               name
             }

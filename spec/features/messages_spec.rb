@@ -91,5 +91,15 @@ RSpec.feature 'Messages' do
       expect(page).to have_content messages.first.name
       expect(page).not_to have_content messages.last.name
     end
+
+    scenario 'sorting data' do
+      expect(page).to have_content messages.first.name
+      expect(page).not_to have_content messages.last.name
+
+      find('span[data-sort="createdAt"]').click
+
+      expect(page).not_to have_content messages.first.name
+      expect(page).to have_content messages.last.name
+    end
   end
 end
