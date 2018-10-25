@@ -73,5 +73,5 @@
     },
     "name": "obduk C.M.S.",
     "repository": "https://github.com/obduk/cms",
-    "stack": "heroku-16"
+    "stack": "heroku-18"
 }
