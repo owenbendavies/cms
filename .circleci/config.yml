@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:2.5.1-node-browsers
+       - image: circleci/ruby:2.5.3-node-browsers
        - image: circleci/postgres:10
 
     steps:
@@ -23,9 +23,9 @@ jobs:
           command: ./bin/setup
 
       - save_cache:
+          key: dependencies-bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
-          key: dependencies-bundle-{{ checksum "Gemfile.lock" }}
 
       - save_cache:
           key: dependencies-yarn-{{ checksum "yarn.lock" }}
