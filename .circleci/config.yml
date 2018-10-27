@@ -4,15 +4,15 @@ jobs:
   build:
     docker:
        - image: circleci/ruby:2.5.3-node-browsers
-       - image: circleci/postgres:10
+       - image: circleci/postgres:10-alpine-ram
 
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - dependencies-bundle-{{ checksum "Gemfile.lock" }}
-          - dependencies-bundle-
+            - dependencies-bundle-{{ checksum "Gemfile.lock" }}
+            - dependencies-bundle-
 
       - restore_cache:
           keys:
@@ -25,22 +25,42 @@ jobs:
       - save_cache:
           key: dependencies-bundle-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
+            - vendor/bundle
 
       - save_cache:
           key: dependencies-yarn-{{ checksum "yarn.lock" }}
           paths:
-            - ./node_modules
+            - node_modules
+
+      - restore_cache:
+          keys:
+            - packs-{{ .Branch }}-{{ .Revision }}
+            - packs-{{ .Branch }}-
+            - packs-
+
+      - run:
+          command: ./bin/compile
+          environment:
+            RAILS_ENV: test
+
+      - save_cache:
+          key: packs-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - public/packs-test
+            - tmp/cache/webpacker
 
       - run:
           command: ./bin/test
 
       - run:
+          command: ./bin/quality
+
+      - run:
           command: ./bin/changes
 
       - store_test_results:
-          path: ./tmp/test_results
+          path: tmp/test_results
 
       - store_artifacts:
-          path: ./coverage
+          path: coverage
           destination: coverage

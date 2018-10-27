@@ -1,8 +1,9 @@
 Capybara.register_driver :chrome do |app|
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  browser_options.args << '--headless' unless RSpec.configuration.files_to_run.one?
+  browser_options.args << '--headless'
   browser_options.args << '--disable-gpu'
   browser_options.args << '--no-sandbox'
+  browser_options.args << "--lang=#{ENV.fetch('LANGUAGE')}"
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
 end
 

@@ -104,25 +104,10 @@ RSpec.describe 'Application web server' do
   context 'with gzip' do
     let(:request_headers) { { 'HTTP_ACCEPT_ENCODING' => 'gzip, deflate' } }
 
-    context 'when visiting a page' do
-      it 'serves pages with gzip' do
-        request_page
+    it 'serves pages with gzip' do
+      request_page
 
-        expect(response.headers['Content-Encoding']).to eq 'gzip'
-      end
-    end
-
-    context 'when visiting an asset' do
-      let(:request_path) do
-        asset_file_path = Dir.glob(Rails.root.join('public', 'packs', 'stylesheet*.css')).first
-        asset_file_path.gsub(Rails.root.join('public').to_s, '')
-      end
-
-      it 'serves assets with gzip' do
-        request_page
-
-        expect(response.headers['Content-Encoding']).to eq 'gzip'
-      end
+      expect(response.headers['Content-Encoding']).to eq 'gzip'
     end
   end
 end

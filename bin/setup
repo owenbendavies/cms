@@ -10,7 +10,7 @@ end
 
 FileUtils.chdir APP_ROOT do
   puts '== Installing dependencies =='
-  system! 'gem install bundler --conservative'
+  system! 'gem install bundler'
   system!('bundle config --local path vendor/bundle')
   system('bundle check') || system!('bundle install --jobs=3 --retry=3')
   system!('bundle clean')
@@ -22,9 +22,6 @@ FileUtils.chdir APP_ROOT do
 
   puts "\n== Removing old logs and tempfiles =="
   system! 'bin/rails log:clear tmp:clear'
-
-  puts "\n== Compiling assets =="
-  system! 'bin/compile'
 
   puts "\n== Restarting application server =="
   system! 'bin/rails restart'
