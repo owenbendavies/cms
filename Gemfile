@@ -77,7 +77,6 @@ end
 
 group :test do
   gem 'capybara' # Web browser tester
-  gem 'chromedriver-helper' # Installs Google chromedriver command
   gem 'climate_control' # Modifies environment variables
   gem 'database_cleaner' # Cleans the database
   gem 'factory_bot_rails' # Generates test models
