@@ -1,12 +1,33 @@
 import _ from "lodash";
 
 import {
+  MessageDeleteQuery,
   MessageListQuery,
   MessageShowQuery
 } from "./components/messages";
 
 export const query = introspectionResults => (fetchType, resource, params) => {
   switch (fetchType) {
+  case "DELETE":
+    return {
+      query: MessageDeleteQuery,
+      variables: {
+        ids: [params.id]
+      },
+      parseResponse: response => ({
+        data: response.data.deleteMessages.messages[0]
+      })
+    };
+  case "DELETE_MANY":
+    return {
+      query: MessageDeleteQuery,
+      variables: {
+        ids: params.ids
+      },
+      parseResponse: response => ({
+        data: response.data.deleteMessages.messages
+      })
+    };
   case "GET_LIST":
     return {
       query: MessageListQuery,
@@ -27,7 +48,7 @@ export const query = introspectionResults => (fetchType, resource, params) => {
     return {
       query: MessageShowQuery,
       variables: {
-        "id": params.id
+        id: params.id
       },
       parseResponse: response => ({
         data: response.data.node

@@ -19,10 +19,10 @@ RSpec.feature 'Messages' do
 
     scenario 'list of messages' do
       within('table tbody tr:nth-child(1)') do
-        expect(find('td:nth-child(1)').text).to eq message.name
-        expect(find('td:nth-child(2)').text).to eq message.email
-        expect(find('td:nth-child(3)').text).to eq message.phone
-        expect(find('td:nth-child(4)').text).to eq created_at
+        expect(find('td:nth-child(2)').text).to eq message.name
+        expect(find('td:nth-child(3)').text).to eq message.email
+        expect(find('td:nth-child(4)').text).to eq message.phone
+        expect(find('td:nth-child(5)').text).to eq created_at
       end
     end
 
@@ -58,16 +58,20 @@ RSpec.feature 'Messages' do
     scenario 'navigating back to list' do
       find('table tbody tr:nth-child(1)').click
 
-      within('.ra-field-name') do
-        expect(page).to have_content 'Name'
-        expect(page).to have_content message.name
-      end
+      expect(page).to have_content "Message from #{message.name}"
 
       click_link 'List'
 
-      within('table tbody tr:nth-child(1)') do
-        expect(find('td:nth-child(1)').text).to eq message.name
-      end
+      expect(page).to have_content 'Messages List'
+    end
+
+    scenario 'deleting a message' do
+      find('table tbody tr:nth-child(1)').click
+
+      click_button 'Delete'
+
+      expect(page).to have_content 'Element deleted'
+      expect(all('table tbody tr').size).to eq 0
     end
   end
 
@@ -99,10 +103,7 @@ RSpec.feature 'Messages' do
 
       find('.list-page ul a:nth-child(1)').click
 
-      within('.ra-field-name') do
-        expect(page).to have_content 'Name'
-        expect(page).to have_content message.name
-      end
+      expect(page).to have_content "Message from #{message.name}"
     end
   end
 
@@ -150,6 +151,16 @@ RSpec.feature 'Messages' do
 
       expect(page).not_to have_content messages.first.name
       expect(page).to have_content messages.last.name
+    end
+
+    scenario 'deleteing messages' do
+      find('table tbody tr:nth-child(1) td:nth-child(1)').click
+      find('table tbody tr:nth-child(2) td:nth-child(1)').click
+      find('table tbody tr:nth-child(3) td:nth-child(1)').click
+
+      click_button 'Delete'
+
+      expect(page).to have_content '3 elements deleted'
     end
   end
 end
