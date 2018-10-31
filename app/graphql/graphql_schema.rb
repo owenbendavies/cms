@@ -1,4 +1,5 @@
 class GraphqlSchema < GraphQL::Schema
+  mutation Types::MutationType
   query Types::QueryType
 
   def self.id_from_object(object, _type, _context)
@@ -8,7 +9,7 @@ class GraphqlSchema < GraphQL::Schema
   def self.object_from_id(id, context)
     class_name, uid = GraphQL::Schema::UniqueWithinType.decode(id)
 
-    Pundit.policy_scope(context, Object.const_get(class_name)).find_by(uid: uid)
+    Pundit.policy_scope(context, class_name.safe_constantize).find_by(uid: uid)
   end
 
   def self.resolve_type(_type, _object, _context)

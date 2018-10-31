@@ -5,6 +5,7 @@ import {
   CardActions,
   Datagrid,
   DateField,
+  DeleteButton,
   List,
   ListButton,
   Responsive,
@@ -14,6 +15,16 @@ import {
   SimpleShowLayout,
   TextField
 } from "react-admin";
+
+export const MessageDeleteQuery = gql`
+  mutation DeleteMessages($ids: [ID!]!) {
+    deleteMessages(input: {messageIds: $ids}) {
+      messages {
+        id
+      }
+    }
+  }
+`;
 
 export const MessageListQuery = gql`
   query Messages($first: Int, $after: String, $orderBy: MessageOrder!) {
@@ -31,7 +42,7 @@ export const MessageListQuery = gql`
 `;
 
 export const MessageList = (props) => (
-  <List bulkActions={false} sort={{ field: "createdAt", order: "DESC" }} {...props}>
+  <List sort={{ field: "createdAt", order: "DESC" }} {...props}>
     <Responsive
       small={
         <SimpleList
@@ -75,6 +86,7 @@ const MessageTitle = ({ record }) => (
 const MessageShowActions = ({ basePath, data, resource }) => (
   <CardActions>
     <ListButton basePath={basePath} />
+    <DeleteButton basePath={basePath} record={data} resource={resource} />
   </CardActions>
 );
 
