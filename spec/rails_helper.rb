@@ -2,13 +2,25 @@ if ENV['COVERAGE']
   require 'simplecov'
 
   SimpleCov.start 'rails' do
-    minimum_coverage 100
-
     groups.delete 'Libraries'
 
     add_group 'GraphQL', 'app/graphql'
     add_group 'Policies', 'app/policies'
     add_group 'Uploaders', 'app/uploaders'
+
+    at_exit do
+      if ParallelTests.last_process?
+        ParallelTests.wait_for_other_processes_to_finish
+        SimpleCov.result.format!
+
+        covered_percent = SimpleCov.result.covered_percent.round(2)
+
+        if covered_percent < 100
+          $stderr.printf("Coverage (%.2f%%) is below (100%%).\n", covered_percent)
+          exit 1
+        end
+      end
+    end
   end
 end
 

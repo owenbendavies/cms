@@ -62,6 +62,7 @@ group :development, :test do
   gem 'bullet' # Detect bad database queries
   gem 'debase' # Debugger
   gem 'dotenv-rails' # Easy environment configuration
+  gem 'parallel_tests' # Run test in parallel
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'ruby-debug-ide' # Debugger

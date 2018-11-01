@@ -141,59 +141,55 @@ RSpec.describe Site do
   end
 
   describe '#address' do
-    subject(:site) { FactoryBot.build(:site, host: 'localhost') }
+    subject(:site) { FactoryBot.build(:site) }
 
     context 'with ssl enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'returns https url' do
-        expect(site.address).to eq 'https://localhost'
+        expect(site.address).to eq "https://#{site.host}"
       end
     end
 
     context 'with ssl disabled' do
       it 'returns http url' do
-        expect(site.address).to eq 'http://localhost'
+        expect(site.address).to eq "http://#{site.host}"
       end
     end
   end
 
   describe '#url_options' do
-    subject(:site) { FactoryBot.build(:site, host: 'localhost') }
+    subject(:site) { FactoryBot.build(:site) }
 
-    it 'has host' do
-      expect(site.url_options.fetch(:host)).to eq 'localhost'
+    it 'returns url options' do
+      expect(site.url_options).to eq(
+        host: site.host,
+        protocol: 'http',
+        port: nil
+      )
     end
 
     context 'with ssl enabled' do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
-      it 'has https protocl' do
-        expect(site.url_options.fetch(:protocol)).to eq 'https'
-      end
-    end
-
-    context 'with ssl disabled' do
-      let(:environment_variables) { { DISABLE_SSL: 'true' } }
-
-      it 'has http protocal' do
-        expect(site.url_options.fetch(:protocol)).to eq 'http'
+      it 'has https protocol' do
+        expect(site.url_options).to eq(
+          host: site.host,
+          protocol: 'https',
+          port: nil
+        )
       end
     end
 
     context 'with email link port set' do
-      let(:environment_variables) { { EMAIL_LINK_PORT: '37511' } }
+      let(:environment_variables) { { EMAIL_LINK_PORT: '3000' } }
 
       it 'has port' do
-        expect(site.url_options.fetch(:port)).to eq '37511'
-      end
-    end
-
-    context 'with email link port not set' do
-      let(:environment_variables) { { EMAIL_LINK_PORT: nil } }
-
-      it 'has no port' do
-        expect(site.url_options.fetch(:port)).to eq nil
+        expect(site.url_options).to eq(
+          host: site.host,
+          protocol: 'http',
+          port: '3000'
+        )
       end
     end
   end
