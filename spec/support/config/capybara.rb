@@ -8,9 +8,7 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.default_driver = :chrome
-Capybara.server_port = Integer(ENV.fetch('EMAIL_LINK_PORT'))
-Capybara.default_host = 'http://localhost'
-Capybara.app_host = "#{Capybara.default_host}:#{Capybara.server_port}"
+Capybara.default_host = 'http://127.0.0.1'
 
 RSpec.configure do |config|
   config.before :each, type: :feature do

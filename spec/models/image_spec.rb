@@ -10,7 +10,7 @@ RSpec.describe Image do
 
     let(:filename) do
       File.join(
-        'http://localhost:37511',
+        ENV.fetch('AWS_S3_ASSET_HOST'),
         'images',
         uuid,
         'original.jpg'

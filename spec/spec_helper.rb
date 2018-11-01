@@ -80,6 +80,7 @@ RSpec.configure do |config|
 
     config.add_formatter(:progress)
     config.add_formatter('RspecJunitFormatter', 'tmp/test_results/rspec.xml')
+    config.add_formatter('ParallelTests::RSpec::RuntimeLogger', 'tmp/parallel_runtime_rspec.log')
   end
 
   # Print the 10 slowest examples and example groups at the
