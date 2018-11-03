@@ -8,7 +8,7 @@ FactoryBot.define do
         [
           {
             'name' => Faker::Name.name,
-            'url' =>  Faker::Internet.url,
+            'url' => Faker::Internet.url,
             'icon' => 'fas fa-facebook fa-fw'
           }
         ]
