@@ -3,22 +3,22 @@ version: 2
 jobs:
   build:
     docker:
-       - image: circleci/ruby:2.5.3-node-browsers
-       - image: circleci/postgres:10-alpine-ram
+      - image: circleci/ruby:2.5.3-node-browsers
+      - image: circleci/postgres:10-alpine-ram
 
     steps:
       - checkout
 
       - restore_cache:
           keys:
-            - tmp-{{ .Branch }}-{{ .Revision }}
-            - tmp-{{ .Branch }}-
-            - tmp-
+            - bootsnap-v1-{{ .Branch }}-{{ .Revision }}
+            - bootsnap-v1-{{ .Branch }}-
+            - bootsnap-v1-
 
       - restore_cache:
           keys:
-            - bundle-{{ checksum "Gemfile.lock" }}
-            - bundle-
+            - bundle-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
+            - bundle-{{ checksum ".ruby-version" }}-
 
       - restore_cache:
           keys:
@@ -29,7 +29,7 @@ jobs:
           command: ./bin/setup
 
       - save_cache:
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          key: bundle-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
@@ -38,25 +38,45 @@ jobs:
           paths:
             - node_modules
 
+      - restore_cache:
+          keys:
+            - webpacker-v1-{{ .Branch }}-{{ .Revision }}
+            - webpacker-v1-{{ .Branch }}-
+            - webpacker-v1-
+
       - run:
           command: ./bin/compile
           environment:
             RAILS_ENV: test
 
+      - save_cache:
+          key: webpacker-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - public/packs-test
+            - tmp/cache/webpacker
+
+      - restore_cache:
+          keys:
+            - parallel-v1-{{ .Branch }}-{{ .Revision }}
+            - parallel-v1-{{ .Branch }}-
+            - parallel-v1-
+
       - run:
           command: ./bin/test
+
+      - save_cache:
+          key: parallel-v1-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - tmp/parallel_runtime_rspec.log
 
       - run:
           command: ./bin/quality
 
       - save_cache:
-          key: tmp-{{ .Branch }}-{{ .Revision }}
+          key: bootsnap-v1-{{ .Branch }}-{{ .Revision }}
           paths:
-            - public/packs-test
             - tmp/cache/bootsnap-compile-cache
             - tmp/cache/bootsnap-load-path-cache
-            - tmp/cache/webpacker
-            - tmp/parallel_runtime_rspec.log
 
       - run:
           command: ./bin/changes
