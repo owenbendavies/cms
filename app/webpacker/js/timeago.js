@@ -1,8 +1,6 @@
-import $ from "jquery";
-import "timeago";
+import $ from 'jquery';
+import 'timeago';
 
-document.addEventListener("turbolinks:load", function() {
-  "use strict";
-
-  $(".js-timeago").timeago();
+document.addEventListener('turbolinks:load', () => {
+  $('.js-timeago').timeago();
 });

@@ -1,5 +1,5 @@
-import gql from "graphql-tag";
-import React from "react";
+import gql from 'graphql-tag';
+import React from 'react';
 
 import {
   CardActions,
@@ -13,8 +13,8 @@ import {
   Show,
   SimpleList,
   SimpleShowLayout,
-  TextField
-} from "react-admin";
+  TextField,
+} from 'react-admin';
 
 export const MessageDeleteQuery = gql`
   mutation DeleteMessages($ids: [ID!]!) {
@@ -41,25 +41,25 @@ export const MessageListQuery = gql`
   }
 `;
 
-export const MessageList = (props) => (
-  <List sort={{ field: "createdAt", order: "DESC" }} {...props}>
+export const MessageList = props => (
+  <List sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
     <Responsive
-      small={
+      small={(
         <SimpleList
-          primaryText={ record => record.name }
-          secondaryText={ record => record.email }
-          tertiaryText={ record => new Date(record.createdAt).toLocaleDateString() }
+          primaryText={record => record.name}
+          secondaryText={record => record.email}
+          tertiaryText={record => new Date(record.createdAt).toLocaleDateString()}
           linkType="show"
         />
-      }
-      medium={
+      )}
+      medium={(
         <Datagrid rowClick="show">
           <TextField source="name" />
           <TextField source="email" />
           <TextField source="phone" />
           <DateField source="createdAt" showTime />
         </Datagrid>
-      }
+      )}
     />
   </List>
 );
@@ -90,8 +90,8 @@ const MessageShowActions = ({ basePath, data, resource }) => (
   </CardActions>
 );
 
-export const MessageShow = (props) => (
-  <Show title={<MessageTitle />} actions={<MessageShowActions/>} {...props}>
+export const MessageShow = props => (
+  <Show title={<MessageTitle />} actions={<MessageShowActions />} {...props}>
     <SimpleShowLayout>
       <TextField source="name" />
       <TextField source="email" />

@@ -20,7 +20,7 @@ set -v
 
 ./bin/rubocop --format simple
 
-./bin/yarn eslint app/webpacker
+./bin/yarn eslint --ext js,jsx app/webpacker
 
 ./bin/yarn stylelint app/webpacker
 
