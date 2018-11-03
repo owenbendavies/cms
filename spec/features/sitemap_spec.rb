@@ -41,10 +41,10 @@ RSpec.feature 'Sitemap' do
     scenario 'http' do
       visit '/sitemap.xml'
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'http://localhost/home'
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq "http://#{site.host}/home"
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq home_page.updated_at.iso8601
-      expect(page).to have_no_xpath('//loc', text: "http://localhost/#{hidden_page.url}")
-      expect(page).to have_no_xpath('//loc', text: "http://localhost/#{private_page.url}")
+      expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{hidden_page.url}")
+      expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
     end
 
     scenario 'https' do
@@ -52,7 +52,7 @@ RSpec.feature 'Sitemap' do
         visit '/sitemap.xml'
       end
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq 'https://localhost/home'
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq "https://#{site.host}/home"
     end
   end
 end

@@ -11,49 +11,52 @@ jobs:
 
       - restore_cache:
           keys:
-            - dependencies-bundle-{{ checksum "Gemfile.lock" }}
-            - dependencies-bundle-
+            - tmp-{{ .Branch }}-{{ .Revision }}
+            - tmp-{{ .Branch }}-
+            - tmp-
 
       - restore_cache:
           keys:
-            - dependencies-yarn-{{ checksum "yarn.lock" }}
-            - dependencies-yarn-
+            - bundle-{{ checksum "Gemfile.lock" }}
+            - bundle-
+
+      - restore_cache:
+          keys:
+            - yarn-{{ checksum "yarn.lock" }}
+            - yarn-
 
       - run:
           command: ./bin/setup
 
       - save_cache:
-          key: dependencies-bundle-{{ checksum "Gemfile.lock" }}
+          key: bundle-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
       - save_cache:
-          key: dependencies-yarn-{{ checksum "yarn.lock" }}
+          key: yarn-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
-
-      - restore_cache:
-          keys:
-            - packs-{{ .Branch }}-{{ .Revision }}
-            - packs-{{ .Branch }}-
-            - packs-
 
       - run:
           command: ./bin/compile
           environment:
             RAILS_ENV: test
 
-      - save_cache:
-          key: packs-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - public/packs-test
-            - tmp/cache/webpacker
-
       - run:
           command: ./bin/test
 
       - run:
           command: ./bin/quality
+
+      - save_cache:
+          key: tmp-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - public/packs-test
+            - tmp/cache/bootsnap-compile-cache
+            - tmp/cache/bootsnap-load-path-cache
+            - tmp/cache/webpacker
+            - tmp/parallel_runtime_rspec.log
 
       - run:
           command: ./bin/changes

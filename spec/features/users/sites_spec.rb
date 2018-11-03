@@ -11,8 +11,8 @@ RSpec.feature 'User sites' do
     links = all('.article a')
     expect(links.size).to eq 1
 
-    expect(links[0].text).to eq 'localhost'
-    expect(links[0]['href']).to eq 'http://localhost/'
+    expect(links[0].text).to eq site.host
+    expect(links[0]['href']).to eq "http://#{site.host}/"
   end
 
   context 'with ssl is enabled' do
@@ -20,7 +20,7 @@ RSpec.feature 'User sites' do
 
     scenario 'list of sites with https' do
       links = all('.article a')
-      expect(links[0]['href']).to eq 'https://localhost/'
+      expect(links[0]['href']).to eq "https://#{site.host}/"
     end
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe 'Application web server' do
 
     let(:non_random_headers) { response.headers.except(*random_headers) }
 
-    let(:asset_src) { "'self' 'unsafe-inline' http://localhost:37511" }
+    let(:asset_src) { "'self' 'unsafe-inline' #{ENV.fetch('AWS_S3_ASSET_HOST')}" }
 
     let(:script_src) do
       [

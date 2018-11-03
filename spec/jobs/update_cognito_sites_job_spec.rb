@@ -6,9 +6,9 @@ RSpec.describe UpdateCognitoSitesJob do
       allowed_o_auth_flows: ['code'],
       allowed_o_auth_flows_user_pool_client: true,
       allowed_o_auth_scopes: ['openid'],
-      callback_urls: ['http://www.example.com:37511/auth/cognito-idp/callback'],
+      callback_urls: ["http://#{site.host}/auth/cognito-idp/callback"],
       client_id: ENV.fetch('AWS_COGNITO_CLIENT_ID'),
-      logout_urls: ['http://www.example.com:37511/'],
+      logout_urls: ["http://#{site.host}/"],
       supported_identity_providers: ['COGNITO'],
       user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID')
     }
@@ -16,7 +16,7 @@ RSpec.describe UpdateCognitoSitesJob do
 
   let(:create_group_options) do
     {
-      group_name: 'www.example.com',
+      group_name: site.host,
       user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID')
     }
   end
@@ -28,9 +28,9 @@ RSpec.describe UpdateCognitoSitesJob do
     }
   end
 
-  it 'updates AWS cognito sites' do
-    FactoryBot.create(:site, host: 'www.example.com')
+  let!(:site) { FactoryBot.create(:site) }
 
+  it 'updates AWS cognito sites' do
     expect(AWS_COGNITO).to receive(:update_user_pool_client)
       .with(update_user_pool_client_options)
       .and_call_original
@@ -39,8 +39,6 @@ RSpec.describe UpdateCognitoSitesJob do
   end
 
   it 'creates missing cognito groups' do
-    FactoryBot.create(:site, host: 'www.example.com')
-
     expect(AWS_COGNITO).to receive(:create_group)
       .with(create_group_options)
       .and_call_original
