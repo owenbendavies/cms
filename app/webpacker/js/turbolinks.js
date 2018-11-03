@@ -1,3 +1,3 @@
-import Turbolinks from "turbolinks";
+import Turbolinks from 'turbolinks';
 
 Turbolinks.start();
