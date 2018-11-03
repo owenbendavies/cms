@@ -24,7 +24,7 @@ if ENV['AWS_STUB'].present? && Rails.env.development?
     },
     'extra' => {
       'raw_info' => {
-        'cognito:groups' => ['localhost']
+        'cognito:groups' => %w[localhost admin]
       }
     }
   )
