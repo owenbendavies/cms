@@ -23,6 +23,4 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
-
-  config.middleware.insert_before Rack::Runtime, Rack::Timeout
 end

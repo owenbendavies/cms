@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
   let(:contact_page) { FactoryBot.create(:page, contact_form: true, site: site) }
-  let(:user_emails) { ['siteuser@example.com', 'sysadmin@example.com', 'admin@example.com'] }
+  let(:user_emails) { ['siteuser@example.com', 'admin@example.com'] }
 
   before do
     visit "/#{contact_page.url}"
