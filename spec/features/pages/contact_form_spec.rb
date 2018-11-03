@@ -61,7 +61,7 @@ RSpec.feature 'Page with contact form' do
   end
 
   context 'when site has privacy policy' do
-    let!(:site) { FactoryBot.create(:site, :with_privacy_policy, host: 'localhost') }
+    let!(:site) { FactoryBot.create(:site, :with_privacy_policy, host: '127.0.0.1') }
     let(:privacy_policy_text) { "I agree to #{site.privacy_policy_page.name}" }
 
     before do

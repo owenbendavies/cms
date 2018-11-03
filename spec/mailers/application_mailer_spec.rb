@@ -25,7 +25,7 @@ RSpec.describe ApplicationMailer do
       it 'has https links' do
         expect(email.body).to have_link(
           privacy_policy.name,
-          href: "https://#{site.host}:37511/#{privacy_policy.url}"
+          href: "https://#{site.host}/#{privacy_policy.url}"
         )
       end
     end
@@ -34,18 +34,18 @@ RSpec.describe ApplicationMailer do
       it 'has http links' do
         expect(email.body).to have_link(
           privacy_policy.name,
-          href: "http://#{site.host}:37511/#{privacy_policy.url}"
+          href: "http://#{site.host}/#{privacy_policy.url}"
         )
       end
     end
 
-    context 'with email link port not set' do
-      let(:environment_variables) { { EMAIL_LINK_PORT: nil } }
+    context 'with email link port set' do
+      let(:environment_variables) { { EMAIL_LINK_PORT: '3000' } }
 
       it 'has no port on links' do
         expect(email.body).to have_link(
           privacy_policy.name,
-          href: "http://#{site.host}/#{privacy_policy.url}"
+          href: "http://#{site.host}:3000/#{privacy_policy.url}"
         )
       end
     end
@@ -74,7 +74,7 @@ RSpec.describe ApplicationMailer do
     it 'has privacy policy in body' do
       expect(email.body).to have_link(
         privacy_policy.name,
-        href: "http://#{site.host}:37511/#{privacy_policy.url}"
+        href: "http://#{site.host}/#{privacy_policy.url}"
       )
     end
   end
