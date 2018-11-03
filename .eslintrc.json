@@ -3,19 +3,9 @@
         "browser": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
+        "airbnb"
     ],
     "rules": {
-        "indent": ["error", 2],
-        "linebreak-style": ["error", "unix"],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"]
+        "react/prop-types": 0
     }
 }
