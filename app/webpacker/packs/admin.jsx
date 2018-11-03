@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 
-import { AdminApp } from "../js/admin_app";
+import AdminApp from '../js/admin_app';
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener('turbolinks:load', () => {
   ReactDom.render(
     <AdminApp />,
-    document.getElementById("js-react-admin")
+    document.getElementById('js-react-admin'),
   );
 });
