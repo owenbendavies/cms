@@ -40,9 +40,9 @@ jobs:
 
       - restore_cache:
           keys:
-            - webpacker-v1-{{ .Branch }}-{{ .Revision }}
-            - webpacker-v1-{{ .Branch }}-
-            - webpacker-v1-
+            - webpacker-v3-{{ .Branch }}-{{ .Revision }}
+            - webpacker-v3-{{ .Branch }}-
+            - webpacker-v3-
 
       - run:
           command: ./bin/compile
@@ -50,7 +50,7 @@ jobs:
             RAILS_ENV: test
 
       - save_cache:
-          key: webpacker-v1-{{ .Branch }}-{{ .Revision }}
+          key: webpacker-v3-{{ .Branch }}-{{ .Revision }}
           paths:
             - public/packs-test
             - tmp/cache/webpacker

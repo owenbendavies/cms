@@ -8,7 +8,7 @@ RSpec.describe NotificationsMailer do
 
     let(:message) { FactoryBot.build(:message, site: site) }
 
-    let(:user_emails) { ['siteuser@example.com', 'sysadmin@example.com', 'admin@example.com'] }
+    let(:user_emails) { ['siteuser@example.com', 'admin@example.com'] }
 
     let(:expected_body) do
       <<~BODY
