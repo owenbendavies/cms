@@ -24,25 +24,6 @@
             "attributes": [
                 {
                     "name": "sub",
-                    "value": "d5b5b382-fc59-44f7-bef8-12851e05eb27"
-                },
-                {
-                    "name": "email_verified",
-                    "value": "true"
-                },
-                {
-                    "name": "email",
-                    "value": "sysadmin@example.com"
-                }
-            ],
-            "enabled": true,
-            "user_status": "FORCE_CHANGE_PASSWORD",
-            "username": "d5b5b382-fc59-44f7-bef8-12851e05eb27"
-        },
-        {
-            "attributes": [
-                {
-                    "name": "sub",
                     "value": "940eea78-597d-46ba-9762-294200de6261"
                 },
                 {

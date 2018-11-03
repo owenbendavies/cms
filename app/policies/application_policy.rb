@@ -9,10 +9,6 @@ class ApplicationPolicy
     def admin_site?
       user_site? && @user&.groups&.include?('admin')
     end
-
-    def sysadmin?
-      @user&.groups&.include?('sysadmin')
-    end
   end
 
   class Scope

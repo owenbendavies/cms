@@ -8,8 +8,7 @@
             "cwd": "${workspaceRoot}",
             "useBundler": true,
             "env": {
-                "DISABLE_SPRING": true,
-                "RACK_TIMEOUT_SERVICE_TIMEOUT": 0
+                "DISABLE_SPRING": true
             },
             "program": "./bin/rspec",
             "args": [

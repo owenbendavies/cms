@@ -11,11 +11,8 @@ Rails.application.routes.draw do
   get '/login', to: redirect('/auth/cognito-idp')
   get '/logout', to: 'sessions#destroy'
 
-  get '/robots', to: 'systems#robots'
+  get '/robots', to: 'robots#show'
   get '/sitemap', to: 'pages#index'
-
-  get '/system/test_500_error', to: 'systems#test_500_error'
-  get '/system/test_timeout_error', to: 'systems#test_timeout_error'
 
   get '/user/sites', to: 'admin/sites#index'
 

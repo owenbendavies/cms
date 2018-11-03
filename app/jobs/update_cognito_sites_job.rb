@@ -35,7 +35,7 @@ class UpdateCognitoSitesJob < ApplicationJob
   end
 
   def modify_groups(sites)
-    expected_groups = %w[admin sysadmin] + sites.map(&:host)
+    expected_groups = %w[admin] + sites.map(&:host)
     existing_groups = cognito_groups
 
     add_missing_groups(expected_groups - existing_groups)
