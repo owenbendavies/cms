@@ -18,7 +18,7 @@ set -v
 
 ./bin/mdl --style config/markdown $(find_extensions md)
 
-./bin/rubocop --format simple
+./bin/rubocop --parallel --format simple
 
 ./bin/yarn eslint --ext js,jsx app/webpacker
 
