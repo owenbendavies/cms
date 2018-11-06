@@ -2,12 +2,12 @@ class ApplicationPolicy
   module Shared
     protected
 
-    def user_site?
+    def user_logged_in?
       @site && @user&.groups&.include?(@site.host)
     end
 
-    def admin_site?
-      user_site? && @user&.groups&.include?('admin')
+    def user_is_admin?
+      user_logged_in? && @user&.groups&.include?('admin')
     end
   end
 
@@ -48,6 +48,6 @@ class ApplicationPolicy
   end
 
   def user_record?
-    site_record? && user_site?
+    site_record? && user_logged_in?
   end
 end

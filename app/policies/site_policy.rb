@@ -10,6 +10,6 @@ class SitePolicy < ApplicationPolicy
   end
 
   def update?
-    user_site?
+    user_logged_in?
   end
 end
