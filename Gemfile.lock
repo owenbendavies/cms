@@ -93,7 +93,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
     coderay (1.1.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
@@ -150,7 +150,7 @@ GEM
     get_process_mem (0.2.3)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    graphiql-rails (1.4.11)
+    graphiql-rails (1.5.0)
       railties
       sprockets-rails
     graphql (1.8.11)
