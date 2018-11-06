@@ -8,91 +8,103 @@ RSpec.describe Types::QueryType do
   let(:context) { { user: user, site: site } }
 
   context 'with messages query' do
-    context 'with multiple messages' do
-      let!(:message1) do
-        FactoryBot.create(
-          :message,
-          name: 'Message 1',
-          site: site,
-          created_at: Time.zone.now - 2.days,
-          updated_at: Time.zone.now - 2.days
-        )
-      end
-
-      let!(:message2) do
-        FactoryBot.create(
-          :message,
-          site: site,
-          name: 'Message 2',
-          created_at: Time.zone.now - 1.day,
-          updated_at: Time.zone.now - 1.day
-        )
-      end
-
-      let(:query) do
-        <<~BODY
-          query {
-            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
-              nodes {
-                name
-              }
-            }
-          }
-        BODY
-      end
-
-      let(:expected_result) do
-        [
-          {
-            'messages' => {
-              'nodes' => [
-                { 'name' => message2.name },
-                { 'name' => message1.name }
-              ]
-            }
-          }
-        ]
-      end
-
-      it 'returns ordered messages' do
-        expect(result.values).to eq expected_result
-      end
+    let!(:message1) do
+      FactoryBot.create(
+        :message,
+        name: 'Message 1',
+        site: site,
+        created_at: Time.zone.now - 2.days,
+        updated_at: Time.zone.now - 2.days
+      )
     end
 
-    context 'with other sites messages' do
-      let!(:message) { FactoryBot.create(:message, name: 'site message', site: site) }
+    let!(:message2) do
+      FactoryBot.create(
+        :message,
+        site: site,
+        name: 'Message 2',
+        created_at: Time.zone.now - 1.day,
+        updated_at: Time.zone.now - 1.day
+      )
+    end
 
-      let(:query) do
-        <<~BODY
-          query {
-            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
-              nodes {
-                name
-              }
+    let(:query) do
+      <<~BODY
+        query {
+          messages(orderBy: {field: CREATED_AT, direction: DESC}) {
+            nodes {
+              name
             }
+            totalCount
           }
-        BODY
-      end
+        }
+      BODY
+    end
 
-      let(:expected_result) do
-        [
-          {
-            'messages' => {
-              'nodes' => [
-                { 'name' => message.name }
-              ]
+    let(:expected_result) do
+      [
+        {
+          'messages' => {
+            'nodes' => [
+              { 'name' => message2.name },
+              { 'name' => message1.name }
+            ],
+            'totalCount' => 2
+          }
+        }
+      ]
+    end
+
+    before { FactoryBot.create(:message) }
+
+    it 'returns scoped ordered messages' do
+      expect(result.values).to eq expected_result
+    end
+  end
+
+  context 'with sites query' do
+    let!(:site2) do
+      FactoryBot.create(
+        :site,
+        host: 'aaaa.com',
+        created_at: Time.zone.now - 2.days,
+        updated_at: Time.zone.now - 2.days
+      )
+    end
+
+    let(:user) { FactoryBot.build(:user, groups: [site.host, site2.host]) }
+
+    let(:query) do
+      <<~BODY
+        query {
+          sites {
+            nodes {
+              host
             }
+            totalCount
           }
-        ]
-      end
+        }
+      BODY
+    end
 
-      before do
-        FactoryBot.create(:message, name: 'other site message')
-      end
+    let(:expected_result) do
+      [
+        {
+          'sites' => {
+            'nodes' => [
+              { 'host' => site2.host },
+              { 'host' => site.host }
+            ],
+            'totalCount' => 2
+          }
+        }
+      ]
+    end
 
-      it 'returns scoped messages' do
-        expect(result.values).to eq expected_result
-      end
+    before { FactoryBot.create(:site) }
+
+    it 'returns ordered sites' do
+      expect(result.values).to eq expected_result
     end
   end
 

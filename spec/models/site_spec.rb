@@ -74,18 +74,6 @@ RSpec.describe Site do
     end
   end
 
-  describe 'scopes' do
-    describe '.ordered' do
-      it 'returns ordered by host' do
-        site_c = FactoryBot.create(:site, host: 'sitec')
-        site_a = FactoryBot.create(:site, host: 'sitea')
-        site_b = FactoryBot.create(:site, host: 'siteb')
-
-        expect(described_class.ordered).to eq [site_a, site_b, site_c]
-      end
-    end
-  end
-
   describe 'before validations' do
     it { is_expected.to strip_attribute(:host).collapse_spaces }
     it { is_expected.to strip_attribute(:name).collapse_spaces }
@@ -147,13 +135,13 @@ RSpec.describe Site do
       let(:environment_variables) { { DISABLE_SSL: nil } }
 
       it 'returns https url' do
-        expect(site.address).to eq "https://#{site.host}"
+        expect(site.address).to eq "https://#{site.host}/"
       end
     end
 
     context 'with ssl disabled' do
       it 'returns http url' do
-        expect(site.address).to eq "http://#{site.host}"
+        expect(site.address).to eq "http://#{site.host}/"
       end
     end
   end
