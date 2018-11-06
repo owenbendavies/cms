@@ -11,9 +11,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - bootsnap-v1-{{ .Branch }}-{{ .Revision }}
-            - bootsnap-v1-{{ .Branch }}-
-            - bootsnap-v1-
+            - bootsnap-{{ checksum ".ruby-version" }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
 
       - restore_cache:
           keys:
@@ -40,9 +38,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - webpacker-v3-{{ .Branch }}-{{ .Revision }}
-            - webpacker-v3-{{ .Branch }}-
-            - webpacker-v3-
+            - webpacker-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
 
       - run:
           command: ./bin/compile
@@ -50,22 +46,20 @@ jobs:
             RAILS_ENV: test
 
       - save_cache:
-          key: webpacker-v3-{{ .Branch }}-{{ .Revision }}
+          key: webpacker-{{ .Environment.CIRCLE_BUILD_NUM }}
           paths:
             - public/packs-test
             - tmp/cache/webpacker
 
       - restore_cache:
           keys:
-            - parallel-v1-{{ .Branch }}-{{ .Revision }}
-            - parallel-v1-{{ .Branch }}-
-            - parallel-v1-
+            - parallel-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
 
       - run:
           command: ./bin/test
 
       - save_cache:
-          key: parallel-v1-{{ .Branch }}-{{ .Revision }}
+          key: parallel-{{ .Environment.CIRCLE_BUILD_NUM }}
           paths:
             - tmp/parallel_runtime_rspec.log
 
@@ -73,7 +67,7 @@ jobs:
           command: ./bin/quality
 
       - save_cache:
-          key: bootsnap-v1-{{ .Branch }}-{{ .Revision }}
+          key: bootsnap-{{ checksum ".ruby-version" }}-{{ .Environment.CIRCLE_BUILD_NUM }}
           paths:
             - tmp/cache/bootsnap-compile-cache
             - tmp/cache/bootsnap-load-path-cache
