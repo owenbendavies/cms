@@ -1,8 +1,0 @@
-<% content_for :title, t('.title') %>
-<% content_for :page_icon, t('.icon') %>
-
-<ul class="sites">
-  <% @sites.each do |site| %>
-    <li><%= link_to(site.host, site.address) %></li>
-  <% end %>
-</ul>

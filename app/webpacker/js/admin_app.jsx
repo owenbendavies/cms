@@ -1,11 +1,13 @@
 import { Admin, Resource } from 'react-admin';
 import ApolloClient from 'apollo-boost';
 import buildGraphQLProvider from 'ra-data-graphql';
-import EmailIcon from '@material-ui/icons/Email';
+import MessageIcon from '@material-ui/icons/Email';
+import SiteIcon from '@material-ui/icons/Language';
 import React from 'react';
 
-import query from './admin/query';
+import buildQuery from './admin/build_query';
 import { MessageList, MessageShow } from './admin/components/messages';
+import { SiteList } from './admin/components/sites';
 
 export default class AdminApp extends React.Component {
   constructor() {
@@ -26,7 +28,7 @@ export default class AdminApp extends React.Component {
     });
 
     buildGraphQLProvider({
-      buildQuery: query,
+      buildQuery,
       client,
     }).then(dataProvider => this.setState({ dataProvider }));
   }
@@ -41,10 +43,15 @@ export default class AdminApp extends React.Component {
     return (
       <Admin dataProvider={dataProvider}>
         <Resource
-          icon={EmailIcon}
+          icon={MessageIcon}
           list={MessageList}
           name="messages"
           show={MessageShow}
+        />
+        <Resource
+          icon={SiteIcon}
+          list={SiteList}
+          name="sites"
         />
       </Admin>
     );

@@ -1,5 +1,6 @@
 class Site < ApplicationRecord
   include DefaultUid
+  include Rails.application.routes.url_helpers
 
   # default values
   default_value_for :email do
@@ -23,9 +24,6 @@ class Site < ApplicationRecord
     class_name: 'Page',
     inverse_of: :site
   )
-
-  # scopes
-  scope(:ordered, -> { order(:host) })
 
   # before validations
   strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
@@ -61,8 +59,7 @@ class Site < ApplicationRecord
   )
 
   def address
-    protocol = ENV['DISABLE_SSL'] ? 'http' : 'https'
-    "#{protocol}://#{host}"
+    root_url(url_options)
   end
 
   def url_options

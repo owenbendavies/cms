@@ -4,23 +4,22 @@ RSpec.feature 'User sites' do
   before do
     FactoryBot.create(:site)
     login_as site_user
-    navigate_via_topbar menu: site_user.name, title: 'Sites', icon: 'svg.fa-list.fa-fw'
+    visit '/home'
+    click_link 'Admin'
+    click_link 'Sites'
   end
 
   scenario 'list of sites' do
-    links = all('.article a')
-    expect(links.size).to eq 1
+    expect(all('table tbody tr').size).to eq 1
 
-    expect(links[0].text).to eq site.host
-    expect(links[0]['href']).to eq "http://#{site.host}/"
-  end
+    within('table tbody tr:nth-child(1)') do
+      expect(find('td:nth-child(1)').text).to eq site.name
 
-  context 'with ssl is enabled' do
-    let(:environment_variables) { { DISABLE_SSL: nil } }
-
-    scenario 'list of sites with https' do
-      links = all('.article a')
-      expect(links[0]['href']).to eq "https://#{site.host}/"
+      within('td:nth-child(2)') do
+        link = find('a')
+        expect(link.text).to eq site.address
+        expect(link['href']).to eq site.address
+      end
     end
   end
 end
