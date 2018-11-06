@@ -1,10 +1,5 @@
 module Admin
   class SitesController < ApplicationController
-    def index
-      authorize Site
-      @sites = policy_scope(Site).ordered
-    end
-
     def edit
       authorize @site
     end

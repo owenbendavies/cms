@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   get '/robots', to: 'robots#show'
   get '/sitemap', to: 'pages#index'
 
-  get '/user/sites', to: 'admin/sites#index'
-
   namespace :admin do
     resource :site, only: %i[edit update]
     resource :stylesheet, only: %i[edit update]
