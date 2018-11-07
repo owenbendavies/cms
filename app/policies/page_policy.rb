@@ -1,7 +1,7 @@
 class PagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user_site?
+      if user_logged_in?
         @scope.where(site_id: @site.id)
       else
         @scope.where(site_id: @site.id).visible

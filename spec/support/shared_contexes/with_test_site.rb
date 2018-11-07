@@ -5,7 +5,7 @@ RSpec.shared_context 'with test site' do
 
   let(:site_admin) { FactoryBot.build(:user, site: site, site_admin: true) }
 
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.build(:user) }
 
   let!(:home_page) { FactoryBot.create(:page, name: 'Home', site: site) }
 end
