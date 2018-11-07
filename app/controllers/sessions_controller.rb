@@ -3,8 +3,15 @@ class SessionsController < ApplicationController
   skip_after_action :verify_authorized, only: %i[create destroy invalid]
 
   def create
-    session[:user] = user_hash
-    flash.notice = t 'sessions.create.message'
+    user = user_hash
+
+    if user.fetch(:groups).include? @site.host
+      session[:user] = user
+      flash.notice = t 'sessions.create.message'
+    else
+      flash.alert = t 'sessions.invalid.message'
+    end
+
     redirect_to root_path
   end
 
@@ -15,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def invalid
-    flash.notice = t 'sessions.invalid.message'
+    flash.alert = t 'sessions.invalid.message'
     redirect_to root_path
   end
 

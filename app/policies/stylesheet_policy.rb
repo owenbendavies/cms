@@ -1,5 +1,5 @@
 class StylesheetPolicy < ApplicationPolicy
   def update?
-    admin_site?
+    user_is_admin?
   end
 end
