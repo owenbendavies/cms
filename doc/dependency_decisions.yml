@@ -1,218 +1,218 @@
 ---
 - - :whitelist
   - MIT
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:52:00.551389404 Z
 - - :whitelist
   - Apache 2.0
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:52:44.452889548 Z
 - - :whitelist
   - Simplified BSD
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:53:09.382963458 Z
 - - :whitelist
   - New BSD
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:53:23.780224198 Z
 - - :whitelist
   - ruby
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:54:08.431106846 Z
 - - :whitelist
   - BSD
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:54:22.462031035 Z
 - - :whitelist
   - ISC
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 09:56:13.681050270 Z
 - - :whitelist
   - WTFPL
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 10:00:36.113533716 Z
 - - :approve
   - newrelic_rpm
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 10:00:50.792443266 Z
 - - :approve
   - scout_apm
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 10:00:52.540137799 Z
 - - :approve
   - bundler
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-01-30 19:27:39.637419141 Z
 - - :approve
   - bundler-audit
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-02-03 16:34:30.713443109 Z
 - - :whitelist
   - BSD 3-Clause
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-03-21 08:27:44.210680320 Z
 - - :whitelist
   - "(WTFPL OR MIT)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-04-25 10:08:44.178182000 Z
 - - :whitelist
   - "(MIT AND JSON)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-04-25 10:11:58.682630000 Z
 - - :whitelist
   - CC-BY-3.0
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:04:51.246303000 Z
 - - :whitelist
   - Apache version 2.0
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:04:55.891574000 Z
 - - :whitelist
   - CC0-1.0
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:05:16.779105000 Z
 - - :whitelist
   - CC-BY-4.0
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:05:24.240382000 Z
 - - :whitelist
   - BSD*
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:08:05.144563000 Z
 - - :whitelist
   - MIT*
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:08:09.785283000 Z
 - - :whitelist
   - "(BSD-3-Clause OR GPL-2.0)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:08:16.277267000 Z
 - - :whitelist
   - "(MIT AND Zlib)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:08:30.283322000 Z
 - - :whitelist
   - MIT (http://mootools.net/license.txt)
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:08:41.694222000 Z
 - - :whitelist
   - BSD-3-Clause OR MIT
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:11:00.197778000 Z
 - - :whitelist
   - "(MIT OR Apache-2.0)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:11:07.588338000 Z
 - - :whitelist
   - "(BSD-2-Clause OR MIT OR Apache-2.0)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:11:17.046500000 Z
 - - :whitelist
   - "(MIT AND BSD-3-Clause)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:12:09.929996000 Z
 - - :approve
   - isnumeric
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:15:59.318129000 Z
 - - :approve
   - sntp
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:16:11.074172000 Z
 - - :whitelist
   - Unlicense
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 07:16:43.265313000 Z
 - - :approve
   - fsevents
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-05 09:13:29.507834000 Z
 - - :whitelist
   - "(CC-BY-4.0 AND MIT)"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-10 10:37:53.954304000 Z
 - - :approve
   - "@fortawesome/fontawesome-common-types"
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-10 10:38:58.947982000 Z
 - - :whitelist
   - LGPL-2.1
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-05-10 10:40:23.030114000 Z
 - - :whitelist
   - Public Domain
-  - :who: 
-    :why: 
+  - :who:
+    :why:
     :versions: []
     :when: 2018-06-26 10:38:36.264705000 Z
 - - :whitelist
@@ -221,3 +221,9 @@
     :why:
     :versions: []
     :when: 2018-08-14 15:38:26.681103000 Z
+- - :approve
+  - reverse_markdown
+  - :who:
+    :why:
+    :versions: []
+    :when: 2018-11-08 16:49:48.762802000 Z

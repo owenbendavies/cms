@@ -66,6 +66,7 @@ group :development, :test do
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'ruby-debug-ide' # Debugger
+  gem 'solargraph' # Code completion
   gem 'spring-watcher-listen' # Quick boot
 end
 
