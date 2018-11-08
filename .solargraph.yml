@@ -1,0 +1,26 @@
+---
+include:
+  - "**/*.rb"
+exclude:
+  - coverage/**/*
+  - log/**/*
+  - node_modules/**/*
+  - public/**/*
+  - spec/**/*
+  - tmp/**/*
+  - vendor/**/*
+require:
+  - activemodel
+  - activejob
+  - activerecord
+  - actionmailer
+  - actionview
+  - actionpack
+  - activesupport
+domains: []
+reporters:
+  - rubocop
+  - require_not_found
+plugins: []
+require_paths: []
+max_files: 5000

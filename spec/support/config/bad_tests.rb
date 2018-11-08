@@ -6,6 +6,7 @@ RSpec.configure do |config|
       next if file.path == 'yarn.lock'
       next if file.path.end_with? '.pry_history'
       next if file.path.starts_with? 'app/'
+      next if file.path.starts_with? 'config/'
       next if file.path.starts_with? 'tmp/'
       next if file.path.starts_with? Rails.root.join('log').to_s
 
