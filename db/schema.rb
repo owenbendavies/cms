@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_140752) do
+ActiveRecord::Schema.define(version: 2018_11_08_150106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_07_30_140752) do
     t.integer "main_menu_position"
     t.text "custom_html"
     t.boolean "hidden", default: false, null: false
+    t.string "uid", null: false
     t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true
     t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true
     t.index ["site_id"], name: "index_pages_on_site_id"

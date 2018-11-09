@@ -127,7 +127,7 @@ const buildGetOneQuery = params => ({
 });
 
 const MessageTitle = ({ record }) => (
-  <span>{ `Message from ${record.name}` }</span>
+  <span>{`Message from ${record.name}`}</span>
 );
 
 const MessageShowActions = ({ basePath, data, resource }) => (

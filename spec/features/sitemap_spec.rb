@@ -19,7 +19,12 @@ RSpec.feature 'Sitemap' do
 
     scenario 'site user' do
       login_as site_user
-      navigate_via_topbar menu: 'Site', title: 'Sitemap', icon: 'svg.fa-sitemap.fa-fw'
+
+      visit '/home'
+
+      within('footer') do
+        click_link 'Sitemap'
+      end
 
       hidden_index = site.pages.ordered.find_index(hidden_page) + 1
 

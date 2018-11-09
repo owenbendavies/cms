@@ -28,8 +28,4 @@ class PagePolicy < ApplicationPolicy
   def update?
     user_record?
   end
-
-  def destroy?
-    user_record?
-  end
 end

@@ -12,7 +12,11 @@ class GraphqlSchema < GraphQL::Schema
     Pundit.policy_scope(context, class_name.safe_constantize).find_by(uid: uid)
   end
 
-  def self.resolve_type(_type, _object, _context)
-    Types::MessageType
+  def self.resolve_type(_type, object, _context)
+    case object
+    when Message then Types::MessageType
+    when Page then Types::PageType
+    when Site then Types::SiteType
+    end
   end
 end

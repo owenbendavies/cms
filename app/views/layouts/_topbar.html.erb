@@ -21,16 +21,6 @@
                 <%= icon_tag t('pages.edit.icon') %>
                 <%= t('actions.edit') %>
               <% end %>
-
-              <%=
-                link_to(
-                  icon_tag(t('pages.delete.icon')) + ' ' + t('actions.delete'),
-                  page_path(page),
-                  class: 'dropdown-item',
-                  method: :delete,
-                  data: { confirm: t('pages.delete.text', name: page.name) }
-                )
-              %>
             <% end %>
 
             <%= link_to new_page_path, class: 'dropdown-item' do %>
@@ -63,11 +53,6 @@
                 <%= icon_tag(t('admin.stylesheets.edit.icon')) %>
                 <%= t('admin.stylesheets.edit.title') %>
               <% end %>
-            <% end %>
-
-            <%= link_to sitemap_path, class: 'dropdown-item' do %>
-              <%= icon_tag(t('pages.index.icon')) %>
-              <%= t('pages.index.title') %>
             <% end %>
           </div>
         </li>
