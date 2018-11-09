@@ -95,6 +95,14 @@ RSpec.describe Page do
     end
   end
 
+  describe '#save' do
+    subject(:model) { FactoryBot.create(described_class.to_s.underscore) }
+
+    it 'sets a uid' do
+      expect(model.uid).to match(/\A[0-9a-z]{8}+\z/)
+    end
+  end
+
   describe '#to_param' do
     subject(:page) { FactoryBot.create(:page, name: 'Test Page') }
 

@@ -62,6 +62,44 @@ RSpec.describe Types::QueryType do
     end
   end
 
+  context 'with pages query' do
+    let!(:page1) { FactoryBot.create(:page, name: 'Page 1', site: site) }
+    let!(:page2) { FactoryBot.create(:page, name: 'Page 2', site: site) }
+
+    let(:query) do
+      <<~BODY
+        query {
+          pages {
+            nodes {
+              name
+            }
+            totalCount
+          }
+        }
+      BODY
+    end
+
+    let(:expected_result) do
+      [
+        {
+          'pages' => {
+            'nodes' => [
+              { 'name' => page1.name },
+              { 'name' => page2.name }
+            ],
+            'totalCount' => 2
+          }
+        }
+      ]
+    end
+
+    before { FactoryBot.create(:page) }
+
+    it 'returns ordered pages' do
+      expect(result.values).to eq expected_result
+    end
+  end
+
   context 'with sites query' do
     let!(:site2) do
       FactoryBot.create(

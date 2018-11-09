@@ -7,6 +7,7 @@ import {
   Responsive,
   SimpleList,
   TextField,
+  UrlField,
 } from 'react-admin';
 
 const ListQuery = gql`
@@ -34,16 +35,6 @@ const buildGetListQuery = params => ({
   }),
 });
 
-const SiteLink = (props) => {
-  const { record } = props;
-
-  return (
-    <a href={record.address}>
-      <TextField source="address" {...props} />
-    </a>
-  );
-};
-
 export const SiteList = props => (
   <List bulkActions={false} {...props}>
     <Responsive
@@ -51,13 +42,12 @@ export const SiteList = props => (
         <SimpleList
           primaryText={record => record.name}
           secondaryText={record => record.address}
-          linkType="show"
         />
       )}
       medium={(
         <Datagrid>
           <TextField source="name" sortable={false} />
-          <SiteLink />
+          <UrlField source="address" sortable={false} />
         </Datagrid>
       )}
     />

@@ -6,9 +6,6 @@ en:
         alert: Sorry your message was invalid, please fix the problems below
         success: Thank you for your message
       privacy_policy: I agree to %{link}
-    delete:
-      icon: fas fa-trash fa-fw
-      text: Are you sure you want to delete page '%{name}'?
     edit:
       icon: fas fa-edit fa-fw
       title: Editing %{name}
