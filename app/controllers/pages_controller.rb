@@ -50,11 +50,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def destroy
-    @page.destroy!
-    redirect_to sitemap_path, alert: t('flash.deleted', name: @page.name)
-  end
-
   private
 
   def new_page

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User sites' do
+RSpec.feature 'Admin sites' do
   before do
     FactoryBot.create(:site)
     login_as site_user
