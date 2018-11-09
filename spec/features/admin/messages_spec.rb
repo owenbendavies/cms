@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Messages' do
+RSpec.feature 'Admin messages' do
   context 'with a message' do
     let!(:message) do
       FactoryBot.create(:message, site: site)

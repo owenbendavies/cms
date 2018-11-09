@@ -2,9 +2,7 @@
 en:
   actions:
     cancel: Cancel
-    delete: Delete
     edit: Edit
     send_message: Send Message
   flash:
-    deleted: "%{name} was deleted"
     updated: "%{name} successfully updated"

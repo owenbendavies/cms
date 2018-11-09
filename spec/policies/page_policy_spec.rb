@@ -67,7 +67,7 @@ RSpec.describe PagePolicy do
     end
   end
 
-  permissions :create?, :update?, :destroy? do
+  permissions :create?, :update? do
     let(:record) { FactoryBot.build(:page, site: site) }
 
     include_examples 'policy for user record'
