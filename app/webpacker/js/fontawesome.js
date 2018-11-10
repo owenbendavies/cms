@@ -1,10 +1,9 @@
-import fontawesome from '@fortawesome/fontawesome';
-import solid from '@fortawesome/fontawesome-free-solid';
-import brands from '@fortawesome/fontawesome-free-brands';
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
-fontawesome.library.add(solid);
-fontawesome.library.add(brands);
+library.add(fas, fab);
 
 document.addEventListener('turbolinks:load', () => {
-  fontawesome.dom.i2svg();
+  dom.watch();
 });
