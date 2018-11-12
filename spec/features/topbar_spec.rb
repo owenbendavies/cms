@@ -24,24 +24,25 @@ RSpec.feature 'Topbar' do
       expect(page).to have_current_path '/'
     end
 
-    scenario 'navigating to page on mobile via dropdowns' do
-      windows.first.resize_to(640, 1136)
-      visit '/home'
+    it_behaves_like 'when on mobile' do
+      scenario 'navigating to page via dropdowns' do
+        visit '/home'
 
-      within topbar_selector do
-        expect(page).not_to have_link 'Site'
-        expect(page).not_to have_link 'Images'
+        within topbar_selector do
+          expect(page).not_to have_link 'Site'
+          expect(page).not_to have_link 'Images'
 
-        click_button 'Account menu'
+          click_button 'Account menu'
 
-        expect(page).not_to have_link 'Images'
+          expect(page).not_to have_link 'Images'
 
-        click_link 'Site'
-        click_link 'Images'
+          click_link 'Site'
+          click_link 'Images'
+        end
+
+        expect(page).to have_content 'Images'
+        expect(page).to have_current_path '/admin/images'
       end
-
-      expect(page).to have_content 'Images'
-      expect(page).to have_current_path '/admin/images'
     end
   end
 end

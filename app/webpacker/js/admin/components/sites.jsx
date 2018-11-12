@@ -3,6 +3,7 @@ import React from 'react';
 
 import {
   Datagrid,
+  EmailField,
   List,
   Responsive,
   SimpleList,
@@ -17,6 +18,9 @@ const ListQuery = gql`
         id
         address
         name
+        email
+        googleAnalytics
+        charityNumber
       }
       totalCount
     }
@@ -48,6 +52,9 @@ export const SiteList = props => (
         <Datagrid>
           <TextField source="name" sortable={false} />
           <UrlField source="address" sortable={false} />
+          <EmailField source="email" sortable={false} />
+          <TextField source="googleAnalytics" sortable={false} />
+          <TextField source="charityNumber" sortable={false} />
         </Datagrid>
       )}
     />
