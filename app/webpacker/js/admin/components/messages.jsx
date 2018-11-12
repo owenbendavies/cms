@@ -7,6 +7,7 @@ import {
   Datagrid,
   DateField,
   DeleteButton,
+  EmailField,
   List,
   ListButton,
   Responsive,
@@ -92,7 +93,7 @@ export const MessageList = props => (
       medium={(
         <Datagrid rowClick="show">
           <TextField source="name" />
-          <TextField source="email" />
+          <EmailField source="email" />
           <TextField source="phone" />
           <DateField source="createdAt" showTime />
         </Datagrid>
@@ -141,7 +142,7 @@ export const MessageShow = props => (
   <Show title={<MessageTitle />} actions={<MessageShowActions />} {...props}>
     <SimpleShowLayout>
       <TextField source="name" />
-      <TextField source="email" />
+      <EmailField source="email" />
       <TextField source="phone" />
       <DateField source="createdAt" showTime />
       <RichTextField source="message" />

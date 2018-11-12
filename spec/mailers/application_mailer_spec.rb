@@ -61,6 +61,8 @@ RSpec.describe ApplicationMailer do
     end
 
     context 'with site without charity number' do
+      let(:site) { FactoryBot.build(:site, charity_number: nil) }
+
       it 'does not have charity number in body' do
         expect(email.body).not_to have_content 'Registered charity'
       end
