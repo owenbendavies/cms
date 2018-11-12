@@ -17,33 +17,27 @@ RSpec.feature 'Edit the site' do
     expect(page).to have_title new_company_name
   end
 
-  scenario 'adding Google Analytics' do
-    expect(body).not_to include "ga('create',"
-
-    new_code = "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}"
-
-    fill_in 'Google Analytics', with: "  #{new_code} "
-    click_button 'Update Site'
-
-    expect(page).to have_content 'Site successfully updated'
-    expect(body).to include "ga('create', '#{new_code}', 'auto');"
+  scenario 'removing Google Analytics' do
+    expect(body).to include "ga('create', '#{site.google_analytics}', 'auto');"
     expect(body).to include "ga('set', 'userId', '#{site_user.id}');"
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-    expect(find_field('Google Analytics').value).to eq new_code
-  end
-
-  scenario 'adding a charity number' do
-    fill_in 'Charity number', with: " #{new_number} "
+    fill_in 'Google Analytics', with: ''
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    expect(page).to have_content "Registered charity number #{new_number}"
 
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
+    expect(body).not_to include "ga('create',"
+  end
 
-    expect(find_field('Charity number').value).to eq new_number.to_s
+  scenario 'removing a charity number' do
+    expect(page).to have_content "Registered charity number #{site.charity_number}"
+
+    fill_in 'Charity number', with: ''
+    click_button 'Update Site'
+
+    expect(page).to have_content 'Site successfully updated'
+
+    expect(page).not_to have_content 'Registered charity'
   end
 
   scenario 'invalid data' do

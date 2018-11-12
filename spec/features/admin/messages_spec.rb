@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Admin messages' do
   context 'with a message' do
-    let!(:message) do
-      FactoryBot.create(:message, site: site)
-    end
+    let!(:message) { FactoryBot.create(:message, site: site) }
 
     let(:created_at) do
       message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y, %H:%M:%S')
@@ -20,7 +18,11 @@ RSpec.feature 'Admin messages' do
     scenario 'list of messages' do
       within('table tbody tr:nth-child(1)') do
         expect(find('td:nth-child(2)').text).to eq message.name
-        expect(find('td:nth-child(3)').text).to eq message.email
+
+        within('td:nth-child(3)') do
+          expect(page).to have_link(message.email, href: "mailto:#{message.email}")
+        end
+
         expect(find('td:nth-child(4)').text).to eq message.phone
         expect(find('td:nth-child(5)').text).to eq created_at
       end
@@ -36,7 +38,7 @@ RSpec.feature 'Admin messages' do
 
       within('.ra-field-email') do
         expect(page).to have_content 'Email'
-        expect(page).to have_content message.email
+        expect(page).to have_link(message.email, href: "mailto:#{message.email}")
       end
 
       within('.ra-field-phone') do
@@ -75,17 +77,14 @@ RSpec.feature 'Admin messages' do
     end
   end
 
-  context 'when on mobile' do
-    let!(:message) do
-      FactoryBot.create(:message, site: site)
-    end
+  it_behaves_like 'when on mobile' do
+    let!(:message) { FactoryBot.create(:message, site: site) }
 
     let(:created_at) do
       message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y')
     end
 
     before do
-      windows.first.resize_to(300, 600)
       login_as site_user
       visit '/home'
       click_button 'Account menu'

@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin pages' do
+  it_behaves_like 'when on mobile' do
+    before do
+      login_as site_user
+      visit '/home'
+      click_button 'Account menu'
+      click_link 'Admin'
+      find('button[aria-label="open drawer"]').click
+      click_link 'Pages'
+    end
+
+    scenario 'list of pages' do
+      within('.list-page ul a:nth-child(1)') do
+        expect(page).to have_content home_page.name
+      end
+    end
+  end
+
   context 'with multiple pages' do
     let!(:pages) do
       ('a'..'k').map do |i|
