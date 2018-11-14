@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 
 import AdminApp from '../js/admin_app';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   ReactDom.render(
     <AdminApp />,
     document.getElementById('js-react-admin'),
