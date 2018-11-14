@@ -6,11 +6,17 @@
     <title><%= page_title(@site, content_for(:title)) %></title>
     <%= csrf_meta_tag %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'stylesheet', 'data-turbolinks-track': 'reload', media: 'all' %>
-    <%= stylesheet_link_tag site_stylesheet(@site), 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet %>
     <%= render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN'] %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
-    <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' if content_for(:admin_layout) %>
+
+    <% if content_for(:admin_layout) %>
+      <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+    <% else %>
+      <%= stylesheet_pack_tag 'stylesheet', 'data-turbolinks-track': 'reload', media: 'all' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+    <% end %>
+
+    <%= stylesheet_link_tag site_stylesheet(@site), 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet %>
+
     <%= content_for(:head) %>
     <%= render 'layouts/google_analytics', site: @site if @site.google_analytics %>
   </head>
