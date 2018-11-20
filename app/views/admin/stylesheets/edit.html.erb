@@ -1,7 +1,7 @@
 <% content_for :title, t('.title') %>
 <% content_for :page_icon, t('.icon') %>
 
-<%= simple_form_for @stylesheet, url: admin_stylesheet_path, method: :patch do |form| %>
+<%= simple_form_for @site, url: admin_stylesheet_path, method: :patch do |form| %>
   <pre class="css-editor">
     <%= form.text_area :css, class: 'css-editor__input js-autogrow', autofocus: true %>
   </pre>

@@ -40,7 +40,6 @@ RSpec.describe Site do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
-    it { is_expected.to have_one(:stylesheet).dependent(:destroy) }
     it { is_expected.to belong_to(:privacy_policy_page) }
   end
 
@@ -78,7 +77,8 @@ RSpec.describe Site do
     it { is_expected.to strip_attribute(:host).collapse_spaces }
     it { is_expected.to strip_attribute(:name).collapse_spaces }
     it { is_expected.to strip_attribute(:charity_number).collapse_spaces }
-    it { is_expected.not_to strip_attribute(:sidebar_html_content).collapse_spaces }
+    it { is_expected.to strip_attribute(:sidebar_html_content) }
+    it { is_expected.to strip_attribute(:css) }
   end
 
   describe 'validations' do

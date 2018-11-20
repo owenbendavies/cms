@@ -12,4 +12,8 @@ class SitePolicy < ApplicationPolicy
   def update?
     user_logged_in?
   end
+
+  def css?
+    user_is_admin?
+  end
 end
