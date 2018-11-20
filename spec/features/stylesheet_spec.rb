@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Stylesheet' do
   let(:css) { 'body{background-color: red}' }
+  let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
 
   before do
     login_as site_admin
@@ -11,11 +12,11 @@ RSpec.feature 'Stylesheet' do
   scenario 'adding custom CSS' do
     expect(find('pre textarea')['autofocus']).to eq 'true'
 
-    fill_in 'stylesheet_css', with: css
-    click_button 'Create Stylesheet'
+    fill_in 'site_css', with: css
+    click_button 'Update Site'
 
-    expect(page).to have_content 'Stylesheet successfully updated'
-    url = "/css/#{site.uid}-#{site.stylesheet.updated_at.to_i}.css"
+    expect(page).to have_content 'Site successfully updated'
+    url = "/css/#{site.uid}-#{md5}.css"
     expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'svg.fa-file.fa-fw'

@@ -8,7 +8,9 @@ class Message < ApplicationRecord
   belongs_to :site
 
   # before validations
-  strip_attributes except: :message, collapse_spaces: true, replace_newlines: true
+  TEXT_FIELDS = %i[message].freeze
+  strip_attributes except: TEXT_FIELDS, collapse_spaces: true, replace_newlines: true
+  strip_attributes only: TEXT_FIELDS
 
   # validations
   validates(

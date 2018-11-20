@@ -18,11 +18,9 @@ class Page < ApplicationRecord
   # before validations
   before_validation :clean_html_content
 
-  strip_attributes(
-    except: %i[html_content custom_html],
-    collapse_spaces: true,
-    replace_newlines: true
-  )
+  TEXT_FIELDS = %i[html_content custom_html].freeze
+  strip_attributes except: TEXT_FIELDS, collapse_spaces: true, replace_newlines: true
+  strip_attributes only: TEXT_FIELDS
 
   # validations
   validates(
