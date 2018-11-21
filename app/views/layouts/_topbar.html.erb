@@ -48,7 +48,7 @@
               <%= t('admin.sites.edit.title') %>
             <% end %>
 
-            <% if policy(Stylesheet).edit? %>
+            <% if policy(@site).css? %>
               <%= link_to edit_admin_stylesheet_path, class: 'dropdown-item' do %>
                 <%= icon_tag(t('admin.stylesheets.edit.icon')) %>
                 <%= t('admin.stylesheets.edit.title') %>
