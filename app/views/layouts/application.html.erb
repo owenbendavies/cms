@@ -15,7 +15,7 @@
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
     <% end %>
 
-    <%= stylesheet_link_tag site_stylesheet(@site), 'data-turbolinks-track': 'reload', media: 'all' if @site.stylesheet %>
+    <%= stylesheet_link_tag site_stylesheet(@site), 'data-turbolinks-track': 'reload', media: 'all' if @site.css %>
 
     <%= content_for(:head) %>
     <%= render 'layouts/google_analytics', site: @site if @site.google_analytics %>

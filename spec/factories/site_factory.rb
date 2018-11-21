@@ -4,6 +4,7 @@ FactoryBot.define do
     name { Faker::Company.name.delete("'") }
     google_analytics { "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}" }
     charity_number { rand 10_000 }
+    css { '.page { border: 1px solid black }' }
 
     trait :with_links do
       links do

@@ -5,13 +5,12 @@ class CssController < ApplicationController
 
   def show
     uid = params[:id].split('-').first
-    site = Site.find_by!(uid: uid)
-    stylesheet = Stylesheet.find_by!(site: site)
+    site = Site.where(uid: uid).where.not(css: nil).take!
 
     expires_in 1.year, public: true
 
     respond_to do |format|
-      format.css { render plain: stylesheet.css }
+      format.css { render plain: site.css }
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_150106) do
+ActiveRecord::Schema.define(version: 2018_11_20_115954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,16 +88,9 @@ ActiveRecord::Schema.define(version: 2018_11_08_150106) do
     t.integer "privacy_policy_page_id"
     t.string "uid", null: false
     t.string "email", null: false
+    t.text "css"
     t.index ["host"], name: "index_sites_on_host", unique: true
     t.index ["uid"], name: "index_sites_on_uid", unique: true
-  end
-
-  create_table "stylesheets", id: :serial, force: :cascade do |t|
-    t.integer "site_id", null: false
-    t.text "css", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_stylesheets_on_site_id", unique: true
   end
 
   create_table "versions", id: :serial, force: :cascade do |t|
@@ -115,5 +108,4 @@ ActiveRecord::Schema.define(version: 2018_11_08_150106) do
   add_foreign_key "messages", "sites", name: "fk_messages_site_id"
   add_foreign_key "pages", "sites", name: "fk_pages_site_id"
   add_foreign_key "sites", "pages", column: "privacy_policy_page_id", name: "fk__sites_privacy_policy_page_id"
-  add_foreign_key "stylesheets", "sites", name: "fk_stylesheets_site_id"
 end

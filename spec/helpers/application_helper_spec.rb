@@ -93,11 +93,12 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#site_stylesheet' do
-    let(:site) { FactoryBot.build(:site) }
-    let!(:stylesheet) { FactoryBot.build(:stylesheet, site: site) }
+    let(:css) { 'body{background-color: red}' }
+    let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
+    let(:site) { FactoryBot.build(:site, css: css) }
 
     it 'returns stylesheet path' do
-      url = "/css/#{site.uid}-#{stylesheet.updated_at.to_i}.css"
+      url = "/css/#{site.uid}-#{md5}.css"
 
       expect(helper.site_stylesheet(site)).to eq url
     end

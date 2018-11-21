@@ -15,7 +15,6 @@ class Site < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :pages, dependent: :destroy
-  has_one :stylesheet, dependent: :destroy
   belongs_to :privacy_policy_page, class_name: 'Page', optional: true
 
   has_many(
@@ -26,7 +25,9 @@ class Site < ApplicationRecord
   )
 
   # before validations
-  strip_attributes except: :sidebar_html_content, collapse_spaces: true, replace_newlines: true
+  TEXT_FIELDS = %i[sidebar_html_content css].freeze
+  strip_attributes except: TEXT_FIELDS, collapse_spaces: true, replace_newlines: true
+  strip_attributes only: TEXT_FIELDS
 
   # validations
   validates(

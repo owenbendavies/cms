@@ -52,8 +52,8 @@ RSpec.describe Page do
     subject(:page) { described_class.new }
 
     it { is_expected.to strip_attribute(:name).collapse_spaces }
-    it { is_expected.not_to strip_attribute(:html_content).collapse_spaces }
-    it { is_expected.not_to strip_attribute(:custom_html).collapse_spaces }
+    it { is_expected.to strip_attribute(:html_content) }
+    it { is_expected.to strip_attribute(:custom_html) }
 
     it 'strips html tags' do
       page.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'

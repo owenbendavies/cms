@@ -31,8 +31,8 @@ module ApplicationHelper
   end
 
   def site_stylesheet(site)
-    stylesheet = site.stylesheet
-    id = "#{site.uid}-#{stylesheet.updated_at.to_i}"
+    md5 = Digest::MD5.hexdigest(site.css)
+    id = "#{site.uid}-#{md5}"
     asset_path(css_path(id, format: 'css'))
   end
 
