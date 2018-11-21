@@ -13,7 +13,7 @@
     "autosize": "^4.0.1",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.3",
-    "caniuse-lite": "^1.0.30000909",
+    "caniuse-lite": "^1.0.30000910",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "jquery": "^3.3.1",
