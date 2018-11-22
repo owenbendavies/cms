@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import AdminApp from '../js/admin_app';
+import { App } from '../admin/App';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDom.render(
-    <AdminApp />,
+    <App />,
     document.getElementById('js-react-admin'),
   );
 });

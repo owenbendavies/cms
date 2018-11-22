@@ -6,12 +6,14 @@ import PageIcon from '@material-ui/icons/Subject';
 import SiteIcon from '@material-ui/icons/Language';
 import React from 'react';
 
-import buildQuery from './admin/build_query';
-import { MessageList, MessageShow } from './admin/components/messages';
-import { PageList } from './admin/components/pages';
-import { SiteList } from './admin/components/sites';
+import { buildQuery } from './services/build_query';
 
-export default class AdminApp extends React.Component {
+import { MessageList } from './routes/messages/MessageList';
+import { MessageShow } from './routes/messages/MessageShow';
+import { PageList } from './routes/pages/PageList';
+import { SiteList } from './routes/sites/SiteList';
+
+export class App extends React.Component {
   constructor() {
     super();
 
