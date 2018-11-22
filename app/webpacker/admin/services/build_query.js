@@ -1,8 +1,8 @@
-import { buildMessageQuery } from './components/messages';
-import { buildPageQuery } from './components/pages';
-import { buildSiteQuery } from './components/sites';
+import { buildMessageQuery } from '../routes/messages/build_message_query';
+import { buildPageQuery } from '../routes/pages/build_page_query';
+import { buildSiteQuery } from '../routes/sites/build_site_query';
 
-export default () => (fetchType, resource, params) => {
+export const buildQuery = () => (fetchType, resource, params) => {
   switch (resource) {
     case 'messages': return buildMessageQuery(fetchType, params);
     case 'pages': return buildPageQuery(fetchType, params);
