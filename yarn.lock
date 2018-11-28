@@ -3674,7 +3674,7 @@ follow-redirects@^1.0.0:
   dependencies:
     debug "=3.1.0"
 
-for-each@^0.3.2:
+for-each@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/for-each/-/for-each-0.3.3.tgz#69b447e88a0a5d32c3e7084f3f1710034b21376e"
   integrity sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==
@@ -5389,10 +5389,10 @@ markdown-table@^1.1.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
   integrity sha512-NcWuJFHDA8V3wkDgR/j4+gZx+YQwstPgfQDV8ndUeWWzta3dnDTBxpVzqS9lkmJAuV5YX35lmyojl6HO5JXAgw==
 
-material-ui-chip-input@^1.0.0-beta.6:
-  version "1.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/material-ui-chip-input/-/material-ui-chip-input-1.0.0-beta.7.tgz#6d9921028f9f1774ab7821ab5a9aa3c44cedb7b6"
-  integrity sha512-NPfDBehyhqJzFrL62SyZisM0l1P8pmdjJ2hzy9UcRjmy9/XrofYbrSzqraVnaJrBtEDEiPrtYSK1soyy6Ls25Q==
+"material-ui-chip-input@1.0.0-beta.6 - 1.0.0-beta.8":
+  version "1.0.0-beta.8"
+  resolved "https://registry.yarnpkg.com/material-ui-chip-input/-/material-ui-chip-input-1.0.0-beta.8.tgz#1752aea40a0de723d39b3255d8df6622c61456a0"
+  integrity sha512-Yqljgimr+AfLO2WPoErbU/YwYSB5N1IN4yjUQb6qEUyZcM5W+499JN+6lmNYJdr/oG9gUxRKHX7q0J2yH7NtTQ==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.1"
@@ -5801,15 +5801,15 @@ node-libs-browser@^2.0.0:
     util "^0.10.3"
     vm-browserify "0.0.4"
 
-node-polyglot@2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/node-polyglot/-/node-polyglot-2.2.2.tgz#1a3f76d7392f836ea0823836ede817e6ea6ec26c"
-  integrity sha1-Gj921zkvg26ggjg27egX5upuwmw=
+node-polyglot@^2.2.2:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/node-polyglot/-/node-polyglot-2.3.0.tgz#e97cc9354e87e648f04858647c6e3be38ad36ce1"
+  integrity sha512-9cF870GdUW72lCaZiaahS3PyYy3M9pRw+qYx5jMvQMww8VQ3Oz7fIVUtrPpPWtXz1+mC2GAuqmYucXCs/H/VWQ==
   dependencies:
-    for-each "^0.3.2"
-    has "^1.0.1"
+    for-each "^0.3.3"
+    has "^1.0.3"
     string.prototype.trim "^1.1.2"
-    warning "^3.0.0"
+    warning "^4.0.1"
 
 node-pre-gyp@^0.10.0:
   version "0.10.3"
@@ -7324,16 +7324,16 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
-ra-core@^2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-2.4.3.tgz#d9128ccc4660b1cb26e1b7b839fa8fdfb9be787d"
-  integrity sha512-u+63SqyDq9DBvRHbg4efIF0N1wJcC+cHESvnbtkCdVmvqfPkKvlMR2xPNOnnqzUOgWfs13zecihW4f3xsfjkdg==
+ra-core@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-2.4.4.tgz#7f45db83492b1e7fdd480719d5a01e7136310be0"
+  integrity sha512-K5fSpqVoRVQqyfbCftXgqHWFVOYmNjZcnPye7uIE9WiQkAPKx8a/nuAutofZb4CB3xNf6Ax3A7ImJMh7Epw5pQ==
   dependencies:
     classnames "~2.2.5"
     date-fns "^1.29.0"
     inflection "~1.12.0"
     lodash "~4.17.5"
-    node-polyglot "2.2.2"
+    node-polyglot "^2.2.2"
     prop-types "~15.6.1"
     query-string "~5.1.1"
     ra-language-english "^2.3.0"
@@ -7363,10 +7363,10 @@ ra-language-english@^2.3.0:
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-2.3.0.tgz#d25247bd148a57b02ff0480a66388220ee72ef16"
   integrity sha512-sfuLLJyrWRKS2sgMQnk+GLRIwli7qmUKphIu9nSLuf3FMVFOiebLVTMGodqKqhPlHsjTzEtaLqJkUc/w9AQ7rg==
 
-ra-ui-materialui@^2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.4.3.tgz#c62efd873f0d8b8a5b11687f75fb4360d5db5457"
-  integrity sha512-f1czHJvhUyrwvUZFudgBft6qMWQvvVAuVqph7u570KgUc3+gMf3d6prA2ybo+JrLlIs/n4c88MohkWq4i6B48w==
+ra-ui-materialui@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.4.4.tgz#43c0bf561d0a20d6ebb00f9420fa742665eba92f"
+  integrity sha512-4WD2QkTkPZAzKVdKcr0ybv+dR6AZ9tJYowqTpeHbxERT+AZYiZu/AbxSo+5eTilPIEZeVqSw4B927LtHuaXIFA==
   dependencies:
     "@material-ui/core" "^1.4.0"
     "@material-ui/icons" "^1.0.0"
@@ -7374,10 +7374,10 @@ ra-ui-materialui@^2.4.3:
     classnames "~2.2.5"
     inflection "~1.12.0"
     lodash "~4.17.5"
-    material-ui-chip-input "^1.0.0-beta.6"
+    material-ui-chip-input "1.0.0-beta.6 - 1.0.0-beta.8"
     papaparse "^4.1.4"
     prop-types "~15.6.1"
-    ra-core "^2.4.3"
+    ra-core "^2.4.4"
     react-autosuggest "^9.4.2"
     react-dropzone "~4.0.1"
     react-headroom "^2.2.4"
@@ -7440,14 +7440,14 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-admin@^2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.4.3.tgz#1c4cdaa3b811a2aa45b262220d6d35090050e1a4"
-  integrity sha512-WmfO9vn71B7aLs5hF40VSflwbAXqccnxiiPfAyeyWhEVWRm1KQ3TUMQWm6fuP5EY2X94vJi/6t4RDBiSM4xXEA==
+react-admin@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.4.4.tgz#64bf6042f806d14482dce862f6cf1024ec6ac784"
+  integrity sha512-HTV0Hx1iHPAGeXhwp8LRCT8j/2CtD9WV8rCxEDUtvNBc2nAdKY/gO7RBH5WQQs9tK+kIjmmOcu3hxH2II1DY6Q==
   dependencies:
-    ra-core "^2.4.3"
+    ra-core "^2.4.4"
     ra-language-english "^2.3.0"
-    ra-ui-materialui "^2.4.3"
+    ra-ui-materialui "^2.4.4"
 
 react-apollo@^2.3.1:
   version "2.3.1"
