@@ -64,15 +64,13 @@ search:
 
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
   ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
-  exclude:
+  ? exclude
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
   # only: ["*.rb", "*.html.slim"]
-
   ## If `strict` is `false`, guess usages such as t("categories.#{category}.title"). The default is `true`.
   # strict: true
-
   ## Multiple scanners can be used. Their results are merged.
   ## The options specified above are passed down to each scanner. Per-scanner options can be specified as well.
   ## See this example of a custom scanner: https://github.com/glebm/i18n-tasks/wiki/A-custom-scanner-example
@@ -89,10 +87,10 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-  - 'activerecord.attributes.*'
-  - 'activerecord.errors.*'
-  - 'activerecord.models.*'
-  - 'errors.messages.*'
+  - "activerecord.attributes.*"
+  - "activerecord.errors.*"
+  - "activerecord.models.*"
+  - "errors.messages.*"
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'
