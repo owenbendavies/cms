@@ -20,7 +20,7 @@
     "lodash": "^4.17.11",
     "popper.js": "^1.14.5",
     "prop-types": "^15.6.2",
-    "ra-data-graphql": "^2.4.3",
+    "ra-data-graphql": "^2.4.4",
     "rails-ujs": "^5.2.1",
     "react": "^16.6.3",
     "react-admin": "^2.4.3",
