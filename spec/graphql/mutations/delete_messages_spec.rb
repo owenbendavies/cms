@@ -15,8 +15,8 @@ RSpec.describe Mutations::DeleteMessages do
 
   let(:query) do
     <<~BODY
-      mutation DeleteMessage($clientMutationId: String, $ids: [ID!]!) {
-        deleteMessages(input: {clientMutationId: $clientMutationId, messageIds: $ids}) {
+      mutation DeleteMessage($input: DeleteMessagesInput!) {
+        deleteMessages(input: $input) {
           clientMutationId
           messages {
             id
@@ -28,8 +28,10 @@ RSpec.describe Mutations::DeleteMessages do
 
   let(:variables) do
     {
-      'clientMutationId' => mutation_id,
-      'ids' => [message1_id, message2_id]
+      'input' => {
+        'clientMutationId' => mutation_id,
+        'messageIds' => [message1_id, message2_id]
+      }
     }
   end
 
