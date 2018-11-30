@@ -7342,10 +7342,10 @@ ra-core@^2.5.0:
     redux-saga "~0.16.0"
     reselect "~3.0.0"
 
-ra-data-graphql@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-2.4.4.tgz#ce3ebf27a7b1616a99572a43ca84f331d9a18809"
-  integrity sha512-RyLnQ1Onbp1aYggx+D6DjaMC0u6HqiOy6hu3lVnqr9guWrh9m0a4G31L3oxiQaVaL5nHWobmhK51rtAE9As9yA==
+ra-data-graphql@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-2.5.0.tgz#8bc2894506cbd34bfa8dd6260143fd34ae008c60"
+  integrity sha512-IDOUVp8Qw9KXRGoMRgQesv47nR/9Q3bkoMqHkV+GuZCicwB0bAXPUT//5Wf94gBsAr/xvzbDhbwlV8/kCKozkw==
   dependencies:
     apollo-client "^2.2.8"
     apollo-client-preset "^1.0.6"
