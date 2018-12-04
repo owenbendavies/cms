@@ -21,7 +21,7 @@
     "popper.js": "^1.14.6",
     "prop-types": "^15.6.2",
     "ra-data-graphql": "^2.5.1",
-    "rails-ujs": "^5.2.1",
+    "rails-ujs": "^5.2.2",
     "react": "^16.6.3",
     "react-admin": "^2.5.1",
     "react-apollo": "^2.3.2",
