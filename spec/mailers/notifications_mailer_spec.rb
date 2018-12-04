@@ -13,22 +13,11 @@ RSpec.describe NotificationsMailer do
     let(:expected_body) do
       <<~BODY
         A new message has been posted on #{site.name}:
-
-
-          Name
-          #{message.name}
-
-          Email
-          #{message.email}
-
-            Phone
-            #{message.phone}
-
-          Privacy policy agreed
-          Yes
-
-          Message
-          #{message.message}
+        Name #{message.name}
+        Email #{message.email}
+        Phone #{message.phone}
+        Privacy policy agreed Yes
+        Message #{message.message}
       BODY
     end
 
@@ -49,7 +38,7 @@ RSpec.describe NotificationsMailer do
     end
 
     it 'has body' do
-      expect(email.body).to have_content expected_body
+      expect(email.body).to have_content(expected_body.squish, normalize_ws: true)
     end
   end
 end
