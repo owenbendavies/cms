@@ -380,7 +380,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    solargraph (0.29.1)
+    solargraph (0.29.2)
       eventmachine (~> 1.2, >= 1.2.5)
       htmlentities (~> 4.3, >= 4.3.4)
       kramdown (~> 1.16)
