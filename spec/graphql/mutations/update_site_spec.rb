@@ -20,13 +20,13 @@ RSpec.describe Mutations::UpdateSite do
             messages
           }
           site {
-            id
-            name
-            googleAnalytics
             charityNumber
-            sidebarHtmlContent
+            googleAnalytics
+            id
             mainMenuInFooter
+            name
             separateHeader
+            sidebarHtmlContent
           }
         }
       }
@@ -36,12 +36,12 @@ RSpec.describe Mutations::UpdateSite do
   context 'with valid data' do
     let(:updated_properties) do
       {
-        'name' => new_company_name,
-        'googleAnalytics' => new_google_analytics,
         'charityNumber' => new_number.to_s,
-        'sidebarHtmlContent' => new_html,
+        'googleAnalytics' => new_google_analytics,
         'mainMenuInFooter' => true,
-        'separateHeader' => false
+        'name' => new_company_name,
+        'separateHeader' => false,
+        'sidebarHtmlContent' => new_html
       }
     end
 
@@ -91,13 +91,13 @@ RSpec.describe Mutations::UpdateSite do
             'clientMutationId' => mutation_id,
             'errors' => [],
             'site' => {
-              'id' => site_id,
-              'name' => new_company_name,
-              'googleAnalytics' => site.google_analytics,
               'charityNumber' => site.charity_number,
-              'sidebarHtmlContent' => site.sidebar_html_content,
+              'googleAnalytics' => site.google_analytics,
+              'id' => site_id,
               'mainMenuInFooter' => site.main_menu_in_footer,
-              'separateHeader' => site.separate_header
+              'name' => new_company_name,
+              'separateHeader' => site.separate_header,
+              'sidebarHtmlContent' => site.sidebar_html_content
             }
           }
         }
@@ -127,13 +127,13 @@ RSpec.describe Mutations::UpdateSite do
             'clientMutationId' => mutation_id,
             'errors' => [],
             'site' => {
-              'id' => site_id,
-              'name' => site.name,
-              'googleAnalytics' => nil,
               'charityNumber' => site.charity_number,
-              'sidebarHtmlContent' => site.sidebar_html_content,
+              'googleAnalytics' => nil,
+              'id' => site_id,
               'mainMenuInFooter' => site.main_menu_in_footer,
-              'separateHeader' => site.separate_header
+              'name' => site.name,
+              'separateHeader' => site.separate_header,
+              'sidebarHtmlContent' => site.sidebar_html_content
             }
           }
         }
