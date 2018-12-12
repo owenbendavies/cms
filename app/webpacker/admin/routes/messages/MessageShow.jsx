@@ -5,7 +5,6 @@ import {
   DateField,
   DeleteButton,
   EmailField,
-  ListButton,
   RichTextField,
   Show,
   SimpleShowLayout,
@@ -18,7 +17,6 @@ const MessageTitle = ({ record }) => (
 
 const MessageShowActions = ({ basePath, data, resource }) => (
   <CardActions>
-    <ListButton basePath={basePath} />
     <DeleteButton basePath={basePath} record={data} resource={resource} />
   </CardActions>
 );
