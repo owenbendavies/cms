@@ -57,16 +57,6 @@ RSpec.feature 'Admin messages' do
       end
     end
 
-    scenario 'navigating back to list' do
-      find('table tbody tr:nth-child(1)').click
-
-      expect(page).to have_content "Message from #{message.name}"
-
-      click_link 'List'
-
-      expect(page).to have_content 'Messages List'
-    end
-
     scenario 'deleting a message' do
       find('table tbody tr:nth-child(1)').click
 
