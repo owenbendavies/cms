@@ -14,16 +14,16 @@ RSpec.describe Types::PageType do
       query {
         pages {
           nodes {
-            id
-            url
-            name
-            private
             contactForm
-            htmlContent
+            createdAt
             customHtml
             hidden
-            createdAt
+            htmlContent
+            id
+            name
+            private
             updatedAt
+            url
           }
           totalCount
         }
@@ -37,16 +37,16 @@ RSpec.describe Types::PageType do
         'pages' => {
           'nodes' => [
             {
-              'id' => Base64.urlsafe_encode64("Page-#{page.uid}"),
-              'url' => page.url,
-              'name' => page.name,
-              'private' => page.private,
               'contactForm' => page.contact_form,
-              'htmlContent' => page.html_content,
+              'createdAt' => page.created_at.iso8601,
               'customHtml' => page.custom_html,
               'hidden' => page.hidden,
-              'createdAt' => page.created_at.iso8601,
-              'updatedAt' => page.updated_at.iso8601
+              'htmlContent' => page.html_content,
+              'id' => Base64.urlsafe_encode64("Page-#{page.uid}"),
+              'name' => page.name,
+              'private' => page.private,
+              'updatedAt' => page.updated_at.iso8601,
+              'url' => page.url
             }
           ],
           'totalCount' => 1

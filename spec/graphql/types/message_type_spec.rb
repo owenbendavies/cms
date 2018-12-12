@@ -14,13 +14,13 @@ RSpec.describe Types::MessageType do
       query {
         messages(orderBy: {field: CREATED_AT, direction: DESC}) {
           nodes {
-            id
-            name
-            email
-            phone
-            message
-            privacyPolicyAgreed
             createdAt
+            email
+            id
+            message
+            name
+            phone
+            privacyPolicyAgreed
             updatedAt
           }
           totalCount
@@ -35,13 +35,13 @@ RSpec.describe Types::MessageType do
         'messages' => {
           'nodes' => [
             {
-              'id' => Base64.urlsafe_encode64("Message-#{message.uid}"),
-              'name' => message.name,
-              'email' => message.email,
-              'phone' => message.phone,
-              'message' => message.message,
-              'privacyPolicyAgreed' => true,
               'createdAt' => message.created_at.iso8601,
+              'email' => message.email,
+              'id' => Base64.urlsafe_encode64("Message-#{message.uid}"),
+              'message' => message.message,
+              'name' => message.name,
+              'phone' => message.phone,
+              'privacyPolicyAgreed' => true,
               'updatedAt' => message.updated_at.iso8601
             }
           ],
