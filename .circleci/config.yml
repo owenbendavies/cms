@@ -73,7 +73,13 @@ jobs:
             - tmp/cache/bootsnap-load-path-cache
 
       - run:
-          command: ./bin/changes
+          name: Changes
+          command: |
+            if [[ $(git status --porcelain) != '' ]]
+            then
+              git status
+              exit 1
+            fi
 
       - store_test_results:
           path: tmp/test_results
