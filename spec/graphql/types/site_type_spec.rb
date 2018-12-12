@@ -12,17 +12,17 @@ RSpec.describe Types::SiteType do
       query {
         sites {
           nodes {
-            id
             address
-            host
-            name
-            googleAnalytics
             charityNumber
-            sidebarHtmlContent
-            mainMenuInFooter
-            separateHeader
-            email
             createdAt
+            email
+            googleAnalytics
+            host
+            id
+            mainMenuInFooter
+            name
+            separateHeader
+            sidebarHtmlContent
             updatedAt
           }
           totalCount
@@ -37,17 +37,17 @@ RSpec.describe Types::SiteType do
         'sites' => {
           'nodes' => [
             {
-              'id' => Base64.urlsafe_encode64("Site-#{site.uid}"),
               'address' => site.address,
-              'host' => site.host,
-              'name' => site.name,
-              'googleAnalytics' => site.google_analytics,
               'charityNumber' => site.charity_number,
-              'sidebarHtmlContent' => site.sidebar_html_content,
-              'mainMenuInFooter' => site.main_menu_in_footer,
-              'separateHeader' => site.separate_header,
-              'email' => site.email,
               'createdAt' => site.created_at.iso8601,
+              'email' => site.email,
+              'googleAnalytics' => site.google_analytics,
+              'host' => site.host,
+              'id' => Base64.urlsafe_encode64("Site-#{site.uid}"),
+              'mainMenuInFooter' => site.main_menu_in_footer,
+              'name' => site.name,
+              'separateHeader' => site.separate_header,
+              'sidebarHtmlContent' => site.sidebar_html_content,
               'updatedAt' => site.updated_at.iso8601
             }
           ],
