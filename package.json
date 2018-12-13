@@ -24,7 +24,7 @@
     "rails-ujs": "^5.2.2",
     "react": "^16.6.3",
     "react-admin": "^2.5.2",
-    "react-apollo": "^2.3.2",
+    "react-apollo": "^2.3.3",
     "react-dom": "^16.6.3",
     "timeago": "^1.6.3",
     "tinymce": "^4.9.1",
