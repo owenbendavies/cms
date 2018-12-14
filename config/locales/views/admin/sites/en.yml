@@ -1,8 +1,0 @@
----
-en:
-  admin:
-    sites:
-      edit:
-        footer: Footer
-        icon: fas fa-cog fa-fw
-        title: Site Settings

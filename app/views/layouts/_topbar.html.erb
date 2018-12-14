@@ -43,11 +43,6 @@
               <%= t('admin.images.index.title') %>
             <% end %>
 
-            <%= link_to edit_admin_site_path, class: 'dropdown-item' do %>
-              <%= icon_tag(t('admin.sites.edit.icon')) %>
-              <%= t('admin.sites.edit.title') %>
-            <% end %>
-
             <% if policy(@site).css? %>
               <%= link_to edit_admin_stylesheet_path, class: 'dropdown-item' do %>
                 <%= icon_tag(t('admin.stylesheets.edit.icon')) %>

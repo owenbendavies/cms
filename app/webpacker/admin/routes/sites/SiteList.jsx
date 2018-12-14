@@ -17,10 +17,11 @@ export const SiteList = props => (
         <SimpleList
           primaryText={record => record.name}
           secondaryText={record => record.address}
+          linkType="edit"
         />
       )}
       medium={(
-        <Datagrid>
+        <Datagrid rowClick="edit">
           <TextField source="name" sortable={false} />
           <UrlField source="address" sortable={false} />
           <EmailField source="email" sortable={false} />
