@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get '/sitemap', to: 'pages#index'
 
   namespace :admin do
-    resource :site, only: %i[edit update]
     resource :stylesheet, only: %i[edit update]
     resources :images, only: %i[index]
   end

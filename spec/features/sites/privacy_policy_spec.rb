@@ -3,25 +3,24 @@ require 'rails_helper'
 RSpec.feature 'Privacy Policy' do
   let(:css_selector) { '.footer__privacy-policy' }
 
-  let!(:privacy_policy) { FactoryBot.create(:page, site: site) }
+  context 'when site does not have privacy policy' do
+    it 'does not display privacy policy' do
+      visit '/home'
 
-  before do
-    login_as site_user
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
+      expect(page).not_to have_selector css_selector
+    end
   end
 
-  scenario 'adding a privacy policy' do
-    expect(page).not_to have_selector css_selector
+  context 'when site has privacy policy' do
+    let(:site) { FactoryBot.create(:site, :with_privacy_policy, host: '127.0.0.1') }
+    let(:privacy_policy) { site.privacy_policy_page }
 
-    select(privacy_policy.name, from: 'Privacy policy page')
-    click_button 'Update Site'
+    it 'shows link to privacy policy' do
+      visit '/home'
 
-    within css_selector do
-      expect(page).to have_link(privacy_policy.name, href: "/#{privacy_policy.url}")
+      within css_selector do
+        expect(page).to have_link(privacy_policy.name, href: "/#{privacy_policy.url}")
+      end
     end
-
-    navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-    expect(page).to have_select('Privacy policy page', selected: privacy_policy.name)
   end
 end
