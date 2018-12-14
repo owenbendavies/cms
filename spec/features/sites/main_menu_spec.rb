@@ -26,30 +26,6 @@ RSpec.feature 'Site main menu' do
 
       expect(page).to have_current_path '/test_page'
     end
-
-    scenario 'adding main menu to footer' do
-      login_as site_user
-      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-      expect(page).not_to have_selector footer_main_menu
-      expect(find_field('Main menu')).not_to be_checked
-
-      check 'Main menu'
-      click_button 'Update Site'
-
-      expect(page).to have_content 'Site successfully updated'
-
-      within footer_main_menu do
-        expect(page).to have_link 'Home', href: '/home'
-        expect(page).to have_selector 'a.cms-page-link-home'
-        expect(page).to have_link 'Test Page', href: '/test_page'
-        expect(page).to have_selector 'a.cms-page-link-test_page'
-      end
-
-      navigate_via_topbar menu: 'Site', title: 'Site Settings', icon: 'svg.fa-cog.fa-fw'
-
-      expect(find_field('Main menu')).to be_checked
-    end
   end
 
   scenario 'no main menu' do
