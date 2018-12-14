@@ -90,7 +90,7 @@ RSpec.feature 'Admin messages' do
         expect(page).to have_content created_at
       end
 
-      find('.list-page ul a:nth-child(1)').click
+      find('ul a:nth-child(1)').click
 
       expect(page).to have_content "Message from #{message.name}"
     end

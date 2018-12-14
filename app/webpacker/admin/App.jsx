@@ -11,6 +11,7 @@ import { buildQuery } from './services/build_query';
 import { MessageList } from './routes/messages/MessageList';
 import { MessageShow } from './routes/messages/MessageShow';
 import { PageList } from './routes/pages/PageList';
+import { SiteEdit } from './routes/sites/SiteEdit';
 import { SiteList } from './routes/sites/SiteList';
 
 export class App extends React.Component {
@@ -58,6 +59,7 @@ export class App extends React.Component {
           name="pages"
         />
         <Resource
+          edit={SiteEdit}
           icon={SiteIcon}
           list={SiteList}
           name="sites"
