@@ -9028,10 +9028,10 @@ tinymce-light-skin@^1.3.1:
   resolved "https://registry.yarnpkg.com/tinymce-light-skin/-/tinymce-light-skin-1.3.1.tgz#fcce7a8b5761716a381f756e1ac7f47c7a41ea88"
   integrity sha512-NMmaqaZMvHeWcdJvYfNKK3wXkNkdhFjo3xswm7AiQLtU5eQHCL4li4R8+R0BRD8ejHEOG2+Tdf+NzWI4cRsa8w==
 
-tinymce@^4.9.1:
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-4.9.1.tgz#821cecb103982ec8e37aae44a8f732849e3660d0"
-  integrity sha512-lGk6QFI2KYWnIkti0TvtN30GIgJAfWWl8LBqUYdnHuywrNvgl92fqrQHhUP7YChHNhiYZj6JAy8M5cwVlbO7iQ==
+tinymce@^4.9.2:
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-4.9.2.tgz#c20ba7aa082125f16e0372fbc2f844c83236b75e"
+  integrity sha512-ZRoTGG4GAsOI73QPSNkabO7nkoYw9H6cglRB44W2mMkxSiqxYi8WJlgkUphk0fDqo6ZD6r3E+NSP4UHxF2lySg==
 
 tmp@^0.0.33:
   version "0.0.33"
