@@ -23,7 +23,7 @@
     "ra-data-graphql": "^2.5.2",
     "rails-ujs": "^5.2.2",
     "react": "^16.7.0",
-    "react-admin": "^2.5.2",
+    "react-admin": "^2.5.3",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.7.0",
     "timeago": "^1.6.3",
