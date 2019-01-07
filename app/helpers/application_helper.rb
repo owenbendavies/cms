@@ -27,7 +27,12 @@ module ApplicationHelper
     privacy_policy = site.privacy_policy_page
     url_method = url ? :page_url : :page_path
 
-    link_to(privacy_policy.name, send(url_method, privacy_policy.url), target: '_blank')
+    link_to(
+      privacy_policy.name,
+      send(url_method, privacy_policy.url),
+      target: '_blank',
+      rel: 'noopener'
+    )
   end
 
   def site_stylesheet(site)
