@@ -73,6 +73,10 @@ RSpec.describe ApplicationHelper do
     let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
+    it 'opens in a new page' do
+      expect(helper.privacy_policy_link(site)).to include 'target="_blank" rel="noopener"'
+    end
+
     context 'with url false' do
       it 'renders path link to privacy_policy' do
         expect(helper.privacy_policy_link(site)).to have_link(
