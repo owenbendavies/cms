@@ -2,8 +2,6 @@ class Message < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
   include DefaultUid
 
-  attr_accessor :do_not_fill_in
-
   # relations
   belongs_to :site
 
@@ -52,11 +50,6 @@ class Message < ApplicationRecord
 
     errors.add(:message, :contains_html) if escaped_message != stripped_message
   end
-
-  validates(
-    :do_not_fill_in,
-    length: { maximum: 0 }
-  )
 
   validates(
     :privacy_policy_agreed,

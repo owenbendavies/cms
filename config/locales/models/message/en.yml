@@ -8,11 +8,5 @@ en:
         message: Message
         name: Name
         phone: Phone
-    errors:
-      models:
-        message:
-          attributes:
-            do_not_fill_in:
-              too_long: do not fill in
     models:
       message: Message

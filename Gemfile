@@ -42,6 +42,7 @@ gem 'validates_email_format_of' # Email validation
 gem 'xml-sitemap' # Generates XML site map
 
 # View Gems
+gem 'invisible_captcha' # Stop spam
 gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
 

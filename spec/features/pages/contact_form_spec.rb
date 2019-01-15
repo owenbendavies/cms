@@ -6,15 +6,15 @@ RSpec.feature 'Page with contact form' do
 
   before do
     visit "/#{contact_page.url}"
-  end
-
-  scenario 'sending a message' do
     fill_in 'Name', with: "  #{new_name} "
     fill_in 'Email', with: "  #{new_email} "
     fill_in 'Phone', with: " #{new_phone} "
     fill_in 'Message', with: new_message
+  end
 
+  scenario 'sending a message' do
     perform_enqueued_jobs do
+      sleep 2
       click_button 'Send Message'
 
       expect(page).to have_content 'Thank you for your message'
@@ -41,43 +41,40 @@ RSpec.feature 'Page with contact form' do
 
   scenario 'invalid data' do
     fill_in 'Name', with: 'a'
-    fill_in 'Email', with: new_email
-    fill_in 'Message', with: new_message
+    sleep 2
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
     expect(page).to have_content "Name\nis too short"
   end
 
-  scenario 'filling in do_not_fill_in', js: false do
-    fill_in 'Name', with: new_name
-    fill_in 'Email', with: new_email
-    fill_in 'Message', with: new_message
-    fill_in 'Do not fill in', with: new_name
+  scenario 'filling in honeypot', js: false do
+    fill_in 'message_surname', with: new_name
+    sleep 2
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
-    expect(page).to have_content 'do not fill in'
+  end
+
+  scenario 'filling in too quickly' do
+    click_button 'Send Message'
+
+    expect(page).to have_content 'Sorry, that was too quick!'
   end
 
   context 'when site has privacy policy' do
     let!(:site) { FactoryBot.create(:site, :with_privacy_policy, host: '127.0.0.1') }
     let(:privacy_policy_text) { "I agree to #{site.privacy_policy_page.name}" }
 
-    before do
-      fill_in 'Name', with: new_name
-      fill_in 'Email', with: new_email
-      fill_in 'Message', with: new_message
-    end
-
     scenario 'when agreeing to privacy policy' do
       check privacy_policy_text
-
+      sleep 2
       click_button 'Send Message'
       expect(page).to have_content 'Thank you for your message'
     end
 
     scenario 'when not agreeing to privacy policy', js: false do
+      sleep 2
       click_button 'Send Message'
 
       expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
