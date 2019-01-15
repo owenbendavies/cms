@@ -5,24 +5,16 @@
   </h1>
 </header>
 
-<% if notice %>
-  <div class="alert alert-success alert-dismissible">
-    <button class="close" type="button" data-dismiss="alert">
-      <span>&times;</span>
-    </button>
+<% { alert: 'danger', error: 'danger', notice: 'success' }.each do |level, style| %>
+  <% if flash[level] %>
+    <div class="alert alert-<%= style %> alert-dismissible">
+      <button class="close" type="button" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
 
-    <%= notice %>
-  </div>
-<% end %>
-
-<% if alert %>
-  <div class="alert alert-danger alert-dismissible">
-    <button class="close" type="button" data-dismiss="alert">
-      <span>&times;</span>
-    </button>
-
-    <%= alert %>
-  </div>
+      <%= flash[level] %>
+    </div>
+  <% end %>
 <% end %>
 
 <section class="article__content">

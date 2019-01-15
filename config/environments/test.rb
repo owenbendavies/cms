@@ -23,4 +23,8 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  InvisibleCaptcha.setup do |config|
+    config.timestamp_threshold = 2
+  end
 end

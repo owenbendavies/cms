@@ -4,6 +4,13 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show contact_form]
   before_action :authenticate_page, only: %i[show contact_form]
 
+  invisible_captcha(
+    only: [:contact_form],
+    scope: :message,
+    honeypot: :surname,
+    on_spam: :contact_form_error
+  )
+
   def index
     authorize Page
 
@@ -35,9 +42,13 @@ class PagesController < ApplicationController
       flash.notice = t('pages.contact_form.flash.success')
       redirect_to page_path(@page)
     else
-      flash.alert = t('pages.contact_form.flash.alert')
-      render :show
+      contact_form_error
     end
+  end
+
+  def contact_form_error
+    flash.alert = t('pages.contact_form.flash.alert')
+    render :show
   end
 
   def edit; end
@@ -72,7 +83,7 @@ class PagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(
-      :name, :email, :phone, :message, :privacy_policy_agreed, :do_not_fill_in
+      :name, :email, :phone, :message, :privacy_policy_agreed
     ).merge(
       site: @site
     )
