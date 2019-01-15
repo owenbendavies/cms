@@ -1,4 +1,6 @@
 <%= simple_form_for((message || Message.new), url: contact_form_page_path) do |form| %>
+  <%= form.invisible_captcha :surname %>
+
   <div class="form__row">
     <div class="form__small-inputs">
       <%= form.input :name %>
@@ -18,10 +20,6 @@
       <% if site.privacy_policy_page_id %>
         <%= form.input :privacy_policy_agreed, label: t('.privacy_policy', link: privacy_policy_link(site)).html_safe, required: true %>
       <% end %>
-
-      <div class="form__do-not-fill-in">
-        <%= form.input :do_not_fill_in %>
-      </div>
 
       <div class="form__buttons">
         <%= form.button :submit, t('actions.send_message') %>
