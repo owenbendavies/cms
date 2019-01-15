@@ -49,11 +49,6 @@ RSpec.describe Message do
         .with_message('html is not allowed')
     end
 
-    it do
-      expect(message).to validate_length_of(:do_not_fill_in)
-        .is_at_most(0).with_message('do not fill in')
-    end
-
     it { is_expected.not_to validate_presence_of(:privacy_policy_agreed) }
 
     context 'when site has privacy policy' do
