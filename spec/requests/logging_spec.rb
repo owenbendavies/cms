@@ -15,9 +15,25 @@ RSpec.describe 'Logging' do
   end
 
   let(:events) { [] }
+  let(:last_event) { JSON.parse(events.last) }
 
   let(:expected_result) do
-    /\Amethod=GET path=#{request_path} format=html controller=PagesController action=index status=200 duration=[0-9]+\.[0-9][0-9] view=[0-9]+\.[0-9][0-9] db=[0-9]+\.[0-9][0-9] host=#{request_host} request_id=#{request_id} fwd=127.0.0.1 user_id=#{user_id} user_agent=#{user_agent}\z/ # rubocop:disable Metrics/LineLength
+    {
+      'action' => 'index',
+      'controller' => 'PagesController',
+      'db' => an_instance_of(Float),
+      'duration' => an_instance_of(Float),
+      'format' => 'html',
+      'fwd' => '127.0.0.1',
+      'host' => request_host,
+      'method' => 'GET',
+      'path' => request_path,
+      'request_id' => request_id,
+      'status' => 200,
+      'user_agent' => user_agent,
+      'user_id' => user_id,
+      'view' => an_instance_of(Float)
+    }
   end
 
   before do
@@ -31,7 +47,7 @@ RSpec.describe 'Logging' do
 
     it 'logs request information' do
       request_page
-      expect(events.last).to match(expected_result)
+      expect(last_event).to match(expected_result)
     end
   end
 
@@ -41,7 +57,7 @@ RSpec.describe 'Logging' do
 
     it 'logs request information and the user id' do
       request_page
-      expect(events.last).to match(expected_result)
+      expect(last_event).to match(expected_result)
     end
   end
 end
