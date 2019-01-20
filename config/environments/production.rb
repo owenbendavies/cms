@@ -53,14 +53,5 @@ Rails.application.configure do
 
   # Logging
   config.logger = ActiveSupport::Logger.new(STDOUT)
-  config.lograge.formatter = Lograge::Formatters::Raw.new
-
-  config.logger.formatter = proc do |severity, _time, _progname, message|
-    if message.class == Hash
-      fields = message.map { |key, value| "#{key}=#{value.inspect}" }.join(' ')
-      "at=#{severity.downcase} #{fields}\n"
-    else
-      "at=#{severity.downcase} message=#{message.inspect}\n"
-    end
-  end
+  config.lograge.formatter = Lograge::Formatters::Json.new
 end
