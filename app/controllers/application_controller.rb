@@ -63,18 +63,6 @@ class ApplicationController < ActionController::Base
     page_not_found if params[:format] == 'html'
   end
 
-  def append_info_to_payload(payload)
-    super
-
-    payload.merge!(
-      host: request.host,
-      request_id: request.uuid,
-      fwd: request.remote_ip,
-      user_id: current_user&.id,
-      user_agent: request.user_agent
-    )
-  end
-
   def pundit_user
     { user: current_user, site: @site }
   end
