@@ -53,5 +53,4 @@ Rails.application.configure do
 
   # Logging
   config.logger = ActiveSupport::Logger.new(STDOUT)
-  config.lograge.formatter = Lograge::Formatters::Json.new
 end

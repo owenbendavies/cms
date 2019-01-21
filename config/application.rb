@@ -44,18 +44,19 @@ module Cms
     end
 
     # Lograge
-    config.lograge.custom_options = lambda do |event|
+    config.lograge.enabled = true
+    config.lograge.formatter = Lograge::Formatters::Json.new
+    config.lograge.keep_original_rails_log = ENV['DEV_LOGGING'] == 'true'
+
+    config.lograge.custom_payload do |controller|
       {
-        host: event.payload[:host],
-        request_id: event.payload[:request_id],
-        fwd: event.payload[:fwd],
-        user_id: event.payload[:user_id],
-        user_agent: event.payload[:user_agent]
+        host: controller.request.host,
+        request_id: controller.request.uuid,
+        fwd: controller.request.remote_ip,
+        user_id: controller.current_user&.id,
+        user_agent: controller.request.user_agent
       }
     end
-
-    config.lograge.enabled = true
-    config.lograge.keep_original_rails_log = ENV['DEV_LOGGING'] == 'true'
 
     # Customer middleware
     config.middleware.use Rack::Deflater
