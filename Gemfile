@@ -95,7 +95,6 @@ group :test do
   gem 'webmock' # Mock external web requests
 
   # Code quality tools
-  gem 'brakeman', require: false # Detect security vulnerabilities
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'jsonlint', require: false # JSON code quality
   gem 'license_finder', require: false # Whitelist of dependency licenses
