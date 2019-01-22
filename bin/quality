@@ -1,14 +1,12 @@
 #!/bin/bash
 set -e
-cd `dirname $0`/..
+cd $(dirname $0)/..
 
-find_extensions () {
+find_extensions() {
   git ls-files | grep "\.$1\$"
 }
 
 set -v
-
-./bin/brakeman
 
 ./bin/i18n-tasks health
 
