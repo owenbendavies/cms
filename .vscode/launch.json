@@ -2,17 +2,31 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Test current file",
+            "name": "RSpec - current file",
             "type": "Ruby",
             "request": "launch",
-            "cwd": "${workspaceRoot}",
             "useBundler": true,
             "env": {
+                "DISABLE_BOOTSNAP": true,
                 "DISABLE_SPRING": true
             },
             "program": "./bin/rspec",
             "args": [
                 "${file}"
+            ]
+        },
+        {
+            "name": "RSpec - current line",
+            "type": "Ruby",
+            "request": "launch",
+            "useBundler": true,
+            "env": {
+                "DISABLE_BOOTSNAP": true,
+                "DISABLE_SPRING": true
+            },
+            "program": "./bin/rspec",
+            "args": [
+                "${file}:${lineNumber}"
             ]
         }
     ]
