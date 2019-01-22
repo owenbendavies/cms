@@ -72,7 +72,6 @@ GEM
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    brakeman (4.3.1)
     builder (3.2.3)
     bullet (5.9.0)
       activesupport (>= 3.0.0)
@@ -459,7 +458,6 @@ DEPENDENCIES
   aws-sdk-rails
   aws-sdk-ses
   bootsnap
-  brakeman
   bullet
   capybara
   carrierwave
@@ -526,4 +524,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

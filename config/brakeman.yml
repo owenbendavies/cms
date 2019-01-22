@@ -1,5 +1,0 @@
-:quiet: true
-:summary_only: :no_summary
-:safe_methods:
-  - :html_content
-  - :custom_html
