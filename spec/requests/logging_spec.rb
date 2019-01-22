@@ -15,30 +15,33 @@ RSpec.describe 'Logging' do
   end
 
   let(:events) { [] }
-  let(:last_event) { JSON.parse(events.last) }
 
   let(:expected_result) do
     {
-      'action' => 'index',
-      'controller' => 'PagesController',
-      'db' => an_instance_of(Float),
-      'duration' => an_instance_of(Float),
-      'format' => 'html',
-      'fwd' => '127.0.0.1',
-      'host' => request_host,
-      'method' => 'GET',
-      'path' => request_path,
-      'request_id' => request_id,
-      'status' => 200,
-      'user_agent' => user_agent,
-      'user_id' => user_id,
-      'view' => an_instance_of(Float)
+      action: 'index',
+      controller: 'PagesController',
+      db_runtime: an_instance_of(Float),
+      format: :html,
+      fwd: '127.0.0.1',
+      host: request_host,
+      ip: '127.0.0.1',
+      method: 'GET',
+      params: { 'action' => 'index', 'controller' => 'pages' },
+      path: request_path,
+      request_id: request_id,
+      route: 'pages#index',
+      status: 200,
+      user_agent: user_agent,
+      user_id: user_id,
+      view_runtime: an_instance_of(Float)
     }
   end
 
   before do
-    allow(Rails.logger).to receive(:info) do |message|
-      events << message
+    ActiveSupport::Notifications.subscribe(
+      'process_action.action_controller'
+    ) do |_, _, _, _, payload|
+      events << payload
     end
   end
 
@@ -47,7 +50,7 @@ RSpec.describe 'Logging' do
 
     it 'logs request information' do
       request_page
-      expect(last_event).to match(expected_result)
+      expect(events.last).to match(expected_result)
     end
   end
 
@@ -57,7 +60,7 @@ RSpec.describe 'Logging' do
 
     it 'logs request information and the user id' do
       request_page
-      expect(last_event).to match(expected_result)
+      expect(events.last).to match(expected_result)
     end
   end
 end

@@ -43,19 +43,22 @@ module Cms
       config.force_ssl = true
     end
 
-    # Lograge
-    config.lograge.enabled = true
-    config.lograge.formatter = Lograge::Formatters::Json.new
-    config.lograge.keep_original_rails_log = ENV['DEV_LOGGING'] == 'true'
+    # Logging
+    if ENV['DEV_LOGGING'] != 'true'
+      config.log_level = :info
+      config.logger = ActiveSupport::Logger.new(STDOUT)
+      config.logstasher.logger = Logger.new(STDOUT)
+      config.logstasher.suppress_app_log = true
+    end
 
-    config.lograge.custom_payload do |controller|
-      {
-        host: controller.request.host,
-        request_id: controller.request.uuid,
-        fwd: controller.request.remote_ip,
-        user_id: controller.current_user&.id,
-        user_agent: controller.request.user_agent
-      }
+    config.logstasher.enabled = true
+    config.logstasher.view_enabled = false
+
+    LogStasher.add_custom_fields_to_request_context do |fields|
+      fields[:host] = request.host
+      fields[:fwd] = request.remote_ip
+      fields[:user_id] = current_user&.id
+      fields[:user_agent] = request.user_agent
     end
 
     # Customer middleware
