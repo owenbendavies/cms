@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
     return unless params[:monitoring] == 'skip'
 
     ScoutApm::RequestManager.lookup.ignore_request!
-    NewRelic::Agent.ignore_transaction
   end
 
   def page_not_found_template
