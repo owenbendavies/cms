@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Logging' do
   let(:request_method) { :get }
-  let(:request_path) { '/sitemap' }
+  let(:request_path) { '/sitemap?name=value&password=hidden' }
 
   let(:request_id) { SecureRandom.uuid }
   let(:user_agent) { new_company_name }
@@ -26,7 +26,13 @@ RSpec.describe 'Logging' do
       host: request_host,
       ip: '127.0.0.1',
       method: 'GET',
-      params: { 'action' => 'index', 'controller' => 'pages' },
+      parameters: { 'name' => 'value', 'password' => '[FILTERED]' },
+      params: {
+        'action' => 'index',
+        'controller' => 'pages',
+        'name' => 'value',
+        'password' => '[FILTERED]'
+      },
       path: request_path,
       request_id: request_id,
       route: 'pages#index',
