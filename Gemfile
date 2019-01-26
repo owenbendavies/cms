@@ -52,7 +52,6 @@ gem 'puma' # Web server
 
 # Monitoring
 gem 'logstasher' # Single line logging
-gem 'newrelic_rpm' # Application monitoring
 gem 'rollbar' # Error notifications
 gem 'scout_apm' # Application monitoring
 
