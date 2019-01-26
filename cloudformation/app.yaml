@@ -157,11 +157,9 @@ Resources:
       BucketName: !Ref "AWS::StackName"
       LifecycleConfiguration:
         Rules:
-          - Id: delete-incomplete-multipart-uploads
+          - Id: delete-old-versions
             AbortIncompleteMultipartUpload:
               DaysAfterInitiation: 1
-            Status: Enabled
-          - Id: delete-old-versions
             NoncurrentVersionExpirationInDays: 30
             Status: Enabled
       LoggingConfiguration:
@@ -194,14 +192,10 @@ Resources:
       BucketName: !Sub "${AWS::StackName}-logs"
       LifecycleConfiguration:
         Rules:
-          - Id: delete-incomplete-multipart-uploads
+          - Id: delete-old-files-and-versions
             AbortIncompleteMultipartUpload:
               DaysAfterInitiation: 1
-            Status: Enabled
-          - Id: delete-old-files
             ExpirationInDays: 30
-            Status: Enabled
-          - Id: delete-old-versions
             NoncurrentVersionExpirationInDays: 30
             Status: Enabled
       VersioningConfiguration:
