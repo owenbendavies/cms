@@ -52,6 +52,7 @@ module Cms
     end
 
     config.logstasher.enabled = true
+    config.logstasher.log_controller_parameters = true
     config.logstasher.view_enabled = false
 
     LogStasher.add_custom_fields_to_request_context do |fields|
