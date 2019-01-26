@@ -57,7 +57,7 @@ module Cms
     LogStasher.add_custom_fields_to_request_context do |fields|
       fields[:host] = request.host
       fields[:fwd] = request.remote_ip
-      fields[:user_id] = current_user&.id
+      fields[:user_id] = try(:current_user)&.id
       fields[:user_agent] = request.user_agent
     end
 
