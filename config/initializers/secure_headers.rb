@@ -6,7 +6,6 @@ SecureHeaders::Configuration.default do |config|
   asset_src = [
     "'self'",
     "'unsafe-inline'",
-    ENV['ASSET_HOST'],
     ENV['AWS_S3_ASSET_HOST']
   ].compact
 
