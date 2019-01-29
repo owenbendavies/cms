@@ -3,9 +3,6 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: "obduk-cms app"
 
 Outputs:
-  AssetHost:
-    Description: "Value for ASSET_HOST"
-    Value: !Sub "https://${CloudFront.DomainName}"
   AwsAccessKeyId:
     Description: "Value for AWS_ACCESS_KEY_ID"
     Value: !Ref IAMUserAccessKey
@@ -36,19 +33,6 @@ Resources:
     Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
-        CacheBehaviors:
-          - Compress: true
-            ForwardedValues:
-              QueryString: false
-            PathPattern: /css/*
-            TargetOriginId: App
-            ViewerProtocolPolicy: redirect-to-https
-          - Compress: true
-            ForwardedValues:
-              QueryString: false
-            PathPattern: /packs/*
-            TargetOriginId: App
-            ViewerProtocolPolicy: redirect-to-https
         Comment: !Ref "AWS::StackName"
         DefaultCacheBehavior:
           Compress: true
@@ -67,14 +51,6 @@ Resources:
             Id: S3
             S3OriginConfig:
               OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
-          - CustomOriginConfig:
-              OriginProtocolPolicy: https-only
-              OriginSSLProtocols:
-                - TLSv1.2
-                - TLSv1.1
-                - TLSv1
-            DomainName: !Sub "${AWS::StackName}.herokuapp.com"
-            Id: App
 
   CloudFrontOriginAccessIdentity:
     Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
