@@ -17,6 +17,13 @@ Resources:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
       BucketName: !Ref "AWS::StackName"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
 
   BucketPolicy:
     Type: "AWS::S3::BucketPolicy"
