@@ -141,6 +141,11 @@ Resources:
       LoggingConfiguration:
         DestinationBucketName: !Ref S3LogsBucket
         LogFilePrefix: !Sub "AWSLogs/${AWS::AccountId}/s3/${AWS::StackName}/"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
       VersioningConfiguration:
         Status: Enabled
 
@@ -174,5 +179,10 @@ Resources:
             ExpirationInDays: 30
             NoncurrentVersionExpirationInDays: 30
             Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
       VersioningConfiguration:
         Status: Enabled
