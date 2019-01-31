@@ -50,9 +50,14 @@ module Cms
     config.logstasher.log_controller_parameters = true
     config.logstasher.view_enabled = false
 
+    config.logstasher.field_renaming = {
+      ip: :fwd
+    }
+
     LogStasher.add_custom_fields_to_request_context do |fields|
+      fields[:cf_ray] = request.headers['CF-RAY']
+      fields[:country] = request.headers['CF-IPCountry']
       fields[:host] = request.host
-      fields[:fwd] = request.remote_ip
       fields[:user_id] = try(:current_user)&.id
       fields[:user_agent] = request.user_agent
     end
