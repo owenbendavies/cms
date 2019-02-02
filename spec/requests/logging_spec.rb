@@ -4,10 +4,10 @@ RSpec.describe 'Logging' do
   let(:request_method) { :get }
   let(:request_path) { '/sitemap?name=value&password=hidden' }
 
-  let(:cf_ray) { '230b030023ae2822-SJC' }
-  let(:country) { 'US' }
+  let(:cf_ray) { SecureRandom.uuid }
+  let(:country) { Faker::Address.country_code }
   let(:request_id) { SecureRandom.uuid }
-  let(:user_agent) { new_company_name }
+  let(:user_agent) { Faker::Internet.user_agent }
 
   let(:request_headers) do
     {
@@ -29,7 +29,7 @@ RSpec.describe 'Logging' do
       'action' => 'index',
       'cf_ray' => cf_ray,
       'controller' => 'pages',
-      'country' => 'US',
+      'country' => country,
       'db' => an_instance_of(Float),
       'duration' => an_instance_of(Float),
       'format' => 'html',

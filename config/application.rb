@@ -41,7 +41,8 @@ module Cms
     # Logging
     if ENV['DEV_LOGGING'] != 'true'
       config.log_level = :info
-      config.logger = ActiveSupport::Logger.new(STDOUT)
+      config.logger = LogStashLogger.new(type: :stdout)
+
       config.logstasher.logger = Logger.new(STDOUT)
       config.logstasher.suppress_app_log = true
     end
@@ -60,6 +61,15 @@ module Cms
       fields[:host] = request.host
       fields[:user_id] = try(:current_user)&.id
       fields[:user_agent] = request.user_agent
+    end
+
+    config.log_tags = %i[host remote_ip request_id]
+
+    LogStashLogger.configure do |config|
+      config.customize_event do |event|
+        event['host'], event['fwd'], event['request_id'] = event['tags']
+        event['tags'] = ['rails']
+      end
     end
 
     # Customer middleware
