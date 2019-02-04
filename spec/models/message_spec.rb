@@ -54,7 +54,7 @@ RSpec.describe Message do
     context 'when site has privacy policy' do
       subject { FactoryBot.build(:message, site: site) }
 
-      let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
+      let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
 
       it { is_expected.to validate_presence_of(:privacy_policy_agreed) }
     end
