@@ -16,7 +16,7 @@ RSpec.describe ApplicationMailer do
   end
 
   describe 'links' do
-    let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
+    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     context 'with ssl enabled' do
@@ -70,7 +70,7 @@ RSpec.describe ApplicationMailer do
   end
 
   context 'when site has privacy policy' do
-    let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
+    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'has privacy policy in body' do
