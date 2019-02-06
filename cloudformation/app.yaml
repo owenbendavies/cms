@@ -83,7 +83,19 @@ Resources:
     Properties:
       UserName: !Ref "AWS::StackName"
       Policies:
-        - PolicyName: access-s3-bucket
+        - PolicyName: !Sub "cognito-${AWS::StackName}"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "cognito-idp:CreateGroup"
+                  - "cognito-idp:DeleteGroup"
+                  - "cognito-idp:ListGroups"
+                  - "cognito-idp:ListUsersInGroup"
+                  - "cognito-idp:UpdateUserPoolClient"
+                Resource: !GetAtt CognitoUserPool.Arn
+        - PolicyName: !Sub "s3-${S3Bucket}"
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -98,25 +110,13 @@ Resources:
                   - "s3:PutObjectAcl"
                   - "s3:DeleteObject"
                 Resource: !Sub "${S3Bucket.Arn}/*"
-        - PolicyName: send-ses-email
+        - PolicyName: ses
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action: "ses:SendRawEmail"
                 Resource: "*"
-        - PolicyName: cognito
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-              - Effect: Allow
-                Action:
-                  - "cognito-idp:CreateGroup"
-                  - "cognito-idp:DeleteGroup"
-                  - "cognito-idp:ListGroups"
-                  - "cognito-idp:ListUsersInGroup"
-                  - "cognito-idp:UpdateUserPoolClient"
-                Resource: !GetAtt CognitoUserPool.Arn
 
   IAMUserAccessKey:
     Type: "AWS::IAM::AccessKey"
