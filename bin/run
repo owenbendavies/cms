@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
-cd `dirname $0`/..
+cd $(dirname $0)/..
 
 export WEB_CONCURRENCY=1
 
 set -v
 
-./bin/foreman start --port=3000 --formation='web=1,worker=1'
+heroku local --port=3000
