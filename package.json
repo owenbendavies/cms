@@ -22,7 +22,7 @@
     "prop-types": "^15.7.2",
     "ra-data-graphql": "^2.5.3",
     "rails-ujs": "^5.2.2",
-    "react": "^16.8.1",
+    "react": "^16.8.2",
     "react-admin": "^2.7.1",
     "react-apollo": "^2.4.1",
     "react-dom": "^16.8.2",
