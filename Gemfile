@@ -72,7 +72,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'foreman', require: false # Starts multiple processes
   gem 'graphiql-rails' # GraphQL web client
   gem 'letter_opener' # Opens emails in browser
   gem 'web-console' # Web console debugger
