@@ -39,16 +39,19 @@ module Cms
     end
 
     # Logging
-    if ENV['DEV_LOGGING'] != 'true'
+    if ENV['RAILS_LOG_TO_STDOUT'].present?
+      config.colorize_logging = false
       config.log_level = :info
       config.logger = LogStashLogger.new(type: :stdout)
 
       config.logstasher.logger = Logger.new(STDOUT)
       config.logstasher.suppress_app_log = true
+
+      config.middleware.delete(ActionDispatch::DebugExceptions)
     end
 
+    config.logstasher.backtrace = false
     config.logstasher.enabled = true
-    config.logstasher.log_controller_parameters = true
     config.logstasher.view_enabled = false
 
     config.logstasher.field_renaming = {
