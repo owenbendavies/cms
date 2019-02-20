@@ -19,6 +19,8 @@ common: &defaults
   # - Valid Options: true, false
   monitor: true
 
+  log_file_path: stdout
+
 development:
   <<: *defaults
   monitor: false
@@ -29,4 +31,3 @@ test:
 
 production:
   <<: *defaults
-  log_file_path: stdout
