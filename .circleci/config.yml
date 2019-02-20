@@ -1,7 +1,43 @@
 version: 2
 
+terraform_defaults: &terraform_defaults
+  docker:
+    - image: hashicorp/terraform:light
+
+  environment:
+    TF_IN_AUTOMATION: "true"
+    TF_INPUT: "false"
+
+terraform_checkout: &terraform_checkout
+  checkout:
+    path: ~/project
+
+terraform_init: &terraform_init
+  run:
+    command: terraform init
+
+terraform_test: &terraform_test
+  steps:
+    - *terraform_checkout
+    - run:
+        command: terraform fmt -check=true
+
+terraform_plan: &terraform_plan
+  steps:
+    - *terraform_checkout
+    - *terraform_init
+    - run:
+        command: terraform plan -lock=false
+
+terraform_deploy: &terraform_deploy
+  steps:
+    - *terraform_checkout
+    - *terraform_init
+    - run:
+        command: terraform apply -auto-approve
+
 jobs:
-  build:
+  test_ruby:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
       - image: circleci/postgres:10-alpine-ram
@@ -87,3 +123,44 @@ jobs:
       - store_artifacts:
           path: coverage
           destination: coverage
+
+  test_terraform_app_environment:
+    <<: *terraform_defaults
+    <<: *terraform_test
+    working_directory: ~/project/terraform/app_environment
+
+  plan_terraform_app_environment_staging:
+    <<: *terraform_defaults
+    <<: *terraform_plan
+    working_directory: ~/project/terraform/app_environment
+
+  deploy_terraform_app_environment_staging:
+    <<: *terraform_defaults
+    <<: *terraform_deploy
+    working_directory: ~/project/terraform/app_environment
+
+only_master: &only_master
+  filters:
+    branches:
+      only:
+        - master
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - test_ruby
+
+      - test_terraform_app_environment
+
+      - plan_terraform_app_environment_staging:
+          context: cms_terraform_app_environment_staging
+          requires:
+            - test_terraform_app_environment
+
+      - deploy_terraform_app_environment_staging:
+          <<: *only_master
+          context: cms_terraform_app_environment_staging
+          requires:
+            - test_ruby
+            - plan_terraform_app_environment_staging
