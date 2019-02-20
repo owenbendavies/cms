@@ -36,7 +36,6 @@ RSpec.describe 'Logging' do
       'fwd' => '127.0.0.1',
       'host' => request_host,
       'method' => 'GET',
-      'parameters' => { 'name' => 'value', 'password' => '[FILTERED]' },
       'path' => '/sitemap',
       'request_id' => request_id,
       'route' => 'pages#index',
