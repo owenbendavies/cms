@@ -17,3 +17,8 @@ output "domain" {
   sensitive = true
   value     = "${aws_cognito_user_pool_domain.app.domain}"
 }
+
+output "id" {
+  sensitive = true
+  value     = "${aws_cognito_user_pool.app.id}"
+}
