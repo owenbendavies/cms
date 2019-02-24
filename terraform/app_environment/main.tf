@@ -58,6 +58,7 @@ module "heroku" {
   aws_cognito_arn            = "${module.aws_cognito.arn}"
   aws_cognito_client_id      = "${module.aws_cognito.client_id}"
   aws_cognito_client_secret  = "${module.aws_cognito.client_secret}"
+  aws_cognito_domain         = "${module.aws_cognito.domain}"
   aws_region                 = "${local.aws_region}"
   aws_s3_assets_bucket_name  = "${module.aws_s3.assets_bucket_name}"
   aws_secret_access_key      = "${module.aws_iam.secret_access_key}"

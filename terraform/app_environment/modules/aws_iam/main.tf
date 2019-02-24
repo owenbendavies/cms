@@ -62,7 +62,7 @@ data "aws_iam_policy_document" "app_s3" {
 
 resource "aws_iam_user_policy" "app_s3" {
   name   = "s3"
-  policy = "${data.aws_iam_policy_document.app_cognito.json}"
+  policy = "${data.aws_iam_policy_document.app_s3.json}"
   user   = "${aws_iam_user.app.name}"
 }
 

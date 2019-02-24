@@ -12,3 +12,8 @@ output "client_secret" {
   sensitive = true
   value     = "${aws_cognito_user_pool_client.app.client_secret}"
 }
+
+output "domain" {
+  sensitive = true
+  value     = "${aws_cognito_user_pool_domain.app.domain}"
+}
