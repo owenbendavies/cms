@@ -11,18 +11,26 @@ resource "aws_cognito_user_pool" "app" {
     prevent_destroy = true
   }
 
-  schema = [
-    {
-      attribute_data_type = "String"
-      mutable             = true
-      name                = "name"
-      required            = true
-    },
-  ]
+  schema = {
+    attribute_data_type = "String"
+    mutable             = true
+    name                = "name"
+    required            = true
+
+    string_attribute_constraints = {
+      min_length = 0
+      max_length = 2048
+    }
+  }
 }
 
 resource "aws_cognito_user_pool_client" "app" {
   generate_secret = true
   name            = "${var.app_name}"
   user_pool_id    = "${aws_cognito_user_pool.app.id}"
+}
+
+resource "aws_cognito_user_pool_domain" "app" {
+  domain       = "${var.app_name}"
+  user_pool_id = "${aws_cognito_user_pool.app.id}"
 }
