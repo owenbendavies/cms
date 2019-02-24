@@ -62,4 +62,5 @@ module "heroku" {
   aws_region                 = "${local.aws_region}"
   aws_s3_assets_bucket_name  = "${module.aws_s3.assets_bucket_name}"
   aws_secret_access_key      = "${module.aws_iam.secret_access_key}"
+  email                      = "${var.email}"
 }
