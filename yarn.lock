@@ -8999,10 +8999,10 @@ thunky@^1.0.2:
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.2.tgz#a862e018e3fb1ea2ec3fce5d55605cf57f247371"
   integrity sha1-qGLgGOP7HqLsP85dVWBc9X8kc3E=
 
-timeago@^1.6.4:
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/timeago/-/timeago-1.6.4.tgz#e29d1f3ff784a22d4b4f53dccf2366c83b1f1970"
-  integrity sha512-GkS9lO3BtSY2kZTQTnHJ75ancn/IFpzZfY0GPmVlPVdops8gnU9aYerxyV/xnmyR4if2eM3cv2B2PlLqL48BRw==
+timeago@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/timeago/-/timeago-1.6.5.tgz#557b7159789eef332a72bdaaa7cac1515fe527ae"
+  integrity sha512-6XCWVteUxczNBk4nQEcbdhBd6xvj7oS9QkZjUp1r3uyZNF4EZzYF2HMmFLucvT+IVyMVoeRf93UmiFQPzJE5cQ==
   dependencies:
     jquery ">=1.2.3"
 
