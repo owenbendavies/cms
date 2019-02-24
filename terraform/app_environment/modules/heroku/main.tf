@@ -15,6 +15,7 @@ resource "heroku_app" "app" {
     AWS_ACCESS_KEY_ID            = "${var.aws_access_key_id}"
     AWS_COGNITO_CLIENT_ID        = "${var.aws_cognito_client_id}"
     AWS_COGNITO_CLIENT_SECRET    = "${var.aws_cognito_client_secret}"
+    AWS_COGNITO_DOMAIN           = "${var.aws_cognito_domain}"
     AWS_COGNITO_USER_POOL_ID     = "${var.aws_cognito_arn}"
     AWS_REGION                   = "${var.aws_region}"
     AWS_S3_ASSET_HOST            = "${var.aws_cloudfront_domain_name}"
@@ -48,18 +49,24 @@ resource "heroku_formation" "app_worker" {
   type     = "worker"
 }
 
+resource "heroku_addon" "app_coralogix" {
+  app  = "${heroku_app.app.name}"
+  plan = "coralogix:dev"
+}
+
 resource "heroku_addon" "app_librato" {
   app  = "${heroku_app.app.name}"
   plan = "librato:development"
 }
 
+resource "heroku_addon" "app_papertrail" {
+  app  = "${heroku_app.app.name}"
+  plan = "papertrail:choklad"
+}
+
 resource "heroku_addon" "app_postgresql" {
   app  = "${heroku_app.app.name}"
   plan = "heroku-postgresql:hobby-dev"
-
-  config = {
-    name = "postgresql-${heroku_app.app.name}"
-  }
 
   lifecycle = {
     prevent_destroy = true
@@ -69,6 +76,11 @@ resource "heroku_addon" "app_postgresql" {
 resource "heroku_addon" "app_rollbar" {
   app  = "${heroku_app.app.name}"
   plan = "rollbar:free"
+}
+
+resource "heroku_addon" "app_scheduler" {
+  app  = "${heroku_app.app.name}"
+  plan = "scheduler:standard"
 }
 
 resource "heroku_addon" "app_scout" {
