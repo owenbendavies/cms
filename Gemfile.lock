@@ -174,7 +174,7 @@ GEM
     ipaddress (0.8.3)
     jaro_winkler (1.5.2)
     jmespath (1.4.0)
-    json (2.1.0)
+    json (2.2.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
     jsonlint (0.2.0)
