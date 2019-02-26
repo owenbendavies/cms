@@ -8,7 +8,7 @@
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.0.0",
     "@rails/webpacker": "3.5",
-    "apollo-boost": "^0.1.28",
+    "apollo-boost": "^0.3.0",
     "apollo-client": "^2.5.0",
     "autosize": "^4.0.1",
     "babel-preset-react": "^6.24.1",
