@@ -48,6 +48,7 @@ jobs:
       - restore_cache:
           keys:
             - bootsnap-{{ checksum ".ruby-version" }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
+            - bootsnap-{{ checksum ".ruby-version" }}-
 
       - restore_cache:
           keys:
