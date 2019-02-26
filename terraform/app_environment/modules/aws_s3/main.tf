@@ -1,27 +1,26 @@
 resource "aws_s3_bucket" "assets" {
   bucket = "${var.app_name}"
-  region = "${var.aws_region}"
 
-  lifecycle = {
+  lifecycle {
     prevent_destroy = true
   }
 
-  lifecycle_rule = {
+  lifecycle_rule {
     abort_incomplete_multipart_upload_days = 1
     enabled                                = true
     id                                     = "delete-old-versions"
 
-    noncurrent_version_expiration = {
+    noncurrent_version_expiration {
       days = 30
     }
   }
 
-  logging = {
+  logging {
     target_bucket = "${aws_s3_bucket.logs.id}"
     target_prefix = "AWSLogs/${var.aws_account_id}/s3/${var.app_name}/"
   }
 
-  server_side_encryption_configuration = {
+  server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
         sse_algorithm = "AES256"
@@ -29,7 +28,7 @@ resource "aws_s3_bucket" "assets" {
     }
   }
 
-  versioning = {
+  versioning {
     enabled = true
   }
 }
@@ -43,21 +42,15 @@ resource "aws_s3_bucket_public_access_block" "assets" {
 }
 
 data "aws_iam_policy_document" "assets" {
-  statement = {
-    effect = "Allow"
-
-    actions = [
-      "s3:GetObject",
-    ]
+  statement {
+    actions   = ["s3:GetObject"]
+    effect    = "Allow"
+    resources = ["${aws_s3_bucket.assets.arn}/*"]
 
     principals {
       type        = "AWS"
       identifiers = ["${var.aws_cloudfront_iam_arn}"]
     }
-
-    resources = [
-      "${aws_s3_bucket.assets.arn}/*",
-    ]
   }
 }
 
@@ -69,27 +62,26 @@ resource "aws_s3_bucket_policy" "assets" {
 resource "aws_s3_bucket" "logs" {
   acl    = "log-delivery-write"
   bucket = "${var.app_name}-logs"
-  region = "${var.aws_region}"
 
-  lifecycle = {
+  lifecycle {
     prevent_destroy = true
   }
 
-  lifecycle_rule = {
+  lifecycle_rule {
     abort_incomplete_multipart_upload_days = 1
     enabled                                = true
     id                                     = "delete-old-files-and-versions"
 
-    expiration = {
+    expiration {
       days = 30
     }
 
-    noncurrent_version_expiration = {
+    noncurrent_version_expiration {
       days = 30
     }
   }
 
-  server_side_encryption_configuration = {
+  server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
         sse_algorithm = "AES256"
@@ -97,7 +89,7 @@ resource "aws_s3_bucket" "logs" {
     }
   }
 
-  versioning = {
+  versioning {
     enabled = true
   }
 }
