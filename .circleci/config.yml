@@ -154,13 +154,13 @@ workflows:
       - test_terraform_app_environment
 
       - plan_terraform_app_environment_staging:
-          context: cms_terraform_app_environment_staging
+          context: cms_terraform_staging
           requires:
             - test_terraform_app_environment
 
       - deploy_terraform_app_environment_staging:
           <<: *only_master
-          context: cms_terraform_app_environment_staging
+          context: cms_terraform_staging
           requires:
             - test_ruby
             - plan_terraform_app_environment_staging
