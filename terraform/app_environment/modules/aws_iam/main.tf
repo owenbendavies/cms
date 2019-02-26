@@ -7,8 +7,9 @@ resource "aws_iam_access_key" "app" {
 }
 
 data "aws_iam_policy_document" "app_cognito" {
-  statement = {
-    effect = "Allow"
+  statement {
+    effect    = "Allow"
+    resources = ["${var.aws_cognito_arn}"]
 
     actions = [
       "cognito-idp:CreateGroup",
@@ -16,10 +17,6 @@ data "aws_iam_policy_document" "app_cognito" {
       "cognito-idp:ListGroups",
       "cognito-idp:ListUsersInGroup",
       "cognito-idp:UpdateUserPoolClient",
-    ]
-
-    resources = [
-      "${var.aws_cognito_arn}",
     ]
   }
 }
@@ -31,20 +28,15 @@ resource "aws_iam_user_policy" "app_cognito" {
 }
 
 data "aws_iam_policy_document" "app_s3" {
-  statement = {
-    effect = "Allow"
-
-    actions = [
-      "s3:ListBucket",
-    ]
-
-    resources = [
-      "${var.aws_s3_assets_bucket_arn}",
-    ]
+  statement {
+    actions   = ["s3:ListBucket"]
+    effect    = "Allow"
+    resources = ["${var.aws_s3_assets_bucket_arn}"]
   }
 
-  statement = {
-    effect = "Allow"
+  statement {
+    effect    = "Allow"
+    resources = ["${var.aws_s3_assets_bucket_arn}/*"]
 
     actions = [
       "s3:GetObject",
@@ -52,10 +44,6 @@ data "aws_iam_policy_document" "app_s3" {
       "s3:PutObject",
       "s3:PutObjectAcl",
       "s3:DeleteObject",
-    ]
-
-    resources = [
-      "${var.aws_s3_assets_bucket_arn}/*",
     ]
   }
 }
@@ -67,16 +55,10 @@ resource "aws_iam_user_policy" "app_s3" {
 }
 
 data "aws_iam_policy_document" "app_ses" {
-  statement = {
-    effect = "Allow"
-
-    actions = [
-      "ses:SendRawEmail",
-    ]
-
-    resources = [
-      "*",
-    ]
+  statement {
+    actions   = ["ses:SendRawEmail"]
+    effect    = "Allow"
+    resources = ["*"]
   }
 }
 
