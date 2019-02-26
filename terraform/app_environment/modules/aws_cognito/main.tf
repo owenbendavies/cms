@@ -3,21 +3,21 @@ resource "aws_cognito_user_pool" "app" {
   name                     = "${var.app_name}"
   username_attributes      = ["email"]
 
-  admin_create_user_config = {
+  admin_create_user_config {
     allow_admin_create_user_only = true
   }
 
-  lifecycle = {
+  lifecycle {
     prevent_destroy = true
   }
 
-  schema = {
+  schema {
     attribute_data_type = "String"
     mutable             = true
     name                = "name"
     required            = true
 
-    string_attribute_constraints = {
+    string_attribute_constraints {
       min_length = 0
       max_length = 2048
     }

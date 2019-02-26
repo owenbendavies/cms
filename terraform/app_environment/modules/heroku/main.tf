@@ -1,17 +1,14 @@
 resource "heroku_app" "app" {
-  name   = "${var.app_name}"
-  region = "eu"
-  stack  = "heroku-18"
+  buildpacks = ["heroku/ruby"]
+  name       = "${var.app_name}"
+  region     = "eu"
+  stack      = "heroku-18"
 
-  buildpacks = [
-    "heroku/ruby",
-  ]
-
-  lifecycle = {
+  lifecycle {
     prevent_destroy = true
   }
 
-  sensitive_config_vars = {
+  sensitive_config_vars {
     AWS_ACCESS_KEY_ID            = "${var.aws_access_key_id}"
     AWS_COGNITO_CLIENT_ID        = "${var.aws_cognito_client_id}"
     AWS_COGNITO_CLIENT_SECRET    = "${var.aws_cognito_client_secret}"
@@ -70,7 +67,7 @@ resource "heroku_addon" "app_postgresql" {
   app  = "${heroku_app.app.name}"
   plan = "heroku-postgresql:hobby-dev"
 
-  lifecycle = {
+  lifecycle {
     prevent_destroy = true
   }
 }

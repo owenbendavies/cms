@@ -46,7 +46,6 @@ module "aws_s3" {
   app_name               = "${local.app_name}"
   aws_account_id         = "${var.aws_account_id}"
   aws_cloudfront_iam_arn = "${module.aws_cloudfront.iam_arn}"
-  aws_region             = "${local.aws_region}"
 }
 
 module "heroku" {
