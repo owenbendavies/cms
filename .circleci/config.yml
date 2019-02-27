@@ -83,17 +83,8 @@ jobs:
             - public/packs-test
             - tmp/cache/webpacker
 
-      - restore_cache:
-          keys:
-            - parallel-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
-
       - run:
           command: ./bin/test
-
-      - save_cache:
-          key: parallel-{{ .Environment.CIRCLE_BUILD_NUM }}
-          paths:
-            - tmp/parallel_runtime_rspec.log
 
       - run:
           command: ./bin/quality
