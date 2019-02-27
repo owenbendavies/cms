@@ -86,6 +86,7 @@ jobs:
       - restore_cache:
           keys:
             - parallel-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
+            - parallel-
 
       - run:
           command: ./bin/test
