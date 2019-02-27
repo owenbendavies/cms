@@ -47,10 +47,6 @@ jobs:
 
       - restore_cache:
           keys:
-            - bootsnap-{{ checksum ".ruby-version" }}-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
-
-      - restore_cache:
-          keys:
             - bundle-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
             - bundle-{{ checksum ".ruby-version" }}-
 
@@ -101,12 +97,6 @@ jobs:
 
       - run:
           command: ./bin/quality
-
-      - save_cache:
-          key: bootsnap-{{ checksum ".ruby-version" }}-{{ .Environment.CIRCLE_BUILD_NUM }}
-          paths:
-            - tmp/cache/bootsnap-compile-cache
-            - tmp/cache/bootsnap-load-path-cache
 
       - run:
           name: Changes
