@@ -1,5 +1,15 @@
 version: 2
 
+check_for_git_changes: &check_for_git_changes
+  run:
+    name: Check for git changes
+    command: |
+      if [[ $(git status --porcelain) != '' ]]
+      then
+        git status
+        exit 1
+      fi
+
 terraform_defaults: &terraform_defaults
   docker:
     - image: hashicorp/terraform:light
@@ -21,6 +31,7 @@ terraform_test: &terraform_test
     - *terraform_checkout
     - run:
         command: terraform fmt -check=true
+    - *check_for_git_changes
 
 terraform_plan: &terraform_plan
   steps:
@@ -28,6 +39,7 @@ terraform_plan: &terraform_plan
     - *terraform_init
     - run:
         command: terraform plan -lock=false
+    - *check_for_git_changes
 
 terraform_deploy: &terraform_deploy
   steps:
@@ -35,6 +47,7 @@ terraform_deploy: &terraform_deploy
     - *terraform_init
     - run:
         command: terraform apply -auto-approve
+    - *check_for_git_changes
 
 jobs:
   test_ruby:
@@ -71,6 +84,7 @@ jobs:
       - restore_cache:
           keys:
             - webpacker-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
+            - webpacker-
 
       - run:
           command: ./bin/compile
@@ -89,14 +103,7 @@ jobs:
       - run:
           command: ./bin/quality
 
-      - run:
-          name: Changes
-          command: |
-            if [[ $(git status --porcelain) != '' ]]
-            then
-              git status
-              exit 1
-            fi
+      - *check_for_git_changes
 
       - store_test_results:
           path: tmp/test_results
