@@ -186,7 +186,7 @@ GEM
       addressable (~> 2.3)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    license_finder (5.6.2)
+    license_finder (5.7.0)
       bundler
       rubyzip
       thor
