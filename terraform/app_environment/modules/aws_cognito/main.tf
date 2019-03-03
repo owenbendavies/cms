@@ -25,9 +25,21 @@ resource "aws_cognito_user_pool" "app" {
 }
 
 resource "aws_cognito_user_pool_client" "app" {
-  generate_secret = true
-  name            = "${var.app_name}"
-  user_pool_id    = "${aws_cognito_user_pool.app.id}"
+  allowed_oauth_flows                  = ["code"]
+  allowed_oauth_flows_user_pool_client = true
+  allowed_oauth_scopes                 = ["openid"]
+  generate_secret                      = true
+  name                                 = "${var.app_name}"
+  supported_identity_providers         = ["COGNITO"]
+  user_pool_id                         = "${aws_cognito_user_pool.app.id}"
+
+  callback_urls = [
+    "https://${var.app_name}.herokuapp.com/auth/cognito-idp/callback",
+  ]
+
+  logout_urls = [
+    "https://${var.app_name}.herokuapp.com/",
+  ]
 }
 
 resource "aws_cognito_user_pool_domain" "app" {

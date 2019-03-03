@@ -3,38 +3,6 @@ class UpdateCognitoSitesJob < ApplicationJob
 
   def perform
     sites = Site.all
-    update_cognito(sites)
-    modify_groups(sites)
-  end
-
-  private
-
-  def update_cognito(sites)
-    AWS_COGNITO.update_user_pool_client(
-      allowed_o_auth_flows: ['code'],
-      allowed_o_auth_flows_user_pool_client: true,
-      allowed_o_auth_scopes: ['openid'],
-      callback_urls: callback_urls(sites),
-      client_id: ENV.fetch('AWS_COGNITO_CLIENT_ID'),
-      logout_urls: logout_urls(sites),
-      supported_identity_providers: ['COGNITO'],
-      user_pool_id: user_pool_id
-    )
-  end
-
-  def callback_urls(sites)
-    sites.map do |site|
-      auth_cognito_idp_callback_url(site.url_options)
-    end
-  end
-
-  def logout_urls(sites)
-    sites.map do |site|
-      root_url(site.url_options)
-    end
-  end
-
-  def modify_groups(sites)
     expected_groups = %w[admin] + sites.map(&:host)
     existing_groups = cognito_groups
 
