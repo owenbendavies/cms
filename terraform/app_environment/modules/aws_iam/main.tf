@@ -16,7 +16,6 @@ data "aws_iam_policy_document" "app_cognito" {
       "cognito-idp:DeleteGroup",
       "cognito-idp:ListGroups",
       "cognito-idp:ListUsersInGroup",
-      "cognito-idp:UpdateUserPoolClient",
     ]
   }
 }
