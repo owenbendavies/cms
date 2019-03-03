@@ -9,3 +9,7 @@ variable "aws_region" {}
 variable "aws_s3_assets_bucket_name" {}
 variable "aws_secret_access_key" {}
 variable "email" {}
+
+variable "domains" {
+  type = "list"
+}
