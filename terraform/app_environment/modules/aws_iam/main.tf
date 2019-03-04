@@ -12,9 +12,6 @@ data "aws_iam_policy_document" "app_cognito" {
     resources = ["${var.aws_cognito_arn}"]
 
     actions = [
-      "cognito-idp:CreateGroup",
-      "cognito-idp:DeleteGroup",
-      "cognito-idp:ListGroups",
       "cognito-idp:ListUsersInGroup",
     ]
   }

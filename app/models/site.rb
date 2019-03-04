@@ -7,10 +7,6 @@ class Site < ApplicationRecord
     ENV.fetch('SEED_SITE_EMAIL')
   end
 
-  # callbacks
-  after_save :update_cognito_sites
-  after_destroy :update_cognito_sites
-
   # relations
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -78,11 +74,5 @@ class Site < ApplicationRecord
     ).users.map do |user|
       user.attributes.find { |attribute| attribute.name == 'email' }.value
     end
-  end
-
-  private
-
-  def update_cognito_sites
-    UpdateCognitoSitesJob.perform_later
   end
 end

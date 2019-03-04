@@ -12,14 +12,4 @@ if ENV['AWS_STUB'].present? && !Rails.env.production?
       )
     )
   )
-
-  AWS_COGNITO.stub_responses(
-    :list_groups,
-    AWS_COGNITO.stub_data(
-      :list_groups,
-      JSON.parse(
-        Rails.root.join('spec', 'support', 'stubs', 'aws_cognito_list_groups.json').read
-      )
-    )
-  )
 end

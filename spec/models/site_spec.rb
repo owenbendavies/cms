@@ -4,24 +4,6 @@ RSpec.describe Site do
   it_behaves_like 'model with uid'
   it_behaves_like 'model with versioning'
 
-  describe 'callbacks' do
-    describe 'after save' do
-      let(:site) { FactoryBot.build(:site) }
-
-      it 'updates cognito sites' do
-        expect { site.save! }.to have_enqueued_job(UpdateCognitoSitesJob)
-      end
-    end
-
-    describe 'after destroy' do
-      let!(:site) { FactoryBot.create(:site) }
-
-      it 'updates cognito sites' do
-        expect { site.destroy! }.to have_enqueued_job(UpdateCognitoSitesJob)
-      end
-    end
-  end
-
   describe 'default values' do
     subject(:site) { described_class.new }
 
