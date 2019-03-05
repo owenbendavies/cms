@@ -29,6 +29,12 @@ resource "heroku_app" "app" {
   }
 }
 
+resource "heroku_domain" "app" {
+  app      = "${heroku_app.app.name}"
+  count    = "${length(var.domains)}"
+  hostname = "${element(var.domains, count.index)}"
+}
+
 resource "heroku_app_feature" "app_log_runtime_metrics" {
   app  = "${heroku_app.app.name}"
   name = "log-runtime-metrics"
