@@ -36,23 +36,31 @@ resource "aws_cognito_user_pool_client" "app" {
   user_pool_id                         = "${aws_cognito_user_pool.app.id}"
 }
 
+resource "aws_cognito_user_pool_domain" "app" {
+  domain       = "${var.app_name}"
+  user_pool_id = "${aws_cognito_user_pool.app.id}"
+}
+
 resource "aws_cognito_user_group" "admin" {
   name         = "admin"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_cognito_user_group" "heroku_domain" {
   name         = "${var.app_name}.herokuapp.com"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_cognito_user_group" "custom_domains" {
   count        = "${length(var.domains)}"
   name         = "${element(var.domains, count.index)}"
-  user_pool_id = "${aws_cognito_user_pool.app.id}"
-}
-
-resource "aws_cognito_user_pool_domain" "app" {
-  domain       = "${var.app_name}"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
 }

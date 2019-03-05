@@ -51,16 +51,28 @@ resource "heroku_formation" "app_worker" {
 resource "heroku_addon" "app_coralogix" {
   app  = "${heroku_app.app.name}"
   plan = "coralogix:dev"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "heroku_addon" "app_librato" {
   app  = "${heroku_app.app.name}"
   plan = "librato:development"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "heroku_addon" "app_papertrail" {
   app  = "${heroku_app.app.name}"
   plan = "papertrail:choklad"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "heroku_addon" "app_postgresql" {
@@ -75,14 +87,26 @@ resource "heroku_addon" "app_postgresql" {
 resource "heroku_addon" "app_rollbar" {
   app  = "${heroku_app.app.name}"
   plan = "rollbar:free"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "heroku_addon" "app_scheduler" {
   app  = "${heroku_app.app.name}"
   plan = "scheduler:standard"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "heroku_addon" "app_scout" {
   app  = "${heroku_app.app.name}"
   plan = "scout:chair"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
