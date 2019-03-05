@@ -8,15 +8,6 @@ terraform {
   }
 }
 
-provider "aws" {
-  version = "1.57"
-  region  = "${local.aws_region}"
-}
-
-provider "heroku" {
-  version = "1.7.4"
-}
-
 module "aws_cloudfront" {
   source = "./modules/aws_cloudfront"
 

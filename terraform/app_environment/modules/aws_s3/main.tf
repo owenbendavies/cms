@@ -41,19 +41,6 @@ resource "aws_s3_bucket_public_access_block" "assets" {
   restrict_public_buckets = true
 }
 
-data "aws_iam_policy_document" "assets" {
-  statement {
-    actions   = ["s3:GetObject"]
-    effect    = "Allow"
-    resources = ["${aws_s3_bucket.assets.arn}/*"]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["${var.aws_cloudfront_iam_arn}"]
-    }
-  }
-}
-
 resource "aws_s3_bucket_policy" "assets" {
   bucket = "${aws_s3_bucket.assets.id}"
   policy = "${data.aws_iam_policy_document.assets.json}"
