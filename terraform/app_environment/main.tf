@@ -30,6 +30,7 @@ module "aws_cognito" {
   source = "./modules/aws_cognito"
 
   app_name = "${local.app_name}"
+  domains  = "${var.domains}"
 }
 
 module "aws_iam" {
