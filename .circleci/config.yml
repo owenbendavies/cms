@@ -127,6 +127,16 @@ jobs:
     <<: *terraform_deploy
     working_directory: ~/project/terraform/app_environment
 
+  plan_terraform_app_environment_production:
+    <<: *terraform_defaults
+    <<: *terraform_plan
+    working_directory: ~/project/terraform/app_environment
+
+  deploy_terraform_app_environment_production:
+    <<: *terraform_defaults
+    <<: *terraform_deploy
+    working_directory: ~/project/terraform/app_environment
+
 only_master: &only_master
   filters:
     branches:
@@ -146,9 +156,21 @@ workflows:
           requires:
             - test_terraform_app_environment
 
+      - plan_terraform_app_environment_production:
+          context: cms_terraform_production
+          requires:
+            - test_terraform_app_environment
+
       - deploy_terraform_app_environment_staging:
           <<: *only_master
           context: cms_terraform_staging
           requires:
             - test_ruby
             - plan_terraform_app_environment_staging
+            - plan_terraform_app_environment_production
+
+      - deploy_terraform_app_environment_production:
+          <<: *only_master
+          context: cms_terraform_production
+          requires:
+            - deploy_terraform_app_environment_staging
