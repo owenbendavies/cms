@@ -26,17 +26,12 @@ terraform_init: &terraform_init
   run:
     command: terraform init
 
-terraform_test: &terraform_test
-  steps:
-    - *terraform_checkout
-    - run:
-        command: terraform fmt -check=true
-    - *check_for_git_changes
-
 terraform_plan: &terraform_plan
   steps:
     - *terraform_checkout
     - *terraform_init
+    - run:
+        command: terraform fmt -check=true
     - run:
         command: terraform plan -lock=false
     - *check_for_git_changes
@@ -112,19 +107,9 @@ jobs:
           path: coverage
           destination: coverage
 
-  test_terraform_app_environment:
-    <<: *terraform_defaults
-    <<: *terraform_test
-    working_directory: ~/project/terraform/app_environment
-
   plan_terraform_app_environment_staging:
     <<: *terraform_defaults
     <<: *terraform_plan
-    working_directory: ~/project/terraform/app_environment
-
-  deploy_terraform_app_environment_staging:
-    <<: *terraform_defaults
-    <<: *terraform_deploy
     working_directory: ~/project/terraform/app_environment
 
   plan_terraform_app_environment_production:
@@ -132,10 +117,25 @@ jobs:
     <<: *terraform_plan
     working_directory: ~/project/terraform/app_environment
 
+  plan_terraform_app_global:
+    <<: *terraform_defaults
+    <<: *terraform_plan
+    working_directory: ~/project/terraform/app_global
+
+  deploy_terraform_app_environment_staging:
+    <<: *terraform_defaults
+    <<: *terraform_deploy
+    working_directory: ~/project/terraform/app_environment
+
   deploy_terraform_app_environment_production:
     <<: *terraform_defaults
     <<: *terraform_deploy
     working_directory: ~/project/terraform/app_environment
+
+  deploy_terraform_app_global:
+    <<: *terraform_defaults
+    <<: *terraform_deploy
+    working_directory: ~/project/terraform/app_global
 
 only_master: &only_master
   filters:
@@ -149,17 +149,14 @@ workflows:
     jobs:
       - test_ruby
 
-      - test_terraform_app_environment
-
       - plan_terraform_app_environment_staging:
           context: cms_terraform_staging
-          requires:
-            - test_terraform_app_environment
 
       - plan_terraform_app_environment_production:
           context: cms_terraform_production
-          requires:
-            - test_terraform_app_environment
+
+      - plan_terraform_app_global:
+          context: cms_terraform_global
 
       - deploy_terraform_app_environment_staging:
           <<: *only_master
@@ -174,3 +171,9 @@ workflows:
           context: cms_terraform_production
           requires:
             - deploy_terraform_app_environment_staging
+
+      - deploy_terraform_app_global:
+          <<: *only_master
+          context: cms_terraform_global
+          requires:
+            - deploy_terraform_app_environment_production
