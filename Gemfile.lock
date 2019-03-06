@@ -260,7 +260,7 @@ GEM
       ast (~> 2.4.0)
     parslet (1.8.2)
     pg (1.1.4)
-    phonelib (0.6.29)
+    phonelib (0.6.30)
     powerpack (0.1.2)
     premailer (1.11.1)
       addressable
