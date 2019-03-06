@@ -1,8 +1,12 @@
 resource "heroku_app" "app" {
-  buildpacks = ["heroku/ruby"]
-  name       = "${var.app_name}"
-  region     = "eu"
-  stack      = "heroku-18"
+  name   = "${var.app_name}"
+  region = "eu"
+  stack  = "heroku-18"
+
+  buildpacks = [
+    "heroku/nodejs",
+    "heroku/ruby",
+  ]
 
   lifecycle {
     prevent_destroy = true
