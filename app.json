@@ -1,10 +1,10 @@
 {
     "buildpacks": [
         {
-            "url": "heroku/ruby"
+            "url": "heroku/nodejs"
         },
         {
-            "url": "heroku/nodejs"
+            "url": "heroku/ruby"
         }
     ],
     "description": "A Content Management System (CMS) written with Ruby on Rails",
