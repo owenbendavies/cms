@@ -107,32 +107,32 @@ jobs:
           path: coverage
           destination: coverage
 
-  plan_terraform_app_environment_staging:
+  plan_staging:
     <<: *terraform_defaults
     <<: *terraform_plan
     working_directory: ~/project/terraform/app_environment
 
-  plan_terraform_app_environment_production:
+  plan_production:
     <<: *terraform_defaults
     <<: *terraform_plan
     working_directory: ~/project/terraform/app_environment
 
-  plan_terraform_app_global:
+  plan_global:
     <<: *terraform_defaults
     <<: *terraform_plan
     working_directory: ~/project/terraform/app_global
 
-  deploy_terraform_app_environment_staging:
+  deploy_staging:
     <<: *terraform_defaults
     <<: *terraform_deploy
     working_directory: ~/project/terraform/app_environment
 
-  deploy_terraform_app_environment_production:
+  deploy_production:
     <<: *terraform_defaults
     <<: *terraform_deploy
     working_directory: ~/project/terraform/app_environment
 
-  deploy_terraform_app_global:
+  deploy_global:
     <<: *terraform_defaults
     <<: *terraform_deploy
     working_directory: ~/project/terraform/app_global
@@ -149,31 +149,32 @@ workflows:
     jobs:
       - test_ruby
 
-      - plan_terraform_app_environment_staging:
+      - plan_staging:
           context: cms_terraform_staging
 
-      - plan_terraform_app_environment_production:
+      - plan_production:
           context: cms_terraform_production
 
-      - plan_terraform_app_global:
+      - plan_global:
           context: cms_terraform_global
 
-      - deploy_terraform_app_environment_staging:
+      - deploy_staging:
           <<: *only_master
           context: cms_terraform_staging
           requires:
             - test_ruby
-            - plan_terraform_app_environment_staging
-            - plan_terraform_app_environment_production
+            - plan_staging
+            - plan_production
+            - plan_global
 
-      - deploy_terraform_app_environment_production:
+      - deploy_production:
           <<: *only_master
           context: cms_terraform_production
           requires:
-            - deploy_terraform_app_environment_staging
+            - deploy_staging
 
-      - deploy_terraform_app_global:
+      - deploy_global:
           <<: *only_master
           context: cms_terraform_global
           requires:
-            - deploy_terraform_app_environment_production
+            - deploy_production
