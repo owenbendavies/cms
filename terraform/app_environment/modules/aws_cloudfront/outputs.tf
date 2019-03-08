@@ -1,4 +1,4 @@
-output "domain_name" {
+output "domain" {
   sensitive = true
   value     = "${aws_cloudfront_distribution.assets.domain_name}"
 }
