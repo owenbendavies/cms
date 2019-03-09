@@ -54,32 +54,36 @@ jobs:
       - checkout
 
       - restore_cache:
+          name: Restoring bundle cache
           keys:
             - bundle-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
             - bundle-{{ checksum ".ruby-version" }}-
 
       - restore_cache:
+          name: Restoring node cache
           keys:
-            - yarn-{{ checksum "yarn.lock" }}
-            - yarn-
+            - node-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+            - node-{{ checksum "package.json" }}-
 
       - run:
           command: ./bin/setup
 
       - save_cache:
+          name: Saving bundle cache
           key: bundle-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 
       - save_cache:
-          key: yarn-{{ checksum "yarn.lock" }}
+          name: Saving node cache
+          key: node-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
 
       - restore_cache:
+          name: Restoring webpacker cache
           keys:
-            - webpacker-{{ .Environment.CIRCLE_PREVIOUS_BUILD_NUM }}
-            - webpacker-
+            - webpacker-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
       - run:
           command: ./bin/compile
@@ -87,7 +91,8 @@ jobs:
             RAILS_ENV: test
 
       - save_cache:
-          key: webpacker-{{ .Environment.CIRCLE_BUILD_NUM }}
+          name: Saving webpacker cache
+          key: webpacker-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
           paths:
             - public/packs-test
             - tmp/cache/webpacker
