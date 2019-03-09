@@ -24,12 +24,12 @@ resource "aws_cloudfront_distribution" "assets" {
   }
 
   logging_config {
-    bucket = "${var.aws_s3_logs_bucket_domain}"
+    bucket = "${var.logs_domain}"
     prefix = "AWSLogs/${var.aws_account_id}/cloudfront/${var.app_name}/"
   }
 
   origin {
-    domain_name = "${var.aws_s3_assets_bucket_domain}"
+    domain_name = "${var.assets_domain}"
     origin_id   = "S3"
 
     s3_origin_config {
