@@ -1,28 +1,27 @@
-#!/usr/bin/env ruby
-require 'fileutils'
+#!/bin/bash
+set -e
 
-# path to your application root.
-APP_ROOT = File.expand_path('..', __dir__)
+cd $(dirname $0)/..
 
-def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
-end
+if [ "$(uname)" == "Darwin" ]; then
+  ./bin/setup_mac
+  . "$NVM_DIR/nvm.sh"
+  nvm use
+fi
 
-FileUtils.chdir APP_ROOT do
-  puts '== Installing dependencies =='
-  system! 'gem install bundler'
-  system!('bundle config --local path vendor/bundle')
-  system('bundle check') || system!('bundle install --jobs=3 --retry=3')
-  system!('bundle clean')
-  system! 'bin/yarn'
+set -v
 
-  puts "\n== Preparing database =="
-  system! 'DATABASE_TIMEOUT=5 bin/rails db:create db:migrate db:seed'
-  system! 'RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create'
+gem install bundler --version '< 2'
+bundle config --local path vendor/bundle
+bundle check || bundle install --jobs=3 --retry=3
+bundle clean
+./bin/yarn
 
-  puts "\n== Removing old logs and tempfiles =="
-  system! 'bin/rails log:clear tmp:clear'
+DATABASE_TIMEOUT=5 bin/rails db:create db:migrate db:seed
+RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create
 
-  puts "\n== Restarting application server =="
-  system! 'bin/rails restart'
-end
+bin/rails log:clear tmp:clear
+
+bin/rails restart
+
+echo "setup complete"
