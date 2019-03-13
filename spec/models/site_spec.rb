@@ -22,7 +22,7 @@ RSpec.describe Site do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
-    it { is_expected.to belong_to(:privacy_policy_page) }
+    it { is_expected.to belong_to(:privacy_policy_page).class_name('Page').optional }
   end
 
   describe '#main_menu_pages' do
