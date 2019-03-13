@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Application web server' do
-  let(:request_method) { :get }
-  let(:request_path) { '/sitemap' }
-
   context 'when visiting an html page' do
+    let(:request_method) { :get }
+    let(:request_path) { '/sitemap' }
+
     let(:random_headers) { %w[Content-Length ETag Set-Cookie X-Request-Id X-Runtime] }
 
     let(:non_random_headers) { response.headers.except(*random_headers) }
@@ -59,13 +59,9 @@ RSpec.describe 'Application web server' do
     end
   end
 
-  context 'when visiting a asset' do
-    let(:request_path) do
-      Dir
-        .glob(Rails.root.join('public', '*', 'application-*.js'))
-        .first
-        .gsub(Rails.root.join('public').to_s, '')
-    end
+  context 'when visiting an asset' do
+    let(:request_method) { :get }
+    let(:request_path) { '/500.html' }
 
     before { request_page }
 
@@ -87,6 +83,9 @@ RSpec.describe 'Application web server' do
   end
 
   context 'with bad client' do
+    let(:request_method) { :get }
+    let(:request_path) { '/sitemap' }
+
     let(:request_headers) do
       {
         'HTTP_CLIENT_IP' => 'y',
@@ -102,6 +101,8 @@ RSpec.describe 'Application web server' do
   end
 
   context 'with gzip' do
+    let(:request_method) { :get }
+    let(:request_path) { '/sitemap' }
     let(:request_headers) { { 'HTTP_ACCEPT_ENCODING' => 'gzip, deflate' } }
 
     it 'serves pages with gzip' do
