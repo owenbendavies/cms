@@ -76,15 +76,6 @@ resource "heroku_addon" "app_librato" {
   }
 }
 
-resource "heroku_addon" "app_papertrail" {
-  app  = "${heroku_app.app.name}"
-  plan = "papertrail:choklad"
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
 resource "heroku_addon" "app_postgresql" {
   app  = "${heroku_app.app.name}"
   plan = "heroku-postgresql:hobby-dev"
