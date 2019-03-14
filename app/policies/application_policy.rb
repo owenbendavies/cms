@@ -3,11 +3,11 @@ class ApplicationPolicy
     protected
 
     def user_logged_in?
-      @site && @user&.groups&.include?(@site.host)
+      @site.present? && @user.present?
     end
 
     def user_is_admin?
-      user_logged_in? && @user&.groups&.include?('admin')
+      user_logged_in? && @user.groups.include?('admin')
     end
   end
 

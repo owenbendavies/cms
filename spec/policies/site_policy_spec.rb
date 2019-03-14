@@ -4,12 +4,22 @@ RSpec.describe SitePolicy do
   describe 'Scope' do
     subject(:policy_scope) { described_class::Scope.new(context, Site).resolve }
 
-    let(:user) { FactoryBot.build(:user, site: site) }
+    let!(:site2) { FactoryBot.create(:site) }
 
-    before { FactoryBot.create(:site) }
+    context 'with site user' do
+      let(:user) { FactoryBot.build(:user, site: site) }
 
-    it 'returns users sites' do
-      expect(policy_scope).to contain_exactly site
+      it 'returns users sites' do
+        expect(policy_scope).to contain_exactly site
+      end
+    end
+
+    context 'with admin user' do
+      let(:user) { FactoryBot.build(:user, :admin) }
+
+      it 'returns all sites' do
+        expect(policy_scope).to contain_exactly(site, site2)
+      end
     end
   end
 

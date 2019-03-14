@@ -6,7 +6,7 @@ class NotificationsMailer < ApplicationMailer
 
     mail(
       from: from_site(message.site),
-      to: @site.user_emails,
+      to: to_users(message.site),
       subject: t('mailers.new_message.subject')
     )
   end

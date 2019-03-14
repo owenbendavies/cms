@@ -15,14 +15,6 @@ RSpec.describe PagePolicy do
       end
     end
 
-    context 'with another site user' do
-      let(:user) { FactoryBot.build :user }
-
-      it 'returns visible site pages' do
-        expect(policy_scope).to contain_exactly site_page
-      end
-    end
-
     context 'with site user' do
       let(:user) { FactoryBot.build(:user, site: site) }
 
@@ -53,15 +45,6 @@ RSpec.describe PagePolicy do
       context 'without user' do
         it 'is permitted' do
           expect(described_class).to permit(context, record)
-        end
-      end
-
-      context 'with another site' do
-        let(:other_site) { FactoryBot.build(:site) }
-        let(:record) { FactoryBot.build(:page, site: other_site) }
-
-        it 'is not permitted' do
-          expect(described_class).not_to permit(context, record)
         end
       end
     end

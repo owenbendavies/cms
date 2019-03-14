@@ -5,7 +5,7 @@ RSpec.feature 'Stylesheet' do
   let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
 
   before do
-    login_as site_admin
+    login_as admin_user
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'svg.fa-file.fa-fw'
   end
 
