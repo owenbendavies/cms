@@ -251,7 +251,7 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
-    paper_trail (10.2.0)
+    paper_trail (10.2.1)
       activerecord (>= 4.2, < 6.1)
       request_store (~> 1.1)
     parallel (1.14.0)
