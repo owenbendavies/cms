@@ -8,7 +8,9 @@ RSpec.describe NotificationsMailer do
 
     let(:message) { FactoryBot.build(:message, site: site) }
 
-    let(:user_emails) { ['siteuser@example.com', 'admin@example.com'] }
+    let(:emails) do
+      %w[admin1@example.com admin2@example.com another@example.com siteuser@example.com]
+    end
 
     let(:expected_body) do
       <<~BODY
@@ -25,8 +27,8 @@ RSpec.describe NotificationsMailer do
       expect(email.from).to eq [site.email]
     end
 
-    it 'is sent to sites users email' do
-      expect(email.to).to eq user_emails
+    it 'is sent to all site users and admins' do
+      expect(email.to).to eq emails
     end
 
     it 'has subject' do

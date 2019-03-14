@@ -66,13 +66,4 @@ class Site < ApplicationRecord
       port: ENV['EMAIL_LINK_PORT']
     }
   end
-
-  def user_emails
-    AWS_COGNITO.list_users_in_group(
-      user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID'),
-      group_name: host
-    ).users.map do |user|
-      user.attributes.find { |attribute| attribute.name == 'email' }.value
-    end
-  end
 end

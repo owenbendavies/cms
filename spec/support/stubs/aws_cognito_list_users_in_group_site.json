@@ -32,7 +32,7 @@
                 },
                 {
                     "name": "email",
-                    "value": "admin@example.com"
+                    "value": "another@example.com"
                 }
             ],
             "enabled": true,

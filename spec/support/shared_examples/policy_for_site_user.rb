@@ -8,4 +8,12 @@ RSpec.shared_examples 'policy for site user' do
       expect(described_class).to permit(context, record)
     end
   end
+
+  context 'with admin user' do
+    let(:user) { FactoryBot.build(:user, :admin) }
+
+    it 'is permitted' do
+      expect(described_class).to permit(context, record)
+    end
+  end
 end

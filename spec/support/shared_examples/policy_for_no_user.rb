@@ -19,12 +19,4 @@ RSpec.shared_examples 'policy for no user' do
       expect(described_class).not_to permit(context, record)
     end
   end
-
-  context 'with another site user' do
-    let(:user) { FactoryBot.build :user }
-
-    it 'is not permitted' do
-      expect(described_class).not_to permit(context, record)
-    end
-  end
 end

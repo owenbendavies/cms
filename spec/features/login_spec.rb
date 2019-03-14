@@ -8,7 +8,14 @@ RSpec.feature 'Login' do
     expect(page).to have_content 'Signed in successfully'
   end
 
-  scenario 'with user' do
+  scenario 'with admin user' do
+    login_with_omniauth_as(admin_user)
+    visit '/login'
+
+    expect(page).to have_content 'Signed in successfully'
+  end
+
+  scenario 'with another sites user' do
     login_with_omniauth_as(user)
     visit '/login'
 

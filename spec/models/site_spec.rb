@@ -163,14 +163,4 @@ RSpec.describe Site do
       end
     end
   end
-
-  describe '#user_emails' do
-    subject(:site) { FactoryBot.build(:site) }
-
-    let(:user_emails) { ['siteuser@example.com', 'admin@example.com'] }
-
-    it 'returns email addresses of users in site from AWS' do
-      expect(site.user_emails).to eq user_emails
-    end
-  end
 end
