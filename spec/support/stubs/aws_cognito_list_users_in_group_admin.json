@@ -1,0 +1,43 @@
+{
+    "next_token": null,
+    "users": [
+        {
+            "attributes": [
+                {
+                    "name": "sub",
+                    "value": "48b58da5-77f2-4d84-ab95-e7f27c1874de"
+                },
+                {
+                    "name": "email_verified",
+                    "value": "true"
+                },
+                {
+                    "name": "email",
+                    "value": "admin1@example.com"
+                }
+            ],
+            "enabled": true,
+            "user_status": "FORCE_CHANGE_PASSWORD",
+            "username": "48b58da5-77f2-4d84-ab95-e7f27c1874de"
+        },
+        {
+            "attributes": [
+                {
+                    "name": "sub",
+                    "value": "48b58da5-77f2-4d84-ab95-e7f27c1874de"
+                },
+                {
+                    "name": "email_verified",
+                    "value": "true"
+                },
+                {
+                    "name": "email",
+                    "value": "admin2@example.com"
+                }
+            ],
+            "enabled": true,
+            "user_status": "FORCE_CHANGE_PASSWORD",
+            "username": "48b58da5-77f2-4d84-ab95-e7f27c1874de"
+        }
+    ]
+}

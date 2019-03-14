@@ -1,12 +1,16 @@
 class SitePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      Site.where(host: @user.groups)
+      if user_is_admin?
+        @scope.all
+      else
+        @scope.where(host: @user.groups)
+      end
     end
   end
 
   def index?
-    @user.present?
+    user_logged_in?
   end
 
   def update?

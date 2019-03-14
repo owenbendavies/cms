@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
 
   def create
     user = user_hash
+    user_groups = user.fetch(:groups)
 
-    if user.fetch(:groups).include? @site.host
+    if user_groups.include?(@site.host) || user_groups.include?('admin')
       session[:user] = user
       flash.notice = t 'sessions.create.message'
     else

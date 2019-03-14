@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
   let(:contact_page) { FactoryBot.create(:page, contact_form: true, site: site) }
-  let(:user_emails) { ['siteuser@example.com', 'admin@example.com'] }
+
+  let(:emails) do
+    %w[admin1@example.com admin2@example.com another@example.com siteuser@example.com]
+  end
 
   before do
     visit "/#{contact_page.url}"
@@ -31,7 +34,7 @@ RSpec.feature 'Page with contact form' do
 
     email = last_email
     expect(email.from).to eq [site.email]
-    expect(email.to).to eq user_emails
+    expect(email.to).to eq emails
     expect(email.subject).to eq 'New message'
     expect(email.html_part.body).to have_content new_name
     expect(email.html_part.body).to have_content new_email
