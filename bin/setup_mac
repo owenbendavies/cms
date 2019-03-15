@@ -43,7 +43,7 @@ brew cask install chromedriver
 
 brew cleanup
 
-heroku plugins:install autocomplete
+heroku autocomplete --refresh-cache
 
 rbenv install --skip-existing
 
