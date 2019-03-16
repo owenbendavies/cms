@@ -18,5 +18,6 @@ tinymce.init({
   plugins: 'autolink,link,lists,paste',
   selector: '.js-tinymce',
   skin: false,
-  toolbar: 'formatselect bold italic subscript superscript | bullist numlist | link',
+  toolbar:
+    'formatselect bold italic subscript superscript | bullist numlist | link',
 });

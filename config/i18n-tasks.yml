@@ -53,7 +53,6 @@ search:
   ## Paths or `File.find` patterns to search in:
   # paths:
   #  - app/
-
   ## Root directories for relative keys resolution.
   # relative_roots:
   #   - app/controllers
@@ -61,11 +60,9 @@ search:
   #   - app/mailers
   #   - app/presenters
   #   - app/views
-
   ## Files or `File.fnmatch` patterns to exclude from search. Some files are always excluded regardless of this setting:
   ##   %w(*.jpg *.png *.gif *.svg *.ico *.eot *.otf *.ttf *.woff *.woff2 *.pdf *.css *.sass *.scss *.less *.yml *.json)
-  ? exclude
-
+  # exclude:
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
   # only: ["*.rb", "*.html.slim"]
@@ -87,10 +84,10 @@ search:
 
 ## Consider these keys used:
 ignore_unused:
-  - "activerecord.attributes.*"
-  - "activerecord.errors.*"
-  - "activerecord.models.*"
-  - "errors.messages.*"
+  - 'activerecord.attributes.*'
+  - 'activerecord.errors.*'
+  - 'activerecord.models.*'
+  - 'errors.messages.*'
 # - 'activerecord.attributes.*'
 # - '{devise,kaminari,will_paginate}.*'
 # - 'simple_form.{yes,no}'

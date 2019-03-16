@@ -17,7 +17,7 @@ const ListQuery = gql`
 
 const DeleteQuery = gql`
   mutation DeletePages($ids: [ID!]!) {
-    deletePages(input: {pageIds: $ids}) {
+    deletePages(input: { pageIds: $ids }) {
       pages {
         id
       }
@@ -49,8 +49,11 @@ const buildGetListQuery = params => ({
 
 export const buildPageQuery = (fetchType, params) => {
   switch (fetchType) {
-    case 'DELETE_MANY': return buildDeleteManyQuery(params);
-    case 'GET_LIST': return buildGetListQuery(params);
-    default: throw new Error(`Unkown fetchType ${fetchType}`);
+    case 'DELETE_MANY':
+      return buildDeleteManyQuery(params);
+    case 'GET_LIST':
+      return buildGetListQuery(params);
+    default:
+      throw new Error(`Unkown fetchType ${fetchType}`);
   }
 };

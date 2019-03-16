@@ -1,22 +1,22 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 
 Conditions:
   GlobalRegion: !Equals
-    - !Ref "AWS::Region"
+    - !Ref 'AWS::Region'
     - us-east-1
 
-Description: "Sets up AWS Cloud Trail"
+Description: 'Sets up AWS Cloud Trail'
 
 Resources:
   Bucket:
-    Type: "AWS::S3::Bucket"
+    Type: 'AWS::S3::Bucket'
     Condition: GlobalRegion
     Properties:
       BucketEncryption:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
-      BucketName: !Ref "AWS::StackName"
+      BucketName: !Ref 'AWS::StackName'
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -26,7 +26,7 @@ Resources:
         Status: Enabled
 
   BucketPolicy:
-    Type: "AWS::S3::BucketPolicy"
+    Type: 'AWS::S3::BucketPolicy'
     Condition: GlobalRegion
     Properties:
       Bucket: !Ref Bucket
@@ -36,16 +36,16 @@ Resources:
           - Effect: Allow
             Principal:
               Service: cloudtrail.amazonaws.com
-            Action: "s3:GetBucketAcl"
+            Action: 's3:GetBucketAcl'
             Resource: !GetAtt Bucket.Arn
           - Effect: Allow
             Principal:
               Service: cloudtrail.amazonaws.com
-            Action: "s3:PutObject"
-            Resource: !Sub "${Bucket.Arn}/AWSLogs/${AWS::AccountId}/*"
+            Action: 's3:PutObject'
+            Resource: !Sub '${Bucket.Arn}/AWSLogs/${AWS::AccountId}/*'
 
   CloudTrail:
-    Type: "AWS::CloudTrail::Trail"
+    Type: 'AWS::CloudTrail::Trail'
     Condition: GlobalRegion
     DependsOn:
       - BucketPolicy
