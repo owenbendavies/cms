@@ -6,3 +6,5 @@ provider "aws" {
 provider "heroku" {
   version = "1.7.4"
 }
+
+provider "uptimerobot" {}
