@@ -1,10 +1,10 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 
-Description: "Terraform infrastructure"
+Description: 'Terraform infrastructure'
 
 Resources:
   DynamoTable:
-    Type: "AWS::DynamoDB::Table"
+    Type: 'AWS::DynamoDB::Table'
     Properties:
       AttributeDefinitions:
         - AttributeName: LockID
@@ -13,46 +13,46 @@ Resources:
       KeySchema:
         - AttributeName: LockID
           KeyType: HASH
-      TableName: !Sub "${AWS::StackName}-locks"
+      TableName: !Sub '${AWS::StackName}-locks'
 
   IAMUser:
-    Type: "AWS::IAM::User"
+    Type: 'AWS::IAM::User'
     Properties:
       UserName: !Ref AWS::StackName
       ManagedPolicyArns:
-        - "arn:aws:iam::aws:policy/AdministratorAccess"
+        - 'arn:aws:iam::aws:policy/AdministratorAccess'
       Policies:
         - PolicyName: dynamodb
           PolicyDocument:
-            Version: "2012-10-17"
+            Version: '2012-10-17'
             Statement:
               - Effect: Allow
                 Action:
-                  - "dynamodb:GetItem"
-                  - "dynamodb:PutItem"
-                  - "dynamodb:DeleteItem"
+                  - 'dynamodb:GetItem'
+                  - 'dynamodb:PutItem'
+                  - 'dynamodb:DeleteItem'
                 Resource: !GetAtt DynamoTable.Arn
         - PolicyName: s3
           PolicyDocument:
-            Version: "2012-10-17"
+            Version: '2012-10-17'
             Statement:
               - Effect: Allow
-                Action: "s3:ListBucket"
+                Action: 's3:ListBucket'
                 Resource: !GetAtt S3Bucket.Arn
               - Effect: Allow
                 Action:
-                  - "s3:GetObject"
-                  - "s3:PutObject"
-                Resource: !Sub "${S3Bucket.Arn}/*"
+                  - 's3:GetObject'
+                  - 's3:PutObject'
+                Resource: !Sub '${S3Bucket.Arn}/*'
 
   S3Bucket:
-    Type: "AWS::S3::Bucket"
+    Type: 'AWS::S3::Bucket'
     Properties:
       BucketEncryption:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
-      BucketName: !Sub "${AWS::StackName}-states"
+      BucketName: !Sub '${AWS::StackName}-states'
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true

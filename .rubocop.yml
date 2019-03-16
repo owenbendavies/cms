@@ -2,19 +2,19 @@ require: rubocop-rspec # Enable added RSpec checks
 
 AllCops:
   Exclude:
-    - "config/initializers/simple_form.rb" # Auto generated file
-    - "db/migrate/*_squash_migrations.rb" # Auto generated file
-    - "db/schema.rb" # Auto generated file
-    - "node_modules/**/*" # External libraries
-    - "vendor/bundle/**/*" # External libraries
+    - 'config/initializers/simple_form.rb' # Auto generated file
+    - 'db/migrate/*_squash_migrations.rb' # Auto generated file
+    - 'db/schema.rb' # Auto generated file
+    - 'node_modules/**/*' # External libraries
+    - 'vendor/bundle/**/*' # External libraries
 
 Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
   Enabled: false
 
 Metrics/BlockLength:
   Exclude:
-    - "config/**/*" # OK for config files to have large blocks
-    - "spec/**/*" # OK for specs to have large blocks
+    - 'config/**/*' # OK for config files to have large blocks
+    - 'spec/**/*' # OK for specs to have large blocks
 
 Metrics/LineLength:
   Max: 100 # Default is 80 which is a bit narrow
@@ -24,19 +24,19 @@ Rails: # Enabled added Rails checks
 
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
-    - "spec/requests/**/*"
-    - "spec/tasks/**/*"
+    - 'spec/requests/**/*'
+    - 'spec/tasks/**/*'
 
 RSpec/ExampleLength:
   Exclude:
-    - "spec/features/**/*" # OK for long features
+    - 'spec/features/**/*' # OK for long features
 
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive
 
 RSpec/MultipleExpectations:
   Exclude:
-    - "spec/features/**/*" # OK for multiple expectations in features
+    - 'spec/features/**/*' # OK for multiple expectations in features
 
 Style/Documentation: # Not a public library so not needed
   Enabled: false

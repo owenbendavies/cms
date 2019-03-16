@@ -12,19 +12,15 @@ import {
 export const PageList = props => (
   <List {...props}>
     <Responsive
-      small={(
-        <SimpleList
-          primaryText={record => record.name}
-        />
-      )}
-      medium={(
+      small={<SimpleList primaryText={record => record.name} />}
+      medium={
         <Datagrid>
           <TextField source="name" sortable={false} />
           <BooleanField source="private" sortable={false} />
           <BooleanField source="hidden" sortable={false} />
           <BooleanField source="contactForm" sortable={false} />
         </Datagrid>
-      )}
+      }
     />
   </List>
 );

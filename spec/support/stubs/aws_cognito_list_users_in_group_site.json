@@ -1,43 +1,43 @@
 {
-    "next_token": null,
-    "users": [
+  "next_token": null,
+  "users": [
+    {
+      "attributes": [
         {
-            "attributes": [
-                {
-                    "name": "sub",
-                    "value": "cfa727a2-489e-4a97-b0de-0e380bd66d7d"
-                },
-                {
-                    "name": "email_verified",
-                    "value": "true"
-                },
-                {
-                    "name": "email",
-                    "value": "siteuser@example.com"
-                }
-            ],
-            "enabled": true,
-            "user_status": "FORCE_CHANGE_PASSWORD",
-            "username": "cfa727a2-489e-4a97-b0de-0e380bd66d7d"
+          "name": "sub",
+          "value": "cfa727a2-489e-4a97-b0de-0e380bd66d7d"
         },
         {
-            "attributes": [
-                {
-                    "name": "sub",
-                    "value": "940eea78-597d-46ba-9762-294200de6261"
-                },
-                {
-                    "name": "email_verified",
-                    "value": "true"
-                },
-                {
-                    "name": "email",
-                    "value": "another@example.com"
-                }
-            ],
-            "enabled": true,
-            "user_status": "FORCE_CHANGE_PASSWORD",
-            "username": "940eea78-597d-46ba-9762-294200de6261"
+          "name": "email_verified",
+          "value": "true"
+        },
+        {
+          "name": "email",
+          "value": "siteuser@example.com"
         }
-    ]
+      ],
+      "enabled": true,
+      "user_status": "FORCE_CHANGE_PASSWORD",
+      "username": "cfa727a2-489e-4a97-b0de-0e380bd66d7d"
+    },
+    {
+      "attributes": [
+        {
+          "name": "sub",
+          "value": "940eea78-597d-46ba-9762-294200de6261"
+        },
+        {
+          "name": "email_verified",
+          "value": "true"
+        },
+        {
+          "name": "email",
+          "value": "another@example.com"
+        }
+      ],
+      "enabled": true,
+      "user_status": "FORCE_CHANGE_PASSWORD",
+      "username": "940eea78-597d-46ba-9762-294200de6261"
+    }
+  ]
 }

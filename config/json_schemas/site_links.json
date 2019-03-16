@@ -1,17 +1,13 @@
 {
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "name": { "type": "string" },
-            "url": { "type": "string" },
-            "icon": { "type": ["string", "null"] }
-        },
-        "additionalProperties": false,
-        "required": [
-            "name",
-            "url",
-            "icon"
-        ]
-    }
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": { "type": "string" },
+      "url": { "type": "string" },
+      "icon": { "type": ["string", "null"] }
+    },
+    "additionalProperties": false,
+    "required": ["name", "url", "icon"]
+  }
 }

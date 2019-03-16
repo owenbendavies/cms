@@ -15,8 +15,8 @@ terraform_defaults: &terraform_defaults
     - image: hashicorp/terraform:light
 
   environment:
-    TF_IN_AUTOMATION: "true"
-    TF_INPUT: "false"
+    TF_IN_AUTOMATION: 'true'
+    TF_INPUT: 'false'
 
 terraform_checkout: &terraform_checkout
   checkout:

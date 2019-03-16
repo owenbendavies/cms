@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 const DeleteQuery = gql`
   mutation DeleteMessages($ids: [ID!]!) {
-    deleteMessages(input: {messageIds: $ids}) {
+    deleteMessages(input: { messageIds: $ids }) {
       messages {
         id
       }
@@ -89,10 +89,15 @@ const buildGetOneQuery = params => ({
 
 export const buildMessageQuery = (fetchType, params) => {
   switch (fetchType) {
-    case 'DELETE': return buildDeleteQuery(params);
-    case 'DELETE_MANY': return buildDeleteManyQuery(params);
-    case 'GET_LIST': return buildGetListQuery(params);
-    case 'GET_ONE': return buildGetOneQuery(params);
-    default: throw new Error(`Unkown fetchType ${fetchType}`);
+    case 'DELETE':
+      return buildDeleteQuery(params);
+    case 'DELETE_MANY':
+      return buildDeleteManyQuery(params);
+    case 'GET_LIST':
+      return buildGetListQuery(params);
+    case 'GET_ONE':
+      return buildGetOneQuery(params);
+    default:
+      throw new Error(`Unkown fetchType ${fetchType}`);
   }
 };
