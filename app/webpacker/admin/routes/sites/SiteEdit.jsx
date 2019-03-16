@@ -10,9 +10,7 @@ import {
   Toolbar,
 } from 'react-admin';
 
-const SiteTitle = ({ record }) => (
-  <span>{`Site ${record.name}`}</span>
-);
+const SiteTitle = ({ record }) => <span>{`Site ${record.name}`}</span>;
 
 const SiteToolbar = props => (
   <Toolbar {...props}>

@@ -13,22 +13,24 @@ import {
 export const MessageList = props => (
   <List sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
     <Responsive
-      small={(
+      small={
         <SimpleList
           primaryText={record => record.name}
           secondaryText={record => record.email}
-          tertiaryText={record => new Date(record.createdAt).toLocaleDateString()}
+          tertiaryText={record =>
+            new Date(record.createdAt).toLocaleDateString()
+          }
           linkType="show"
         />
-      )}
-      medium={(
+      }
+      medium={
         <Datagrid rowClick="show">
           <TextField source="name" />
           <EmailField source="email" />
           <TextField source="phone" />
           <DateField source="createdAt" showTime />
         </Datagrid>
-      )}
+      }
     />
   </List>
 );
