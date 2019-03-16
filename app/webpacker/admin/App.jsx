@@ -24,7 +24,9 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    const csrfToken = document.querySelector('meta[name=csrf-token]').getAttribute('content');
+    const csrfToken = document
+      .querySelector('meta[name=csrf-token]')
+      .getAttribute('content');
 
     const client = new ApolloClient({
       headers: {
@@ -53,11 +55,7 @@ export class App extends React.Component {
           name="messages"
           show={MessageShow}
         />
-        <Resource
-          icon={PageIcon}
-          list={PageList}
-          name="pages"
-        />
+        <Resource icon={PageIcon} list={PageList} name="pages" />
         <Resource
           edit={SiteEdit}
           icon={SiteIcon}

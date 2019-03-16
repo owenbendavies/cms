@@ -95,8 +95,6 @@ group :test do
 
   # Code quality tools
   gem 'i18n-tasks', require: false # Detects missing translations
-  gem 'jsonlint', require: false # JSON code quality
   gem 'license_finder', require: false # Whitelist of dependency licenses
-  gem 'mdl', require: false # Markdown code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
 end

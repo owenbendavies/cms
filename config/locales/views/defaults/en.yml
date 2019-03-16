@@ -5,4 +5,4 @@ en:
     edit: Edit
     send_message: Send Message
   flash:
-    updated: "%{name} successfully updated"
+    updated: '%{name} successfully updated'

@@ -66,10 +66,11 @@ const UpdateQuery = gql`
   }
 `;
 
-const updateVariables = (params) => {
-  const changedData = _.omitBy(params.data, (value, key) => (
-    params.previousData[key] === value
-  ));
+const updateVariables = params => {
+  const changedData = _.omitBy(
+    params.data,
+    (value, key) => params.previousData[key] === value
+  );
 
   return { siteId: params.data.id, ...changedData };
 };
@@ -86,9 +87,13 @@ const buildUpdateQuery = params => ({
 
 export const buildSiteQuery = (fetchType, params) => {
   switch (fetchType) {
-    case 'GET_LIST': return buildGetListQuery(params);
-    case 'GET_ONE': return buildGetOneQuery(params);
-    case 'UPDATE': return buildUpdateQuery(params);
-    default: throw new Error(`Unkown fetchType ${fetchType}`);
+    case 'GET_LIST':
+      return buildGetListQuery(params);
+    case 'GET_ONE':
+      return buildGetOneQuery(params);
+    case 'UPDATE':
+      return buildUpdateQuery(params);
+    default:
+      throw new Error(`Unkown fetchType ${fetchType}`);
   }
 };
