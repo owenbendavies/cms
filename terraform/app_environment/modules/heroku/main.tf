@@ -29,7 +29,7 @@ resource "heroku_app" "app" {
     RAILS_ENV                    = "production"
     RAILS_LOG_TO_STDOUT          = "enabled"
     RAILS_SERVE_STATIC_FILES     = "enabled"
-    SEED_SITE_EMAIL              = "${var.email}"
+    SEED_SITE_EMAIL              = "${var.from_email}"
   }
 }
 
