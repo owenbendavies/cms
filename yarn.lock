@@ -7552,10 +7552,10 @@ ra-language-english@^2.7.0:
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-2.7.0.tgz#84de3d67db84cccb1745257551e2f9a9a9470f13"
   integrity sha512-Q57ZfuXqDbESu1Iln7P61Q4mEemFWElCqxmclfJHpLNOr+Dx1gqlrHiGgzmJazGeCrCS1X6shoKI601T5Wt7sw==
 
-ra-ui-materialui@^2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.8.1.tgz#d6c89dadd2907ea9bc3adff56370287965550c78"
-  integrity sha512-zxvLSTleYZMZiDXcuBgbsvk5Tq3oVCGGJ7VSO9+Lfw1Hydce11Vf9bGrFVvmPnEt3hXA3wLNDsvMSeJBMf6aXg==
+ra-ui-materialui@^2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.8.2.tgz#913bec218190f717eb3256c6f549d8cca437960d"
+  integrity sha512-UNf7O1E0TwBVj+Koeq7XZOgnhGxDNSYLnGHKDcYcZCrR82Pf41dF1iY6eM33qFv9eG8DhC1BLX7PfaFF7Fc3Xg==
   dependencies:
     "@material-ui/core" "^1.4.0"
     "@material-ui/icons" "^1.0.0"
@@ -7629,14 +7629,14 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-admin@^2.8.1:
-  version "2.8.1"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.8.1.tgz#15f28a4c0f51c0e134c3da78bf264e3379dc94f0"
-  integrity sha512-ruq7equQRXADFj5dE/odQWj3In/O9lZ933wYkZ5Ov95okapwOwT7BbGreU9aX5F7CINgE9Q19dRLPvMmDPFupg==
+react-admin@^2.8.2:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.8.2.tgz#76491eb15a8b65775c28582dc83f778f515e6e52"
+  integrity sha512-dXwDo3EhY2ak/1ZJy47lfssGgBI83f7v1RPGUpD/J2E7mEfxAvCpWS4iHuAEk5JX8MUmTJiUKqgnCCNFP0JFoA==
   dependencies:
     ra-core "^2.8.0"
     ra-language-english "^2.7.0"
-    ra-ui-materialui "^2.8.1"
+    ra-ui-materialui "^2.8.2"
 
 react-apollo@^2.5.2:
   version "2.5.2"
