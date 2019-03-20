@@ -41,8 +41,24 @@ module "aws_s3" {
 }
 
 module "aws_ses" {
-  source  = "./modules/aws_ses"
+  source = "./modules/aws_ses"
+
   domains = "${var.root_domains}"
+}
+
+module "cloudflare" {
+  source = "./modules/cloudflare"
+
+  aws_region              = "${local.aws_region}"
+  dmarc_record            = "${var.dmarc_record}"
+  gsuite_domainkeys       = "${var.gsuite_domainkeys}"
+  gsuite_domains          = "${var.gsuite_domains}"
+  heroku_domain           = "${module.heroku.domain}"
+  mailchip_domains        = "${var.mailchip_domains}"
+  root_domains            = "${var.root_domains}"
+  ses_dkim_tokens         = "${module.aws_ses.dkim_tokens}"
+  ses_mail_from_domains   = "${module.aws_ses.mail_from_domains}"
+  ses_verification_tokens = "${module.aws_ses.verification_tokens}"
 }
 
 module "heroku" {

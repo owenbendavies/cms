@@ -3,6 +3,10 @@ provider "aws" {
   region  = "eu-west-1"
 }
 
+provider "cloudflare" {
+  version = "1.12"
+}
+
 provider "heroku" {
   version = "1.7.4"
 }
