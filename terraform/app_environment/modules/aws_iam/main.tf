@@ -1,9 +1,9 @@
-resource "aws_iam_user" "app" {
-  name = "${var.app_name}"
-}
-
 resource "aws_iam_access_key" "app" {
   user = "${aws_iam_user.app.name}"
+}
+
+resource "aws_iam_user" "app" {
+  name = "${var.app_name}"
 }
 
 resource "aws_iam_user_policy" "app_cognito" {
