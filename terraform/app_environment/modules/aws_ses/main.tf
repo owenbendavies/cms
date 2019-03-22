@@ -1,15 +1,15 @@
-resource "aws_ses_domain_identity" "app" {
+resource "aws_ses_domain_dkim" "app" {
   count  = "${length(var.domains)}"
-  domain = "${element(var.domains, count.index)}"
+  domain = "${element(aws_ses_domain_identity.app.*.domain, count.index)}"
 
   lifecycle = {
     prevent_destroy = true
   }
 }
 
-resource "aws_ses_domain_dkim" "app" {
+resource "aws_ses_domain_identity" "app" {
   count  = "${length(var.domains)}"
-  domain = "${element(aws_ses_domain_identity.app.*.domain, count.index)}"
+  domain = "${element(var.domains, count.index)}"
 
   lifecycle = {
     prevent_destroy = true
