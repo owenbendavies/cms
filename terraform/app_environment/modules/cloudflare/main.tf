@@ -102,3 +102,13 @@ resource "cloudflare_record" "spf" {
   type   = "TXT"
   value  = "v=spf1 ${contains(var.gsuite_domains, element(var.root_domains, count.index)) ? "include:_spf.google.com ": ""}${contains(var.mailchip_domains, element(var.root_domains, count.index)) ? "include:servers.mcsv.net ": ""}~all"
 }
+
+resource "cloudflare_zone_settings_override" "main" {
+  count = "${length(var.root_domains)}"
+  name  = "${element(var.root_domains, count.index)}"
+
+  settings = {
+    always_use_https = true
+    ssl              = "full"
+  }
+}
