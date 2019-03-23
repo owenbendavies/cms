@@ -1,8 +1,6 @@
-variable "aws_account_id" {}
+variable "aws_region" {}
 variable "dmarc_record" {}
-
-variable "from_email" {}
-variable "org_name" {}
+variable "heroku_domain" {}
 
 variable "gsuite_domainkeys" {
   type = "list"
@@ -17,5 +15,17 @@ variable "mailchip_domains" {
 }
 
 variable "root_domains" {
+  type = "list"
+}
+
+variable "ses_dkim_tokens" {
+  type = "list"
+}
+
+variable "ses_mail_from_domains" {
+  type = "list"
+}
+
+variable "ses_verification_tokens" {
   type = "list"
 }
