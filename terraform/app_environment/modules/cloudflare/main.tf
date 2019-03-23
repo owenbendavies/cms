@@ -108,8 +108,10 @@ resource "cloudflare_zone_settings_override" "main" {
   name  = "${var.root_domains[count.index]}"
 
   settings = {
-    always_use_https = "on"
-    ssl              = "full"
+    always_use_https    = "on"
+    cache_level         = "simplified"
+    server_side_exclude = "off"
+    ssl                 = "full"
 
     security_header = {
       enabled            = true
