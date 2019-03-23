@@ -110,5 +110,13 @@ resource "cloudflare_zone_settings_override" "main" {
   settings = {
     always_use_https = "on"
     ssl              = "full"
+
+    security_header = {
+      enabled            = true
+      include_subdomains = true
+      max_age            = 31536000
+      nosniff            = true
+      preload            = true
+    }
   }
 }
