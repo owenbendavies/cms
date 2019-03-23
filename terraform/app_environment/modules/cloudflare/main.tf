@@ -1,19 +1,19 @@
 resource "cloudflare_page_rule" "root_redirect" {
   count  = "${length(var.root_domains)}"
-  target = "${element(var.root_domains, count.index)}/*"
-  zone   = "${element(var.root_domains, count.index)}"
+  target = "${var.root_domains[count.index]}/*"
+  zone   = "${var.root_domains[count.index]}"
 
   actions = {
     forwarding_url = {
       status_code = "301"
-      url         = "https://www.${element(var.root_domains, count.index)}/$1"
+      url         = "https://www.${var.root_domains[count.index]}/$1"
     }
   }
 }
 
 resource "cloudflare_record" "dmarc" {
   count  = "${length(var.root_domains)}"
-  domain = "${element(var.root_domains, count.index)}"
+  domain = "${var.root_domains[count.index]}"
   name   = "_dmarc"
   type   = "TXT"
   value  = "${var.dmarc_record}"
@@ -54,8 +54,8 @@ resource "cloudflare_record" "ses_domainkey" {
 
 resource "cloudflare_record" "ses_mail_from_mx" {
   count    = "${length(var.root_domains)}"
-  domain   = "${element(var.root_domains, count.index)}"
-  name     = "${element(var.ses_mail_from_domains, count.index)}"
+  domain   = "${var.root_domains[count.index]}"
+  name     = "${var.ses_mail_from_domains[count.index]}"
   priority = 10
   type     = "MX"
   value    = "feedback-smtp.${var.aws_region}.amazonses.com"
@@ -63,24 +63,24 @@ resource "cloudflare_record" "ses_mail_from_mx" {
 
 resource "cloudflare_record" "ses_mail_from_spf" {
   count  = "${length(var.root_domains)}"
-  domain = "${element(var.root_domains, count.index)}"
-  name   = "${element(var.ses_mail_from_domains, count.index)}"
+  domain = "${var.root_domains[count.index]}"
+  name   = "${var.ses_mail_from_domains[count.index]}"
   type   = "TXT"
   value  = "v=spf1 include:amazonses.com ~all"
 }
 
 resource "cloudflare_record" "ses_verification_token" {
   count  = "${length(var.root_domains)}"
-  domain = "${element(var.root_domains, count.index)}"
+  domain = "${var.root_domains[count.index]}"
   name   = "_amazonses"
   type   = "TXT"
-  value  = "${element(var.ses_verification_tokens, count.index)}"
+  value  = "${var.ses_verification_tokens[count.index]}"
 }
 
 resource "cloudflare_record" "site_root" {
   count   = "${length(var.root_domains)}"
-  domain  = "${element(var.root_domains, count.index)}"
-  name    = "${element(var.root_domains, count.index)}"
+  domain  = "${var.root_domains[count.index]}"
+  name    = "${var.root_domains[count.index]}"
   proxied = true
   type    = "CNAME"
   value   = "${var.heroku_domain}"
@@ -88,7 +88,7 @@ resource "cloudflare_record" "site_root" {
 
 resource "cloudflare_record" "site_www" {
   count   = "${length(var.root_domains)}"
-  domain  = "${element(var.root_domains, count.index)}"
+  domain  = "${var.root_domains[count.index]}"
   name    = "www"
   proxied = true
   type    = "CNAME"
@@ -97,15 +97,15 @@ resource "cloudflare_record" "site_www" {
 
 resource "cloudflare_record" "spf" {
   count  = "${length(var.root_domains)}"
-  domain = "${element(var.root_domains, count.index)}"
-  name   = "${element(var.root_domains, count.index)}"
+  domain = "${var.root_domains[count.index]}"
+  name   = "${var.root_domains[count.index]}"
   type   = "TXT"
-  value  = "v=spf1 ${contains(var.gsuite_domains, element(var.root_domains, count.index)) ? "include:_spf.google.com ": ""}${contains(var.mailchip_domains, element(var.root_domains, count.index)) ? "include:servers.mcsv.net ": ""}~all"
+  value  = "v=spf1 ${contains(var.gsuite_domains, var.root_domains[count.index]) ? "include:_spf.google.com ": ""}${contains(var.mailchip_domains, var.root_domains[count.index]) ? "include:servers.mcsv.net ": ""}~all"
 }
 
 resource "cloudflare_zone_settings_override" "main" {
   count = "${length(var.root_domains)}"
-  name  = "${element(var.root_domains, count.index)}"
+  name  = "${var.root_domains[count.index]}"
 
   settings = {
     always_use_https = "on"
