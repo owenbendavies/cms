@@ -25,6 +25,6 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   InvisibleCaptcha.setup do |config|
-    config.timestamp_threshold = 2
+    config.timestamp_threshold = 3
   end
 end
