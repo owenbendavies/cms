@@ -1,54 +1,63 @@
-version: 2
+version: 2.1
 
-check_for_git_changes: &check_for_git_changes
-  run:
-    name: Check for git changes
-    command: |
-      if [[ $(git status --porcelain) != '' ]]
-      then
-        git status
-        exit 1
-      fi
+commands:
+  check_for_git_changes:
+    steps:
+      - run:
+          name: Check for git changes
+          command: |
+            if [[ $(git status --porcelain) != '' ]]
+            then
+              git status
+              exit 1
+            fi
 
-terraform_defaults: &terraform_defaults
-  docker:
-    - image: hashicorp/terraform:light
+  terraform_plan:
+    steps:
+      - checkout:
+          path: ~/project
 
-  environment:
-    TF_IN_AUTOMATION: 'true'
-    TF_INPUT: 'false'
+      - run:
+          command: terraform init
 
-terraform_checkout: &terraform_checkout
-  checkout:
-    path: ~/project
+      - run:
+          command: terraform fmt -check=true
 
-terraform_init: &terraform_init
-  run:
-    command: terraform init
+      - run:
+          command: terraform plan -lock=false
 
-terraform_plan: &terraform_plan
-  steps:
-    - *terraform_checkout
-    - *terraform_init
-    - run:
-        command: terraform fmt -check=true
-    - run:
-        command: terraform plan -lock=false
-    - *check_for_git_changes
+      - check_for_git_changes
 
-terraform_deploy: &terraform_deploy
-  steps:
-    - *terraform_checkout
-    - *terraform_init
-    - run:
-        command: terraform apply -auto-approve
-    - *check_for_git_changes
+  terraform_deploy:
+    steps:
+      - checkout:
+          path: ~/project
 
-jobs:
-  test_ruby:
+      - run:
+          command: terraform init
+
+      - run:
+          command: terraform apply -auto-approve
+
+      - check_for_git_changes
+
+executors:
+  rails:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
       - image: circleci/postgres:10-alpine-ram
+
+  terraform:
+    docker:
+      - image: hashicorp/terraform:light
+
+    environment:
+      TF_IN_AUTOMATION: 'true'
+      TF_INPUT: 'false'
+
+jobs:
+  test_ruby:
+    executor: rails
 
     steps:
       - checkout
@@ -103,7 +112,7 @@ jobs:
       - run:
           command: ./bin/quality
 
-      - *check_for_git_changes
+      - check_for_git_changes
 
       - store_test_results:
           path: tmp/test_results
@@ -113,34 +122,40 @@ jobs:
           destination: coverage
 
   plan_staging:
-    <<: *terraform_defaults
-    <<: *terraform_plan
+    executor: terraform
     working_directory: ~/project/terraform/app_environment
+    steps:
+      - terraform_plan
 
   plan_production:
-    <<: *terraform_defaults
-    <<: *terraform_plan
+    executor: terraform
     working_directory: ~/project/terraform/app_environment
+    steps:
+      - terraform_plan
 
   plan_global:
-    <<: *terraform_defaults
-    <<: *terraform_plan
+    executor: terraform
     working_directory: ~/project/terraform/app_global
+    steps:
+      - terraform_plan
 
   deploy_staging:
-    <<: *terraform_defaults
-    <<: *terraform_deploy
+    executor: terraform
     working_directory: ~/project/terraform/app_environment
+    steps:
+      - terraform_deploy
 
   deploy_production:
-    <<: *terraform_defaults
-    <<: *terraform_deploy
+    executor: terraform
     working_directory: ~/project/terraform/app_environment
+    steps:
+      - terraform_deploy
 
   deploy_global:
-    <<: *terraform_defaults
-    <<: *terraform_deploy
+    executor: terraform
     working_directory: ~/project/terraform/app_global
+    steps:
+      - terraform_deploy
 
 only_master: &only_master
   filters:
