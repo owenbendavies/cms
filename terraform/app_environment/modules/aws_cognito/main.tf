@@ -9,7 +9,7 @@ resource "aws_cognito_user_group" "admin" {
 
 resource "aws_cognito_user_group" "custom_domains" {
   count        = "${length(var.domains)}"
-  name         = "${element(var.domains, count.index)}"
+  name         = "${var.domains[count.index]}"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
 }
 

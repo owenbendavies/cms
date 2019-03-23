@@ -13,11 +13,11 @@ data "aws_iam_policy_document" "s3" {
 
   statement {
     actions = [
+      "s3:DeleteObject",
       "s3:GetObject",
       "s3:GetObjectAcl",
       "s3:PutObject",
       "s3:PutObjectAcl",
-      "s3:DeleteObject",
     ]
 
     resources = ["${var.aws_s3_assets_bucket_arn}/*"]
