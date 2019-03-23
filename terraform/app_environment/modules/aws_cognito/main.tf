@@ -1,10 +1,6 @@
 resource "aws_cognito_user_group" "admin" {
   name         = "admin"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "aws_cognito_user_group" "custom_domains" {
@@ -16,10 +12,6 @@ resource "aws_cognito_user_group" "custom_domains" {
 resource "aws_cognito_user_group" "heroku_domain" {
   name         = "${var.app_name}.herokuapp.com"
   user_pool_id = "${aws_cognito_user_pool.app.id}"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "aws_cognito_user_pool" "app" {
