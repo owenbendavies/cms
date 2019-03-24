@@ -1,3 +1,3 @@
 locals {
-  app_name = "${var.org_name}-cms"
+  app_name = "obduk-cms"
 }
