@@ -1,1 +1,0 @@
-variable "org_name" {}
