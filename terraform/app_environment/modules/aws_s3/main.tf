@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "assets" {
 
   logging {
     target_bucket = "${aws_s3_bucket.logs.id}"
-    target_prefix = "AWSLogs/${var.aws_account_id}/s3/${var.app_name}/"
+    target_prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/s3/${var.app_name}/"
   }
 
   server_side_encryption_configuration {
