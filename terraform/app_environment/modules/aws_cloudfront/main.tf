@@ -25,7 +25,7 @@ resource "aws_cloudfront_distribution" "assets" {
 
   logging_config {
     bucket = "${var.logs_domain}"
-    prefix = "AWSLogs/${var.aws_account_id}/cloudfront/${var.app_name}/"
+    prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/cloudfront/${var.app_name}/"
   }
 
   origin {

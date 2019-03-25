@@ -11,10 +11,9 @@ terraform {
 module "aws_cloudfront" {
   source = "./modules/aws_cloudfront"
 
-  app_name       = "${local.app_name}"
-  assets_domain  = "${module.aws_s3.assets_domain}"
-  aws_account_id = "${var.aws_account_id}"
-  logs_domain    = "${module.aws_s3.logs_domain}"
+  app_name      = "${local.app_name}"
+  assets_domain = "${module.aws_s3.assets_domain}"
+  logs_domain   = "${module.aws_s3.logs_domain}"
 }
 
 module "aws_cognito" {
@@ -36,7 +35,6 @@ module "aws_s3" {
   source = "./modules/aws_s3"
 
   app_name               = "${local.app_name}"
-  aws_account_id         = "${var.aws_account_id}"
   aws_cloudfront_iam_arn = "${module.aws_cloudfront.iam_arn}"
 }
 
