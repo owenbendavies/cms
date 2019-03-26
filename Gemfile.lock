@@ -71,7 +71,7 @@ GEM
       aws-eventstream (~> 1.0, >= 1.0.2)
     backport (0.3.0)
     bindex (0.5.0)
-    bootsnap (1.4.1)
+    bootsnap (1.4.2)
       msgpack (~> 1.0)
     builder (3.2.3)
     bullet (5.9.0)
