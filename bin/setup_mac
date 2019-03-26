@@ -30,16 +30,20 @@ brew tap \
   homebrew/services
 
 brew install \
+  awscli \
   circleci \
   heroku \
   imagemagick \
   postgresql \
   rbenv \
+  shfmt \
   terraform
 
 brew install --ignore-dependencies yarn
 
-brew cask install chromedriver
+brew cask install \
+  chromedriver \
+  google-cloud-sdk
 
 brew cleanup
 
