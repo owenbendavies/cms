@@ -1,3 +1,4 @@
+---
 include:
   - '**/*.rb'
 exclude:
@@ -9,17 +10,11 @@ exclude:
   - tmp/**/*
   - vendor/**/*
 require:
-  - activemodel
-  - activejob
-  - activerecord
-  - actionmailer
-  - actionview
-  - actionpack
-  - activesupport
+  - rails
 domains: []
 reporters:
   - rubocop
-  - require_not_found
-plugins: []
+plugins:
+  - runtime
 require_paths: []
 max_files: 5000
