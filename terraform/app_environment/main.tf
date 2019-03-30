@@ -59,6 +59,13 @@ module "cloudflare" {
   ses_verification_tokens = "${module.aws_ses.verification_tokens}"
 }
 
+module "google_monitoring" {
+  source = "./modules/google_monitoring"
+
+  domains            = "${local.www_domains}"
+  notification_email = "${local.notification_email}"
+}
+
 module "heroku" {
   source = "./modules/heroku"
 
