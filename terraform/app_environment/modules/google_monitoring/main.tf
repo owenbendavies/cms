@@ -24,6 +24,14 @@ resource "google_monitoring_uptime_check_config" "main" {
   period       = "60s"
   timeout      = "10s"
 
+  monitored_resource {
+    type = "uptime_url"
+
+    labels = {
+      host = "${var.domains[count.index]}"
+    }
+  }
+
   http_check {
     path    = "/home"
     use_ssl = true
