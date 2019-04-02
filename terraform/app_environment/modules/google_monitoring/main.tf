@@ -1,14 +1,3 @@
-resource "google_monitoring_alert_policy" "main" {
-  combiner              = "AND"
-  count                 = "${length(var.domains)}"
-  display_name          = "${var.domains[count.index]}"
-  notification_channels = ["${google_monitoring_notification_channel.main.name}"]
-
-  conditions {
-    display_name = "${var.domains[count.index]}"
-  }
-}
-
 resource "google_monitoring_notification_channel" "main" {
   display_name = "${var.notification_email}"
   type         = "email"
@@ -33,7 +22,7 @@ resource "google_monitoring_uptime_check_config" "main" {
   }
 
   http_check {
-    path    = "/home"
+    path    = "/home?monitoring=skip"
     use_ssl = true
   }
 }
