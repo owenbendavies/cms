@@ -17,7 +17,8 @@ resource "google_monitoring_uptime_check_config" "main" {
     type = "uptime_url"
 
     labels = {
-      host = "${var.domains[count.index]}"
+      host       = "${var.domains[count.index]}"
+      project_id = "${data.google_project.main.project_id}"
     }
   }
 
