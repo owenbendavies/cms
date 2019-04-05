@@ -1,4 +1,7 @@
-require: rubocop-rspec # Enable added RSpec checks
+require:
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-thread_safety
 
 AllCops:
   Exclude:
