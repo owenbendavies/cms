@@ -76,7 +76,6 @@ resource "heroku_app" "app" {
     AWS_S3_ASSET_HOST            = "https://${var.aws_cloudfront_domain}"
     AWS_S3_BUCKET                = "${var.aws_s3_assets_bucket_name}"
     AWS_SECRET_ACCESS_KEY        = "${var.aws_secret_access_key}"
-    HEROKU_APP_NAME              = "${var.app_name}"
     LANG                         = "en_GB.UTF-8"
     RACK_ENV                     = "production"
     RACK_TIMEOUT_SERVICE_TIMEOUT = "2"
@@ -90,6 +89,11 @@ resource "heroku_app" "app" {
 resource "heroku_app_feature" "app_log_runtime_metrics" {
   app  = "${heroku_app.app.name}"
   name = "log-runtime-metrics"
+}
+
+resource "heroku_app_feature" "api_runtime_dyno_metadata" {
+  app  = "${heroku_app.app.name}"
+  name = "runtime-dyno-metadata"
 }
 
 resource "heroku_domain" "app" {
