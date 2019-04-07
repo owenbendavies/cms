@@ -41,7 +41,7 @@ class Site < ApplicationRecord
 
   validates(
     :google_analytics,
-    format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_blank: true },
+    format: { with: /\AUA-[0-9]+-[0-9]{1,2}\z/, allow_nil: true },
     length: { allow_nil: true, maximum: 32 }
   )
 
