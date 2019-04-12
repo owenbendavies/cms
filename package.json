@@ -50,7 +50,7 @@
     "prettier": "^1.16.4",
     "stylelint": "^9.10.1",
     "stylelint-config-prettier": "^5.0.0",
-    "stylelint-config-sass-guidelines": "^5.3.0",
+    "stylelint-config-sass-guidelines": "^5.4.0",
     "webpack-dev-server": "^3.3.1"
   }
 }
