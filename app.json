@@ -7,57 +7,26 @@
       "url": "heroku/ruby"
     }
   ],
-  "description": "A Content Management System (CMS) written with Ruby on Rails",
   "env": {
-    "AWS_ACCESS_KEY_ID": {
-      "description": "The Amazon Web Services IAM user key"
-    },
-    "AWS_COGNITO_CLIENT_ID": {
-      "description": "The Amazon Web Services Cognito client ID"
-    },
-    "AWS_COGNITO_CLIENT_SECRET": {
-      "description": "The Amazon Web Services Cognito client secret"
-    },
-    "AWS_COGNITO_DOMAIN": {
-      "description": "The Amazon Web Services Cognito domain"
-    },
-    "AWS_COGNITO_USER_POOL_ID": {
-      "description": "The Amazon Web Services Cognito user pool ID"
-    },
-    "AWS_REGION": {
-      "description": "The Amazon Web Services region"
-    },
-    "AWS_S3_ASSET_HOST": {
-      "description": "The Cloudfront URL for the S3 bucket"
-    },
-    "AWS_S3_BUCKET": {
-      "description": "The Amazon Web Services S3 bucket name"
-    },
-    "AWS_SECRET_ACCESS_KEY": {
-      "description": "The Amazon Web Services IAM user secret"
-    },
-    "DATABASE_URL": {
-      "description": "URL for the database",
-      "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "Set to same as the Heroku App name (set automatically for review apps)"
-    },
-    "RACK_TIMEOUT_SERVICE_TIMEOUT": {
-      "description": "Number of seconds a page is allowed to run",
-      "value": "2"
-    },
-    "SECRET_KEY_BASE": {
-      "description": "A randomly generated secret to verify sessions",
-      "generator": "secret"
-    },
-    "SEED_SITE_EMAIL": {
-      "description": "The default email from address for sites"
-    },
-    "SEED_SITE_HOST": {
-      "description": "The host for the first site (defaults to HEROKU_APP_NAME.herokuapp.com)",
-      "required": false
-    }
+    "AWS_ACCESS_KEY_ID": {},
+    "AWS_COGNITO_CLIENT_ID": {},
+    "AWS_COGNITO_CLIENT_SECRET": {},
+    "AWS_COGNITO_DOMAIN": {},
+    "AWS_COGNITO_USER_POOL_ID": {},
+    "AWS_REGION": {},
+    "AWS_S3_ASSET_HOST": {},
+    "AWS_S3_BUCKET": {},
+    "AWS_SECRET_ACCESS_KEY": {},
+    "DATABASE_URL": {},
+    "HEROKU_APP_NAME": {},
+    "LANG": {},
+    "RACK_ENV": {},
+    "RACK_TIMEOUT_SERVICE_TIMEOUT": {},
+    "RAILS_ENV": {},
+    "RAILS_LOG_TO_STDOUT": {},
+    "RAILS_SERVE_STATIC_FILES": {},
+    "SECRET_KEY_BASE": {},
+    "SEED_SITE_EMAIL": {}
   },
   "formation": {
     "web": {
@@ -67,7 +36,5 @@
       "quantity": 1
     }
   },
-  "name": "obduk C.M.S.",
-  "repository": "https://github.com/obduk/cms",
   "stack": "heroku-18"
 }
