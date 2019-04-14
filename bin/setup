@@ -4,20 +4,32 @@ set -e
 cd $(dirname $0)/..
 
 if [ "$(uname)" == "Darwin" ]; then
-  ./bin/setup_mac
+  export NVM_DIR="$HOME/.nvm"
+
+  if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  fi
+
   . "$NVM_DIR/nvm.sh"
-  nvm use
+  nvm install
+
+  ./bin/setup_mac
 fi
 
 set -v
 
 gem install bundler --version '< 2'
+
 bundle config --local path vendor/bundle
+
 bundle check || bundle install --jobs=3 --retry=3
+
 bundle clean
+
 ./bin/yarn
 
 DATABASE_TIMEOUT=5 bin/rails db:create db:migrate db:seed
+
 RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create
 
 bin/rails log:clear tmp:clear
