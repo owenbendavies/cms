@@ -4838,7 +4838,12 @@ iterall@^1.2.2:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
   integrity sha512-yynBb1g+RFUPY64fTrFv7nsjRrENBQJaX2UL+2Szc9REFrSNm1rpSXHGzhmAy7a9uv3vlvgBlXnf9RqmPH1/DA==
 
-jquery@>=1.2.3, jquery@^3.4.0:
+"jquery@>=1.2.3 <3.4":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
+
+jquery@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf"
   integrity sha512-ggRCXln9zEqv6OqAGXFEcshF5dSBvCkzj6Gm2gzuR5fWawaX8t7cxKVkkygKODrDAzKdoYw3l/e3pm3vlT4IbQ==
@@ -9015,12 +9020,12 @@ thunky@^1.0.2:
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.2.tgz#a862e018e3fb1ea2ec3fce5d55605cf57f247371"
   integrity sha1-qGLgGOP7HqLsP85dVWBc9X8kc3E=
 
-timeago@^1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/timeago/-/timeago-1.6.5.tgz#557b7159789eef332a72bdaaa7cac1515fe527ae"
-  integrity sha512-6XCWVteUxczNBk4nQEcbdhBd6xvj7oS9QkZjUp1r3uyZNF4EZzYF2HMmFLucvT+IVyMVoeRf93UmiFQPzJE5cQ==
+timeago@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/timeago/-/timeago-1.6.6.tgz#51e10e0a0dc7bb3e706f9270a42e2777930ad08c"
+  integrity sha512-NB7PYrkhv+wUCb1C/LMaJGOtE2/bhcz1eI76J1pHR0Xa8Tr3xBnAPnIk0R6GyxxNY4bVItILFH/U1x6QpnaM6Q==
   dependencies:
-    jquery ">=1.2.3"
+    jquery ">=1.2.3 <3.4"
 
 timers-browserify@^2.0.4:
   version "2.0.10"
