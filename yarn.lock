@@ -4103,7 +4103,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^2.3.0, hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0, hoist-non-react-statics@^2.5.4:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0, hoist-non-react-statics@^2.5.4:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
   integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
@@ -7235,7 +7235,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -7365,10 +7365,10 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
-ra-core@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-2.8.5.tgz#631f113bc4cb7da81cbf5614b080905bd3521488"
-  integrity sha512-ft2KUUzI3ZyPEp3OrPiAcsCBiWiLSYbgwIE7rLZ9ahpw4BbSVPvwdBFz/BjOiWIjEjDxr4LRLU/CsDbakbnw0A==
+ra-core@^2.8.6:
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-2.8.6.tgz#77bdc480446a2575f44bc5ec85294e412fa98c79"
+  integrity sha512-rRfZJvs2o21wrBN+KvSpaJE7QL1JPZwXdnPUbpcJss5xr0QxsX42I42QgYNL/KVLFnauJrL1PtBEk6xxR0YkwA==
   dependencies:
     classnames "~2.2.5"
     date-fns "^1.29.0"
@@ -7379,8 +7379,8 @@ ra-core@^2.8.5:
     query-string "~5.1.1"
     ra-language-english "^2.8.5"
     react-redux "~5.0.7"
-    react-router "~4.2.0"
-    react-router-dom "~4.2.2"
+    react-router "^4.2.0"
+    react-router-dom "^4.2.0"
     react-router-redux "~5.0.0-alpha.9"
     recompose "~0.26.0"
     redux "~3.7.2"
@@ -7404,10 +7404,10 @@ ra-language-english@^2.8.5:
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-2.8.5.tgz#c8ca2dc8fcfc6c1c2aca2ee1192b55fc2b1365bf"
   integrity sha512-5cuR5PrA4YK+3na+kj3NGN9Li9R08m1vkS8SPMmApTCMLydUFlDcsZxR0VR/Z2oAtm8MhbHXAIKP945KReaSYA==
 
-ra-ui-materialui@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.8.5.tgz#1f877509d4b395693ce722b3f5563ca1e08cfe8d"
-  integrity sha512-EZMNYOIFxMpg+13iaZJaKdstQo67aUAQRNvGZpDl3vEmadlBtctgqmGLY4UO8DD4B3ObPXIR5IM04pHecHRjVA==
+ra-ui-materialui@^2.8.6:
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-2.8.6.tgz#3e4f1da4dc6b56682db0352f59255fdc50f72a13"
+  integrity sha512-4zKZGapcO6JaAku8ClUdHqirObA+GQTH8pbhrv/j3TbwF94kOY4Yhu1DX3cUJRoexGYjV2os8Wp+bw+CczAWaw==
   dependencies:
     "@material-ui/core" "^1.4.0"
     "@material-ui/icons" "^1.0.0"
@@ -7418,13 +7418,13 @@ ra-ui-materialui@^2.8.5:
     material-ui-chip-input "1.0.0-beta.6 - 1.0.0-beta.8"
     papaparse "^4.1.4"
     prop-types "~15.6.1"
-    ra-core "^2.8.5"
+    ra-core "^2.8.6"
     react-autosuggest "^9.4.2"
     react-dropzone "~4.0.1"
     react-headroom "^2.2.4"
     react-redux "~5.0.7"
-    react-router "~4.2.0"
-    react-router-dom "~4.2.2"
+    react-router "^4.2.0"
+    react-router-dom "^4.2.0"
     react-router-redux "~5.0.0-alpha.9"
     react-transition-group "^2.2.1"
     recompose "~0.26.0"
@@ -7483,14 +7483,14 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-admin@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.8.5.tgz#b1a3303b9d5bccaf600277c214359bfe81230878"
-  integrity sha512-OWUhEO1z5ekMjcqRT0Y0gWlRbbZUuzuxLn6cvsRiQDntXWO+IbMj1YvkHfGMdA3+nFFXj87eLIwke8Dgx7qpLA==
+react-admin@^2.8.6:
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-2.8.6.tgz#f4754f1064ae36dffe931c80ee4b9af604598347"
+  integrity sha512-ujvQS7Oefy3hfj3pXs44VLXSzlDJZhAn1gdWBtI06TNVyKmf5j0yr0smXfQtWB4NItvvORbDfCtohvoHV82YPQ==
   dependencies:
-    ra-core "^2.8.5"
+    ra-core "^2.8.6"
     ra-language-english "^2.8.5"
-    ra-ui-materialui "^2.8.5"
+    ra-ui-materialui "^2.8.6"
 
 react-apollo@^2.5.4:
   version "2.5.4"
@@ -7596,17 +7596,17 @@ react-redux@~5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-router-dom@~4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.2.2.tgz#c8a81df3adc58bba8a76782e946cbd4eae649b8d"
-  integrity sha512-cHMFC1ZoLDfEaMFoKTjN7fry/oczMgRt5BKfMAkTu5zEuJvUiPp1J8d0eXSVTnBh6pxlbdqDhozunOOLtmKfPA==
+react-router-dom@^4.2.0:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
+  integrity sha512-c/MlywfxDdCp7EnB7YfPMOfMD3tOtIjrQlj/CKfNMBxdmpJP8xcz5P/UAFn3JbnQCNUxsHyVVqllF9LhgVyFCA==
   dependencies:
     history "^4.7.2"
-    invariant "^2.2.2"
+    invariant "^2.2.4"
     loose-envify "^1.3.1"
-    prop-types "^15.5.4"
-    react-router "^4.2.0"
-    warning "^3.0.0"
+    prop-types "^15.6.1"
+    react-router "^4.3.1"
+    warning "^4.0.1"
 
 react-router-redux@~5.0.0-alpha.9:
   version "5.0.0-alpha.9"
@@ -7617,7 +7617,7 @@ react-router-redux@~5.0.0-alpha.9:
     prop-types "^15.6.0"
     react-router "^4.2.0"
 
-react-router@^4.2.0:
+react-router@^4.2.0, react-router@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
   integrity sha512-yrvL8AogDh2X42Dt9iknk4wF4V8bWREPirFfS9gLU1huk6qK41sg7Z/1S81jjTrGHxa3B8R3J6xIkDAA6CVarg==
@@ -7629,19 +7629,6 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
-
-react-router@~4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"
-  integrity sha512-DY6pjwRhdARE4TDw7XjxjZsbx9lKmIcyZoZ+SDO7SBJ1KUeWNxT22Kara2AC7u6/c2SYEHlEDLnzBCcNhLE8Vg==
-  dependencies:
-    history "^4.7.2"
-    hoist-non-react-statics "^2.3.0"
-    invariant "^2.2.2"
-    loose-envify "^1.3.1"
-    path-to-regexp "^1.7.0"
-    prop-types "^15.5.4"
-    warning "^3.0.0"
 
 react-themeable@^1.1.0:
   version "1.1.0"
