@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
   let(:contact_page) { FactoryBot.create(:page, contact_form: true, site: site) }
+  let(:sleep_rate) { InvisibleCaptcha.timestamp_threshold + 1 }
 
   let(:emails) do
     %w[admin1@example.com admin2@example.com another@example.com siteuser@example.com]
@@ -17,7 +18,7 @@ RSpec.feature 'Page with contact form' do
 
   scenario 'sending a message' do
     perform_enqueued_jobs do
-      sleep 3
+      sleep sleep_rate
       click_button 'Send Message'
 
       expect(page).to have_content 'Thank you for your message'
@@ -44,7 +45,7 @@ RSpec.feature 'Page with contact form' do
 
   scenario 'invalid data' do
     fill_in 'Name', with: 'a'
-    sleep 3
+    sleep sleep_rate
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
@@ -53,7 +54,7 @@ RSpec.feature 'Page with contact form' do
 
   scenario 'filling in honeypot', js: false do
     fill_in 'message_surname', with: new_name
-    sleep 3
+    sleep sleep_rate
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
@@ -71,13 +72,13 @@ RSpec.feature 'Page with contact form' do
 
     scenario 'when agreeing to privacy policy' do
       check privacy_policy_text
-      sleep 3
+      sleep sleep_rate
       click_button 'Send Message'
       expect(page).to have_content 'Thank you for your message'
     end
 
     scenario 'when not agreeing to privacy policy', js: false do
-      sleep 3
+      sleep sleep_rate
       click_button 'Send Message'
 
       expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
