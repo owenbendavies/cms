@@ -10,19 +10,42 @@ function install_brew() {
 }
 
 function brew_install_missing_formulas() {
+  REQUIRED="
+    awscli
+    circleci
+    heroku
+    imagemagick
+    postgresql
+    rbenv
+    shfmt
+    terraform
+    yarn
+  "
+
   INSTALLED=$(brew list)
 
-  for formula in $@; do
+  for formula in $REQUIRED; do
     grep -q $formula <<<$INSTALLED || brew install $formula
   done
 }
 
 function brew_cask_install_missing_formulas() {
+  REQUIRED="
+    chromedriver
+    google-cloud-sdk
+  "
+
   INSTALLED=$(brew cask list)
 
-  for formula in $@; do
+  for formula in $REQUIRED; do
     grep -q $formula <<<$INSTALLED || brew cask install $formula
   done
+}
+
+function add_postgresql_user() {
+  COMMAND="SELECT 1 FROM pg_user WHERE usename = 'postgres'"
+
+  psql postgres --command="$COMMAND" | grep -q 1 || createuser --createdb postgres
 }
 
 set -v
@@ -33,26 +56,11 @@ brew update
 
 brew upgrade
 
-brew tap \
-  heroku/brew \
-  homebrew/cask \
-  homebrew/core \
-  homebrew/services
+brew tap heroku/brew
 
-brew_install_missing_formulas \
-  awscli \
-  circleci \
-  heroku \
-  imagemagick \
-  postgresql \
-  rbenv \
-  shfmt \
-  terraform \
-  yarn
+brew_install_missing_formulas
 
-brew_cask_install_missing_formulas \
-  chromedriver \
-  google-cloud-sdk
+brew_cask_install_missing_formulas
 
 brew cleanup
 
@@ -62,4 +70,4 @@ rbenv install --skip-existing
 
 brew services start postgres
 
-psql postgres --command="SELECT 1 FROM pg_user WHERE usename = 'postgres'" | grep -q 1 || createuser --createdb postgres
+add_postgresql_user
