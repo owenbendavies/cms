@@ -4,6 +4,8 @@ module Types
 
     alias pundit_user context
 
+    add_field(GraphQL::Types::Relay::NodeField)
+
     field :messages, MessageType.connection_type, null: true do
       argument :order_by, MessageOrder, required: true
     end
@@ -11,8 +13,6 @@ module Types
     field :pages, PageType.connection_type, null: false
 
     field :sites, SiteType.connection_type, null: true
-
-    field :node, field: GraphQL::Relay::Node.field
 
     def messages(order_by:)
       policy_scope(Message).order(order_by.field.downcase => order_by.direction)
