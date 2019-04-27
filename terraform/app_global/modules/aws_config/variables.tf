@@ -1,1 +1,0 @@
-variable "app_name" {}
