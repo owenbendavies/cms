@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "iam_role" {
     actions = ["sts:AssumeRole"]
 
     principals {
-      type        = "AWS"
+      type        = "Service"
       identifiers = ["config.amazonaws.com"]
     }
   }
@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "s3_bucket" {
     resources = ["${aws_s3_bucket.main.arn}"]
 
     principals {
-      type        = "AWS"
+      type        = "Service"
       identifiers = ["config.amazonaws.com"]
     }
   }
@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "s3_bucket" {
     resources = ["${aws_s3_bucket.main.arn}/AWSLogs/${data.aws_caller_identity.main.account_id}/*"]
 
     principals {
-      type        = "AWS"
+      type        = "Service"
       identifiers = ["config.amazonaws.com"]
     }
   }
