@@ -8,6 +8,19 @@ terraform {
   }
 }
 
+module "aws_config" {
+  source = "./modules/aws_config"
+
+  app_name                = "${local.app_name}"
+  aws_s3_logs_bucket_name = "${module.aws_s3.logs_bucket_name}"
+}
+
+module "aws_s3" {
+  source = "./modules/aws_s3"
+
+  app_name = "${local.app_name}"
+}
+
 module "heroku_pipeline" {
   source = "./modules/heroku_pipeline"
 
