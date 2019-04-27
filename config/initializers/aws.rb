@@ -1,3 +1,5 @@
+Aws.config[:log_level] = :debug
+
 AWS_CONFIG = { stub_responses: ENV['AWS_STUB'].present? }.freeze
 
 AWS_COGNITO = Aws::CognitoIdentityProvider::Client.new(AWS_CONFIG)
