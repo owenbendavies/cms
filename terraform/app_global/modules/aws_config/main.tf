@@ -18,9 +18,10 @@ resource "aws_config_configuration_recorder_status" "gloabl" {
 }
 
 resource "aws_config_configuration_recorder_status" "region" {
-  name       = "${aws_config_configuration_recorder.region.name}"
-  is_enabled = true
   depends_on = ["aws_config_delivery_channel.region"]
+  is_enabled = true
+  name       = "${aws_config_configuration_recorder.region.name}"
+  provider   = "aws.eu-west-1"
 }
 
 resource "aws_config_delivery_channel" "global" {
