@@ -1,6 +1,6 @@
 provider "aws" {
-  version = "1.57"
   region  = "eu-west-1"
+  version = "1.57"
 }
 
 provider "cloudflare" {
