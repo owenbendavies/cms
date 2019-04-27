@@ -11,6 +11,18 @@ resource "aws_config_configuration_recorder" "region" {
   role_arn = "${aws_iam_role.main.arn}"
 }
 
+resource "aws_config_configuration_recorder_status" "gloabl" {
+  name       = "${aws_config_configuration_recorder.global.name}"
+  is_enabled = true
+  depends_on = ["aws_config_delivery_channel.global"]
+}
+
+resource "aws_config_configuration_recorder_status" "region" {
+  name       = "${aws_config_configuration_recorder.region.name}"
+  is_enabled = true
+  depends_on = ["aws_config_delivery_channel.region"]
+}
+
 resource "aws_config_delivery_channel" "global" {
   depends_on     = ["aws_config_configuration_recorder.global"]
   s3_bucket_name = "${aws_s3_bucket.main.id}"
