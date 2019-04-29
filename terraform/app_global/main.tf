@@ -8,6 +8,13 @@ terraform {
   }
 }
 
+module "aws_cloudtrail" {
+  source = "./modules/aws_cloudtrail"
+
+  app_name                = "${local.app_name}"
+  aws_s3_logs_bucket_name = "${module.aws_s3.logs_bucket_name}"
+}
+
 module "aws_config" {
   source = "./modules/aws_config"
 
