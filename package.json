@@ -48,9 +48,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.17.0",
-    "stylelint": "^9.10.1",
+    "stylelint": "^10.0.1",
     "stylelint-config-prettier": "^5.1.0",
-    "stylelint-config-sass-guidelines": "^5.4.0",
+    "stylelint-config-sass-guidelines": "^6.0.0",
     "webpack-dev-server": "^3.3.1"
   }
 }
