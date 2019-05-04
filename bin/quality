@@ -8,8 +8,6 @@ set -v
 ./bin/i18n-tasks unused
 ./bin/i18n-tasks check-consistent-interpolations
 
-./bin/license_finder
-
 ./bin/rubocop --parallel --format simple
 
 ./bin/yarn prettier --check '"**/*.{css,html,js,json,jsx,md,scss,yaml,yml}"'
