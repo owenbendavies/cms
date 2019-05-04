@@ -17,6 +17,6 @@ testing new ideas.
 1. http://localhost:3000/ to access the site
 1. http://localhost:3000/graphiql to view GraphQL api
 
-
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fobduk%2Fcms.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fobduk%2Fcms?ref=badge_large)
