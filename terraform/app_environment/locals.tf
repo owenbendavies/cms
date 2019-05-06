@@ -10,13 +10,11 @@ locals {
     production = {
       gsuite_domainkeys = [
         "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyV3nvb2VsVawzCX/CEHLzm5ehMv37oKJa9OxSD+/Gii1MnzHkiNeRhXSAGviLmX3XndSDoAYoMTuAYCEhOm15ibO4ZW+iGcevuHAaSvEmlYAGUQwqvuUe78V5q8DzpGJ7oCscMSyTs5z73YVMUH33R+uK5d1Vv+lM0OkTGOLGlQIDAQAB",
-        "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCThOuILOChKSz9CWlBfv1F8jk6TbkKR0KpwLE2KaENK6WXIwNIHU2E78nAkYYD19C5jqSVtKOuZZq7QMuRQIMP1f0RSOH45pftdtnZP/uAqnegva7/RdTX+k6983OaCYArnA0pfD4wPGQS6WigNGKpMdVZKUippCINZumPH+owdQIDAQAB",
         "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC6f+YQCiuUPGgLcr0wAt91SLfZTPmqz7lBkr1aLEAQQ/5IAbq8LfauU+brIhmSVvdnvV581GkDFFUddnkMaEAhIFhDU553gCc0b+agjofv73I/liG9VpxIscsXc2PtlsH14e2byzJLREr8lE9YfyzuSjlrOqoIptzWQ+bokf1wLQIDAQAB",
       ]
 
       gsuite_domains = [
         "docklandssinfonia.co.uk",
-        "kewmusicacademy.co.uk",
         "spencerdown.com",
       ]
 
@@ -26,7 +24,6 @@ locals {
 
       root_domains = [
         "docklandssinfonia.co.uk",
-        "kewmusicacademy.co.uk",
         "spencerdown.com",
       ]
     }
