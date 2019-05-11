@@ -17,6 +17,41 @@ testing new ideas.
 1. http://localhost:3000/ to access the site
 1. http://localhost:3000/graphiql to view GraphQL api
 
+## Deployment
+
+Deplyoment is managed via [CircleCI](.circleci/config.yml) with the following manual steps:
+
+### Heroku Addon PostgreSQL
+
+```
+heroku pg:backups:schedule --at '02:00 UTC' --app obduk-cms-production
+```
+
+### Heroku Addon Rollbar
+
+1. Open Rollbar from Heroku app
+1. Go to Settings
+1. In general select a timezone
+1. In source control enable Github
+1. In project access tokens copy post_client_item token and run the following:
+
+```
+heroku config:set --app obduk-cms-production ROLLBAR_CLIENT_TOKEN=xxx
+```
+
+### Heroku Addon Scheduler
+
+1. Open Heroku Scheduler from Heroku app
+1. Add new job
+1. Set command to `./bin/rails runner 'DailyJob.perform_now'`
+1. Set frequency to daily
+
+### Heroku Addon Scout
+
+1. Open Scout from Heroku app
+1. Go to alerts and set conditions, groups and channels
+1. Go to app settings and set up Github integration
+
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fobduk%2Fcms.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fobduk%2Fcms?ref=badge_large)
