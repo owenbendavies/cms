@@ -2,8 +2,6 @@
 set -e
 cd $(dirname $0)/..
 
-export WEB_CONCURRENCY=1
-
 set -v
 
 heroku local --port=3000

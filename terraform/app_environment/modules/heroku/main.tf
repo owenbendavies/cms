@@ -83,6 +83,7 @@ resource "heroku_app" "app" {
     RAILS_LOG_TO_STDOUT          = "enabled"
     RAILS_SERVE_STATIC_FILES     = "enabled"
     SEED_SITE_EMAIL              = "${var.from_email}"
+    WEB_CONCURRENCY              = "2"
   }
 }
 
