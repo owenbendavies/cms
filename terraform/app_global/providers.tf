@@ -1,3 +1,3 @@
 provider "heroku" {
-  version = "1.7.4"
+  version = "1.9.0"
 }
