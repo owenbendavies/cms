@@ -1,14 +1,14 @@
 provider "aws" {
   region  = "eu-west-1"
-  version = "1.57"
+  version = "2.11.0"
 }
 
 provider "cloudflare" {
-  version = "1.12"
+  version = "1.14.0"
 }
 
 provider "heroku" {
-  version = "1.7.4"
+  version = "1.9.0"
 }
 
 provider "statuscake" {
