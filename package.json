@@ -14,7 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.2",
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.0.0",
-    "@rails/webpacker": "^4.0.6",
+    "@rails/webpacker": "^4.0.7",
     "apollo-boost": "^0.4.0",
     "apollo-client": "^2.5.0",
     "autosize": "^4.0.1",
