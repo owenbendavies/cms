@@ -64,7 +64,7 @@ GEM
     aws-sdk-rails (2.1.0)
       aws-sdk-ses (~> 1)
       railties (>= 3)
-    aws-sdk-ses (1.21.0)
+    aws-sdk-ses (1.22.0)
       aws-sdk-core (~> 3, >= 3.53.0)
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.0)
