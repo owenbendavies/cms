@@ -173,7 +173,7 @@ GEM
     invisible_captcha (0.12.1)
       rails (>= 3.2.0)
     ipaddress (0.8.3)
-    jaro_winkler (1.5.2)
+    jaro_winkler (1.5.3)
     jmespath (1.4.0)
     json (2.2.0)
     json-schema (2.8.1)
