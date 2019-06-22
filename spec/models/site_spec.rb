@@ -23,6 +23,14 @@ RSpec.describe Site do
     it { is_expected.to have_many(:messages).dependent(:destroy) }
     it { is_expected.to have_many(:pages).dependent(:destroy) }
     it { is_expected.to belong_to(:privacy_policy_page).class_name('Page').optional }
+
+    context 'with privacy_policy_page' do
+      subject(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+
+      it 'can be deleted' do
+        site.destroy!
+      end
+    end
   end
 
   describe '#main_menu_pages' do
