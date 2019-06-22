@@ -23,6 +23,7 @@ RSpec.describe Page do
 
   describe 'relations' do
     it { is_expected.to belong_to(:site) }
+    it { is_expected.to have_one(:privacy_policy_site).dependent(:nullify) }
   end
 
   describe 'scopes' do

@@ -70,7 +70,7 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#privacy_policy_link' do
-    let(:site) { FactoryBot.build(:site, :with_privacy_policy) }
+    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'opens in a new page' do

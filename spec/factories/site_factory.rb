@@ -19,7 +19,11 @@ FactoryBot.define do
     end
 
     trait :with_privacy_policy do
-      association :privacy_policy_page, factory: :page
+      after(:create) do |site, _evaluator|
+        page = create(:page, site: site)
+
+        site.update!(privacy_policy_page: page)
+      end
     end
   end
 end
