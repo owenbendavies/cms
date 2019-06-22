@@ -11,6 +11,14 @@ class Page < ApplicationRecord
   # relations
   belongs_to :site
 
+  has_one(
+    :privacy_policy_site,
+    class_name: 'Site',
+    foreign_key: 'privacy_policy_page_id',
+    dependent: :nullify,
+    inverse_of: 'privacy_policy_page'
+  )
+
   # scopes
   scope(:ordered, -> { order(:name) })
   scope(:visible, -> { where(hidden: false).where(private: false) })
