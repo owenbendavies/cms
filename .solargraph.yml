@@ -3,6 +3,8 @@ include:
   - '**/*.rb'
 exclude:
   - coverage/**/*
+  - db/migrate/*_squash_migrations.rb
+  - db/schema.rb
   - log/**/*
   - node_modules/**/*
   - public/**/*
