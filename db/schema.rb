@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_100828) do
+ActiveRecord::Schema.define(version: 2019_06_24_142540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -49,12 +49,10 @@ ActiveRecord::Schema.define(version: 2019_06_24_100828) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uid", null: false
     t.boolean "privacy_policy_agreed", default: false
     t.uuid "site_id", null: false
     t.index ["created_at"], name: "index_messages_on_created_at"
     t.index ["site_id"], name: "index_messages_on_site_id"
-    t.index ["uid"], name: "index_messages_on_uid", unique: true
   end
 
   create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -68,7 +66,6 @@ ActiveRecord::Schema.define(version: 2019_06_24_100828) do
     t.integer "main_menu_position"
     t.text "custom_html"
     t.boolean "hidden", default: false, null: false
-    t.string "uid", null: false
     t.uuid "site_id", null: false
     t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true
     t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true
@@ -86,12 +83,10 @@ ActiveRecord::Schema.define(version: 2019_06_24_100828) do
     t.boolean "main_menu_in_footer", default: false, null: false
     t.boolean "separate_header", default: true, null: false
     t.jsonb "links", default: []
-    t.string "uid", null: false
     t.string "email", null: false
     t.text "css"
     t.uuid "privacy_policy_page_id"
     t.index ["host"], name: "index_sites_on_host", unique: true
-    t.index ["uid"], name: "index_sites_on_uid", unique: true
   end
 
   create_table "versions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

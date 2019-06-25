@@ -10,8 +10,8 @@ RSpec.describe Mutations::DeleteMessages do
   let(:mutation_id) { SecureRandom.uuid }
   let!(:message1) { FactoryBot.create(:message, site: site) }
   let!(:message2) { FactoryBot.create(:message, site: site) }
-  let(:message1_id) { Base64.urlsafe_encode64("Message-#{message1.uid}") }
-  let(:message2_id) { Base64.urlsafe_encode64("Message-#{message2.uid}") }
+  let(:message1_id) { Base64.urlsafe_encode64("Message-#{message1.id}") }
+  let(:message2_id) { Base64.urlsafe_encode64("Message-#{message2.id}") }
 
   let(:query) do
     <<~BODY

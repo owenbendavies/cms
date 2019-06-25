@@ -42,7 +42,7 @@ RSpec.describe Types::PageType do
               'customHtml' => page.custom_html,
               'hidden' => page.hidden,
               'htmlContent' => page.html_content,
-              'id' => Base64.urlsafe_encode64("Page-#{page.uid}"),
+              'id' => Base64.urlsafe_encode64("Page-#{page.id}"),
               'name' => page.name,
               'private' => page.private,
               'updatedAt' => page.updated_at.iso8601,

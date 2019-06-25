@@ -4,7 +4,7 @@ RSpec.describe GraphqlSchema do
   let(:site) { FactoryBot.create(:site) }
   let(:user) { FactoryBot.build(:user, site: site) }
   let(:context) { { user: user, site: site } }
-  let(:id) { Base64.urlsafe_encode64("Message-#{message.uid}") }
+  let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 
   describe '.id_from_object' do
     subject(:result) { described_class.id_from_object(message, nil, context) }
@@ -30,8 +30,8 @@ RSpec.describe GraphqlSchema do
     context 'with out of scope object' do
       let(:message) { FactoryBot.create(:message) }
 
-      it 'returns nil' do
-        expect(result).to eq nil
+      it 'raises error' do
+        expect { result }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

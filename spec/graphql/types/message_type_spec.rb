@@ -37,7 +37,7 @@ RSpec.describe Types::MessageType do
             {
               'createdAt' => message.created_at.iso8601,
               'email' => message.email,
-              'id' => Base64.urlsafe_encode64("Message-#{message.uid}"),
+              'id' => Base64.urlsafe_encode64("Message-#{message.id}"),
               'message' => message.message,
               'name' => message.name,
               'phone' => message.phone,
