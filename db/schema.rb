@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_115954) do
+ActiveRecord::Schema.define(version: 2019_06_24_100828) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "delayed_jobs", id: :serial, force: :cascade do |t|
+  create_table "delayed_jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
@@ -30,19 +31,18 @@ ActiveRecord::Schema.define(version: 2018_11_20_115954) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "images", id: :serial, force: :cascade do |t|
-    t.integer "site_id", null: false
+  create_table "images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", limit: 64, null: false
     t.string "filename", limit: 40, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "site_id", null: false
     t.index ["filename"], name: "index_images_on_filename", unique: true
     t.index ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true
     t.index ["site_id"], name: "index_images_on_site_id"
   end
 
-  create_table "messages", id: :serial, force: :cascade do |t|
-    t.integer "site_id", null: false
+  create_table "messages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", limit: 64, null: false
     t.string "email", limit: 64, null: false
     t.string "phone", limit: 32
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 2018_11_20_115954) do
     t.datetime "updated_at", null: false
     t.string "uid", null: false
     t.boolean "privacy_policy_agreed", default: false
+    t.uuid "site_id", null: false
     t.index ["created_at"], name: "index_messages_on_created_at"
     t.index ["site_id"], name: "index_messages_on_site_id"
     t.index ["uid"], name: "index_messages_on_uid", unique: true
   end
 
-  create_table "pages", id: :serial, force: :cascade do |t|
-    t.integer "site_id", null: false
+  create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "url", limit: 64, null: false
     t.string "name", limit: 64, null: false
     t.boolean "private", default: false, null: false
@@ -69,12 +69,13 @@ ActiveRecord::Schema.define(version: 2018_11_20_115954) do
     t.text "custom_html"
     t.boolean "hidden", default: false, null: false
     t.string "uid", null: false
+    t.uuid "site_id", null: false
     t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true
     t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true
     t.index ["site_id"], name: "index_pages_on_site_id"
   end
 
-  create_table "sites", id: :serial, force: :cascade do |t|
+  create_table "sites", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "host", limit: 64, null: false
     t.string "name", limit: 64, null: false
     t.string "google_analytics", limit: 32
@@ -85,21 +86,21 @@ ActiveRecord::Schema.define(version: 2018_11_20_115954) do
     t.boolean "main_menu_in_footer", default: false, null: false
     t.boolean "separate_header", default: true, null: false
     t.jsonb "links", default: []
-    t.integer "privacy_policy_page_id"
     t.string "uid", null: false
     t.string "email", null: false
     t.text "css"
+    t.uuid "privacy_policy_page_id"
     t.index ["host"], name: "index_sites_on_host", unique: true
     t.index ["uid"], name: "index_sites_on_uid", unique: true
   end
 
-  create_table "versions", id: :serial, force: :cascade do |t|
+  create_table "versions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "item_type", null: false
-    t.integer "item_id", null: false
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
     t.datetime "created_at"
+    t.uuid "item_id", null: false
     t.index ["created_at"], name: "index_versions_on_created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
