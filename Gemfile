@@ -96,6 +96,7 @@ group :test do
   # Code quality tools
   gem 'i18n-tasks', require: false # Detects missing translations
   gem 'rubocop-performance' # Performance code quality
+  gem 'rubocop-rails' # Rails code quality
   gem 'rubocop-rspec', require: false # RSpec code quality
   gem 'rubocop-thread_safety', require: false # Thread safety checks
 end
