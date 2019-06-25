@@ -45,7 +45,7 @@ function brew_cask_install_missing_formulas() {
 function add_postgresql_user() {
   COMMAND="SELECT 1 FROM pg_user WHERE usename = 'postgres'"
 
-  psql postgres --command="$COMMAND" | grep -q 1 || createuser --createdb postgres
+  psql postgres --command="$COMMAND" | grep -q 1 || createuser --superuser postgres
 }
 
 set -v
