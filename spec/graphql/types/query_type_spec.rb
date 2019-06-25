@@ -149,7 +149,7 @@ RSpec.describe Types::QueryType do
   context 'with node query' do
     let(:message) { FactoryBot.create(:message, site: site) }
 
-    let(:id) { Base64.urlsafe_encode64("Message-#{message.uid}") }
+    let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 
     let(:query) do
       <<~BODY

@@ -1,5 +1,4 @@
 class Site < ApplicationRecord
-  include DefaultUid
   include Rails.application.routes.url_helpers
 
   # default values

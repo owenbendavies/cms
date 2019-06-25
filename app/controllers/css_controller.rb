@@ -4,8 +4,8 @@ class CssController < ApplicationController
   skip_after_action :verify_authorized, only: %i[show]
 
   def show
-    uid = params[:id].split('-').first
-    site = Site.where(uid: uid).where.not(css: nil).take!
+    id = params[:id].rpartition('-').first
+    site = Site.where(id: id).where.not(css: nil).take!
 
     expires_in 1.year, public: true
 
