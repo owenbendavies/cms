@@ -43,7 +43,7 @@ RSpec.describe Types::SiteType do
               'email' => site.email,
               'googleAnalytics' => site.google_analytics,
               'host' => site.host,
-              'id' => Base64.urlsafe_encode64("Site-#{site.uid}"),
+              'id' => Base64.urlsafe_encode64("Site-#{site.id}"),
               'mainMenuInFooter' => site.main_menu_in_footer,
               'name' => site.name,
               'separateHeader' => site.separate_header,

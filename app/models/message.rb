@@ -1,6 +1,5 @@
 class Message < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-  include DefaultUid
 
   # relations
   belongs_to :site

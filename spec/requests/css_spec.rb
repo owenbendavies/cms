@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'CSS' do
   context 'with GET /css/:id-xxx.css' do
     let(:request_host) { new_host }
-    let(:request_path_id) { site.uid }
+    let(:request_path_id) { site.id }
 
     context 'with stylesheet' do
       let(:site) { FactoryBot.create(:site) }

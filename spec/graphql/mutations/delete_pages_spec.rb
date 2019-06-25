@@ -10,8 +10,8 @@ RSpec.describe Mutations::DeletePages do
   let(:mutation_id) { SecureRandom.uuid }
   let!(:page1) { FactoryBot.create(:page, site: site) }
   let!(:page2) { FactoryBot.create(:page, site: site) }
-  let(:page1_id) { Base64.urlsafe_encode64("Page-#{page1.uid}") }
-  let(:page2_id) { Base64.urlsafe_encode64("Page-#{page2.uid}") }
+  let(:page1_id) { Base64.urlsafe_encode64("Page-#{page1.id}") }
+  let(:page2_id) { Base64.urlsafe_encode64("Page-#{page2.id}") }
 
   let(:query) do
     <<~BODY
