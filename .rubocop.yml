@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rails
   - rubocop-rspec
   - rubocop-thread_safety
 
@@ -21,9 +22,6 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Max: 100 # Default is 80 which is a bit narrow
-
-Rails: # Enabled added Rails checks
-  Enabled: true
 
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
