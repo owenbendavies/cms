@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Site do
-  it_behaves_like 'model with uid'
   it_behaves_like 'model with versioning'
 
   describe 'default values' do

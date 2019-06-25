@@ -1,6 +1,5 @@
 class Page < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
-  include DefaultUid
 
   HTML_ATTRIBUTES = %w[href target class src alt].freeze
   HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze

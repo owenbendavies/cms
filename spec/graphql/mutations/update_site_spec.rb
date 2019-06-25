@@ -8,7 +8,7 @@ RSpec.describe Mutations::UpdateSite do
   let(:context) { { user: user, site: site } }
 
   let(:mutation_id) { SecureRandom.uuid }
-  let(:site_id) { Base64.urlsafe_encode64("Site-#{site.uid}") }
+  let(:site_id) { Base64.urlsafe_encode64("Site-#{site.id}") }
 
   let(:query) do
     <<~BODY
