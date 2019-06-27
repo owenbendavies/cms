@@ -22,15 +22,6 @@ RSpec.feature 'Editing a page' do
     expect(home_page.reload.html_content).to eq '<p>Hello world today</p>'
   end
 
-  scenario 'making the page hidden' do
-    expect(find_field('Hidden')).not_to be_checked
-    check 'Hidden'
-    click_button 'Update Page'
-
-    navigate_via_topbar menu: 'Page', title: 'Edit', icon: 'svg.fa-edit.fa-fw'
-    expect(find_field('Hidden')).to be_checked
-  end
-
   scenario 'making the page private' do
     expect(find_field('Private')).not_to be_checked
     check 'Private'

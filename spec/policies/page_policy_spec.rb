@@ -10,7 +10,7 @@ RSpec.describe PagePolicy do
     before { FactoryBot.build(:page) }
 
     context 'without user' do
-      it 'returns visible site pages' do
+      it 'returns non private site pages' do
         expect(policy_scope).to contain_exactly site_page
       end
     end
