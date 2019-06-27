@@ -16,7 +16,7 @@ RSpec.feature 'Stylesheet' do
     click_button 'Update Site'
 
     expect(page).to have_content 'Site successfully updated'
-    url = "/css/#{site.id}-#{md5}.css"
+    url = "/css/#{md5}.css"
     expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
 
     navigate_via_topbar menu: 'Site', title: 'CSS', icon: 'svg.fa-file.fa-fw'
