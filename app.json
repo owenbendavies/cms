@@ -18,6 +18,7 @@
     "AWS_S3_BUCKET": {},
     "AWS_SECRET_ACCESS_KEY": {},
     "DATABASE_URL": {},
+    "DEFAULT_SITE_EMAIL": {},
     "HEROKU_APP_NAME": {},
     "LANG": {},
     "RACK_ENV": {},
@@ -25,8 +26,7 @@
     "RAILS_ENV": {},
     "RAILS_LOG_TO_STDOUT": {},
     "RAILS_SERVE_STATIC_FILES": {},
-    "SECRET_KEY_BASE": {},
-    "SEED_SITE_EMAIL": {}
+    "SECRET_KEY_BASE": {}
   },
   "formation": {
     "web": {

@@ -1,11 +1,6 @@
 class Site < ApplicationRecord
   include Rails.application.routes.url_helpers
 
-  # default values
-  default_value_for :email do
-    ENV.fetch('SEED_SITE_EMAIL')
-  end
-
   # relations
   has_many :images, dependent: :destroy
   has_many :messages, dependent: :destroy
