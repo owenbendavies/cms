@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
+  skip_before_action :render_site_not_found, only: %i[create]
   skip_before_action :authenticate_user!, only: %i[create invalid]
   skip_after_action :verify_authorized, only: %i[create destroy invalid]
 
   def create
     user = user_hash
-    user_groups = user.fetch(:groups)
 
-    if user_groups.include?(@site.host) || user_groups.include?('admin')
+    if valid_user?(user)
+      create_site unless @site
       session[:user] = user
       flash.notice = t 'sessions.create.message'
     else
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :user
+    reset_session
     flash.notice = t 'sessions.destroy.message'
     redirect_to aws_logout_url
   end
@@ -46,5 +47,18 @@ class SessionsController < ApplicationController
       email: info.fetch('email'),
       groups: auth.fetch('extra').fetch('raw_info').fetch('cognito:groups')
     }
+  end
+
+  def valid_user?(user)
+    user_groups = user.fetch(:groups)
+    user_groups.include?(request.host) || user_groups.include?('admin')
+  end
+
+  def create_site
+    Site.create!(
+      host: request.host,
+      name: 'New Site',
+      email: ENV.fetch('DEFAULT_SITE_EMAIL')
+    )
   end
 end
