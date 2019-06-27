@@ -104,7 +104,7 @@ GEM
     debase (0.2.2)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.5)
-    default_value_for (3.1.0)
+    default_value_for (3.2.0)
       activerecord (>= 3.2.0, < 6.0)
     delayed_job (4.1.7)
       activesupport (>= 3.0, < 5.3)
