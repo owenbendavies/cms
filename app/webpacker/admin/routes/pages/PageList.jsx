@@ -17,7 +17,6 @@ export const PageList = props => (
         <Datagrid>
           <TextField source="name" sortable={false} />
           <BooleanField source="private" sortable={false} />
-          <BooleanField source="hidden" sortable={false} />
           <BooleanField source="contactForm" sortable={false} />
         </Datagrid>
       }

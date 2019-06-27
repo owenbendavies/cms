@@ -78,7 +78,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit(:name, :contact_form, :private, :hidden, :html_content)
+    params.require(:page).permit(:name, :contact_form, :private, :html_content)
   end
 
   def message_params

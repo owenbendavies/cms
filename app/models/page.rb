@@ -19,8 +19,8 @@ class Page < ApplicationRecord
   )
 
   # scopes
+  scope(:non_private, -> { where(private: false) })
   scope(:ordered, -> { order(:name) })
-  scope(:visible, -> { where(hidden: false).where(private: false) })
 
   # before validations
   before_validation :clean_html_content
