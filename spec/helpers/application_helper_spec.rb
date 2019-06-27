@@ -102,7 +102,7 @@ RSpec.describe ApplicationHelper do
     let(:site) { FactoryBot.build(:site, css: css) }
 
     it 'returns stylesheet path' do
-      url = "/css/#{site.id}-#{md5}.css"
+      url = "/css/#{md5}.css"
 
       expect(helper.site_stylesheet(site)).to eq url
     end
