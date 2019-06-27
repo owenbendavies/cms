@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'CSS' do
-  context 'with GET /css/:id-xxx.css' do
-    let(:request_host) { new_host }
+  context 'with GET /css/xxx.css' do
     let(:request_path_id) { site.id }
 
     context 'with stylesheet' do
@@ -27,14 +26,12 @@ RSpec.describe 'CSS' do
 
     context 'without stylesheet' do
       let(:site) { FactoryBot.create(:site, css: nil) }
+      let(:expected_status) { 404 }
 
-      include_examples 'returns 406'
-    end
-
-    context 'without site' do
-      let(:request_path_id) { new_number }
-
-      include_examples 'returns 406'
+      it 'returns empty 404' do
+        request_page
+        expect(body).to be_empty
+      end
     end
   end
 end
