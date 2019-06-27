@@ -3,20 +3,6 @@ require 'rails_helper'
 RSpec.describe Site do
   it_behaves_like 'model with versioning'
 
-  describe 'default values' do
-    subject(:site) { described_class.new }
-
-    let(:environment_variables) do
-      {
-        'SEED_SITE_EMAIL' => new_email
-      }
-    end
-
-    it 'sets email as SEED_SITE_EMAIL' do
-      expect(site.email).to eq new_email
-    end
-  end
-
   describe 'relations' do
     it { is_expected.to have_many(:images).dependent(:destroy) }
     it { is_expected.to have_many(:messages).dependent(:destroy) }

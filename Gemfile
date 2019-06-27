@@ -11,7 +11,6 @@ gem 'fog-aws' # AWS file upload
 
 # Databases
 gem 'pg' # PostgreSQL
-gem 'seedbank' # Better database seeds
 
 # Frameworks
 gem 'delayed_job_active_record' # Background jobs
@@ -30,7 +29,6 @@ gem 'pundit' # Authorization
 gem 'activerecord_json_validator' # JSON validation
 gem 'acts_as_list' # ActiveRecord lists
 gem 'carrierwave' # File upload
-gem 'default_value_for' # Set default values for attributes
 gem 'gravtastic' # Profile pictures
 gem 'mini_magick' # Image modification
 gem 'paper_trail' # Database audit
