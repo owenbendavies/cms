@@ -27,6 +27,16 @@ RSpec.describe Page do
   end
 
   describe 'scopes' do
+    describe '.non_private' do
+      it 'returns non private pages' do
+        page1 = FactoryBot.create(:page)
+        page2 = FactoryBot.create(:page)
+        FactoryBot.create(:page, private: true)
+
+        expect(described_class.non_private).to contain_exactly(page1, page2)
+      end
+    end
+
     describe '.ordered' do
       it 'returns ordered by name' do
         page_c = FactoryBot.create(:page, name: 'Page C')
@@ -34,17 +44,6 @@ RSpec.describe Page do
         page_b = FactoryBot.create(:page, name: 'Page B')
 
         expect(described_class.ordered).to eq [page_a, page_b, page_c]
-      end
-    end
-
-    describe '.visible' do
-      it 'returns non hidden or private pages' do
-        page1 = FactoryBot.create(:page)
-        page2 = FactoryBot.create(:page)
-        FactoryBot.create(:page, private: true)
-        FactoryBot.create(:page, hidden: true)
-
-        expect(described_class.visible).to contain_exactly(page1, page2)
       end
     end
   end

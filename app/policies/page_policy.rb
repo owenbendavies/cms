@@ -4,7 +4,7 @@ class PagePolicy < ApplicationPolicy
       if user_logged_in?
         @scope.where(site_id: @site.id)
       else
-        @scope.where(site_id: @site.id).visible
+        @scope.where(site_id: @site.id).non_private
       end
     end
   end
