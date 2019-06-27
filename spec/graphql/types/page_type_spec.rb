@@ -17,7 +17,6 @@ RSpec.describe Types::PageType do
             contactForm
             createdAt
             customHtml
-            hidden
             htmlContent
             id
             name
@@ -40,7 +39,6 @@ RSpec.describe Types::PageType do
               'contactForm' => page.contact_form,
               'createdAt' => page.created_at.iso8601,
               'customHtml' => page.custom_html,
-              'hidden' => page.hidden,
               'htmlContent' => page.html_content,
               'id' => Base64.urlsafe_encode64("Page-#{page.id}"),
               'name' => page.name,

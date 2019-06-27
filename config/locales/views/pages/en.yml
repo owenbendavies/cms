@@ -16,7 +16,5 @@ en:
       icon: fas fa-plus fa-fw
       title: New Page
     show:
-      hidden:
-        icon: fas fa-eye-slash fa-fw
       private:
         icon: fas fa-lock fa-fw

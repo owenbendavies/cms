@@ -7,7 +7,6 @@ const ListQuery = gql`
         id
         name
         private
-        hidden
         contactForm
       }
       totalCount

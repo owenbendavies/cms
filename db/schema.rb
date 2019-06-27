@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_142540) do
+ActiveRecord::Schema.define(version: 2019_06_26_130515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2019_06_24_142540) do
     t.datetime "updated_at", null: false
     t.integer "main_menu_position"
     t.text "custom_html"
-    t.boolean "hidden", default: false, null: false
     t.uuid "site_id", null: false
     t.index ["site_id", "main_menu_position"], name: "index_pages_on_site_id_and_main_menu_position", unique: true
     t.index ["site_id", "url"], name: "index_pages_on_site_id_and_url", unique: true

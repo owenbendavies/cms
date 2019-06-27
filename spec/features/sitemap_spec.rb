@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Sitemap' do
-  let!(:hidden_page) { FactoryBot.create(:page, hidden: true, site: site) }
   let!(:private_page) { FactoryBot.create(:page, private: true, site: site) }
 
   context 'with html' do
@@ -13,7 +12,6 @@ RSpec.feature 'Sitemap' do
       end
 
       expect(page).to have_link 'Home', href: '/home'
-      expect(page).to have_no_link hidden_page.name
       expect(page).to have_no_link private_page.name
     end
 
@@ -24,13 +22,6 @@ RSpec.feature 'Sitemap' do
 
       within('footer') do
         click_link 'Sitemap'
-      end
-
-      hidden_index = site.pages.ordered.find_index(hidden_page) + 1
-
-      find(".sitemap li:nth-child(#{hidden_index})").tap do |item|
-        expect(item).to have_link hidden_page.name, href: "/#{hidden_page.url}"
-        expect(item).to have_selector 'svg.fa-eye-slash.fa-fw'
       end
 
       private_index = site.pages.ordered.find_index(private_page) + 1
@@ -48,7 +39,6 @@ RSpec.feature 'Sitemap' do
 
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq "http://#{site.host}/home"
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq home_page.updated_at.iso8601
-      expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{hidden_page.url}")
       expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
     end
 
