@@ -3,7 +3,12 @@ FactoryBot.define do
     id { SecureRandom.uuid }
     name { Faker::Name.name }
     email { Faker::Internet.email }
-    groups { [site].compact.map(&:host) }
+
+    groups do
+      group_names = [site]
+      group_names.compact!
+      group_names.map!(&:host)
+    end
 
     transient do
       site { nil }

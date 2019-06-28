@@ -7,9 +7,11 @@ RSpec.describe ActiveRecord::Base, transaction: false do
     end
 
     it 'fails on slow queries' do
-      expect do
+      result = expect do
         described_class.connection.execute('select pg_sleep(2);')
-      end.to raise_error(ActiveRecord::StatementInvalid, /statement timeout/)
+      end
+
+      result.to raise_error(ActiveRecord::StatementInvalid, /statement timeout/)
     end
   end
 end

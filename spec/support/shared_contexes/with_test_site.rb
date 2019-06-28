@@ -1,5 +1,5 @@
 RSpec.shared_context 'with test site' do
-  let!(:site) { FactoryBot.create(:site, host: '127.0.0.1') }
+  let!(:site) { FactoryBot.create(:site, host: Capybara.server_host) }
 
   let(:site_user) { FactoryBot.build(:user, site: site) }
 

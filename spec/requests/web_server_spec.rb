@@ -78,7 +78,7 @@ RSpec.describe 'Application web server' do
     end
 
     it 'sets Cache Control' do
-      expect(response.headers['Cache-Control']).to eq "public, max-age=#{1.year.to_i}"
+      expect(response.headers['Cache-Control']).to eq 'public, max-age=31556952'
     end
   end
 
