@@ -15,7 +15,7 @@ RSpec.configure do |config|
   end
 
   config.after :suite do
-    raise 'Memory too hight' if GetProcessMem.new.mb.to_i > 512
+    raise 'Memory too hight' if Integer(GetProcessMem.new.mb) > 512
   end
 
   config.after :suite do
