@@ -6,7 +6,7 @@ module RequestTestHelpers
   def request_page
     login_as_request_user
     host! request_host
-    send(request_method, request_path, headers: request_headers, params: request_params)
+    public_send(request_method, request_path, headers: request_headers, params: request_params)
     expect(response).to have_http_status expected_status
   end
 

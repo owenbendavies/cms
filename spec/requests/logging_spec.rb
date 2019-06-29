@@ -33,7 +33,7 @@ RSpec.describe 'Logging' do
       'db' => an_instance_of(Float),
       'duration' => an_instance_of(Float),
       'format' => 'html',
-      'fwd' => '127.0.0.1',
+      'fwd' => Capybara.server_host,
       'host' => request_host,
       'method' => 'GET',
       'path' => '/sitemap',

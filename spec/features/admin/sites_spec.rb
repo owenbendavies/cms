@@ -166,7 +166,7 @@ RSpec.feature 'Admin sites' do
   end
 
   context 'with multiple sites' do
-    let(:site) { FactoryBot.create(:site, name: 'Site z', host: '127.0.0.1') }
+    let(:site) { FactoryBot.create(:site, name: 'Site z', host: Capybara.server_host) }
 
     let(:sites) do
       ('a'..'k').map do |i|
