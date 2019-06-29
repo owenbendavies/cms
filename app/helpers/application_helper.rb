@@ -7,8 +7,9 @@ module ApplicationHelper
     classes = [page_class]
     classes << page_class.gsub(/-edit$/, '')
     classes << 'loggedin' if current_user
-
-    classes.sort.uniq.join(' ')
+    classes.sort!
+    classes.uniq!
+    classes.join(' ')
   end
 
   def copyright(site)
@@ -29,7 +30,7 @@ module ApplicationHelper
 
     link_to(
       privacy_policy.name,
-      send(url_method, privacy_policy.url),
+      public_send(url_method, privacy_policy.url),
       target: '_blank',
       rel: 'noopener'
     )

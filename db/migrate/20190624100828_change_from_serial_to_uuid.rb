@@ -78,7 +78,7 @@ class ChangeFromSerialToUuid < ActiveRecord::Migration[5.2]
 
   def update_relations(table_class, relation_name, new_foreign_key)
     table_class.find_each do |record|
-      relation = record.send(relation_name)
+      relation = record.public_send(relation_name)
       record.update!(new_foreign_key => relation.uuid) if relation
     end
   end

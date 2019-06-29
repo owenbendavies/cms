@@ -5,6 +5,7 @@ require:
   - rubocop-thread_safety
 
 AllCops:
+  EnabledByDefault: true
   Exclude:
     - 'config/initializers/simple_form.rb' # Auto generated file
     - 'db/migrate/*_squash_migrations.rb' # Auto generated file
@@ -12,8 +13,14 @@ AllCops:
     - 'node_modules/**/*' # External libraries
     - 'vendor/bundle/**/*' # External libraries
 
+Bundler/GemComment: # Prefer inline comments
+  Enabled: false
+
 Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
   Enabled: false
+
+Layout/MultilineAssignmentLayout: # Prefer same line
+  EnforcedStyle: same_line
 
 Metrics/BlockLength:
   Exclude:
@@ -23,6 +30,12 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Max: 100 # Default is 80 which is a bit narrow
 
+RSpec/AlignLeftLetBrace: # Alignment creates large diffs on changes
+  Enabled: false
+
+RSpec/AlignRightLetBrace: # Alignment creates large diffs on changes
+  Enabled: false
+
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
     - 'spec/requests/**/*'
@@ -31,6 +44,9 @@ RSpec/DescribeClass: # Not testing a class or module
 RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
+
+RSpec/MessageExpectation: # Allow expects
+  Enabled: false
 
 RSpec/MessageSpies: # Prefer receive to have_received as no duplication
   EnforcedStyle: receive
@@ -42,5 +58,26 @@ RSpec/MultipleExpectations:
 Style/Documentation: # Not a public library so not needed
   Enabled: false
 
+Style/DocumentationMethod: # Not a public library so not needed
+  Enabled: false
+
+Style/Copyright: # Not needed in every file
+  Enabled: false
+
 Style/FrozenStringLiteralComment: # Remove in ruby 3
+  Enabled: false
+
+Style/ImplicitRuntimeError: # Like raising just messages
+  Enabled: false
+
+Style/InlineComment: # Good in lots of cases
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses: # Not standard ruby style
+  Enabled: false
+
+Style/MissingElse: # Useful in some cases
+  Enabled: false
+
+Style/StringHashKeys: # Bad in some cases
   Enabled: false

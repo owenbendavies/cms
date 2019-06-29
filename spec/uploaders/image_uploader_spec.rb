@@ -17,7 +17,7 @@ RSpec.describe ImageUploader do
   end
 
   let(:uploaded_file_sizes) do
-    file_sizes = expected_files.collect do |filename|
+    file_sizes = expected_files.map do |filename|
       file = fog_directory.files.get(filename)
       image = MiniMagick::Image.read(file.body)
       [filename, "#{image[:width]}x#{image[:height]}"]
@@ -90,7 +90,7 @@ RSpec.describe ImageUploader do
 
     context 'with file has exif data' do
       let(:uploaded_file_exif_data) do
-        file_exif = expected_files.collect do |filename|
+        file_exif = expected_files.map do |filename|
           file = fog_directory.files.get(filename)
           image = MiniMagick::Image.read(file.body)
           [filename, image.exif]
