@@ -41,7 +41,9 @@ module "aws_s3" {
 module "aws_ses" {
   source = "./modules/aws_ses"
 
-  domains = "${local.workspace["root_domains"]}"
+  app_name         = "${local.app_name}"
+  domains          = "${local.workspace["root_domains"]}"
+  aws_iam_user_arn = "${module.aws_iam.user_arn}"
 }
 
 module "cloudflare" {

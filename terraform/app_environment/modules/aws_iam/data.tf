@@ -23,10 +23,3 @@ data "aws_iam_policy_document" "s3" {
     resources = ["${var.aws_s3_assets_bucket_arn}/*"]
   }
 }
-
-data "aws_iam_policy_document" "ses" {
-  statement {
-    actions   = ["ses:SendRawEmail"]
-    resources = ["*"]
-  }
-}
