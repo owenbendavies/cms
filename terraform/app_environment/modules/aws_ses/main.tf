@@ -14,3 +14,10 @@ resource "aws_ses_domain_mail_from" "app" {
   domain                 = "${aws_ses_domain_identity.app.*.domain[count.index]}"
   mail_from_domain       = "email.${aws_ses_domain_identity.app.*.domain[count.index]}"
 }
+
+resource "aws_ses_identity_policy" "app" {
+  identity = "${aws_ses_domain_identity.app.*.arn[count.index]}"
+  count    = "${length(var.domains)}"
+  name     = "${var.app_name}"
+  policy   = "${data.aws_iam_policy_document.app.*.json[count.index]}"
+}
