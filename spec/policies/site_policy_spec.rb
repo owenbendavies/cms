@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe SitePolicy do
-  describe 'Scope' do
-    subject(:policy_scope) { described_class::Scope.new(context, Site).resolve }
+  permissions :scope do
+    subject(:policy_scope) { Pundit.policy_scope(context, Site) }
 
     let!(:site2) { FactoryBot.create(:site) }
 
