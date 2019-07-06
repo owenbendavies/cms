@@ -36,4 +36,10 @@ bin/rails log:clear tmp:clear
 
 bin/rails restart
 
+if [ "$(uname)" == "Darwin" ]; then
+  ./bin/bundle exec solargraph download-core
+
+  ./bin/bundle exec yard gems
+fi
+
 echo "setup complete"
