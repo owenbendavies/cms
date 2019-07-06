@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe PagePolicy do
-  describe 'Scope' do
-    subject(:policy_scope) { described_class::Scope.new(context, Page).resolve }
+  permissions :scope do
+    subject(:policy_scope) { Pundit.policy_scope(context, Page) }
 
     let!(:site_page) { FactoryBot.create(:page, site: site) }
     let!(:private_site_page) { FactoryBot.create(:page, private: true, site: site) }
