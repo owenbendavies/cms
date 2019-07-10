@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "assets" {
-  comment         = "${var.app_name}"
+  comment         = var.app_name
   enabled         = true
   is_ipv6_enabled = true
 
@@ -24,16 +24,16 @@ resource "aws_cloudfront_distribution" "assets" {
   }
 
   logging_config {
-    bucket = "${var.logs_domain}"
+    bucket = var.logs_domain
     prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/cloudfront/${var.app_name}/"
   }
 
   origin {
-    domain_name = "${var.assets_domain}"
+    domain_name = var.assets_domain
     origin_id   = "S3"
 
     s3_origin_config {
-      origin_access_identity = "${aws_cloudfront_origin_access_identity.assets.cloudfront_access_identity_path}"
+      origin_access_identity = aws_cloudfront_origin_access_identity.assets.cloudfront_access_identity_path
     }
   }
 
@@ -49,5 +49,5 @@ resource "aws_cloudfront_distribution" "assets" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "assets" {
-  comment = "${var.app_name}"
+  comment = var.app_name
 }
