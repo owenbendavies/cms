@@ -66,7 +66,7 @@ resource "heroku_app" "app" {
     prevent_destroy = true
   }
 
-  sensitive_config_vars {
+  sensitive_config_vars = {
     AWS_ACCESS_KEY_ID            = "${var.aws_access_key_id}"
     AWS_COGNITO_CLIENT_ID        = "${var.aws_cognito_client_id}"
     AWS_COGNITO_CLIENT_SECRET    = "${var.aws_cognito_client_secret}"

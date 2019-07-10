@@ -44,9 +44,9 @@ resource "aws_cognito_user_pool_client" "app" {
   allowed_oauth_flows                  = ["code"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes                 = ["openid"]
-  callback_urls                        = "${formatlist("https://%s/auth/cognito-idp/callback", "${local.all_domains}")}"
+  callback_urls                        = formatlist("https://%s/auth/cognito-idp/callback", local.all_domains)
   generate_secret                      = true
-  logout_urls                          = "${formatlist("https://%s/", "${local.all_domains}")}"
+  logout_urls                          = formatlist("https://%s/", local.all_domains)
   name                                 = "${var.app_name}"
   supported_identity_providers         = ["COGNITO"]
   user_pool_id                         = "${aws_cognito_user_pool.app.id}"

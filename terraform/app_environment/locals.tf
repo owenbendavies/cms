@@ -3,8 +3,8 @@ locals {
   aws_region   = "eu-west-1"
   dmarc_record = "v=DMARC1; p=reject; rua=mailto:564737eccb@rep.dmarcanalyzer.com"
   from_email   = "noreply@obduk.com"
-  workspace    = "${local.workspaces[terraform.workspace]}"
-  www_domains  = "${formatlist("www.%s", "${local.workspace["root_domains"]}")}"
+  workspace    = local.workspaces[terraform.workspace]
+  www_domains  = formatlist("www.%s", local.workspace["root_domains"])
 
   workspaces = {
     production = {
