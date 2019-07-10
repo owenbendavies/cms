@@ -6,8 +6,6 @@ terraform {
     region               = "eu-west-1"
     workspace_key_prefix = "workspaces"
   }
-
-  required_version = ">= 0.12"
 }
 
 module "aws_cloudfront" {
