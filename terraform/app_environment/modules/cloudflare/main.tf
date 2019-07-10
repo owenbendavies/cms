@@ -3,8 +3,8 @@ resource "cloudflare_page_rule" "root_redirect" {
   target = "${cloudflare_zone.main.*.zone[count.index]}/*"
   zone   = "${cloudflare_zone.main.*.zone[count.index]}"
 
-  actions = {
-    forwarding_url = {
+  actions {
+    forwarding_url {
       status_code = "301"
       url         = "https://www.${cloudflare_zone.main.*.zone[count.index]}/$1"
     }
@@ -29,8 +29,8 @@ resource "cloudflare_record" "gsuite_domainkey" {
 
 resource "cloudflare_record" "gsuite_mx" {
   count    = "${length(var.gsuite_domains) * length(local.gsuite_mx_values)}"
-  domain   = "${var.gsuite_domains[count.index / length(local.gsuite_mx_values)]}"
-  name     = "${var.gsuite_domains[count.index / length(local.gsuite_mx_values)]}"
+  domain   = "${var.gsuite_domains[floor(count.index / length(local.gsuite_mx_values))]}"
+  name     = "${var.gsuite_domains[floor(count.index / length(local.gsuite_mx_values))]}"
   priority = "${element(local.gsuite_mx_priorities, count.index)}"
   type     = "MX"
   value    = "${element(local.gsuite_mx_values, count.index)}"
@@ -46,10 +46,10 @@ resource "cloudflare_record" "mailchimp_domainkey" {
 
 resource "cloudflare_record" "ses_domainkey" {
   count  = "${length(cloudflare_zone.main.*.zone) * 3}"
-  domain = "${cloudflare_zone.main.*.zone[count.index / 3]}"
-  name   = "${element(var.ses_dkim_tokens[count.index / 3], count.index)}._domainkey"
+  domain = "${cloudflare_zone.main.*.zone[floor(count.index / 3)]}"
+  name   = "${element(var.ses_dkim_tokens[floor(count.index / 3)], count.index)}._domainkey"
   type   = "CNAME"
-  value  = "${element(var.ses_dkim_tokens[count.index / 3], count.index)}.dkim.amazonses.com"
+  value  = "${element(var.ses_dkim_tokens[floor(count.index / 3)], count.index)}.dkim.amazonses.com"
 }
 
 resource "cloudflare_record" "ses_mail_from_mx" {
@@ -100,7 +100,7 @@ resource "cloudflare_record" "spf" {
   domain = "${cloudflare_zone.main.*.zone[count.index]}"
   name   = "${cloudflare_zone.main.*.zone[count.index]}"
   type   = "TXT"
-  value  = "v=spf1 ${contains(var.gsuite_domains, cloudflare_zone.main.*.zone[count.index]) ? "include:_spf.google.com ": ""}${contains(var.mailchip_domains, cloudflare_zone.main.*.zone[count.index]) ? "include:servers.mcsv.net ": ""}~all"
+  value  = "v=spf1 ${contains(var.gsuite_domains, cloudflare_zone.main.*.zone[count.index]) ? "include:_spf.google.com " : ""}${contains(var.mailchip_domains, cloudflare_zone.main.*.zone[count.index]) ? "include:servers.mcsv.net " : ""}~all"
 }
 
 resource "cloudflare_zone" "main" {
@@ -112,13 +112,13 @@ resource "cloudflare_zone_settings_override" "main" {
   count = "${length(cloudflare_zone.main.*.zone)}"
   name  = "${cloudflare_zone.main.*.zone[count.index]}"
 
-  settings = {
+  settings {
     always_use_https    = "on"
     cache_level         = "simplified"
     server_side_exclude = "off"
     ssl                 = "full"
 
-    security_header = {
+    security_header {
       enabled            = true
       include_subdomains = true
       max_age            = 31536000
