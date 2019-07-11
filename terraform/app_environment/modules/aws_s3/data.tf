@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "assets" {
 
     principals {
       type        = "AWS"
-      identifiers = ["${var.aws_cloudfront_iam_arn}"]
+      identifiers = [var.aws_cloudfront_iam_arn]
     }
   }
 }

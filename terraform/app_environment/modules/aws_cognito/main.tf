@@ -1,22 +1,22 @@
 resource "aws_cognito_user_group" "admin" {
   name         = "admin"
-  user_pool_id = "${aws_cognito_user_pool.app.id}"
+  user_pool_id = aws_cognito_user_pool.app.id
 }
 
 resource "aws_cognito_user_group" "custom_domains" {
-  count        = "${length(var.domains)}"
-  name         = "${var.domains[count.index]}"
-  user_pool_id = "${aws_cognito_user_pool.app.id}"
+  count        = length(var.domains)
+  name         = var.domains[count.index]
+  user_pool_id = aws_cognito_user_pool.app.id
 }
 
 resource "aws_cognito_user_group" "heroku_domain" {
   name         = "${var.app_name}.herokuapp.com"
-  user_pool_id = "${aws_cognito_user_pool.app.id}"
+  user_pool_id = aws_cognito_user_pool.app.id
 }
 
 resource "aws_cognito_user_pool" "app" {
   auto_verified_attributes = ["email"]
-  name                     = "${var.app_name}"
+  name                     = var.app_name
   username_attributes      = ["email"]
 
   admin_create_user_config {
@@ -44,15 +44,15 @@ resource "aws_cognito_user_pool_client" "app" {
   allowed_oauth_flows                  = ["code"]
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_scopes                 = ["openid"]
-  callback_urls                        = "${formatlist("https://%s/auth/cognito-idp/callback", "${local.all_domains}")}"
+  callback_urls                        = formatlist("https://%s/auth/cognito-idp/callback", local.all_domains)
   generate_secret                      = true
-  logout_urls                          = "${formatlist("https://%s/", "${local.all_domains}")}"
-  name                                 = "${var.app_name}"
+  logout_urls                          = formatlist("https://%s/", local.all_domains)
+  name                                 = var.app_name
   supported_identity_providers         = ["COGNITO"]
-  user_pool_id                         = "${aws_cognito_user_pool.app.id}"
+  user_pool_id                         = aws_cognito_user_pool.app.id
 }
 
 resource "aws_cognito_user_pool_domain" "app" {
-  domain       = "${var.app_name}"
-  user_pool_id = "${aws_cognito_user_pool.app.id}"
+  domain       = var.app_name
+  user_pool_id = aws_cognito_user_pool.app.id
 }
