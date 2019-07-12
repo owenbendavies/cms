@@ -1,8 +1,0 @@
-#!/bin/bash
-set -ev
-
-cd `dirname $0`/..
-
-./bin/rails webpacker:compile
-
-# 'Compile complete'
