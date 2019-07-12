@@ -21,7 +21,7 @@ resource "datadog_synthetics_test" "main" {
     {
       operator = "lessThan"
       type     = "responseTime"
-      target   = 3000
+      target   = 5000
     }
   ]
 
