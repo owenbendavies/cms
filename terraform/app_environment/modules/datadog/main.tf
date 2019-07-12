@@ -33,7 +33,7 @@ resource "datadog_synthetics_test" "main" {
 
   request = {
     method  = "GET"
-    timeout = 10
+    timeout = 30
     url     = "https://${var.domains[count.index]}/home?monitoring=skip"
   }
 
