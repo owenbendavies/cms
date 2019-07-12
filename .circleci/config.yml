@@ -95,7 +95,7 @@ jobs:
             - webpacker-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
       - run:
-          command: ./bin/compile
+          command: ./bin/rails webpacker:compile
           environment:
             RAILS_ENV: test
 
