@@ -59,6 +59,12 @@ module "cloudflare" {
   ses_verification_tokens = module.aws_ses.verification_tokens
 }
 
+module "datadog" {
+  source = "./modules/datadog"
+
+  domains = local.www_domains
+}
+
 module "heroku" {
   source = "./modules/heroku"
 
