@@ -81,7 +81,6 @@ group :test do
   gem 'database_cleaner' # Cleans the database
   gem 'factory_bot_rails' # Generates test models
   gem 'faker' # Generates test data
-  gem 'get_process_mem' # Gets process memory
   gem 'rspec-rails' # RSpec test framework
   gem 'rspec_junit_formatter' # Output RSpec results as XML
   gem 'selenium-webdriver' # Controls real browsers
