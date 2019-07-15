@@ -37,17 +37,15 @@ RSpec.describe GraphqlSchema do
   end
 
   describe '.resolve_type' do
-    subject(:result) do
-      described_class.resolve_type(GraphQL::Relay::Node.interface, object, context)
+    subject do
+      described_class.resolve_type(GraphQL::Relay::Node.interface, object, context).name
     end
 
     %i[message page site].each do |type|
       context "with #{type}" do
         let(:object) { FactoryBot.create(type) }
 
-        it 'returns MessageType' do
-          expect(result.name).to eq type.to_s.classify
-        end
+        it { is_expected.to eq type.to_s.classify }
       end
     end
   end
