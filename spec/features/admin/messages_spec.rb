@@ -29,7 +29,7 @@ RSpec.feature 'Admin messages' do
     end
 
     scenario 'viewing a message' do
-      find('table tbody tr:nth-child(1)').click
+      find('span', text: message.name).click
 
       within('.ra-field-name') do
         expect(page).to have_content 'Name'
@@ -90,7 +90,7 @@ RSpec.feature 'Admin messages' do
         expect(page).to have_content created_at
       end
 
-      find('ul a:nth-child(1)').click
+      find('span', text: message.name).click
 
       expect(page).to have_content "Message from #{message.name}"
     end
