@@ -14,7 +14,3 @@ provider "datadog" {
 provider "heroku" {
   version = "2.0.1"
 }
-
-provider "statuscake" {
-  version = "1.0.0"
-}
