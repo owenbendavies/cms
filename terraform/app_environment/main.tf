@@ -81,9 +81,3 @@ module "heroku" {
   domains                   = local.www_domains
   from_email                = local.from_email
 }
-
-module "statuscake" {
-  source = "./modules/statuscake"
-
-  domains = local.www_domains
-}
