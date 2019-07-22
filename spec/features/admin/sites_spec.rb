@@ -36,7 +36,7 @@ RSpec.feature 'Admin sites' do
 
       click_link 'Admin'
       click_link 'Sites'
-      find('table tbody tr:nth-child(1)').click
+      find('span', text: site.name).click
 
       fill_in 'Name', with: new_company_name
       click_button 'Save'
@@ -54,7 +54,7 @@ RSpec.feature 'Admin sites' do
 
       click_link 'Admin'
       click_link 'Sites'
-      find('table tbody tr:nth-child(1)').click
+      find('span', text: site.name).click
 
       fill_in 'Google analytics', with: ''
       click_button 'Save'
@@ -72,7 +72,7 @@ RSpec.feature 'Admin sites' do
 
       click_link 'Admin'
       click_link 'Sites'
-      find('table tbody tr:nth-child(1)').click
+      find('span', text: site.name).click
 
       fill_in 'Charity number', with: ''
       click_button 'Save'
@@ -105,9 +105,9 @@ RSpec.feature 'Admin sites' do
 
         click_link 'Admin'
         click_link 'Sites'
-        find('table tbody tr:nth-child(1)').click
+        find('span', text: site.name).click
 
-        find('label[for="separateHeader"]').click
+        find('label', text: 'Separate header').click
         click_button 'Save'
 
         expect(page).to have_content 'Element updated'
@@ -125,9 +125,9 @@ RSpec.feature 'Admin sites' do
 
         click_link 'Admin'
         click_link 'Sites'
-        find('table tbody tr:nth-child(1)').click
+        find('span', text: site.name).click
 
-        find('label[for="mainMenuInFooter"]').click
+        find('label', text: 'Main menu in footer').click
         click_button 'Save'
 
         expect(page).to have_content 'Element updated'
@@ -159,7 +159,7 @@ RSpec.feature 'Admin sites' do
         expect(page).to have_content site.address
       end
 
-      find('ul a:nth-child(1)').click
+      find('span', text: site.name).click
 
       expect(page).to have_content "Site #{site.name}"
     end
