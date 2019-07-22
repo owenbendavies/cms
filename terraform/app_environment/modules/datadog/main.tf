@@ -3,7 +3,7 @@ resource "datadog_synthetics_test" "main" {
   message = "Notify @all"
   name    = "${var.domains[count.index]}"
   status  = "live"
-  tags    = []
+  tags    = ["cms", "terraform"]
   type    = "api"
 
   assertions = [
