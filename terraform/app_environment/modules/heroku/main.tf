@@ -1,10 +1,6 @@
 resource "heroku_addon" "app_coralogix" {
   app  = heroku_app.app.name
   plan = "coralogix:dev"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "heroku_addon" "app_librato" {
@@ -15,6 +11,16 @@ resource "heroku_addon" "app_librato" {
     prevent_destroy = true
   }
 }
+
+resource "heroku_addon" "app_logentries" {
+  app  = heroku_app.app.name
+  plan = "logentries:le_tryit"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 
 resource "heroku_addon" "app_postgresql" {
   app  = heroku_app.app.name
