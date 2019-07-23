@@ -1,8 +1,3 @@
-resource "heroku_addon" "app_coralogix" {
-  app  = heroku_app.app.name
-  plan = "coralogix:dev"
-}
-
 resource "heroku_addon" "app_librato" {
   app  = heroku_app.app.name
   plan = "librato:development"
