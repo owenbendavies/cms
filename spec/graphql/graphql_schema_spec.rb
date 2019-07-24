@@ -41,7 +41,7 @@ RSpec.describe GraphqlSchema do
       described_class.resolve_type(GraphQL::Relay::Node.interface, object, context).name
     end
 
-    %i[message page site].each do |type|
+    %i[image message page site].each do |type|
       context "with #{type}" do
         let(:object) { FactoryBot.create(type) }
 
