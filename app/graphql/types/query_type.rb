@@ -6,6 +6,8 @@ module Types
 
     add_field(GraphQL::Types::Relay::NodeField)
 
+    field :images, ImageType.connection_type, null: true
+
     field :messages, MessageType.connection_type, null: true do
       argument :order_by, MessageOrder, required: true
     end
@@ -13,6 +15,10 @@ module Types
     field :pages, PageType.connection_type, null: false
 
     field :sites, SiteType.connection_type, null: true
+
+    def images
+      policy_scope(Image).order(:name)
+    end
 
     def messages(order_by:)
       policy_scope(Message).order(order_by.field.downcase => order_by.direction)
