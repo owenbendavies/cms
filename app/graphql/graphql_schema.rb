@@ -14,6 +14,7 @@ class GraphqlSchema < GraphQL::Schema
 
   def self.resolve_type(_type, object, _context)
     case object
+    when Image then Types::ImageType
     when Message then Types::MessageType
     when Page then Types::PageType
     when Site then Types::SiteType
