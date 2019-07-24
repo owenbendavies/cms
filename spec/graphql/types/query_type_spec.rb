@@ -7,6 +7,44 @@ RSpec.describe Types::QueryType do
   let(:user) { FactoryBot.build(:user, site: site) }
   let(:context) { { user: user, site: site } }
 
+  context 'with images query' do
+    let!(:image1) { FactoryBot.create(:image, name: 'Image 1', site: site) }
+    let!(:image2) { FactoryBot.create(:image, name: 'Image 2', site: site) }
+
+    let(:query) do
+      <<~BODY
+        query {
+          images {
+            nodes {
+              name
+            }
+            totalCount
+          }
+        }
+      BODY
+    end
+
+    let(:expected_result) do
+      [
+        {
+          'images' => {
+            'nodes' => [
+              { 'name' => image1.name },
+              { 'name' => image2.name }
+            ],
+            'totalCount' => 2
+          }
+        }
+      ]
+    end
+
+    before { FactoryBot.create(:image) }
+
+    it 'returns ordered images' do
+      expect(result.values).to eq expected_result
+    end
+  end
+
   context 'with messages query' do
     let!(:message1) do
       FactoryBot.create(
