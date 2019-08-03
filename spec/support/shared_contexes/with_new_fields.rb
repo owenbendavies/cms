@@ -10,7 +10,7 @@ RSpec.shared_context 'with new fields' do
   let(:new_phone) { "+447819#{rand(100_000).to_s.ljust(6, '0')}" }
   let(:new_number) { rand 10_000 }
 
-  let(:new_google_analytics) { "UA-#{Faker::Number.number(3)}-#{Faker::Number.digit}" }
+  let(:new_google_analytics) { "UA-#{Faker::Number.number(digits: 3)}-#{Faker::Number.digit}" }
   let(:new_html) { "<p>#{Faker::Lorem.paragraph}</p>" }
 end
 
