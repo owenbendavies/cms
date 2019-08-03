@@ -6,6 +6,8 @@ class ValidateDataJob < ApplicationJob
     versions
   ].freeze
 
+  private_constant :NON_MODEL_TABLES
+
   def perform
     models.each do |model|
       model.find_each.reject(&:valid?).each do |record|
