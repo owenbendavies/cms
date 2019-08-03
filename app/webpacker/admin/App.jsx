@@ -1,20 +1,14 @@
 import { Admin, Resource } from 'react-admin';
 import ApolloClient from 'apollo-boost';
 import buildGraphQLProvider from 'ra-data-graphql';
-import ImageIcon from '@material-ui/icons/Image';
-import MessageIcon from '@material-ui/icons/Email';
-import PageIcon from '@material-ui/icons/Subject';
-import SiteIcon from '@material-ui/icons/Language';
 import React from 'react';
 
 import { buildQuery } from './services/build_query';
 
-import { ImageList } from './routes/images/ImageList';
-import { MessageList } from './routes/messages/MessageList';
-import { MessageShow } from './routes/messages/MessageShow';
-import { PageList } from './routes/pages/PageList';
-import { SiteEdit } from './routes/sites/SiteEdit';
-import { SiteList } from './routes/sites/SiteList';
+import { imageOptions } from './routes/images';
+import { messageOptions } from './routes/messages';
+import { pageOptions } from './routes/pages';
+import { siteOptions } from './routes/sites';
 
 export class App extends React.Component {
   constructor() {
@@ -51,20 +45,10 @@ export class App extends React.Component {
 
     return (
       <Admin dataProvider={dataProvider}>
-        <Resource icon={ImageIcon} list={ImageList} name="images" />
-        <Resource
-          icon={MessageIcon}
-          list={MessageList}
-          name="messages"
-          show={MessageShow}
-        />
-        <Resource icon={PageIcon} list={PageList} name="pages" />
-        <Resource
-          edit={SiteEdit}
-          icon={SiteIcon}
-          list={SiteList}
-          name="sites"
-        />
+        <Resource {...imageOptions} />
+        <Resource {...messageOptions} />
+        <Resource {...pageOptions} />
+        <Resource {...siteOptions} />
       </Admin>
     );
   }
