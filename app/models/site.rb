@@ -16,6 +16,8 @@ class Site < ApplicationRecord
 
   # before validations
   TEXT_FIELDS = %i[sidebar_html_content css].freeze
+  private_constant :TEXT_FIELDS
+
   strip_attributes except: TEXT_FIELDS, collapse_spaces: true, replace_newlines: true
   strip_attributes only: TEXT_FIELDS
 
