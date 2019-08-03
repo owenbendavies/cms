@@ -2,8 +2,11 @@ class Page < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
 
   HTML_ATTRIBUTES = %w[href target class src alt].freeze
+  private_constant :HTML_ATTRIBUTES
   HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze
+  private_constant :HTML_TAGS
   INVALID_URLS = %w[admin auth css graphql login logout new robots sitemap].freeze
+  private_constant :INVALID_URLS
 
   acts_as_list scope: :site, column: :main_menu_position, add_new_at: nil
 
@@ -26,6 +29,7 @@ class Page < ApplicationRecord
   before_validation :clean_html_content
 
   TEXT_FIELDS = %i[html_content custom_html].freeze
+  private_constant :TEXT_FIELDS
   strip_attributes except: TEXT_FIELDS, collapse_spaces: true, replace_newlines: true
   strip_attributes only: TEXT_FIELDS
 

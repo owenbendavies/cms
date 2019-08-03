@@ -35,6 +35,8 @@ class ChangeFromSerialToUuid < ActiveRecord::Migration[5.2]
     versions
   ].freeze
 
+  private_constant :TABLES
+
   def up
     enable_extension 'pgcrypto'
     add_uuids
