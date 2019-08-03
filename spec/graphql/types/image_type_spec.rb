@@ -9,6 +9,8 @@ RSpec.describe Types::ImageType do
 
   let!(:image) { FactoryBot.create(:image, site: site) }
 
+  let(:uuid) { File.basename(image.filename, '.jpg') }
+
   let(:query) do
     <<~BODY
       query {
@@ -19,6 +21,11 @@ RSpec.describe Types::ImageType do
             name
             updatedAt
             url
+            urlProcessed
+            urlSpan3
+            urlSpan4
+            urlSpan8
+            urlSpan12
           }
           totalCount
         }
@@ -36,7 +43,18 @@ RSpec.describe Types::ImageType do
               'id' => Base64.urlsafe_encode64("Image-#{image.id}"),
               'name' => image.name,
               'updatedAt' => image.updated_at.iso8601,
-              'url' => image.file.public_url
+              'url' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'original.jpg'),
+              'urlProcessed' => File.join(
+                ENV.fetch('AWS_S3_ASSET_HOST'),
+                'images',
+                uuid,
+                'processed.jpg'
+              ),
+              'urlSpan3' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span3.jpg'),
+              'urlSpan4' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span4.jpg'),
+              'urlSpan8' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span8.jpg'),
+              'urlSpan12' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span12.jpg')
+
             }
           ],
           'totalCount' => 1

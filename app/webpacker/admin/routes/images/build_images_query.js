@@ -6,7 +6,7 @@ const ListQuery = gql`
       nodes {
         id
         name
-        url
+        urlSpan3
       }
       totalCount
     }
