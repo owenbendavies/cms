@@ -906,6 +906,14 @@
     "@babel/runtime" "7.0.0-beta.42"
     recompose "^0.26.0 || ^0.27.0"
 
+"@material-ui/icons@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-3.0.0.tgz#4a482f5c533b19d8ac7f7c5a645246dfb5b14d74"
+  integrity sha512-pcK9khYLM9FtC18lpJ6woOTIkT4xgonMbC4AQMe6O5mXohDHu6EmE6w3MokZdi09yKDjCVmtd0hIlxbElGrUrw==
+  dependencies:
+    "@babel/runtime" "7.0.0-rc.1"
+    recompose "^0.28.2"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -8013,7 +8021,7 @@ readdirp@^2.2.1:
     react-lifecycles-compat "^3.0.2"
     symbol-observable "^1.0.4"
 
-recompose@^0.28.0:
+recompose@^0.28.0, recompose@^0.28.2:
   version "0.28.2"
   resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.28.2.tgz#19e679227bdf979e0d31b73ffe7ae38c9194f4a7"
   integrity sha512-baVNKQBQAAAuLRnv6Cb/6/j59a1BVj6c6Pags1KXVyRB0yPfQVUZtuAUnqHDBXoR8iXPrLGWE4RNtCQ/AaRP3g==
