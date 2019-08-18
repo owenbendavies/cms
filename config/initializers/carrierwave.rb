@@ -1,7 +1,5 @@
 CarrierWave.configure do |config|
   if ENV['AWS_S3_BUCKET']
-    config.fog_provider = 'fog/aws'
-
     bucket = ENV.fetch('AWS_S3_BUCKET')
     region = ENV.fetch('AWS_REGION')
 
