@@ -12,7 +12,8 @@ RSpec.describe ImageUploader do
       "images/#{image_uploader.uuid}/span3.jpg",
       "images/#{image_uploader.uuid}/span4.jpg",
       "images/#{image_uploader.uuid}/span8.jpg",
-      "images/#{image_uploader.uuid}/span12.jpg"
+      "images/#{image_uploader.uuid}/span12.jpg",
+      "images/#{image_uploader.uuid}/thumbnail.jpg"
     ].sort
   end
 
@@ -50,7 +51,8 @@ RSpec.describe ImageUploader do
           "images/#{image_uploader.uuid}/span12.jpg" => '940x702',
           "images/#{image_uploader.uuid}/span8.jpg" => '620x463',
           "images/#{image_uploader.uuid}/span4.jpg" => '300x224',
-          "images/#{image_uploader.uuid}/span3.jpg" => '220x164'
+          "images/#{image_uploader.uuid}/span3.jpg" => '220x164',
+          "images/#{image_uploader.uuid}/thumbnail.jpg" => '200x200'
         }
       end
 
@@ -73,7 +75,8 @@ RSpec.describe ImageUploader do
           "images/#{image_uploader.uuid}/span12.jpg" => '80x80',
           "images/#{image_uploader.uuid}/span8.jpg" => '80x80',
           "images/#{image_uploader.uuid}/span4.jpg" => '80x80',
-          "images/#{image_uploader.uuid}/span3.jpg" => '80x80'
+          "images/#{image_uploader.uuid}/span3.jpg" => '80x80',
+          "images/#{image_uploader.uuid}/thumbnail.jpg" => '200x200'
         }
       end
 
@@ -105,7 +108,8 @@ RSpec.describe ImageUploader do
           "images/#{image_uploader.uuid}/span12.jpg" => {},
           "images/#{image_uploader.uuid}/span8.jpg" => {},
           "images/#{image_uploader.uuid}/span4.jpg" => {},
-          "images/#{image_uploader.uuid}/span3.jpg" => {}
+          "images/#{image_uploader.uuid}/span3.jpg" => {},
+          "images/#{image_uploader.uuid}/thumbnail.jpg" => {}
         }
       end
 

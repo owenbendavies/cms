@@ -26,6 +26,7 @@ RSpec.describe Types::ImageType do
             urlSpan4
             urlSpan8
             urlSpan12
+            urlThumbnail
           }
           totalCount
         }
@@ -45,16 +46,17 @@ RSpec.describe Types::ImageType do
               'updatedAt' => image.updated_at.iso8601,
               'url' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'original.jpg'),
               'urlProcessed' => File.join(
-                ENV.fetch('AWS_S3_ASSET_HOST'),
-                'images',
-                uuid,
-                'processed.jpg'
+                ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'processed.jpg'
               ),
               'urlSpan3' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span3.jpg'),
               'urlSpan4' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span4.jpg'),
               'urlSpan8' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span8.jpg'),
-              'urlSpan12' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span12.jpg')
-
+              'urlSpan12' => File.join(
+                ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span12.jpg'
+              ),
+              'urlThumbnail' => File.join(
+                ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'thumbnail.jpg'
+              )
             }
           ],
           'totalCount' => 1

@@ -7,6 +7,7 @@ module Types
     field :url_span4, String, null: false
     field :url_span8, String, null: false
     field :url_span12, String, null: false
+    field :url_thumbnail, String, null: false
 
     def url
       object.file.public_url
@@ -30,6 +31,10 @@ module Types
 
     def url_span12
       object.file.span12.public_url
+    end
+
+    def url_thumbnail
+      object.file.thumbnail.public_url
     end
   end
 end
