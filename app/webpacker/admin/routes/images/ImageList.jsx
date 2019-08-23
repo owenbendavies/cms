@@ -9,7 +9,7 @@ const ImageGrid = ({ ids, data }) => (
   <GridList cols={4}>
     {ids.map(id => (
       <GridListTile key={id}>
-        <img src={data[id].urlSpan3} alt={data[id].name} />
+        <img src={data[id].urlThumbnail} alt={data[id].name} />
       </GridListTile>
     ))}
   </GridList>
