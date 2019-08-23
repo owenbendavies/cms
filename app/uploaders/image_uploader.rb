@@ -29,6 +29,10 @@ class ImageUploader < ApplicationUploader
     process resize_to_limit: [220, 330]
   end
 
+  version :thumbnail, from_version: :processed do
+    process resize_to_fill: [200, 200]
+  end
+
   def strip
     manipulate!(&:strip)
   end
