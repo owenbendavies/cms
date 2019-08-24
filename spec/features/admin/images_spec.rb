@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Admin images' do
   context 'with multiple images' do
     let!(:images) do
-      ('a'..'k').map do |i|
+      ('a'..'m').map do |i|
         FactoryBot.create(:image, name: "Image #{i}", site: site)
       end
     end
@@ -16,7 +16,7 @@ RSpec.feature 'Admin images' do
     end
 
     scenario 'clicking pagination' do
-      expect(all('img').size).to eq 10
+      expect(all('img').size).to eq 12
 
       expect(page).to have_css "img[alt='#{images.first.name}']"
       expect(page).not_to have_css "img[alt='#{images.last.name}']"
