@@ -30,7 +30,7 @@ class ImageUploader < ApplicationUploader
   end
 
   version :thumbnail, from_version: :processed do
-    process resize_to_fill: [200, 200]
+    process resize_and_pad: [200, 200]
   end
 
   def strip
