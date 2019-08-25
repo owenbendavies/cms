@@ -1,7 +1,0 @@
----
-en:
-  admin:
-    stylesheets:
-      edit:
-        icon: fas fa-file fa-fw
-        title: CSS

@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin images' do
+  context 'with a image' do
+    let!(:image) { FactoryBot.create(:image, site: site) }
+
+    before do
+      login_as site_user
+      visit '/home'
+      click_link 'Admin'
+      click_link 'Images'
+    end
+
+    scenario 'list of images' do
+      expect(find('img')['src']).to eq image.file.thumbnail.public_url
+    end
+  end
+
   context 'with multiple images' do
     let!(:images) do
       ('a'..'m').map do |i|
