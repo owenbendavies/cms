@@ -55,6 +55,7 @@ class PagesController < ApplicationController
 
   def update
     if @page.update(page_params)
+      flash.notice = t('flash.updated', name: Page.model_name.human)
       redirect_to page_path(@page)
     else
       render :edit

@@ -29,28 +29,6 @@
             <% end %>
           </div>
         </li>
-      <% end %>
-
-      <% if policy(site).update? %>
-        <li class="topbar__dropdown-item">
-          <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
-            <%= Site.model_name.human %>
-          </a>
-
-          <div class="dropdown-menu">
-            <%= link_to admin_images_path, class: 'dropdown-item' do %>
-              <%= icon_tag(t('admin.images.index.icon')) %>
-              <%= t('admin.images.index.title') %>
-            <% end %>
-
-            <% if policy(@site).css? %>
-              <%= link_to edit_admin_stylesheet_path, class: 'dropdown-item' do %>
-                <%= icon_tag(t('admin.stylesheets.edit.icon')) %>
-                <%= t('admin.stylesheets.edit.title') %>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
 
         <li class="topbar__item">
           <%= link_to t('admin.index.title'), admin_path, class: 'topbar__link' %>

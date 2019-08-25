@@ -29,19 +29,19 @@ RSpec.feature 'Topbar' do
         visit '/home'
 
         within topbar_selector do
-          expect(page).not_to have_link 'Site'
-          expect(page).not_to have_link 'Images'
+          expect(page).not_to have_link 'Page'
+          expect(page).not_to have_link 'New Page'
 
           click_button 'Account menu'
 
-          expect(page).not_to have_link 'Images'
+          expect(page).not_to have_link 'New Page'
 
-          click_link 'Site'
-          click_link 'Images'
+          click_link 'Page'
+          click_link 'New Page'
         end
 
-        expect(page).to have_content 'Images'
-        expect(page).to have_current_path '/admin/images'
+        expect(page).to have_content 'New Page'
+        expect(page).to have_current_path '/new'
       end
     end
   end

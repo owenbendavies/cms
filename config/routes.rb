@@ -3,23 +3,15 @@ Rails.application.routes.draw do
 
   root to: redirect('/home')
 
-  post '/graphql', to: 'graphql#execute'
-
+  get '/admin', to: 'admin#index'
   get '/auth/cognito-idp/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#invalid'
-
   get '/login', to: redirect('/auth/cognito-idp')
   get '/logout', to: 'sessions#destroy'
-
   get '/robots', to: 'robots#show'
   get '/sitemap', to: 'pages#index'
 
-  namespace :admin do
-    resource :stylesheet, only: %i[edit update]
-    resources :images, only: %i[index]
-  end
-
-  get '/admin', to: 'admin#index'
+  post '/graphql', to: 'graphql#execute'
 
   resources :css, only: %i[show]
 

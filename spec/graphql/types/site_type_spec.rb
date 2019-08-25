@@ -15,6 +15,7 @@ RSpec.describe Types::SiteType do
             address
             charityNumber
             createdAt
+            css
             email
             googleAnalytics
             host
@@ -40,6 +41,7 @@ RSpec.describe Types::SiteType do
               'address' => site.address,
               'charityNumber' => site.charity_number,
               'createdAt' => site.created_at.iso8601,
+              'css' => site.css,
               'email' => site.email,
               'googleAnalytics' => site.google_analytics,
               'host' => site.host,

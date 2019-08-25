@@ -41,6 +41,7 @@ const ShowQuery = gql`
         charityNumber
         mainMenuInFooter
         separateHeader
+        css
       }
     }
   }
