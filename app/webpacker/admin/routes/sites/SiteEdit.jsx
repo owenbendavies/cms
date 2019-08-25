@@ -4,8 +4,10 @@ import {
   BooleanInput,
   DisabledInput,
   Edit,
+  FormTab,
+  LongTextInput,
   SaveButton,
-  SimpleForm,
+  TabbedForm,
   TextInput,
   Toolbar,
 } from 'react-admin';
@@ -20,14 +22,19 @@ const SiteToolbar = props => (
 
 export const SiteEdit = props => (
   <Edit title={<SiteTitle />} {...props}>
-    <SimpleForm toolbar={<SiteToolbar />}>
-      <DisabledInput source="address" />
-      <DisabledInput source="email" />
-      <TextInput source="name" />
-      <TextInput source="googleAnalytics" />
-      <TextInput source="charityNumber" />
-      <BooleanInput source="separateHeader" />
-      <BooleanInput source="mainMenuInFooter" />
-    </SimpleForm>
+    <TabbedForm toolbar={<SiteToolbar />}>
+      <FormTab label="Settings">
+        <DisabledInput source="address" />
+        <DisabledInput source="email" />
+        <TextInput source="name" />
+        <TextInput source="googleAnalytics" />
+        <TextInput source="charityNumber" />
+        <BooleanInput source="separateHeader" />
+        <BooleanInput source="mainMenuInFooter" />
+      </FormTab>
+      <FormTab label="CSS">
+        <LongTextInput source="css" />
+      </FormTab>
+    </TabbedForm>
   </Edit>
 );

@@ -23,31 +23,9 @@ RSpec.describe SitePolicy do
     end
   end
 
-  permissions :index? do
-    context 'without user' do
-      it 'is not permitted' do
-        expect(described_class).not_to permit(context)
-      end
-    end
-
-    context 'with user' do
-      let(:user) { FactoryBot.build :user }
-
-      it 'is permitted' do
-        expect(described_class).to permit(context)
-      end
-    end
-  end
-
   permissions :update? do
     let(:record) { site }
 
     include_examples 'policy for site user'
-  end
-
-  permissions :css? do
-    let(:record) { site }
-
-    include_examples 'policy for site admin'
   end
 end

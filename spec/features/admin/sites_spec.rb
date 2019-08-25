@@ -31,6 +31,9 @@ RSpec.feature 'Admin sites' do
   end
 
   context 'when editing a site' do
+    let(:css) { 'body{background-color: red}' }
+    let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
+
     scenario 'changing the name' do
       expect(page).to have_title site.name
 
@@ -83,6 +86,24 @@ RSpec.feature 'Admin sites' do
       visit '/home'
 
       expect(page).not_to have_content 'Registered charity'
+    end
+
+    scenario 'adding custom CSS' do
+      click_link 'Admin'
+      click_link 'Sites'
+      find('span', text: site.name).click
+      click_link 'CSS'
+
+      fill_in 'Css', with: css
+      click_button 'Save'
+
+      expect(page).to have_content 'Element updated'
+      click_link 'Pages'
+      expect(page).not_to have_content 'Element updated'
+      visit '/home'
+
+      url = "/css/#{md5}.css"
+      expect(page).to have_selector "link[href=\"#{url}\"]", visible: false
     end
 
     context 'with main menu' do

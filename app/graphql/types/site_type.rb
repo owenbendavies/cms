@@ -2,6 +2,7 @@ module Types
   class SiteType < ModelType
     field :address, String, null: false
     field :charity_number, String, null: true
+    field :css, String, null: true
     field :email, String, null: false
     field :google_analytics, String, null: true
     field :host, String, null: false

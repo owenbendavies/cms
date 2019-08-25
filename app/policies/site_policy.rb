@@ -9,15 +9,7 @@ class SitePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user_logged_in?
-  end
-
   def update?
     user_logged_in?
-  end
-
-  def css?
-    user_is_admin?
   end
 end
