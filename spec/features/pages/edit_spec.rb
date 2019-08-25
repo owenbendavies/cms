@@ -18,6 +18,7 @@ RSpec.feature 'Editing a page' do
 
     click_button 'Update Page'
 
+    expect(page).to have_content 'Page successfully updated'
     expect(page).to have_content 'Hello world today'
     expect(home_page.reload.html_content).to eq '<p>Hello world today</p>'
   end

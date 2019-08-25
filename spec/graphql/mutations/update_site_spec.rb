@@ -21,6 +21,7 @@ RSpec.describe Mutations::UpdateSite do
           }
           site {
             charityNumber
+            css
             googleAnalytics
             id
             mainMenuInFooter
@@ -37,6 +38,7 @@ RSpec.describe Mutations::UpdateSite do
     let(:updated_properties) do
       {
         'charityNumber' => new_number.to_s,
+        'css' => 'body{background-color: red}',
         'googleAnalytics' => new_google_analytics,
         'mainMenuInFooter' => true,
         'name' => new_company_name,
@@ -92,6 +94,7 @@ RSpec.describe Mutations::UpdateSite do
             'errors' => [],
             'site' => {
               'charityNumber' => site.charity_number,
+              'css' => site.css,
               'googleAnalytics' => site.google_analytics,
               'id' => site_id,
               'mainMenuInFooter' => site.main_menu_in_footer,
@@ -128,6 +131,7 @@ RSpec.describe Mutations::UpdateSite do
             'errors' => [],
             'site' => {
               'charityNumber' => site.charity_number,
+              'css' => site.css,
               'googleAnalytics' => nil,
               'id' => site_id,
               'mainMenuInFooter' => site.main_menu_in_footer,
