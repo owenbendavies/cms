@@ -104,7 +104,7 @@ GEM
     css_parser (1.7.0)
       addressable
     database_cleaner (1.7.0)
-    debase (0.2.4)
+    debase (0.2.5)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.5)
     delayed_job (4.1.8)
