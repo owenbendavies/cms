@@ -16,7 +16,7 @@ RSpec.describe 'CSS' do
       end
 
       it 'returns css content type' do
-        expect(response.content_type).to eq 'text/css'
+        expect(response.content_type).to eq 'text/css; charset=utf-8'
       end
 
       it 'caches the page' do
