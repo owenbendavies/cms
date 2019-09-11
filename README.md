@@ -1,7 +1,6 @@
 # CMS
 
 [![CircleCI](https://circleci.com/gh/obduk/cms.svg?style=svg)](https://circleci.com/gh/obduk/cms)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fobduk%2Fcms.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fobduk%2Fcms?ref=badge_shield)
 
 A Content Management System (CMS) written with Ruby on Rails. Although it is a
 working project, it was not created with the intention of being a production
@@ -51,7 +50,3 @@ heroku config:set --app obduk-cms-production ROLLBAR_CLIENT_TOKEN=xxx
 1. Open Scout from Heroku app
 1. Go to alerts and set conditions, groups and channels
 1. Go to app settings and set up Github integration
-
-## License
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fobduk%2Fcms.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fobduk%2Fcms?ref=badge_large)
