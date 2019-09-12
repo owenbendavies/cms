@@ -1,20 +1,74 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin pages' do
+  def navigate_to_admin_pages
+    click_link 'Admin'
+    click_link 'Pages'
+  end
+
+  def navigate_to_edit_page
+    navigate_to_admin_pages
+    find('span', text: home_page.name).click
+  end
+
+  def click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
+    click_link 'Sites'
+    expect(page).not_to have_content 'Element updated'
+  end
+
+  before do
+    login_as site_user
+    visit '/home'
+  end
+
+  scenario 'renaming a page' do
+    navigate_to_edit_page
+
+    url_field = find('#url')
+    expect(url_field['disabled']).to eq 'true'
+    expect(url_field.value).to eq home_page.url
+
+    expect(find_field('Name').value).to eq home_page.name
+    fill_in 'Name', with: 'New Page Name'
+    click_save_and_wait_for_update
+    visit '/new_page_name'
+    expect(page).to have_content 'New Page Name'
+  end
+
+  scenario 'making the page private' do
+    navigate_to_edit_page
+    expect(find('#private', visible: false)).not_to be_checked
+    find('label', text: 'Private').click
+    click_save_and_wait_for_update
+    visit '/home'
+    expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
+  end
+
+  scenario 'adding a contact form' do
+    navigate_to_edit_page
+    expect(find('#contactForm', visible: false)).not_to be_checked
+    find('label', text: 'Contact form').click
+    click_save_and_wait_for_update
+    visit '/home'
+    expect(page).to have_content 'Message'
+  end
+
   it_behaves_like 'when on mobile' do
-    before do
-      login_as site_user
-      visit '/home'
+    scenario 'navigating to page' do
       click_button 'Account menu'
       click_link 'Admin'
       find('button[aria-label="open drawer"]').click
       click_link 'Pages'
-    end
 
-    scenario 'list of pages' do
       within('.list-page ul a:nth-child(1)') do
         expect(page).to have_content home_page.name
       end
+
+      find('span', text: home_page.name).click
+
+      expect(page).to have_content "Page #{home_page.name}"
     end
   end
 
@@ -25,14 +79,9 @@ RSpec.feature 'Admin pages' do
       end
     end
 
-    before do
-      login_as site_user
-      visit '/home'
-      click_link 'Admin'
-      click_link 'Pages'
-    end
-
     scenario 'clicking pagination' do
+      navigate_to_admin_pages
+
       expect(all('table tbody tr').size).to eq 10
 
       expect(page).to have_content pages.first.name
@@ -50,6 +99,8 @@ RSpec.feature 'Admin pages' do
     end
 
     scenario 'deleteing pages' do
+      navigate_to_admin_pages
+
       find('table tbody tr:nth-child(1) td:nth-child(1) > span').click
       find('table tbody tr:nth-child(2) td:nth-child(1) > span').click
       find('table tbody tr:nth-child(3) td:nth-child(1) > span').click
