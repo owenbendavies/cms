@@ -1,17 +1,21 @@
 require 'rails_helper'
 
 RSpec.feature 'Admin images' do
+  def navigate_to_admin_images
+    click_link 'Admin'
+    click_link 'Images'
+  end
+
+  before do
+    login_as site_user
+    visit '/home'
+  end
+
   context 'with a image' do
     let!(:image) { FactoryBot.create(:image, site: site) }
 
-    before do
-      login_as site_user
-      visit '/home'
-      click_link 'Admin'
-      click_link 'Images'
-    end
-
     scenario 'list of images' do
+      navigate_to_admin_images
       expect(find('img')['src']).to eq image.file.thumbnail.public_url
     end
   end
@@ -23,14 +27,8 @@ RSpec.feature 'Admin images' do
       end
     end
 
-    before do
-      login_as site_user
-      visit '/home'
-      click_link 'Admin'
-      click_link 'Images'
-    end
-
     scenario 'clicking pagination' do
+      navigate_to_admin_images
       expect(all('img').size).to eq 12
 
       expect(page).to have_css "img[alt='#{images.first.name}']"
