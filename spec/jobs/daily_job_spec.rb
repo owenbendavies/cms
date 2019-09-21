@@ -5,8 +5,8 @@ RSpec.describe DailyJob do
     expect { described_class.perform_now }.to have_enqueued_job(CleanS3Job)
   end
 
-  it 'runs DeleteOldModelsJob' do
-    expect { described_class.perform_now }.to have_enqueued_job(DeleteOldModelsJob)
+  it 'runs DeleteOldVersionsJob' do
+    expect { described_class.perform_now }.to have_enqueued_job(DeleteOldVersionsJob)
   end
 
   it 'runs ValidateDataJob' do
