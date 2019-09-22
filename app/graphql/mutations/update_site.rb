@@ -19,16 +19,7 @@ module Mutations
       if site.update arguments
         { errors: [], site: site }
       else
-        { errors: errors(site), site: nil }
-      end
-    end
-
-    def errors(site)
-      site.errors.messages.map do |field, messages|
-        {
-          'field' => field.to_s.camelize(:lower),
-          'messages' => messages
-        }
+        { errors: model_errors(site), site: nil }
       end
     end
   end
