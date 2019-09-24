@@ -132,7 +132,7 @@ GEM
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
-    excon (0.66.0)
+    excon (0.67.0)
     factory_bot (5.1.0)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.1.0)
