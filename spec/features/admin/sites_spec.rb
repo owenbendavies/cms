@@ -159,10 +159,10 @@ RSpec.feature 'Admin sites' do
     scenario 'clicking pagination' do
       navigate_to_admin_sites
 
-      expect(all('table tbody tr').size).to eq 10
-
       expect(page).to have_content sites.first.name
       expect(page).not_to have_content sites.last.name
+
+      expect(all('table tbody tr').size).to eq 10
 
       click_button 'Next'
 
