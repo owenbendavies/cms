@@ -113,10 +113,10 @@ RSpec.feature 'Admin messages' do
     scenario 'clicking pagination' do
       navigate_to_admin_messages
 
-      expect(all('table tbody tr').size).to eq 10
-
       expect(page).to have_content messages.first.name
       expect(page).not_to have_content messages.last.name
+
+      expect(all('table tbody tr').size).to eq 10
 
       click_button 'Next'
 
