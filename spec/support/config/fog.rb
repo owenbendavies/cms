@@ -3,8 +3,8 @@ RSpec.configure do |config|
     Fog.mock!
     Fog::Mock.reset
 
-    # rubocop:disable Rails/SaveBang not ActiveRecord
+    # rubocop:disable Rails/SaveBang
     fog_directories.create(key: CarrierWave::Uploader::Base.fog_directory)
-    # rubocop:enable Rails/SaveBang not ActiveRecord
+    # rubocop:enable Rails/SaveBang
   end
 end

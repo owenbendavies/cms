@@ -29,7 +29,7 @@ class CleanS3Job < ApplicationJob
     all_files.each do |file|
       next if missing_files.delete file.key
 
-      file.destroy # rubocop:disable Rails/SaveBang not ActiveRecord
+      file.destroy # rubocop:disable Rails/SaveBang
       error('deleted unknown file', deleted_file: file.key)
     end
 
