@@ -255,7 +255,7 @@ GEM
     parser (2.6.5.0)
       ast (~> 2.4.0)
     pg (1.1.4)
-    phonelib (0.6.37)
+    phonelib (0.6.38)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
