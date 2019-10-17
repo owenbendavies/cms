@@ -13,10 +13,8 @@ if ENV['COVERAGE']
         ParallelTests.wait_for_other_processes_to_finish
         SimpleCov.result.format!
 
-        covered_percent = SimpleCov.result.covered_percent.round(2)
-
-        if covered_percent < 100
-          $stderr.printf("Coverage (%.2f%%) is below (100%%).\n", covered_percent)
+        if SimpleCov.result.covered_percent < 100
+          warn 'Coverage is below 100%'
           exit 1
         end
       end
