@@ -13,8 +13,7 @@ RSpec.feature 'Editing a page' do
   scenario 'changing the content' do
     expect(body).to include home_page.html_content
 
-    find('.mce-content-body').click
-    find('.mce-content-body').base.send_keys(' today')
+    find('.mce-content-body').send_keys(' today')
 
     click_button 'Update Page'
 
