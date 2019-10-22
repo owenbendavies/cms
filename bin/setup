@@ -1,22 +1,16 @@
 #!/bin/bash
-set -e
 
 cd $(dirname $0)/..
 
 if [ "$(uname)" == "Darwin" ]; then
-  export NVM_DIR="$HOME/.nvm"
-
-  if [ ! -s "$NVM_DIR/nvm.sh" ]; then
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-  fi
-
-  . "$NVM_DIR/nvm.sh"
-  nvm install
-
   ./bin/setup_mac
+
+  export NVM_DIR="$HOME/.nvm"
+  . /usr/local/opt/nvm/nvm.sh
+  nvm install
 fi
 
-set -v
+set -ev
 
 gem install bundler --version '< 2'
 
@@ -32,9 +26,9 @@ DATABASE_TIMEOUT=5 bin/rails db:create db:migrate
 
 RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create
 
-bin/rails log:clear tmp:clear
+./bin/rails log:clear tmp:clear
 
-bin/rails restart
+./bin/rails restart
 
 if [ "$(uname)" == "Darwin" ]; then
   ./bin/bundle exec solargraph download-core

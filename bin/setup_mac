@@ -15,6 +15,7 @@ function brew_install_missing_formulas() {
     circleci
     heroku
     imagemagick
+    nvm
     postgresql
     rbenv
     shfmt
@@ -32,7 +33,6 @@ function brew_install_missing_formulas() {
 function brew_cask_install_missing_formulas() {
   REQUIRED="
     chromedriver
-    google-cloud-sdk
   "
 
   INSTALLED=$(brew cask list)
