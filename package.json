@@ -30,7 +30,7 @@
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
     "ra-data-graphql": "^2.5.3",
-    "react": "^16.10.2",
+    "react": "^16.11.0",
     "react-admin": "^2.9.8",
     "react-apollo": "^3.0.0",
     "react-dom": "^16.10.2",
