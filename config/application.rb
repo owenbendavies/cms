@@ -34,7 +34,7 @@ module Cms
     # the framework and any gems in your application.
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
 
     # Raises error for missing translations
     config.action_view.raise_on_missing_translations = true

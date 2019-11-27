@@ -8,14 +8,14 @@ if ENV['AWS_STUB'].present? && !Rails.env.production?
   LIST_USERS_IN_GROUP_ADMIN = AWS_COGNITO.stub_data(
     :list_users_in_group,
     JSON.parse(
-      Rails.root.join('spec', 'support', 'stubs', 'aws_cognito_list_users_in_group_admin.json').read
+      Rails.root.join('spec/support/stubs/aws_cognito_list_users_in_group_admin.json').read
     )
   )
 
   LIST_USERS_IN_GROUP_SITE = AWS_COGNITO.stub_data(
     :list_users_in_group,
     JSON.parse(
-      Rails.root.join('spec', 'support', 'stubs', 'aws_cognito_list_users_in_group_site.json').read
+      Rails.root.join('spec/support/stubs/aws_cognito_list_users_in_group_site.json').read
     )
   )
 
