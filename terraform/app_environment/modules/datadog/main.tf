@@ -26,7 +26,7 @@ resource "datadog_synthetics_test" "main" {
   ]
 
   options = {
-    min_failure_duration = 60,
+    min_failure_duration = 120,
     min_location_failed  = 1,
     tick_every           = 60,
   }
