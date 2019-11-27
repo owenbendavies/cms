@@ -48,7 +48,7 @@ class Site < ApplicationRecord
 
   validates(
     :links,
-    json: { schema: Rails.root.join('config', 'json_schemas', 'site_links.json').to_s }
+    json: { schema: Rails.root.join('config/json_schemas/site_links.json').to_s }
   )
 
   def address

@@ -30,7 +30,7 @@ RSpec.describe ImageUploader do
   describe '.store!' do
     context 'with non image file' do
       let(:upload) do
-        File.open(Rails.root.join('spec', 'assets', 'bad.exe')) do |file|
+        File.open(Rails.root.join('spec/assets/bad.exe')) do |file|
           image_uploader.store! file
         end
       end
@@ -57,7 +57,7 @@ RSpec.describe ImageUploader do
       end
 
       before do
-        File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
+        File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
           image_uploader.store! file
         end
       end
@@ -81,7 +81,7 @@ RSpec.describe ImageUploader do
       end
 
       before do
-        File.open(Rails.root.join('spec', 'assets', 'small.jpg')) do |file|
+        File.open(Rails.root.join('spec/assets/small.jpg')) do |file|
           image_uploader.store! file
         end
       end
@@ -114,7 +114,7 @@ RSpec.describe ImageUploader do
       end
 
       before do
-        File.open(Rails.root.join('spec', 'assets', 'test_image.jpg')) do |file|
+        File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
           image_uploader.store! file
         end
       end
@@ -132,7 +132,7 @@ RSpec.describe ImageUploader do
 
     context 'with filename extension that is capitals' do
       before do
-        File.open(Rails.root.join('spec', 'assets', 'test_image_capital.JPG')) do |file|
+        File.open(Rails.root.join('spec/assets/test_image_capital.JPG')) do |file|
           image_uploader.store! file
         end
       end
@@ -144,7 +144,7 @@ RSpec.describe ImageUploader do
 
     context 'with .jpeg' do
       before do
-        File.open(Rails.root.join('spec', 'assets', 'test_image.jpeg')) do |file|
+        File.open(Rails.root.join('spec/assets/test_image.jpeg')) do |file|
           image_uploader.store! file
         end
       end
