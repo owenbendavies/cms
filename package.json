@@ -15,7 +15,7 @@
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^3.0.0",
     "@rails/ujs": "^6.0.1",
-    "@rails/webpacker": "^4.2.1",
+    "@rails/webpacker": "^4.2.2",
     "apollo-boost": "^0.4.4",
     "apollo-client": "^2.6.4",
     "autosize": "^4.0.1",
