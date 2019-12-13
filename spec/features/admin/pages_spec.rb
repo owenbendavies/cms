@@ -11,13 +11,6 @@ RSpec.feature 'Admin pages' do
     find('span', text: home_page.name).click
   end
 
-  def click_save_and_wait_for_update
-    click_button 'Save'
-    expect(page).to have_content 'Element updated'
-    click_link 'Sites'
-    expect(page).not_to have_content 'Element updated'
-  end
-
   before do
     login_as site_user
     visit '/home'
@@ -39,7 +32,7 @@ RSpec.feature 'Admin pages' do
 
   scenario 'making the page private' do
     navigate_to_edit_page
-    expect(find('#private', visible: false)).not_to be_checked
+    expect(find('input#private', visible: false)).not_to be_checked
     find('label', text: 'Private').click
     click_save_and_wait_for_update
     visit '/home'
@@ -48,7 +41,7 @@ RSpec.feature 'Admin pages' do
 
   scenario 'adding a contact form' do
     navigate_to_edit_page
-    expect(find('#contactForm', visible: false)).not_to be_checked
+    expect(find('input#contactForm', visible: false)).not_to be_checked
     find('label', text: 'Contact form').click
     click_save_and_wait_for_update
     visit '/home'
