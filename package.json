@@ -16,7 +16,7 @@
     "@material-ui/icons": "^3.0.0",
     "@rails/ujs": "^6.0.2",
     "@rails/webpacker": "^4.2.2",
-    "apollo-boost": "^0.4.4",
+    "apollo-boost": "^0.4.7",
     "apollo-client": "^2.6.8",
     "autosize": "^4.0.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
