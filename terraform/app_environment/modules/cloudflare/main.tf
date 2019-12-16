@@ -16,7 +16,7 @@ resource "cloudflare_record" "dmarc" {
   domain = cloudflare_zone.main[count.index].zone
   name   = "_dmarc"
   type   = "TXT"
-  value  = var.dmarc_record
+  value  = "v=DMARC1; p=reject"
 }
 
 resource "cloudflare_record" "gsuite_domainkey" {
@@ -66,7 +66,7 @@ resource "cloudflare_record" "ses_mail_from_spf" {
   domain = cloudflare_zone.main[count.index].zone
   name   = var.ses_mail_from_domains[count.index]
   type   = "TXT"
-  value  = "v=spf1 include:amazonses.com ~all"
+  value  = "v=spf1 include:amazonses.com -all"
 }
 
 resource "cloudflare_record" "ses_verification_token" {
@@ -100,7 +100,7 @@ resource "cloudflare_record" "spf" {
   domain = cloudflare_zone.main[count.index].zone
   name   = cloudflare_zone.main[count.index].zone
   type   = "TXT"
-  value  = "v=spf1 ${contains(var.gsuite_domains, cloudflare_zone.main[count.index].zone) ? "include:_spf.google.com " : ""}${contains(var.mailchip_domains, cloudflare_zone.main[count.index].zone) ? "include:servers.mcsv.net " : ""}~all"
+  value  = "v=spf1 ${contains(var.gsuite_domains, cloudflare_zone.main[count.index].zone) ? "include:_spf.google.com " : ""}${contains(var.mailchip_domains, cloudflare_zone.main[count.index].zone) ? "include:servers.mcsv.net " : ""}-all"
 }
 
 resource "cloudflare_zone" "main" {

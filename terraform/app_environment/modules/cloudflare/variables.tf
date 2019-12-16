@@ -1,5 +1,4 @@
 variable "aws_region" {}
-variable "dmarc_record" {}
 variable "heroku_domain" {}
 
 variable "gsuite_domainkeys" {

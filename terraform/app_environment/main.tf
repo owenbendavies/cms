@@ -48,7 +48,6 @@ module "cloudflare" {
   source = "./modules/cloudflare"
 
   aws_region              = local.aws_region
-  dmarc_record            = local.dmarc_record
   gsuite_domainkeys       = local.workspace["gsuite_domainkeys"]
   gsuite_domains          = local.workspace["gsuite_domains"]
   heroku_domain           = module.heroku.domain
