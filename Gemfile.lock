@@ -367,7 +367,7 @@ GEM
       ffi (~> 1.9)
     rubyzip (2.0.0)
     safe_yaml (1.0.5)
-    scout_apm (2.6.5)
+    scout_apm (2.6.6)
       parser
     secure_headers (6.1.1)
     selenium-webdriver (3.142.6)
