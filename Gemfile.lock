@@ -255,7 +255,7 @@ GEM
       parallel
     parser (2.6.5.0)
       ast (~> 2.4.0)
-    pg (1.1.4)
+    pg (1.2.0)
     phonelib (0.6.40)
     premailer (1.11.1)
       addressable
