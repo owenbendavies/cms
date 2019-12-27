@@ -118,7 +118,7 @@ GEM
     database_cleaner (1.7.0)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
-    debase-ruby_core_source (0.10.8)
+    debase-ruby_core_source (0.10.9)
     delayed_job (4.1.8)
       activesupport (>= 3.0, < 6.1)
     delayed_job_active_record (4.1.4)
