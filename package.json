@@ -21,7 +21,7 @@
     "autosize": "^4.0.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.4.1",
-    "caniuse-lite": "^1.0.30001018",
+    "caniuse-lite": "^1.0.30001019",
     "core-js": "3",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
