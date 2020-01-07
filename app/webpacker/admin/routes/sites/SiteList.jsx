@@ -11,7 +11,7 @@ import {
 } from 'react-admin';
 
 export const SiteList = props => (
-  <List bulkActions={false} {...props}>
+  <List bulkActionButtons={false} {...props}>
     <Responsive
       small={
         <SimpleList

@@ -11,13 +11,6 @@ RSpec.feature 'Admin sites' do
     find('span', text: site.name).click
   end
 
-  def click_save_and_wait_for_update
-    click_button 'Save'
-    expect(page).to have_content 'Element updated'
-    click_link 'Pages'
-    expect(page).not_to have_content 'Element updated'
-  end
-
   before do
     login_as site_user
     visit '/home'
@@ -55,7 +48,7 @@ RSpec.feature 'Admin sites' do
     expect(body).to include "ga('create', '#{site.google_analytics}', 'auto');"
     expect(body).to include "ga('set', 'userId', '#{site_user.id}');"
     navigate_to_edit_site
-    fill_in 'Google analytics', with: ''
+    fill_in 'Google analytics', with: '', fill_options: { clear: :backspace }
     click_save_and_wait_for_update
     visit '/home'
     expect(body).not_to include 'ga('
@@ -64,7 +57,7 @@ RSpec.feature 'Admin sites' do
   scenario 'removing a charity number' do
     expect(page).to have_content "Registered charity number #{site.charity_number}"
     navigate_to_edit_site
-    fill_in 'Charity number', with: ''
+    fill_in 'Charity number', with: '', fill_options: { clear: :backspace }
     click_save_and_wait_for_update
     visit '/home'
     expect(page).not_to have_content 'Registered charity'

@@ -2,10 +2,8 @@ import React from 'react';
 
 import {
   BooleanInput,
-  DisabledInput,
   Edit,
   FormTab,
-  LongTextInput,
   SaveButton,
   TabbedForm,
   TextInput,
@@ -24,8 +22,8 @@ export const SiteEdit = props => (
   <Edit title={<SiteTitle />} {...props}>
     <TabbedForm toolbar={<SiteToolbar />}>
       <FormTab label="Settings">
-        <DisabledInput source="address" />
-        <DisabledInput source="email" />
+        <TextInput disabled source="address" />
+        <TextInput disabled source="email" />
         <TextInput source="name" />
         <TextInput source="googleAnalytics" />
         <TextInput source="charityNumber" />
@@ -33,7 +31,7 @@ export const SiteEdit = props => (
         <BooleanInput source="mainMenuInFooter" />
       </FormTab>
       <FormTab label="CSS">
-        <LongTextInput source="css" />
+        <TextInput fullWidth multiline source="css" />
       </FormTab>
     </TabbedForm>
   </Edit>
