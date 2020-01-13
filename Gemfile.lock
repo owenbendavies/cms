@@ -326,7 +326,7 @@ GEM
       rack (>= 1.4)
     reverse_markdown (1.4.0)
       nokogiri
-    rollbar (2.23.1)
+    rollbar (2.23.2)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.0)
