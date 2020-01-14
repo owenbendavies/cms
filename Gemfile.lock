@@ -174,7 +174,7 @@ GEM
     htmlentities (4.3.4)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.29)
+    i18n-tasks (0.9.30)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
