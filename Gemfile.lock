@@ -371,7 +371,7 @@ GEM
     safe_yaml (1.0.5)
     scout_apm (2.6.6)
       parser
-    secure_headers (6.2.0)
+    secure_headers (6.3.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
