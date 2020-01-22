@@ -8055,7 +8055,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.0, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8190,10 +8190,10 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
-ra-core@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.1.2.tgz#d125041167269b524ad5d72a4ac1ea5bae054c36"
-  integrity sha512-zfrvi4KIAKqTc39GCtW8CQYMjImFW8eCvG+EQm+N0K0CpDi/fR/0IOH7MzK6Wqn87S77/uNMYFH5WobnoZPW8Q==
+ra-core@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.1.3.tgz#823a60018d8d6d28ccb8fdfef5d2ce8727da7be6"
+  integrity sha512-BPK6vMIEiVXq1szIi6F+Us+nniFRQuDvFKSsm0SHTa6Y24RE/YLULuklPWfPpKNssKgTv8h96xyfcebEaDfZMA==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
@@ -8217,23 +8217,23 @@ ra-data-graphql@^3.0.2:
     lodash "~4.17.5"
     pluralize "~7.0.0"
 
-ra-i18n-polyglot@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.1.2.tgz#5c1b936cebdf81df9f40c74f7f01a39c0c715c07"
-  integrity sha512-OkB2/UHH6o0VOJVcvH9NUR26/mRN9zOnynfuuMAeEjMyqTuxp6uJHoNHRn1d42Oa4PwUAxtN3OXwXC77TBOPXw==
+ra-i18n-polyglot@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.1.3.tgz#abc472dec5604be376af74156d2dc88f54d5062d"
+  integrity sha512-jwB6AaAcXGNxcELmofH9zk6Rty5gLTI2vKs3RPLeM6Glr9Gdl1YzWcEzhWV11o7EGFKOXcb/VEie1TzlTFFM4w==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.1.2"
+    ra-core "^3.1.3"
 
 ra-language-english@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.1.0.tgz#2fa509c5cd1127f9ce58097829b8bc6a3d12f5cc"
   integrity sha512-5v1mu3ri/u4YEqm5iop/KXJ+mDt9sQ97GjY7wG/SkEyG+LXo+IllpDqkNXhHqSA6HpqAxmcFY/LO9Gh7ApQLRA==
 
-ra-ui-materialui@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.1.2.tgz#b4724ff0c290686e689eb6ad0ab6e274be54dcba"
-  integrity sha512-CVS1sJIYgrF78+Ns9i4KoTXBZhDNJbDub6dc362TT54WAEeYLfEhigGI2b4FIb7JypIlStTXaD6GhPfms6/YcQ==
+ra-ui-materialui@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.1.3.tgz#898585b1ff7300b1c045d9efda33172b97b37bb1"
+  integrity sha512-SKkaBAjP7MCZGGZk5qUUYdVtOnMVFmYvImYKDo2Q9/6lGyumNL4yPEeD57vCWFt0D5YF+lM5WgQJJ6dSGs/S8g==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
@@ -8243,7 +8243,7 @@ ra-ui-materialui@^3.1.2:
     inflection "~1.12.0"
     jsonexport "^2.4.1"
     lodash "~4.17.5"
-    prop-types "^15.6.1"
+    prop-types "^15.7.0"
     query-string "^5.1.1"
     react-dropzone "^10.1.7"
     react-transition-group "^2.2.1"
@@ -8289,10 +8289,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-admin@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-3.1.2.tgz#36e771f8fcda36e45f6852eb879f7372b62fcf71"
-  integrity sha512-pntrNzHXC8xoR0Iq0svp2U96hbsH7sn5XUDgRcOHI4X27ZVhhR5n7ZUL7T45U300AgfJkl0zuQvj5immwNj7VQ==
+react-admin@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-admin/-/react-admin-3.1.3.tgz#aa76e05d4f3983010f44069dc559c8a89f0e52c0"
+  integrity sha512-/Ab7xTZLqGGCWAFi/vYcKrcG4DoRjj1YRjbocjnnVfq5NaxoT2w88wXVEwC4QIwiEIOJPPl1lvXGQitYeuOssw==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
@@ -8300,10 +8300,10 @@ react-admin@^3.1.2:
     connected-react-router "^6.5.2"
     final-form "^4.18.5"
     final-form-arrays "^3.0.1"
-    ra-core "^3.1.2"
-    ra-i18n-polyglot "^3.1.2"
+    ra-core "^3.1.3"
+    ra-i18n-polyglot "^3.1.3"
     ra-language-english "^3.1.0"
-    ra-ui-materialui "^3.1.2"
+    ra-ui-materialui "^3.1.3"
     react-final-form "^6.3.3"
     react-final-form-arrays "^3.1.1"
     react-redux "^7.1.0"
