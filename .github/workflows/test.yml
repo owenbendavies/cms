@@ -1,0 +1,52 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test_ruby:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10.11-alpine
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.14.1
+
+      - uses: nanasess/setup-chromedriver@master
+
+      - run: sudo apt-get --yes --quiet install libpq-dev
+
+      - name: Cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: gems-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: gems-${{ hashFiles('.ruby-version') }}-
+
+      - name: Cache yarn
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('.nvmrc') }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: yarn-${{ hashFiles('.nvmrc') }}-
+
+      - run: ./bin/setup
+
+      - run: RAILS_ENV=test ./bin/rails webpacker:compile
+
+      - run: ./bin/test
+
+      - run: ./bin/quality
+
+      - run: ./bin/git_changes

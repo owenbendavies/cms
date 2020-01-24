@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd `dirname $0`/..
+cd $(dirname $0)/..
 
 export RAILS_ENV='test'
 
@@ -12,19 +12,13 @@ else
   export COVERAGE=on
   export DISABLE_SPRING=true
 
-  if [ "$CIRCLECI" = "true" ]; then
-    set -v
+  set -v
 
-    JOBS=4
+  JOBS=4
 
-    eval "./bin/rake parallel:create[$JOBS]"
-    eval "./bin/rake parallel:load_schema[$JOBS]"
-    eval "./bin/rake parallel:spec[$JOBS]"
-  else
-    set -v
-
-    eval "./bin/rspec"
-  fi
+  eval "./bin/rake parallel:create[$JOBS]"
+  eval "./bin/rake parallel:load_schema[$JOBS]"
+  eval "./bin/rake parallel:spec[$JOBS]"
 fi
 
 # 'test complete'
