@@ -7,6 +7,68 @@ on:
     branches: [master]
 
 jobs:
+  terraform_plan:
+    strategy:
+      matrix:
+        tf_workspace: [staging, production, global]
+        include:
+          - tf_workspace: staging
+            tf_dir: terraform/app_environment
+          - tf_workspace: production
+            tf_dir: terraform/app_environment
+          - tf_workspace: global
+            tf_dir: terraform/app_global
+
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+      CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      DATADOG_APP_KEY: ${{ secrets.DATADOG_APP_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      TF_VERSION: 0.12.20
+      TF_WORKSPACE: ${{ matrix.tf_workspace }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+
+      - name: 'Terraform Validate'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'validate'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+
+      - name: 'Terraform Plan'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'plan'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+        env:
+          TF_CLI_ARGS: -lock=false
+
+      - run: ./bin/git_changes
+
   test_ruby:
     runs-on: ubuntu-latest
 
