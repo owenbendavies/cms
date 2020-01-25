@@ -44,7 +44,7 @@ commands:
 executors:
   rails:
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/ruby:2.7.0-node-browsers
       - image: circleci/postgres:10-alpine-ram
 
   terraform:
