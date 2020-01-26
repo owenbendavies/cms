@@ -45,7 +45,7 @@ RSpec.describe GraphqlSchema do
       context "with #{type}" do
         let(:object) { FactoryBot.create(type) }
 
-        it { is_expected.to eq type.to_s.classify }
+        it { is_expected.to eq "Types::#{type.to_s.classify}Type" }
       end
     end
   end
