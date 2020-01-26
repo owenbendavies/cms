@@ -82,7 +82,6 @@ group :test do
   gem 'factory_bot_rails' # Generates test models
   gem 'faker' # Generates test data
   gem 'rspec-rails' # RSpec test framework
-  gem 'rspec_junit_formatter' # Output RSpec results as XML
   gem 'selenium-webdriver' # Controls real browsers
   gem 'shoulda-matchers' # Model test helpers
   gem 'simplecov' # Code coverage

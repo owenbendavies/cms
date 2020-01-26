@@ -122,7 +122,7 @@ jobs:
       - run: ./bin/git_changes
 
   deploy:
-    if: github.ref == 'master'
+    if: github.ref == 'refs/heads/master'
 
     needs: [terraform_plan, test_ruby]
 
@@ -163,11 +163,11 @@ jobs:
           tf_actions_subcommand: 'init'
           tf_actions_working_dir: ${{ matrix.tf_dir }}
 
-      - name: 'Terraform Plan'
+      - name: 'Terraform Apply'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.TF_VERSION }}
-          tf_actions_subcommand: 'plan'
+          tf_actions_subcommand: 'apply'
           tf_actions_working_dir: ${{ matrix.tf_dir }}
         env:
           TF_CLI_ARGS: -lock=false

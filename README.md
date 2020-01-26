@@ -1,6 +1,6 @@
 # CMS
 
-[![CircleCI](https://circleci.com/gh/obduk/cms.svg?style=svg)](https://circleci.com/gh/obduk/cms)
+[![CI](https://github.com/obduk/cms/workflows/CI/badge.svg)](https://github.com/obduk/cms/actions)
 
 A Content Management System (CMS) written with Ruby on Rails. Although it is a
 working project, it was not created with the intention of being a production
@@ -18,7 +18,7 @@ testing new ideas.
 
 ## Deployment
 
-Deplyoment is managed via [CircleCI](.circleci/config.yml) with the following manual steps:
+Deplyoment is managed via [GitHub actions](https://github.com/obduk/cms/actions) with the following manual steps:
 
 ### Heroku Addon PostgreSQL
 
