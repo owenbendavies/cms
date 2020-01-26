@@ -1,10 +1,15 @@
-name: Test
+name: CI
 
 on:
   push:
     branches: [master]
   pull_request:
     branches: [master]
+
+env:
+  NODE_VERSION: 12.14.1
+  RUBY_VERSION: 2.6
+  TF_VERSION: 0.12.20
 
 jobs:
   terraform_plan:
@@ -31,7 +36,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      TF_VERSION: 0.12.20
       TF_WORKSPACE: ${{ matrix.tf_workspace }}
 
     steps:
@@ -83,11 +87,11 @@ jobs:
 
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: ${{ env.RUBY_VERSION }}
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 12.14.1
+          node-version: ${{ env.NODE_VERSION }}
 
       - uses: nanasess/setup-chromedriver@master
 
@@ -114,5 +118,58 @@ jobs:
       - run: ./bin/test
 
       - run: ./bin/quality
+
+      - run: ./bin/git_changes
+
+  deploy:
+    if: github.ref == 'master'
+
+    needs: [terraform_plan, test_ruby]
+
+    strategy:
+      max-parallel: 1
+
+      matrix:
+        tf_workspace: [staging, production, global]
+        include:
+          - tf_workspace: staging
+            tf_dir: terraform/app_environment
+          - tf_workspace: production
+            tf_dir: terraform/app_environment
+          - tf_workspace: global
+            tf_dir: terraform/app_global
+
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+      CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+      DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      DATADOG_APP_KEY: ${{ secrets.DATADOG_APP_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      TF_WORKSPACE: ${{ matrix.tf_workspace }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+
+      - name: 'Terraform Plan'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.TF_VERSION }}
+          tf_actions_subcommand: 'plan'
+          tf_actions_working_dir: ${{ matrix.tf_dir }}
+        env:
+          TF_CLI_ARGS: -lock=false
 
       - run: ./bin/git_changes
