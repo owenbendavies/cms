@@ -169,7 +169,5 @@ jobs:
           tf_actions_version: ${{ env.TF_VERSION }}
           tf_actions_subcommand: 'apply'
           tf_actions_working_dir: ${{ matrix.tf_dir }}
-        env:
-          TF_CLI_ARGS: -lock=false
 
       - run: ./bin/git_changes
