@@ -11,5 +11,5 @@ variable "aws_secret_access_key" {}
 variable "from_email" {}
 
 variable "domains" {
-  type = "list"
+  type = list
 }

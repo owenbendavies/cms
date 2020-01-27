@@ -1,7 +1,7 @@
 resource "datadog_synthetics_test" "main" {
-  count   = "${length(var.domains)}"
+  count   = length(var.domains)
   message = "Notify @all"
-  name    = "${var.domains[count.index]}"
+  name    = var.domains[count.index]
   status  = "live"
   tags    = ["cms", "terraform"]
   type    = "api"
