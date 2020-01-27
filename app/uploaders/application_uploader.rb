@@ -1,8 +1,6 @@
 class ApplicationUploader < CarrierWave::Uploader::Base
   delegate :public_url, to: :file
 
-  storage :fog if ENV['AWS_S3_BUCKET']
-
   def uuid
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
