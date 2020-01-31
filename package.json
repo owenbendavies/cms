@@ -52,6 +52,6 @@
     "stylelint": "^12.0.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-sass-guidelines": "^6.2.0",
-    "webpack-dev-server": "^3.10.1"
+    "webpack-dev-server": "^3.10.2"
   }
 }
