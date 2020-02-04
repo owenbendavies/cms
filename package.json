@@ -53,5 +53,27 @@
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "webpack-dev-server": "^3.10.2"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "rules": {
+      "import/no-default-export": "error",
+      "import/prefer-default-export": "off",
+      "react/jsx-wrap-multilines": "off",
+      "react/prop-types": "off"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }
