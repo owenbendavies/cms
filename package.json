@@ -24,7 +24,7 @@
     "caniuse-lite": "^1.0.30001025",
     "core-js": "3",
     "graphql": "^14.6.0",
-    "graphql-tag": "^2.10.2",
+    "graphql-tag": "^2.10.3",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "popper.js": "^1.16.1",
