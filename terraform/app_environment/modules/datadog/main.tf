@@ -1,10 +1,10 @@
 resource "datadog_synthetics_test" "main" {
-  count   = length(var.domains)
-  message = "Notify @all"
-  name    = var.domains[count.index]
-  status  = "live"
-  tags    = ["cms", "terraform"]
-  type    = "api"
+  for_each = toset(var.domains)
+  message  = "Notify @all"
+  name     = each.key
+  status   = "live"
+  tags     = ["cms", "terraform"]
+  type     = "api"
 
   assertions = [
     {
@@ -34,7 +34,7 @@ resource "datadog_synthetics_test" "main" {
   request = {
     method  = "GET"
     timeout = 30
-    url     = "https://${var.domains[count.index]}/home?monitoring=skip"
+    url     = "https://${each.key}/home?monitoring=skip"
   }
 
   locations = [
