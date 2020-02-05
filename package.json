@@ -68,7 +68,6 @@
     "rules": {
       "import/no-default-export": "error",
       "import/prefer-default-export": "off",
-      "react/jsx-wrap-multilines": "off",
       "react/prop-types": "off"
     }
   },

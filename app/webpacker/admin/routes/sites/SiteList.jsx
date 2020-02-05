@@ -13,14 +13,14 @@ import {
 export const SiteList = props => (
   <List bulkActionButtons={false} {...props}>
     <Responsive
-      small={
+      small={(
         <SimpleList
           primaryText={record => record.name}
           secondaryText={record => record.address}
           linkType="edit"
         />
-      }
-      medium={
+      )}
+      medium={(
         <Datagrid rowClick="edit">
           <TextField source="name" sortable={false} />
           <UrlField source="address" sortable={false} />
@@ -28,7 +28,7 @@ export const SiteList = props => (
           <TextField source="googleAnalytics" sortable={false} />
           <TextField source="charityNumber" sortable={false} />
         </Datagrid>
-      }
+      )}
     />
   </List>
 );
