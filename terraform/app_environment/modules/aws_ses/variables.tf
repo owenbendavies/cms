@@ -1,3 +1,3 @@
-variable "domains" {
-  type = list
+variable "domains_settings" {
+  type = map
 }

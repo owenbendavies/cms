@@ -99,9 +99,10 @@ resource "heroku_app_feature" "api_runtime_dyno_metadata" {
 }
 
 resource "heroku_domain" "app" {
+  for_each = toset(var.www_domains)
+
   app      = heroku_app.app.name
-  count    = length(var.domains)
-  hostname = var.domains[count.index]
+  hostname = each.key
 }
 
 resource "heroku_formation" "app_web" {

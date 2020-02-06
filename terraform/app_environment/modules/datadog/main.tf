@@ -1,5 +1,5 @@
 resource "datadog_synthetics_test" "main" {
-  for_each = toset(var.domains)
+  for_each = toset(var.www_domains)
   message  = "Notify @all"
   name     = each.key
   status   = "live"
