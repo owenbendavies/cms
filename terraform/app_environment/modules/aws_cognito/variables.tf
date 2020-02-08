@@ -1,5 +1,5 @@
 variable "app_name" {}
 
-variable "domains" {
+variable "www_domains" {
   type = list
 }

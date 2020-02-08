@@ -3,14 +3,10 @@ resource "aws_cognito_user_group" "admin" {
   user_pool_id = aws_cognito_user_pool.app.id
 }
 
-resource "aws_cognito_user_group" "custom_domains" {
-  count        = length(var.domains)
-  name         = var.domains[count.index]
-  user_pool_id = aws_cognito_user_pool.app.id
-}
+resource "aws_cognito_user_group" "domains" {
+  for_each = toset(local.all_domains)
 
-resource "aws_cognito_user_group" "heroku_domain" {
-  name         = "${var.app_name}.herokuapp.com"
+  name         = each.key
   user_pool_id = aws_cognito_user_pool.app.id
 }
 

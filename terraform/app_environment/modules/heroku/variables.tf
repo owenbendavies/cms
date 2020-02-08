@@ -10,6 +10,6 @@ variable "aws_s3_assets_bucket_name" {}
 variable "aws_secret_access_key" {}
 variable "from_email" {}
 
-variable "domains" {
+variable "www_domains" {
   type = list
 }

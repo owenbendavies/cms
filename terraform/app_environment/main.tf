@@ -19,8 +19,8 @@ module "aws_cloudfront" {
 module "aws_cognito" {
   source = "./modules/aws_cognito"
 
-  app_name = local.app_name
-  domains  = local.www_domains
+  app_name    = local.app_name
+  www_domains = local.www_domains
 }
 
 module "aws_iam" {
@@ -41,18 +41,15 @@ module "aws_s3" {
 module "aws_ses" {
   source = "./modules/aws_ses"
 
-  domains = local.workspace["root_domains"]
+  domains_settings = local.domains_settings
 }
 
 module "cloudflare" {
   source = "./modules/cloudflare"
 
   aws_region              = local.aws_region
-  gsuite_domainkeys       = local.workspace["gsuite_domainkeys"]
-  gsuite_domains          = local.workspace["gsuite_domains"]
+  domains_settings        = local.domains_settings
   heroku_domain           = module.heroku.domain
-  mailchip_domains        = local.workspace["mailchip_domains"]
-  root_domains            = local.workspace["root_domains"]
   ses_dkim_tokens         = module.aws_ses.dkim_tokens
   ses_mail_from_domains   = module.aws_ses.mail_from_domains
   ses_verification_tokens = module.aws_ses.verification_tokens
@@ -61,7 +58,7 @@ module "cloudflare" {
 module "datadog" {
   source = "./modules/datadog"
 
-  domains = local.www_domains
+  www_domains = local.www_domains
 }
 
 module "heroku" {
@@ -77,6 +74,6 @@ module "heroku" {
   aws_region                = local.aws_region
   aws_s3_assets_bucket_name = module.aws_s3.assets_bucket_name
   aws_secret_access_key     = module.aws_iam.secret_access_key
-  domains                   = local.www_domains
   from_email                = local.from_email
+  www_domains               = local.www_domains
 }

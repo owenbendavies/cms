@@ -1,16 +1,19 @@
 resource "aws_ses_domain_dkim" "app" {
-  count  = length(var.domains)
-  domain = aws_ses_domain_identity.app[count.index].domain
+  for_each = var.domains_settings
+
+  domain = aws_ses_domain_identity.app[each.key].domain
 }
 
 resource "aws_ses_domain_identity" "app" {
-  count  = length(var.domains)
-  domain = var.domains[count.index]
+  for_each = var.domains_settings
+
+  domain = each.key
 }
 
 resource "aws_ses_domain_mail_from" "app" {
+  for_each = var.domains_settings
+
   behavior_on_mx_failure = "RejectMessage"
-  count                  = length(var.domains)
-  domain                 = aws_ses_domain_identity.app[count.index].domain
-  mail_from_domain       = "email.${aws_ses_domain_identity.app[count.index].domain}"
+  domain                 = aws_ses_domain_identity.app[each.key].domain
+  mail_from_domain       = "email.${each.key}"
 }
