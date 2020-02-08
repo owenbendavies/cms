@@ -14,6 +14,8 @@ env:
 jobs:
   terraform_plan:
     strategy:
+      max-parallel: 1
+
       matrix:
         tf_workspace: [staging, production, global]
         include:
