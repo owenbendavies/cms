@@ -1,4 +1,5 @@
 <% content_for :admin_layout, true %>
 <% content_for :title, t('admin.index.title') %>
 
+<div id="js-admin-data" data="<%= @admin_data.to_json %>"></div>
 <div id="js-react-admin"></div>

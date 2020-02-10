@@ -10,13 +10,15 @@ SecureHeaders::Configuration.default do |config|
   ].compact
 
   script_src = asset_src + [
+    "'unsafe-eval'",
     'https://www.google-analytics.com',
     'https://cdnjs.cloudflare.com'
   ]
 
   connect_src = [
     "'self'",
-    'https://api.rollbar.com'
+    'https://api.rollbar.com',
+    "https://cognito-idp.#{ENV.fetch('AWS_REGION')}.amazonaws.com"
   ]
 
   connect_src += ['http://localhost:3035', 'ws://localhost:3035'] if Rails.env.development?
