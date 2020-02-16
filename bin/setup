@@ -12,7 +12,7 @@ fi
 
 set -ev
 
-gem install bundler --version '< 2'
+gem install bundler
 
 bundle config --local path vendor/bundle
 
