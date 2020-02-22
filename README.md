@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/obduk/cms/workflows/CI/badge.svg)](https://github.com/obduk/cms/actions)
 
-Personal learning: A (CMS) written in ReactJS, Ruby on Rails and Terraform.
+A CMS written in ReactJS, Ruby on Rails and Terraform used for learning.
 Although it is a working project, it was not created with the intention of being
 a production system. Instead this has been my practice project over the years,
 used for testing new ideas.
