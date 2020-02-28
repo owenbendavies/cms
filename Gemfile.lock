@@ -168,7 +168,7 @@ GEM
       sprockets-rails
     graphql (1.10.3)
     gravtastic (3.2.6)
-    hashdiff (1.0.0)
+    hashdiff (1.0.1)
     hashie (3.6.0)
     highline (2.0.3)
     htmlentities (4.3.4)
