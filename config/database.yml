@@ -4,6 +4,7 @@ default: &default
   connect_timeout: <%= Integer(ENV.fetch('DATABASE_TIMEOUT', 1)) %>
   encoding: unicode
   pool: <%= Integer(ENV.fetch('RAILS_MAX_THREADS', 5)) %>
+  prepared_statements: false
   url: <%= ENV.fetch('DATABASE_URL') %>
   variables:
     statement_timeout: <%= Integer(ENV.fetch('DATABASE_TIMEOUT', 1)) * 1000 %>
