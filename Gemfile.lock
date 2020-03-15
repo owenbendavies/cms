@@ -371,6 +371,8 @@ GEM
     scout_apm (2.6.6)
       parser
     secure_headers (6.3.0)
+    seedbank (0.5.0)
+      rake (>= 10.0)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -499,6 +501,7 @@ DEPENDENCIES
   ruby-debug-ide
   scout_apm
   secure_headers
+  seedbank
   selenium-webdriver
   shoulda-matchers
   simple_form

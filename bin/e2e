@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+cd $(dirname $0)/..
+
+export RAILS_ENV='test'
+
+./bin/rake db:reset

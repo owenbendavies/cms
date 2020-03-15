@@ -11,6 +11,7 @@ gem 'fog-aws' # AWS file upload
 
 # Databases
 gem 'pg' # PostgreSQL
+gem 'seedbank' # Better database seeds
 
 # Frameworks
 gem 'delayed_job_active_record' # Background jobs
