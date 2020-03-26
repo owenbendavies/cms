@@ -242,7 +242,7 @@ GEM
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-cognito-idp (0.1.0)
+    omniauth-cognito-idp (0.1.1)
       jwt
       omniauth-oauth2
     omniauth-oauth2 (1.6.0)
