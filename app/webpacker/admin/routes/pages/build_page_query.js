@@ -11,22 +11,22 @@ const DeleteQuery = gql`
   }
 `;
 
-const buildDeleteQuery = params => ({
+const buildDeleteQuery = (params) => ({
   query: DeleteQuery,
   variables: {
     ids: [params.id],
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.deletePages.pages[0],
   }),
 });
 
-const buildDeleteManyQuery = params => ({
+const buildDeleteManyQuery = (params) => ({
   query: DeleteQuery,
   variables: {
     ids: params.ids,
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.deletePages.pages,
   }),
 });
@@ -45,13 +45,13 @@ const ListQuery = gql`
   }
 `;
 
-const buildGetListQuery = params => ({
+const buildGetListQuery = (params) => ({
   query: ListQuery,
   variables: {
     first: params.pagination.perPage,
     after: btoa((params.pagination.page - 1) * params.pagination.perPage),
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.pages.nodes,
     total: response.data.pages.totalCount,
   }),
@@ -72,12 +72,12 @@ const ShowQuery = gql`
   }
 `;
 
-const buildGetOneQuery = params => ({
+const buildGetOneQuery = (params) => ({
   query: ShowQuery,
   variables: {
     id: params.id,
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.node,
   }),
 });
@@ -92,7 +92,7 @@ const UpdateQuery = gql`
   }
 `;
 
-const updateVariables = params => {
+const updateVariables = (params) => {
   const changedData = _.omitBy(
     params.data,
     (value, key) => params.previousData[key] === value
@@ -101,12 +101,12 @@ const updateVariables = params => {
   return { pageId: params.data.id, ...changedData };
 };
 
-const buildUpdateQuery = params => ({
+const buildUpdateQuery = (params) => ({
   query: UpdateQuery,
   variables: {
     input: updateVariables(params),
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.updatePage.page,
   }),
 });

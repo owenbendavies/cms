@@ -9,10 +9,12 @@ import {
   TextField,
 } from 'react-admin';
 
-export const PageList = props => (
+export const PageList = (props) => (
   <List {...props}>
     <Responsive
-      small={<SimpleList primaryText={record => record.name} linkType="edit" />}
+      small={
+        <SimpleList primaryText={(record) => record.name} linkType="edit" />
+      }
       medium={
         <Datagrid rowClick="edit">
           <TextField source="name" sortable={false} />

@@ -12,13 +12,13 @@ import {
 
 const SiteTitle = ({ record }) => <span>{`Site ${record.name}`}</span>;
 
-const SiteToolbar = props => (
+const SiteToolbar = (props) => (
   <Toolbar {...props}>
     <SaveButton />
   </Toolbar>
 );
 
-export const SiteEdit = props => (
+export const SiteEdit = (props) => (
   <Edit title={<SiteTitle />} {...props}>
     <TabbedForm toolbar={<SiteToolbar />}>
       <FormTab label="Settings">

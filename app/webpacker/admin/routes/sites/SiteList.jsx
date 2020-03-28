@@ -10,13 +10,13 @@ import {
   UrlField,
 } from 'react-admin';
 
-export const SiteList = props => (
+export const SiteList = (props) => (
   <List bulkActionButtons={false} {...props}>
     <Responsive
       small={
         <SimpleList
-          primaryText={record => record.name}
-          secondaryText={record => record.address}
+          primaryText={(record) => record.name}
+          secondaryText={(record) => record.address}
           linkType="edit"
         />
       }

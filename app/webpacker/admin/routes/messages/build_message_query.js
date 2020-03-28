@@ -11,22 +11,22 @@ const DeleteQuery = gql`
   }
 `;
 
-const buildDeleteQuery = params => ({
+const buildDeleteQuery = (params) => ({
   query: DeleteQuery,
   variables: {
     ids: [params.id],
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.deleteMessages.messages[0],
   }),
 });
 
-const buildDeleteManyQuery = params => ({
+const buildDeleteManyQuery = (params) => ({
   query: DeleteQuery,
   variables: {
     ids: params.ids,
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.deleteMessages.messages,
   }),
 });
@@ -46,7 +46,7 @@ const ListQuery = gql`
   }
 `;
 
-const buildGetListQuery = params => ({
+const buildGetListQuery = (params) => ({
   query: ListQuery,
   variables: {
     first: params.pagination.perPage,
@@ -56,7 +56,7 @@ const buildGetListQuery = params => ({
       direction: params.sort.order,
     },
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.messages.nodes,
     total: response.data.messages.totalCount,
   }),
@@ -77,12 +77,12 @@ const ShowQuery = gql`
   }
 `;
 
-const buildGetOneQuery = params => ({
+const buildGetOneQuery = (params) => ({
   query: ShowQuery,
   variables: {
     id: params.id,
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.node,
   }),
 });

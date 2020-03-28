@@ -13,13 +13,13 @@ const ListQuery = gql`
   }
 `;
 
-const buildGetListQuery = params => ({
+const buildGetListQuery = (params) => ({
   query: ListQuery,
   variables: {
     first: params.pagination.perPage,
     after: btoa((params.pagination.page - 1) * params.pagination.perPage),
   },
-  parseResponse: response => ({
+  parseResponse: (response) => ({
     data: response.data.images.nodes,
     total: response.data.images.totalCount,
   }),
