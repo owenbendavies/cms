@@ -33,7 +33,7 @@ export class App extends React.Component {
     buildGraphQLProvider({
       buildQuery,
       client,
-    }).then(dataProvider => this.setState({ dataProvider }));
+    }).then((dataProvider) => this.setState({ dataProvider }));
   }
 
   render() {

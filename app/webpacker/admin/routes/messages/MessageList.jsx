@@ -10,14 +10,14 @@ import {
   TextField,
 } from 'react-admin';
 
-export const MessageList = props => (
+export const MessageList = (props) => (
   <List sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
     <Responsive
       small={
         <SimpleList
-          primaryText={record => record.name}
-          secondaryText={record => record.email}
-          tertiaryText={record =>
+          primaryText={(record) => record.name}
+          secondaryText={(record) => record.email}
+          tertiaryText={(record) =>
             new Date(record.createdAt).toLocaleDateString()
           }
           linkType="show"

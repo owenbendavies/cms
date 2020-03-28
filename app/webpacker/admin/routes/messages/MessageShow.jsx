@@ -21,7 +21,7 @@ const MessageShowActions = ({ basePath, data, resource }) => (
   </CardActions>
 );
 
-export const MessageShow = props => (
+export const MessageShow = (props) => (
   <Show title={<MessageTitle />} actions={<MessageShowActions />} {...props}>
     <SimpleShowLayout>
       <TextField source="name" />
