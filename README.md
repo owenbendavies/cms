@@ -1,6 +1,6 @@
 # CMS
 
-[![CI](https://github.com/obduk/cms/workflows/CI/badge.svg)](https://github.com/obduk/cms/actions)
+[![CI](https://github.com/owenbendavies/cms/workflows/CI/badge.svg)](https://github.com/owenbendavies/cms/actions)
 
 A CMS written in ReactJS, Ruby on Rails and Terraform used for learning.
 Although it is a working project, it was not created with the intention of being
@@ -19,7 +19,7 @@ used for testing new ideas.
 
 ## Deployment
 
-Deplyoment is managed via [GitHub actions](https://github.com/obduk/cms/actions)
+Deplyoment is managed via [GitHub actions](https://github.com/owenbendavies/cms/actions)
 with the following manual steps:
 
 ### Heroku Addon PostgreSQL
