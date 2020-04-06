@@ -74,7 +74,7 @@ GEM
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-rails (3.0.5)
+    aws-sdk-rails (3.1.0)
       aws-sdk-ses (~> 1)
       railties (>= 5.2.0)
     aws-sdk-ses (1.28.0)
