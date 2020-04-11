@@ -83,7 +83,7 @@ RSpec.feature 'Admin messages' do
       scenario 'navigating to message' do
         click_button 'Account menu'
         click_link 'Admin'
-        find('button[aria-label="open drawer"]').click
+        find('button[title="Open menu"]').click
         click_link 'Messages'
 
         within('.list-page ul a:nth-child(1)') do
