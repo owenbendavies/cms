@@ -1022,10 +1022,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@namics/stylelint-bem@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-6.3.0.tgz#0c93836b9f8a30ba3b55237dcc6de0f1d1e0daf3"
-  integrity sha512-ctwURUYlyckCTQU3GpOESqJyi0fUGHa9cFuhTNL1Bsk8eTob313kLc4VDI4sv1kzGW/WJ+vGMkl5S+HEnfcsJw==
+"@namics/stylelint-bem@^6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-6.3.1.tgz#bb385cfe50ee01d1561136086467015ad5ad7271"
+  integrity sha512-+iO/QtssInQUS2tEtgWLaCTjmbRnuSTytcvhhd8HG/1q9xHS8RYBKWyd21Nyr6LrvFsfu4XJO0YBKF+XYk4Q3w==
   dependencies:
     css-selector-classes "0.1.2"
     postcss-resolve-nested-selector "0.1.1"
