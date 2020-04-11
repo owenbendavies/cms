@@ -125,7 +125,7 @@ RSpec.feature 'Admin sites' do
     scenario 'navigating to site' do
       click_button 'Account menu'
       click_link 'Admin'
-      find('button[aria-label="open drawer"]').click
+      find('button[title="Open menu"]').click
       click_link 'Sites'
 
       within('.list-page ul a:nth-child(1)') do
