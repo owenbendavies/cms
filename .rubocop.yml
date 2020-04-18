@@ -30,6 +30,10 @@ Metrics/BlockLength:
     - 'config/**/*' # OK for config files to have large blocks
     - 'spec/**/*' # OK for specs to have large blocks
 
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - 'app/controllers/application_controller.rb' # Needed in application controller
+
 RSpec/AlignLeftLetBrace: # Alignment creates large diffs on changes
   Enabled: false
 
@@ -54,6 +58,9 @@ RSpec/MessageSpies: # Prefer receive to have_received as no duplication
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/**/*' # OK for multiple expectations in features
+
+Style/DisableCopsWithinSourceCodeDirective: # Useful for some cases
+  Enabled: false
 
 Style/Documentation: # Not a public library so not needed
   Enabled: false
