@@ -8295,10 +8295,10 @@ ra-core@^3.4.1:
     recompose "~0.26.0"
     reselect "~3.0.0"
 
-ra-data-graphql@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-3.2.2.tgz#19ad698eb8343fefb5a54cfa5c9c5923d5437c74"
-  integrity sha512-zPyd+vwL2ItMtqXydQyIn4EbUmFqICeWJPspQpYAe8qrY3/ImSIT3AZKjcyMZ71hHqqmRPOcIpJrJqBIr63C1Q==
+ra-data-graphql@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-3.4.2.tgz#6f3a3a97634f77bd34e6fbbd047bbe95c739d38c"
+  integrity sha512-IBp/eFgXTc5XQPIdP7QjRu8aFh0I5lAiXtmVcvTDiDJ9nU0LahXdYaxg2K2zAlCb+Cvc3JUiUI/ADp/zuvAN8w==
   dependencies:
     apollo-client "^2.6.3"
     apollo-client-preset "^1.0.8"
