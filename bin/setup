@@ -22,9 +22,9 @@ bundle clean
 
 ./bin/yarn
 
-DATABASE_TIMEOUT=5 bin/rails db:create db:migrate
+./bin/rails db:create db:migrate
 
-RAILS_ENV=test DATABASE_TIMEOUT=5 bin/rails db:create
+RAILS_ENV=test ./bin/rails db:create
 
 ./bin/rails log:clear tmp:clear
 
