@@ -80,7 +80,7 @@ resource "heroku_app" "app" {
     DEFAULT_SITE_EMAIL           = var.from_email
     LANG                         = "en_GB.UTF-8"
     RACK_ENV                     = "production"
-    RACK_TIMEOUT_SERVICE_TIMEOUT = "3"
+    RACK_TIMEOUT_SERVICE_TIMEOUT = "5"
     RAILS_ENV                    = "production"
     RAILS_LOG_TO_STDOUT          = "enabled"
     RAILS_SERVE_STATIC_FILES     = "enabled"
