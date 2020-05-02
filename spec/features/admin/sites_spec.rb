@@ -73,7 +73,7 @@ RSpec.feature 'Admin sites' do
       fill_in 'Css', with: css
       click_save_and_wait_for_update
       visit '/home'
-      expect(page).to have_selector "link[href=\"#{css_url}\"]", visible: false
+      expect(page).to have_selector "link[href=\"#{css_url}\"]", visible: :all
     end
   end
 
