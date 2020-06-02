@@ -447,7 +447,7 @@ GEM
       semantic_range (>= 2.3.0)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     xml-sitemap (1.3.3)
       builder (>= 2.0)
     xpath (3.2.0)
