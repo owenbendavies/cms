@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def icon_tag(css_class)
-    content_tag(:i, nil, class: css_class)
+    tag.i(class: css_class)
   end
 
   def page_title(site, content)
@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def timeago(time)
-    content_tag(:time, time.to_s(:short), class: 'js-timeago', datetime: time.iso8601)
+    tag.time(time.to_s(:short), class: 'js-timeago', datetime: time.iso8601)
   end
 
   def rollbar_js
