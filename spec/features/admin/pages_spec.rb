@@ -16,8 +16,20 @@ RSpec.feature 'Admin pages' do
     visit '/home'
   end
 
+  scenario 'changing the content' do
+    home_page.update!(html_content: '<p>Hello world</p>')
+    navigate_to_edit_page
+
+    find('.ql-editor').send_keys(' today')
+    sleep 1
+    click_save_and_wait_for_update
+    visit '/home'
+    expect(page).to have_content 'Hello world today'
+  end
+
   scenario 'renaming a page' do
     navigate_to_edit_page
+    click_link 'Settings'
 
     url_field = find('#url')
     expect(url_field['disabled']).to eq 'true'
@@ -32,6 +44,8 @@ RSpec.feature 'Admin pages' do
 
   scenario 'making the page private' do
     navigate_to_edit_page
+    click_link 'Settings'
+
     expect(find('input#private', visible: false)).not_to be_checked
     find('label', text: 'Private').click
     click_save_and_wait_for_update
@@ -41,6 +55,8 @@ RSpec.feature 'Admin pages' do
 
   scenario 'adding a contact form' do
     navigate_to_edit_page
+    click_link 'Settings'
+
     expect(find('input#contactForm', visible: false)).not_to be_checked
     find('label', text: 'Contact form').click
     click_save_and_wait_for_update
