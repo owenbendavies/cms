@@ -2078,9 +2078,9 @@ balanced-match@^1.0.0:
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 base64-js@^1.0.2:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
-  integrity sha512-ccav/yGvoa80BQDljCxsmmQ3Xvx60/UpBIij5QN21W3wBi/hhIC9OoO+KLpu9IJTS9j4DRVJ3aDDF9cMSoa2lw==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
+  integrity sha512-mLQ4i2QO1ytvGWFWmcngKO//JXAQueZvwEKtjgQFM4jIK0kU+ytMfplL8j+n5mspOfjHwoAg+9yhb7BwAHm36g==
 
 base@^0.11.1:
   version "0.11.2"
@@ -2293,9 +2293,9 @@ buffer-xor@^1.0.3:
   integrity sha1-JuYe0UIvtw3ULm42cp7VHYVf6Nk=
 
 buffer@^4.3.0:
-  version "4.9.1"
-  resolved "https://registry.npmjs.org/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
-  integrity sha1-bRu2AbB6TvztlwlBMgkwJ8lbwpg=
+  version "4.9.2"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-4.9.2.tgz#230ead344002988644841ab0244af8c44bbe3ef8"
+  integrity sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==
   dependencies:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
