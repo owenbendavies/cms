@@ -2,13 +2,10 @@ import React from 'react';
 
 import RichTextInput from 'ra-input-rich-text';
 
-import {
-  BooleanInput,
-  Edit,
-  FormTab,
-  TabbedForm,
-  TextInput,
-} from 'react-admin';
+import { BooleanInput, Edit, SimpleForm, TextInput } from 'react-admin';
+
+const configureQuill = (quill) =>
+  quill.scrollingContainer.classList.add('main');
 
 const PageTitle = ({ record }) => <span>{`Page ${record.name}`}</span>;
 
@@ -27,16 +24,16 @@ const pageToolbar = [
 
 export const PageEdit = (props) => (
   <Edit title={<PageTitle />} {...props}>
-    <TabbedForm>
-      <FormTab label="content">
-        <RichTextInput source="htmlContent" toolbar={pageToolbar} />
-      </FormTab>
-      <FormTab label="Settings">
-        <TextInput disabled source="url" />
-        <TextInput source="name" />
-        <BooleanInput source="private" />
-        <BooleanInput source="contactForm" />
-      </FormTab>
-    </TabbedForm>
+    <SimpleForm>
+      <TextInput disabled source="url" />
+      <TextInput source="name" />
+      <BooleanInput source="private" />
+      <BooleanInput source="contactForm" />
+      <RichTextInput
+        source="htmlContent"
+        configureQuill={configureQuill}
+        toolbar={pageToolbar}
+      />
+    </SimpleForm>
   </Edit>
 );

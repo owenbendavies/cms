@@ -29,7 +29,6 @@ RSpec.feature 'Admin pages' do
 
   scenario 'renaming a page' do
     navigate_to_edit_page
-    click_link 'Settings'
 
     url_field = find('#url')
     expect(url_field['disabled']).to eq 'true'
@@ -44,7 +43,6 @@ RSpec.feature 'Admin pages' do
 
   scenario 'making the page private' do
     navigate_to_edit_page
-    click_link 'Settings'
 
     expect(find('input#private', visible: false)).not_to be_checked
     find('label', text: 'Private').click
@@ -55,7 +53,6 @@ RSpec.feature 'Admin pages' do
 
   scenario 'adding a contact form' do
     navigate_to_edit_page
-    click_link 'Settings'
 
     expect(find('input#contactForm', visible: false)).not_to be_checked
     find('label', text: 'Contact form').click
