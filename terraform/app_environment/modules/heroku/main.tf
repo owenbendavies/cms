@@ -99,7 +99,7 @@ resource "heroku_app_feature" "api_runtime_dyno_metadata" {
 }
 
 resource "heroku_domain" "app" {
-  for_each = toset(var.www_domains)
+  for_each = toset(var.domains)
 
   app      = heroku_app.app.name
   hostname = each.key
