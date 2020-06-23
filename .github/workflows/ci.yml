@@ -124,7 +124,7 @@ jobs:
       - run: ./bin/git_changes
 
   automerge:
-    if: github.event_name == 'pull_request' && github.actor == 'owenbendavies'
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
 
     needs: [terraform_plan, test_ruby]
 
