@@ -2,6 +2,7 @@ resource "aws_cloudfront_distribution" "assets" {
   comment         = var.app_name
   enabled         = true
   is_ipv6_enabled = true
+  tags            = var.tags
 
   default_cache_behavior {
     allowed_methods        = ["GET", "HEAD"]
