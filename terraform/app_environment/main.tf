@@ -14,6 +14,7 @@ module "aws_cloudfront" {
   app_name      = local.app_name
   assets_domain = module.aws_s3.assets_domain
   logs_domain   = module.aws_s3.logs_domain
+  tags          = local.tags
 }
 
 module "aws_cognito" {
@@ -21,6 +22,7 @@ module "aws_cognito" {
 
   app_name = local.app_name
   domains  = local.domains
+  tags     = local.tags
 }
 
 module "aws_iam" {
@@ -29,6 +31,7 @@ module "aws_iam" {
   app_name                 = local.app_name
   aws_cognito_arn          = module.aws_cognito.arn
   aws_s3_assets_bucket_arn = module.aws_s3.assets_bucket_arn
+  tags                     = local.tags
 }
 
 module "aws_s3" {
@@ -36,6 +39,7 @@ module "aws_s3" {
 
   app_name               = local.app_name
   aws_cloudfront_iam_arn = module.aws_cloudfront.iam_arn
+  tags                   = local.tags
 }
 
 module "heroku" {

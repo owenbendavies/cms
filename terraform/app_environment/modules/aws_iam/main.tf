@@ -4,6 +4,7 @@ resource "aws_iam_access_key" "app" {
 
 resource "aws_iam_user" "app" {
   name = var.app_name
+  tags = var.tags
 }
 
 resource "aws_iam_user_policy" "app_cognito" {
