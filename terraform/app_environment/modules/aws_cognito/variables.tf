@@ -1,3 +1,3 @@
-variable "app_name" {}
-variable "domains" { type = list }
-variable "tags" { type = map }
+variable "app_name" { type = string }
+variable "domains" { type = list(string) }
+variable "tags" { type = map(string) }
