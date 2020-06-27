@@ -1,4 +1,4 @@
-variable "app_name" {}
-variable "aws_cognito_arn" {}
-variable "aws_s3_assets_bucket_arn" {}
-variable "tags" { type = map }
+variable "app_name" { type = string }
+variable "aws_cognito_arn" { type = string }
+variable "aws_s3_assets_bucket_arn" { type = string }
+variable "tags" { type = map(string) }

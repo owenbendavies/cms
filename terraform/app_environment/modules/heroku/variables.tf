@@ -1,12 +1,12 @@
-variable "app_name" {}
-variable "aws_access_key_id" {}
-variable "aws_cloudfront_domain" {}
-variable "aws_cognito_client_id" {}
-variable "aws_cognito_client_secret" {}
-variable "aws_cognito_domain" {}
-variable "aws_cognito_id" {}
-variable "aws_region" {}
-variable "aws_s3_assets_bucket_name" {}
-variable "aws_secret_access_key" {}
-variable "domains" { type = list }
-variable "from_email" {}
+variable "app_name" { type = string }
+variable "aws_access_key_id" { type = string }
+variable "aws_cloudfront_domain" { type = string }
+variable "aws_cognito_client_id" { type = string }
+variable "aws_cognito_client_secret" { type = string }
+variable "aws_cognito_domain" { type = string }
+variable "aws_cognito_id" { type = string }
+variable "aws_region" { type = string }
+variable "aws_s3_assets_bucket_name" { type = string }
+variable "aws_secret_access_key" { type = string }
+variable "domains" { type = list(string) }
+variable "from_email" { type = string }

@@ -1,3 +1,3 @@
-variable "app_name" {}
-variable "aws_cloudfront_iam_arn" {}
-variable "tags" { type = map }
+variable "app_name" { type = string }
+variable "aws_cloudfront_iam_arn" { type = string }
+variable "tags" { type = map(string) }
