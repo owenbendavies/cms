@@ -8,5 +8,15 @@ module Mutations
         }
       end
     end
+
+    def update_model(model, arguments)
+      model_name = model.class.name.underscore
+
+      if model.update arguments
+        { :errors => [], model_name => model }
+      else
+        { :errors => model_errors(model), model_name => nil }
+      end
+    end
   end
 end

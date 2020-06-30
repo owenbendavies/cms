@@ -61,6 +61,15 @@ RSpec.feature 'Admin pages' do
     expect(page).to have_content 'Message'
   end
 
+  scenario 'creating a page' do
+    navigate_to_admin_pages
+    click_link 'Create'
+    fill_in 'Name', with: 'New Page'
+    click_save_and_wait_for_update('created')
+    visit '/new_page'
+    expect(page).to have_content 'New Page'
+  end
+
   it_behaves_like 'when on mobile' do
     scenario 'navigating to page' do
       click_button 'Account menu'
