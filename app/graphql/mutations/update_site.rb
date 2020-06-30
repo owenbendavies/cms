@@ -15,12 +15,7 @@ module Mutations
 
     def resolve(arguments)
       site = arguments.delete :site
-
-      if site.update arguments
-        { errors: [], site: site }
-      else
-        { errors: model_errors(site), site: nil }
-      end
+      update_model(site, arguments)
     end
   end
 end

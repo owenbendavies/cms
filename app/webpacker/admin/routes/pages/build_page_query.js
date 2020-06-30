@@ -1,6 +1,26 @@
 import _ from 'lodash';
 import gql from 'graphql-tag';
 
+const CreateQuery = gql`
+  mutation CreatePage($input: CreatePageInput!) {
+    createPage(input: $input) {
+      page {
+        id
+      }
+    }
+  }
+`;
+
+const buildCreateQuery = (params) => ({
+  query: CreateQuery,
+  variables: {
+    input: params.data,
+  },
+  parseResponse: (response) => ({
+    data: response.data.createPage.page,
+  }),
+});
+
 const DeleteQuery = gql`
   mutation DeletePages($ids: [ID!]!) {
     deletePages(input: { pageIds: $ids }) {
@@ -113,6 +133,8 @@ const buildUpdateQuery = (params) => ({
 
 export const buildPageQuery = (fetchType, params) => {
   switch (fetchType) {
+    case 'CREATE':
+      return buildCreateQuery(params);
     case 'DELETE':
       return buildDeleteQuery(params);
     case 'DELETE_MANY':

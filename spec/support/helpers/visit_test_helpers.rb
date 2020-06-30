@@ -19,11 +19,11 @@ module VisitTestHelpers
     end
   end
 
-  def click_save_and_wait_for_update
+  def click_save_and_wait_for_update(message = 'updated')
     click_button 'Save'
-    expect(page).to have_content 'Element updated'
+    expect(page).to have_content "Element #{message}"
     sleep 5
-    expect(page).not_to have_content 'Element updated'
+    expect(page).not_to have_content "Element #{message}"
   end
 end
 
