@@ -7993,10 +7993,10 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.6.0:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.6.1.tgz#d273e67619711f0de354bf3b5f1e3ea31cc82610"
-  integrity sha512-9JikbyJwdyFksi3Pd4joFPWNTgCTZv/8easN0NEMejgANeOXyez8dXvpYFUlm8QLr/NFRmUfm8qUtZEHKzosxA==
+ra-core@^3.6.0, ra-core@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.6.2.tgz#fd3a8803ac01a45f85ffc5e24b464f3b35395a23"
+  integrity sha512-t+5SY9skFDZf9HhufJ1TuSOGc+bLhEhuKYgonxEcACNRysH/dIx2jENixrqVuATgna2bFxaGhj++NL7rK1BqOw==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
@@ -8039,11 +8039,11 @@ ra-input-rich-text@^3.5.5:
     quill "~1.3.6"
 
 ra-language-english@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.6.0.tgz#94f8a6c9889674651231aae1881c4d80156bbd07"
-  integrity sha512-a4FnwUTLN+4dWglCiPKIqbOLE5mQTbUMbeVKzhd7liAa0vtBeJGb6JHOArn5+mTaBaxWSF0GOUWXG5uWQqe+pw==
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.6.2.tgz#0657858def2cefff72b8c82eb6336d3764a7f930"
+  integrity sha512-xcbUcpJZsWHAwiow8x7rDwQJ5DnQSHBzX9lxKwwluLtsz4hhyvoDsvvVLBX6Lnp2NHGZMQIlwFxqhZEEKx3R7w==
   dependencies:
-    ra-core "^3.6.0"
+    ra-core "^3.6.2"
 
 ra-ui-materialui@^3.6.0:
   version "3.6.2"
