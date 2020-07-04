@@ -38,21 +38,6 @@
     @extend .ml-auto;
   }
 
-  &__dropdown-item {
-    @extend .dropdown;
-    @extend .nav-item;
-
-    &:hover,
-    &:focus {
-      background-color: darken($light, 6.5%);
-    }
-  }
-
-  &__dropdown-toggle {
-    @extend .nav-link;
-    @extend .dropdown-toggle;
-  }
-
   &__profile-image {
     border-radius: 50%;
     height: 40px;

@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
-  before_action :new_page, only: %i[new create]
-  before_action :find_page, except: %i[index new create]
-  skip_before_action :authenticate_user!, only: %i[index show contact_form]
+  before_action :find_page, except: %i[index]
+  skip_before_action :authenticate_user!
   before_action :authenticate_page, only: %i[show contact_form]
 
   invisible_captcha(
@@ -24,14 +23,6 @@ class PagesController < ApplicationController
 
   def new; end
 
-  def create
-    if @page.update(page_params)
-      redirect_to page_path(@page)
-    else
-      render :new
-    end
-  end
-
   def show; end
 
   def contact_form
@@ -51,23 +42,7 @@ class PagesController < ApplicationController
     render :show
   end
 
-  def edit; end
-
-  def update
-    if @page.update(page_params)
-      flash.notice = t('flash.updated', name: Page.model_name.human)
-      redirect_to page_path(@page)
-    else
-      render :edit
-    end
-  end
-
   private
-
-  def new_page
-    @page = @site.pages.new
-    authorize @page
-  end
 
   def find_page
     @page = @site.pages.find_by!(url: params[:id])
@@ -76,10 +51,6 @@ class PagesController < ApplicationController
 
   def authenticate_page
     authenticate_user! if @page.private
-  end
-
-  def page_params
-    params.require(:page).permit(:name, :contact_form, :private, :html_content)
   end
 
   def message_params

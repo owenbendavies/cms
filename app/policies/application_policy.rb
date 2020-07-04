@@ -33,14 +33,6 @@ class ApplicationPolicy
     @record = record
   end
 
-  def new?
-    create?
-  end
-
-  def edit?
-    update?
-  end
-
   private
 
   def site_record?

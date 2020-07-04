@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :css, only: %i[show]
 
-  resources :pages, path: '', only: %i[new create show edit update] do
+  resources :pages, path: '', only: %i[show] do
     member do
       post :contact_form
     end

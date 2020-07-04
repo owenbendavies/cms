@@ -1,8 +1,4 @@
 ---
 en:
   actions:
-    cancel: Cancel
-    edit: Edit
     send_message: Send Message
-  flash:
-    updated: '%{name} successfully updated'
