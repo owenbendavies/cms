@@ -1,14 +1,12 @@
-import { Admin, Resource } from 'react-admin';
 import ApolloClient from 'apollo-boost';
 import buildGraphQLProvider from 'ra-data-graphql';
 import React from 'react';
-
-import { buildQuery } from './services/build_query';
-
+import { Admin, Resource } from 'react-admin';
 import { imageOptions } from './routes/images';
 import { messageOptions } from './routes/messages';
 import { pageOptions } from './routes/pages';
 import { siteOptions } from './routes/sites';
+import { buildQuery } from './services/build_query';
 
 export class App extends React.Component {
   constructor() {

@@ -1,8 +1,6 @@
-import React from 'react';
-
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-
+import React from 'react';
 import { List, Pagination } from 'react-admin';
 
 const ImageGrid = ({ ids, data }) => (

@@ -1,10 +1,10 @@
 import tinymce from 'tinymce';
 import skin from 'tinymce-light-skin';
-import 'tinymce/themes/modern/theme';
 import 'tinymce/plugins/autolink';
 import 'tinymce/plugins/link';
 import 'tinymce/plugins/lists';
 import 'tinymce/plugins/paste';
+import 'tinymce/themes/modern/theme';
 
 skin.use();
 

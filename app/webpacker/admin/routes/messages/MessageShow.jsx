@@ -1,7 +1,5 @@
 import React from 'react';
-
 import {
-  CardActions,
   DateField,
   DeleteButton,
   EmailField,
@@ -9,6 +7,7 @@ import {
   Show,
   SimpleShowLayout,
   TextField,
+  TopToolbar,
 } from 'react-admin';
 
 const MessageTitle = ({ record }) => (
@@ -16,9 +15,9 @@ const MessageTitle = ({ record }) => (
 );
 
 const MessageShowActions = ({ basePath, data, resource }) => (
-  <CardActions>
+  <TopToolbar>
     <DeleteButton basePath={basePath} record={data} resource={resource} />
-  </CardActions>
+  </TopToolbar>
 );
 
 export const MessageShow = (props) => (

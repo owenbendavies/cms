@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import gql from 'graphql-tag';
+import _ from 'lodash';
 
 const DeleteQuery = gql`
   mutation DeleteMessages($ids: [ID!]!) {

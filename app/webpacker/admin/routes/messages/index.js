@@ -1,5 +1,4 @@
 import MessageIcon from '@material-ui/icons/Email';
-
 import { MessageList } from './MessageList';
 import { MessageShow } from './MessageShow';
 
