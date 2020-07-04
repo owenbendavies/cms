@@ -39,7 +39,8 @@ RSpec.feature 'Admin sites' do
     expect(page).to have_title site.name
     navigate_to_edit_site
     fill_in 'Name', with: new_company_name
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(page).to have_title new_company_name
   end
@@ -49,7 +50,8 @@ RSpec.feature 'Admin sites' do
     expect(body).to include "ga('set', 'userId', '#{site_user.id}');"
     navigate_to_edit_site
     fill_in 'Google analytics', with: '', fill_options: { clear: :backspace }
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(body).not_to include 'ga('
   end
@@ -58,7 +60,8 @@ RSpec.feature 'Admin sites' do
     expect(page).to have_content "Registered charity number #{site.charity_number}"
     navigate_to_edit_site
     fill_in 'Charity number', with: '', fill_options: { clear: :backspace }
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(page).not_to have_content 'Registered charity'
   end
@@ -71,7 +74,8 @@ RSpec.feature 'Admin sites' do
       navigate_to_edit_site
       click_link 'CSS'
       fill_in 'Css', with: css
-      click_save_and_wait_for_update
+      click_button 'Save'
+      expect(page).to have_content 'Element updated'
       visit '/home'
       expect(page).to have_selector "link[href=\"#{css_url}\"]", visible: :all
     end
@@ -97,7 +101,8 @@ RSpec.feature 'Admin sites' do
 
       navigate_to_edit_site
       find('label', text: 'Separate header').click
-      click_save_and_wait_for_update
+      click_button 'Save'
+      expect(page).to have_content 'Element updated'
       visit '/home'
 
       expect(page).not_to have_selector header
@@ -109,7 +114,8 @@ RSpec.feature 'Admin sites' do
       expect(page).not_to have_selector main_menu_footer
       navigate_to_edit_site
       find('label', text: 'Main menu in footer').click
-      click_save_and_wait_for_update
+      click_button 'Save'
+      expect(page).to have_content 'Element updated'
       visit '/home'
 
       within main_menu_footer do

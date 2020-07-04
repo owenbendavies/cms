@@ -9,7 +9,7 @@ const configureQuill = (quill) =>
   quill.scrollingContainer.classList.add('main');
 
 export const PageEdit = (props) => (
-  <Edit title={<PageTitle />} {...props}>
+  <Edit title={<PageTitle />} undoable={false} {...props}>
     <SimpleForm>
       <TextInput disabled source="url" />
       <TextInput source="name" />

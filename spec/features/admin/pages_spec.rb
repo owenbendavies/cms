@@ -22,7 +22,8 @@ RSpec.feature 'Admin pages' do
 
     find('.ql-editor').send_keys(' today')
     sleep 1
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(page).to have_content 'Hello world today'
   end
@@ -36,7 +37,8 @@ RSpec.feature 'Admin pages' do
 
     expect(find_field('Name').value).to eq home_page.name
     fill_in 'Name', with: 'New Page Name'
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/new_page_name'
     expect(page).to have_content 'New Page Name'
   end
@@ -46,7 +48,8 @@ RSpec.feature 'Admin pages' do
 
     expect(find('input#private', visible: false)).not_to be_checked
     find('label', text: 'Private').click
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
   end
@@ -56,16 +59,25 @@ RSpec.feature 'Admin pages' do
 
     expect(find('input#contactForm', visible: false)).not_to be_checked
     find('label', text: 'Contact form').click
-    click_save_and_wait_for_update
+    click_button 'Save'
+    expect(page).to have_content 'Element updated'
     visit '/home'
     expect(page).to have_content 'Message'
+  end
+
+  scenario 'deleteing a page' do
+    navigate_to_edit_page
+    click_button 'Delete'
+    click_button 'Confirm'
+    expect(page).to have_content 'Element deleted'
   end
 
   scenario 'creating a page' do
     navigate_to_admin_pages
     click_link 'Create'
     fill_in 'Name', with: 'New Page'
-    click_save_and_wait_for_update('created')
+    click_button 'Save'
+    expect(page).to have_content 'Element created'
     visit '/new_page'
     expect(page).to have_content 'New Page'
   end
@@ -121,6 +133,7 @@ RSpec.feature 'Admin pages' do
       find('table tbody tr:nth-child(3) td:nth-child(1) > span').click
 
       click_button 'Delete'
+      click_button 'Confirm'
 
       expect(page).to have_content '3 elements deleted'
     end

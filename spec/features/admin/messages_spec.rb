@@ -6,6 +6,11 @@ RSpec.feature 'Admin messages' do
     click_link 'Messages'
   end
 
+  def navigate_to_show_message
+    navigate_to_admin_messages
+    find('span', text: message.name).click
+  end
+
   before do
     login_as site_user
     visit '/home'
@@ -34,9 +39,7 @@ RSpec.feature 'Admin messages' do
     end
 
     scenario 'viewing a message' do
-      navigate_to_admin_messages
-
-      find('span', text: message.name).click
+      navigate_to_show_message
 
       within('.ra-field-name') do
         expect(page).to have_content 'Name'
@@ -64,15 +67,11 @@ RSpec.feature 'Admin messages' do
       end
     end
 
-    scenario 'deleting a message' do
-      navigate_to_admin_messages
-
-      find('table tbody tr:nth-child(1)').click
-
+    scenario 'deleteing a message' do
+      navigate_to_show_message
       click_button 'Delete'
-
+      click_button 'Confirm'
       expect(page).to have_content 'Element deleted'
-      expect(all('table tbody tr').size).to eq 0
     end
 
     it_behaves_like 'when on mobile' do
@@ -149,6 +148,7 @@ RSpec.feature 'Admin messages' do
       find('table tbody tr:nth-child(3) td:nth-child(1)').click
 
       click_button 'Delete'
+      click_button 'Confirm'
 
       expect(page).to have_content '3 elements deleted'
     end
