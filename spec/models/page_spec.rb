@@ -58,7 +58,7 @@ RSpec.describe Page do
     it 'strips html tags' do
       page.html_content = '<a href="url" class="link">a link</a><bad>tag</bad>'
       page.valid?
-      expect(page.html_content).to eq '<a href="url" class="link">a link</a>tag'
+      expect(page.html_content).to eq '<a href="url">a link</a>tag'
     end
   end
 
