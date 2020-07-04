@@ -1,5 +1,4 @@
 import SiteIcon from '@material-ui/icons/Language';
-
 import { SiteEdit } from './SiteEdit';
 import { SiteList } from './SiteList';
 

@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import gql from 'graphql-tag';
+import _ from 'lodash';
 
 const CreateQuery = gql`
   mutation CreatePage($input: CreatePageInput!) {
