@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   include ActionView::Helpers::SanitizeHelper
 
-  HTML_ATTRIBUTES = %w[href target class src alt].freeze
+  HTML_ATTRIBUTES = %w[href target src alt].freeze
   private_constant :HTML_ATTRIBUTES
   HTML_TAGS = %w[h2 h3 p strong em sub sup ul li ol a img br].freeze
   private_constant :HTML_TAGS
