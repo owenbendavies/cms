@@ -16,7 +16,12 @@ const MessageTitle = ({ record }) => (
 
 const MessageShowActions = ({ basePath, data, resource }) => (
   <TopToolbar>
-    <DeleteButton basePath={basePath} record={data} resource={resource} />
+    <DeleteButton
+      undoable={false}
+      basePath={basePath}
+      record={data}
+      resource={resource}
+    />
   </TopToolbar>
 );
 

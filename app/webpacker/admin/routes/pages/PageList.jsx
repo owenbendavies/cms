@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   BooleanField,
+  BulkDeleteButton,
   Datagrid,
   List,
   Responsive,
@@ -8,8 +9,12 @@ import {
   TextField,
 } from 'react-admin';
 
+const PageBulkActions = (props) => (
+  <BulkDeleteButton undoable={false} {...props} />
+);
+
 export const PageList = (props) => (
-  <List {...props}>
+  <List bulkActionButtons={<PageBulkActions />} {...props}>
     <Responsive
       small={
         <SimpleList primaryText={(record) => record.name} linkType="edit" />

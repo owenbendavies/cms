@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  BulkDeleteButton,
   Datagrid,
   DateField,
   EmailField,
@@ -9,8 +10,16 @@ import {
   TextField,
 } from 'react-admin';
 
+const MessageBulkActions = (props) => (
+  <BulkDeleteButton undoable={false} {...props} />
+);
+
 export const MessageList = (props) => (
-  <List sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
+  <List
+    bulkActionButtons={<MessageBulkActions />}
+    sort={{ field: 'createdAt', order: 'DESC' }}
+    {...props}
+  >
     <Responsive
       small={
         <SimpleList
