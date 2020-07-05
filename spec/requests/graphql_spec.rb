@@ -32,13 +32,18 @@ RSpec.describe 'GraphQL' do
     end
 
     context 'with a query' do
-      let!(:message) { FactoryBot.create(:message, site: site) }
+      let(:site_id) { Base64.urlsafe_encode64("Site-#{site.id}") }
 
       let(:query) do
         <<~BODY
-          query {
-            messages(orderBy: {field: CREATED_AT, direction: DESC}) {
-              nodes {
+          mutation UpdateSite($input: UpdateSiteInput!) {
+            updateSite(input: $input) {
+              errors {
+                field
+                messages
+              }
+              site {
+                id
                 name
               }
             }
@@ -46,19 +51,31 @@ RSpec.describe 'GraphQL' do
         BODY
       end
 
+      let(:variables) do
+        {
+          'input' => {
+            'siteId' => site_id,
+            'name' => new_company_name
+          }
+        }
+      end
+
       let(:request_params) do
         {
-          'query' => query
+          'query' => query,
+          'variables' => variables
         }
       end
 
       let(:expected_body) do
         {
           'data' => {
-            'messages' => {
-              'nodes' => [
-                { 'name' => message.name }
-              ]
+            'updateSite' => {
+              'errors' => [],
+              'site' => {
+                'id' => site_id,
+                'name' => new_company_name
+              }
             }
           }
         }
@@ -68,6 +85,12 @@ RSpec.describe 'GraphQL' do
         request_page
 
         expect(json_body).to eq expected_body
+      end
+
+      it 'records who made the edit' do
+        request_page
+
+        expect(site.versions.last.whodunnit).to eq request_user.id.to_s
       end
     end
   end

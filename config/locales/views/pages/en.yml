@@ -6,15 +6,9 @@ en:
         alert: Sorry your message was invalid, please fix the problems below
         success: Thank you for your message
       privacy_policy: I agree to %{link}
-    edit:
-      icon: fas fa-edit fa-fw
-      title: Editing %{name}
     index:
       icon: fas fa-sitemap fa-fw
       title: Sitemap
-    new:
-      icon: fas fa-plus fa-fw
-      title: New Page
     show:
       private:
         icon: fas fa-lock fa-fw

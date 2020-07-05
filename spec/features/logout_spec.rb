@@ -12,8 +12,7 @@ RSpec.feature 'User logout' do
 
   scenario 'clicking topbar link' do
     within('.topbar') do
-      click_link site_user.name
-      click_link 'Logout'
+      click_link "Logout #{site_user.name}"
     end
 
     expect(page).to have_content 'Signed out successfully.'

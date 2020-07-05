@@ -10,42 +10,16 @@
 
   <div class="topbar__collapse collapse" id="js-topbar-collapse">
     <ul class="topbar__links">
-      <% if policy(site).update? %>
-        <li class="topbar__dropdown-item">
-          <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
-            <%= Page.model_name.human %>
-          </a>
-          <div class="dropdown-menu">
-            <% if page&.persisted? %>
-              <%= link_to edit_page_path(page), class: 'dropdown-item' do %>
-                <%= icon_tag t('pages.edit.icon') %>
-                <%= t('actions.edit') %>
-              <% end %>
-            <% end %>
+      <li class="topbar__item">
+        <%= link_to t('admin.index.title'), admin_path, class: 'topbar__link' %>
+      </li>
 
-            <%= link_to new_page_path, class: 'dropdown-item' do %>
-              <%= icon_tag(t('pages.new.icon')) %>
-              <%= t('pages.new.title') %>
-            <% end %>
-          </div>
-        </li>
-
-        <li class="topbar__item">
-          <%= link_to t('admin.index.title'), admin_path, class: 'topbar__link' %>
-        </li>
-      <% end %>
-
-      <li class="topbar__dropdown-item">
-        <a class="topbar__dropdown-toggle" data-toggle="dropdown" href="#">
+      <li class="topbar__item">
+        <%= link_to logout_path, class: 'topbar__link', 'data-turbolinks': false do %>
+          <%= icon_tag(t('sessions.destroy.icon')) %>
+          <%= t('sessions.destroy.title') %>
           <%= current_user.name %>
-        </a>
-
-        <div class="dropdown-menu">
-          <%= link_to logout_path, class: 'dropdown-item', 'data-turbolinks': false do %>
-            <%= icon_tag(t('sessions.destroy.icon')) %>
-            <%= t('sessions.destroy.title') %>
-          <% end %>
-        </div>
+        <% end %>
       </li>
 
       <li class="topbar__avatar">
