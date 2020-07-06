@@ -5,7 +5,7 @@ RSpec.feature 'Privacy Policy' do
 
   context 'when site does not have privacy policy' do
     it 'does not display privacy policy' do
-      visit '/home'
+      visit "/#{home_page}"
 
       expect(page).not_to have_selector css_selector
     end
@@ -16,7 +16,7 @@ RSpec.feature 'Privacy Policy' do
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'shows link to privacy policy' do
-      visit '/home'
+      visit "/#{home_page}"
 
       within css_selector do
         expect(page).to have_link(privacy_policy.name, href: "/#{privacy_policy.url}")

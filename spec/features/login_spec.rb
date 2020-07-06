@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Login' do
+  before { site }
+
   scenario 'with site user' do
     login_with_omniauth_as(site_user)
     visit '/login'

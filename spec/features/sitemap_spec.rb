@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Sitemap' do
+  let!(:public_page) { FactoryBot.create(:page, site: site) }
   let!(:private_page) { FactoryBot.create(:page, private: true, site: site) }
 
   context 'with html' do
     scenario 'not logged in' do
-      visit '/home'
+      visit "/#{home_page.url}"
 
       within('footer') do
         click_link 'Sitemap'
@@ -18,7 +19,7 @@ RSpec.feature 'Sitemap' do
     scenario 'site user' do
       login_as site_user
 
-      visit '/home'
+      visit "/#{home_page.url}"
 
       within('footer') do
         click_link 'Sitemap'
@@ -37,8 +38,11 @@ RSpec.feature 'Sitemap' do
     scenario 'http' do
       visit '/sitemap.xml'
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq "http://#{site.host}/home"
-      expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq home_page.updated_at.iso8601
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq(
+        "http://#{site.host}/#{public_page.url}"
+      )
+
+      expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq public_page.updated_at.iso8601
       expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
     end
 
@@ -47,7 +51,9 @@ RSpec.feature 'Sitemap' do
         visit '/sitemap.xml'
       end
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq "https://#{site.host}/home"
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq(
+        "https://#{site.host}/#{public_page.url}"
+      )
     end
   end
 end
