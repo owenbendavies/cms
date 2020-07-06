@@ -13,7 +13,7 @@ RSpec.feature 'Admin pages' do
 
   before do
     login_as site_user
-    visit '/home'
+    visit "/#{home_page.url}"
   end
 
   scenario 'changing the content' do
@@ -24,7 +24,7 @@ RSpec.feature 'Admin pages' do
     sleep 1
     click_button 'Save'
     expect(page).to have_content 'Element updated'
-    visit '/home'
+    visit "/#{home_page.url}"
     expect(page).to have_content 'Hello world today'
   end
 
@@ -50,7 +50,7 @@ RSpec.feature 'Admin pages' do
     find('label', text: 'Private').click
     click_button 'Save'
     expect(page).to have_content 'Element updated'
-    visit '/home'
+    visit "/#{home_page.url}"
     expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
   end
 
@@ -61,7 +61,7 @@ RSpec.feature 'Admin pages' do
     find('label', text: 'Contact form').click
     click_button 'Save'
     expect(page).to have_content 'Element updated'
-    visit '/home'
+    visit "/#{home_page.url}"
     expect(page).to have_content 'Message'
   end
 
