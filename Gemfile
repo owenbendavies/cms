@@ -50,8 +50,8 @@ gem 'bootsnap' # Fast booting
 gem 'puma' # Web server
 
 # Monitoring
-gem 'logstash-logger' # Logs in Logstash format
 gem 'logstasher' # Single line logging
+gem 'logstash-logger' # Logs in Logstash format
 gem 'rollbar' # Error notifications
 gem 'scout_apm' # Application monitoring
 
