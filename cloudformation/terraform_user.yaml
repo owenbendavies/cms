@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: 'Terraform user'
+
+Resources:
+  IAMUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: !Ref AWS::StackName
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AdministratorAccess'
