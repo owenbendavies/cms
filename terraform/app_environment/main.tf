@@ -1,13 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket               = "obduk-cms-terraform-states"
-    dynamodb_table       = "obduk-cms-terraform-locks"
-    key                  = "app_environment.tfstate"
-    region               = "eu-west-1"
-    workspace_key_prefix = "workspaces"
-  }
-}
-
 module "aws_cloudfront" {
   source = "./modules/aws_cloudfront"
 
