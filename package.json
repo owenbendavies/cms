@@ -2,7 +2,7 @@
   "name": "cms",
   "private": true,
   "engines": {
-    "node": "12.18.1",
+    "node": "12.18.2",
     "npm": "6.13.6",
     "yarn": "1.22.4"
   },
