@@ -12,7 +12,7 @@ resource "aws_cognito_user_group" "domains" {
 
 resource "aws_cognito_user_pool" "app" {
   auto_verified_attributes = ["email"]
-  name                     = var.app_name
+  name                     = var.name
   tags                     = var.tags
   username_attributes      = ["email"]
 
@@ -44,12 +44,12 @@ resource "aws_cognito_user_pool_client" "app" {
   callback_urls                        = formatlist("https://%s/auth/cognito-idp/callback", local.all_domains)
   generate_secret                      = true
   logout_urls                          = formatlist("https://%s/", local.all_domains)
-  name                                 = var.app_name
+  name                                 = var.name
   supported_identity_providers         = ["COGNITO"]
   user_pool_id                         = aws_cognito_user_pool.app.id
 }
 
 resource "aws_cognito_user_pool_domain" "app" {
-  domain       = var.app_name
+  domain       = var.name
   user_pool_id = aws_cognito_user_pool.app.id
 }

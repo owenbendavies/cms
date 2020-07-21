@@ -1,56 +1,55 @@
 module "aws_cloudfront" {
   source = "./modules/aws_cloudfront"
 
-  app_name      = local.app_name
   assets_domain = module.aws_s3.assets_domain
   logs_domain   = module.aws_s3.logs_domain
+  name          = local.name
   tags          = local.tags
 }
 
 module "aws_cognito" {
   source = "./modules/aws_cognito"
 
-  app_name = local.app_name
-  domains  = local.domains
-  tags     = local.tags
+  domains = local.domains
+  name    = local.fq_name
+  tags    = local.tags
 }
 
 module "aws_iam" {
   source = "./modules/aws_iam"
 
-  app_name                 = local.app_name
   aws_cognito_arn          = module.aws_cognito.arn
   aws_s3_assets_bucket_arn = module.aws_s3.assets_bucket_arn
   aws_sqs_arns             = [module.aws_sqs_default.arn, module.aws_sqs_mailers.arn]
+  name                     = local.name
   tags                     = local.tags
 }
 
 module "aws_s3" {
   source = "./modules/aws_s3"
 
-  app_name               = local.app_name
   aws_cloudfront_iam_arn = module.aws_cloudfront.iam_arn
+  name                   = local.fq_name
   tags                   = local.tags
 }
 
 module "aws_sqs_default" {
   source = "./modules/aws_sqs"
 
-  name = "${local.app_name}-default"
+  name = "${local.name}-default"
   tags = local.tags
 }
 
 module "aws_sqs_mailers" {
   source = "./modules/aws_sqs"
 
-  name = "${local.app_name}-mailers"
+  name = "${local.name}-mailers"
   tags = local.tags
 }
 
 module "heroku" {
   source = "./modules/heroku"
 
-  app_name                  = local.app_name
   aws_access_key_id         = module.aws_iam.access_key_id
   aws_cloudfront_domain     = module.aws_cloudfront.domain
   aws_cognito_client_id     = module.aws_cognito.client_id
@@ -62,4 +61,5 @@ module "heroku" {
   aws_secret_access_key     = module.aws_iam.secret_access_key
   domains                   = local.domains
   from_email                = local.from_email
+  name                      = local.fq_name
 }

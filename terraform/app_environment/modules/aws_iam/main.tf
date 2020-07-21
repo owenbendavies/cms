@@ -3,7 +3,7 @@ resource "aws_iam_access_key" "app" {
 }
 
 resource "aws_iam_user" "app" {
-  name = var.app_name
+  name = var.name
   tags = var.tags
 }
 

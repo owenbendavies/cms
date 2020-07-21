@@ -1,4 +1,3 @@
-variable "app_name" { type = string }
 variable "aws_access_key_id" { type = string }
 variable "aws_cloudfront_domain" { type = string }
 variable "aws_cognito_client_id" { type = string }
@@ -10,3 +9,4 @@ variable "aws_s3_assets_bucket_name" { type = string }
 variable "aws_secret_access_key" { type = string }
 variable "domains" { type = list(string) }
 variable "from_email" { type = string }
+variable "name" { type = string }

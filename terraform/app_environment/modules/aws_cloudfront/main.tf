@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "assets" {
-  comment         = var.app_name
+  comment         = var.name
   enabled         = true
   is_ipv6_enabled = true
   tags            = var.tags
@@ -26,7 +26,7 @@ resource "aws_cloudfront_distribution" "assets" {
 
   logging_config {
     bucket = var.logs_domain
-    prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/cloudfront/${var.app_name}/"
+    prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/cloudfront/${var.name}/"
   }
 
   origin {
@@ -50,5 +50,5 @@ resource "aws_cloudfront_distribution" "assets" {
 }
 
 resource "aws_cloudfront_origin_access_identity" "assets" {
-  comment = var.app_name
+  comment = var.name
 }
