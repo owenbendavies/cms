@@ -54,7 +54,7 @@ resource "heroku_addon" "app_scout" {
 }
 
 resource "heroku_app" "app" {
-  name   = var.app_name
+  name   = var.name
   region = "eu"
   stack  = "heroku-18"
 

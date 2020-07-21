@@ -1,3 +1,3 @@
 locals {
-  app_name = "obduk-cms"
+  name = "obduk-cms"
 }

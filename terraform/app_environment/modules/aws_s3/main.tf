@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "assets" {
-  bucket = var.app_name
+  bucket = var.name
   tags   = var.tags
 
   lifecycle {
@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "assets" {
 
   logging {
     target_bucket = aws_s3_bucket.logs.id
-    target_prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/s3/${var.app_name}/"
+    target_prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/s3/${var.name}/"
   }
 
   server_side_encryption_configuration {
@@ -36,7 +36,7 @@ resource "aws_s3_bucket" "assets" {
 
 resource "aws_s3_bucket" "logs" {
   acl    = "log-delivery-write"
-  bucket = "${var.app_name}-logs"
+  bucket = "${var.name}-logs"
   tags   = var.tags
 
   lifecycle {
