@@ -7,14 +7,15 @@ gem 'rails'
 gem 'aws-sdk-cognitoidentityprovider' # User management with AWS Cognito
 gem 'aws-sdk-rails' # Sets up AWS SDK to work with Rails
 gem 'aws-sdk-ses' # Send emails with AWS
+gem 'aws-sdk-sqs' # Message queue
 gem 'fog-aws' # AWS file upload
+gem 'shoryuken' # AWS SNS integration for ActiveJob
 
 # Databases
 gem 'pg' # PostgreSQL
 gem 'seedbank' # Better database seeds
 
 # Frameworks
-gem 'delayed_job_active_record' # Background jobs
 gem 'graphql' # GraphQL API
 
 # Rack middleware

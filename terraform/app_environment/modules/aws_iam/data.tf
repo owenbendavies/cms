@@ -30,3 +30,18 @@ data "aws_iam_policy_document" "ses" {
     resources = ["*"]
   }
 }
+
+data "aws_iam_policy_document" "sqs" {
+  statement {
+    actions = [
+      "sqs:ChangeMessageVisibility",
+      "sqs:DeleteMessage",
+      "sqs:GetQueueAttributes",
+      "sqs:GetQueueUrl",
+      "sqs:ReceiveMessage",
+      "sqs:SendMessage",
+    ]
+
+    resources = var.aws_sqs_arns
+  }
+}

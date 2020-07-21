@@ -1,4 +1,6 @@
 class ApplicationJob < ActiveJob::Base
+  include Rollbar::ActiveJob
+
   protected
 
   def error(message, extra = {})

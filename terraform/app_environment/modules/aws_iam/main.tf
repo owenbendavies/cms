@@ -24,3 +24,9 @@ resource "aws_iam_user_policy" "app_ses" {
   policy = data.aws_iam_policy_document.ses.json
   user   = aws_iam_user.app.name
 }
+
+resource "aws_iam_user_policy" "app_sqs" {
+  name   = "sqs"
+  policy = data.aws_iam_policy_document.sqs.json
+  user   = aws_iam_user.app.name
+}
