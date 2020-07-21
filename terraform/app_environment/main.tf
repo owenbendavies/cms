@@ -21,6 +21,7 @@ module "aws_iam" {
   app_name                 = local.app_name
   aws_cognito_arn          = module.aws_cognito.arn
   aws_s3_assets_bucket_arn = module.aws_s3.assets_bucket_arn
+  aws_sqs_arns             = [module.aws_sqs_default.arn, module.aws_sqs_mailers.arn]
   tags                     = local.tags
 }
 
@@ -30,6 +31,20 @@ module "aws_s3" {
   app_name               = local.app_name
   aws_cloudfront_iam_arn = module.aws_cloudfront.iam_arn
   tags                   = local.tags
+}
+
+module "aws_sqs_default" {
+  source = "./modules/aws_sqs"
+
+  name = "${local.app_name}-default"
+  tags = local.tags
+}
+
+module "aws_sqs_mailers" {
+  source = "./modules/aws_sqs"
+
+  name = "${local.app_name}-mailers"
+  tags = local.tags
 }
 
 module "heroku" {

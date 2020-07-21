@@ -1,3 +1,3 @@
 web: ./bin/rails server
-worker: QUIET=true ./bin/rails jobs:work
+worker: bundle exec shoryuken --rails --config config/shoryuken.yml
 release: ./bin/rails db:migrate

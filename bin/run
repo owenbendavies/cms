@@ -4,4 +4,4 @@ cd $(dirname $0)/..
 
 set -v
 
-heroku local --port=3000
+./bin/rails server
