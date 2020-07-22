@@ -11,7 +11,7 @@ module "aws_cognito" {
   source = "./modules/aws_cognito"
 
   domains = local.domains
-  name    = local.fq_name
+  name    = local.name
   tags    = local.tags
 }
 
@@ -29,21 +29,21 @@ module "aws_s3" {
   source = "./modules/aws_s3"
 
   aws_cloudfront_iam_arn = module.aws_cloudfront.iam_arn
-  name                   = local.fq_name
+  name                   = local.name
   tags                   = local.tags
 }
 
 module "aws_sqs_default" {
   source = "./modules/aws_sqs"
 
-  name = "${local.fq_name}-default"
+  name = "${local.name}-default"
   tags = local.tags
 }
 
 module "aws_sqs_mailers" {
   source = "./modules/aws_sqs"
 
-  name = "${local.fq_name}-mailers"
+  name = "${local.name}-mailers"
   tags = local.tags
 }
 
@@ -61,5 +61,5 @@ module "heroku" {
   aws_secret_access_key     = module.aws_iam.secret_access_key
   domains                   = local.domains
   from_email                = local.from_email
-  name                      = local.fq_name
+  name                      = local.name
 }
