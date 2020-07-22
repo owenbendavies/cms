@@ -36,14 +36,14 @@ module "aws_s3" {
 module "aws_sqs_default" {
   source = "./modules/aws_sqs"
 
-  name = "${local.name}-default"
+  name = "${local.fq_name}-default"
   tags = local.tags
 }
 
 module "aws_sqs_mailers" {
   source = "./modules/aws_sqs"
 
-  name = "${local.name}-mailers"
+  name = "${local.fq_name}-mailers"
   tags = local.tags
 }
 
