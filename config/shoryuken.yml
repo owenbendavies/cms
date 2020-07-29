@@ -1,3 +1,4 @@
+delay: 10
 queues:
   - mailers
   - default
