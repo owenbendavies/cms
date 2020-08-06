@@ -50,7 +50,7 @@ module Cms
       config.log_level = :info
       config.logger = LogStashLogger.new(type: :stdout)
 
-      config.logstasher.logger = Logger.new(STDOUT)
+      config.logstasher.logger = Logger.new($stdout)
       config.logstasher.suppress_app_log = true
 
       config.middleware.delete(ActionDispatch::DebugExceptions)
