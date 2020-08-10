@@ -22,7 +22,7 @@
     "apollo-client": "^2.6.10",
     "autosize": "^4.0.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.5.2",
     "caniuse-lite": "^1.0.30001112",
     "core-js": "3",
     "graphql": "^14.7.0",
