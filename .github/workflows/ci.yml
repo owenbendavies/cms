@@ -6,9 +6,9 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: 12
-  RUBY_VERSION: 2.7
-  TF_VERSION: 0.12.28
+  NODE_VERSION: 12.18.3
+  RUBY_VERSION: 2.7.1
+  TF_VERSION: 0.12.29
 
 jobs:
   terraform_plan:
