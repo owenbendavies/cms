@@ -7974,9 +7974,9 @@ quill@~1.3.6:
     quill-delta "^3.6.2"
 
 ra-core@^3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.8.2.tgz#d99e697a557b1b7b3e7f1989b8f0f5d572a5d281"
-  integrity sha512-17jgIRNuOTVxcaBBkMw0QImv45tco93pz1Tnn7sZ7gbKqmK3sXeGI9yZa+7VOvbTdj9PbF7Kh2PnDun9Ryd5GA==
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.8.3.tgz#65b34633e0a6975482d3b84a1297d2200d87d24a"
+  integrity sha512-7dy1uwo9CeYmh94oj426mFPjFc/MO1bBRDdq51jGbgFLBnLlFNYyLj0pVLdZAgSMkybBAKdiOpu1Me6vMGSfDw==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
