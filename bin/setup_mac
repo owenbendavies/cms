@@ -34,7 +34,7 @@ function brew_cask_install_missing_formulas() {
     chromedriver
   "
 
-  INSTALLED=$(brew cask list)
+  INSTALLED=$(brew list --cask)
 
   for formula in $REQUIRED; do
     grep -q $formula <<<$INSTALLED || brew cask install $formula
@@ -59,7 +59,7 @@ brew tap heroku/brew
 
 brew_install_missing_formulas
 
-brew cask upgrade
+brew upgrade --cask
 
 brew_cask_install_missing_formulas
 
