@@ -324,7 +324,7 @@ GEM
       nokogiri
     rexml (3.2.4)
     rollbar (3.0.0)
-    rspec-core (3.9.2)
+    rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
       diff-lcs (>= 1.2.0, < 2.0)
