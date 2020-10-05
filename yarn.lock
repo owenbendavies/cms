@@ -1459,9 +1459,9 @@
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
 "@types/yargs@^13.0.0":
-  version "13.0.10"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.10.tgz#e77bf3fc73c781d48c2eb541f87c453e321e5f4b"
-  integrity sha512-MU10TSgzNABgdzKvQVW1nuuT+sgBMWeXNc3XOs5YXV5SDAK+PPja2eUuBNB9iqElu03xyEDqlnGw0jgl4nbqGQ==
+  version "13.0.11"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.11.tgz#def2f0c93e4bdf2c61d7e34899b17e34be28d3b1"
+  integrity sha512-NRqD6T4gktUrDi1o1wLH3EKC1o2caCr7/wR87ODcbVITQF106OM3sFN92ysZ++wqelOd1CTzatnOBRDYYG6wGQ==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -7990,10 +7990,10 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.8.5:
-  version "3.8.5"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.8.5.tgz#d39c3bfe6eaa60ad06509e72f63591ac5540039e"
-  integrity sha512-TLZqREIb5B1lZGJDOBmu1+SN+kXgHQSVjp5KWW1/AOvw1N99uCkciOKnWiF8LBkCCvM/zNREFIV/Yh6FTf2Rlw==
+ra-core@^3.8.5, ra-core@^3.9.0:
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.9.0.tgz#c405d3b882a74ffe55c6fe46df4c6281728c983c"
+  integrity sha512-Q8QaFbmtNol+quOi9nRtVsIwY3YSt5XNPD4AYue095SEX6qoVbG55RxDrlgvUiUIRnzgNB1t5IPEx42vb/SJrw==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
@@ -8017,12 +8017,12 @@ ra-data-graphql@^3.8.0:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.8.5:
-  version "3.8.5"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.8.5.tgz#f59a17a757234add7164cbce6fc0a95a925f0065"
-  integrity sha512-ck3g3eZHb5jm0IdKpljSyMvlcH38esjFJBbGxKoGx8sQM3v0T1TtnErI2/s+VGTPFC53n5jqnjKPbfzqV7js/g==
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.9.0.tgz#c2349e5982b1819bedbe1b052f1fe817b41f27ae"
+  integrity sha512-8sNGq6VjDH3OWWbxdcxtL18H6OcHPVe/lJ9epxpJZyx0vQdUOR6jd3ZxqmD2mKvKHT0gbzYGyVSLzMW47dNoAA==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.8.5"
+    ra-core "^3.9.0"
 
 ra-input-rich-text@^3.8.3:
   version "3.8.3"
