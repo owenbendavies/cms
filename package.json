@@ -31,7 +31,7 @@
     "lodash": "^4.17.20",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
-    "ra-data-graphql": "^3.8.0",
+    "ra-data-graphql": "^3.9.2",
     "ra-input-rich-text": "^3.8.3",
     "react": "^16.13.1",
     "react-admin": "^3.9.0",
