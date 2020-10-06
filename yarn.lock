@@ -1459,9 +1459,9 @@
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
 "@types/yargs@^13.0.0":
-  version "13.0.10"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.10.tgz#e77bf3fc73c781d48c2eb541f87c453e321e5f4b"
-  integrity sha512-MU10TSgzNABgdzKvQVW1nuuT+sgBMWeXNc3XOs5YXV5SDAK+PPja2eUuBNB9iqElu03xyEDqlnGw0jgl4nbqGQ==
+  version "13.0.11"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-13.0.11.tgz#def2f0c93e4bdf2c61d7e34899b17e34be28d3b1"
+  integrity sha512-NRqD6T4gktUrDi1o1wLH3EKC1o2caCr7/wR87ODcbVITQF106OM3sFN92ysZ++wqelOd1CTzatnOBRDYYG6wGQ==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -7991,9 +7991,9 @@ quill@~1.3.6:
     quill-delta "^3.6.2"
 
 ra-core@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.9.0.tgz#c405d3b882a74ffe55c6fe46df4c6281728c983c"
-  integrity sha512-Q8QaFbmtNol+quOi9nRtVsIwY3YSt5XNPD4AYue095SEX6qoVbG55RxDrlgvUiUIRnzgNB1t5IPEx42vb/SJrw==
+  version "3.9.2"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.9.2.tgz#362abfeecbbfc8dd090ac8f5032219a538175a7a"
+  integrity sha512-tD+Z7JkGo8t5yjXizos1qu0ynTUBZQPZm3V3+Rg3fCOTQ7Z81iOhwwDezQU8EOGS9xS5yh/XmVtwhWhDK8L8Kw==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
