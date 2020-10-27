@@ -3331,9 +3331,9 @@ csstype@^2.5.2:
   integrity sha512-ul26pfSQTZW8dcOnD2iiJssfXw0gdNVX9IJDH/X3K5DGPfj+fUYe3kB+swUY6BF3oZDxaID3AJt+9/ojSAE05A==
 
 csstype@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.3.tgz#2b410bbeba38ba9633353aff34b05d9755d065f8"
-  integrity sha512-jPl+wbWPOWJ7SXsWyqGRk3lGecbar0Cb0OvZF/r/ZU011R4YqiRehgkQ9p4eQfo9DSDLqLL3wHwfxeJiuIsNag==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.4.tgz#b156d7be03b84ff425c9a0a4b1e5f4da9c5ca888"
+  integrity sha512-xc8DUsCLmjvCfoD7LTGE0ou2MIWLx0K9RCZwSHMOdynqRsP4MtUcLeqh1HcQ2dInwDTqn+3CE0/FZh1et+p4jA==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -4258,9 +4258,9 @@ file-loader@^6.0.0:
     schema-utils "^3.0.0"
 
 file-selector@^0.1.12:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.1.13.tgz#5efd977ca2bca1700992df1b10e254f4e73d2df4"
-  integrity sha512-T2efCBY6Ps+jLIWdNQsmzt/UnAjKOEAlsZVdnQztg/BtAZGNL4uX1Jet9cMM8gify/x4CSudreji2HssGBNVIQ==
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.1.17.tgz#7609f55136b74f244b28ee058066e6989c9323a8"
+  integrity sha512-5JtWnExGccxIEe2Vb5EimhbWkKaOSnBwVNR5IC2Of7G+5bKH8X1Y8VYgcG/fEuInARDUc4Pnsha+GIBQjYlUAw==
   dependencies:
     tslib "^2.0.1"
 
@@ -8072,9 +8072,9 @@ ra-language-english@^3.9.4:
     ra-core "^3.9.4"
 
 ra-ui-materialui@^3.9.4:
-  version "3.9.4"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.9.4.tgz#c68958492aa25790198d7101117178b034c97da3"
-  integrity sha512-qx6TcVFwVkqqp9tB4tulgVMH2zhpzJTcTvYZlsIEa17jlBNLM9l1iR7LcVbKZDafKacWD14G6+g9R+y/46qDjg==
+  version "3.9.5"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.9.5.tgz#3085587e35a0ede73f0a260dc456d42af1aeb5fc"
+  integrity sha512-1rdmMmel0E/BtuiQn5pkGrCRjQs2A9oS37+uN9vrrbJ7py5NCG5XchWiL6x+lArk2hg6eQADWWt+jI5KltDPxA==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
@@ -9826,9 +9826,9 @@ tslib@^1.10.0, tslib@^1.9.0, tslib@^1.9.3:
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tslib@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
-  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
 
 tty-browserify@0.0.0:
   version "0.0.0"
