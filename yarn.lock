@@ -3356,9 +3356,9 @@ csstype@^2.5.2:
   integrity sha512-ul26pfSQTZW8dcOnD2iiJssfXw0gdNVX9IJDH/X3K5DGPfj+fUYe3kB+swUY6BF3oZDxaID3AJt+9/ojSAE05A==
 
 csstype@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.3.tgz#2b410bbeba38ba9633353aff34b05d9755d065f8"
-  integrity sha512-jPl+wbWPOWJ7SXsWyqGRk3lGecbar0Cb0OvZF/r/ZU011R4YqiRehgkQ9p4eQfo9DSDLqLL3wHwfxeJiuIsNag==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.4.tgz#b156d7be03b84ff425c9a0a4b1e5f4da9c5ca888"
+  integrity sha512-xc8DUsCLmjvCfoD7LTGE0ou2MIWLx0K9RCZwSHMOdynqRsP4MtUcLeqh1HcQ2dInwDTqn+3CE0/FZh1et+p4jA==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -8098,9 +8098,9 @@ ra-language-english@^3.9.5:
     ra-core "^3.9.6"
 
 ra-ui-materialui@^3.9.5:
-  version "3.9.5"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.9.5.tgz#3085587e35a0ede73f0a260dc456d42af1aeb5fc"
-  integrity sha512-1rdmMmel0E/BtuiQn5pkGrCRjQs2A9oS37+uN9vrrbJ7py5NCG5XchWiL6x+lArk2hg6eQADWWt+jI5KltDPxA==
+  version "3.9.6"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.9.6.tgz#4bc7addada702e2673238eea2a76f1b666b8d4ac"
+  integrity sha512-qu7OpycCBCueCG91EDGYzLM2UDCv46RniVqco4tpzOBM3NFvWTTagdR1k0mJ2kCg5JQYc5lg5wQkBO572UxFgg==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
