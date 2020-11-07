@@ -22,7 +22,7 @@ function brew_install_missing_formulas() {
     yarn
   "
 
-  INSTALLED=$(brew list)
+  INSTALLED=$(brew list --formula)
 
   for formula in $REQUIRED; do
     grep -q $formula <<<$INSTALLED || brew install $formula
