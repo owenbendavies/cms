@@ -4286,9 +4286,9 @@ file-loader@^6.0.0:
     schema-utils "^3.0.0"
 
 file-selector@^0.1.12:
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.1.18.tgz#a2c63805413d79fc1aed0ea6c7796324dbee48fe"
-  integrity sha512-MUY65bNFSE+VraxNpxAz04vDlPuh5qENA0WtfgDWoDnKV7ZN2InI8AbSp0F/3aHoJJVKmZ+cqachhVoBNGifWA==
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.1.19.tgz#8ecc9d069a6f544f2e4a096b64a8052e70ec8abf"
+  integrity sha512-kCWw3+Aai8Uox+5tHCNgMFaUdgidxvMnLWO6fM5sZ0hA2wlHP5/DHGF0ECe84BiB95qdJbKNEJhWKVDvMN+JDQ==
   dependencies:
     tslib "^2.0.1"
 
@@ -8141,9 +8141,9 @@ ra-language-english@^3.10.2:
     ra-core "^3.10.2"
 
 ra-ui-materialui@^3.10.2:
-  version "3.10.2"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.10.2.tgz#6aa93523fb7474a8611dda9d2c9249ad9926b18a"
-  integrity sha512-G920P7jF2XPvetPt8EPWmPE9MIGOLsxWDgt4wPP2qz/uscwpcyxfdgo9mpABZCtZ2i25rPqk2HFp0TOqDwadjQ==
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.10.3.tgz#49a78192e7c8da443a11297ed4b9a8c22fe22758"
+  integrity sha512-YnRBAQfOowZmFPNOEAe8zwT9lxxrs3jc6LtB7vUmW51y0+p/RdITWjRVo4teuOk88QMfa/h2tOAj7E/X7WpEdw==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
