@@ -8076,9 +8076,9 @@ quill@~1.3.6:
     quill-delta "^3.6.2"
 
 ra-core@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.11.0.tgz#0320a2acd4f37788f8768b1999b9e593dbb61230"
-  integrity sha512-kJkAWWY3i/GFX8pCIGGPMpZReYd3QMafUch3i1WLcgHSJT42NrWCmTXW4LFWPOjR0HKc/JjuNPAwkeQMtxuc5g==
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.11.1.tgz#c50ae7f17c74e7fdc56e60483107ac08a34d2491"
+  integrity sha512-wV4nnG7RWUH2rNNdOyyjBDQH/sl/lHa7k52AHpRkto40n2VFCW8qC+fHtwT5Jj+GXg4cS81lYQaWfxE6xMFOfg==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
