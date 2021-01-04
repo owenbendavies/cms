@@ -185,7 +185,7 @@ GEM
     hashie (4.1.0)
     highline (2.0.3)
     htmlentities (4.3.4)
-    i18n (1.8.5)
+    i18n (1.8.6)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.33)
       activesupport (>= 4.0.2)
