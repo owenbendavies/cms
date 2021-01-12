@@ -8109,12 +8109,12 @@ ra-data-graphql@^3.10.1:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.11.1:
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.1.tgz#27ba0585279091e143f26bb72709137cbf265deb"
-  integrity sha512-RrY5joNLLwnszVqPGo45nlfe4QfliVZZdlH4rrCtoLv+aALspNbU5VAzqmT7Q2euKeJAAlm6ZUi167XdMrRB8Q==
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.2.tgz#b0d4e00c371f927bd082f5ac9f2bc2af02ad2967"
+  integrity sha512-hTZuWzuFydopFMobVYmohuXauu+2RIv0Wceg6QUtrvYFkBnTlg5qRwFvoqCy3Oq5ZGqiMQDbu05ldo42BuWbgQ==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.11.1"
+    ra-core "^3.11.2"
 
 ra-input-rich-text@^3.10.1:
   version "3.10.1"
