@@ -2570,9 +2570,9 @@ cache-base@^1.0.1:
     unset-value "^1.0.0"
 
 call-bind@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.1.tgz#29aca9151f8ddcfd5b9b786898f005f425e88567"
-  integrity sha512-tvAvUwNcRikl3RVF20X9lsYmmepsovzTWeJiXjO0PkJp15uy/6xKFZOQtuiSULwYW+6ToZBprphCgWXC2dSgcQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
+  integrity sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==
   dependencies:
     function-bind "^1.1.1"
     get-intrinsic "^1.0.2"
@@ -8109,12 +8109,12 @@ ra-data-graphql@^3.10.1:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.11.1:
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.1.tgz#27ba0585279091e143f26bb72709137cbf265deb"
-  integrity sha512-RrY5joNLLwnszVqPGo45nlfe4QfliVZZdlH4rrCtoLv+aALspNbU5VAzqmT7Q2euKeJAAlm6ZUi167XdMrRB8Q==
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.2.tgz#b0d4e00c371f927bd082f5ac9f2bc2af02ad2967"
+  integrity sha512-hTZuWzuFydopFMobVYmohuXauu+2RIv0Wceg6QUtrvYFkBnTlg5qRwFvoqCy3Oq5ZGqiMQDbu05ldo42BuWbgQ==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.11.1"
+    ra-core "^3.11.2"
 
 ra-input-rich-text@^3.10.1:
   version "3.10.1"
