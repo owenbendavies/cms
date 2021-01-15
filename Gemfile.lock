@@ -225,7 +225,7 @@ GEM
     logstasher (2.1.1)
       activesupport (>= 5.2)
       request_store
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
