@@ -9,23 +9,34 @@ function install_brew() {
   fi
 }
 
+function brew_install_missing_taps() {
+  REQUIRED="
+    hashicorp/tap
+    heroku/brew
+  "
+
+  INSTALLED=$(brew tap)
+
+  for i in $REQUIRED; do
+    grep -q $i <<<$INSTALLED || brew tap $i
+  done
+}
+
 function brew_install_missing_formulas() {
   REQUIRED="
-    awscli
     heroku
     imagemagick
     nvm
     postgresql
     rbenv
-    shfmt
     terraform
     yarn
   "
 
   INSTALLED=$(brew list --formula)
 
-  for formula in $REQUIRED; do
-    grep -q $formula <<<$INSTALLED || brew install $formula
+  for i in $REQUIRED; do
+    grep -q $i <<<$INSTALLED || brew install $i
   done
 }
 
@@ -36,8 +47,8 @@ function brew_cask_install_missing_formulas() {
 
   INSTALLED=$(brew list --cask)
 
-  for formula in $REQUIRED; do
-    grep -q $formula <<<$INSTALLED || brew cask install $formula
+  for i in $REQUIRED; do
+    grep -q $i <<<$INSTALLED || brew install $i
   done
 }
 
@@ -51,21 +62,11 @@ set -v
 
 install_brew
 
-brew update
-
-brew upgrade
-
-brew tap heroku/brew
+brew_install_missing_taps
 
 brew_install_missing_formulas
 
-brew upgrade --cask
-
 brew_cask_install_missing_formulas
-
-brew cleanup
-
-heroku autocomplete --refresh-cache
 
 rbenv install --skip-existing
 
