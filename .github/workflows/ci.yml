@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_VERSION: 12.18.3
-  RUBY_VERSION: 2.7.2
+  RUBY_VERSION: 3.0.0
   TF_VERSION: 0.12.29
 
 jobs:
