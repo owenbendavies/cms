@@ -4580,10 +4580,19 @@ get-caller-file@^2.0.1:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-get-intrinsic@^1.0.1, get-intrinsic@^1.0.2:
+get-intrinsic@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.0.2.tgz#6820da226e50b24894e08859469dc68361545d49"
   integrity sha512-aeX0vrFm21ILl3+JpFFRNe9aUvp6VFZb2/CTbgLb8j75kOhvoNYjt9d8KA/tJG4gSo8nzEDedRl0h7vDmBYRVg==
+  dependencies:
+    function-bind "^1.1.1"
+    has "^1.0.3"
+    has-symbols "^1.0.1"
+
+get-intrinsic@^1.0.2:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.1.0.tgz#892e62931e6938c8a23ea5aaebcfb67bd97da97e"
+  integrity sha512-M11rgtQp5GZMZzDL7jLTNxbDfurpzuau5uqRWDPvlHjfvg3TdScAZo96GLvhMjImrmR8uAt0FS2RLoMrfWGKlg==
   dependencies:
     function-bind "^1.1.1"
     has "^1.0.3"
@@ -8090,10 +8099,10 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.11.3:
-  version "3.11.3"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.11.3.tgz#3677e3c2e5e2d0ce4a57ed243acb92225dcaf254"
-  integrity sha512-1+lV+tUz2BJLkvzct9N79WFtQ13JNIhwbV/R8lhQDbE5Y+S1jWNuU3OWbbjv1AoWLJSfxxFwHRtVdLncO6x1hQ==
+ra-core@^3.11.3, ra-core@^3.11.4:
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.11.4.tgz#7f4d1366f1e94a72a30bdbff69e33e02560a29af"
+  integrity sha512-9DgEHb16p3guMLfhX12fGL+1qkNTZnWl+ew58abMuSxNM4yICbJaXWSGJFy9fiaafjA8lxxEo0j3C0WfxgUyNw==
   dependencies:
     "@testing-library/react" "^8.0.7"
     classnames "~2.2.5"
@@ -8117,12 +8126,12 @@ ra-data-graphql@^3.10.1:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.11.3:
-  version "3.11.3"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.3.tgz#1950b1c043769b9b5c4ff13a89eb4dcb96b698d7"
-  integrity sha512-EUo5vVKMwKFlcqwSlr9kMP9TPLHT2c56A9ZYiiEEJMG5Ad9/RWunFWBksqof7VGjyXo7JPMYAYPgfS6KyhjsyQ==
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.11.4.tgz#f145769b286ae03905188e3d09361e6f698ed35a"
+  integrity sha512-6GaxsdWhjG6Z3GaODVztRBW4kBcElXj6tliihMhW6Z872qgRMGKitLUgXpaJ3cClT4e7cbFg4+2eM+dufp90ZQ==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.11.3"
+    ra-core "^3.11.4"
 
 ra-input-rich-text@^3.10.1:
   version "3.10.1"
