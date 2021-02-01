@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '3.0.0'
 
 gem 'rails'
 
@@ -61,12 +61,10 @@ gem 'webpacker' # JavaScript compiler
 
 group :development, :test do
   gem 'bullet' # Detect bad database queries
-  gem 'debase' # Debugger
   gem 'dotenv-rails' # Easy environment configuration
   gem 'parallel_tests' # Run test in parallel
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
-  gem 'ruby-debug-ide' # Debugger
   gem 'solargraph' # Code completion
   gem 'spring-watcher-listen' # Quick boot
 end
