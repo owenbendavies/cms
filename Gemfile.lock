@@ -135,7 +135,12 @@ GEM
     crass (1.0.6)
     css_parser (1.8.0)
       addressable
-    database_cleaner (1.8.5)
+    database_cleaner (2.0.0)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.0)
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.12)
