@@ -8105,10 +8105,10 @@ ra-core@^3.11.4, ra-core@^3.12.0:
     query-string "^5.1.1"
     reselect "~3.0.0"
 
-ra-data-graphql@^3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-3.10.1.tgz#1f872f69a3f036be58dc2feba8df52ae5f74ff29"
-  integrity sha512-uWXL5AUnEXsdF2AH+LWdLHTtJxd/DPvEAYySSP9m/PUSr9dquuoLQ/3A4PzXRRqhGGjWiDuwefOW1j7X2o9CdQ==
+ra-data-graphql@^3.11.4:
+  version "3.11.4"
+  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-3.11.4.tgz#d4ab31fffd0e7494960fa6e5777865a4b782f34b"
+  integrity sha512-AZVQLscTQ99a6eLkALWiUFQR4l23unos4PjLwZRG8vqEN9DnwAdkZyvei7DOr/Nd0Tq90eaJm7Xi3+q9H3jtcw==
   dependencies:
     apollo-client "^2.6.3"
     apollo-client-preset "^1.0.8"
