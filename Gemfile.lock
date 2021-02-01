@@ -225,7 +225,7 @@ GEM
     logstash-event (1.2.02)
     logstash-logger (0.26.1)
       logstash-event (~> 1.2)
-    logstasher (2.1.1)
+    logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
     loofah (2.9.0)
