@@ -79,8 +79,8 @@ jobs:
         uses: actions/cache@v1
         with:
           path: vendor/bundle
-          key: gems-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: gems-${{ hashFiles('.ruby-version') }}-
+          key: gems-fix-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: gems-fix-${{ hashFiles('.ruby-version') }}-
 
       - name: Cache yarn
         uses: actions/cache@v1
