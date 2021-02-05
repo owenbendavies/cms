@@ -133,7 +133,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    css_parser (1.8.0)
+    css_parser (1.9.0)
       addressable
     database_cleaner (2.0.1)
       database_cleaner-active_record (~> 2.0.0)
