@@ -8129,11 +8129,11 @@ ra-input-rich-text@^3.10.1:
     quill "~1.3.6"
 
 ra-language-english@^3.12.0:
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.12.0.tgz#cb2b7eaf2651a7d2e119e1d4626ec5b163a37fca"
-  integrity sha512-pAsHMAzrpaZZTG9RBCtFHRE0rfW+AfaJp3pLm8xFFEe9B9xBs3nKSMpwIIXfY+4EYtoqM03EA0OjucTnefZKHg==
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.12.1.tgz#42fbe4ec584b3d4bc4d67518a45e86f2455fc189"
+  integrity sha512-cX0EmbLO/KB1uec3tokHe3qcmKHpQvU0ZfMQNKD0m7VMKJLWBZ8d3RijxQqBOQRK2a2EtAFc5mGmtUAiWcdFgA==
   dependencies:
-    ra-core "^3.12.0"
+    ra-core "^3.12.1"
 
 ra-ui-materialui@^3.12.0:
   version "3.12.0"
