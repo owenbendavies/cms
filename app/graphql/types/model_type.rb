@@ -1,6 +1,6 @@
 module Types
   class ModelType < BaseObject
-    implements GraphQL::Relay::Node.interface
+    implements GraphQL::Types::Relay::Node
 
     global_id_field :id
 
