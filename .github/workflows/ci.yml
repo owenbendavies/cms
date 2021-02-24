@@ -7,7 +7,6 @@ on:
 
 env:
   NODE_VERSION: 12.18.3
-  RUBY_VERSION: 3.0.0
   TF_VERSION: 0.12.29
 
 jobs:
@@ -63,24 +62,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - uses: nanasess/setup-chromedriver@master
 
       - run: sudo apt-get --yes --quiet install libpq-dev
-
-      - name: Cache gems
-        uses: actions/cache@v1
-        with:
-          path: vendor/bundle
-          key: gems-fix-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: gems-fix-${{ hashFiles('.ruby-version') }}-
 
       - name: Cache yarn
         uses: actions/cache@v1

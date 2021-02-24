@@ -37,7 +37,7 @@ module Cms
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
 
     # Raises error for missing translations
-    config.action_view.raise_on_missing_translations = true
+    config.i18n.raise_on_missing_translations = true
 
     unless ENV['DISABLE_SSL']
       # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
