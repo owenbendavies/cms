@@ -18,7 +18,7 @@ const SiteToolbar = (props) => (
 );
 
 export const SiteEdit = (props) => (
-  <Edit title={<SiteTitle />} undoable={false} {...props}>
+  <Edit title={<SiteTitle />} mutationMode="pessimistic" {...props}>
     <TabbedForm toolbar={<SiteToolbar />}>
       <FormTab label="Settings">
         <TextInput disabled source="address" />

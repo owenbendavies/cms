@@ -17,7 +17,7 @@ const MessageTitle = ({ record }) => (
 const MessageShowActions = ({ basePath, data, resource }) => (
   <TopToolbar>
     <DeleteButton
-      undoable={false}
+      mutationMode="pessimistic"
       basePath={basePath}
       record={data}
       resource={resource}
