@@ -39,7 +39,7 @@ RSpec.describe 'Logging' do
       'path' => '/sitemap',
       'request_id' => request_id,
       'route' => 'pages#index',
-      'source' => 'unknown',
+      'source' => an_instance_of(String),
       'status' => 200,
       'tags' => ['request'],
       'user_agent' => user_agent,
