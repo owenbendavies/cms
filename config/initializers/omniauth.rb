@@ -2,6 +2,9 @@ OmniAuth.config.logger = Rails.logger
 
 OmniAuth.config.test_mode = true if ENV['AWS_STUB'].present?
 
+OmniAuth.config.allowed_request_methods = %i[get post]
+OmniAuth.config.silence_get_warning = true
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider(
     :cognito_idp,
