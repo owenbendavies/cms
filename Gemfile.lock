@@ -455,7 +455,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
-    uniform_notifier (1.13.2)
+    uniform_notifier (1.14.1)
     validates_email_format_of (1.6.3)
       i18n
     web-console (4.1.0)
