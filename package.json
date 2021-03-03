@@ -27,7 +27,7 @@
     "core-js": "3",
     "graphql": "^14.7.0",
     "graphql-tag": "^2.11.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "lodash": "^4.17.20",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
