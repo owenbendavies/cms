@@ -8039,10 +8039,10 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.13.1.tgz#1a6bf9d003a3f01ccd364da6f9172a6017460cc8"
-  integrity sha512-r9Y3N7U7Wz/br9irJvfRBfeFN6m9/+I1am7TDn/yrzr4BgwKsk0Rv2ITRGToGboe+ChvUZLHlQhcE4bFS4mABg==
+ra-core@^3.13.1, ra-core@^3.13.2:
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.13.2.tgz#668c5d55eb0a09dc8da90702bdb189d5c441cfb3"
+  integrity sha512-1kmtNGI7McHP2D+cwZMyFJD1WIUOq2E57wdenWcdlPlxx0v0JTCQMvSmW9R14hAU6avluXsiZopI8C7ulzr27w==
   dependencies:
     classnames "~2.2.5"
     date-fns "^1.29.0"
@@ -8065,12 +8065,12 @@ ra-data-graphql@^3.11.4:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.13.1:
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.13.1.tgz#c8646345ac6b856ed89bbcc8af96d55f5e9e9c5c"
-  integrity sha512-Bfa+lD1jznSk1kubXd3qKDtpw01Cw1d7zMo9sr9QNGLQOEPFTNreaupl9N2SOtpPs0juk17F5Rtg0O/fIKajxw==
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.13.2.tgz#b043a20ef7649953e69e97591dfc50e7f4ffd5dc"
+  integrity sha512-4/KGskWe79IrCqPOw2HDkaDnFKONnjXGZ6mvAtILe7PTkqo9f6d0O6U9LeTysxsFOGfk93jCq6GqRoH3wCJlfA==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.13.1"
+    ra-core "^3.13.2"
 
 ra-input-rich-text@^3.12.0:
   version "3.12.0"
