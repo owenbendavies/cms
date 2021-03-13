@@ -46,7 +46,7 @@ jobs:
 
       - run: terraform init -lock=false
 
-      - run: terraform plan -no-color -lock=false
+      - run: terraform plan -lock=false
 
       - run: ../../bin/git_changes
 
