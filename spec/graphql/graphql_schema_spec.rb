@@ -38,7 +38,7 @@ RSpec.describe GraphqlSchema do
 
   describe '.resolve_type' do
     subject do
-      described_class.resolve_type(GraphQL::Relay::Node.interface, object, context).name
+      described_class.resolve_type(GraphQL::Types::Relay::Node, object, context).name
     end
 
     %i[image message page site].each do |type|
