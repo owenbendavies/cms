@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_VERSION: 14.16.0
-  TF_VERSION: 0.13.6
+  TF_VERSION: 0.14.8
 
 jobs:
   terraform_plan:
