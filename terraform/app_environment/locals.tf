@@ -1,9 +1,7 @@
 locals {
   aws_region = "eu-west-1"
   domains    = local.environment_domains[var.environment]
-  from_email = "noreply@obduk.com"
-  name       = join("-", [local.namespace, local.project, var.environment])
-  namespace  = "obduk"
+  name       = join("-", [var.namespace, local.project, var.environment])
   project    = "cms"
 
   tags = {
