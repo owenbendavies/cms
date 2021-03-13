@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: 12.18.3
+  NODE_VERSION: 14.16.0
   TF_VERSION: 0.12.29
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{matrix.tf_dir}}
+        working-directory: ${{ matrix.tf_dir }}
 
     env:
       TF_WORKSPACE: ${{ matrix.tf_workspace }}
@@ -105,7 +105,7 @@ jobs:
               repo: context.payload.repository.name,
               pull_number: context.payload.pull_request.number
             })
-          github-token: ${{github.token}}
+          github-token: ${{ github.token }}
 
   deploy:
     if: github.ref == 'refs/heads/master'
@@ -129,7 +129,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{matrix.tf_dir}}
+        working-directory: ${{ matrix.tf_dir }}
 
     env:
       TF_WORKSPACE: ${{ matrix.tf_workspace }}
