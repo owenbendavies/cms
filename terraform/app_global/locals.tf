@@ -1,3 +1,4 @@
 locals {
-  name = "obduk-cms"
+  name    = join("-", [var.namespace, local.project])
+  project = "cms"
 }

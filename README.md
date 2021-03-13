@@ -25,7 +25,7 @@ with the following manual steps:
 ### Heroku Addon PostgreSQL
 
 ```
-heroku pg:backups:schedule --at '02:00 UTC' --app obduk-cms-production
+heroku pg:backups:schedule --at '02:00 UTC'
 ```
 
 ### Heroku Addon Rollbar
@@ -37,7 +37,7 @@ heroku pg:backups:schedule --at '02:00 UTC' --app obduk-cms-production
 1. In project access tokens copy post_client_item token and run the following:
 
 ```
-heroku config:set --app obduk-cms-production ROLLBAR_CLIENT_TOKEN=xxx
+heroku config:set ROLLBAR_CLIENT_TOKEN=xxx
 ```
 
 ### Heroku Addon Scheduler
