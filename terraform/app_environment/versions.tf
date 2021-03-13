@@ -1,13 +1,11 @@
 terraform {
-  required_version = "= 0.13.6"
+  required_version = "= 0.14.8"
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "= 3.32.0"
+      source = "hashicorp/aws"
     }
     heroku = {
-      source  = "heroku/heroku"
-      version = "= 4.1.0"
+      source = "heroku/heroku"
     }
   }
 }
