@@ -8031,9 +8031,9 @@ quill@~1.3.6:
     quill-delta "^3.6.2"
 
 ra-core@^3.13.2:
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.13.2.tgz#668c5d55eb0a09dc8da90702bdb189d5c441cfb3"
-  integrity sha512-1kmtNGI7McHP2D+cwZMyFJD1WIUOq2E57wdenWcdlPlxx0v0JTCQMvSmW9R14hAU6avluXsiZopI8C7ulzr27w==
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.13.3.tgz#6997f0c39d324214e4240bdbe8dbbf840706c91d"
+  integrity sha512-ryfulSlsAYqqwmrJFyIccdEJTGdwh855fIm6uRYJQGEgF5NbFdvCBIwOmvK2m9KjvW3cnNI9Bq9dAsnkRuuvUg==
   dependencies:
     classnames "~2.2.5"
     date-fns "^1.29.0"
