@@ -5691,13 +5691,13 @@ jss-plugin-rule-value-function@^10.5.1:
     tiny-warning "^1.0.2"
 
 jss-plugin-vendor-prefixer@^10.5.1:
-  version "10.5.1"
-  resolved "https://registry.yarnpkg.com/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.5.1.tgz#45a183a3a0eb097bdfab0986b858d99920c0bbd8"
-  integrity sha512-cLkH6RaPZWHa1TqSfd2vszNNgxT1W0omlSjAd6hCFHp3KIocSrW21gaHjlMU26JpTHwkc+tJTCQOmE/O1A4FKQ==
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.6.0.tgz#e1fcd499352846890c38085b11dbd7aa1c4f2c78"
+  integrity sha512-doJ7MouBXT1lypLLctCwb4nJ6lDYqrTfVS3LtXgox42Xz0gXusXIIDboeh6UwnSmox90QpVnub7au8ybrb0krQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
     css-vendor "^2.0.8"
-    jss "10.5.1"
+    jss "10.6.0"
 
 jss@10.5.1:
   version "10.5.1"
