@@ -8081,9 +8081,9 @@ ra-language-english@^3.13.2:
     ra-core "^3.13.4"
 
 ra-ui-materialui@^3.13.2:
-  version "3.13.2"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.13.2.tgz#39826925dddd4d2569f04d23bfafef82c38446c5"
-  integrity sha512-h9x3Y84b/tdM4kUKlTA0sEHtVu84IY62dkX1angc2hT0XzBQD22oT5NXJKuxHbKy5Jfn4HG74qfk/+l3zbpiWw==
+  version "3.13.5"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.13.5.tgz#15b18e9062422d9327c52cde08a2b0867c954746"
+  integrity sha512-1HXFnQ804HLbv2ct7DX6yMC3IL6C3gJubv3lQzbBJVCwDOZGKrNvK2k4sS+XFk8LUUYkhIDjz1q124PTHPB3Rg==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
