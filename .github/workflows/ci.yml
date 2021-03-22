@@ -34,6 +34,8 @@ jobs:
       TF_WORKSPACE: ${{ matrix.tf_workspace }}
 
     steps:
+      - run: env | awk -F '=' '{print $1}' | sort
+
       - uses: actions/checkout@v2
 
       - uses: hashicorp/setup-terraform@v1
