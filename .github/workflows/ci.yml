@@ -48,7 +48,8 @@ jobs:
 
       - run: terraform plan -lock=false
 
-      - run: ../../bin/git_changes
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   test_ruby:
     runs-on: ubuntu-latest
@@ -87,7 +88,8 @@ jobs:
 
       - run: ./bin/quality
 
-      - run: ./bin/git_changes
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   automerge:
     if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
@@ -147,4 +149,5 @@ jobs:
 
       - run: terraform apply -lock-timeout=30s
 
-      - run: ../../bin/git_changes
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi

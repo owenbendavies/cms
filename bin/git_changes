@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-
-cd $(dirname $0)/..
-
-if [[ $(git status --porcelain) != '' ]]; then
-  git status
-  exit 1
-fi
