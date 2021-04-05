@@ -8094,7 +8094,7 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.14.1:
+ra-core@^3.14.1, ra-core@^3.14.2:
   version "3.14.2"
   resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.14.2.tgz#6765d7153b5c6a295d6dca71df593486b0735b6e"
   integrity sha512-RPmQo1Rn9IEuaXCKpsnDTQQwRT3024lVz++vknxDkA1aDTJ5p0+86L0k8JCr1Bg0UyMpIMb+5UXLVEpyE8Dg7w==
@@ -8138,11 +8138,11 @@ ra-input-rich-text@^3.14.0:
     quill "~1.3.6"
 
 ra-language-english@^3.14.1:
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.14.1.tgz#949f094573eb649ed830fbe7c471d88349087cff"
-  integrity sha512-VkzYg/3umIsD0JraoQM58Ek1hXPdFAqA+ZHOk7xuZA8nZBhw0PQOvV+/EvxFca0nofcepZ9xMzkYYwjoGxe1VA==
+  version "3.14.2"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.14.2.tgz#f0df3f259aa8db9be81f7b83582b7d5094051448"
+  integrity sha512-3KvY66KYa0o0xpTML4kqyCKthYVvgoorIR3XAojoXU1Rg1kAohZZPCF3HUH2emx8xQXpV8EB3Zohu4naWLTYTQ==
   dependencies:
-    ra-core "^3.14.1"
+    ra-core "^3.14.2"
 
 ra-ui-materialui@^3.14.1:
   version "3.14.1"
