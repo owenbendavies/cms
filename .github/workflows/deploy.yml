@@ -1,0 +1,52 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ['Terraform Plan']
+    types:
+      - completed
+
+env:
+  NODE_VERSION: 14.16.0
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/master'
+
+    strategy:
+      max-parallel: 1
+
+      matrix:
+        tf_workspace: [staging, production, global]
+        include:
+          - tf_workspace: staging
+            tf_dir: terraform/app_environment
+          - tf_workspace: production
+            tf_dir: terraform/app_environment
+          - tf_workspace: global
+            tf_dir: terraform/app_global
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.tf_dir }}
+
+    env:
+      TF_WORKSPACE: ${{ matrix.tf_workspace }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - run: terraform init
+
+      - run: terraform apply -lock-timeout=30s
+
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
