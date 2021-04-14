@@ -48,8 +48,6 @@ jobs:
 
       - run: terraform init
 
-      - run: terraform plan -lock=false
-
       - run: terraform apply -lock-timeout=30s
 
       - name: Run git diff
