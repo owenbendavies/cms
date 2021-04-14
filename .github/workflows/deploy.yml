@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   workflow_run:
-    workflows: ['Terraform Plan']
+    workflows: ['Test']
     types:
       - completed
 
@@ -11,7 +11,9 @@ env:
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: >
+      github.event.workflow_run.conclusion == 'success' &&
+      github.ref == 'refs/heads/master'
 
     strategy:
       max-parallel: 1
@@ -45,6 +47,8 @@ jobs:
           terraform_wrapper: false
 
       - run: terraform init
+
+      - run: terraform plan -lock=false
 
       - run: terraform apply -lock-timeout=30s
 

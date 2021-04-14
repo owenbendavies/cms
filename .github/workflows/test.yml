@@ -7,6 +7,7 @@ on:
 
 env:
   NODE_VERSION: 14.16.0
+  TF_VERSION: 0.14.10
 
 jobs:
   test:
@@ -45,6 +46,32 @@ jobs:
       - run: ./bin/test
 
       - run: ./bin/quality
+
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
+
+  terraform:
+    strategy:
+      matrix:
+        tf_workspace:
+          - terraform/app_environment
+          - terraform/app_global
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ matrix.tf_workspace }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+
+      - run: terraform fmt -check -recursive
 
       - name: Run git diff
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi

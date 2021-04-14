@@ -2,13 +2,16 @@ name: Automerge
 
 on:
   workflow_run:
-    workflows: ['Terraform Plan']
+    workflows: ['Test']
     types:
       - completed
 
 jobs:
   automerge:
-    if: github.event.workflow_run.event == 'pull_request' && github.actor == 'dependabot[bot]'
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.actor == 'dependabot[bot]'
 
     runs-on: ubuntu-latest
 
