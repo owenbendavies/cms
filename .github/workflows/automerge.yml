@@ -15,13 +15,21 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      PR_NUMBER1: ${{ github.event.number }}
+      PR_NUMBER2: ${{ github.event.workflow_run.pull_request.number }}
+
     steps:
+      - run: echo $PR_NUMBER1
+
+      - run: echo $PR_NUMBER2
+
       - uses: actions/github-script@0.2.0
         with:
+          github-token: ${{ github.token }}
           script: |
             github.pullRequests.merge({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
-              pull_number: context.payload.pull_request.number
+              pull_number: github.event.workflow_run.pull_request.number
             })
-          github-token: ${{ github.token }}

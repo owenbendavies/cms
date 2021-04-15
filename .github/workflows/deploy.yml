@@ -7,7 +7,7 @@ on:
       - completed
 
 env:
-  NODE_VERSION: 14.16.0
+  TF_VERSION: 0.14.10
 
 jobs:
   deploy:
