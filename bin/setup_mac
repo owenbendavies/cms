@@ -43,6 +43,7 @@ function brew_install_missing_formulas() {
 function brew_cask_install_missing_formulas() {
   REQUIRED="
     chromedriver
+    google-chrome
   "
 
   INSTALLED=$(brew list --cask)
