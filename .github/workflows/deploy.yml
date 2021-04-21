@@ -3,6 +3,7 @@ name: Deploy
 on:
   workflow_run:
     workflows: ['Test']
+    branches: [main]
     types:
       - completed
 
@@ -12,8 +13,7 @@ env:
 jobs:
   deploy:
     if: >
-      github.event.workflow_run.conclusion == 'success' &&
-      github.ref == 'refs/heads/master'
+      github.event.workflow_run.conclusion == 'success'
 
     strategy:
       max-parallel: 1
@@ -28,19 +28,16 @@ jobs:
           - tf_workspace: global
             tf_dir: terraform/app_global
 
-    env:
-      WORKFLOW_RUN_EVENT: ${{ github.event.workflow_run.event }}
-      TF_WORKSPACE: ${{ matrix.tf_workspace }}
-
     runs-on: ubuntu-latest
 
     defaults:
       run:
         working-directory: ${{ matrix.tf_dir }}
 
-    steps:
-      - run: echo $WORKFLOW_RUN_EVENT
+    env:
+      TF_WORKSPACE: ${{ matrix.tf_workspace }}
 
+    steps:
       - uses: actions/checkout@v2
 
       - uses: hashicorp/setup-terraform@v1
