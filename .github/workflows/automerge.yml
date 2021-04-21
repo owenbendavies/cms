@@ -18,11 +18,19 @@ jobs:
     env:
       PR_NUMBER1: ${{ github.event.number }}
       PR_NUMBER2: ${{ github.event.workflow_run.pull_request.number }}
+      PR_NUMBER3: ${{ github.event.workflow_run.id }}
 
     steps:
       - run: echo $PR_NUMBER1
 
       - run: echo $PR_NUMBER2
+
+      - run: echo $PR_NUMBER3
+
+      - name: Print github context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github.event) }}
+        run: echo "$GITHUB_CONTEXT"
 
       - uses: actions/github-script@0.2.0
         with:
