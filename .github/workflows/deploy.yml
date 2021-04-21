@@ -28,16 +28,19 @@ jobs:
           - tf_workspace: global
             tf_dir: terraform/app_global
 
+    env:
+      WORKFLOW_RUN_EVENT: ${{ github.event.workflow_run.event }}
+      TF_WORKSPACE: ${{ matrix.tf_workspace }}
+
     runs-on: ubuntu-latest
 
     defaults:
       run:
         working-directory: ${{ matrix.tf_dir }}
 
-    env:
-      TF_WORKSPACE: ${{ matrix.tf_workspace }}
-
     steps:
+      - run: echo $WORKFLOW_RUN_EVENT
+
       - uses: actions/checkout@v2
 
       - uses: hashicorp/setup-terraform@v1
