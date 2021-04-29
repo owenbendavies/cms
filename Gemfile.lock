@@ -150,7 +150,7 @@ GEM
       railties (>= 3.2)
     e2mmap (0.1.0)
     erubi (1.10.0)
-    excon (0.80.1)
+    excon (0.81.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
