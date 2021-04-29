@@ -7587,11 +7587,11 @@ ra-input-rich-text@^3.14.0:
     quill "~1.3.6"
 
 ra-language-english@^3.14.4:
-  version "3.14.4"
-  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.14.4.tgz#ae8dd92a538f2e48f9329be0cd8d24a9e8a4a87d"
-  integrity sha512-Xp94CudVzqz4jidJEbGQsk9l49SltLG1V5JovhT9AgCCOEyU9CAi55hGyGtBnFzFBxaaGuEmSVqLQZBYWX3Sig==
+  version "3.14.5"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.14.5.tgz#f28ce660c9091bd6efc6888ba4de4bac90c0607e"
+  integrity sha512-SROdgyBrGVvJ7HVLyC6+qYek2EKt/FeabgjrUfgtszXI4GGmh3Fgsz86PU/9gYDFUTNN+SiKP8riaVGIkoT59w==
   dependencies:
-    ra-core "^3.14.4"
+    ra-core "^3.14.5"
 
 ra-ui-materialui@^3.14.4:
   version "3.14.4"
