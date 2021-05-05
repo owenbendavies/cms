@@ -1,6 +1,7 @@
 # CMS
 
-[![CI](https://github.com/owenbendavies/cms/workflows/CI/badge.svg)](https://github.com/owenbendavies/cms/actions)
+[![Test](https://github.com/owenbendavies/cms/actions/workflows/test.yml/badge.svg)](https://github.com/owenbendavies/cms/actions/workflows/test.yml)
+[![Deploy](https://github.com/owenbendavies/cms/actions/workflows/deploy.yml/badge.svg)](https://github.com/owenbendavies/cms/actions/workflows/deploy.yml)
 
 A CMS written in ReactJS, Ruby on Rails and Terraform used for learning.
 Although it is a working project, it was not created with the intention of being
