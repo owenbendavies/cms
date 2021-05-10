@@ -42,7 +42,7 @@
     "webpack": "^4.44.2"
   },
   "devDependencies": {
-    "@namics/stylelint-bem": "^6.3.3",
+    "@namics/stylelint-bem": "^6.3.4",
     "eslint": "^7.25.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^8.3.0",
