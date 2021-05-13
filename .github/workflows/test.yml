@@ -7,7 +7,7 @@ on:
 
 env:
   NODE_VERSION: 14.16.1
-  TF_VERSION: 0.14.10
+  TF_VERSION: 0.15.3
 
 jobs:
   test:
