@@ -2,9 +2,8 @@
   "name": "cms",
   "private": true,
   "engines": {
-    "node": "14.16.1",
-    "npm": "7.6.3",
-    "yarn": "~1.22.5"
+    "node": "14.17.0",
+    "yarn": "~1.22.10"
   },
   "dependencies": {
     "@babel/core": "^7.14.2",
