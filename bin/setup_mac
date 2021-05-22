@@ -26,7 +26,6 @@ function brew_install_missing_formulas() {
   REQUIRED="
     heroku
     imagemagick
-    nvm
     postgresql
     rbenv
     terraform

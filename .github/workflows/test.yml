@@ -36,8 +36,8 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: yarn-${{ hashFiles('.nvmrc') }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: yarn-${{ hashFiles('.nvmrc') }}-
+          key: yarn-${{ env.NODE_VERSION }}-${{ hashFiles('yarn.lock') }}
+          restore-keys: yarn-${{ env.NODE_VERSION }}-
 
       - run: ./bin/setup
 
