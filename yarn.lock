@@ -7587,12 +7587,12 @@ ra-data-graphql@^3.11.4:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.15.2:
-  version "3.15.2"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.15.2.tgz#e8da42a61e5b0991457fca685a10f600274417a7"
-  integrity sha512-1AgywS7KBEMwaks4guH5UGeimXDBwcBMyGHEPQG/6QDOtorhCujByEQDiUN2hCDqnf7wMtyfdZzJT1mc6l8JMw==
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.16.0.tgz#d5c262f084439a954b6978e8e94ebcbbbb41d286"
+  integrity sha512-fHAXXwj64H7YORAUD/U37ngpR7kUBxbRBSS9+QF/j50kG1H/ZjsnqxaApUc3hpXtnRzuCqmX121EnST3E06VUQ==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.15.2"
+    ra-core "^3.16.0"
 
 ra-input-rich-text@^3.14.0:
   version "3.14.0"
