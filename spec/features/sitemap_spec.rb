@@ -38,22 +38,16 @@ RSpec.feature 'Sitemap' do
     scenario 'http' do
       visit '/sitemap.xml'
 
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq(
-        "http://#{site.host}/#{public_page.url}"
-      )
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq("http://#{site.host}/#{public_page.url}")
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq public_page.updated_at.iso8601
       expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
     end
 
     scenario 'https' do
-      ClimateControl.modify(DISABLE_SSL: nil) do
-        visit '/sitemap.xml'
-      end
-
-      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq(
-        "https://#{site.host}/#{public_page.url}"
-      )
+      allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+      visit '/sitemap.xml'
+      expect(find(:xpath, '//urlset/url[1]/loc').text).to eq("https://#{site.host}/#{public_page.url}")
     end
   end
 end

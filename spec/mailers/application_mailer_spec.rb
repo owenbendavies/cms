@@ -20,33 +20,22 @@ RSpec.describe ApplicationMailer do
     let(:privacy_policy) { site.privacy_policy_page }
 
     context 'with ssl enabled' do
-      let(:environment_variables) { { DISABLE_SSL: nil } }
-
       it 'has https links' do
-        expect(email.body).to have_link(
-          privacy_policy.name,
-          href: "https://#{site.host}/#{privacy_policy.url}"
-        )
+        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+        expect(email.body).to have_link(privacy_policy.name, href: "https://#{site.host}/#{privacy_policy.url}")
       end
     end
 
     context 'with ssl disabled' do
       it 'has http links' do
-        expect(email.body).to have_link(
-          privacy_policy.name,
-          href: "http://#{site.host}/#{privacy_policy.url}"
-        )
+        expect(email.body).to have_link(privacy_policy.name, href: "http://#{site.host}/#{privacy_policy.url}")
       end
     end
 
     context 'with email link port set' do
-      let(:environment_variables) { { EMAIL_LINK_PORT: '3000' } }
-
       it 'has no port on links' do
-        expect(email.body).to have_link(
-          privacy_policy.name,
-          href: "http://#{site.host}:3000/#{privacy_policy.url}"
-        )
+        allow(Rails.configuration.x).to receive(:email_link_port).and_return('3000')
+        expect(email.body).to have_link(privacy_policy.name, href: "http://#{site.host}:3000/#{privacy_policy.url}")
       end
     end
   end
@@ -74,10 +63,7 @@ RSpec.describe ApplicationMailer do
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'has privacy policy in body' do
-      expect(email.body).to have_link(
-        privacy_policy.name,
-        href: "http://#{site.host}/#{privacy_policy.url}"
-      )
+      expect(email.body).to have_link(privacy_policy.name, href: "http://#{site.host}/#{privacy_policy.url}")
     end
   end
 end

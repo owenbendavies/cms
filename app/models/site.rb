@@ -7,12 +7,7 @@ class Site < ApplicationRecord
   has_many :pages, dependent: :destroy
   belongs_to :privacy_policy_page, class_name: 'Page', optional: true
 
-  has_many(
-    :main_menu_pages,
-    -> { in_list.order(:main_menu_position) },
-    class_name: 'Page',
-    inverse_of: :site
-  )
+  has_many(:main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page', inverse_of: :site)
 
   # before validations
   TEXT_FIELDS = %i[sidebar_html_content css].freeze
@@ -22,18 +17,9 @@ class Site < ApplicationRecord
   strip_attributes only: TEXT_FIELDS
 
   # validations
-  validates(
-    :host,
-    length: { maximum: 64 },
-    presence: true,
-    uniqueness: true
-  )
+  validates(:host, length: { maximum: 64 }, presence: true, uniqueness: true)
 
-  validates(
-    :name,
-    length: { minimum: 3, maximum: 64 },
-    presence: true
-  )
+  validates(:name, length: { minimum: 3, maximum: 64 }, presence: true)
 
   validates(
     :google_analytics,
@@ -41,15 +27,9 @@ class Site < ApplicationRecord
     length: { allow_nil: true, maximum: 32 }
   )
 
-  validates(
-    :charity_number,
-    length: { allow_nil: true, maximum: 32 }
-  )
+  validates(:charity_number, length: { allow_nil: true, maximum: 32 })
 
-  validates(
-    :links,
-    json: { schema: Rails.root.join('config/json_schemas/site_links.json').to_s }
-  )
+  validates(:links, json: { schema: Rails.root.join('config/json_schemas/site_links.json').to_s })
 
   def address
     root_url(url_options)
@@ -58,8 +38,8 @@ class Site < ApplicationRecord
   def url_options
     {
       host: host,
-      protocol: ENV['DISABLE_SSL'] ? 'http' : 'https',
-      port: ENV['EMAIL_LINK_PORT']
+      protocol: Rails.configuration.x.disable_ssl ? 'http' : 'https',
+      port: Rails.configuration.x.email_link_port
     }
   end
 end

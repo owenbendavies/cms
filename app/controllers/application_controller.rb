@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     skip_authorization
 
     respond_to do |format|
-      format.html { render page_not_found_template, status: 404 }
+      format.html { render page_not_found_template, status: :not_found }
       format.any { head 406 }
     end
   end

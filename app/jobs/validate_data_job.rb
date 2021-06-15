@@ -1,9 +1,5 @@
 class ValidateDataJob < ApplicationJob
-  NON_MODEL_TABLES = %w[
-    ar_internal_metadata
-    schema_migrations
-    versions
-  ].freeze
+  NON_MODEL_TABLES = %w[ar_internal_metadata schema_migrations versions].freeze
 
   private_constant :NON_MODEL_TABLES
 

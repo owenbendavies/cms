@@ -31,7 +31,8 @@ RSpec.describe GraphqlSchema do
       let(:message) { FactoryBot.create(:message) }
 
       it 'raises error' do
-        expect { result }.to raise_error(ActiveRecord::RecordNotFound)
+        expect { result }
+          .to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

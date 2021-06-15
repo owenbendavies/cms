@@ -12,35 +12,15 @@ class Message < ApplicationRecord
   strip_attributes only: TEXT_FIELDS
 
   # validations
-  validates(
-    :site,
-    presence: true
-  )
+  validates(:site, presence: true)
 
-  validates(
-    :name,
-    length: { minimum: 3, maximum: 64 },
-    presence: true
-  )
+  validates(:name, length: { minimum: 3, maximum: 64 }, presence: true)
 
-  validates(
-    :email,
-    email_format: true,
-    length: { maximum: 64 },
-    presence: true
-  )
+  validates(:email, email_format: true, length: { maximum: 64 }, presence: true)
 
-  validates(
-    :phone,
-    length: { maximum: 32 },
-    phone: { allow_blank: true }
-  )
+  validates(:phone, length: { maximum: 32 }, phone: { allow_blank: true })
 
-  validates(
-    :message,
-    length: { maximum: 2048 },
-    presence: true
-  )
+  validates(:message, length: { maximum: 2048 }, presence: true)
 
   validate do
     next unless message
@@ -52,9 +32,5 @@ class Message < ApplicationRecord
     errors.add(:message, :contains_html) if escaped_message != stripped_message
   end
 
-  validates(
-    :privacy_policy_agreed,
-    if: ->(message) { message.site&.privacy_policy_page_id },
-    presence: true
-  )
+  validates(:privacy_policy_agreed, if: ->(message) { message.site&.privacy_policy_page_id }, presence: true)
 end

@@ -21,10 +21,11 @@ class ApplicationMailer < ActionMailer::Base
 
   def emails_for_group(group)
     AWS_COGNITO.list_users_in_group(
-      user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID'),
+      user_pool_id: Rails.configuration.x.aws_cognito_user_pool_id,
       group_name: group
     ).users.map do |user|
-      user.attributes.find { |attribute| attribute.name == 'email' }.value
+      user.attributes.find { |attribute| attribute.name == 'email' }
+          .value
     end
   end
 end

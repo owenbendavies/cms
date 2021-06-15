@@ -1,6 +1,6 @@
 <script>
   var _rollbarConfig = {
-    accessToken: "<%= ENV.fetch('ROLLBAR_CLIENT_TOKEN') %>",
+    accessToken: "<%= Rails.configuration.x.rollbar_client_token %>",
     captureUncaught: true,
     captureUnhandledRejections: true,
   };

@@ -34,10 +34,7 @@ class Page < ApplicationRecord
   strip_attributes only: TEXT_FIELDS
 
   # validations
-  validates(
-    :site,
-    presence: true
-  )
+  validates(:site, presence: true)
 
   validates(
     :url,
@@ -47,11 +44,7 @@ class Page < ApplicationRecord
     uniqueness: { scope: :site_id }
   )
 
-  validates(
-    :name,
-    length: { maximum: 64 },
-    presence: true
-  )
+  validates(:name, length: { maximum: 64 }, presence: true)
 
   def clean_html_content
     self.html_content = sanitize(html_content, tags: HTML_TAGS, attributes: HTML_ATTRIBUTES)

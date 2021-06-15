@@ -47,10 +47,7 @@ RSpec.describe Mutations::UpdatePage do
 
     let(:variables) do
       {
-        'input' => {
-          'clientMutationId' => mutation_id,
-          'pageId' => page_id
-        }.merge(updated_properties)
+        'input' => { 'clientMutationId' => mutation_id, 'pageId' => page_id }.merge(updated_properties)
       }
     end
 
@@ -60,10 +57,7 @@ RSpec.describe Mutations::UpdatePage do
           'updatePage' => {
             'clientMutationId' => mutation_id,
             'errors' => [],
-            'page' => {
-              'id' => page_id,
-              'url' => 'my_page'
-            }.merge(updated_properties)
+            'page' => { 'id' => page_id, 'url' => 'my_page' }.merge(updated_properties)
           }
         }
       ]

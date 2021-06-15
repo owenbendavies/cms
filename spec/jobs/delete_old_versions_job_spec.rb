@@ -23,14 +23,18 @@ RSpec.describe DeleteOldVersionsJob do
   end
 
   it 'deletes old versions' do
-    expect { described_class.perform_now }.to change { old_model.versions.count }.by(-1)
+    expect { described_class.perform_now }
+      .to change { old_model.versions.count }
+      .by(-1)
   end
 
   it 'keeps old page versions' do
-    expect { described_class.perform_now }.not_to(change { old_page.versions.count })
+    expect { described_class.perform_now }
+      .not_to(change { old_page.versions.count })
   end
 
   it 'keeps recent versions' do
-    expect { described_class.perform_now }.not_to(change { recent_model.versions.count })
+    expect { described_class.perform_now }
+      .not_to(change { recent_model.versions.count })
   end
 end

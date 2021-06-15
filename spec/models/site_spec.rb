@@ -107,9 +107,8 @@ RSpec.describe Site do
     subject(:site) { FactoryBot.build(:site) }
 
     context 'with ssl enabled' do
-      let(:environment_variables) { { DISABLE_SSL: nil } }
-
       it 'returns https url' do
+        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
         expect(site.address).to eq "https://#{site.host}/"
       end
     end
@@ -125,34 +124,20 @@ RSpec.describe Site do
     subject(:site) { FactoryBot.build(:site) }
 
     it 'returns url options' do
-      expect(site.url_options).to eq(
-        host: site.host,
-        protocol: 'http',
-        port: nil
-      )
+      expect(site.url_options).to eq(host: site.host, protocol: 'http', port: nil)
     end
 
     context 'with ssl enabled' do
-      let(:environment_variables) { { DISABLE_SSL: nil } }
-
       it 'has https protocol' do
-        expect(site.url_options).to eq(
-          host: site.host,
-          protocol: 'https',
-          port: nil
-        )
+        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+        expect(site.url_options).to eq(host: site.host, protocol: 'https', port: nil)
       end
     end
 
     context 'with email link port set' do
-      let(:environment_variables) { { EMAIL_LINK_PORT: '3000' } }
-
       it 'has port' do
-        expect(site.url_options).to eq(
-          host: site.host,
-          protocol: 'http',
-          port: '3000'
-        )
+        allow(Rails.configuration.x).to receive(:email_link_port).and_return('3000')
+        expect(site.url_options).to eq(host: site.host, protocol: 'http', port: '3000')
       end
     end
   end

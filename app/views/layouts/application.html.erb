@@ -6,7 +6,7 @@
     <title><%= page_title(@site, content_for(:title)) %></title>
     <%= csrf_meta_tag %>
     <%= csp_meta_tag %>
-    <%= render 'layouts/rollbar' if ENV['ROLLBAR_CLIENT_TOKEN'] %>
+    <%= render 'layouts/rollbar' if Rails.configuration.x.rollbar_client_token %>
 
     <% if content_for(:admin_layout) %>
       <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>

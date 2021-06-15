@@ -54,7 +54,8 @@ RSpec.describe Mutations::DeleteMessages do
   end
 
   it 'deletes the message' do
-    expect { result }.to change(Message, :count).by(-2)
+    expect { result }
+      .to change(Message, :count).by(-2)
   end
 
   it 'returns the message' do

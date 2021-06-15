@@ -21,6 +21,15 @@ Bundler.require(*Rails.groups)
 
 module Cms
   class Application < Rails::Application
+    # Environment variables
+    config.x.aws_cognito_client_id = ENV.fetch('AWS_COGNITO_CLIENT_ID')
+    config.x.aws_cognito_domain = ENV.fetch('AWS_COGNITO_DOMAIN')
+    config.x.aws_cognito_user_pool_id = ENV.fetch('AWS_COGNITO_USER_POOL_ID')
+    config.x.default_site_email = ENV['DEFAULT_SITE_EMAIL']
+    config.x.disable_ssl = ENV['DISABLE_SSL']
+    config.x.email_link_port = ENV['EMAIL_LINK_PORT']
+    config.x.rollbar_client_token = ENV['ROLLBAR_CLIENT_TOKEN']
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
@@ -39,7 +48,7 @@ module Cms
     # Raises error for missing translations
     config.i18n.raise_on_missing_translations = true
 
-    unless ENV['DISABLE_SSL']
+    unless config.x.disable_ssl
       # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
       config.force_ssl = true
     end
@@ -60,9 +69,7 @@ module Cms
     config.logstasher.enabled = true
     config.logstasher.view_enabled = false
 
-    config.logstasher.field_renaming = {
-      ip: :fwd
-    }
+    config.logstasher.field_renaming = { ip: :fwd }
 
     LogStasher.add_custom_fields_to_request_context do |fields|
       fields[:cf_ray] = request.headers['CF-RAY']

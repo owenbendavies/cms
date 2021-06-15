@@ -3,21 +3,11 @@ SecureHeaders::Configuration.default do |config|
 
   config.referrer_policy = 'strict-origin-when-cross-origin'
 
-  asset_src = [
-    "'self'",
-    "'unsafe-inline'",
-    ENV['AWS_S3_ASSET_HOST']
-  ].compact
+  asset_src = ["'self'", "'unsafe-inline'", ENV['AWS_S3_ASSET_HOST']].compact
 
-  script_src = asset_src + [
-    'https://www.google-analytics.com',
-    'https://cdnjs.cloudflare.com'
-  ]
+  script_src = asset_src + ['https://www.google-analytics.com', 'https://cdnjs.cloudflare.com']
 
-  connect_src = [
-    "'self'",
-    'https://api.rollbar.com'
-  ]
+  connect_src = ["'self'", 'https://api.rollbar.com']
 
   connect_src += ['http://localhost:3035', 'ws://localhost:3035'] if Rails.env.development?
 

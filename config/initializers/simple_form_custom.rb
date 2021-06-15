@@ -30,7 +30,5 @@ SimpleForm.setup do |config|
 
   config.default_wrapper = :vertical_form
 
-  config.wrapper_mappings = {
-    boolean: :vertical_boolean
-  }
+  config.wrapper_mappings = { boolean: :vertical_boolean }
 end

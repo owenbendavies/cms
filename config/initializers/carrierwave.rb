@@ -3,9 +3,7 @@ CarrierWave.configure do |config|
 
   config.asset_host = ENV.fetch('AWS_S3_ASSET_HOST')
 
-  config.fog_attributes = {
-    cache_control: "public, max-age=#{Integer(1.year)}"
-  }
+  config.fog_attributes = { cache_control: "public, max-age=#{Integer(1.year)}" }
 
   config.fog_credentials = {
     provider: 'AWS',
