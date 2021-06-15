@@ -13,14 +13,8 @@ AllCops:
     - 'node_modules/**/*' # External libraries
     - 'vendor/bundle/**/*' # External libraries
 
-Bundler/GemComment: # Prefer inline comments
-  Enabled: false
-
 Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
   Enabled: false
-
-Layout/LineLength:
-  Max: 100 # Default is 80 which is a bit narrow
 
 Layout/MultilineAssignmentLayout: # Prefer same line
   EnforcedStyle: same_line
@@ -33,10 +27,6 @@ Metrics/BlockLength:
     - 'config/**/*' # OK for config files to have large blocks
     - 'spec/**/*' # OK for specs to have large blocks
 
-Rails/LexicallyScopedActionFilter:
-  Exclude:
-    - 'app/controllers/application_controller.rb' # Needed in application controller
-
 RSpec/AlignLeftLetBrace: # Alignment creates large diffs on changes
   Enabled: false
 
@@ -46,7 +36,6 @@ RSpec/AlignRightLetBrace: # Alignment creates large diffs on changes
 RSpec/DescribeClass: # Not testing a class or module
   Exclude:
     - 'spec/requests/**/*'
-    - 'spec/tasks/**/*'
 
 RSpec/ExampleLength:
   Exclude:
