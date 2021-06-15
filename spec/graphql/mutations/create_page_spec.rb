@@ -47,9 +47,7 @@ RSpec.describe Mutations::CreatePage do
 
     let(:variables) do
       {
-        'input' => {
-          'clientMutationId' => mutation_id
-        }.merge(create_properties)
+        'input' => { 'clientMutationId' => mutation_id }.merge(create_properties)
       }
     end
 
@@ -59,10 +57,7 @@ RSpec.describe Mutations::CreatePage do
           'createPage' => {
             'clientMutationId' => mutation_id,
             'errors' => [],
-            'page' => {
-              'id' => page_id,
-              'url' => 'my_page'
-            }.merge(create_properties)
+            'page' => { 'id' => page_id, 'url' => 'my_page' }.merge(create_properties)
           }
         }
       ]

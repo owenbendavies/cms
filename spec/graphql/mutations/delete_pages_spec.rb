@@ -54,7 +54,8 @@ RSpec.describe Mutations::DeletePages do
   end
 
   it 'deletes the pages' do
-    expect { result }.to change(Page, :count).by(-2)
+    expect { result }
+      .to change(Page, :count).by(-2)
   end
 
   it 'returns the pages' do

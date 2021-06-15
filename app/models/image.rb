@@ -11,20 +11,9 @@ class Image < ApplicationRecord
   strip_attributes collapse_spaces: true, replace_newlines: true
 
   # validations
-  validates(
-    :site,
-    presence: true
-  )
+  validates(:site, presence: true)
 
-  validates(
-    :name,
-    length: { maximum: 64 },
-    presence: true,
-    uniqueness: { scope: :site_id }
-  )
+  validates(:name, length: { maximum: 64 }, presence: true, uniqueness: { scope: :site_id })
 
-  validates(
-    :filename,
-    uniqueness: true
-  )
+  validates(:filename, uniqueness: true)
 end

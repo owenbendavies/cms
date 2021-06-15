@@ -32,20 +32,16 @@ RSpec.feature 'Login' do
   end
 
   context 'with a new site' do
-    let(:environment_variables) do
-      {
-        'DEFAULT_SITE_EMAIL' => new_email
-      }
-    end
-
     before do
+      allow(Rails.configuration.x).to receive(:default_site_email).and_return(new_email)
       site.destroy!
     end
 
     scenario 'creating a new site' do
       login_with_omniauth_as(admin_user)
 
-      expect { visit '/login' }.to change(Site, :count).from(0).to(1)
+      expect { visit '/login' }
+        .to change(Site, :count).from(0).to(1)
 
       expect(Site.last.email).to eq new_email
       expect(page).to have_content 'New Site'

@@ -49,10 +49,7 @@ RSpec.describe Mutations::UpdateSite do
 
     let(:variables) do
       {
-        'input' => {
-          'clientMutationId' => mutation_id,
-          'siteId' => site_id
-        }.merge(updated_properties)
+        'input' => { 'clientMutationId' => mutation_id, 'siteId' => site_id }.merge(updated_properties)
       }
     end
 
@@ -62,9 +59,7 @@ RSpec.describe Mutations::UpdateSite do
           'updateSite' => {
             'clientMutationId' => mutation_id,
             'errors' => [],
-            'site' => {
-              'id' => site_id
-            }.merge(updated_properties)
+            'site' => { 'id' => site_id }.merge(updated_properties)
           }
         }
       ]

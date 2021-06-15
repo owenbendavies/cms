@@ -8,13 +8,13 @@ OmniAuth.config.silence_get_warning = true
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider(
     :cognito_idp,
-    ENV.fetch('AWS_COGNITO_CLIENT_ID'),
+    Rails.configuration.x.aws_cognito_client_id,
     ENV.fetch('AWS_COGNITO_CLIENT_SECRET'),
     aws_region: ENV.fetch('AWS_REGION'),
     client_options: {
-      site: ENV.fetch('AWS_COGNITO_DOMAIN')
+      site: Rails.configuration.x.aws_cognito_domain
     },
-    user_pool_id: ENV.fetch('AWS_COGNITO_USER_POOL_ID')
+    user_pool_id: Rails.configuration.x.aws_cognito_user_pool_id
   )
 end
 

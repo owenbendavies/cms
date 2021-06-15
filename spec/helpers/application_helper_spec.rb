@@ -79,10 +79,7 @@ RSpec.describe ApplicationHelper do
 
     context 'with url false' do
       it 'renders path link to privacy_policy' do
-        expect(helper.privacy_policy_link(site)).to have_link(
-          privacy_policy.name,
-          href: "/#{privacy_policy.url}"
-        )
+        expect(helper.privacy_policy_link(site)).to have_link(privacy_policy.name, href: "/#{privacy_policy.url}")
       end
     end
 

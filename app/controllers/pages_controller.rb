@@ -3,12 +3,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :authenticate_page, only: %i[show contact_form]
 
-  invisible_captcha(
-    only: [:contact_form],
-    scope: :message,
-    honeypot: :surname,
-    on_spam: :contact_form_error
-  )
+  invisible_captcha(only: [:contact_form], scope: :message, honeypot: :surname, on_spam: :contact_form_error)
 
   def index
     authorize Page
@@ -54,15 +49,11 @@ class PagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(
-      :name, :email, :phone, :message, :privacy_policy_agreed
-    ).merge(
-      site: @site
-    )
+    params.require(:message).permit(:name, :email, :phone, :message, :privacy_policy_agreed).merge(site: @site)
   end
 
   def xml_sitemap
-    XmlSitemap::Map.new(@site.host, home: false, secure: ENV['DISABLE_SSL'].blank?) do |map|
+    XmlSitemap::Map.new(@site.host, home: false, secure: Rails.configuration.x.disable_ssl.blank?) do |map|
       @pages.each do |page|
         map.add page_path(page), updated: page.updated_at
       end

@@ -31,8 +31,8 @@ class SessionsController < ApplicationController
   private
 
   def aws_logout_url
-    "#{ENV.fetch('AWS_COGNITO_DOMAIN')}/logout?" + {
-      client_id: ENV.fetch('AWS_COGNITO_CLIENT_ID'),
+    "#{Rails.configuration.x.aws_cognito_domain}/logout?" + {
+      client_id: Rails.configuration.x.aws_cognito_client_id,
       logout_uri: root_url
     }.to_param
   end
@@ -55,10 +55,6 @@ class SessionsController < ApplicationController
   end
 
   def create_site
-    Site.create!(
-      host: request.host,
-      name: 'New Site',
-      email: ENV.fetch('DEFAULT_SITE_EMAIL')
-    )
+    Site.create!(host: request.host, name: 'New Site', email: Rails.configuration.x.default_site_email)
   end
 end

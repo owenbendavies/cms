@@ -24,7 +24,7 @@ RSpec.describe ImageUploader do
       [filename, "#{image[:width]}x#{image[:height]}"]
     end
 
-    Hash[file_sizes]
+    file_sizes.to_h
   end
 
   describe '.store!' do
@@ -36,10 +36,11 @@ RSpec.describe ImageUploader do
       end
 
       it 'raise an exception' do
-        expect { upload }.to raise_error(
-          CarrierWave::IntegrityError,
-          /.* "exe" files, allowed types: jpg, jpeg, png/
-        )
+        expect { upload }
+          .to raise_error(
+            CarrierWave::IntegrityError,
+            /.* "exe" files, allowed types: jpg, jpeg, png/
+          )
       end
     end
 
@@ -99,7 +100,7 @@ RSpec.describe ImageUploader do
           [filename, image.exif]
         end
 
-        Hash[file_exif]
+        file_exif.to_h
       end
 
       let(:expected_file_exif_data) do

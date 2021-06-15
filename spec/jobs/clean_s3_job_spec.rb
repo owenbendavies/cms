@@ -21,7 +21,8 @@ RSpec.describe CleanS3Job do
     end
 
     it 'does not delete any files' do
-      expect { described_class.perform_now }.not_to(change { uploaded_files })
+      expect { described_class.perform_now }
+        .not_to(change { uploaded_files })
     end
 
     context 'with invalid file' do

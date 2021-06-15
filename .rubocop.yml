@@ -13,8 +13,8 @@ AllCops:
     - 'node_modules/**/*' # External libraries
     - 'vendor/bundle/**/*' # External libraries
 
-Capybara/FeatureMethods: # Prefer to use RSpec.feature methods
-  Enabled: false
+Bundler/GemVersion: # Keep versions in Gemfile.lock so easy to upgrade
+  EnforcedStyle: forbidden
 
 Layout/MultilineAssignmentLayout: # Prefer same line
   EnforcedStyle: same_line
@@ -41,6 +41,9 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
 
+RSpec/FeatureMethods: # Prefer to use RSpec.feature methods
+  Enabled: false
+
 RSpec/MessageExpectation: # Allow expects
   Enabled: false
 
@@ -50,6 +53,9 @@ RSpec/MessageSpies: # Prefer receive to have_received as no duplication
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/**/*' # OK for multiple expectations in features
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
 
 Style/DisableCopsWithinSourceCodeDirective: # Useful for some cases
   Enabled: false

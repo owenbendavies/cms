@@ -20,7 +20,10 @@ RSpec.describe 'Rollbar' do
 
   context 'with token' do
     let(:rollbar_client_token) { 'xxxxx' }
-    let(:environment_variables) { { ROLLBAR_CLIENT_TOKEN: rollbar_client_token } }
+
+    before do
+      allow(Rails.configuration.x).to receive(:rollbar_client_token).and_return(rollbar_client_token)
+    end
 
     it 'contains Rollbar config' do
       request_page
