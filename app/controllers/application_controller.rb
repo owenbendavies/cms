@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:page_not_found]
 
   after_action :verify_authorized
-  after_action :verify_policy_scoped, only: :index
+  after_action :verify_policy_scoped, only: :index # rubocop:disable Rails/LexicallyScopedActionFilter
 
   def page_not_found
     skip_authorization

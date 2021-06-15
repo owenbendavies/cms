@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.0.1'
 
-gem 'rails'
+gem 'rails' # Main framework
 
 # Services
 gem 'aws-sdk-cognitoidentityprovider' # User management with AWS Cognito
