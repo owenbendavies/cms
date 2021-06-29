@@ -5420,13 +5420,13 @@ jsonexport@^2.4.1:
   integrity sha512-4joNLCxxUAmS22GN3GA5os/MYFnq8oqXOKvoCymmcT0MPz/QPZ5eA+Fh5sIPxUji45RKq8DdQ1yoKq91p4E9VA==
 
 jss-plugin-camel-case@^10.5.1:
-  version "10.6.0"
-  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.6.0.tgz#93d2cd704bf0c4af70cc40fb52d74b8a2554b170"
-  integrity sha512-JdLpA3aI/npwj3nDMKk308pvnhoSzkW3PXlbgHAzfx0yHWnPPVUjPhXFtLJzgKZge8lsfkUxvYSQ3X2OYIFU6A==
+  version "10.7.1"
+  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.7.1.tgz#e7f7097cf97e9deec599cef3275e213452318b93"
+  integrity sha512-+ioIyWvmAfgDCWXsQcW1NMnLBvRinOVFkSYJUgewQ6TynOcSj5F1bSU23B7z0p1iqK0PPHIU62xY1iNJD33WGA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     hyphenate-style-name "^1.0.3"
-    jss "10.6.0"
+    jss "10.7.1"
 
 jss-plugin-default-unit@^10.5.1:
   version "10.7.0"
@@ -5490,10 +5490,20 @@ jss@10.6.0:
     is-in-browser "^1.1.3"
     tiny-warning "^1.0.2"
 
-jss@10.7.0, jss@^10.5.1:
+jss@10.7.0:
   version "10.7.0"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.7.0.tgz#6ddd17682891119f5b59dcc9a03985bc18237160"
   integrity sha512-TkosePQd7iiHCTCEl5FWiU4pM60C4ZsgtpgH/eWq1oOmU+qL3cci/8Yidy0JuAueThzNQH/IdeW5UfAP1cacbg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    csstype "^3.0.2"
+    is-in-browser "^1.1.3"
+    tiny-warning "^1.0.2"
+
+jss@10.7.1, jss@^10.5.1:
+  version "10.7.1"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-10.7.1.tgz#16d846e1a22fb42e857b99f9c6a0c5a27341c804"
+  integrity sha512-5QN8JSVZR6cxpZNeGfzIjqPEP+ZJwJJfZbXmeABNdxiExyO+eJJDy6WDtqTf8SDKnbL5kZllEpAP71E/Lt7PXg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     csstype "^3.0.2"
