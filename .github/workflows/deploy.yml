@@ -8,7 +8,7 @@ on:
       - completed
 
 env:
-  TF_VERSION: 0.15.4
+  TF_VERSION: 0.15.5
 
 jobs:
   deploy:
