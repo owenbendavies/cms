@@ -417,7 +417,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
-    shoryuken (5.2.2)
+    shoryuken (5.2.3)
       aws-sdk-core (>= 2)
       concurrent-ruby
       thor
