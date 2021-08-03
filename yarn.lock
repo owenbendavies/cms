@@ -3696,7 +3696,7 @@ error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
-es-abstract@^1.17.2, es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2, es-abstract@^1.18.2:
+es-abstract@^1.17.2, es-abstract@^1.18.0-next.1, es-abstract@^1.18.2:
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.3.tgz#25c4c3380a27aa203c44b2b685bba94da31b63e0"
   integrity sha512-nQIr12dxV7SSxE6r6f1l3DtAeEYdsGpps13dR0TwJg1S8gyp4ZPgy3FZcHBgbiQqnoqSTb+oC+kO4UQ0C/J8vw==
@@ -3712,6 +3712,29 @@ es-abstract@^1.17.2, es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2, es-
     is-regex "^1.1.3"
     is-string "^1.0.6"
     object-inspect "^1.10.3"
+    object-keys "^1.1.1"
+    object.assign "^4.1.2"
+    string.prototype.trimend "^1.0.4"
+    string.prototype.trimstart "^1.0.4"
+    unbox-primitive "^1.0.1"
+
+es-abstract@^1.18.0-next.2:
+  version "1.18.5"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.5.tgz#9b10de7d4c206a3581fd5b2124233e04db49ae19"
+  integrity sha512-DDggyJLoS91CkJjgauM5c0yZMjiD1uK3KcaCeAmffGwZ+ODWzOkPN4QwRbsK5DOFf06fywmyLci3ZD8jLGhVYA==
+  dependencies:
+    call-bind "^1.0.2"
+    es-to-primitive "^1.2.1"
+    function-bind "^1.1.1"
+    get-intrinsic "^1.1.1"
+    has "^1.0.3"
+    has-symbols "^1.0.2"
+    internal-slot "^1.0.3"
+    is-callable "^1.2.3"
+    is-negative-zero "^2.0.1"
+    is-regex "^1.1.3"
+    is-string "^1.0.6"
+    object-inspect "^1.11.0"
     object-keys "^1.1.1"
     object.assign "^4.1.2"
     string.prototype.trimend "^1.0.4"
@@ -6285,7 +6308,7 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-inspect@^1.10.3, object-inspect@^1.9.0:
+object-inspect@^1.10.3, object-inspect@^1.11.0, object-inspect@^1.9.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.11.0.tgz#9dceb146cedd4148a0d9e51ab88d34cf509922b1"
   integrity sha512-jp7ikS6Sd3GxQfZJPyH3cjcbJF6GZPClgdV+EFygjFLQ5FmW/dRUnTd9PQ9k0JhoNDabWFbpF1yCdSWCC6gexg==
@@ -7648,10 +7671,10 @@ quill@~1.3.6:
     parchment "^1.1.4"
     quill-delta "^3.6.2"
 
-ra-core@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.17.0.tgz#2a6631a172611b562145f182bb882918deb28ac9"
-  integrity sha512-nwlOndh+eGJEz2Cn0McNbtXg+pulG6C2yT4mKC+lp523u820Sqn2eStn7IKtnfIvClXs/z8Ttyh9fR4sVlFrGw==
+ra-core@^3.17.0, ra-core@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.17.1.tgz#b02de6f40b1bba4904b305965bf6d22a39949bcc"
+  integrity sha512-DGlOjomeTsXR/8KJx6fuAbih/KkZmH0429/N4dEpd+8TYt8To4gfJxGyIU6TSFe49NsiOUChpcBtC2jjXKzEqQ==
   dependencies:
     classnames "~2.2.5"
     date-fns "^1.29.0"
@@ -7674,12 +7697,12 @@ ra-data-graphql@^3.11.4:
     pluralize "~7.0.0"
 
 ra-i18n-polyglot@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.17.0.tgz#3492c1bef23b924cbe5b3a79432bcc035ae37f8d"
-  integrity sha512-37XoTdATbN/TaNRaMkzgMWpaQkOICwaRKqkXzdyzLD5Sb6dEZbTjUAewBd93uIvEK2NmbOsGqI8la7aTnrBiXA==
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.17.1.tgz#fd077b899242675e6744a9df093f29624afc2c18"
+  integrity sha512-MOBt0VG++QlmhhV1rojeUGXbtBdCYibUWCbdB+CjwqhFb3Zl5/th6VuhFjyK0l6jxALRBAQ7g3pYFlliGuKWdQ==
   dependencies:
     node-polyglot "^2.2.2"
-    ra-core "^3.17.0"
+    ra-core "^3.17.1"
 
 ra-input-rich-text@^3.17.0:
   version "3.17.0"
