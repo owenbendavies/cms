@@ -194,7 +194,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.3.0)
-    globalid (0.5.1)
+    globalid (0.5.2)
       activesupport (>= 5.0)
     graphiql-rails (1.7.0)
       railties
