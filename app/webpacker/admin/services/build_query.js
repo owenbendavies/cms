@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 import _ from 'lodash';
-import { imagesQueries } from '../routes/images/build_images_query';
-import { messagesQueries } from '../routes/messages/build_message_query';
-import { pagesQueries } from '../routes/pages/build_page_query';
-import { sitesQueries } from '../routes/sites/build_site_query';
+import { imagesQueries } from '../routes/images';
+import { messagesQueries } from '../routes/messages';
+import { pagesQueries } from '../routes/pages';
+import { sitesQueries } from '../routes/sites';
 
 const queries = {
   images: imagesQueries,
