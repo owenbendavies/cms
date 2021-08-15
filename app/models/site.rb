@@ -29,7 +29,10 @@ class Site < ApplicationRecord
 
   validates(:charity_number, length: { allow_nil: true, maximum: 32 })
 
-  validates(:links, json: { schema: Rails.root.join('config/json_schemas/site_links.json').to_s })
+  LINKS_JSON_SCHEMA = Pathname.new(Rails.root.join('config/json_schemas/site_links.json'))
+  private_constant :LINKS_JSON_SCHEMA
+
+  validates(:links, json: { schema: LINKS_JSON_SCHEMA })
 
   def address
     root_url(url_options)
