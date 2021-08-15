@@ -11,7 +11,7 @@ class CssController < ApplicationController
       end
     else
       respond_to do |format|
-        format.css { head 404 }
+        format.css { head :not_found }
       end
     end
   end
