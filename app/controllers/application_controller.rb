@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
     respond_to do |format|
       format.html { render page_not_found_template, status: :not_found }
-      format.any { head 406 }
+      format.any { head :not_acceptable }
     end
   end
 
