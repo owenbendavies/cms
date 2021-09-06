@@ -2,7 +2,7 @@
   "name": "cms",
   "private": true,
   "engines": {
-    "node": "14.17.5",
+    "node": "14.17.6",
     "yarn": "~1.22.10"
   },
   "dependencies": {
@@ -56,24 +56,5 @@
   },
   "browserslist": [
     "defaults"
-  ],
-  "eslintConfig": {
-    "env": {
-      "browser": true
-    },
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "rules": {
-      "import/no-default-export": "error",
-      "import/prefer-default-export": "off",
-      "react/jsx-wrap-multilines": "off",
-      "react/prop-types": "off"
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5"
-  }
+  ]
 }
