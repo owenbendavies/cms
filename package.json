@@ -52,7 +52,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-sass-guidelines": "^8.0.0",
-    "webpack-dev-server": "^4.0.0"
+    "webpack-dev-server": "^4.2.0"
   },
   "browserslist": [
     "defaults"
