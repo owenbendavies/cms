@@ -7,7 +7,13 @@ class Site < ApplicationRecord
   has_many :pages, dependent: :destroy
   belongs_to :privacy_policy_page, class_name: 'Page', optional: true
 
-  has_many(:main_menu_pages, -> { in_list.order(:main_menu_position) }, class_name: 'Page', inverse_of: :site)
+  has_many(
+    :main_menu_pages,
+    -> { in_list.order(:main_menu_position) },
+    class_name: 'Page',
+    inverse_of: :site,
+    dependent: :destroy
+  )
 
   # before validations
   TEXT_FIELDS = %i[sidebar_html_content css].freeze
