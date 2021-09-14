@@ -292,7 +292,7 @@ GEM
     paper_trail (12.1.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    parallel (1.20.1)
+    parallel (1.21.0)
     parallel_tests (3.7.1)
       parallel
     parser (3.0.2.0)
@@ -386,7 +386,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.20.0)
+    rubocop (1.21.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
