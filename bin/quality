@@ -10,10 +10,6 @@ set -v
 
 ./bin/rubocop --parallel --format simple
 
-./node_modules/.bin/prettier --check '**/*.{css,html,js,json,jsx,md,scss,yaml,yml}'
-
-./node_modules/.bin/eslint --ext js,jsx app/webpacker
-
-./node_modules/.bin/stylelint app/webpacker
+./bin/yarn run lint
 
 # Code quality passed
