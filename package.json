@@ -5,6 +5,12 @@
     "node": "14.17.6",
     "yarn": "~1.22.10"
   },
+  "scripts": {
+    "lint": "npm-run-all eslint stylelint prettier",
+    "eslint": "eslint --ignore-path .gitignore --ext js,jsx .",
+    "stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss,sass,js,jsx}'",
+    "prettier": "prettier --ignore-path .gitignore --check ."
+  },
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-react": "^7.14.5",
@@ -29,6 +35,9 @@
     "jquery": "^3.6.0",
     "lodash": "^4.17.20",
     "popper.js": "^1.16.1",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-import": "12.0.1",
+    "postcss-preset-env": "6.7.0",
     "prop-types": "^15.7.2",
     "ra-data-graphql": "^3.11.4",
     "ra-input-rich-text": "^3.18.1",
@@ -48,6 +57,7 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.25.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.4.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
