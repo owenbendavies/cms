@@ -10,6 +10,6 @@ set -v
 
 ./bin/rubocop --parallel --format simple
 
-./bin/yarn run lint
+./bin/yarn lint
 
 # Code quality passed
