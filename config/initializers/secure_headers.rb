@@ -5,7 +5,7 @@ SecureHeaders::Configuration.default do |config|
 
   asset_src = ["'self'", "'unsafe-inline'", ENV['AWS_S3_ASSET_HOST']].compact
 
-  script_src = asset_src + ['https://www.google-analytics.com', 'https://cdnjs.cloudflare.com']
+  script_src = asset_src + ["'unsafe-eval'", 'https://www.google-analytics.com', 'https://cdnjs.cloudflare.com']
 
   connect_src = ["'self'", 'https://api.rollbar.com']
 

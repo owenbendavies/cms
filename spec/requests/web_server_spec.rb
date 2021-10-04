@@ -14,6 +14,7 @@ RSpec.describe 'Application web server' do
     let(:script_src) do
       [
         asset_src,
+        "'unsafe-eval'",
         'https://www.google-analytics.com',
         'https://cdnjs.cloudflare.com'
       ].join(' ')
