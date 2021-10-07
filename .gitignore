@@ -5,7 +5,9 @@
 /node_modules/
 /public/packs-test/
 /public/packs/
+/terraform/*/.terraform/
+/terraform/*/terraform.tfstate.d/
 /tmp/
 /vendor/bundle/
-/yarn-error.log
 /yarn-debug.log
+/yarn-error.log
