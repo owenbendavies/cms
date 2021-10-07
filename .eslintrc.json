@@ -2,7 +2,7 @@
   "env": {
     "browser": true
   },
-  "extends": ["airbnb", "prettier"],
+  "extends": ["plugin:import/recommended", "airbnb", "prettier"],
   "rules": {
     "import/no-default-export": "error",
     "import/prefer-default-export": "off",
