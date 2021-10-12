@@ -4,6 +4,8 @@ updates:
     directory: '/'
     schedule:
       interval: daily
+      time: 8:00
+      timezone: Europe/London
     open-pull-requests-limit: 10
     allow:
       - dependency-type: all
@@ -11,6 +13,8 @@ updates:
     directory: '/'
     schedule:
       interval: daily
+      time: 8:00
+      timezone: Europe/London
     open-pull-requests-limit: 10
     allow:
       - dependency-type: all
