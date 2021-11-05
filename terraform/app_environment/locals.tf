@@ -4,11 +4,6 @@ locals {
   name       = join("-", [var.namespace, local.project, var.environment])
   project    = "cms"
 
-  tags = {
-    project : local.project,
-    environment : var.environment
-  }
-
   environment_domains = {
     production : ["www.docklandssinfonia.co.uk", "www.spencerdown.com"],
     staging : [],

@@ -13,7 +13,6 @@ resource "aws_cognito_user_group" "domains" {
 resource "aws_cognito_user_pool" "app" {
   auto_verified_attributes = ["email"]
   name                     = var.name
-  tags                     = var.tags
   username_attributes      = ["email"]
 
   admin_create_user_config {

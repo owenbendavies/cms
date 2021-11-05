@@ -4,7 +4,6 @@ module "aws_cloudfront" {
   assets_domain = module.aws_s3.assets_domain
   logs_domain   = module.aws_s3.logs_domain
   name          = local.name
-  tags          = local.tags
 }
 
 module "aws_cognito" {
@@ -12,7 +11,6 @@ module "aws_cognito" {
 
   domains = local.domains
   name    = local.name
-  tags    = local.tags
 }
 
 module "aws_iam" {
@@ -22,7 +20,6 @@ module "aws_iam" {
   aws_s3_assets_bucket_arn = module.aws_s3.assets_bucket_arn
   aws_sqs_arns             = [module.aws_sqs_default.arn, module.aws_sqs_mailers.arn]
   name                     = local.name
-  tags                     = local.tags
 }
 
 module "aws_s3" {
@@ -30,21 +27,18 @@ module "aws_s3" {
 
   aws_cloudfront_iam_arn = module.aws_cloudfront.iam_arn
   name                   = local.name
-  tags                   = local.tags
 }
 
 module "aws_sqs_default" {
   source = "./modules/aws_sqs"
 
   name = "${local.name}-default"
-  tags = local.tags
 }
 
 module "aws_sqs_mailers" {
   source = "./modules/aws_sqs"
 
   name = "${local.name}-mailers"
-  tags = local.tags
 }
 
 module "heroku" {

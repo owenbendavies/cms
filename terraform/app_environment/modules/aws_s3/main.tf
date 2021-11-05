@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "assets" {
   bucket = var.name
-  tags   = var.tags
 
   lifecycle {
     prevent_destroy = true
@@ -37,7 +36,6 @@ resource "aws_s3_bucket" "assets" {
 resource "aws_s3_bucket" "logs" {
   acl    = "log-delivery-write"
   bucket = "${var.name}-logs"
-  tags   = var.tags
 
   lifecycle {
     prevent_destroy = true
