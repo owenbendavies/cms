@@ -11,7 +11,7 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       postgres:
@@ -64,7 +64,7 @@ jobs:
           - terraform/app_environment
           - terraform/app_global
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     defaults:
       run:
