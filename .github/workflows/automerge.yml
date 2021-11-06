@@ -13,7 +13,7 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.actor == 'dependabot[bot]'
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/github-script@0.2.0
