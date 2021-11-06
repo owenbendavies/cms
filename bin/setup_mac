@@ -5,7 +5,7 @@ cd $(dirname $0)/..
 
 function install_brew() {
   if ! type brew &>/dev/null; then
-    $(command -v ruby) -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    $(command -v ruby) -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 }
 
