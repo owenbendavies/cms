@@ -74,6 +74,10 @@ jobs:
 
       - run: terraform fmt -check -recursive
 
+      - run: terraform init -backend=false
+
+      - run: terraform validate
+
       - name: Run git diff
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
