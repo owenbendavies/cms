@@ -84,7 +84,7 @@ jobs:
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   deploy:
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
 
     needs: [test, terraform]
 
