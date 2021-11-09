@@ -37,14 +37,8 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
+          cache: yarn
           node-version: ${{ env.NODE_VERSION }}
-
-      - name: Cache yarn
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-${{ env.NODE_VERSION }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: yarn-${{ env.NODE_VERSION }}-
 
       - run: ./bin/setup
 
