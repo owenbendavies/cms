@@ -1,9 +1,10 @@
 {
-  "name": "cms",
-  "private": true,
+  "name": "@owenbendavies/cms",
+  "version": "1.0.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/owenbendavies/cms.git"
+    "url": "git+https://github.com/owenbendavies/cms.git"
   },
   "engines": {
     "node": "14.18.1",
