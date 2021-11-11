@@ -1,6 +1,10 @@
 {
   "name": "cms",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/owenbendavies/cms.git"
+  },
   "engines": {
     "node": "14.18.1",
     "yarn": "~1.22.17"
