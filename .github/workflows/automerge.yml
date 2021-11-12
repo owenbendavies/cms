@@ -21,17 +21,15 @@ jobs:
         with:
           github-token: ${{ github.token }}
           script: |
-            console.log(context);
-
             github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: ${{ github.event.workflow_run.pull_requests[0].number }},
               event: 'APPROVE'
-            });
+            })
 
             github.rest.pulls.merge({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: ${{ github.event.workflow_run.pull_requests[0].number }}
-            });
+            })
