@@ -3244,9 +3244,9 @@ csstype@^2.5.2:
   integrity sha512-RSU6Hyeg14am3Ah4VZEmeX8H7kLwEEirXe6aU2IPfKNvhXwTflK5HQRDNI0ypQXoqmm+QPyG2IaPuQE5zMwSIQ==
 
 csstype@^3.0.2:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.9.tgz#6410af31b26bd0520933d02cbc64fce9ce3fbf0b"
-  integrity sha512-rpw6JPxK6Rfg1zLOYCSwle2GFOOsnjmDYDaBwEcwoOg4qlsIVCN789VkBZDJAGi4T07gI4YSutR43t9Zz4Lzuw==
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
+  integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -4857,6 +4857,11 @@ inflection@~1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.12.0.tgz#a200935656d6f5f6bc4dc7502e1aecb703228416"
   integrity sha1-ogCTVlbW9fa8TcdQLhrstwMihBY=
+
+inflection@~1.13.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.13.1.tgz#c5cadd80888a90cf84c2e96e340d7edc85d5f0cb"
+  integrity sha512-dldYtl2WlN0QDkIDtg8+xFwOS2Tbmp12t1cHa5/YClU6ZQjTFm7B66UcVbh9NQB+HvT5BAd2t5+yKsBkw5pcqA==
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -7703,16 +7708,16 @@ ra-language-english@^3.19.0:
     ra-core "^3.19.0"
 
 ra-ui-materialui@^3.19.0:
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.19.0.tgz#e3b5e58e8367ab62f664b614b0d69951daf3ec5c"
-  integrity sha512-eW7CbyExCAae/BUziyyXO4mj+JA/8LFsW/45fvW3gFbYrvIVWq6ScJtrdjeaanFHOoA30jCbSPxft8IJnmPVYg==
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.19.1.tgz#29ccd63ac24f5d3703942d21e20ec12c3ccb0d52"
+  integrity sha512-bxn4ewWg53gu+s2MVk6zL0I2Asb8kjTm39dQ9ePD0UYfWeRW88KWmZebPK38hNmiVjZaVA1psARf94YhCXdIVA==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
     connected-react-router "^6.5.2"
     css-mediaquery "^0.1.2"
     downshift "3.2.7"
-    inflection "~1.12.0"
+    inflection "~1.13.1"
     jsonexport "^2.4.1"
     lodash "~4.17.5"
     prop-types "^15.7.0"
