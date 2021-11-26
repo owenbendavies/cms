@@ -7704,10 +7704,10 @@ ra-i18n-polyglot@^3.19.1:
     node-polyglot "^2.2.2"
     ra-core "^3.19.2"
 
-ra-input-rich-text@^3.19.1:
-  version "3.19.1"
-  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-3.19.1.tgz#027276fa3a61efad4c520a4525ca669333f684f3"
-  integrity sha512-tb2cbxV/yLDadForzIKoDXWoJRGsqBYTnsrazUHJ5dGRjdf7NthqOQ0AGo6lRNIYnOI7bjdPto6dVuopmTTSrg==
+ra-input-rich-text@^3.19.2:
+  version "3.19.2"
+  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-3.19.2.tgz#57aba578e2111d8f26efccc4e0bfe42da5d3cf0a"
+  integrity sha512-DOo/d04nZixW1FE5rNFadOXGi9s3eUKN+tAsEPrtypkTGAcfRkODc5dk1r/vnAzcwlAMJ1xBzyTiKDweUnqbjA==
   dependencies:
     "@types/quill" "~1.3.0"
     lodash "~4.17.5"
