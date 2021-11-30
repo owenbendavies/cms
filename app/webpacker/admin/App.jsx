@@ -2,6 +2,7 @@ import ApolloClient from 'apollo-boost';
 import buildGraphQLProvider from 'ra-data-graphql';
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
+
 import { imageOptions } from './routes/images';
 import { messageOptions } from './routes/messages';
 import { pageOptions } from './routes/pages';
