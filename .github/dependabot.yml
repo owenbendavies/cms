@@ -16,3 +16,17 @@ updates:
       timezone: Europe/London
     open-pull-requests-limit: 10
     versioning-strategy: widen
+  - package-ecosystem: terraform
+    directory: '/terraform/app_environment/'
+    schedule:
+      interval: daily
+      time: '08:00'
+      timezone: Europe/London
+    open-pull-requests-limit: 10
+  - package-ecosystem: terraform
+    directory: '/terraform/app_global/'
+    schedule:
+      interval: daily
+      time: '08:00'
+      timezone: Europe/London
+    open-pull-requests-limit: 10
