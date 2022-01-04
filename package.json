@@ -13,7 +13,7 @@
   "scripts": {
     "lint": "npm-run-all lint-eslint lint-stylelint lint-prettier",
     "lint-eslint": "eslint --ignore-path .gitignore --ext js,jsx .",
-    "lint-stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss,sass,js,jsx}'",
+    "lint-stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss}'",
     "lint-prettier": "prettier --ignore-path .gitignore --check ."
   },
   "dependencies": {
@@ -66,9 +66,10 @@
     "eslint-plugin-react": "^7.27.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.2.0",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
     "webpack-dev-server": "^4.6.0"
   },
   "browserslist": [

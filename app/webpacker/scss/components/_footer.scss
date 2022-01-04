@@ -3,17 +3,18 @@
     display: none;
   }
 
-  @include make-row();
+  @include make-row;
+
   font-size: 80%;
 
   &__container {
-    @include make-col-ready();
+    @include make-col-ready;
 
     text-align: center;
   }
 
   &__menu {
-    @include list-unstyled();
+    @include list-unstyled;
 
     line-height: 16px;
     margin-top: 11px;

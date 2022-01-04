@@ -5,8 +5,8 @@
 
   &__content {
     img {
-      @include img-fluid();
-      @include clearfix();
+      @include img-fluid;
+      @include clearfix;
       @include border-radius(0.25rem);
 
       background-color: #fff;

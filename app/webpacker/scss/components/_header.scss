@@ -3,10 +3,10 @@
     display: none;
   }
 
-  @include make-row();
+  @include make-row;
 
   &__container {
-    @include make-col-ready();
+    @include make-col-ready;
 
     text-align: center;
   }
