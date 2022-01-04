@@ -4,11 +4,11 @@
   }
 
   &__row {
-    @include make-row();
+    @include make-row;
   }
 
   &__small-inputs {
-    @include make-col-ready();
+    @include make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col(4);
@@ -17,7 +17,7 @@
   }
 
   &__large-inputs {
-    @include make-col-ready();
+    @include make-col-ready;
 
     @include media-breakpoint-up(md) {
       @include make-col(8);

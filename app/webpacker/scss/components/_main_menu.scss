@@ -1,5 +1,7 @@
+@use 'sass:color';
+
 .main-menu {
-  @include make-row();
+  @include make-row;
 
   &__bar {
     @extend .bg-light;
@@ -7,7 +9,7 @@
     @extend .navbar-light;
     @extend .navbar;
 
-    @include make-col-ready();
+    @include make-col-ready;
   }
 
   &__button {
@@ -39,7 +41,7 @@
 
     &:hover,
     &:focus {
-      background-color: darken($light, 6.5%);
+      background-color: color.scale($light, $lightness: 6.5%);
     }
   }
 

@@ -1,5 +1,5 @@
 .main {
-  @include make-row();
+  @include make-row;
 
   h1,
   h2 {
@@ -9,6 +9,6 @@
   h1,
   h2,
   h3 {
-    @include clearfix();
+    @include clearfix;
   }
 }

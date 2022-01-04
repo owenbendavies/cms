@@ -1,11 +1,11 @@
 {
-  "extends": ["stylelint-config-sass-guidelines", "stylelint-config-prettier"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier"
+  ],
   "plugins": ["@namics/stylelint-bem"],
   "rules": {
-    "max-nesting-depth": 2,
-    "plugin/stylelint-bem-namics": {
-      "patternPrefixes": []
-    },
     "scss/at-extend-no-missing-placeholder": null
   }
 }
