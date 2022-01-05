@@ -41,7 +41,7 @@
     "lodash": "^4.17.20",
     "popper.js": "^1.16.1",
     "postcss": "^8.4.5",
-    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "^15.7.2",
