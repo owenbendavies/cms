@@ -4,12 +4,12 @@ cd $(dirname $0)/..
 
 set -v
 
-./bin/i18n-tasks missing
-./bin/i18n-tasks unused
-./bin/i18n-tasks check-consistent-interpolations
+./bin/bundle exec i18n-tasks missing
+./bin/bundle exec i18n-tasks unused
+./bin/bundle exec i18n-tasks check-consistent-interpolations
 
-./bin/rubocop --parallel --format simple
+./bin/bundle exec rubocop --parallel --format simple
 
-./bin/yarn lint
+yarn lint
 
 # Code quality passed

@@ -18,7 +18,7 @@ bundle check || bundle install --jobs=4 --retry=3
 
 bundle clean
 
-./bin/yarn
+yarn
 
 ./bin/rails db:create db:migrate
 
