@@ -7,18 +7,17 @@ export RAILS_ENV='test'
 if [ $# -gt 0 ]; then
   set -v
 
-  eval "./bin/rspec $@"
+  eval "./bin/bundle exec rspec $@"
 else
   export COVERAGE=on
-  export DISABLE_SPRING=true
 
   set -v
 
   JOBS=4
 
-  eval "./bin/rake parallel:create[$JOBS]"
-  eval "./bin/rake parallel:load_schema[$JOBS]"
-  eval "./bin/rake parallel:spec[$JOBS]"
+  eval "./bin/rails parallel:create[$JOBS]"
+  eval "./bin/rails parallel:load_schema[$JOBS]"
+  eval "./bin/rails parallel:spec[$JOBS]"
 fi
 
 # 'test complete'

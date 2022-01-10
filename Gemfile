@@ -47,7 +47,7 @@ gem 'premailer-rails' # Generates txt version of emails
 gem 'simple_form' # Easier forms
 
 # Server
-gem 'bootsnap' # Fast booting
+gem 'bootsnap', require: false # Fast booting
 gem 'puma' # Web server
 
 # Monitoring
@@ -66,7 +66,6 @@ group :development, :test do
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
   gem 'solargraph' # Code completion
-  gem 'spring-watcher-listen' # Quick boot
 end
 
 group :development do
@@ -84,7 +83,6 @@ group :test do
   gem 'selenium-webdriver' # Controls real browsers
   gem 'shoulda-matchers' # Model test helpers
   gem 'simplecov' # Code coverage
-  gem 'spring-commands-rspec' # Quick boot for RSpec
   gem 'timecop' # Change time in tests
   gem 'webmock' # Mock external web requests
 
