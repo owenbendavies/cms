@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def timeago(time)
-    tag.time(time.to_s(:short), class: 'js-timeago', datetime: time.iso8601)
+    tag.time(time.to_formatted_s(:short), class: 'js-timeago', datetime: time.iso8601)
   end
 
   def rollbar_js
