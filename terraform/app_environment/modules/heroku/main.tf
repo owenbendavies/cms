@@ -78,12 +78,13 @@ resource "heroku_app" "app" {
     AWS_S3_BUCKET                = var.aws_s3_assets_bucket_name
     AWS_SECRET_ACCESS_KEY        = var.aws_secret_access_key
     DEFAULT_SITE_EMAIL           = var.from_email
+    FORCE_SSL                    = "true"
     LANG                         = "en_GB.UTF-8"
     RACK_ENV                     = "production"
     RACK_TIMEOUT_SERVICE_TIMEOUT = "5"
     RAILS_ENV                    = "production"
-    RAILS_LOG_TO_STDOUT          = "enabled"
-    RAILS_SERVE_STATIC_FILES     = "enabled"
+    RAILS_LOG_TO_STDOUT          = "true"
+    RAILS_SERVE_STATIC_FILES     = "true"
     WEB_CONCURRENCY              = "2"
   }
 }

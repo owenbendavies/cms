@@ -26,7 +26,7 @@ module Cms
     config.x.aws_cognito_domain = ENV.fetch('AWS_COGNITO_DOMAIN')
     config.x.aws_cognito_user_pool_id = ENV.fetch('AWS_COGNITO_USER_POOL_ID')
     config.x.default_site_email = ENV['DEFAULT_SITE_EMAIL']
-    config.x.disable_ssl = ENV['DISABLE_SSL']
+    config.x.force_ssl = ENV['FORCE_SSL'].present?
     config.x.email_link_port = ENV['EMAIL_LINK_PORT']
     config.x.rollbar_client_token = ENV['ROLLBAR_CLIENT_TOKEN']
 
@@ -50,11 +50,6 @@ module Cms
 
     # Raises error for missing translations
     config.i18n.raise_on_missing_translations = true
-
-    unless config.x.disable_ssl
-      # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-      config.force_ssl = true
-    end
 
     # Logging
     if ENV['RAILS_LOG_TO_STDOUT'].present?

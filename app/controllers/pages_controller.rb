@@ -53,7 +53,7 @@ class PagesController < ApplicationController
   end
 
   def xml_sitemap
-    XmlSitemap::Map.new(@site.host, home: false, secure: Rails.configuration.x.disable_ssl.blank?) do |map|
+    XmlSitemap::Map.new(@site.host, home: false, secure: Rails.configuration.x.force_ssl) do |map|
       @pages.each do |page|
         map.add page_path(page), updated: page.updated_at
       end

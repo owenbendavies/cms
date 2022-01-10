@@ -45,7 +45,7 @@ RSpec.feature 'Sitemap' do
     end
 
     scenario 'https' do
-      allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+      allow(Rails.configuration.x).to receive(:force_ssl).and_return(true)
       visit '/sitemap.xml'
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq("https://#{site.host}/#{public_page.url}")
     end
