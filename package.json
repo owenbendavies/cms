@@ -54,7 +54,8 @@
     "react-dom": "^17.0.2",
     "timeago": "^1.6.7",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.44.2"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
     "@namics/stylelint-bem": "^7.0.0",
