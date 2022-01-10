@@ -12,8 +12,6 @@ set -ev
 
 gem install bundler
 
-bundle config --local path vendor/bundle
-
 bundle check || bundle install --jobs=4 --retry=3
 
 bundle clean
