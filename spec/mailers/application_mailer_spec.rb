@@ -21,7 +21,7 @@ RSpec.describe ApplicationMailer do
 
     context 'with ssl enabled' do
       it 'has https links' do
-        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+        allow(Rails.configuration.x).to receive(:force_ssl).and_return(true)
         expect(email.body).to have_link(privacy_policy.name, href: "https://#{site.host}/#{privacy_policy.url}")
       end
     end

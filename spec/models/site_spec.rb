@@ -108,7 +108,7 @@ RSpec.describe Site do
 
     context 'with ssl enabled' do
       it 'returns https url' do
-        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+        allow(Rails.configuration.x).to receive(:force_ssl).and_return(true)
         expect(site.address).to eq "https://#{site.host}/"
       end
     end
@@ -129,7 +129,7 @@ RSpec.describe Site do
 
     context 'with ssl enabled' do
       it 'has https protocol' do
-        allow(Rails.configuration.x).to receive(:disable_ssl).and_return(nil)
+        allow(Rails.configuration.x).to receive(:force_ssl).and_return(true)
         expect(site.url_options).to eq(host: site.host, protocol: 'https', port: nil)
       end
     end

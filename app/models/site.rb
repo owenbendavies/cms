@@ -47,7 +47,7 @@ class Site < ApplicationRecord
   def url_options
     {
       host: host,
-      protocol: Rails.configuration.x.disable_ssl ? 'http' : 'https',
+      protocol: Rails.configuration.x.force_ssl ? 'https' : 'http',
       port: Rails.configuration.x.email_link_port
     }
   end
