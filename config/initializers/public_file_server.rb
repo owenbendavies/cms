@@ -1,5 +1,3 @@
-Rails.application.config.public_file_server.enabled = true
-
 Rails.application.config.public_file_server.headers = {
   'Access-Control-Allow-Methods' => 'get',
   'Access-Control-Allow-Origin' => '*',
