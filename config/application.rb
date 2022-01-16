@@ -31,7 +31,7 @@ module Cms
     config.x.rollbar_client_token = ENV['ROLLBAR_CLIENT_TOKEN']
 
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     config.generators do |generator|
       generator.orm :active_record, primary_key_type: :uuid
@@ -44,6 +44,9 @@ module Cms
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Don't generate system test files.
+    config.generators.system_tests = nil
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]

@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     flash.notice = t 'sessions.destroy.message'
-    redirect_to aws_logout_url
+    redirect_to aws_logout_url, allow_other_host: true
   end
 
   def invalid
