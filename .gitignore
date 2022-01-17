@@ -1,8 +1,10 @@
 /.bundle/
 /.env.*.local
+/app/assets/builds/
 /coverage/
-/log/*.log
+/log/
 /node_modules/
+/public/assets/
 /public/packs-test/
 /public/packs/
 /terraform/*/.terraform/

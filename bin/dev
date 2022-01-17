@@ -4,4 +4,4 @@ cd $(dirname $0)/..
 
 set -v
 
-./bin/rails server
+./bin/bundle exec foreman start -f Procfile.dev

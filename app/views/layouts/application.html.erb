@@ -9,10 +9,10 @@
     <%= render 'layouts/rollbar' if Rails.configuration.x.rollbar_client_token %>
 
     <% if content_for(:admin_layout) %>
-      <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+      <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
     <% else %>
-      <%= stylesheet_pack_tag 'stylesheet', 'data-turbolinks-track': 'reload', media: 'all' %>
-      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
+      <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', crossorigin: 'anonymous' %>
     <% end %>
 
     <%= stylesheet_link_tag site_stylesheet(@site), 'data-turbolinks-track': 'reload', media: 'all' if @site.css %>

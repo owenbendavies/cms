@@ -13,7 +13,7 @@ used for testing new ideas.
 1. `./bin/test` to run all tests
 1. `./bin/test spec/models/user_spec.rb` to run one test or folder
 1. `./bin/quality` to run code quality checks
-1. `./bin/run` to start services
+1. `./bin/dev` to start services
 1. http://localhost:3000/ to access the site
 1. http://localhost:3000/graphiql to view GraphQL api
 
