@@ -16,8 +16,6 @@ RSpec.describe Message do
   describe 'validations' do
     subject(:message) { build(:message) }
 
-    it { is_expected.to validate_presence_of(:site) }
-
     it { is_expected.to validate_length_of(:name).is_at_least(3).is_at_most(64) }
     it { is_expected.to validate_presence_of(:name) }
 

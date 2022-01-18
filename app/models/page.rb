@@ -34,8 +34,6 @@ class Page < ApplicationRecord
   strip_attributes only: TEXT_FIELDS
 
   # validations
-  validates(:site, presence: true)
-
   validates(
     :url,
     exclusion: { in: INVALID_URLS },

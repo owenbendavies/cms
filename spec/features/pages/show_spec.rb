@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Page show' do
   scenario 'public page' do
-    Timecop.freeze(Time.zone.now - 1.month - 3.days) do
+    Timecop.freeze(1.month.ago - 3.days) do
       home_page.update! updated_at: Time.zone.now
     end
 

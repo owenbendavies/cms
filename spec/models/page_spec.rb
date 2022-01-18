@@ -65,8 +65,6 @@ RSpec.describe Page do
   describe 'validations' do
     subject { build :page }
 
-    it { is_expected.to validate_presence_of(:site) }
-
     it { is_expected.not_to allow_value('login').for(:url) }
     it { is_expected.to validate_length_of(:url).is_at_most(64) }
     it { is_expected.to validate_presence_of(:url) }

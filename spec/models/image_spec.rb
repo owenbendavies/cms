@@ -69,8 +69,6 @@ RSpec.describe Image do
   describe 'validations' do
     subject { build(:image) }
 
-    it { is_expected.to validate_presence_of(:site) }
-
     it { is_expected.to validate_length_of(:name).is_at_most(64) }
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_uniqueness_of(:name).scoped_to(:site_id) }

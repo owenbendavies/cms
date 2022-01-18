@@ -12,8 +12,6 @@ class Message < ApplicationRecord
   strip_attributes only: TEXT_FIELDS
 
   # validations
-  validates(:site, presence: true)
-
   validates(:name, length: { minimum: 3, maximum: 64 }, presence: true)
 
   validates(:email, email_format: true, length: { maximum: 64 }, presence: true)

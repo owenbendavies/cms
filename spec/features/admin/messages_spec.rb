@@ -103,8 +103,8 @@ RSpec.feature 'Admin messages' do
         create(
           :message,
           site: site,
-          created_at: Time.zone.now - 1.month - 3.days - i.minutes,
-          updated_at: Time.zone.now - 1.month - 3.days - i.minutes
+          created_at: 1.month.ago - 3.days - i.minutes,
+          updated_at: 1.month.ago - 3.days - i.minutes
         )
       end
     end

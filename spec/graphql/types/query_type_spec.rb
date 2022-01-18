@@ -51,8 +51,8 @@ RSpec.describe Types::QueryType do
         :message,
         name: 'Message 1',
         site: site,
-        created_at: Time.zone.now - 2.days,
-        updated_at: Time.zone.now - 2.days
+        created_at: 2.days.ago,
+        updated_at: 2.days.ago
       )
     end
 
@@ -61,8 +61,8 @@ RSpec.describe Types::QueryType do
         :message,
         site: site,
         name: 'Message 2',
-        created_at: Time.zone.now - 1.day,
-        updated_at: Time.zone.now - 1.day
+        created_at: 1.day.ago,
+        updated_at: 1.day.ago
       )
     end
 
@@ -143,8 +143,8 @@ RSpec.describe Types::QueryType do
       create(
         :site,
         host: 'aaaa.com',
-        created_at: Time.zone.now - 2.days,
-        updated_at: Time.zone.now - 2.days
+        created_at: 2.days.ago,
+        updated_at: 2.days.ago
       )
     end
 
