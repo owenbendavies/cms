@@ -12,7 +12,7 @@ RSpec.feature 'Admin images' do
   end
 
   context 'with a image' do
-    let!(:image) { FactoryBot.create(:image, site: site) }
+    let!(:image) { create(:image, site: site) }
 
     scenario 'list of images' do
       navigate_to_admin_images
@@ -23,7 +23,7 @@ RSpec.feature 'Admin images' do
   context 'with multiple images' do
     let!(:images) do
       ('a'..'m').map do |i|
-        FactoryBot.create(:image, name: "Image #{i}", site: site)
+        create(:image, name: "Image #{i}", site: site)
       end
     end
 

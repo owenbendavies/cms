@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe GraphqlSchema do
-  let(:site) { FactoryBot.create(:site) }
-  let(:user) { FactoryBot.build(:user, site: site) }
+  let(:site) { create(:site) }
+  let(:user) { build(:user, site: site) }
   let(:context) { { user: user, site: site } }
   let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 
   describe '.id_from_object' do
     subject(:result) { described_class.id_from_object(message, nil, context) }
 
-    let(:message) { FactoryBot.build(:message) }
+    let(:message) { build(:message) }
 
     it 'returns an id generated from the object' do
       expect(result).to eq id
@@ -20,7 +20,7 @@ RSpec.describe GraphqlSchema do
     subject(:result) { described_class.object_from_id(id, context) }
 
     context 'with in scope object' do
-      let(:message) { FactoryBot.create(:message, site: site) }
+      let(:message) { create(:message, site: site) }
 
       it 'returns the object' do
         expect(result).to eq message
@@ -28,7 +28,7 @@ RSpec.describe GraphqlSchema do
     end
 
     context 'with out of scope object' do
-      let(:message) { FactoryBot.create(:message) }
+      let(:message) { create(:message) }
 
       it 'raises error' do
         expect { result }
@@ -44,7 +44,7 @@ RSpec.describe GraphqlSchema do
 
     %i[image message page site].each do |type|
       context "with #{type}" do
-        let(:object) { FactoryBot.create(type) }
+        let(:object) { create(type) }
 
         it { is_expected.to eq "Types::#{type.to_s.classify}Type" }
       end

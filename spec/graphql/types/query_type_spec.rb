@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe Types::QueryType do
   subject(:result) { GraphqlSchema.execute(query, context: context) }
 
-  let(:site) { FactoryBot.create(:site) }
-  let(:user) { FactoryBot.build(:user, site: site) }
+  let(:site) { create(:site) }
+  let(:user) { build(:user, site: site) }
   let(:context) { { user: user, site: site } }
 
   context 'with images query' do
-    let!(:image1) { FactoryBot.create(:image, name: 'Image 1', site: site) }
-    let!(:image2) { FactoryBot.create(:image, name: 'Image 2', site: site) }
+    let!(:image1) { create(:image, name: 'Image 1', site: site) }
+    let!(:image2) { create(:image, name: 'Image 2', site: site) }
 
     let(:query) do
       <<~BODY
@@ -38,7 +38,7 @@ RSpec.describe Types::QueryType do
       ]
     end
 
-    before { FactoryBot.create(:image) }
+    before { create(:image) }
 
     it 'returns ordered images' do
       expect(result.values).to eq expected_result
@@ -47,7 +47,7 @@ RSpec.describe Types::QueryType do
 
   context 'with messages query' do
     let!(:message1) do
-      FactoryBot.create(
+      create(
         :message,
         name: 'Message 1',
         site: site,
@@ -57,7 +57,7 @@ RSpec.describe Types::QueryType do
     end
 
     let!(:message2) do
-      FactoryBot.create(
+      create(
         :message,
         site: site,
         name: 'Message 2',
@@ -93,7 +93,7 @@ RSpec.describe Types::QueryType do
       ]
     end
 
-    before { FactoryBot.create(:message) }
+    before { create(:message) }
 
     it 'returns scoped ordered messages' do
       expect(result.values).to eq expected_result
@@ -101,8 +101,8 @@ RSpec.describe Types::QueryType do
   end
 
   context 'with pages query' do
-    let!(:page1) { FactoryBot.create(:page, name: 'Page 1', site: site) }
-    let!(:page2) { FactoryBot.create(:page, name: 'Page 2', site: site) }
+    let!(:page1) { create(:page, name: 'Page 1', site: site) }
+    let!(:page2) { create(:page, name: 'Page 2', site: site) }
 
     let(:query) do
       <<~BODY
@@ -131,7 +131,7 @@ RSpec.describe Types::QueryType do
       ]
     end
 
-    before { FactoryBot.create(:page) }
+    before { create(:page) }
 
     it 'returns ordered pages' do
       expect(result.values).to eq expected_result
@@ -140,7 +140,7 @@ RSpec.describe Types::QueryType do
 
   context 'with sites query' do
     let!(:site2) do
-      FactoryBot.create(
+      create(
         :site,
         host: 'aaaa.com',
         created_at: Time.zone.now - 2.days,
@@ -148,7 +148,7 @@ RSpec.describe Types::QueryType do
       )
     end
 
-    let(:user) { FactoryBot.build(:user, groups: [site.host, site2.host]) }
+    let(:user) { build(:user, groups: [site.host, site2.host]) }
 
     let(:query) do
       <<~BODY
@@ -177,7 +177,7 @@ RSpec.describe Types::QueryType do
       ]
     end
 
-    before { FactoryBot.create(:site) }
+    before { create(:site) }
 
     it 'returns ordered sites' do
       expect(result.values).to eq expected_result
@@ -185,7 +185,7 @@ RSpec.describe Types::QueryType do
   end
 
   context 'with node query' do
-    let(:message) { FactoryBot.create(:message, site: site) }
+    let(:message) { create(:message, site: site) }
 
     let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 

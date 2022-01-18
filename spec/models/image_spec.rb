@@ -4,7 +4,7 @@ RSpec.describe Image do
   it_behaves_like 'model with versioning'
 
   describe '#file' do
-    let(:image) { FactoryBot.build(:image, filename: nil) }
+    let(:image) { build(:image, filename: nil) }
 
     let(:uuid) { File.basename(image.filename, '.jpg') }
 
@@ -53,9 +53,9 @@ RSpec.describe Image do
   describe 'scopes' do
     describe '.ordered' do
       it 'returns ordered by name' do
-        image_c = FactoryBot.create(:image, name: 'image C')
-        image_a = FactoryBot.create(:image, name: 'image A')
-        image_b = FactoryBot.create(:image, name: 'image B')
+        image_c = create(:image, name: 'image C')
+        image_a = create(:image, name: 'image A')
+        image_b = create(:image, name: 'image B')
 
         expect(described_class.ordered).to eq [image_a, image_b, image_c]
       end
@@ -67,7 +67,7 @@ RSpec.describe Image do
   end
 
   describe 'validations' do
-    subject { FactoryBot.build(:image) }
+    subject { build(:image) }
 
     it { is_expected.to validate_presence_of(:site) }
 

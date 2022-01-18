@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ImageUploader do
   subject(:image_uploader) { described_class.new(Image.new(site: site)) }
 
-  let(:site) { FactoryBot.build_stubbed(:site) }
+  let(:site) { build_stubbed(:site) }
 
   let(:expected_files) do
     [

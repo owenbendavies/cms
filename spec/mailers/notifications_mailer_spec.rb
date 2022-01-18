@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe NotificationsMailer do
-  let(:site) { FactoryBot.build(:site) }
+  let(:site) { build(:site) }
 
   describe '.new_message' do
     subject(:email) { described_class.new_message(message) }
 
-    let(:message) { FactoryBot.build(:message, site: site) }
+    let(:message) { build(:message, site: site) }
 
     let(:emails) do
       %w[admin1@example.com admin2@example.com another@example.com siteuser@example.com]

@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Types::TotalCountConnection do
   subject(:result) { GraphqlSchema.execute(query, context: context) }
 
-  let(:site) { FactoryBot.create(:site) }
-  let(:user) { FactoryBot.build(:user, site: site) }
+  let(:site) { create(:site) }
+  let(:user) { build(:user, site: site) }
   let(:context) { { user: user, site: site } }
 
-  let!(:message1) { FactoryBot.create(:message, site: site) }
-  let!(:message2) { FactoryBot.create(:message, site: site) }
+  let!(:message1) { create(:message, site: site) }
+  let!(:message2) { create(:message, site: site) }
 
   let(:query) do
     <<~BODY
@@ -38,8 +38,8 @@ RSpec.describe Types::TotalCountConnection do
   end
 
   before do
-    FactoryBot.create(:message, site: site)
-    FactoryBot.create(:message)
+    create(:message, site: site)
+    create(:message)
   end
 
   it 'returns total count' do

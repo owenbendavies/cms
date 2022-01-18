@@ -87,7 +87,7 @@ RSpec.feature 'Admin sites' do
     let(:main_menu_right_links) { '.main-menu__links.ml-auto' }
     let(:main_menu_footer) { '.footer-main-menu' }
 
-    let(:test_page) { FactoryBot.create(:page, name: 'Test Page', site: site) }
+    let(:test_page) { create(:page, name: 'Test Page', site: site) }
 
     before do
       home_page.insert_at(1)
@@ -145,15 +145,15 @@ RSpec.feature 'Admin sites' do
   end
 
   context 'with multiple sites' do
-    let(:site) { FactoryBot.create(:site, name: 'Site z', host: Capybara.server_host) }
+    let(:site) { create(:site, name: 'Site z', host: Capybara.server_host) }
 
     let(:sites) do
       ('a'..'k').map do |i|
-        FactoryBot.create(:site, name: "Site #{i}", host: "site#{i}.com")
+        create(:site, name: "Site #{i}", host: "site#{i}.com")
       end
     end
 
-    let(:site_user) { FactoryBot.build(:user, groups: [site.host] + sites.map(&:host)) }
+    let(:site_user) { build(:user, groups: [site.host] + sites.map(&:host)) }
 
     scenario 'clicking pagination' do
       navigate_to_admin_sites

@@ -4,16 +4,16 @@ RSpec.describe Page do
   it_behaves_like 'model with versioning'
 
   describe 'acts_as_list' do
-    let(:site1) { FactoryBot.create(:site) }
-    let(:site2) { FactoryBot.create(:site) }
+    let(:site1) { create(:site) }
+    let(:site2) { create(:site) }
 
     it 'is not added to list by default' do
-      expect(FactoryBot.create(:page)).not_to be_in_list
+      expect(create(:page)).not_to be_in_list
     end
 
     it 'is scoped by site' do
-      page1 = FactoryBot.create(:page, site: site1)
-      page2 = FactoryBot.create(:page, site: site2)
+      page1 = create(:page, site: site1)
+      page2 = create(:page, site: site2)
       page1.insert_at(1)
       page2.insert_at(1)
 
@@ -29,9 +29,9 @@ RSpec.describe Page do
   describe 'scopes' do
     describe '.non_private' do
       it 'returns non private pages' do
-        page1 = FactoryBot.create(:page)
-        page2 = FactoryBot.create(:page)
-        FactoryBot.create(:page, private: true)
+        page1 = create(:page)
+        page2 = create(:page)
+        create(:page, private: true)
 
         expect(described_class.non_private).to contain_exactly(page1, page2)
       end
@@ -39,9 +39,9 @@ RSpec.describe Page do
 
     describe '.ordered' do
       it 'returns ordered by name' do
-        page_c = FactoryBot.create(:page, name: 'Page C')
-        page_a = FactoryBot.create(:page, name: 'Page A')
-        page_b = FactoryBot.create(:page, name: 'Page B')
+        page_c = create(:page, name: 'Page C')
+        page_a = create(:page, name: 'Page A')
+        page_b = create(:page, name: 'Page B')
 
         expect(described_class.ordered).to eq [page_a, page_b, page_c]
       end
@@ -63,7 +63,7 @@ RSpec.describe Page do
   end
 
   describe 'validations' do
-    subject { FactoryBot.build :page }
+    subject { build :page }
 
     it { is_expected.to validate_presence_of(:site) }
 
@@ -96,7 +96,7 @@ RSpec.describe Page do
   end
 
   describe '#to_param' do
-    subject(:page) { FactoryBot.create(:page, name: 'Test Page') }
+    subject(:page) { create(:page, name: 'Test Page') }
 
     it 'uses url' do
       expect(page.to_param).to eq 'test_page'

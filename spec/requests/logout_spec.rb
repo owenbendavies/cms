@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Logout' do
   context 'with GET /logout' do
-    let(:request_user) { FactoryBot.build(:user) }
+    let(:request_user) { build(:user) }
     let(:expected_status) { 302 }
     let(:cognito_domain) { Faker::Internet.url }
 

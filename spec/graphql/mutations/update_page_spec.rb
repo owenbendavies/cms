@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Mutations::UpdatePage do
   subject(:result) { GraphqlSchema.execute(query, context: context, variables: variables) }
 
-  let(:site) { FactoryBot.create(:site) }
-  let(:user) { FactoryBot.build(:user, site: site) }
-  let(:page) { FactoryBot.create(:page, site: site) }
+  let(:site) { create(:site) }
+  let(:user) { build(:user, site: site) }
+  let(:page) { create(:page, site: site) }
   let(:context) { { user: user, site: site } }
 
   let(:mutation_id) { SecureRandom.uuid }

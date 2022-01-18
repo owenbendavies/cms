@@ -4,10 +4,10 @@ RSpec.describe PagePolicy do
   permissions :scope do
     subject(:policy_scope) { Pundit.policy_scope(context, Page) }
 
-    let!(:site_page) { FactoryBot.create(:page, site: site) }
-    let!(:private_site_page) { FactoryBot.create(:page, private: true, site: site) }
+    let!(:site_page) { create(:page, site: site) }
+    let!(:private_site_page) { create(:page, private: true, site: site) }
 
-    before { FactoryBot.build(:page) }
+    before { build(:page) }
 
     context 'without user' do
       it 'returns non private site pages' do
@@ -16,7 +16,7 @@ RSpec.describe PagePolicy do
     end
 
     context 'with site user' do
-      let(:user) { FactoryBot.build(:user, site: site) }
+      let(:user) { build(:user, site: site) }
 
       it 'returns all site pages' do
         expect(policy_scope).to contain_exactly(site_page, private_site_page)
@@ -34,13 +34,13 @@ RSpec.describe PagePolicy do
 
   permissions :show?, :contact_form? do
     context 'with private page' do
-      let(:record) { FactoryBot.build(:page, private: true, site: site) }
+      let(:record) { build(:page, private: true, site: site) }
 
       include_examples 'policy for user record'
     end
 
     context 'with non private page' do
-      let(:record) { FactoryBot.build(:page, site: site) }
+      let(:record) { build(:page, site: site) }
 
       context 'without user' do
         it 'is permitted' do
@@ -51,7 +51,7 @@ RSpec.describe PagePolicy do
   end
 
   permissions :create?, :update? do
-    let(:record) { FactoryBot.build(:page, site: site) }
+    let(:record) { build(:page, site: site) }
 
     include_examples 'policy for user record'
   end

@@ -4,7 +4,7 @@ RSpec.feature 'Footer links' do
   let(:css_selector) { '.footer__site-links' }
 
   context 'with with footer links' do
-    let!(:site) { FactoryBot.create(:site, :with_links, host: Capybara.server_host) }
+    let!(:site) { create(:site, :with_links, host: Capybara.server_host) }
     let(:link_name) { site.links.first.fetch('name') }
     let(:link_url) { site.links.first.fetch('url') }
 

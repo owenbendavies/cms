@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Types::MessageType do
   subject(:result) { GraphqlSchema.execute(query, context: context) }
 
-  let(:site) { FactoryBot.create(:site) }
-  let(:user) { FactoryBot.build(:user, site: site) }
+  let(:site) { create(:site) }
+  let(:user) { build(:user, site: site) }
   let(:context) { { user: user, site: site } }
 
-  let!(:message) { FactoryBot.create(:message, site: site) }
+  let!(:message) { create(:message, site: site) }
 
   let(:query) do
     <<~BODY
