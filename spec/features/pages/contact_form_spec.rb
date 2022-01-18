@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
-  let(:contact_page) { FactoryBot.create(:page, contact_form: true, site: site) }
+  let(:contact_page) { create(:page, contact_form: true, site: site) }
   let(:sleep_rate) { InvisibleCaptcha.timestamp_threshold + 1 }
 
   let(:emails) do
@@ -67,7 +67,7 @@ RSpec.feature 'Page with contact form' do
   end
 
   context 'when site has privacy policy' do
-    let!(:site) { FactoryBot.create(:site, :with_privacy_policy, host: Capybara.server_host) }
+    let!(:site) { create(:site, :with_privacy_policy, host: Capybara.server_host) }
     let(:privacy_policy_text) { "I agree to #{site.privacy_policy_page.name}" }
 
     scenario 'when agreeing to privacy policy' do

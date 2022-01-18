@@ -5,7 +5,7 @@ RSpec.describe 'CSS' do
     let(:request_path_id) { site.id }
 
     context 'with stylesheet' do
-      let(:site) { FactoryBot.create(:site) }
+      let(:site) { create(:site) }
 
       before do
         request_page
@@ -25,7 +25,7 @@ RSpec.describe 'CSS' do
     end
 
     context 'without stylesheet' do
-      let(:site) { FactoryBot.create(:site, css: nil) }
+      let(:site) { create(:site, css: nil) }
       let(:expected_status) { 404 }
 
       it 'returns empty 404' do

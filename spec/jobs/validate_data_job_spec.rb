@@ -10,7 +10,7 @@ RSpec.describe ValidateDataJob do
 
   context 'with valid data' do
     before do
-      FactoryBot.create(:site)
+      create(:site)
     end
 
     it 'does not send any errors to Rollbar' do
@@ -20,7 +20,7 @@ RSpec.describe ValidateDataJob do
 
     context 'with invalid data' do
       let!(:page) do
-        FactoryBot.create(:page).tap do |page|
+        create(:page).tap do |page|
           page.update_attribute(:url, 'login') # rubocop:disable Rails/SkipsModelValidations
         end
       end

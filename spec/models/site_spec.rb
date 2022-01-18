@@ -10,7 +10,7 @@ RSpec.describe Site do
     it { is_expected.to belong_to(:privacy_policy_page).class_name('Page').optional }
 
     context 'with privacy_policy_page' do
-      subject(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+      subject(:site) { create(:site, :with_privacy_policy) }
 
       it 'can be deleted' do
         site.destroy!
@@ -19,7 +19,7 @@ RSpec.describe Site do
   end
 
   describe '#main_menu_pages' do
-    subject(:site) { FactoryBot.create(:site) }
+    subject(:site) { create(:site) }
 
     context 'without pages' do
       it 'returns empty array' do
@@ -29,18 +29,18 @@ RSpec.describe Site do
 
     context 'with pages' do
       let!(:page1) do
-        FactoryBot.create(:page, site: site).tap do |page|
+        create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
       let!(:page2) do
-        FactoryBot.create(:page, site: site).tap do |page|
+        create(:page, site: site).tap do |page|
           page.insert_at(1)
         end
       end
 
-      before { FactoryBot.create(:page, site: site) }
+      before { create(:page, site: site) }
 
       it 'returns pages when page ids' do
         expect(site.main_menu_pages).to eq [page2, page1]
@@ -57,7 +57,7 @@ RSpec.describe Site do
   end
 
   describe 'validations' do
-    subject(:site) { FactoryBot.create(:site) }
+    subject(:site) { create(:site) }
 
     it { is_expected.to validate_length_of(:host).is_at_most(64) }
     it { is_expected.to validate_presence_of(:host) }
@@ -104,7 +104,7 @@ RSpec.describe Site do
   end
 
   describe '#address' do
-    subject(:site) { FactoryBot.build(:site) }
+    subject(:site) { build(:site) }
 
     context 'with ssl enabled' do
       it 'returns https url' do
@@ -121,7 +121,7 @@ RSpec.describe Site do
   end
 
   describe '#url_options' do
-    subject(:site) { FactoryBot.build(:site) }
+    subject(:site) { build(:site) }
 
     it 'returns url options' do
       expect(site.url_options).to eq(host: site.host, protocol: 'http', port: nil)

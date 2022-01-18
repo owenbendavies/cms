@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe ApplicationMailer do
   subject(:email) { NotificationsMailer.new_message(message) }
 
-  let(:site) { FactoryBot.build(:site) }
-  let(:message) { FactoryBot.build(:message, site: site) }
+  let(:site) { build(:site) }
+  let(:message) { build(:message, site: site) }
 
   it 'has from name as site name' do
     addresses = email.header['from'].address_list.addresses
@@ -16,7 +16,7 @@ RSpec.describe ApplicationMailer do
   end
 
   describe 'links' do
-    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+    let(:site) { create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     context 'with ssl enabled' do
@@ -42,7 +42,7 @@ RSpec.describe ApplicationMailer do
 
   describe 'charity number' do
     context 'with site with charity number' do
-      let(:site) { FactoryBot.build(:site, charity_number: new_number) }
+      let(:site) { build(:site, charity_number: new_number) }
 
       it 'has charity number in body' do
         expect(email.body).to have_content "Registered charity number #{new_number}"
@@ -50,7 +50,7 @@ RSpec.describe ApplicationMailer do
     end
 
     context 'with site without charity number' do
-      let(:site) { FactoryBot.build(:site, charity_number: nil) }
+      let(:site) { build(:site, charity_number: nil) }
 
       it 'does not have charity number in body' do
         expect(email.body).not_to have_content 'Registered charity'
@@ -59,7 +59,7 @@ RSpec.describe ApplicationMailer do
   end
 
   context 'when site has privacy policy' do
-    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+    let(:site) { create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'has privacy policy in body' do

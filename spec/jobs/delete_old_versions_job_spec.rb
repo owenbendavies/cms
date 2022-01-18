@@ -6,19 +6,19 @@ RSpec.describe DeleteOldVersionsJob do
 
   let(:old_model) do
     Timecop.travel(old_time) do
-      FactoryBot.create(:site)
+      create(:site)
     end
   end
 
   let(:old_page) do
     Timecop.travel(old_time) do
-      FactoryBot.create(:page)
+      create(:page)
     end
   end
 
   let(:recent_model) do
     Timecop.travel(recent_time) do
-      FactoryBot.create(:site)
+      create(:site)
     end
   end
 

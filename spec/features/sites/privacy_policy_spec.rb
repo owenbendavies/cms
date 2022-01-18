@@ -12,7 +12,7 @@ RSpec.feature 'Privacy Policy' do
   end
 
   context 'when site has privacy policy' do
-    let(:site) { FactoryBot.create(:site, :with_privacy_policy, host: Capybara.server_host) }
+    let(:site) { create(:site, :with_privacy_policy, host: Capybara.server_host) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'shows link to privacy policy' do

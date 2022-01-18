@@ -17,7 +17,7 @@ RSpec.feature 'Admin messages' do
   end
 
   context 'with a message' do
-    let!(:message) { FactoryBot.create(:message, site: site) }
+    let!(:message) { create(:message, site: site) }
 
     let(:created_at) do
       message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y, %H:%M:%S')
@@ -100,7 +100,7 @@ RSpec.feature 'Admin messages' do
   context 'with multiple messages' do
     let!(:messages) do
       (0..11).map do |i|
-        FactoryBot.create(
+        create(
           :message,
           site: site,
           created_at: Time.zone.now - 1.month - 3.days - i.minutes,

@@ -28,7 +28,7 @@ RSpec.describe ApplicationHelper do
     context 'with signed in' do
       helper do
         def current_user
-          FactoryBot.build(:user)
+          true
         end
       end
 
@@ -40,7 +40,7 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#copyright' do
-    let(:site) { FactoryBot.build_stubbed(:site) }
+    let(:site) { build_stubbed(:site) }
 
     it 'uses site name' do
       expect(copyright(site)).to eq "#{site.name} © #{Time.zone.now.year}"
@@ -54,7 +54,7 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#page_title' do
-    let(:site) { FactoryBot.build_stubbed(:site) }
+    let(:site) { build_stubbed(:site) }
 
     context 'with content' do
       it 'shows title and content' do
@@ -70,7 +70,7 @@ RSpec.describe ApplicationHelper do
   end
 
   describe '#privacy_policy_link' do
-    let(:site) { FactoryBot.create(:site, :with_privacy_policy) }
+    let(:site) { create(:site, :with_privacy_policy) }
     let(:privacy_policy) { site.privacy_policy_page }
 
     it 'opens in a new page' do
@@ -96,7 +96,7 @@ RSpec.describe ApplicationHelper do
   describe '#site_stylesheet' do
     let(:css) { 'body{background-color: red}' }
     let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
-    let(:site) { FactoryBot.build(:site, css: css) }
+    let(:site) { build(:site, css: css) }
 
     it 'returns stylesheet path' do
       url = "/css/#{md5}.css"
