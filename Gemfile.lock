@@ -221,7 +221,7 @@ GEM
     htmlentities (4.3.4)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    i18n-tasks (0.9.36)
+    i18n-tasks (0.9.37)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -297,7 +297,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.0)
+    nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
       racc (~> 1.4)
     oauth2 (1.4.7)
