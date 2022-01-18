@@ -57,7 +57,9 @@ gem 'rollbar' # Error notifications
 gem 'scout_apm' # Application monitoring
 
 # Assets
-gem 'webpacker' # JavaScript compiler
+gem 'cssbundling-rails' # Bundle and process CSS
+gem 'jsbundling-rails' # Bundle and transpile JavaScript
+gem 'sprockets-rails' # The original asset pipeline for Rails
 
 group :development, :test do
   gem 'bullet' # Detect bad database queries
@@ -69,6 +71,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'foreman' # Process runner
   gem 'graphiql-rails' # GraphQL web client
   gem 'letter_opener' # Opens emails in browser
   gem 'web-console' # Web console debugger
