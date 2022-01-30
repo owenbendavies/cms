@@ -6,6 +6,8 @@ updates:
       interval: daily
       time: '08:00'
       timezone: Europe/London
+    allow:
+      - dependency-type: all
     open-pull-requests-limit: 10
     versioning-strategy: increase
   - package-ecosystem: npm
@@ -14,14 +16,18 @@ updates:
       interval: daily
       time: '08:00'
       timezone: Europe/London
+    allow:
+      - dependency-type: all
     open-pull-requests-limit: 10
-    versioning-strategy: widen
+    versioning-strategy: increase
   - package-ecosystem: terraform
     directory: '/terraform/app_environment/'
     schedule:
       interval: daily
       time: '08:00'
       timezone: Europe/London
+    allow:
+      - dependency-type: all
     open-pull-requests-limit: 10
   - package-ecosystem: terraform
     directory: '/terraform/app_global/'
@@ -29,4 +35,6 @@ updates:
       interval: daily
       time: '08:00'
       timezone: Europe/London
+    allow:
+      - dependency-type: all
     open-pull-requests-limit: 10
