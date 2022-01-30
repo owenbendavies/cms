@@ -1,10 +1,9 @@
 module Types
   class QueryType < BaseObject
+    include GraphQL::Types::Relay::HasNodeField
     include Pundit
 
     alias pundit_user context
-
-    add_field(GraphQL::Types::Relay::NodeField)
 
     field :images, ImageType.connection_type, null: true
 
