@@ -1,6 +1,5 @@
 .page {
   &__container {
     @include make-container;
-    @include make-container-max-widths;
   }
 }
