@@ -1,6 +1,6 @@
 RSpec.shared_context 'with policy context' do
   let(:record) { nil }
-  let(:site) { FactoryBot.create :site }
+  let(:site) { create :site }
   let(:user) { nil }
 
   let(:context) do

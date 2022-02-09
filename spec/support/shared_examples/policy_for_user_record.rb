@@ -2,8 +2,8 @@ RSpec.shared_examples 'policy for user record' do
   include_examples 'policy for site user'
 
   context 'with another site' do
-    let(:other_site) { FactoryBot.build(:site) }
-    let(:user) { FactoryBot.build(:user, site: other_site) }
+    let(:other_site) { build(:site) }
+    let(:user) { build(:user, site: other_site) }
 
     let(:context) do
       {
