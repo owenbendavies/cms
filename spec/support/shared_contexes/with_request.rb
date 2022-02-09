@@ -24,7 +24,7 @@ RSpec.shared_context 'with request' do
 
   let(:expected_status) { 200 }
 
-  let(:site) { FactoryBot.create(:site) }
+  let(:site) { create(:site) }
 end
 
 RSpec.configuration.include_context 'with request', type: :request

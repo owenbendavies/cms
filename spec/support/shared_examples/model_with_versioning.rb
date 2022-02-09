@@ -1,5 +1,5 @@
 RSpec.shared_examples 'model with versioning', versioning: true do
-  subject(:model) { FactoryBot.create(described_class.to_s.underscore) }
+  subject(:model) { create(described_class.to_s.underscore) }
 
   it 'records creates' do
     expect(model.versions.last.event).to eq 'create'
