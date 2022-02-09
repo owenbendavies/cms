@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_131856) do
-
+ActiveRecord::Schema[7.0].define(version: 2020_07_21_131856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -19,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_131856) do
   create_table "images", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", limit: 64, null: false
     t.string "filename", limit: 40, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.uuid "site_id", null: false
     t.index ["filename"], name: "index_images_on_filename", unique: true
     t.index ["site_id", "name"], name: "index_images_on_site_id_and_name", unique: true
@@ -32,8 +31,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_131856) do
     t.string "email", limit: 64, null: false
     t.string "phone", limit: 32
     t.text "message", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "privacy_policy_agreed", default: false
     t.uuid "site_id", null: false
     t.index ["created_at"], name: "index_messages_on_created_at"
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_131856) do
     t.boolean "private", default: false, null: false
     t.boolean "contact_form", default: false, null: false
     t.text "html_content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "main_menu_position"
     t.text "custom_html"
     t.uuid "site_id", null: false
@@ -62,8 +61,8 @@ ActiveRecord::Schema.define(version: 2020_07_21_131856) do
     t.string "google_analytics", limit: 32
     t.string "charity_number", limit: 32
     t.text "sidebar_html_content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "main_menu_in_footer", default: false, null: false
     t.boolean "separate_header", default: true, null: false
     t.jsonb "links", default: []
@@ -78,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_131856) do
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.uuid "item_id", null: false
     t.index ["created_at"], name: "index_versions_on_created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
