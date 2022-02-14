@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
-  include Pundit
+  include Pundit::Authorization
 
   protect_from_forgery with: :reset_session
 
