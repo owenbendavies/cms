@@ -1,7 +1,7 @@
 module Types
   class QueryType < BaseObject
     include GraphQL::Types::Relay::HasNodeField
-    include Pundit
+    include Pundit::Authorization
 
     alias pundit_user context
 
