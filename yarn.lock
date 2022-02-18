@@ -4113,10 +4113,10 @@ ra-i18n-polyglot@^3.19.8:
     node-polyglot "^2.2.2"
     ra-core "^3.19.8"
 
-ra-input-rich-text@^3.19.8:
-  version "3.19.8"
-  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-3.19.8.tgz#e95d3803dd02bfff01c4c8df2e1ebe0aec5c5a6e"
-  integrity sha512-yWxwI1Kys7Fz++oTrj9mizAbW0EqZo2kzRHaiwyHDYufb1ZL8gdsg8VdUaNXsmC+nXXbcIQ6kcD3SfriKmrOWg==
+ra-input-rich-text@^3.19.10:
+  version "3.19.10"
+  resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-3.19.10.tgz#4949e0ba4d5187e528b3ff33730b5bf30fe92e8f"
+  integrity sha512-u8zfOjvNDD88X1ZV2RHLpd6/RLziKRT8mlvAD7LlzO8hyvydsl76+0Xhp9QguSpR3Dn0n0ru+L9LlIoH/zgH1w==
   dependencies:
     "@types/quill" "~1.3.0"
     lodash "~4.17.5"
