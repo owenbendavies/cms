@@ -4124,11 +4124,11 @@ ra-input-rich-text@^3.19.10:
     quill "~1.3.6"
 
 ra-language-english@^3.19.8:
-  version "3.19.8"
-  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.19.8.tgz#d43fb8ac40fe44fab6c1cf04d37ed133e1fe7b1a"
-  integrity sha512-2FIm4ZqnPzxi7umtu3U6O46HV5chxHgYHvxDKiTosc0//YzvuIkJxurbLTkpKLx1OThvWjqfhfYJkF6EqA0zNA==
+  version "3.19.10"
+  resolved "https://registry.yarnpkg.com/ra-language-english/-/ra-language-english-3.19.10.tgz#32b88c184c9b10f3c4fbd7cb796bc80c94651879"
+  integrity sha512-SE6MRdxXjg9yL+baE0WGW5pTd6mEwWpHSGnAm3e3VTH8pqXzHDCOI7JieHYWfKz1uSQUaHYqRJ5hxVKiBA85UA==
   dependencies:
-    ra-core "^3.19.8"
+    ra-core "^3.19.10"
 
 ra-ui-materialui@^3.19.8:
   version "3.19.10"
