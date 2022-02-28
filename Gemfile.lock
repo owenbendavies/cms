@@ -223,7 +223,7 @@ GEM
     io-wait (0.2.1)
     jaro_winkler (1.5.4)
     jmespath (1.6.0)
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     json_schemer (0.2.19)
       ecma-re-validator (~> 0.3)
