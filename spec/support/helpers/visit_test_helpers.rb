@@ -11,7 +11,7 @@ module VisitTestHelpers
   def navigate_via_topbar(menu:, title:, icon:)
     visit '/home'
 
-    click_topbar_link(menu: menu, title: title, icon: icon)
+    click_topbar_link(menu:, title:, icon:)
 
     within '.article__header' do
       expect(page).to have_content title

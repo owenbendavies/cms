@@ -16,9 +16,6 @@ AllCops:
 Bundler/GemVersion: # Keep versions in Gemfile.lock so easy to upgrade
   EnforcedStyle: forbidden
 
-Layout/MultilineAssignmentLayout: # Prefer same line
-  EnforcedStyle: same_line
-
 Lint/ConstantResolution: # Not standard ruby style
   Enabled: false
 
@@ -32,10 +29,6 @@ RSpec/AlignLeftLetBrace: # Alignment creates large diffs on changes
 
 RSpec/AlignRightLetBrace: # Alignment creates large diffs on changes
   Enabled: false
-
-RSpec/DescribeClass: # Not testing a class or module
-  Exclude:
-    - 'spec/requests/**/*'
 
 RSpec/ExampleLength:
   Exclude:

@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Types::TotalCountConnection do
-  subject(:result) { GraphqlSchema.execute(query, context: context) }
+  subject(:result) { GraphqlSchema.execute(query, context:) }
 
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:context) { { user:, site: } }
 
-  let!(:message1) { create(:message, site: site) }
-  let!(:message2) { create(:message, site: site) }
+  let!(:message1) { create(:message, site:) }
+  let!(:message2) { create(:message, site:) }
 
   let(:query) do
     <<~BODY
@@ -38,7 +38,7 @@ RSpec.describe Types::TotalCountConnection do
   end
 
   before do
-    create(:message, site: site)
+    create(:message, site:)
     create(:message)
   end
 

@@ -8,7 +8,7 @@ module Mutations
       pages.each(&:destroy!)
 
       {
-        pages: pages
+        pages:
       }
     end
   end

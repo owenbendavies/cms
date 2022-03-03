@@ -29,18 +29,18 @@ RSpec.describe Site do
 
     context 'with pages' do
       let!(:page1) do
-        create(:page, site: site).tap do |page|
+        create(:page, site:).tap do |page|
           page.insert_at(1)
         end
       end
 
       let!(:page2) do
-        create(:page, site: site).tap do |page|
+        create(:page, site:).tap do |page|
           page.insert_at(1)
         end
       end
 
-      before { create(:page, site: site) }
+      before { create(:page, site:) }
 
       it 'returns pages when page ids' do
         expect(site.main_menu_pages).to eq [page2, page1]

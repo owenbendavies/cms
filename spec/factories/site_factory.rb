@@ -21,7 +21,7 @@ FactoryBot.define do
 
     trait :with_privacy_policy do
       after(:create) do |site, _evaluator|
-        page = create(:page, site: site)
+        page = create(:page, site:)
 
         site.update!(privacy_policy_page: page)
       end

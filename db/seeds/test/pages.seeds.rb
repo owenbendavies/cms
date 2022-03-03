@@ -3,7 +3,7 @@ after 'test:sites' do
 
   ('a'..'k').map do |i|
     Page.where(
-      site: site,
+      site:,
       name: "Page #{i}"
     ).first_or_create!(
       html_content: "<p>#{Faker::Lorem.paragraph}</p>"

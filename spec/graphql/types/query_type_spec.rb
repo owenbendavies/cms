@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Types::QueryType do
-  subject(:result) { GraphqlSchema.execute(query, context: context) }
+  subject(:result) { GraphqlSchema.execute(query, context:) }
 
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:context) { { user:, site: } }
 
   context 'with images query' do
-    let!(:image1) { create(:image, name: 'Image 1', site: site) }
-    let!(:image2) { create(:image, name: 'Image 2', site: site) }
+    let!(:image1) { create(:image, name: 'Image 1', site:) }
+    let!(:image2) { create(:image, name: 'Image 2', site:) }
 
     let(:query) do
       <<~BODY
@@ -50,7 +50,7 @@ RSpec.describe Types::QueryType do
       create(
         :message,
         name: 'Message 1',
-        site: site,
+        site:,
         created_at: 2.days.ago,
         updated_at: 2.days.ago
       )
@@ -59,7 +59,7 @@ RSpec.describe Types::QueryType do
     let!(:message2) do
       create(
         :message,
-        site: site,
+        site:,
         name: 'Message 2',
         created_at: 1.day.ago,
         updated_at: 1.day.ago
@@ -101,8 +101,8 @@ RSpec.describe Types::QueryType do
   end
 
   context 'with pages query' do
-    let!(:page1) { create(:page, name: 'Page 1', site: site) }
-    let!(:page2) { create(:page, name: 'Page 2', site: site) }
+    let!(:page1) { create(:page, name: 'Page 1', site:) }
+    let!(:page2) { create(:page, name: 'Page 2', site:) }
 
     let(:query) do
       <<~BODY
@@ -185,7 +185,7 @@ RSpec.describe Types::QueryType do
   end
 
   context 'with node query' do
-    let(:message) { create(:message, site: site) }
+    let(:message) { create(:message, site:) }
 
     let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 

@@ -6,7 +6,7 @@ RSpec.describe CarrierWave do
   end
 
   let(:site) { build_stubbed(:site) }
-  let(:uploader) { ImageUploader.new(Image.new(site: site)) }
+  let(:uploader) { ImageUploader.new(Image.new(site:)) }
 
   before do
     File.open(Rails.root.join('spec/assets/small.jpg')) do |file|

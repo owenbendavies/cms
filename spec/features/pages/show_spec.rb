@@ -22,7 +22,7 @@ RSpec.feature 'Page show' do
   end
 
   scenario 'private page' do
-    private_page = create(:page, private: true, site: site)
+    private_page = create(:page, private: true, site:)
     login_as site_user
     visit "/#{private_page.url}"
 

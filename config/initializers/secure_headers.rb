@@ -15,10 +15,10 @@ SecureHeaders::Configuration.default do |config|
     preserve_schemes: true,
     default_src: ["'none'"],
     child_src: ["'self'"],
-    connect_src: connect_src,
+    connect_src:,
     font_src: ["'self'", 'https:', 'data:'],
     img_src: ["'self'", 'https:', 'data:'],
-    script_src: script_src,
+    script_src:,
     style_src: asset_src
   }
 end

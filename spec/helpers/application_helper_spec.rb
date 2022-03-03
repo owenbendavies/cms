@@ -96,7 +96,7 @@ RSpec.describe ApplicationHelper do
   describe '#site_stylesheet' do
     let(:css) { 'body{background-color: red}' }
     let(:md5) { 'b1192d422b8c8999043c2abd1b47b750' }
-    let(:site) { build(:site, css: css) }
+    let(:site) { build(:site, css:) }
 
     it 'returns stylesheet path' do
       url = "/css/#{md5}.css"

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Page with contact form' do
-  let(:contact_page) { create(:page, contact_form: true, site: site) }
+  let(:contact_page) { create(:page, contact_form: true, site:) }
   let(:sleep_rate) { InvisibleCaptcha.timestamp_threshold + 1 }
 
   let(:emails) do

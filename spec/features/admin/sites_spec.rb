@@ -87,7 +87,7 @@ RSpec.feature 'Admin sites' do
     let(:main_menu_right_links) { '.main-menu__links.ml-auto' }
     let(:main_menu_footer) { '.footer-main-menu' }
 
-    let(:test_page) { create(:page, name: 'Test Page', site: site) }
+    let(:test_page) { create(:page, name: 'Test Page', site:) }
 
     before do
       home_page.insert_at(1)

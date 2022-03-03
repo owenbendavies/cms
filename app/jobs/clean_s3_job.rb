@@ -15,9 +15,10 @@ class CleanS3Job < ApplicationJob
 
   def image_files
     Image.find_each.map do |image|
-      versions = image.file.versions.map do |_version_name, version|
-        version.path
-      end
+      versions =
+        image.file.versions.map do |_version_name, version|
+          version.path
+        end
 
       [image.file.path] + versions
     end
