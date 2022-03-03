@@ -51,13 +51,13 @@ jobs:
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   terraform:
+    runs-on: ubuntu-20.04
+
     strategy:
       matrix:
         tf_dir:
           - terraform/app_environment
           - terraform/app_global
-
-    runs-on: ubuntu-20.04
 
     defaults:
       run:
@@ -81,9 +81,10 @@ jobs:
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   deploy:
-    if: github.ref == 'refs/heads/main'
-
     needs: [test, terraform]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-20.04
+    concurrency: serial
 
     strategy:
       max-parallel: 1
@@ -97,8 +98,6 @@ jobs:
             tf_dir: terraform/app_environment
           - tf_workspace: global
             tf_dir: terraform/app_global
-
-    runs-on: ubuntu-20.04
 
     defaults:
       run:
