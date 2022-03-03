@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Types::SiteType do
-  subject(:result) { GraphqlSchema.execute(query, context: context) }
+  subject(:result) { GraphqlSchema.execute(query, context:) }
 
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:context) { { user:, site: } }
 
   let(:query) do
     <<~BODY

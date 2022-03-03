@@ -6,7 +6,7 @@ RSpec.describe NotificationsMailer do
   describe '.new_message' do
     subject(:email) { described_class.new_message(message) }
 
-    let(:message) { build(:message, site: site) }
+    let(:message) { build(:message, site:) }
 
     let(:emails) do
       %w[admin1@example.com admin2@example.com another@example.com siteuser@example.com]

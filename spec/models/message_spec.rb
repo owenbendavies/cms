@@ -49,7 +49,7 @@ RSpec.describe Message do
     it { is_expected.not_to validate_presence_of(:privacy_policy_agreed) }
 
     context 'when site has privacy policy' do
-      subject { build(:message, site: site) }
+      subject { build(:message, site:) }
 
       let(:site) { create(:site, :with_privacy_policy) }
 

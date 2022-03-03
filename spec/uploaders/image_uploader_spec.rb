@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ImageUploader do
-  subject(:image_uploader) { described_class.new(Image.new(site: site)) }
+  subject(:image_uploader) { described_class.new(Image.new(site:)) }
 
   let(:site) { build_stubbed(:site) }
 
@@ -18,11 +18,12 @@ RSpec.describe ImageUploader do
   end
 
   let(:uploaded_file_sizes) do
-    file_sizes = expected_files.map do |filename|
-      file = fog_directory.files.get(filename)
-      image = MiniMagick::Image.read(file.body)
-      [filename, "#{image[:width]}x#{image[:height]}"]
-    end
+    file_sizes =
+      expected_files.map do |filename|
+        file = fog_directory.files.get(filename)
+        image = MiniMagick::Image.read(file.body)
+        [filename, "#{image[:width]}x#{image[:height]}"]
+      end
 
     file_sizes.to_h
   end
@@ -94,11 +95,12 @@ RSpec.describe ImageUploader do
 
     context 'with file has exif data' do
       let(:uploaded_file_exif_data) do
-        file_exif = expected_files.map do |filename|
-          file = fog_directory.files.get(filename)
-          image = MiniMagick::Image.read(file.body)
-          [filename, image.exif]
-        end
+        file_exif =
+          expected_files.map do |filename|
+            file = fog_directory.files.get(filename)
+            image = MiniMagick::Image.read(file.body)
+            [filename, image.exif]
+          end
 
         file_exif.to_h
       end

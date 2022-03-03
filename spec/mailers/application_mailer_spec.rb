@@ -4,7 +4,7 @@ RSpec.describe ApplicationMailer do
   subject(:email) { NotificationsMailer.new_message(message) }
 
   let(:site) { build(:site) }
-  let(:message) { build(:message, site: site) }
+  let(:message) { build(:message, site:) }
 
   it 'has from name as site name' do
     addresses = email.header['from'].address_list.addresses

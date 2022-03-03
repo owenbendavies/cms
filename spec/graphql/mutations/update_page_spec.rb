@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Mutations::UpdatePage do
-  subject(:result) { GraphqlSchema.execute(query, context: context, variables: variables) }
+  subject(:result) { GraphqlSchema.execute(query, context:, variables:) }
 
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:page) { create(:page, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:page) { create(:page, site:) }
+  let(:context) { { user:, site: } }
 
   let(:mutation_id) { SecureRandom.uuid }
   let(:page_id) { Base64.urlsafe_encode64("Page-#{page.id}") }

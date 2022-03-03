@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe GraphqlSchema do
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:context) { { user:, site: } }
   let(:id) { Base64.urlsafe_encode64("Message-#{message.id}") }
 
   describe '.id_from_object' do
@@ -20,7 +20,7 @@ RSpec.describe GraphqlSchema do
     subject(:result) { described_class.object_from_id(id, context) }
 
     context 'with in scope object' do
-      let(:message) { create(:message, site: site) }
+      let(:message) { create(:message, site:) }
 
       it 'returns the object' do
         expect(result).to eq message

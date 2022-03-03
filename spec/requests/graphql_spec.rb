@@ -13,7 +13,7 @@ RSpec.describe 'GraphQL' do
   end
 
   context 'with an authorized user' do
-    let(:request_user) { build(:user, site: site) }
+    let(:request_user) { build(:user, site:) }
 
     context 'with an errror' do
       let(:expected_body) do

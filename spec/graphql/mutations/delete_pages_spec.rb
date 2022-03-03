@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Mutations::DeletePages do
-  subject(:result) { GraphqlSchema.execute(query, context: context, variables: variables) }
+  subject(:result) { GraphqlSchema.execute(query, context:, variables:) }
 
   let(:site) { create(:site) }
-  let(:user) { build(:user, site: site) }
-  let(:context) { { user: user, site: site } }
+  let(:user) { build(:user, site:) }
+  let(:context) { { user:, site: } }
 
   let(:mutation_id) { SecureRandom.uuid }
-  let!(:page1) { create(:page, site: site) }
-  let!(:page2) { create(:page, site: site) }
+  let!(:page1) { create(:page, site:) }
+  let!(:page2) { create(:page, site:) }
   let(:page1_id) { Base64.urlsafe_encode64("Page-#{page1.id}") }
   let(:page2_id) { Base64.urlsafe_encode64("Page-#{page2.id}") }
 
@@ -50,7 +50,7 @@ RSpec.describe Mutations::DeletePages do
   end
 
   before do
-    create(:page, site: site)
+    create(:page, site:)
   end
 
   it 'deletes the pages' do

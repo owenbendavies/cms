@@ -102,7 +102,7 @@ RSpec.feature 'Admin pages' do
   context 'with multiple pages' do
     let!(:pages) do
       ('a'..'k').map do |i|
-        create(:page, name: "Page #{i}", site: site)
+        create(:page, name: "Page #{i}", site:)
       end
     end
 

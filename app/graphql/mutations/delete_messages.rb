@@ -8,7 +8,7 @@ module Mutations
       messages.each(&:destroy!)
 
       {
-        messages: messages
+        messages:
       }
     end
   end

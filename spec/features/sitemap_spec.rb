@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Sitemap' do
-  let!(:public_page) { create(:page, site: site) }
-  let!(:private_page) { create(:page, private: true, site: site) }
+  let!(:public_page) { create(:page, site:) }
+  let!(:private_page) { create(:page, private: true, site:) }
 
   context 'with html' do
     scenario 'not logged in' do

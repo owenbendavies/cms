@@ -5,7 +5,7 @@ RSpec.feature 'Site main menu' do
   let(:footer_main_menu) { '.footer-main-menu' }
 
   context 'with main menu' do
-    let(:test_page) { create(:page, name: 'Test Page', site: site) }
+    let(:test_page) { create(:page, name: 'Test Page', site:) }
 
     before do
       home_page.insert_at(1)

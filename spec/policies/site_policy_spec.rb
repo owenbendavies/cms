@@ -7,7 +7,7 @@ RSpec.describe SitePolicy do
     let!(:site2) { create(:site) }
 
     context 'with site user' do
-      let(:user) { build(:user, site: site) }
+      let(:user) { build(:user, site:) }
 
       it 'returns users sites' do
         expect(policy_scope).to contain_exactly site

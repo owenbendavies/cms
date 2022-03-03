@@ -17,7 +17,7 @@ RSpec.feature 'Admin messages' do
   end
 
   context 'with a message' do
-    let!(:message) { create(:message, site: site) }
+    let!(:message) { create(:message, site:) }
 
     let(:created_at) do
       message.created_at.in_time_zone(ENV.fetch('TZ')).strftime('%d/%m/%Y, %H:%M:%S')
@@ -102,7 +102,7 @@ RSpec.feature 'Admin messages' do
       (0..11).map do |i|
         create(
           :message,
-          site: site,
+          site:,
           created_at: 1.month.ago - 3.days - i.minutes,
           updated_at: 1.month.ago - 3.days - i.minutes
         )

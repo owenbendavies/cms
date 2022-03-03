@@ -5,8 +5,8 @@ RSpec.shared_context 'with policy context' do
 
   let(:context) do
     {
-      user: user,
-      site: site
+      user:,
+      site:
     }
   end
 end

@@ -7,7 +7,7 @@ RSpec.shared_examples 'policy for user record' do
 
     let(:context) do
       {
-        user: user,
+        user:,
         site: other_site
       }
     end
