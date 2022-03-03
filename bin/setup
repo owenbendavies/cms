@@ -14,8 +14,6 @@ gem install bundler
 
 bundle check || bundle install --jobs=4 --retry=3
 
-bundle clean
-
 yarn
 
 ./bin/rails db:create db:migrate
