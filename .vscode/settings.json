@@ -1,0 +1,15 @@
+{
+  "[dotenv]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+  "[ruby]": { "editor.defaultFormatter": "rebornix.ruby" },
+  "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
+  "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
+  "cSpell.language": "en-GB",
+  "editor.codeActionsOnSave": { "source.fixAll": true },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "npm.packageManager": "yarn",
+  "ruby.format": "rubocop",
+  "ruby.lint": { "rubocop": { "useBundler": true } },
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true
+}

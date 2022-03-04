@@ -13,10 +13,10 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "lint": "npm-run-all lint-eslint lint-stylelint lint-prettier",
-    "lint-eslint": "eslint --ignore-path .gitignore --ext js,jsx .",
-    "lint-stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss}'",
-    "lint-prettier": "prettier --ignore-path .gitignore --check ."
+    "lint": "npm-run-all lint:eslint lint:stylelint lint:prettier",
+    "lint:eslint": "eslint --ignore-path .gitignore --ext js,jsx .",
+    "lint:stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss}'",
+    "lint:prettier": "prettier --ignore-path .gitignore --check ."
   },
   "dependencies": {
     "@babel/core": "^7.17.5",
