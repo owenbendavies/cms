@@ -9,7 +9,7 @@ gem 'aws-sdk-rails' # Sets up AWS SDK to work with Rails
 gem 'aws-sdk-ses' # Send emails with AWS
 gem 'aws-sdk-sqs' # Message queue
 gem 'fog-aws' # AWS file upload
-gem 'shoryuken' # AWS SNS integration for ActiveJob
+gem 'shoryuken' # AWS SQS integration for ActiveJob
 
 # Databases
 gem 'pg' # PostgreSQL
@@ -67,7 +67,6 @@ group :development, :test do
   gem 'parallel_tests' # Run test in parallel
   gem 'pry-byebug' # Debugging
   gem 'pry-rails' # Debugging
-  gem 'solargraph' # Code completion
 end
 
 group :development do
