@@ -49,7 +49,7 @@ RSpec.feature 'Page with contact form' do
     click_button 'Send Message'
 
     expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
-    expect(page).to have_content "Name\nis too short"
+    expect(page).to have_content 'Name is too short'
   end
 
   scenario 'filling in honeypot', js: false do
@@ -82,7 +82,7 @@ RSpec.feature 'Page with contact form' do
       click_button 'Send Message'
 
       expect(page).to have_content 'Sorry your message was invalid, please fix the problems below'
-      expect(page).to have_content "#{privacy_policy_text}\ncan't be blank"
+      expect(page).to have_content "Privacy policy agreed can't be blank"
     end
   end
 end

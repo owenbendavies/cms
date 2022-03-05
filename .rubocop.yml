@@ -8,6 +8,7 @@ AllCops:
   EnabledByDefault: true
   Exclude:
     - 'config/initializers/simple_form.rb' # Auto generated file
+    - 'config/initializers/simple_form_bootstrap.rb' # Auto generated file
     - 'db/migrate/*_squash_migrations.rb' # Auto generated file
     - 'db/schema.rb' # Auto generated file
     - 'node_modules/**/*' # External libraries
