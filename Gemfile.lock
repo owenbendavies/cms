@@ -218,7 +218,7 @@ GEM
     invisible_captcha (2.0.0)
       rails (>= 5.0)
     io-wait (0.2.1)
-    jmespath (1.6.0)
+    jmespath (1.6.1)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     json_schemer (0.2.19)
