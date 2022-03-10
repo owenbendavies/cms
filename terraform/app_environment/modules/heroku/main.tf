@@ -1,6 +1,6 @@
 resource "heroku_addon" "app_librato" {
-  app  = heroku_app.app.name
-  plan = "librato:development"
+  app_id = heroku_app.app.id
+  plan   = "librato:development"
 
   lifecycle {
     prevent_destroy = true
@@ -8,8 +8,8 @@ resource "heroku_addon" "app_librato" {
 }
 
 resource "heroku_addon" "app_logentries" {
-  app  = heroku_app.app.name
-  plan = "logentries:le_tryit"
+  app_id = heroku_app.app.id
+  plan   = "logentries:le_tryit"
 
   lifecycle {
     prevent_destroy = true
@@ -18,8 +18,8 @@ resource "heroku_addon" "app_logentries" {
 
 
 resource "heroku_addon" "app_postgresql" {
-  app  = heroku_app.app.name
-  plan = "heroku-postgresql:hobby-dev"
+  app_id = heroku_app.app.id
+  plan   = "heroku-postgresql:hobby-dev"
 
   lifecycle {
     prevent_destroy = true
@@ -27,8 +27,8 @@ resource "heroku_addon" "app_postgresql" {
 }
 
 resource "heroku_addon" "app_rollbar" {
-  app  = heroku_app.app.name
-  plan = "rollbar:free"
+  app_id = heroku_app.app.id
+  plan   = "rollbar:free"
 
   lifecycle {
     prevent_destroy = true
@@ -36,8 +36,8 @@ resource "heroku_addon" "app_rollbar" {
 }
 
 resource "heroku_addon" "app_scheduler" {
-  app  = heroku_app.app.name
-  plan = "scheduler:standard"
+  app_id = heroku_app.app.id
+  plan   = "scheduler:standard"
 
   lifecycle {
     prevent_destroy = true
@@ -45,8 +45,8 @@ resource "heroku_addon" "app_scheduler" {
 }
 
 resource "heroku_addon" "app_scout" {
-  app  = heroku_app.app.name
-  plan = "scout:chair"
+  app_id = heroku_app.app.id
+  plan   = "scout:chair"
 
   lifecycle {
     prevent_destroy = true
@@ -90,31 +90,31 @@ resource "heroku_app" "app" {
 }
 
 resource "heroku_app_feature" "app_log_runtime_metrics" {
-  app  = heroku_app.app.name
-  name = "log-runtime-metrics"
+  app_id = heroku_app.app.id
+  name   = "log-runtime-metrics"
 }
 
 resource "heroku_app_feature" "api_runtime_dyno_metadata" {
-  app  = heroku_app.app.name
-  name = "runtime-dyno-metadata"
+  app_id = heroku_app.app.id
+  name   = "runtime-dyno-metadata"
 }
 
 resource "heroku_domain" "app" {
   for_each = toset(var.domains)
 
-  app      = heroku_app.app.name
+  app_id   = heroku_app.app.id
   hostname = each.key
 }
 
 resource "heroku_formation" "app_web" {
-  app      = heroku_app.app.name
+  app_id   = heroku_app.app.id
   quantity = 1
   size     = "Free"
   type     = "web"
 }
 
 resource "heroku_formation" "app_worker" {
-  app      = heroku_app.app.name
+  app_id   = heroku_app.app.id
   quantity = 1
   size     = "Free"
   type     = "worker"
