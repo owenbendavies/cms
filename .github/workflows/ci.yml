@@ -52,6 +52,12 @@ jobs:
       - name: Run git diff
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
+  spellcheck:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: streetsidesoftware/cspell-action@v1
+
   terraform:
     runs-on: ubuntu-20.04
 
@@ -87,7 +93,7 @@ jobs:
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
   deploy:
-    needs: [test, terraform]
+    needs: [test, spellcheck, terraform]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-20.04
     concurrency: serial

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationHelper do
   describe '#body_class' do
-    context 'without sigining in' do
+    context 'without logging in' do
       helper do
         def current_user
           nil
