@@ -3,7 +3,7 @@
   "[ruby]": { "editor.defaultFormatter": "rebornix.ruby" },
   "[shellscript]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
   "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
-  "cSpell.language": "en-GB",
+  "cSpell.diagnosticLevel": "Warning",
   "editor.codeActionsOnSave": { "source.fixAll": true },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
