@@ -65,7 +65,7 @@ RSpec.feature 'Admin pages' do
     expect(page).to have_content 'Message'
   end
 
-  scenario 'deleteing a page' do
+  scenario 'deleting a page' do
     navigate_to_edit_page
     click_button 'Delete'
     click_button 'Confirm'
@@ -125,7 +125,7 @@ RSpec.feature 'Admin pages' do
       expect(page).not_to have_content pages.last.name
     end
 
-    scenario 'deleteing pages' do
+    scenario 'deleting pages' do
       navigate_to_admin_pages
 
       find('table tbody tr:nth-child(1) td:nth-child(1) > span').click

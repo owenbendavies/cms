@@ -122,7 +122,7 @@ RSpec.describe ImageUploader do
         end
       end
 
-      it 'keeps exif data on origonal image' do
+      it 'keeps exif data on original image' do
         exif = uploaded_file_exif_data.fetch("images/#{image_uploader.uuid}/original.jpg")
         expect(exif.fetch('GPSLatitude')).to eq '51/1, 30/1, 1220028377/53512833'
       end

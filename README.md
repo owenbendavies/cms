@@ -19,7 +19,7 @@ used for testing new ideas.
 
 ## Deployment
 
-Deplyoment is managed via [GitHub actions](https://github.com/owenbendavies/cms/actions)
+Deployment is managed via [GitHub actions](https://github.com/owenbendavies/cms/actions)
 with the following manual steps:
 
 ### Heroku Addon PostgreSQL

@@ -34,7 +34,7 @@ RSpec.describe ApplicationHelper do
 
       it 'includes logged in' do
         controller.request.path = '/home'
-        expect(helper.body_class).to eq 'loggedin page-home'
+        expect(helper.body_class).to eq 'authenticated page-home'
       end
     end
   end

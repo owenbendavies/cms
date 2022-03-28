@@ -77,7 +77,7 @@ RSpec.describe Page do
   describe '#name=' do
     subject(:page) { described_class.new }
 
-    it 'sets url as downcases name' do
+    it 'sets url as downcase name' do
       page.name = 'Name'
       expect(page.url).to eq 'name'
     end

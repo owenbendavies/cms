@@ -59,7 +59,7 @@ RSpec.describe Types::SiteType do
     ]
   end
 
-  it 'returns all feilds' do
+  it 'returns all fields' do
     expect(result.values).to eq expected_result
   end
 end
