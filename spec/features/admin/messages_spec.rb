@@ -67,7 +67,7 @@ RSpec.feature 'Admin messages' do
       end
     end
 
-    scenario 'deleteing a message' do
+    scenario 'deleting a message' do
       navigate_to_show_message
       click_button 'Delete'
       click_button 'Confirm'
@@ -140,7 +140,7 @@ RSpec.feature 'Admin messages' do
       expect(page).to have_content messages.last.name
     end
 
-    scenario 'deleteing messages' do
+    scenario 'deleting messages' do
       navigate_to_admin_messages
 
       find('table tbody tr:nth-child(1) td:nth-child(1)').click

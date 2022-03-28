@@ -34,7 +34,7 @@ RSpec.describe 'Unknown routes' do
   end
 
   context 'with missing record' do
-    let(:request_path) { '/badpage' }
+    let(:request_path) { '/bad' }
 
     include_examples 'renders html page not found'
   end
@@ -49,14 +49,14 @@ RSpec.describe 'Unknown routes' do
     end
   end
 
-  context 'with unknown site and unkown format' do
+  context 'with unknown site and unknown format' do
     let(:request_path) { '/sitemap.txt' }
     let(:request_host) { new_host }
 
     include_examples 'returns 406'
   end
 
-  context 'with unkown extension' do
+  context 'with unknown extension' do
     let(:request_path) { '/sitemap.txt' }
 
     include_examples 'returns 406'

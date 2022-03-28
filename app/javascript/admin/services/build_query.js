@@ -148,6 +148,6 @@ export const buildQuery = () => (fetchType, resource, params) => {
     case 'UPDATE':
       return buildUpdateQuery(resource, params);
     default:
-      throw new Error(`Unkown fetchType ${fetchType}`);
+      throw new Error(`Unknown fetchType ${fetchType}`);
   }
 };
