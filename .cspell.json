@@ -19,8 +19,9 @@
     { "name": "bootstrap", "path": "./cspell/bootstrap.txt" },
     { "name": "gems", "path": "./cspell/gems.txt" }
   ],
-  "files": [".*", "**"],
-  "ignorePaths": ["**/*.JPG"],
+  "enableGlobDot": true,
+  "files": ["**"],
+  "ignorePaths": [".git", "**/*.JPG"],
   "useGitignore": true,
   "words": [
     "autoload",

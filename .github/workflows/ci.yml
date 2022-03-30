@@ -56,7 +56,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+
       - uses: streetsidesoftware/cspell-action@v1
+        with:
+          files: '**'
+          incremental_files_only: false
 
   terraform:
     runs-on: ubuntu-20.04
