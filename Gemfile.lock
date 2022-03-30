@@ -426,7 +426,7 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    shoryuken (5.3.2)
+    shoryuken (6.0.0)
       aws-sdk-core (>= 2)
       concurrent-ruby
       thor
