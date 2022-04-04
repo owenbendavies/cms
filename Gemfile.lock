@@ -230,7 +230,7 @@ GEM
     jmespath (1.6.1)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
-    json_schemer (0.2.19)
+    json_schemer (0.2.20)
       ecma-re-validator (~> 0.3)
       hana (~> 1.3)
       regexp_parser (~> 2.0)
