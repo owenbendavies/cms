@@ -4133,9 +4133,9 @@ ra-language-english@^3.19.10:
     ra-core "^3.19.10"
 
 ra-ui-materialui@^3.19.10:
-  version "3.19.10"
-  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.19.10.tgz#062486b0c0c169f9837a12f588a1f59458ed9042"
-  integrity sha512-X7L6nroduA3bJwWFJ97N/n/Nx2F54egI+c4PUpKzddYU2LWFJXpyu/iCAmCGhaoqsAIBur1qMPQ5ZNPxj8iq8A==
+  version "3.19.11"
+  resolved "https://registry.yarnpkg.com/ra-ui-materialui/-/ra-ui-materialui-3.19.11.tgz#ec22b382bb4f8acd9a9eb8c4cc046563b411ba27"
+  integrity sha512-wPFRHkNHZzsm6yxrlSR1F/W9uoP+YiUxkhgFbGzFJL52Y3cmZPZAk9IKfxOzcB1+HMNHp4s1UfFK6cNOInuEvQ==
   dependencies:
     autosuggest-highlight "^3.1.1"
     classnames "~2.2.5"
