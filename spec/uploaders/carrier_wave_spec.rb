@@ -19,6 +19,6 @@ RSpec.describe CarrierWave do
   end
 
   it 'uploads files as private' do
-    expect(uploader.fog_public).to eq false
+    expect(uploader.fog_public).to be false
   end
 end
