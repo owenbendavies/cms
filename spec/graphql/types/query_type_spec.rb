@@ -47,23 +47,11 @@ RSpec.describe Types::QueryType do
 
   context 'with messages query' do
     let!(:message1) do
-      create(
-        :message,
-        name: 'Message 1',
-        site:,
-        created_at: 2.days.ago,
-        updated_at: 2.days.ago
-      )
+      create(:message, name: 'Message 1', site:, created_at: 2.days.ago, updated_at: 2.days.ago)
     end
 
     let!(:message2) do
-      create(
-        :message,
-        site:,
-        name: 'Message 2',
-        created_at: 1.day.ago,
-        updated_at: 1.day.ago
-      )
+      create(:message, site:, name: 'Message 2', created_at: 1.day.ago, updated_at: 1.day.ago)
     end
 
     let(:query) do
@@ -140,12 +128,7 @@ RSpec.describe Types::QueryType do
 
   context 'with sites query' do
     let!(:site2) do
-      create(
-        :site,
-        host: 'aaaa.com',
-        created_at: 2.days.ago,
-        updated_at: 2.days.ago
-      )
+      create(:site, host: 'aaaa.com', created_at: 2.days.ago, updated_at: 2.days.ago)
     end
 
     let(:user) { build(:user, groups: [site.host, site2.host]) }

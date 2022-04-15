@@ -12,12 +12,7 @@ RSpec.describe 'Application web server' do
     let(:asset_src) { "'self' 'unsafe-inline' #{ENV.fetch('AWS_S3_ASSET_HOST')}" }
 
     let(:script_src) do
-      [
-        asset_src,
-        "'unsafe-eval'",
-        'https://www.google-analytics.com',
-        'https://cdnjs.cloudflare.com'
-      ].join(' ')
+      [asset_src, "'unsafe-eval'", 'https://www.google-analytics.com', 'https://cdnjs.cloudflare.com'].join(' ')
     end
 
     let(:csp_header) do
