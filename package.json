@@ -39,7 +39,7 @@
     "ra-data-graphql": "^3.19.11",
     "ra-input-rich-text": "^3.19.11",
     "react": "^17.0.2",
-    "react-admin": "^3.19.11",
+    "react-admin": "^4.0.0",
     "react-dom": "^17.0.2",
     "sass": "^1.50.0",
     "timeago": "^1.6.7",
