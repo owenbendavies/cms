@@ -22,8 +22,7 @@ RSpec.describe Message do
     it { is_expected.to allow_value('someone@example.com').for(:email) }
 
     it do
-      expect(message).not_to allow_value('test@')
-        .for(:email).with_message('is not a valid email address')
+      expect(message).not_to allow_value('test@').for(:email).with_message('is not a valid email address')
     end
 
     it { is_expected.to validate_length_of(:email).is_at_most(64) }
@@ -41,9 +40,7 @@ RSpec.describe Message do
     it { is_expected.to allow_value("Don't remove").for(:message) }
 
     it do
-      expect(message).not_to allow_value('Hello <a>bad</a>')
-        .for(:message)
-        .with_message('html is not allowed')
+      expect(message).not_to allow_value('Hello <a>bad</a>').for(:message).with_message('html is not allowed')
     end
 
     it { is_expected.not_to validate_presence_of(:privacy_policy_agreed) }
