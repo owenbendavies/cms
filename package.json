@@ -30,7 +30,7 @@
     "@rails/ujs": "^7.0.2",
     "apollo-boost": "^0.4.9",
     "autosize": "^5.0.1",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.2.5",
     "bootstrap": "^4.6.1",
     "graphql": "^16.2.0",
     "graphql-tag": "^2.12.6",
