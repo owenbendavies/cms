@@ -14,6 +14,8 @@ jobs:
   test:
     runs-on: ubuntu-20.04
 
+    timeout-minutes: 5
+
     services:
       postgres:
         image: postgres:10
@@ -39,7 +41,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           cache: yarn
-          node-version-file: '.nvmrc'
+          node-version-file: .nvmrc
 
       - run: ./bin/setup
 
@@ -54,6 +56,9 @@ jobs:
 
   spellcheck:
     runs-on: ubuntu-20.04
+
+    timeout-minutes: 1
+
     steps:
       - uses: actions/checkout@v2
 
@@ -64,6 +69,8 @@ jobs:
 
   terraform:
     runs-on: ubuntu-20.04
+
+    timeout-minutes: 1
 
     strategy:
       matrix:
@@ -98,9 +105,14 @@ jobs:
 
   deploy:
     needs: [test, spellcheck, terraform]
+
     if: github.ref == 'refs/heads/main'
+
     runs-on: ubuntu-20.04
+
     concurrency: serial
+
+    timeout-minutes: 2
 
     strategy:
       max-parallel: 1
