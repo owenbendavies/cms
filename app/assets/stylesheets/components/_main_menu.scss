@@ -38,11 +38,6 @@
 
   &__link-item {
     @extend .nav-item;
-
-    &:hover,
-    &:focus {
-      background-color: color.scale($light, $lightness: 6.5%);
-    }
   }
 
   &__link {
