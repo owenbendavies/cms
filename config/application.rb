@@ -24,10 +24,10 @@ module Cms
     config.x.aws_cognito_client_id = ENV.fetch('AWS_COGNITO_CLIENT_ID')
     config.x.aws_cognito_domain = ENV.fetch('AWS_COGNITO_DOMAIN')
     config.x.aws_cognito_user_pool_id = ENV.fetch('AWS_COGNITO_USER_POOL_ID')
-    config.x.default_site_email = ENV['DEFAULT_SITE_EMAIL']
+    config.x.default_site_email = ENV.fetch('DEFAULT_SITE_EMAIL', nil)
     config.x.force_ssl = ENV['FORCE_SSL'].present?
-    config.x.email_link_port = ENV['EMAIL_LINK_PORT']
-    config.x.rollbar_client_token = ENV['ROLLBAR_CLIENT_TOKEN']
+    config.x.email_link_port = ENV.fetch('EMAIL_LINK_PORT', nil)
+    config.x.rollbar_client_token = ENV.fetch('ROLLBAR_CLIENT_TOKEN', nil)
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
