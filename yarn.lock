@@ -2098,9 +2098,9 @@ colord@^2.9.2:
   integrity sha512-Uqbg+J445nc1TKn4FoDPS6ZZqAvEDnwrH42yo8B40JSOgSLxMZ/gt3h4nmCtPLQeXhjJJkqBx7SCY35WnIixaQ==
 
 colorette@^2.0.14:
-  version "2.0.17"
-  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.17.tgz#5dd4c0d15e2984b7433cb4a9f2ead45063b80c47"
-  integrity sha512-hJo+3Bkn0NCHybn9Tu35fIeoOKGOk5OCC32y4Hz2It+qlCO2Q3DeQ1hRn/tDDMQKRYUEzqsl7jbF6dYKjlE60g==
+  version "2.0.18"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.18.tgz#4c260bcf86437ce94fa58e2e49a83b623f3c4d66"
+  integrity sha512-rHDY1i4V4JBCXHnHwaVyA202CKSj2kUrjI5cSJQbTdnFeI4ShV3e19Fe7EQfzL2tjSrvYyWugdGAtEc1lLvGDg==
 
 commander@^2.20.0:
   version "2.20.3"
