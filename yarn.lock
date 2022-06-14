@@ -1947,7 +1947,7 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-browserslist@^4.14.5, browserslist@^4.20.2, browserslist@^4.20.3:
+browserslist@^4.14.5, browserslist@^4.20.2, browserslist@^4.20.4:
   version "4.20.4"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.20.4.tgz#98096c9042af689ee1e0271333dbc564b8ce4477"
   integrity sha512-ok1d+1WpnU24XYN7oC3QWgTyMhY/avPJ/r9T00xxvUOIparA/gc+UPUMaod3i+G6s+nI2nUb9xZ5k794uIwShw==
@@ -2151,11 +2151,11 @@ convert-source-map@^1.7.0:
     safe-buffer "~5.1.1"
 
 core-js-compat@^3.21.0, core-js-compat@^3.22.1:
-  version "3.22.8"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.22.8.tgz#46fa34ce1ddf742acd7f95f575f66bbb21e05d62"
-  integrity sha512-pQnwg4xtuvc2Bs/5zYQPaEYYSuTxsF7LBWF0SvnVhthZo/Qe+rJpcEekrdNK5DWwDJ0gv0oI9NNX5Mppdy0ctg==
+  version "3.23.0"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.23.0.tgz#324191a23bfbd229802718dcc1d213414b244624"
+  integrity sha512-i4FgbtahOArZBEteiL+czI5N/bp17w16bXmLagGThdA2zuX1a5X4HbBmOVD7ERRtk3wMtPOFEmlXpVV4lsvwNw==
   dependencies:
-    browserslist "^4.20.3"
+    browserslist "^4.20.4"
     semver "7.0.0"
 
 core-js-pure@^3.0.0:
