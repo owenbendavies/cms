@@ -467,7 +467,7 @@ GEM
     uri_template (0.7.0)
     validates_email_format_of (1.6.3)
       i18n
-    version_gem (1.0.2)
+    version_gem (1.1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
