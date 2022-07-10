@@ -120,9 +120,9 @@ RSpec.feature 'Admin sites' do
 
       within main_menu_footer do
         expect(page).to have_link 'Home', href: '/home'
-        expect(page).to have_selector 'a.cms-page-link-home'
+        expect(page).to have_selector '.cms-page-link-home'
         expect(page).to have_link 'Test Page', href: '/test_page'
-        expect(page).to have_selector 'a.cms-page-link-test_page'
+        expect(page).to have_selector '.cms-page-link-test_page'
       end
     end
   end
