@@ -80,3 +80,6 @@ Style/MissingElse: # Useful in some cases
 
 Style/StringHashKeys: # Bad in some cases
   Enabled: false
+
+Style/TopLevelMethodDefinition: # Picks up too many false positives
+  Enabled: false
