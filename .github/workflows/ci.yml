@@ -1,3 +1,5 @@
+# cspell:words akhileshns
+
 name: CI
 
 on:
@@ -14,7 +16,7 @@ jobs:
   test:
     runs-on: ubuntu-20.04
 
-    timeout-minutes: 6
+    timeout-minutes: 10
 
     services:
       postgres:
@@ -103,7 +105,7 @@ jobs:
       - name: Run git diff
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
 
-  deploy:
+  deployTerraform:
     needs: [test, spellcheck, terraform]
 
     if: github.ref == 'refs/heads/main'
@@ -112,7 +114,7 @@ jobs:
 
     concurrency: serial
 
-    timeout-minutes: 2
+    timeout-minutes: 10
 
     strategy:
       max-parallel: 1
@@ -145,6 +147,37 @@ jobs:
       - run: terraform init
 
       - run: terraform apply -lock-timeout=30s
+
+      - name: Run git diff
+        run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
+
+  deployHeroku:
+    needs: [deployTerraform]
+
+    if: github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-20.04
+
+    concurrency: serial
+
+    timeout-minutes: 10
+
+    strategy:
+      max-parallel: 1
+
+      matrix:
+        environment:
+          - staging
+          - production
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}-${{ matrix.environment }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
 
       - name: Run git diff
         run: if [[ $(git status --porcelain) != '' ]]; then git status; git diff; exit 1; fi
