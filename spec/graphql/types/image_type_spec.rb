@@ -44,13 +44,13 @@ RSpec.describe Types::ImageType do
               'id' => Base64.urlsafe_encode64("Image-#{image.id}"),
               'name' => image.name,
               'updatedAt' => image.updated_at.iso8601,
-              'url' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'original.jpg'),
-              'urlProcessed' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'processed.jpg'),
-              'urlSpan3' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span3.jpg'),
-              'urlSpan4' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span4.jpg'),
-              'urlSpan8' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span8.jpg'),
-              'urlSpan12' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'span12.jpg'),
-              'urlThumbnail' => File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'thumbnail.jpg')
+              'url' => File.join('http://localhost:3000', 'images', uuid, 'original.jpg'),
+              'urlProcessed' => File.join('http://localhost:3000', 'images', uuid, 'processed.jpg'),
+              'urlSpan3' => File.join('http://localhost:3000', 'images', uuid, 'span3.jpg'),
+              'urlSpan4' => File.join('http://localhost:3000', 'images', uuid, 'span4.jpg'),
+              'urlSpan8' => File.join('http://localhost:3000', 'images', uuid, 'span8.jpg'),
+              'urlSpan12' => File.join('http://localhost:3000', 'images', uuid, 'span12.jpg'),
+              'urlThumbnail' => File.join('http://localhost:3000', 'images', uuid, 'thumbnail.jpg')
             }
           ],
           'totalCount' => 1

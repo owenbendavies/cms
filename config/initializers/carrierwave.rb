@@ -1,7 +1,7 @@
 CarrierWave.configure do |config|
   config.storage = :fog
 
-  config.asset_host = ENV.fetch('AWS_S3_ASSET_HOST')
+  config.asset_host = Rails.configuration.x.aws_s3_asset_host
 
   config.fog_attributes = { cache_control: "public, max-age=#{Integer(1.year)}" }
 

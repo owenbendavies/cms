@@ -9,7 +9,7 @@ RSpec.describe Image do
     let(:uuid) { File.basename(image.filename, '.jpg') }
 
     let(:filename) do
-      File.join(ENV.fetch('AWS_S3_ASSET_HOST'), 'images', uuid, 'original.jpg')
+      File.join('http://localhost:3000', 'images', uuid, 'original.jpg')
     end
 
     before do

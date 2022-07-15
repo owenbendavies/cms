@@ -24,6 +24,7 @@ module Cms
     config.x.aws_cognito_client_id = ENV.fetch('AWS_COGNITO_CLIENT_ID')
     config.x.aws_cognito_domain = ENV.fetch('AWS_COGNITO_DOMAIN')
     config.x.aws_cognito_user_pool_id = ENV.fetch('AWS_COGNITO_USER_POOL_ID')
+    config.x.aws_s3_asset_host = ENV.fetch('AWS_S3_ASSET_HOST')
     config.x.default_site_email = ENV.fetch('DEFAULT_SITE_EMAIL', nil)
     config.x.force_ssl = ENV['FORCE_SSL'].present?
     config.x.email_link_port = ENV.fetch('EMAIL_LINK_PORT', nil)
