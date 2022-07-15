@@ -5,9 +5,14 @@ SecureHeaders::Configuration.default do |config|
 
   asset_src = ["'self'", "'unsafe-inline'", ENV.fetch('AWS_S3_ASSET_HOST', nil)].compact
 
-  script_src = asset_src + ["'unsafe-eval'", 'https://www.google-analytics.com', 'https://cdnjs.cloudflare.com']
+  script_src = asset_src + [
+    "'unsafe-eval'",
+    'https://*.cloudflare.com',
+    'https://*.google-analytics.com',
+    'https://*.rollbar.com'
+  ]
 
-  connect_src = ["'self'", 'https://api.rollbar.com']
+  connect_src = ["'self'", 'https://*.doubleclick.net', 'https://*.rollbar.com']
 
   connect_src += ['http://localhost:3035', 'ws://localhost:3035'] if Rails.env.development?
 
