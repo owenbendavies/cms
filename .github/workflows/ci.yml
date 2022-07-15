@@ -75,6 +75,8 @@ jobs:
     timeout-minutes: 1
 
     strategy:
+      fail-fast: false
+
       matrix:
         include:
           - tf_workspace: staging
