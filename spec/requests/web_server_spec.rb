@@ -9,7 +9,11 @@ RSpec.describe 'Application web server' do
 
     let(:non_random_headers) { response.headers.except(*random_headers) }
 
-    let(:asset_src) { "'self' 'unsafe-inline' #{ENV.fetch('AWS_S3_ASSET_HOST')}" }
+    let(:asset_src) { "'self' 'unsafe-inline' http://localhost:3000" }
+
+    let(:connect_src) do
+      ["'self'", 'https://*.doubleclick.net', 'https://*.rollbar.com', 'http://localhost:37511'].join(' ')
+    end
 
     let(:script_src) do
       [
@@ -25,7 +29,7 @@ RSpec.describe 'Application web server' do
       [
         "default-src 'none'",
         "child-src 'self'",
-        "connect-src 'self' https://*.doubleclick.net https://*.rollbar.com",
+        "connect-src #{connect_src}",
         "font-src 'self' https: data:",
         "img-src 'self' https: data:",
         "script-src #{script_src}",
