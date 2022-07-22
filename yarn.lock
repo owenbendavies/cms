@@ -3408,12 +3408,12 @@ jss-plugin-props-sort@^10.5.1:
     jss "10.9.0"
 
 jss-plugin-rule-value-function@^10.5.1:
-  version "10.9.0"
-  resolved "https://registry.yarnpkg.com/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.9.0.tgz#379fd2732c0746fe45168011fe25544c1a295d67"
-  integrity sha512-IHJv6YrEf8pRzkY207cPmdbBstBaE+z8pazhPShfz0tZSDtRdQua5jjg6NMz3IbTasVx9FdnmptxPqSWL5tyJg==
+  version "10.9.1"
+  resolved "https://registry.yarnpkg.com/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.9.1.tgz#d799eafa3cd9ae2c99f60bc15c1c11783806ac7b"
+  integrity sha512-4GbLHDqq+Ps6BZMRYZwjiAtxuqnscGLxwG4YnrgfuDM/yqGNJFZwK4Zfabs3XMe0cM+IbadsgJVUQgJwuNB4IA==
   dependencies:
     "@babel/runtime" "^7.3.1"
-    jss "10.9.0"
+    jss "10.9.1"
     tiny-warning "^1.0.2"
 
 jss-plugin-vendor-prefixer@^10.5.1:
