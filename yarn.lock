@@ -3357,13 +3357,13 @@ jsonexport@^2.4.1:
   integrity sha512-4joNLCxxUAmS22GN3GA5os/MYFnq8oqXOKvoCymmcT0MPz/QPZ5eA+Fh5sIPxUji45RKq8DdQ1yoKq91p4E9VA==
 
 jss-plugin-camel-case@^10.5.1:
-  version "10.9.1"
-  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.1.tgz#66fee442163cec6baa9d8791322fd5dec6ff69d5"
-  integrity sha512-irEr3Z2ENUz71OIq6PWN0N6g3uIA6LyGEwiIfL1JBzy+HVZS17xq/vwnHda3KyvPls18cKiwNNuuVwY6TrWwWg==
+  version "10.9.2"
+  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.2.tgz#76dddfa32f9e62d17daa4e3504991fd0933b89e1"
+  integrity sha512-wgBPlL3WS0WDJ1lPJcgjux/SHnDuu7opmgQKSraKs4z8dCCyYMx9IDPFKBXQ8Q5dVYij1FFV0WdxyhuOOAXuTg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     hyphenate-style-name "^1.0.3"
-    jss "10.9.1"
+    jss "10.9.2"
 
 jss-plugin-default-unit@^10.5.1:
   version "10.9.1"
@@ -3416,10 +3416,20 @@ jss-plugin-vendor-prefixer@^10.5.1:
     css-vendor "^2.0.8"
     jss "10.9.1"
 
-jss@10.9.1, jss@^10.5.1:
+jss@10.9.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.9.1.tgz#43d95a964f68f31074470da8de5167aed4586311"
   integrity sha512-omDBQTYyIdYuHee1mkpqDyHw2NguCrURBU1izPPHmdtDK6SkP7P3buZt4ybHWOahTZ3+xd0C+zLPBBw7Hn3eYg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    csstype "^3.0.2"
+    is-in-browser "^1.1.3"
+    tiny-warning "^1.0.2"
+
+jss@10.9.2, jss@^10.5.1:
+  version "10.9.2"
+  resolved "https://registry.yarnpkg.com/jss/-/jss-10.9.2.tgz#9379be1f195ef98011dfd31f9448251bd61b95a9"
+  integrity sha512-b8G6rWpYLR4teTUbGd4I4EsnWjg7MN0Q5bSsjKhVkJVjhQDy2KzkbD2AW3TuT0RYZVmZZHKIrXDn6kjU14qkUg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     csstype "^3.0.2"
