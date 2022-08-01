@@ -3357,13 +3357,13 @@ jsonexport@^2.4.1:
   integrity sha512-4joNLCxxUAmS22GN3GA5os/MYFnq8oqXOKvoCymmcT0MPz/QPZ5eA+Fh5sIPxUji45RKq8DdQ1yoKq91p4E9VA==
 
 jss-plugin-camel-case@^10.5.1:
-  version "10.9.1"
-  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.1.tgz#66fee442163cec6baa9d8791322fd5dec6ff69d5"
-  integrity sha512-irEr3Z2ENUz71OIq6PWN0N6g3uIA6LyGEwiIfL1JBzy+HVZS17xq/vwnHda3KyvPls18cKiwNNuuVwY6TrWwWg==
+  version "10.9.2"
+  resolved "https://registry.yarnpkg.com/jss-plugin-camel-case/-/jss-plugin-camel-case-10.9.2.tgz#76dddfa32f9e62d17daa4e3504991fd0933b89e1"
+  integrity sha512-wgBPlL3WS0WDJ1lPJcgjux/SHnDuu7opmgQKSraKs4z8dCCyYMx9IDPFKBXQ8Q5dVYij1FFV0WdxyhuOOAXuTg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     hyphenate-style-name "^1.0.3"
-    jss "10.9.1"
+    jss "10.9.2"
 
 jss-plugin-default-unit@^10.5.1:
   version "10.9.2"
