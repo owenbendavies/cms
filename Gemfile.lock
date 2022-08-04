@@ -467,7 +467,7 @@ GEM
     unicode-display_width (2.2.0)
     uniform_notifier (1.16.0)
     uri_template (0.7.0)
-    validates_email_format_of (1.7.0)
+    validates_email_format_of (1.7.1)
       i18n
     version_gem (1.1.0)
     web-console (4.2.0)
