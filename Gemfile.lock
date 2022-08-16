@@ -420,7 +420,7 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    scout_apm (5.2.0)
+    scout_apm (5.3.0)
       parser
     secure_headers (6.4.0)
     seedbank (0.5.0)
