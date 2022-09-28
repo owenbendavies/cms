@@ -5013,9 +5013,9 @@ timeago@^1.6.7:
     jquery ">=1.5.0 <4.0"
 
 tiny-invariant@^1.0.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
-  integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.0.tgz#f967859a92cc0048fe55c43c3f8ad23c72a6d022"
+  integrity sha512-ENKs33oJRM5HsIwSsRxu7eXImrgcQiqFXRaU1WzY0bNxWoJjK4AMPnJWVvPbDHIGXMcxBZ5YdrGD8zXqacp75Q==
 
 tiny-warning@^1.0.0, tiny-warning@^1.0.2, tiny-warning@^1.0.3:
   version "1.0.3"
