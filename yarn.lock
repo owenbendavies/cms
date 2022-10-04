@@ -2174,9 +2174,9 @@ convert-source-map@^1.7.0:
     safe-buffer "~5.1.1"
 
 core-js-compat@^3.25.1:
-  version "3.25.4"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.25.4.tgz#730a255d4a47a937513abf1672bf278dc24dcebf"
-  integrity sha512-gCEcIEEqCR6230WroNunK/653CWKhqyCKJ9b+uESqOt/WFJA8B4lTnnQFdpYY5vmBcwJAA90Bo5vXs+CVsf6iA==
+  version "3.25.5"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.25.5.tgz#0016e8158c904f7b059486639e6e82116eafa7d9"
+  integrity sha512-ovcyhs2DEBUIE0MGEKHP4olCUW/XYte3Vroyxuh38rD1wAO4dHohsovUC4eAOuzFxE6b+RXvBU3UZ9o0YhUTkA==
   dependencies:
     browserslist "^4.21.4"
 
