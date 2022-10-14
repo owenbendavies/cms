@@ -89,7 +89,7 @@ GEM
     aws-sdk-dynamodb (1.77.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-rails (3.6.3)
+    aws-sdk-rails (3.6.4)
       aws-record (~> 2)
       aws-sdk-ses (~> 1)
       aws-sdk-sqs (~> 1)
