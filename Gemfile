@@ -24,7 +24,7 @@ gem 'rack-timeout' # Limits web request time
 gem 'secure_headers' # Adds security headers to requests
 
 # Authentication and authorization
-gem 'oauth2', '2.0.8' # rubocop:disable Bundler/GemVersion
+gem 'oauth2', '2.0.9' # rubocop:disable Bundler/GemVersion
 gem 'omniauth-cognito-idp' # AWS Cognito login
 gem 'pundit' # Authorization
 
