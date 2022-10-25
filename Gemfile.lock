@@ -411,7 +411,7 @@ GEM
     rubyzip (2.3.2)
     scout_apm (5.3.2)
       parser
-    secure_headers (6.4.0)
+    secure_headers (6.5.0)
     seedbank (0.5.0)
       rake (>= 10.0)
     selenium-webdriver (4.5.0)
