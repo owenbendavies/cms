@@ -1860,15 +1860,15 @@ array.prototype.flatmap@^1.3.0:
     es-shim-unscopables "^1.0.0"
 
 array.prototype.foreach@^1.0.0:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/array.prototype.foreach/-/array.prototype.foreach-1.0.3.tgz#d6fda6b8bcb019f83ef88bc50d477e582e9ecf26"
-  integrity sha512-e9NFzULgl1UknKkEPrIrDMBmFEoJtAqYgFOjsngUfbsq5W9xe6liFjIpIRZB4GJtguM+mywCqU8yf4JX2R4SSg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/array.prototype.foreach/-/array.prototype.foreach-1.0.4.tgz#ea248e0bc250fef587c369cc7102908a43d9f23c"
+  integrity sha512-OYqqGR/56CopyheXNwdlJvFtbSvf2Z9RGvL20X6GvAuKePJ76L/D46BqZn3bITd36QA2Ti7Iy0UwVJaD/YwXZA==
   dependencies:
     call-bind "^1.0.2"
-    define-properties "^1.1.3"
-    es-abstract "^1.19.1"
+    define-properties "^1.1.4"
+    es-abstract "^1.20.4"
     es-array-method-boxes-properly "^1.0.0"
-    get-intrinsic "^1.1.1"
+    get-intrinsic "^1.1.3"
     is-string "^1.0.7"
 
 arrify@^1.0.1:
