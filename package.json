@@ -29,7 +29,7 @@
     "@material-ui/icons": "^4.11.3",
     "@rails/ujs": "^7.0.4",
     "apollo-boost": "^0.4.9",
-    "autosize": "^5.0.1",
+    "autosize": "^5.0.2",
     "babel-loader": "^9.1.0",
     "bootstrap": "^4.6.1",
     "graphql": "^16.6.0",
