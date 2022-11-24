@@ -54,7 +54,7 @@ GEM
     activerecord (7.0.4)
       activemodel (= 7.0.4)
       activesupport (= 7.0.4)
-    activerecord_json_validator (2.1.1)
+    activerecord_json_validator (2.1.2)
       activerecord (>= 4.2.0, < 8)
       json_schemer (~> 0.2.18)
     activestorage (7.0.4)
