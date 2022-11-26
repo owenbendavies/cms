@@ -6,6 +6,5 @@ locals {
 
   environment_domains = {
     production : ["www.docklandssinfonia.co.uk", "www.spencerdown.com"],
-    staging : [],
   }
 }
