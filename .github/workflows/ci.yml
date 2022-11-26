@@ -74,21 +74,9 @@ jobs:
 
     timeout-minutes: 1
 
-    strategy:
-      fail-fast: false
-
-      matrix:
-        include:
-          - tf_workspace: staging
-            tf_dir: terraform/app_environment
-          - tf_workspace: production
-            tf_dir: terraform/app_environment
-          - tf_workspace: global
-            tf_dir: terraform/app_global
-
     defaults:
       run:
-        working-directory: ${{ matrix.tf_dir }}
+        working-directory: terraform/app_environment
 
     steps:
       - uses: actions/checkout@v2
@@ -118,24 +106,12 @@ jobs:
 
     timeout-minutes: 10
 
-    strategy:
-      max-parallel: 1
-
-      matrix:
-        include:
-          - tf_workspace: staging
-            tf_dir: terraform/app_environment
-          - tf_workspace: production
-            tf_dir: terraform/app_environment
-          - tf_workspace: global
-            tf_dir: terraform/app_global
-
     defaults:
       run:
-        working-directory: ${{ matrix.tf_dir }}
+        working-directory: terraform/app_environment
 
     env:
-      TF_WORKSPACE: ${{ matrix.tf_workspace }}
+      TF_WORKSPACE: production
 
     steps:
       - uses: actions/checkout@v2
@@ -164,21 +140,13 @@ jobs:
 
     timeout-minutes: 10
 
-    strategy:
-      max-parallel: 1
-
-      matrix:
-        environment:
-          - staging
-          - production
-
     steps:
       - uses: actions/checkout@v2
 
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}-${{ matrix.environment }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}-production
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
 
       - name: Run git diff
