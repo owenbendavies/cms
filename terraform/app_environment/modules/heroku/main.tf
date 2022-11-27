@@ -19,7 +19,7 @@ resource "heroku_addon" "app_logentries" {
 
 resource "heroku_addon" "app_postgresql" {
   app_id = heroku_app.app.id
-  plan   = "heroku-postgresql:hobby-dev"
+  plan   = "heroku-postgresql:mini"
 
   lifecycle {
     prevent_destroy = true
@@ -109,13 +109,13 @@ resource "heroku_domain" "app" {
 resource "heroku_formation" "app_web" {
   app_id   = heroku_app.app.id
   quantity = 1
-  size     = "Free"
+  size     = "Hobby"
   type     = "web"
 }
 
 resource "heroku_formation" "app_worker" {
   app_id   = heroku_app.app.id
   quantity = 1
-  size     = "Free"
+  size     = "Hobby"
   type     = "worker"
 }
