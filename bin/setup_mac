@@ -26,7 +26,7 @@ function brew_install_missing_formulas() {
   REQUIRED="
     heroku
     imagemagick
-    postgresql
+    postgresql@14
     rbenv
     terraform
     yarn
@@ -70,6 +70,6 @@ brew_cask_install_missing_formulas
 
 rbenv install --skip-existing
 
-brew services start postgres
+brew services start --all
 
 add_postgresql_user
