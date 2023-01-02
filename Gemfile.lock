@@ -325,7 +325,7 @@ GEM
       activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.5)
-    rack-protection (3.0.4)
+    rack-protection (3.0.5)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
