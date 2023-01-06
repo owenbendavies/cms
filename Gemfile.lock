@@ -204,7 +204,7 @@ GEM
     hana (1.3.7)
     hashdiff (1.0.1)
     hashie (5.0.0)
-    highline (2.0.3)
+    highline (2.1.0)
     htmlentities (4.3.4)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
