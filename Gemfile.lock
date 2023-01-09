@@ -164,7 +164,7 @@ GEM
     ecma-re-validator (0.4.0)
       regexp_parser (~> 2.2)
     erubi (1.12.0)
-    excon (0.95.0)
+    excon (0.96.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
