@@ -3,18 +3,16 @@
     "browser": true
   },
   "extends": ["plugin:import/recommended", "airbnb", "prettier"],
+  "plugins": ["sort-keys-fix"],
   "rules": {
+    "import/no-default-export": "error",
     "import/order": [
       "error",
-      {
-        "alphabetize": {
-          "order": "asc"
-        },
-        "newlines-between": "always"
-      }
+      { "alphabetize": { "order": "asc" }, "newlines-between": "always" }
     ],
-    "import/no-default-export": "error",
     "import/prefer-default-export": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "sort-vars": ["error", { "ignoreCase": false }]
   }
 }
