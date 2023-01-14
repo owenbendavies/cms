@@ -1,22 +1,3 @@
-resource "heroku_addon" "app_librato" {
-  app_id = heroku_app.app.id
-  plan   = "librato:development"
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-resource "heroku_addon" "app_logentries" {
-  app_id = heroku_app.app.id
-  plan   = "logentries:le_tryit"
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-
 resource "heroku_addon" "app_postgresql" {
   app_id = heroku_app.app.id
   plan   = "heroku-postgresql:mini"
