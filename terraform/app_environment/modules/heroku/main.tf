@@ -109,13 +109,13 @@ resource "heroku_domain" "app" {
 resource "heroku_formation" "app_web" {
   app_id   = heroku_app.app.id
   quantity = 1
-  size     = "Hobby"
+  size     = "Basic"
   type     = "web"
 }
 
 resource "heroku_formation" "app_worker" {
   app_id   = heroku_app.app.id
   quantity = 1
-  size     = "Hobby"
+  size     = "Basic"
   type     = "worker"
 }
