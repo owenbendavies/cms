@@ -32,15 +32,15 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
-      - uses: nanasess/setup-chromedriver@v1
+      - uses: nanasess/setup-chromedriver@master
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@master
         with:
           bundler-cache: true
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@main
         with:
           cache: yarn
           node-version-file: .nvmrc
@@ -62,9 +62,9 @@ jobs:
     timeout-minutes: 1
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
-      - uses: streetsidesoftware/cspell-action@v1
+      - uses: streetsidesoftware/cspell-action@main
         with:
           files: '**'
           incremental_files_only: false
@@ -79,9 +79,9 @@ jobs:
         working-directory: terraform/app_environment
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
-      - uses: hashicorp/setup-terraform@v1
+      - uses: hashicorp/setup-terraform@main
         with:
           terraform_version: ${{ env.TF_VERSION }}
           terraform_wrapper: false
@@ -114,9 +114,9 @@ jobs:
       TF_WORKSPACE: production
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
-      - uses: hashicorp/setup-terraform@v1
+      - uses: hashicorp/setup-terraform@main
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
           terraform_version: ${{ env.TF_VERSION }}
@@ -141,9 +141,9 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
 
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - uses: akhileshns/heroku-deploy@main
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}-production
