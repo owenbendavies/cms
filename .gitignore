@@ -2,6 +2,7 @@
 /.env.*.local
 /app/assets/builds/
 /coverage/
+/LICENSE.chromedriver
 /log/
 /node_modules/
 /public/assets/
