@@ -7,8 +7,8 @@ RSpec.describe ApplicationMailer do
   let(:message) { build(:message, site:) }
 
   it 'has from name as site name' do
-    addresses = email.header['from'].address_list.addresses
-    expect(addresses.first.display_name).to eq site.name
+    display_names = email.header['from'].display_names
+    expect(display_names).to eq [site.name]
   end
 
   it 'has site copyright in body' do
