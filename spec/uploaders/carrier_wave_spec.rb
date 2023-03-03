@@ -9,7 +9,7 @@ RSpec.describe CarrierWave do
   let(:uploader) { ImageUploader.new(Image.new(site:)) }
 
   before do
-    File.open(Rails.root.join('spec/assets/small.jpg')) do |file|
+    Rails.root.join('spec/assets/small.jpg').open do |file|
       uploader.store! file
     end
   end

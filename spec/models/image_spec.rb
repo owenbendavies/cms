@@ -13,7 +13,7 @@ RSpec.describe Image do
     end
 
     before do
-      File.open(Rails.root.join('spec/assets/test_image.jpg')) do |file|
+      Rails.root.join('spec/assets/test_image.jpg').open do |file|
         image.file = file
       end
 
