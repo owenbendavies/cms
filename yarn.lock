@@ -233,14 +233,7 @@
   dependencies:
     "@babel/types" "^7.20.2"
 
-"@babel/helper-skip-transparent-expression-wrappers@^7.18.9":
-  version "7.18.9"
-  resolved "https://registry.yarnpkg.com/@babel/helper-skip-transparent-expression-wrappers/-/helper-skip-transparent-expression-wrappers-7.18.9.tgz#778d87b3a758d90b471e7b9918f34a9a02eb5818"
-  integrity sha512-imytd2gHi3cJPsybLRbmFrF7u5BIEuI2cNheyKi3/iOBC63kNn3q8Crn2xVuESli0aM4KYsyEqKyS7lFL8YVtw==
-  dependencies:
-    "@babel/types" "^7.18.9"
-
-"@babel/helper-skip-transparent-expression-wrappers@^7.20.0":
+"@babel/helper-skip-transparent-expression-wrappers@^7.18.9", "@babel/helper-skip-transparent-expression-wrappers@^7.20.0":
   version "7.20.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-skip-transparent-expression-wrappers/-/helper-skip-transparent-expression-wrappers-7.20.0.tgz#fbe4c52f60518cab8140d77101f0e63a8a230684"
   integrity sha512-5y1JYeNKfvnT8sZcK9DVRtpTbGiomYIHviSP3OQWmDPU3DeH4a1ZlT/N2lyQ5P8egjcRaT/Y9aNqUxK0WsnIIg==
