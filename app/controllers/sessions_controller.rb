@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if valid_user?(user)
       create_site unless @site
       session[:user] = user
-      flash.notice = t 'sessions.create.message'
+      flash.notice = t '.message'
     else
       flash.alert = t 'sessions.invalid.message'
     end
@@ -19,12 +19,12 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    flash.notice = t 'sessions.destroy.message'
+    flash.notice = t '.message'
     redirect_to aws_logout_url, allow_other_host: true
   end
 
   def invalid
-    flash.alert = t 'sessions.invalid.message'
+    flash.alert = t '.message'
     redirect_to root_path
   end
 
