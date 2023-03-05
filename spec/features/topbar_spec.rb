@@ -6,7 +6,7 @@ RSpec.feature 'Topbar' do
   scenario 'no user' do
     visit '/home'
 
-    expect(page).to have_no_selector topbar_selector
+    expect(page).not_to have_selector topbar_selector
   end
 
   context 'when logged in' do
