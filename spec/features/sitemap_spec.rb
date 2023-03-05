@@ -13,7 +13,7 @@ RSpec.feature 'Sitemap' do
       end
 
       expect(page).to have_link 'Home', href: '/home'
-      expect(page).to have_no_link private_page.name
+      expect(page).not_to have_link private_page.name
     end
 
     scenario 'site user' do
@@ -41,7 +41,7 @@ RSpec.feature 'Sitemap' do
       expect(find(:xpath, '//urlset/url[1]/loc').text).to eq("http://#{site.host}/#{public_page.url}")
 
       expect(find(:xpath, '//urlset/url[1]/lastmod').text).to eq public_page.updated_at.iso8601
-      expect(page).to have_no_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
+      expect(page).not_to have_xpath('//loc', text: "http://#{site.host}/#{private_page.url}")
     end
 
     scenario 'https' do

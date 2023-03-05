@@ -17,6 +17,9 @@ AllCops:
 Bundler/GemVersion: # Keep versions in Gemfile.lock so easy to upgrade
   EnforcedStyle: forbidden
 
+RSpec/Capybara: # Prefer to use RSpec.feature methods
+  Enabled: false
+
 Lint/ConstantResolution: # Not standard ruby style
   Enabled: false
 
@@ -35,9 +38,6 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
 
-RSpec/FeatureMethods: # Prefer to use RSpec.feature methods
-  Enabled: false
-
 RSpec/MessageExpectation: # Allow expects
   Enabled: false
 
@@ -49,6 +49,9 @@ RSpec/MultipleExpectations:
     - 'spec/features/**/*' # OK for multiple expectations in features
 
 RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NoExpectationExample: # Pics up false positives
   Enabled: false
 
 Style/DisableCopsWithinSourceCodeDirective: # Useful for some cases

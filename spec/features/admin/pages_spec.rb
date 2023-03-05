@@ -31,7 +31,7 @@ RSpec.feature 'Admin pages' do
   scenario 'renaming a page' do
     navigate_to_edit_page
 
-    url_field = find('#url')
+    url_field = find_by_id('url')
     expect(url_field['disabled']).to eq 'true'
     expect(url_field.value).to eq home_page.url
 
