@@ -237,7 +237,7 @@ GEM
       hana (~> 1.3)
       regexp_parser (~> 2.0)
       uri_template (~> 0.7)
-    jwt (2.6.0)
+    jwt (2.7.0)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
