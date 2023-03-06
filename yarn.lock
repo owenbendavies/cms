@@ -718,14 +718,7 @@
     "@babel/helper-plugin-utils" "^7.18.6"
     "@babel/helper-replace-supers" "^7.18.6"
 
-"@babel/plugin-transform-parameters@^7.20.1":
-  version "7.20.1"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-parameters/-/plugin-transform-parameters-7.20.1.tgz#9a5aa370fdcce36f110455e9369db7afca0f9eeb"
-  integrity sha512-nDvKLrAvl+kf6BOy1UJ3MGwzzfTMgppxwiD2Jb4LO3xjYyZq30oQzDNJbCQpMdG9+j2IXHoiMrw5Cm/L6ZoxXQ==
-  dependencies:
-    "@babel/helper-plugin-utils" "^7.19.0"
-
-"@babel/plugin-transform-parameters@^7.20.7":
+"@babel/plugin-transform-parameters@^7.20.1", "@babel/plugin-transform-parameters@^7.20.7":
   version "7.20.7"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-parameters/-/plugin-transform-parameters-7.20.7.tgz#0ee349e9d1bc96e78e3b37a7af423a4078a7083f"
   integrity sha512-WiWBIkeHKVOSYPO0pWkxGPfKeWrCJyD3NJ53+Lrp/QMSZbsVPovrVl2aWZ19D/LTVnaDv5Ap7GJ/B2CTOZdrfA==
