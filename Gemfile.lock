@@ -75,7 +75,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.700.0)
+    aws-partitions (1.721.0)
     aws-record (2.10.1)
       aws-sdk-dynamodb (~> 1.18)
     aws-sdk-cognitoidentityprovider (1.73.0)
@@ -86,10 +86,10 @@ GEM
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-dynamodb (1.81.0)
+    aws-sdk-dynamodb (1.82.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-rails (3.7.0)
+    aws-sdk-rails (3.7.1)
       aws-record (~> 2)
       aws-sdk-ses (~> 1)
       aws-sdk-sesv2 (~> 1)
@@ -265,7 +265,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.17.0)
+    minitest (5.18.0)
     msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -279,7 +279,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.0)
+    nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -489,7 +489,7 @@ GEM
       builder (>= 2.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   ruby
