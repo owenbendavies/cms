@@ -309,7 +309,7 @@ GEM
     parser (3.2.2.1)
       ast (~> 2.4.1)
     pg (1.5.3)
-    phonelib (0.8.1)
+    phonelib (0.8.2)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
