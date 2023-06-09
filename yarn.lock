@@ -856,11 +856,11 @@
     "@babel/helper-replace-supers" "^7.18.6"
 
 "@babel/plugin-transform-optional-catch-binding@^7.22.3":
-  version "7.22.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.22.3.tgz#e971a083fc7d209d9cd18253853af1db6d8dc42f"
-  integrity sha512-bnDFWXFzWY0BsOyqaoSXvMQ2F35zutQipugog/rqotL2S4ciFOKlRYUu9djt4iq09oh2/34hqfRR2k1dIvuu4g==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.22.5.tgz#842080be3076703be0eaf32ead6ac8174edee333"
+  integrity sha512-pH8orJahy+hzZje5b8e2QIlBWQvGpelS76C63Z+jhZKsmzfNaPQ+LaW6dcJ9bxTpo1mtXbgHwy765Ro3jftmUg==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.21.5"
+    "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
 
 "@babel/plugin-transform-optional-chaining@^7.22.3":
