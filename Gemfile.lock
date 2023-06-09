@@ -306,8 +306,9 @@ GEM
     parallel (1.23.0)
     parallel_tests (4.2.1)
       parallel
-    parser (3.2.2.1)
+    parser (3.2.2.3)
       ast (~> 2.4.1)
+      racc
     pg (1.5.3)
     phonelib (0.8.2)
     premailer (1.21.0)
