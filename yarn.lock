@@ -354,22 +354,7 @@
   dependencies:
     "@babel/types" "^7.22.5"
 
-"@babel/helper-string-parser@^7.21.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.22.5.tgz#533f36457a25814cf1df6488523ad547d784a99f"
-  integrity sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==
-
-"@babel/helper-string-parser@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.22.5.tgz#533f36457a25814cf1df6488523ad547d784a99f"
-  integrity sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==
-
-"@babel/helper-string-parser@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.22.5.tgz#533f36457a25814cf1df6488523ad547d784a99f"
-  integrity sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==
-
-"@babel/helper-string-parser@^7.22.5":
+"@babel/helper-string-parser@^7.21.5", "@babel/helper-string-parser@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.22.5.tgz#533f36457a25814cf1df6488523ad547d784a99f"
   integrity sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==
@@ -645,12 +630,12 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-class-properties@^7.22.3":
-  version "7.22.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-class-properties/-/plugin-transform-class-properties-7.22.3.tgz#3407145e513830df77f0cef828b8b231c166fe4c"
-  integrity sha512-mASLsd6rhOrLZ5F3WbCxkzl67mmOnqik0zrg5W6D/X0QMW7HtvnoL1dRARLKIbMP3vXwkwziuLesPqWVGIl6Bw==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-class-properties/-/plugin-transform-class-properties-7.22.5.tgz#97a56e31ad8c9dc06a0b3710ce7803d5a48cca77"
+  integrity sha512-nDkQ0NfkOhPTq8YCLiWNxp1+f9fCobEjCb0n8WdbNUBc4IB5V7P1QnX9IjpSoquKrXF5SKojHleVNs2vGeHCHQ==
   dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.22.1"
-    "@babel/helper-plugin-utils" "^7.21.5"
+    "@babel/helper-create-class-features-plugin" "^7.22.5"
+    "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-class-static-block@^7.22.3":
   version "7.22.3"
