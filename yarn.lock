@@ -193,6 +193,11 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.21.5.tgz#345f2377d05a720a4e5ecfa39cbf4474a4daed56"
   integrity sha512-0WDaIlXKOX/3KfBK/dwP1oQGiPh6rjMkT7HIRv7i5RR2VUMwrx5ZL0dwBkKx7+SW1zwNdgjHd34IMk5ZjTeHVg==
 
+"@babel/helper-plugin-utils@^7.22.5":
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.22.5.tgz#dd7ee3735e8a313b9f7b05a773d892e88e6d7295"
+  integrity sha512-uLls06UVKgFG9QD4OeFYLEGteMIAa5kpTPcFL28yuCIIzsf6ZyKZMllKVOCZFhiZ5ptnwX4mtKdWCBE/uT4amg==
+
 "@babel/helper-remap-async-to-generator@^7.18.9":
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.18.9.tgz#997458a0e3357080e54e1d79ec347f8a8cd28519"
@@ -683,11 +688,11 @@
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
 
 "@babel/plugin-transform-numeric-separator@^7.22.3":
-  version "7.22.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.22.3.tgz#02493070ca6685884b0eee705363ee4da2132ab0"
-  integrity sha512-+AF88fPDJrnseMh5vD9+SH6wq4ZMvpiTMHh58uLs+giMEyASFVhcT3NkoyO+NebFCNnpHJEq5AXO2txV4AGPDQ==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.22.5.tgz#57226a2ed9e512b9b446517ab6fa2d17abb83f58"
+  integrity sha512-NbslED1/6M+sXiwwtcAB/nieypGw02Ejf4KtDeMkCEpP6gWFMX1wI9WKYua+4oBneCCEmulOkRpwywypVZzs/g==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.21.5"
+    "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-numeric-separator" "^7.10.4"
 
 "@babel/plugin-transform-object-rest-spread@^7.22.3":
