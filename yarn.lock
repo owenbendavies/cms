@@ -737,11 +737,11 @@
     "@babel/helper-plugin-utils" "^7.18.6"
 
 "@babel/plugin-transform-export-namespace-from@^7.22.3":
-  version "7.22.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.22.3.tgz#9b8700aa495007d3bebac8358d1c562434b680b9"
-  integrity sha512-5Ti1cHLTDnt3vX61P9KZ5IG09bFXp4cDVFJIAeCZuxu9OXXJJZp5iP0n/rzM2+iAutJY+KWEyyHcRaHlpQ/P5g==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.22.5.tgz#57c41cb1d0613d22f548fddd8b288eedb9973a5b"
+  integrity sha512-X4hhm7FRnPgd4nDA4b/5V280xCx6oL7Oob5+9qVS5C13Zq4bh1qq7LU0GgRU6b5dBWBvhGaXYVB4AcN6+ol6vg==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.21.5"
+    "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-export-namespace-from" "^7.8.3"
 
 "@babel/plugin-transform-for-of@^7.21.5":
