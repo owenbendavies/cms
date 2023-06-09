@@ -249,7 +249,7 @@
   dependencies:
     "@babel/types" "^7.22.5"
 
-"@babel/helper-module-transforms@^7.18.6", "@babel/helper-module-transforms@^7.21.5", "@babel/helper-module-transforms@^7.22.1", "@babel/helper-module-transforms@^7.22.5":
+"@babel/helper-module-transforms@^7.18.6", "@babel/helper-module-transforms@^7.22.1", "@babel/helper-module-transforms@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.22.5.tgz#0f65daa0716961b6e96b164034e737f60a80d2ef"
   integrity sha512-+hGKDt/Ze8GFExiVHno/2dvG5IdstpzCq0y4Qc9OJ25D4q3pKfiIP/4Vp3/JvhDkLKsDK2api3q3fpIgiIF5bw==
@@ -320,13 +320,6 @@
     "@babel/template" "^7.22.5"
     "@babel/traverse" "^7.22.5"
     "@babel/types" "^7.22.5"
-
-"@babel/helper-simple-access@^7.21.5":
-  version "7.21.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-simple-access/-/helper-simple-access-7.21.5.tgz#d697a7971a5c39eac32c7e63c0921c06c8a249ee"
-  integrity sha512-ENPDAMC1wAjR0uaCUwliBdiSl1KBJAVnMTzXqi64c2MG8MPR6ii4qf7bSXDqSFbr4W6W028/rf5ivoHop5/mkg==
-  dependencies:
-    "@babel/types" "^7.21.5"
 
 "@babel/helper-simple-access@^7.22.5":
   version "7.22.5"
@@ -779,13 +772,13 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-modules-commonjs@^7.21.5":
-  version "7.21.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.21.5.tgz#d69fb947eed51af91de82e4708f676864e5e47bc"
-  integrity sha512-OVryBEgKUbtqMoB7eG2rs6UFexJi6Zj6FDXx+esBLPTCxCNxAY9o+8Di7IsUGJ+AVhp5ncK0fxWUBd0/1gPhrQ==
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.22.5.tgz#7d9875908d19b8c0536085af7b053fd5bd651bfa"
+  integrity sha512-B4pzOXj+ONRmuaQTg05b3y/4DuFz3WcCNAXPLb2Q0GT0TrGKGxNKV4jwsXts+StaM0LQczZbOpj8o1DLPDJIiA==
   dependencies:
-    "@babel/helper-module-transforms" "^7.21.5"
-    "@babel/helper-plugin-utils" "^7.21.5"
-    "@babel/helper-simple-access" "^7.21.5"
+    "@babel/helper-module-transforms" "^7.22.5"
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/helper-simple-access" "^7.22.5"
 
 "@babel/plugin-transform-modules-systemjs@^7.22.3":
   version "7.22.3"
