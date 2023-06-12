@@ -238,7 +238,7 @@ GEM
       regexp_parser (~> 2.0)
       simpleidn (~> 0.2)
       uri_template (~> 0.7)
-    jwt (2.7.0)
+    jwt (2.7.1)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
