@@ -19,7 +19,7 @@
     "lint:prettier": "prettier --ignore-path .gitignore --check ."
   },
   "dependencies": {
-    "@babel/core": "^7.22.5",
+    "@babel/core": "^7.22.6",
     "@babel/preset-env": "^7.22.6",
     "@babel/preset-react": "^7.22.5",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
