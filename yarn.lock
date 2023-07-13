@@ -208,16 +208,13 @@
     "@babel/types" "^7.22.5"
 
 "@babel/helper-replace-supers@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/helper-replace-supers/-/helper-replace-supers-7.22.5.tgz#71bc5fb348856dea9fdc4eafd7e2e49f585145dc"
-  integrity sha512-aLdNM5I3kdI/V9xGNyKSF3X/gTyMUBohTZ+/3QdQKAA9vxIiy12E+8E2HoOP1/DjeqU+g6as35QHJNMDDYpuCg==
+  version "7.22.9"
+  resolved "https://registry.yarnpkg.com/@babel/helper-replace-supers/-/helper-replace-supers-7.22.9.tgz#cbdc27d6d8d18cd22c81ae4293765a5d9afd0779"
+  integrity sha512-LJIKvvpgPOPUThdYqcX6IXRuIcTkcAub0IaDRGCZH0p5GPUp7PhRU9QVgFcDDd51BaPkk77ZjqFwh6DZTAEmGg==
   dependencies:
     "@babel/helper-environment-visitor" "^7.22.5"
     "@babel/helper-member-expression-to-functions" "^7.22.5"
     "@babel/helper-optimise-call-expression" "^7.22.5"
-    "@babel/template" "^7.22.5"
-    "@babel/traverse" "^7.22.5"
-    "@babel/types" "^7.22.5"
 
 "@babel/helper-simple-access@^7.22.5":
   version "7.22.5"
