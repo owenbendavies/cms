@@ -44,7 +44,7 @@
     "sass": "^1.63.6",
     "timeago": "^1.6.7",
     "turbolinks": "^5.2.0",
-    "webpack": "^5.88.1",
+    "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
