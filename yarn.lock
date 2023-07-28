@@ -2199,9 +2199,9 @@ convert-source-map@^1.7.0:
   integrity sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==
 
 core-js-compat@^3.31.0:
-  version "3.31.1"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.31.1.tgz#5084ad1a46858df50ff89ace152441a63ba7aae0"
-  integrity sha512-wIDWd2s5/5aJSdpOJHfSibxNODxoGoWOBHt8JSPB41NOE94M7kuTPZCYLOlTtuoXTsBPKobpJ6T+y0SSy5L9SA==
+  version "3.32.0"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.32.0.tgz#f41574b6893ab15ddb0ac1693681bd56c8550a90"
+  integrity sha512-7a9a3D1k4UCVKnLhrgALyFcP7YCsLOQIxPd0dKjf/6GuPcgyiGP70ewWdCGrSK7evyhymi0qO4EqCmSJofDeYw==
   dependencies:
     browserslist "^4.21.9"
 
