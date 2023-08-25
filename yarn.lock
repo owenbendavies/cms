@@ -103,6 +103,21 @@
     lru-cache "^5.1.1"
     semver "^6.3.1"
 
+"@babel/helper-create-class-features-plugin@^7.22.11":
+  version "7.22.11"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.22.11.tgz#4078686740459eeb4af3494a273ac09148dfb213"
+  integrity sha512-y1grdYL4WzmUDBRGK0pDbIoFd7UZKoDurDzWEoNMYoj1EL+foGRQNyPWDcC+YyegN5y1DUsFFmzjGijB3nSVAQ==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.22.5"
+    "@babel/helper-environment-visitor" "^7.22.5"
+    "@babel/helper-function-name" "^7.22.5"
+    "@babel/helper-member-expression-to-functions" "^7.22.5"
+    "@babel/helper-optimise-call-expression" "^7.22.5"
+    "@babel/helper-replace-supers" "^7.22.9"
+    "@babel/helper-skip-transparent-expression-wrappers" "^7.22.5"
+    "@babel/helper-split-export-declaration" "^7.22.6"
+    semver "^6.3.1"
+
 "@babel/helper-create-class-features-plugin@^7.22.5":
   version "7.22.10"
   resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.22.10.tgz#dd2612d59eac45588021ac3d6fa976d08f4e95a3"
@@ -485,11 +500,11 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-class-static-block@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-class-static-block/-/plugin-transform-class-static-block-7.22.5.tgz#3e40c46f048403472d6f4183116d5e46b1bff5ba"
-  integrity sha512-SPToJ5eYZLxlnp1UzdARpOGeC2GbHvr9d/UV0EukuVx8atktg194oe+C5BqQ8jRTkgLRVOPYeXRSBg1IlMoVRA==
+  version "7.22.11"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-class-static-block/-/plugin-transform-class-static-block-7.22.11.tgz#dc8cc6e498f55692ac6b4b89e56d87cec766c974"
+  integrity sha512-GMM8gGmqI7guS/llMFk1bJDkKfn3v3C4KHK9Yg1ey5qcHcOlKb0QvcMrgzvxo+T03/4szNh5lghY+fEC98Kq9g==
   dependencies:
-    "@babel/helper-create-class-features-plugin" "^7.22.5"
+    "@babel/helper-create-class-features-plugin" "^7.22.11"
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-class-static-block" "^7.14.5"
 
