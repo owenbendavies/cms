@@ -4061,12 +4061,12 @@ object.groupby@^1.0.0:
     get-intrinsic "^1.2.1"
 
 object.hasown@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/object.hasown/-/object.hasown-1.1.2.tgz#f919e21fad4eb38a57bc6345b3afd496515c3f92"
-  integrity sha512-B5UIT3J1W+WuWIU55h0mjlwaqxiE5vYENJXIXZ4VFe05pNYrkKuK0U/6aFcb0pKywYJh7IhfoqUfKVmrJJHZHw==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/object.hasown/-/object.hasown-1.1.3.tgz#6a5f2897bb4d3668b8e79364f98ccf971bda55ae"
+  integrity sha512-fFI4VcYpRHvSLXxP7yiZOMAd331cPfd2p7PFDVbgUsYOfCT3tICVqXWngbjr4m49OvsBwUBQ6O2uQoJvy3RexA==
   dependencies:
-    define-properties "^1.1.4"
-    es-abstract "^1.20.4"
+    define-properties "^1.2.0"
+    es-abstract "^1.22.1"
 
 object.values@^1.1.6:
   version "1.1.7"
