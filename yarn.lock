@@ -3517,14 +3517,13 @@ isobject@^3.0.1:
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
 iterator.prototype@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/iterator.prototype/-/iterator.prototype-1.1.0.tgz#690c88b043d821f783843aaf725d7ac3b62e3b46"
-  integrity sha512-rjuhAk1AJ1fssphHD0IFV6TWL40CwRZ53FrztKx43yk2v6rguBYsY4Bj1VU4HmoMmKwZUlx7mfnhDf9cOp4YTw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/iterator.prototype/-/iterator.prototype-1.1.1.tgz#ab5b790e23ec00658f5974e032a2b05188bd3a5c"
+  integrity sha512-9E+nePc8C9cnQldmNl6bgpTY6zI4OPRZd97fhJ/iVZ1GifIUDVV5F6x1nEDqpe8KaMEZGT4xgrwKQDxXnjOIZQ==
   dependencies:
-    define-properties "^1.1.4"
-    get-intrinsic "^1.1.3"
+    define-properties "^1.2.0"
+    get-intrinsic "^1.2.1"
     has-symbols "^1.0.3"
-    has-tostringtag "^1.0.0"
     reflect.getprototypeof "^1.0.3"
 
 jest-worker@^27.4.5:
