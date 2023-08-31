@@ -4650,14 +4650,14 @@ redux-saga@^1.0.0:
     "@babel/runtime" "^7.9.2"
 
 reflect.getprototypeof@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/reflect.getprototypeof/-/reflect.getprototypeof-1.0.3.tgz#2738fd896fcc3477ffbd4190b40c2458026b6928"
-  integrity sha512-TTAOZpkJ2YLxl7mVHWrNo3iDMEkYlva/kgFcXndqMgbo/AZUmmavEkdXV+hXtE4P8xdyEKRzalaFqZVuwIk/Nw==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/reflect.getprototypeof/-/reflect.getprototypeof-1.0.4.tgz#aaccbf41aca3821b87bb71d9dcbc7ad0ba50a3f3"
+  integrity sha512-ECkTw8TmJwW60lOTR+ZkODISW6RQ8+2CL3COqtiJKLd6MmB45hN51HprHFziKLGkAuTGQhBb91V8cy+KHlaCjw==
   dependencies:
     call-bind "^1.0.2"
-    define-properties "^1.1.4"
-    es-abstract "^1.20.4"
-    get-intrinsic "^1.1.1"
+    define-properties "^1.2.0"
+    es-abstract "^1.22.1"
+    get-intrinsic "^1.2.1"
     globalthis "^1.0.3"
     which-builtin-type "^1.1.3"
 
