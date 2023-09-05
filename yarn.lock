@@ -168,14 +168,7 @@
   dependencies:
     "@babel/types" "^7.22.5"
 
-"@babel/helper-member-expression-to-functions@^7.22.15":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.22.15.tgz#b95a144896f6d491ca7863576f820f3628818621"
-  integrity sha512-qLNsZbgrNh0fDQBCPocSL8guki1hcPvltGDv/NxvUoABwFq7GkKSu1nRXeJkVZc+wJvne2E0RKQz+2SQrz6eAA==
-  dependencies:
-    "@babel/types" "^7.22.15"
-
-"@babel/helper-member-expression-to-functions@^7.22.5":
+"@babel/helper-member-expression-to-functions@^7.22.15", "@babel/helper-member-expression-to-functions@^7.22.5":
   version "7.22.15"
   resolved "https://registry.yarnpkg.com/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.22.15.tgz#b95a144896f6d491ca7863576f820f3628818621"
   integrity sha512-qLNsZbgrNh0fDQBCPocSL8guki1hcPvltGDv/NxvUoABwFq7GkKSu1nRXeJkVZc+wJvne2E0RKQz+2SQrz6eAA==
@@ -1051,16 +1044,7 @@
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/types@^7.22.10", "@babel/types@^7.22.11", "@babel/types@^7.22.5", "@babel/types@^7.4.4":
-  version "7.22.11"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.22.11.tgz#0e65a6a1d4d9cbaa892b2213f6159485fe632ea2"
-  integrity sha512-siazHiGuZRz9aB9NpHy9GOs9xiQPKnMzgdr493iI1M67vRXpnEq8ZOOKzezC5q7zwuQ6sDhdSp4SD9ixKSqKZg==
-  dependencies:
-    "@babel/helper-string-parser" "^7.22.5"
-    "@babel/helper-validator-identifier" "^7.22.5"
-    to-fast-properties "^2.0.0"
-
-"@babel/types@^7.22.15":
+"@babel/types@^7.22.10", "@babel/types@^7.22.11", "@babel/types@^7.22.15", "@babel/types@^7.22.5", "@babel/types@^7.4.4":
   version "7.22.15"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.22.15.tgz#266cb21d2c5fd0b3931e7a91b6dd72d2f617d282"
   integrity sha512-X+NLXr0N8XXmN5ZsaQdm9U2SSC3UbIYq/doL++sueHOTisgZHoKaQtZxGuV2cUPQHMfjKEfg/g6oy7Hm6SKFtA==
