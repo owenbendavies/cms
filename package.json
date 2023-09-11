@@ -7,7 +7,7 @@
     "url": "git+https://github.com/owenbendavies/cms.git"
   },
   "engines": {
-    "node": "14",
+    "node": "18",
     "yarn": "~1.22.17"
   },
   "scripts": {
