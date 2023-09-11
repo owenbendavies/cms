@@ -27,7 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
-    "@rails/ujs": "^7.0.7",
+    "@rails/ujs": "^7.0.8",
     "apollo-boost": "^0.4.9",
     "autosize": "^6.0.1",
     "babel-loader": "^9.1.3",
