@@ -37,7 +37,7 @@ resource "heroku_addon" "app_scout" {
 resource "heroku_app" "app" {
   name   = var.name
   region = "eu"
-  stack  = "heroku-20"
+  stack  = "heroku-22"
 
   buildpacks = [
     "heroku/nodejs",
