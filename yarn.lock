@@ -173,9 +173,9 @@
     "@babel/types" "^7.22.15"
 
 "@babel/helper-module-transforms@^7.22.15", "@babel/helper-module-transforms@^7.22.5", "@babel/helper-module-transforms@^7.22.9":
-  version "7.22.15"
-  resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.22.15.tgz#40ad2f6950f143900e9c1c72363c0b431a606082"
-  integrity sha512-l1UiX4UyHSFsYt17iQ3Se5pQQZZHa22zyIXURmvkmLCD4t/aU+dvNWHatKac/D9Vm9UES7nvIqHs4jZqKviUmQ==
+  version "7.22.17"
+  resolved "https://registry.yarnpkg.com/@babel/helper-module-transforms/-/helper-module-transforms-7.22.17.tgz#7edf129097a51ccc12443adbc6320e90eab76693"
+  integrity sha512-XouDDhQESrLHTpnBtCKExJdyY4gJCdrvH2Pyv8r8kovX2U8G0dRUOT45T9XlbLtuu9CLXP15eusnkprhoPV5iQ==
   dependencies:
     "@babel/helper-environment-visitor" "^7.22.5"
     "@babel/helper-module-imports" "^7.22.15"
