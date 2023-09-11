@@ -56,7 +56,7 @@ RSpec.describe 'Application web server' do
 
     it 'sets only expected headers' do
       request_page
-      expect(response.headers.keys).to contain_exactly(*expected_headers)
+      expect(response.headers.keys).to match_array(expected_headers)
     end
 
     it 'sets correct values for headers' do
