@@ -1233,12 +1233,12 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@namics/stylelint-bem@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-8.1.0.tgz#5a5950eff7ef224871db165fa54a734ba8b7b965"
-  integrity sha512-lVK6mqAD1WjKwtXW4pZ/V7T3TM3WFG+aqYtAxqYLp7et3Rm5Tu3JoXYhA63HE4t467XOJTK+K2foIzYz42j69w==
+"@namics/stylelint-bem@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-9.0.0.tgz#e65b9667a57e4e98c6c5c8347a88f927d2704427"
+  integrity sha512-fjEykSt5jZYo4wy4dFwqvxNz0a5yyvZa/rxpLM0kxv8y8cKKB3kBCi8XM1okMz9wHeIIg+M4vLZVg7CrlKyQdQ==
   dependencies:
-    css-selector-classes "0.1.2"
+    css-selector-parser "2.3.2"
     postcss-resolve-nested-selector "0.1.1"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -1819,11 +1819,6 @@ array-union@^2.1.0:
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
 
-array-uniq@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
-  integrity sha1-r2rId6Jcx/dOBYiUdThY39sk/bY=
-
 array.prototype.findlastindex@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/array.prototype.findlastindex/-/array.prototype.findlastindex-1.2.3.tgz#b37598438f97b579166940814e2c0493a4f50207"
@@ -2255,18 +2250,10 @@ css-mediaquery@^0.1.2:
   resolved "https://registry.yarnpkg.com/css-mediaquery/-/css-mediaquery-0.1.2.tgz#6a2c37344928618631c54bd33cedd301da18bea0"
   integrity sha1-aiw3NEkoYYYxxUvTPO3TAdoYvqA=
 
-css-selector-classes@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/css-selector-classes/-/css-selector-classes-0.1.2.tgz#2403d8e560101c829c5f1df9308032a7a41fc376"
-  integrity sha1-JAPY5WAQHIKcXx35MIAyp6Qfw3Y=
-  dependencies:
-    array-uniq "^1.0.2"
-    css-selector-parser "~1.0.3"
-
-css-selector-parser@~1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/css-selector-parser/-/css-selector-parser-1.0.4.tgz#65dfe614bd5fd175b64a0a3f193b870fc5790773"
-  integrity sha1-Zd/mFL1f0XW2Sgo/GTuHD8V5B3M=
+css-selector-parser@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/css-selector-parser/-/css-selector-parser-2.3.2.tgz#99215b06573073f202521422bdb4f881338a33b2"
+  integrity sha512-JjnG6/pdLJh3iqipq7kteNVtbIczsU2A1cNxb+VAiniSuNmrB/NI3us4rSCfArvlwRXYly+jZhUUfEoInSH9Qg==
 
 css-tree@^2.3.1:
   version "2.3.1"
