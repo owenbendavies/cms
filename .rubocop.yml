@@ -38,6 +38,9 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/features/**/*' # OK for long features
 
+RSpec/IndexedLet: # Useful
+  Enabled: false
+
 RSpec/MessageExpectation: # Allow expects
   Enabled: false
 

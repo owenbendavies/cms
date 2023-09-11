@@ -1,4 +1,4 @@
-RSpec.shared_examples 'model with versioning', versioning: true do
+RSpec.shared_examples 'model with versioning', :versioning do
   subject(:model) { create(described_class.to_s.underscore) }
 
   it 'records creates' do
