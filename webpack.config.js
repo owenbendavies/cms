@@ -3,17 +3,17 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'production',
   devtool: 'source-map',
   entry: {
-    application: './app/javascript/application.js',
     admin: './app/javascript/admin.jsx',
+    application: './app/javascript/application.js',
   },
+  mode: 'production',
   module: {
     rules: [
       {
-        test: /\.m?jsx?$/,
         exclude: /node_modules/,
+        test: /\.m?jsx?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -23,17 +23,17 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
   output: {
     filename: '[name].js',
-    sourceMapFilename: '[name].js.map',
     path: path.resolve(__dirname, 'app/assets/builds'),
+    sourceMapFilename: '[name].js.map',
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
