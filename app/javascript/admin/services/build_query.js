@@ -44,8 +44,8 @@ const buildCreateQuery = (resource, params) => ({
 const deleteQuery = (resource) => gql`
   mutation Delete${capitalize(resource)}($ids: [ID!]!) {
     delete${capitalize(resource)}(input: { ${singularize(
-  resource
-)}Ids: $ids }) {
+      resource
+    )}Ids: $ids }) {
       ${resource} {
         id
       }
