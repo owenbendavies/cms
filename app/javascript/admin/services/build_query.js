@@ -20,6 +20,11 @@ const singularize = (string) => string.slice(0, -1);
 const capitalSingularize = (string) => singularize(capitalize(string));
 
 const buildCreateQuery = (resource, params) => ({
+  parseResponse: (response) => ({
+    data: response.data[`create${capitalSingularize(resource)}`][
+      singularize(resource)
+    ],
+  }),
   query: gql`
     mutation Create${capitalSingularize(
       resource
@@ -34,11 +39,6 @@ const buildCreateQuery = (resource, params) => ({
   variables: {
     input: params.data,
   },
-  parseResponse: (response) => ({
-    data: response.data[`create${capitalSingularize(resource)}`][
-      singularize(resource)
-    ],
-  }),
 });
 
 const deleteQuery = (resource) => gql`
@@ -54,49 +54,49 @@ const deleteQuery = (resource) => gql`
 `;
 
 const buildDeleteQuery = (resource, params) => ({
+  parseResponse: (response) => ({
+    data: response.data[`delete${capitalize(resource)}`][resource][0],
+  }),
   query: deleteQuery(resource),
   variables: {
     ids: [params.id],
   },
-  parseResponse: (response) => ({
-    data: response.data[`delete${capitalize(resource)}`][resource][0],
-  }),
 });
 
 const buildDeleteManyQuery = (resource, params) => ({
+  parseResponse: (response) => ({
+    data: response.data[`delete${capitalize(resource)}`][resource],
+  }),
   query: deleteQuery(resource),
   variables: {
     ids: params.ids,
   },
-  parseResponse: (response) => ({
-    data: response.data[`delete${capitalize(resource)}`][resource],
-  }),
 });
 
 const buildGetListQuery = (fetchType, resource, params) => ({
-  query: queries[resource][fetchType],
-  variables: {
-    first: params.pagination.perPage,
-    after: btoa((params.pagination.page - 1) * params.pagination.perPage),
-    orderBy: {
-      field: _.toUpper(_.snakeCase(params.sort.field)),
-      direction: params.sort.order,
-    },
-  },
   parseResponse: (response) => ({
     data: response.data[resource].nodes,
     total: response.data[resource].totalCount,
   }),
+  query: queries[resource][fetchType],
+  variables: {
+    after: btoa((params.pagination.page - 1) * params.pagination.perPage),
+    first: params.pagination.perPage,
+    orderBy: {
+      direction: params.sort.order,
+      field: _.toUpper(_.snakeCase(params.sort.field)),
+    },
+  },
 });
 
 const buildGetOneQuery = (fetchType, resource, params) => ({
+  parseResponse: (response) => ({
+    data: response.data.node,
+  }),
   query: queries[resource][fetchType],
   variables: {
     id: params.id,
   },
-  parseResponse: (response) => ({
-    data: response.data.node,
-  }),
 });
 
 const updateVariables = (resource, params) => {
@@ -112,6 +112,11 @@ const updateVariables = (resource, params) => {
 };
 
 const buildUpdateQuery = (resource, params) => ({
+  parseResponse: (response) => ({
+    data: response.data[`update${capitalSingularize(resource)}`][
+      singularize(resource)
+    ],
+  }),
   query: gql`
     mutation Update${capitalSingularize(
       resource
@@ -126,11 +131,6 @@ const buildUpdateQuery = (resource, params) => ({
   variables: {
     input: updateVariables(resource, params),
   },
-  parseResponse: (response) => ({
-    data: response.data[`update${capitalSingularize(resource)}`][
-      singularize(resource)
-    ],
-  }),
 });
 
 export const buildQuery = () => (fetchType, resource, params) => {
