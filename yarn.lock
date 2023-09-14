@@ -5014,9 +5014,9 @@ string-width@^4.2.3:
     strip-ansi "^6.0.1"
 
 string.prototype.matchall@^4.0.8:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/string.prototype.matchall/-/string.prototype.matchall-4.0.9.tgz#148779de0f75d36b13b15885fec5cadde994520d"
-  integrity sha512-6i5hL3MqG/K2G43mWXWgP+qizFW/QH/7kCNN13JrJS5q48FN5IKksLDscexKP3dnmB6cdm9jlNgAsWNLpSykmA==
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/string.prototype.matchall/-/string.prototype.matchall-4.0.10.tgz#a1553eb532221d4180c51581d6072cd65d1ee100"
+  integrity sha512-rGXbGmOEosIQi6Qva94HUjgPs9vKW+dkG7Y8Q5O2OYkWL6wFaTRZO8zM4mhP94uX55wgyrXzfS2aGtGzUL7EJQ==
   dependencies:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
@@ -5025,6 +5025,7 @@ string.prototype.matchall@^4.0.8:
     has-symbols "^1.0.3"
     internal-slot "^1.0.5"
     regexp.prototype.flags "^1.5.0"
+    set-function-name "^2.0.0"
     side-channel "^1.0.4"
 
 string.prototype.padend@^3.0.0:
