@@ -991,9 +991,9 @@
     "@babel/types" "^7.22.15"
 
 "@babel/traverse@^7.22.15", "@babel/traverse@^7.22.17":
-  version "7.22.17"
-  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.22.17.tgz#b23c203ab3707e3be816043081b4a994fcacec44"
-  integrity sha512-xK4Uwm0JnAMvxYZxOVecss85WxTEIbTa7bnGyf/+EgCL5Zt3U7htUpEOWv9detPlamGKuRzCqw74xVglDWpPdg==
+  version "7.22.19"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.22.19.tgz#bb2b12b7de9d7fec9e812ed89eea097b941954f8"
+  integrity sha512-ZCcpVPK64krfdScRbpxF6xA5fz7IOsfMwx1tcACvCzt6JY+0aHkBk7eIU8FRDSZRU5Zei6Z4JfgAxN1bqXGECg==
   dependencies:
     "@babel/code-frame" "^7.22.13"
     "@babel/generator" "^7.22.15"
@@ -1002,7 +1002,7 @@
     "@babel/helper-hoist-variables" "^7.22.5"
     "@babel/helper-split-export-declaration" "^7.22.6"
     "@babel/parser" "^7.22.16"
-    "@babel/types" "^7.22.17"
+    "@babel/types" "^7.22.19"
     debug "^4.1.0"
     globals "^11.1.0"
 
@@ -1013,6 +1013,15 @@
   dependencies:
     "@babel/helper-string-parser" "^7.22.5"
     "@babel/helper-validator-identifier" "^7.22.15"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@^7.22.19":
+  version "7.22.19"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.22.19.tgz#7425343253556916e440e662bb221a93ddb75684"
+  integrity sha512-P7LAw/LbojPzkgp5oznjE6tQEIWbp4PkkfrZDINTro9zgBRtI324/EYsiSI7lhPbpIQ+DCeR2NNmMWANGGfZsg==
+  dependencies:
+    "@babel/helper-string-parser" "^7.22.5"
+    "@babel/helper-validator-identifier" "^7.22.19"
     to-fast-properties "^2.0.0"
 
 "@csstools/css-parser-algorithms@^2.3.1":
