@@ -182,7 +182,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    ffi (1.15.5)
+    ffi (1.16.1)
     fog-aws (3.19.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
