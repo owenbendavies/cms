@@ -51,7 +51,7 @@ RSpec.feature 'Admin pages' do
     click_button 'Save'
     expect(page).to have_content 'Element updated'
     visit "/#{home_page.url}"
-    expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
+    expect(page).to have_css 'h1 svg.fa-lock.fa-fw'
   end
 
   scenario 'adding a contact form' do

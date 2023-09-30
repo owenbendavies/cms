@@ -29,7 +29,7 @@ RSpec.feature 'Sitemap' do
 
       find(".sitemap li:nth-child(#{private_index})").tap do |item|
         expect(item).to have_link private_page.name, href: "/#{private_page.url}"
-        expect(item).to have_selector 'svg.fa-lock.fa-fw'
+        expect(item).to have_css 'svg.fa-lock.fa-fw'
       end
     end
   end
