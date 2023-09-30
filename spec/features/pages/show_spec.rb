@@ -8,7 +8,7 @@ RSpec.feature 'Page show' do
 
     visit '/home'
 
-    expect(page).to have_selector 'body.page-home'
+    expect(page).to have_css 'body.page-home'
 
     within 'article' do
       expect(page).to have_content 'Home'
@@ -26,6 +26,6 @@ RSpec.feature 'Page show' do
     login_as site_user
     visit "/#{private_page.url}"
 
-    expect(page).to have_selector 'h1 svg.fa-lock.fa-fw'
+    expect(page).to have_css 'h1 svg.fa-lock.fa-fw'
   end
 end
