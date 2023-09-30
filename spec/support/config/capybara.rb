@@ -4,7 +4,7 @@ Capybara.register_driver :chrome do |app|
   browser_options.add_argument('--disable-gpu')
   browser_options.add_argument('--no-sandbox')
   browser_options.add_argument("--lang=#{ENV.fetch('LANGUAGE')}")
-  Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: [browser_options])
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
 end
 
 Capybara.default_driver = :chrome
