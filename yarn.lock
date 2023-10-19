@@ -1411,9 +1411,9 @@
   integrity sha512-2L9ifAGl7wmXwP4v3pN4p2FLhD0O1qsJpvKmNin5VA8+UvNVb447UDaAEV6UdrkA+m/Xs58U1RFps44x6TFsVQ==
 
 "@types/zen-observable@^0.8.0":
-  version "0.8.4"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.4.tgz#e06f78a43387899cfa60c02f166620907fc534c8"
-  integrity sha512-XWquk4B9Y9bP++I9FsKBVDR+cM1duIqTksuD4l+XUDcqKdngHrtLBe6A5DQX5sdJPWDhLFM9xHZBCiWcecZ0Jg==
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.5.tgz#4b8b18e52819e28ff3ab1eaa4ede835e74582176"
+  integrity sha512-jH5FqZ1bMAO3L4ltXxw68vg+W0diVsSM3tnpFycZDTLE2luquFi015vhkr9hAjlHpxQbkaSk2yBfPICyb4rpXQ==
 
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
