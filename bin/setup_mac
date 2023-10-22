@@ -13,6 +13,7 @@ function brew_install_missing_taps() {
   REQUIRED="
     hashicorp/tap
     heroku/brew
+    homebrew/cask-versions
   "
 
   INSTALLED=$(brew tap)
@@ -24,8 +25,13 @@ function brew_install_missing_taps() {
 
 function brew_install_missing_formulas() {
   REQUIRED="
+    awscli
+    chromedriver
+    google-chrome
     heroku
     imagemagick
+    node
+    node@18
     postgresql@15
     rbenv
     terraform
@@ -33,19 +39,6 @@ function brew_install_missing_formulas() {
   "
 
   INSTALLED=$(brew list --formula)
-
-  for i in $REQUIRED; do
-    grep -q $i <<<$INSTALLED || brew install $i
-  done
-}
-
-function brew_cask_install_missing_formulas() {
-  REQUIRED="
-    chromedriver
-    google-chrome
-  "
-
-  INSTALLED=$(brew list --cask)
 
   for i in $REQUIRED; do
     grep -q $i <<<$INSTALLED || brew install $i
@@ -62,14 +55,21 @@ set -v
 
 install_brew
 
+brew update
+
+brew upgrade
+
 brew_install_missing_taps
 
 brew_install_missing_formulas
 
-brew_cask_install_missing_formulas
+brew cleanup
 
-rbenv install --skip-existing
+brew doctor || true
 
 brew services start --all
 
 add_postgresql_user
+
+rbenv install --skip-existing
+
