@@ -290,7 +290,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mutex_m (0.1.2)
-    net-imap (0.4.2)
+    net-imap (0.4.3)
       date
       net-protocol
     net-pop (0.1.2)
