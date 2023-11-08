@@ -499,7 +499,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.1.2)
-    stringio (3.0.8)
+    stringio (3.0.9)
     strip_attributes (1.13.0)
       activemodel (>= 3.0, < 8.0)
     terminal-table (3.0.2)
