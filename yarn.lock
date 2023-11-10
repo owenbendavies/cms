@@ -587,9 +587,9 @@
     "@babel/plugin-syntax-json-strings" "^7.8.3"
 
 "@babel/plugin-transform-literals@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-literals/-/plugin-transform-literals-7.22.5.tgz#e9341f4b5a167952576e23db8d435849b1dd7920"
-  integrity sha512-fTLj4D79M+mepcw3dgFBTIDYpbcB9Sm0bpm4ppXPaO+U+PKFFyV9MGRvS0gvGw62sd10kT5lRMKXAADb9pWy8g==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-literals/-/plugin-transform-literals-7.23.3.tgz#8214665f00506ead73de157eba233e7381f3beb4"
+  integrity sha512-wZ0PIXRxnwZvl9AYpqNUxpZ5BiTGrYt7kueGQ+N5FiQ7RCOD4cm8iShd6S6ggfVIWaJf2EMk8eRzAh52RfP4rQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
