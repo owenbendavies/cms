@@ -626,12 +626,12 @@
     "@babel/helper-simple-access" "^7.22.5"
 
 "@babel/plugin-transform-modules-systemjs@^7.23.0":
-  version "7.23.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-systemjs/-/plugin-transform-modules-systemjs-7.23.0.tgz#77591e126f3ff4132a40595a6cccd00a6b60d160"
-  integrity sha512-qBej6ctXZD2f+DhlOC9yO47yEYgUh5CZNz/aBoH4j/3NOlRfJXJbY7xDQCqQVf9KbrqGzIWER1f23doHGrIHFg==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-systemjs/-/plugin-transform-modules-systemjs-7.23.3.tgz#fa7e62248931cb15b9404f8052581c302dd9de81"
+  integrity sha512-ZxyKGTkF9xT9YJuKQRo19ewf3pXpopuYQd8cDXqNzc3mUNbOME0RKMoZxviQk74hwzfQsEe66dE92MaZbdHKNQ==
   dependencies:
     "@babel/helper-hoist-variables" "^7.22.5"
-    "@babel/helper-module-transforms" "^7.23.0"
+    "@babel/helper-module-transforms" "^7.23.3"
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/helper-validator-identifier" "^7.22.20"
 
