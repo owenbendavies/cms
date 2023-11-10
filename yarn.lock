@@ -345,9 +345,9 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-syntax-import-attributes@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-import-attributes/-/plugin-syntax-import-attributes-7.22.5.tgz#ab840248d834410b829f569f5262b9e517555ecb"
-  integrity sha512-KwvoWDeNKPETmozyFE0P2rOLqh39EoQHNjqizrI5B8Vt0ZNS7M56s7dAiAqbYfiAYOuIzIh96z3iR2ktgu3tEg==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-import-attributes/-/plugin-syntax-import-attributes-7.23.3.tgz#992aee922cf04512461d7dae3ff6951b90a2dc06"
+  integrity sha512-pawnE0P9g10xgoP7yKr6CK63K2FMsTE+FZidZO/1PwRdzmAPVs+HS1mAURUsgaoxammTJvULUdIkEK0gOcU2tA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
