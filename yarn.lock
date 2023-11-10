@@ -667,9 +667,9 @@
     "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
 
 "@babel/plugin-transform-numeric-separator@^7.22.11":
-  version "7.22.11"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.22.11.tgz#498d77dc45a6c6db74bb829c02a01c1d719cbfbd"
-  integrity sha512-3dzU4QGPsILdJbASKhF/V2TVP+gJya1PsueQCxIPCEcerqF21oEcrob4mzjsp2Py/1nLfF5m+xYNMDpmA8vffg==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.23.3.tgz#2f8da42b75ba89e5cfcd677afd0856d52c0c2e68"
+  integrity sha512-s9GO7fIBi/BLsZ0v3Rftr6Oe4t0ctJ8h4CCXfPoEJwmvAPMyNrfkOOJzm6b9PX9YXcCJWWQd/sBF/N26eBiMVw==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-numeric-separator" "^7.10.4"
