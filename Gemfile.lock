@@ -243,7 +243,7 @@ GEM
     invisible_captcha (2.1.0)
       rails (>= 5.2)
     io-console (0.6.0)
-    irb (1.8.3)
+    irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
     jmespath (1.6.2)
