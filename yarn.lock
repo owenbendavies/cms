@@ -652,9 +652,9 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-new-target@^7.22.5":
-  version "7.22.5"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-new-target/-/plugin-transform-new-target-7.22.5.tgz#1b248acea54ce44ea06dfd37247ba089fcf9758d"
-  integrity sha512-AsF7K0Fx/cNKVyk3a+DW0JLo+Ua598/NxMRvxDnkpCIGFh43+h/v2xyhRUYf6oD8gE4QtL83C7zZVghMjHd+iw==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-new-target/-/plugin-transform-new-target-7.23.3.tgz#5491bb78ed6ac87e990957cea367eab781c4d980"
+  integrity sha512-YJ3xKqtJMAT5/TIZnpAR3I+K+WaDowYbN3xyxI8zxx/Gsypwf9B9h0VB+1Nh6ACAAPRS5NSRje0uVv5i79HYGQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
