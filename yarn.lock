@@ -609,11 +609,11 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-modules-amd@^7.23.0":
-  version "7.23.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-amd/-/plugin-transform-modules-amd-7.23.0.tgz#05b2bc43373faa6d30ca89214731f76f966f3b88"
-  integrity sha512-xWT5gefv2HGSm4QHtgc1sYPbseOyf+FFDo2JbpE25GWl5BqTGO9IMwTYJRoIdjsF85GE+VegHxSCUt5EvoYTAw==
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-amd/-/plugin-transform-modules-amd-7.23.3.tgz#e19b55436a1416829df0a1afc495deedfae17f7d"
+  integrity sha512-vJYQGxeKM4t8hYCKVBlZX/gtIY2I7mRGFNcm85sgXGMTBcoV3QdVtdpbcWEbzbfUIUZKwvgFT82mRvaQIebZzw==
   dependencies:
-    "@babel/helper-module-transforms" "^7.23.0"
+    "@babel/helper-module-transforms" "^7.23.3"
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-modules-commonjs@^7.23.0":
