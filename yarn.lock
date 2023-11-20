@@ -4434,10 +4434,10 @@ ra-core@^3.19.12:
     query-string "^5.1.1"
     reselect "~3.0.0"
 
-ra-data-graphql@^4.14.3:
-  version "4.14.3"
-  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-4.14.3.tgz#0b511b7f329770a47dd4ba742039ad7738547a18"
-  integrity sha512-sI4JmpH2/iNgZcoQhCFu/IyrpIYZ+vPZ1h9LrEqHc8fL5/3C//Km+4snM4VwkFlqN8TRsAozj9takjBSMxy4xA==
+ra-data-graphql@^4.16.0:
+  version "4.16.0"
+  resolved "https://registry.yarnpkg.com/ra-data-graphql/-/ra-data-graphql-4.16.0.tgz#da2cf0bf8b62db7de9f0164883e5255bf6ced810"
+  integrity sha512-PmShSRv6t8xO/RQC1+jNJaYkV7Gdd/E2MFl0KtQBck96In+nqcEoWZxRzaVfzCB5QKjp8ji4uDNGfeNCgdMzAg==
   dependencies:
     "@apollo/client" "^3.3.19"
     lodash "~4.17.5"
