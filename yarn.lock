@@ -479,9 +479,9 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-async-generator-functions@^7.23.3":
-  version "7.23.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.23.3.tgz#9df2627bad7f434ed13eef3e61b2b65cafd4885b"
-  integrity sha512-59GsVNavGxAXCDDbakWSMJhajASb4kBCqDjqJsv+p5nKdbz7istmZ3HrX3L2LuiI80+zsOADCvooqQH3qGCucQ==
+  version "7.23.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.23.4.tgz#93ac8e3531f347fba519b4703f9ff2a75c6ae27a"
+  integrity sha512-efdkfPhHYTtn0G6n2ddrESE91fgXxjlqLsnUtPWnJs4a4mZIbUaK7ffqKIIUKXSHwcDvaCVX6GXkaJJFqtX7jw==
   dependencies:
     "@babel/helper-environment-visitor" "^7.22.20"
     "@babel/helper-plugin-utils" "^7.22.5"
