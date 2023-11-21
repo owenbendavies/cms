@@ -729,9 +729,9 @@
     "@babel/helper-replace-supers" "^7.22.20"
 
 "@babel/plugin-transform-optional-catch-binding@^7.23.3":
-  version "7.23.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.23.3.tgz#362c0b545ee9e5b0fa9d9e6fe77acf9d4c480027"
-  integrity sha512-LxYSb0iLjUamfm7f1D7GpiS4j0UAC8AOiehnsGAP8BEsIX8EOi3qV6bbctw8M7ZvLtcoZfZX5Z7rN9PlWk0m5A==
+  version "7.23.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.23.4.tgz#318066de6dacce7d92fa244ae475aa8d91778017"
+  integrity sha512-XIq8t0rJPHf6Wvmbn9nFxU6ao4c7WhghTR5WyV8SrJfUFzyxhCm4nhC+iAp3HFhbAKLfYpgzhJ6t4XCtVwqO5A==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
