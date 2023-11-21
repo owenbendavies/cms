@@ -587,9 +587,9 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-json-strings@^7.23.3":
-  version "7.23.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-json-strings/-/plugin-transform-json-strings-7.23.3.tgz#489724ab7d3918a4329afb4172b2fd2cf3c8d245"
-  integrity sha512-H9Ej2OiISIZowZHaBwF0tsJOih1PftXJtE8EWqlEIwpc7LMTGq0rPOrywKLQ4nefzx8/HMR0D3JGXoMHYvhi0A==
+  version "7.23.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-json-strings/-/plugin-transform-json-strings-7.23.4.tgz#a871d9b6bd171976efad2e43e694c961ffa3714d"
+  integrity sha512-81nTOqM1dMwZ/aRXQ59zVubN9wHGqk6UtqRK+/q+ciXmRy8fSolhGVvG09HHRGo4l6fr/c4ZhXUQH0uFW7PZbg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-json-strings" "^7.8.3"
