@@ -547,9 +547,9 @@
     "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-dynamic-import@^7.23.3":
-  version "7.23.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-dynamic-import/-/plugin-transform-dynamic-import-7.23.3.tgz#82625924da9ed5fb11a428efb02e43bc9a3ab13e"
-  integrity sha512-vTG+cTGxPFou12Rj7ll+eD5yWeNl5/8xvQvF08y5Gv3v4mZQoyFf8/n9zg4q5vvCWt5jmgymfzMAldO7orBn7A==
+  version "7.23.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-dynamic-import/-/plugin-transform-dynamic-import-7.23.4.tgz#c7629e7254011ac3630d47d7f34ddd40ca535143"
+  integrity sha512-V6jIbLhdJK86MaLh4Jpghi8ho5fGzt3imHOBu/x0jlBaPYqDoWz4RDXjmMOfnh+JWNaQleEAByZLV0QzBT4YQQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/plugin-syntax-dynamic-import" "^7.8.3"
