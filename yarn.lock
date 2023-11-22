@@ -1419,9 +1419,9 @@
   integrity sha512-8g25Nl3AuB1KulTlSUsUhUo/oBgBU6XIXQ+XURpeioEbEJvkO7qI4vDfREv3vJYHHzqXjcAHvoJy4pTtSQNZtA==
 
 "@types/zen-observable@^0.8.0":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.6.tgz#4295064b08aaba7d1aa21160116c9a88bf051974"
-  integrity sha512-etoygubMe9BkcfBcoljtq46kpL6NPXDKmcNuCaxizJ2GYLz6lCyl3HAITPGuREYt4WytZsvuicZBbTcJ9bcjOQ==
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.7.tgz#114e2ffc8d5be4915fdd5bc90668fc0ceaadb760"
+  integrity sha512-LKzNTjj+2j09wAo/vvVjzgw5qckJJzhdGgWHW7j69QIGdq/KnZrMAMIHQiWGl3Ccflh5/CudBAntTPYdprPltA==
 
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
