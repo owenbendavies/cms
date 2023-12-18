@@ -243,7 +243,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     invisible_captcha (2.1.0)
       rails (>= 5.2)
-    io-console (0.7.0)
+    io-console (0.7.1)
     irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
