@@ -331,7 +331,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
-    phonelib (0.8.5)
+    phonelib (0.8.6)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
