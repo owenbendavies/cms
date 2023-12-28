@@ -183,7 +183,7 @@ GEM
       regexp_parser (~> 2.2)
     erubi (1.12.0)
     excon (0.108.0)
-    factory_bot (6.4.2)
+    factory_bot (6.4.4)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.2)
       factory_bot (~> 6.4)
