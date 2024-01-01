@@ -332,7 +332,7 @@ GEM
       racc
     pg (1.5.4)
     phonelib (0.8.6)
-    premailer (1.21.0)
+    premailer (1.22.0)
       addressable
       css_parser (>= 1.12.0)
       htmlentities (>= 4.0.0)
