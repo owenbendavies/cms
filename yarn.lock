@@ -1241,10 +1241,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0 || ^17.0.0"
 
-"@namics/stylelint-bem@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-9.0.0.tgz#e65b9667a57e4e98c6c5c8347a88f927d2704427"
-  integrity sha512-fjEykSt5jZYo4wy4dFwqvxNz0a5yyvZa/rxpLM0kxv8y8cKKB3kBCi8XM1okMz9wHeIIg+M4vLZVg7CrlKyQdQ==
+"@namics/stylelint-bem@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@namics/stylelint-bem/-/stylelint-bem-10.0.0.tgz#2a36859c122281d61f93624beafbb9c8cd371187"
+  integrity sha512-VYsuxl6jUt+RLkqNgD61mSTxWdy+Kb9tJa0+PYskZnOJdNCfl4hfix9mInSAgkrbARejxOGKTw9JtXwoR/9s4A==
   dependencies:
     css-selector-parser "2.3.2"
     postcss-resolve-nested-selector "0.1.1"
