@@ -12,7 +12,7 @@ resource "heroku_addon" "app_rollbar" {
   plan   = "rollbar:free"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -30,7 +30,7 @@ resource "heroku_addon" "app_scout" {
   plan   = "scout:chair"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
