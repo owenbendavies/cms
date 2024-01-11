@@ -9,7 +9,7 @@ resource "heroku_addon" "app_postgresql" {
 
 resource "heroku_addon" "app_rollbar" {
   app_id = heroku_app.app.id
-  plan   = "rollbar:free"
+  plan   = "rollbar:trial-5k"
 
   lifecycle {
     prevent_destroy = false
