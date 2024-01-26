@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.23.7",
-    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
