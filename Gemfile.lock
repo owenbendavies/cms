@@ -87,7 +87,7 @@ GEM
     aws-partitions (1.886.0)
     aws-record (2.13.0)
       aws-sdk-dynamodb (~> 1, >= 1.85.0)
-    aws-sdk-cognitoidentityprovider (1.86.0)
+    aws-sdk-cognitoidentityprovider (1.87.0)
       aws-sdk-core (~> 3, >= 3.191.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-core (3.191.0)
