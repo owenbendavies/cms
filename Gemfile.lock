@@ -477,7 +477,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    shoryuken (6.2.0)
+    shoryuken (6.2.1)
       aws-sdk-core (>= 2)
       concurrent-ruby
       thor
