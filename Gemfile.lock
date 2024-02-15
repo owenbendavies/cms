@@ -177,9 +177,9 @@ GEM
     date (3.3.4)
     diff-lcs (1.5.1)
     docile (1.4.0)
-    dotenv (3.0.0)
-    dotenv-rails (3.0.0)
-      dotenv (= 3.0.0)
+    dotenv (3.0.1)
+    dotenv-rails (3.0.1)
+      dotenv (= 3.0.1)
       railties (>= 6.1)
     drb (2.2.0)
       ruby2_keywords
