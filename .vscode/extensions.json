@@ -1,12 +1,17 @@
 {
   "recommendations": [
+    "davidpallinder.rails-test-runner",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "foxundermoon.shell-format",
+    "gamunu.vscode-yarn",
+    "github.vscode-github-actions",
     "graphql.vscode-graphql",
     "hashicorp.terraform",
-    "rebornix.ruby",
+    "mtxr.sqltools",
+    "pkosta2005.heroku-command",
+    "shopify.ruby-lsp",
     "streetsidesoftware.code-spell-checker",
     "stylelint.vscode-stylelint"
   ],
