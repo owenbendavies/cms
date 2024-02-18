@@ -335,7 +335,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pg (1.5.4)
+    pg (1.5.5)
     phonelib (0.8.7)
     premailer (1.22.0)
       addressable
