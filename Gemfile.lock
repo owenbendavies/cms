@@ -179,8 +179,7 @@ GEM
     dotenv-rails (3.1.0)
       dotenv (= 3.1.0)
       railties (>= 6.1)
-    drb (2.2.0)
-      ruby2_keywords
+    drb (2.2.1)
     ecma-re-validator (0.4.0)
       regexp_parser (~> 2.2)
     erubi (1.12.0)
@@ -465,7 +464,6 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.1)
       ffi (~> 1.12)
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     scout_apm (5.3.7)
       parser
