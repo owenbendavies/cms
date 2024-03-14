@@ -1031,9 +1031,9 @@
     to-fast-properties "^2.0.0"
 
 "@csstools/css-parser-algorithms@^2.3.1":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.6.0.tgz#b45d3c7cbdd4214261724c82f96e33c746fedd58"
-  integrity sha512-YfEHq0eRH98ffb5/EsrrDspVWAuph6gDggAE74ZtjecsmyyWpW768hOyiONa8zwWGbIWYfa2Xp4tRTrpQQ00CQ==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@csstools/css-parser-algorithms/-/css-parser-algorithms-2.6.1.tgz#c45440d1efa2954006748a01697072dae5881bcd"
+  integrity sha512-ubEkAaTfVZa+WwGhs5jbo5Xfqpeaybr/RvWzvFxRs4jfq16wH8l8Ty/QEEpINxll4xhuGfdMbipRyz5QZh9+FA==
 
 "@csstools/css-tokenizer@^2.2.0":
   version "2.2.4"
