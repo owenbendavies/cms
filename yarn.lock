@@ -1853,14 +1853,15 @@ array-union@^2.1.0:
   integrity sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
 
 array.prototype.filter@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/array.prototype.filter/-/array.prototype.filter-1.0.3.tgz#423771edeb417ff5914111fff4277ea0624c0d0e"
-  integrity sha512-VizNcj/RGJiUyQBgzwxzE5oHdeuXY5hSbbmKMlphj1cy1Vl7Pn2asCGbSrru6hSQjmCzqTBPVWAF/whmEOVHbw==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/array.prototype.filter/-/array.prototype.filter-1.0.4.tgz#bef83fde8a36a14d3de988c43563e0f5249962bf"
+  integrity sha512-r+mCJ7zXgXElgR4IRC+fkvNCeoaavWBs6EdCso5Tbcf+iEMKzBU/His60lt34WEZ9vlb8wDkZvQGcVI5GwkfoQ==
   dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
+    call-bind "^1.0.7"
+    define-properties "^1.2.1"
+    es-abstract "^1.23.2"
     es-array-method-boxes-properly "^1.0.0"
+    es-object-atoms "^1.0.0"
     is-string "^1.0.7"
 
 array.prototype.findlast@^1.2.4:
@@ -2590,7 +2591,7 @@ es-abstract@^1.22.1, es-abstract@^1.22.3:
     unbox-primitive "^1.0.2"
     which-typed-array "^1.1.14"
 
-es-abstract@^1.23.0, es-abstract@^1.23.1:
+es-abstract@^1.23.0, es-abstract@^1.23.1, es-abstract@^1.23.2:
   version "1.23.2"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.23.2.tgz#693312f3940f967b8dd3eebacb590b01712622e0"
   integrity sha512-60s3Xv2T2p1ICykc7c+DNDPLDMm9t4QxCOUU0K9JxiLjM3C1zB9YVdN7tjxrFd4+AkZ8CdX1ovUga4P2+1e+/w==
