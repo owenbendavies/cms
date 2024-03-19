@@ -4224,13 +4224,13 @@ object.assign@^4.1.0, object.assign@^4.1.4, object.assign@^4.1.5:
     object-keys "^1.1.1"
 
 object.entries@^1.1.0, object.entries@^1.1.5, object.entries@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/object.entries/-/object.entries-1.1.7.tgz#2b47760e2a2e3a752f39dd874655c61a7f03c131"
-  integrity sha512-jCBs/0plmPsOnrKAfFQXRG2NFjlhZgjjcBLSmTnEhU8U6vVTsVe8ANeQJCHTl3gSsI4J+0emOoCgoKlmQPMgmA==
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/object.entries/-/object.entries-1.1.8.tgz#bffe6f282e01f4d17807204a24f8edd823599c41"
+  integrity sha512-cmopxi8VwRIAw/fkijJohSfpef5PdN0pMQJN6VC/ZKvn0LIknWD8KtgY6KlQdEc4tIjcQ3HxSMmnvtzIscdaYQ==
   dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
+    call-bind "^1.0.7"
+    define-properties "^1.2.1"
+    es-object-atoms "^1.0.0"
 
 object.fromentries@^2.0.7:
   version "2.0.8"
