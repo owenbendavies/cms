@@ -5186,13 +5186,14 @@ string.prototype.matchall@^4.0.10:
     side-channel "^1.0.6"
 
 string.prototype.padend@^3.0.0:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/string.prototype.padend/-/string.prototype.padend-3.1.5.tgz#311ef3a4e3c557dd999cdf88fbdde223f2ac0f95"
-  integrity sha512-DOB27b/2UTTD+4myKUFh+/fXWcu/UDyASIXfg+7VzoCNNGOfWvoyU/x5pvVHr++ztyt/oSYI1BcWBBG/hmlNjA==
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/string.prototype.padend/-/string.prototype.padend-3.1.6.tgz#ba79cf8992609a91c872daa47c6bb144ee7f62a5"
+  integrity sha512-XZpspuSB7vJWhvJc9DLSlrXl1mcA2BdoY5jjnS135ydXqLoqhs96JjDtCkjJEQHvfqZIp9hBuBMgI589peyx9Q==
   dependencies:
-    call-bind "^1.0.2"
-    define-properties "^1.2.0"
-    es-abstract "^1.22.1"
+    call-bind "^1.0.7"
+    define-properties "^1.2.1"
+    es-abstract "^1.23.2"
+    es-object-atoms "^1.0.0"
 
 string.prototype.trim@^1.2.6, string.prototype.trim@^1.2.9:
   version "1.2.9"
