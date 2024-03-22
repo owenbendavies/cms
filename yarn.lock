@@ -2476,9 +2476,9 @@ dom-helpers@^5.0.1:
     csstype "^3.0.2"
 
 dompurify@^2.4.3:
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.4.8.tgz#3c38f4dc26bc52b2d691a6b0a87a8b0426f96788"
-  integrity sha512-O90eQdAQOiLZoE9pEgPz3JfqXh5yrhJHv0/LzOv3wWFLTWUqAKaISD1aWASQTLshLM+jziuSerbtUESKK8Jibw==
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.4.9.tgz#9ccdd9e1780653156b09de873f5372bc1eaf2c40"
+  integrity sha512-iHtnxYMotKgOTvxIqq677JsKHvCOkAFqj9x8Mek2zdeHW1XjuFKwjpmZeMaXQRQ8AbJZDbcRz/+r1QhwvFtmQg==
 
 downshift@3.2.7:
   version "3.2.7"
