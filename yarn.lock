@@ -2490,9 +2490,9 @@ downshift@3.2.7:
     react-is "^16.5.2"
 
 electron-to-chromium@^1.4.668:
-  version "1.4.722"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.722.tgz#99ae3484c5fc0f387d39ad98d77e1f259b9f4074"
-  integrity sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==
+  version "1.4.724"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.724.tgz#e0a86fe4d3d0e05a4d7b032549d79608078f830d"
+  integrity sha512-RTRvkmRkGhNBPPpdrgtDKvmOEYTrPlXDfc0J/Nfq5s29tEahAwhiX4mmhNzj6febWMleulxVYPh7QwCSL/EldA==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
