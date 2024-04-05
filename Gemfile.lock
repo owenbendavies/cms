@@ -520,8 +520,9 @@ GEM
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (0.13.0)
-    validates_email_format_of (1.7.2)
-      i18n
+    validates_email_format_of (1.8.0)
+      i18n (>= 0.8.0)
+      simpleidn
     version_gem (1.1.4)
     web-console (4.2.1)
       actionview (>= 6.0.0)
