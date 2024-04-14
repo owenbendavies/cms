@@ -4,5 +4,7 @@ locals {
   name       = join("-", [var.namespace, local.project, var.environment])
   project    = "cms"
 
-  environment_domains = {}
+  environment_domains = {
+    production : [],
+  }
 }
