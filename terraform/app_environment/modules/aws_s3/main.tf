@@ -1,10 +1,6 @@
 resource "aws_s3_bucket" "assets" {
   bucket = var.name
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   lifecycle_rule {
     abort_incomplete_multipart_upload_days = 1
     enabled                                = true
@@ -36,10 +32,6 @@ resource "aws_s3_bucket" "assets" {
 resource "aws_s3_bucket" "logs" {
   acl    = "log-delivery-write"
   bucket = "${var.name}-logs"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 
   lifecycle_rule {
     abort_incomplete_multipart_upload_days = 1

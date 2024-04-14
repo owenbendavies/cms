@@ -19,10 +19,6 @@ resource "aws_cloudfront_distribution" "assets" {
     }
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   logging_config {
     bucket = var.logs_domain
     prefix = "AWSLogs/${data.aws_caller_identity.main.account_id}/cloudfront/${var.name}/"

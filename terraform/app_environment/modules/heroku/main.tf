@@ -1,37 +1,21 @@
 resource "heroku_addon" "app_postgresql" {
   app_id = heroku_app.app.id
   plan   = "heroku-postgresql:mini"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "heroku_addon" "app_rollbar" {
   app_id = heroku_app.app.id
   plan   = "rollbar:trial-5k"
-
-  lifecycle {
-    prevent_destroy = false
-  }
 }
 
 resource "heroku_addon" "app_scheduler" {
   app_id = heroku_app.app.id
   plan   = "scheduler:standard"
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "heroku_addon" "app_scout" {
   app_id = heroku_app.app.id
   plan   = "scout:chair"
-
-  lifecycle {
-    prevent_destroy = false
-  }
 }
 
 resource "heroku_app" "app" {
@@ -43,10 +27,6 @@ resource "heroku_app" "app" {
     "heroku/nodejs",
     "heroku/ruby",
   ]
-
-  lifecycle {
-    prevent_destroy = true
-  }
 
   sensitive_config_vars = {
     AWS_ACCESS_KEY_ID            = var.aws_access_key_id
