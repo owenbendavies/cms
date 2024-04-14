@@ -19,10 +19,6 @@ resource "aws_cognito_user_pool" "app" {
     allow_admin_create_user_only = true
   }
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   schema {
     attribute_data_type = "String"
     mutable             = true
