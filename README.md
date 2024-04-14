@@ -1,11 +1,8 @@
 # CMS
 
-[![CI](https://github.com/owenbendavies/cms/actions/workflows/ci.yml/badge.svg)](https://github.com/owenbendavies/cms/actions/workflows/ci.yml)
-
-A CMS written in ReactJS, Ruby on Rails and Terraform used for learning.
-Although it is a working project, it was not created with the intention of being
-a production system. Instead this has been my practice project over the years,
-used for testing new ideas.
+A CMS written in ReactJS, Ruby on Rails and Terraform used for learning. It was
+not created with the intention of being a production system. Instead this was my
+practice project over the years, used for testing new ideas.
 
 ## Development
 
